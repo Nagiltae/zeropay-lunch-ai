@@ -46,9 +46,9 @@ Accept: text/event-stream
 Content-Type: application/json
 ```
 
-`conversationId`는 현재 React가 새 대화를 시작할 때 UUID로 생성합니다. 대화와 메시지는 아직 영속화하지 않으므로 페이지를 새로 고치면 복구되지 않습니다.
+`conversationId`는 Spring Boot가 대화 생성 시 발급합니다. 대화, 메시지와 추천 결과는 MySQL에 저장되며 React는 브라우저에 활성 대화 ID를 보관해 새로고침 후 기록을 복구합니다.
 
-프런트엔드에는 강남구 주요 지역을 선택하는 UI가 있지만 현재 채팅 요청에는 위치가 포함되지 않습니다. 위치 식별자나 좌표를 임의로 계약에 추가하지 않고, 강남구 위치 검증 방식과 추천 요청 계약을 설계한 뒤 서버 전송을 연결합니다.
+기준 위치는 대화 생성 요청에 포함하며 대화 도중에는 바뀌지 않습니다. 위치 변경 시 기존 대화를 비활성화한 뒤 새 대화를 생성합니다.
 
 요청:
 
@@ -95,6 +95,30 @@ Content-Type: application/json
 
 React는 진행 중인 assistant 말풍선에 `text`를 순서대로 이어 붙입니다. `assistantMessageId`는 이후 대화 영속화와 복구 기능에서 서버 메시지를 식별하는 데 사용합니다.
 
+### `recommendations`
+
+현재 영업 중이고 임시 결정론적 조건을 만족하는 음식점 목록입니다. 이 이벤트는 `assistant_delta`보다 먼저 전송됩니다.
+
+```json
+{
+  "items": [
+    {
+      "restaurantId": 1001,
+      "name": "강남 샘플 한식당",
+      "category": "한식",
+      "representativeMenu": "제육볶음",
+      "averagePrice": 9000,
+      "address": "서울특별시 강남구 강남대로 샘플 101",
+      "locationId": "gangnam",
+      "locationLabel": "강남역",
+      "zeroPayAvailable": true,
+      "sampleData": true,
+      "reason": "선택한 강남역 기준 위치와 일치해요."
+    }
+  ]
+}
+```
+
 ### `completed`
 
 ```json
@@ -114,8 +138,52 @@ React는 진행 중인 assistant 말풍선에 `text`를 순서대로 이어 붙�
 }
 ```
 
-현재 Spring Boot 응답은 React와 SSE 연결을 검증하기 위한 안내형 문구입니다. 자연어 해석, 음식점 검색, 추천 결과, FastAPI 연동은 아직 구현되지 않았습니다.
+현재 Spring Boot는 `만원 이하`, `국물`, `샐러드`, `가볍게`, `한식`, `제로페이`처럼 제한된 키워드만 임시로 해석합니다. 영업시간 조회, 필터와 최종 순위는 Spring Boot와 MySQL이 처리합니다. FastAPI 자연어 분석은 아직 구현되지 않았습니다.
 
-## 계획: 추천
+## 구현됨: 대화 생성
 
-추천 엔드포인트와 DTO는 3단계에서 설계합니다. 외부 계약은 Spring Boot가 소유합니다. Spring Boot와 FastAPI 사이의 계약은 내부 API로 문서화하고, 양쪽에서 요청과 응답을 검증합니다.
+```http
+POST /api/conversations
+Content-Type: application/json
+```
+
+요청:
+
+```json
+{
+  "locationId": "gangnam"
+}
+```
+
+지원하는 값은 `gangnam`, `yeoksam`, `seolleung`, `samseong`, `sinsa`, `apgujeong`, `cheongdam`, `suseo`입니다.
+
+응답 `201 Created`:
+
+```json
+{
+  "conversationId": "a9b53de8-3de6-4a90-a2ae-014322947d92",
+  "locationId": "gangnam",
+  "active": true,
+  "createdAt": "2026-09-16T14:00:00Z"
+}
+```
+
+## 구현됨: 대화 기록 조회
+
+```http
+GET /api/conversations/{conversationId}
+```
+
+대화 정보와 시간순 메시지 목록을 반환합니다. 각 assistant 메시지에는 저장된 추천 음식점 배열이 포함됩니다. 비활성 대화도 조회할 수 있습니다.
+
+## 구현됨: 대화 비활성화
+
+```http
+POST /api/conversations/{conversationId}/deactivate
+```
+
+응답은 `204 No Content`입니다. 대화와 메시지를 삭제하지 않고 `active=false`와 비활성 시각을 기록합니다. 같은 요청을 다시 보내도 삭제는 발생하지 않습니다.
+
+## 계획: AI 추천
+
+FastAPI 연동 시 외부 계약은 계속 Spring Boot가 소유합니다. Spring Boot와 FastAPI 사이의 구조화된 의도 분석 계약은 별도의 내부 API로 문서화하고 양쪽에서 검증합니다. FastAPI는 현재의 임시 키워드 분석만 대체하며 영업시간 필터와 최종 순위를 소유하지 않습니다.

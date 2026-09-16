@@ -1,5 +1,8 @@
 package com.zeropaylunch.backend.chat.application;
 
+import com.zeropaylunch.backend.chat.application.ChatPersistenceService.PendingExchange;
+import com.zeropaylunch.backend.restaurant.application.RecommendationItem;
+import com.zeropaylunch.backend.restaurant.application.RestaurantRecommendationService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,26 +22,35 @@ public class ChatStreamService {
     private static final int CHUNK_SIZE = 12;
 
     private final ExecutorService chatExecutor;
+    private final ChatPersistenceService chatPersistenceService;
+    private final RestaurantRecommendationService recommendationService;
 
-    public ChatStreamService(ExecutorService chatExecutor) {
+    public ChatStreamService(
+            ExecutorService chatExecutor,
+            ChatPersistenceService chatPersistenceService,
+            RestaurantRecommendationService recommendationService
+    ) {
         this.chatExecutor = chatExecutor;
+        this.chatPersistenceService = chatPersistenceService;
+        this.recommendationService = recommendationService;
     }
 
     public SseEmitter streamReply(UUID conversationId, String userMessage) {
+        PendingExchange exchange = chatPersistenceService.startExchange(
+                conversationId,
+                userMessage
+        );
         SseEmitter emitter = new SseEmitter(STREAM_TIMEOUT_MILLIS);
-        chatExecutor.submit(() -> emitReply(emitter, conversationId, userMessage));
+        chatExecutor.submit(() -> emitReply(emitter, exchange, userMessage));
         return emitter;
     }
 
-    private void emitReply(SseEmitter emitter, UUID conversationId, String userMessage) {
-        UUID userMessageId = UUID.randomUUID();
-        UUID assistantMessageId = UUID.randomUUID();
-
+    private void emitReply(SseEmitter emitter, PendingExchange exchange, String userMessage) {
         try {
             send(emitter, "accepted", new AcceptedEvent(
-                    conversationId,
-                    userMessageId,
-                    assistantMessageId
+                    exchange.conversationId(),
+                    exchange.userMessageId(),
+                    exchange.assistantMessageId()
             ));
             send(emitter, "progress", new ProgressEvent(
                     "ANALYZING",
@@ -51,22 +63,44 @@ public class ChatStreamService {
             ));
             pause();
 
-            for (String chunk : splitIntoChunks(createPlaceholderReply(userMessage))) {
+            List<RecommendationItem> recommendations = recommendationService.recommend(
+                    userMessage,
+                    exchange.locationId()
+            );
+            String reply = createReply(recommendations);
+            chatPersistenceService.completeExchange(
+                    exchange.assistantMessageId(),
+                    reply,
+                    recommendations
+            );
+            send(emitter, "recommendations", new RecommendationsEvent(recommendations));
+
+            for (String chunk : splitIntoChunks(reply)) {
                 send(emitter, "assistant_delta", new AssistantDeltaEvent(chunk));
                 pause();
             }
 
-            send(emitter, "completed", new CompletedEvent(assistantMessageId));
+            send(emitter, "completed", new CompletedEvent(exchange.assistantMessageId()));
             emitter.complete();
         } catch (InterruptedException exception) {
             Thread.currentThread().interrupt();
-            emitError(emitter, "STREAM_INTERRUPTED", "답변 생성이 중단되었습니다.");
+            failAndEmitError(
+                    emitter, exchange.assistantMessageId(),
+                    "STREAM_INTERRUPTED", "답변 생성이 중단되었습니다."
+            );
         } catch (IOException exception) {
-            log.debug("SSE client disconnected from conversation {}", conversationId);
+            log.debug("SSE client disconnected from conversation {}", exchange.conversationId());
             emitter.completeWithError(exception);
         } catch (RuntimeException exception) {
-            log.error("Unexpected chat streaming error for conversation {}", conversationId, exception);
-            emitError(emitter, "STREAM_FAILED", "답변을 생성하지 못했습니다.");
+            log.error(
+                    "Unexpected chat streaming error for conversation {}",
+                    exchange.conversationId(),
+                    exception
+            );
+            failAndEmitError(
+                    emitter, exchange.assistantMessageId(),
+                    "STREAM_FAILED", "답변을 생성하지 못했습니다."
+            );
         }
     }
 
@@ -85,14 +119,31 @@ public class ChatStreamService {
         }
     }
 
+    private void failAndEmitError(
+            SseEmitter emitter,
+            UUID assistantMessageId,
+            String code,
+            String message
+    ) {
+        try {
+            chatPersistenceService.failExchange(assistantMessageId, message);
+        } catch (RuntimeException persistenceException) {
+            log.error("Failed to persist assistant message failure", persistenceException);
+        }
+        emitError(emitter, code, message);
+    }
+
     private void pause() throws InterruptedException {
         Thread.sleep(EVENT_DELAY_MILLIS);
     }
 
-    private String createPlaceholderReply(String userMessage) {
-        return "말씀하신 ‘" + userMessage + "’ 요청을 받았어요. "
-                + "현재는 React와 Spring Boot 사이의 실시간 대화 연결을 확인하는 단계예요. "
-                + "다음 단계에서 음식점 검색과 AI 추천을 연결할게요.";
+    private String createReply(List<RecommendationItem> recommendations) {
+        if (recommendations.isEmpty()) {
+            return "현재 영업 중이면서 요청 조건에 맞는 샘플 음식점을 찾지 못했어요. "
+                    + "다른 메뉴나 예산으로 다시 요청해 주세요.";
+        }
+        return "현재 영업시간과 요청 조건을 확인해 " + recommendations.size()
+                + "곳을 골랐어요. 지금은 개발용 샘플 데이터로 보여드리고 있어요.";
     }
 
     private List<String> splitIntoChunks(String text) {
@@ -118,6 +169,9 @@ public class ChatStreamService {
     }
 
     private record AssistantDeltaEvent(String text) {
+    }
+
+    private record RecommendationsEvent(List<RecommendationItem> items) {
     }
 
     private record CompletedEvent(UUID assistantMessageId) {

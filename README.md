@@ -14,8 +14,8 @@ React -> Spring Boot -> FastAPI
 
 | 영역 | 상태 |
 | --- | --- |
-| 프런트엔드 | 대화형 React 화면과 POST 응답 SSE 클라이언트 구현 완료 |
-| 메인 백엔드 | JPA/MySQL 기반 구성 및 연결 검증용 SSE 채팅 API 구현 완료 |
+| 프런트엔드 | React Query 대화 복구, POST SSE와 샘플 추천 카드 구현 완료 |
+| 메인 백엔드 | Flyway/JPA 대화 영속화, 영업시간 필터, 샘플 추천 SSE 구현 완료 |
 | AI 서버 | 최소 구성의 FastAPI 상태 확인 엔드포인트와 테스트 작성 완료 |
 | MySQL | 로컬 Docker Compose 서비스 정의 완료 |
 | Qdrant | 로컬 Docker Compose 서비스 정의 완료, AI 연동 대기 중 |
@@ -90,10 +90,13 @@ docker compose down
 docker compose up -d --wait mysql qdrant
 ```
 
-터미널 2:
+터미널 2에서는 루트 `.env`의 로컬 값을 환경변수로 전달합니다. `.env` 자체는 Spring Boot가 자동으로 읽지 않습니다.
 
 ```bash
 cd backend
+SPRING_PROFILES_ACTIVE=local \
+MYSQL_USER=zeropay \
+MYSQL_PASSWORD=zeropay_local \
 ./gradlew bootRun
 ```
 
@@ -112,6 +115,8 @@ npm run dev
 ```
 
 Vite는 `/api` 요청을 `http://localhost:8080`의 Spring Boot로 전달합니다.
+
+Docker Compose의 Spring Boot는 `dev` 프로필을 사용합니다. `local`과 `dev`에는 승인된 가상 음식점 3개가 중복 없이 삽입되고, `prod`에는 샘플 데이터가 삽입되지 않습니다. 프로필별 상세 설정은 `docs/deployment.md`, 테이블과 샘플 데이터는 `docs/database.md`를 참고하세요.
 
 ## 검사 명령
 

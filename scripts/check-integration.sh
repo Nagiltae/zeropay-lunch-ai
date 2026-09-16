@@ -60,7 +60,17 @@ AI_HEALTH="$(curl --fail --silent --show-error --max-time 10 "http://$AI_ADDRESS
 [[ "$AI_HEALTH" == *'"service":"ai"'* ]]
 echo "[PASS] FastAPI health"
 
-CONVERSATION_ID="00000000-0000-4000-8000-000000000001"
+CONVERSATION_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/conversations" \
+  -H 'Content-Type: application/json' \
+  --data '{"locationId":"gangnam"}')"
+CONVERSATION_ID="$(printf '%s' "$CONVERSATION_RESPONSE" \
+  | sed -n 's/.*"conversationId":"\([^"]*\)".*/\1/p')"
+[[ -n "$CONVERSATION_ID" ]]
+[[ "$CONVERSATION_RESPONSE" == *'"active":true'* ]]
+echo "[PASS] Conversation creation"
+
 SSE_RESPONSE="$(curl --fail --silent --show-error --no-buffer --max-time 30 \
   -X POST \
   "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID/messages" \
@@ -68,9 +78,26 @@ SSE_RESPONSE="$(curl --fail --silent --show-error --no-buffer --max-time 30 \
   -H 'Content-Type: application/json' \
   --data '{"message":"통합 검사 메시지"}')"
 [[ "$SSE_RESPONSE" == *'event:accepted'* ]]
+[[ "$SSE_RESPONSE" == *'event:recommendations'* ]]
 [[ "$SSE_RESPONSE" == *'event:assistant_delta'* ]]
 [[ "$SSE_RESPONSE" == *'event:completed'* ]]
 echo "[PASS] Nginx to Spring Boot SSE flow"
+
+HISTORY_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID")"
+[[ "$HISTORY_RESPONSE" == *'"role":"USER"'* ]]
+[[ "$HISTORY_RESPONSE" == *'"role":"ASSISTANT"'* ]]
+[[ "$HISTORY_RESPONSE" == *'"sampleData":true'* ]]
+echo "[PASS] Persisted conversation history and sample recommendation"
+
+curl --fail --silent --show-error --max-time 10 \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID/deactivate" \
+  -o /dev/null
+DEACTIVATED_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID")"
+[[ "$DEACTIVATED_RESPONSE" == *'"active":false'* ]]
+echo "[PASS] Conversation deactivation"
 
 trap - ERR
 echo "[PASS] Docker service health and current cross-service flow"

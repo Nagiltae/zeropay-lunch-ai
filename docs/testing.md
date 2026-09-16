@@ -16,7 +16,7 @@
 | `./scripts/check-integration.sh` | Docker health와 현재 구현된 Nginx→Spring SSE 흐름 |
 | `./scripts/check-all.sh` | 위 검사의 canonical 전체 실행 |
 
-프런트엔드에는 아직 테스트 명령이 없습니다. `check-frontend.sh`는 이를 `[SKIP]`으로 명시하며 테스트가 통과했다고 보고하지 않습니다.
+프런트엔드는 Vitest로 대화 생성 요청과 청크 경계가 나뉜 SSE 추천 이벤트 파싱을 검증합니다. 컴포넌트 브라우저 테스트는 아직 없습니다.
 
 ## Progressive integration levels
 
@@ -31,16 +31,20 @@
 - Nginx `/healthz`
 - Spring Boot `/actuator/health`
 - FastAPI `/health`
-- Nginx `/api/` 프록시를 통한 Spring Boot SSE 이벤트 완료
+- Nginx `/api/` 프록시를 통한 대화 생성과 Spring Boot SSE 이벤트 완료
 
 `check-integration.sh`는 전체 이미지를 조용한 출력으로 빌드한 뒤 `docker compose up -d --wait`로 스택을 기동합니다. 검사 후 컨테이너와 볼륨을 삭제하지 않습니다. 실패 시 `docker compose ps`와 관련 서비스의 최근 로그를 출력합니다.
 
 ### Level 2 — backend dependencies
 
-다음 기능이 구현될 때 추가합니다.
+MySQL 대화 흐름은 현재 구현되어 있습니다.
 
-- Spring Boot가 MySQL에 실제 엔티티를 저장하고 조회
-- FastAPI가 Qdrant 컬렉션을 생성하거나 검색
+- Flyway가 실제 MySQL에 공통 스키마와 dev 샘플 데이터를 적용
+- Spring Boot가 대화, 메시지와 추천 결과를 저장하고 조회
+- 대화 비활성화 후 `active=false` 확인
+- 영업시간과 휴무시간 native query를 H2와 실제 MySQL 흐름에서 검증
+
+FastAPI가 Qdrant 컬렉션을 생성하거나 검색하는 검사는 아직 구현되지 않았습니다.
 
 단순히 컨테이너 포트가 열렸다는 검사로 이 단계를 통과했다고 판단하지 않습니다.
 
@@ -58,12 +62,16 @@ Spring Boot가 실제 FastAPI 내부 API를 호출하는 기능이 생길 때 �
 
 대화와 추천 기능이 구현되는 순서에 맞춰 확장합니다.
 
+현재 Docker 통합 검사에는 다음 사용자 흐름의 서버/API 부분이 포함됩니다.
+
 1. 대화 생성
 2. 사용자 메시지 전송
-3. SSE 답변 수신
-4. 사용자 및 assistant 메시지 저장
-5. 대화 기록 조회
-6. 강남구 음식점 추천 결과 검증
+3. 구조화된 추천 및 SSE 답변 수신
+4. USER 및 ASSISTANT 메시지 저장
+5. 추천 결과가 포함된 대화 기록 조회
+6. 대화 비활성화
+
+브라우저 자동화와 실제 AI 추천 결과 검증은 아직 포함하지 않습니다.
 
 브라우저 자동화나 대규모 E2E 도구는 이 흐름이 안정된 뒤 실제 필요가 있을 때만 추가합니다.
 

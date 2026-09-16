@@ -10,14 +10,48 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 
 영속성 기술은 Spring Data JPA를 사용합니다. 단순 조회는 Spring Data 저장소 기능으로 구현하고, 동적 조건이나 복합 조회가 필요해지는 시점에 QueryDSL을 추가합니다. 사용 코드가 생기기 전에는 QueryDSL 의존성과 생성 설정을 미리 추가하지 않습니다.
 
-아직 애플리케이션 스키마는 없습니다. 2단계에서 다음 초기 도메인의 엔티티 테이블, 관계, 제약 조건, 인덱스를 설계합니다.
+스키마는 Flyway가 `backend/src/main/resources/db/migration`에서 관리합니다. JPA는 실행 시 Flyway가 만든 스키마와 엔티티 매핑을 검증하며 운영 스키마를 자동 생성하지 않습니다.
 
-- 사용자
-- 음식점
-- 사용자 취향
-- 식사 기록
+## 현재 테이블
 
-운영 및 로컬 실행은 MySQL Connector/J를 사용합니다. 테스트에서는 외부 MySQL 없이 애플리케이션 컨텍스트를 검증할 수 있도록 H2를 테스트 런타임에서만 사용합니다. MySQL 고유 동작이나 실제 쿼리 호환성이 중요한 영속성 테스트는 향후 MySQL 기반 통합 테스트로 보완합니다.
+| 테이블 | 역할 |
+| --- | --- |
+| `conversations` | UUID, 기준 위치, 활성 여부, 생성·수정·비활성 시각 |
+| `chat_messages` | 대화별 USER/ASSISTANT 메시지와 처리 상태 |
+| `restaurants` | 강남구 음식점 기준 정보와 샘플 여부 |
+| `restaurant_schedules` | 같은 요일·시간 정책을 묶는 영업 일정 |
+| `restaurant_operating_days` | 일정별 영업 요일 |
+| `restaurant_operating_hours` | 일정별 영업 시작·종료 시각 |
+| `restaurant_closed_days` | 음식점별 정기 휴무 요일 |
+| `restaurant_closed_hours` | 일정별 하루 중 휴무시간 또는 브레이크타임 |
+| `message_recommendations` | assistant 메시지와 추천 음식점, 순위, 이유 연결 |
+
+대화 초기화와 위치 변경은 데이터를 삭제하지 않습니다. `conversations.active`를 `false`로 바꾸고 `deactivated_at`을 기록합니다. UUID를 사용하고 영속성 접근을 애플리케이션 서비스에 모아 두어 향후 채팅 기록을 MongoDB로 이전할 때 API와 추천 로직에 미치는 영향을 제한합니다. MongoDB 의존성과 이중 저장은 아직 추가하지 않았습니다.
+
+## 영업 중 조회
+
+시간 기준은 `Asia/Seoul`입니다. 음식점은 다음 조건을 모두 만족할 때만 조회됩니다.
+
+1. 현재 요일이 `restaurant_operating_days`에 있음
+2. 현재 시각이 `restaurant_operating_hours` 범위에 있음
+3. 현재 요일이 `restaurant_closed_days`에 없음
+4. 현재 시각이 `restaurant_closed_hours` 범위에 없음
+
+현재 스키마는 시작 시각보다 종료 시각이 늦은 당일 영업 구간을 지원합니다. 자정을 넘기는 영업시간과 특정 공휴일 예외는 실제 데이터 계약을 정할 때 별도 일정으로 확장합니다.
+
+## 개발용 샘플 데이터
+
+`local`과 `dev` 프로필은 `backend/src/main/resources/db/sample`의 repeatable migration을 추가로 실행합니다. `prod`는 이 경로를 읽지 않습니다.
+
+| 음식점 | 영업 요일·시간 | 휴무 요일 | 휴무시간 |
+| --- | --- | --- | --- |
+| 강남 샘플 한식당 | 월~금 11:00~21:00 | 토·일 | 15:00~17:00 |
+| 역삼 샘플 국밥집 | 매일 00:00~23:59:59 | 없음 | 없음 |
+| 선릉 샘플 샐러드 | 월~토 10:30~20:30 | 일 | 15:00~16:00 |
+
+샘플 데이터는 고정 식별자와 존재 여부 조건을 사용해 중복 삽입하지 않습니다.
+
+운영 및 로컬 실행은 MySQL Connector/J를 사용합니다. 테스트에서는 H2 MySQL 모드에서 동일한 Flyway 기준 스키마와 JPA 매핑을 검증합니다. Docker 통합 검사는 실제 MySQL에 스키마와 샘플 데이터를 적용하고 대화 저장·조회까지 확인합니다.
 
 외부 API 페이로드와 애플리케이션 소유 데이터는 구분할 수 있어야 합니다. 파생된 벡터 임베딩은 음식점의 기준 데이터로 취급하지 않습니다.
 

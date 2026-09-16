@@ -1,9 +1,18 @@
+import type { RestaurantRecommendation } from '../types/chat'
+
 type AcceptedEvent = {
   event: 'accepted'
   data: {
     conversationId: string
     userMessageId: string
     assistantMessageId: string
+  }
+}
+
+type RecommendationsEvent = {
+  event: 'recommendations'
+  data: {
+    items: RestaurantRecommendation[]
   }
 }
 
@@ -40,6 +49,7 @@ type ErrorEvent = {
 export type ChatStreamEvent =
   | AcceptedEvent
   | ProgressEvent
+  | RecommendationsEvent
   | AssistantDeltaEvent
   | CompletedEvent
   | ErrorEvent
@@ -47,10 +57,76 @@ export type ChatStreamEvent =
 const eventNames = new Set([
   'accepted',
   'progress',
+  'recommendations',
   'assistant_delta',
   'completed',
   'error',
 ])
+
+export type ConversationResponse = {
+  conversationId: string
+  locationId: string
+  active: boolean
+  createdAt: string
+}
+
+export type ConversationHistory = ConversationResponse & {
+  messages: Array<{
+    messageId: string
+    role: 'USER' | 'ASSISTANT'
+    status: 'PENDING' | 'COMPLETED' | 'FAILED' | 'STOPPED'
+    content: string
+    createdAt: string
+    recommendations: RestaurantRecommendation[]
+  }>
+}
+
+async function readError(response: Response) {
+  try {
+    const body = (await response.json()) as { detail?: string; message?: string }
+    return body.detail ?? body.message
+  } catch {
+    return undefined
+  }
+}
+
+export async function createConversation(locationId: string) {
+  const response = await fetch('/api/conversations', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ locationId }),
+  })
+  if (!response.ok) {
+    throw new Error(
+      (await readError(response)) ?? '새 대화를 시작하지 못했습니다.',
+    )
+  }
+  return (await response.json()) as ConversationResponse
+}
+
+export async function deactivateConversation(conversationId: string) {
+  const response = await fetch(
+    `/api/conversations/${encodeURIComponent(conversationId)}/deactivate`,
+    { method: 'POST' },
+  )
+  if (!response.ok) {
+    throw new Error(
+      (await readError(response)) ?? '대화를 초기화하지 못했습니다.',
+    )
+  }
+}
+
+export async function getConversation(conversationId: string) {
+  const response = await fetch(
+    `/api/conversations/${encodeURIComponent(conversationId)}`,
+  )
+  if (!response.ok) {
+    throw new Error(
+      (await readError(response)) ?? '대화 기록을 불러오지 못했습니다.',
+    )
+  }
+  return (await response.json()) as ConversationHistory
+}
 
 function parseEventBlock(block: string): ChatStreamEvent | null {
   let eventName = ''

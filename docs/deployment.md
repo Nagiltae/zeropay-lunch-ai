@@ -15,6 +15,26 @@ docker compose up -d mysql qdrant
 - FastAPI: Poetry와 Uvicorn
 - MySQL과 Qdrant: Docker Compose
 
+Spring Boot 설정은 다음 프로필로 분리합니다.
+
+| 프로필 | 용도 | 연결 방식 |
+| --- | --- | --- |
+| `local` | 애플리케이션을 개발 PC에서 직접 실행 | `localhost`의 MySQL과 FastAPI |
+| `dev` | 개발 PC의 Docker Compose 전체 스택 | Compose 호스트명 `mysql`, `ai` |
+| `prod` | AWS 운영 환경 | 모든 연결 정보와 자격 증명을 환경변수로 주입 |
+
+YAML에는 DB 비밀번호나 운영 자격 증명을 저장하지 않습니다. `local` 실행도 `.env`를 Spring Boot가 자동으로 읽지 않으므로 필요한 값을 환경변수로 전달해야 합니다.
+
+```bash
+cd backend
+SPRING_PROFILES_ACTIVE=local \
+MYSQL_USER=zeropay \
+MYSQL_PASSWORD=zeropay_local \
+./gradlew bootRun
+```
+
+위 값은 로컬 예시이며 운영 값으로 사용하지 않습니다. `local`과 `dev`는 샘플 음식점 migration을 실행하고 `prod`는 공통 스키마 migration만 실행합니다.
+
 MySQL과 Qdrant 포트는 로컬 호스트에만 바인딩됩니다. 컨테이너가 없어도 Compose가 이미지를 내려받고 컨테이너와 영속 볼륨을 생성합니다.
 
 ## 로컬 통합 테스트
@@ -27,6 +47,8 @@ docker compose ps
 ```
 
 React 정적 파일은 Nginx가 제공합니다. Nginx는 `/api/` 요청을 Spring Boot로 전달하며 FastAPI를 직접 노출하지 않습니다. Spring Boot는 Compose 내부 호스트명 `ai`와 `mysql`을 사용하고, FastAPI는 `qdrant`를 사용합니다.
+
+Compose는 Spring Boot에 `SPRING_PROFILES_ACTIVE=dev`를 설정합니다.
 
 채팅 API의 SSE 이벤트가 브라우저에 즉시 전달되도록 Nginx의 `/api/` 프록시는 응답 버퍼링과 캐시를 사용하지 않으며 읽기 제한 시간을 300초로 설정합니다.
 

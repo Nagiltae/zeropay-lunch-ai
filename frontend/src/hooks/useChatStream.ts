@@ -1,6 +1,16 @@
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { streamChatMessage, type ChatStreamEvent } from '../api/chat'
-import type { ChatMessage } from '../types/chat'
+import {
+  createConversation,
+  deactivateConversation,
+  getConversation,
+  streamChatMessage,
+  type ChatStreamEvent,
+  type ConversationHistory,
+} from '../api/chat'
+import type { ChatMessage, MessageStatus } from '../types/chat'
+
+const conversationStorageKey = 'zeropay-lunch-active-conversation'
 
 const welcomeMessage: ChatMessage = {
   id: 'welcome',
@@ -9,17 +19,74 @@ const welcomeMessage: ChatMessage = {
   status: 'complete',
 }
 
-function newConversationId() {
-  return crypto.randomUUID()
+function restoredMessageStatus(
+  status: ConversationHistory['messages'][number]['status'],
+): MessageStatus {
+  if (status === 'COMPLETED') return 'complete'
+  if (status === 'FAILED') return 'error'
+  return 'stopped'
 }
 
-export function useChatStream() {
-  const [conversationId, setConversationId] = useState(newConversationId)
+function restoreMessages(history: ConversationHistory): ChatMessage[] {
+  return [
+    welcomeMessage,
+    ...history.messages.map((message) => ({
+      id: message.messageId,
+      role: message.role === 'USER' ? ('user' as const) : ('assistant' as const),
+      text:
+        message.content ||
+        (message.status === 'PENDING'
+          ? '이전 답변이 완료되지 않았어요.'
+          : message.content),
+      status: restoredMessageStatus(message.status),
+      recommendations: message.recommendations,
+    })),
+  ]
+}
+
+export function useChatStream(locationId: string | null) {
+  const [conversationId, setConversationId] = useState<string | null>(() =>
+    window.localStorage.getItem(conversationStorageKey),
+  )
   const [messages, setMessages] = useState<ChatMessage[]>([welcomeMessage])
   const [progress, setProgress] = useState<string | null>(null)
   const [isStreaming, setIsStreaming] = useState(false)
   const abortControllerRef = useRef<AbortController | null>(null)
   const activeAssistantIdRef = useRef<string | null>(null)
+  const restoredConversationRef = useRef<string | null>(null)
+
+  const historyQuery = useQuery({
+    queryKey: ['conversation', conversationId],
+    queryFn: () => getConversation(conversationId!),
+    enabled: conversationId !== null,
+    staleTime: Number.POSITIVE_INFINITY,
+  })
+  const createMutation = useMutation({ mutationFn: createConversation })
+  const deactivateMutation = useMutation({ mutationFn: deactivateConversation })
+
+  useEffect(() => {
+    const history = historyQuery.data
+    if (!history || restoredConversationRef.current === history.conversationId) {
+      return
+    }
+    restoredConversationRef.current = history.conversationId
+    if (!history.active) {
+      window.localStorage.removeItem(conversationStorageKey)
+      setConversationId(null)
+      setMessages([welcomeMessage])
+      return
+    }
+    setMessages(restoreMessages(history))
+  }, [historyQuery.data])
+
+  useEffect(() => {
+    if (!historyQuery.isError || !conversationId) {
+      return
+    }
+    window.localStorage.removeItem(conversationStorageKey)
+    setConversationId(null)
+    setMessages([welcomeMessage])
+  }, [conversationId, historyQuery.isError])
 
   useEffect(() => {
     return () => abortControllerRef.current?.abort()
@@ -44,6 +111,12 @@ export function useChatStream() {
         case 'progress':
           setProgress(event.data.message)
           return
+        case 'recommendations':
+          updateMessage(assistantId, (message) => ({
+            ...message,
+            recommendations: event.data.items,
+          }))
+          return
         case 'assistant_delta':
           setProgress(null)
           updateMessage(assistantId, (message) => ({
@@ -65,6 +138,20 @@ export function useChatStream() {
     [updateMessage],
   )
 
+  const ensureConversation = useCallback(async () => {
+    if (conversationId) {
+      return conversationId
+    }
+    if (!locationId) {
+      throw new Error('먼저 강남구 내 기준 위치를 선택해 주세요.')
+    }
+    const created = await createMutation.mutateAsync(locationId)
+    window.localStorage.setItem(conversationStorageKey, created.conversationId)
+    setConversationId(created.conversationId)
+    restoredConversationRef.current = created.conversationId
+    return created.conversationId
+  }, [conversationId, createMutation, locationId])
+
   const runStream = useCallback(
     async (assistantId: string, requestText: string) => {
       const controller = new AbortController()
@@ -74,8 +161,9 @@ export function useChatStream() {
       setIsStreaming(true)
 
       try {
+        const activeConversationId = await ensureConversation()
         await streamChatMessage(
-          conversationId,
+          activeConversationId,
           requestText,
           (event) => handleStreamEvent(event, assistantId),
           controller.signal,
@@ -103,13 +191,18 @@ export function useChatStream() {
         }
       }
     },
-    [conversationId, handleStreamEvent, updateMessage],
+    [ensureConversation, handleStreamEvent, updateMessage],
   )
 
   const sendMessage = useCallback(
     async (text: string) => {
       const trimmedMessage = text.trim()
-      if (!trimmedMessage || isStreaming || activeAssistantIdRef.current) {
+      if (
+        !trimmedMessage ||
+        !locationId ||
+        isStreaming ||
+        activeAssistantIdRef.current
+      ) {
         return
       }
 
@@ -133,7 +226,7 @@ export function useChatStream() {
 
       await runStream(assistantId, trimmedMessage)
     },
-    [isStreaming, runStream],
+    [isStreaming, locationId, runStream],
   )
 
   const retryMessage = useCallback(
@@ -150,6 +243,7 @@ export function useChatStream() {
       updateMessage(messageId, (current) => ({
         ...current,
         text: '',
+        recommendations: [],
         status: 'streaming',
       }))
       await runStream(messageId, message.requestText)
@@ -174,20 +268,27 @@ export function useChatStream() {
     }
   }, [updateMessage])
 
-  const resetConversation = useCallback(() => {
+  const resetConversation = useCallback(async () => {
     abortControllerRef.current?.abort()
+    if (conversationId) {
+      await deactivateMutation.mutateAsync(conversationId)
+    }
     abortControllerRef.current = null
     activeAssistantIdRef.current = null
-    setConversationId(newConversationId())
+    restoredConversationRef.current = null
+    window.localStorage.removeItem(conversationStorageKey)
+    setConversationId(null)
     setMessages([welcomeMessage])
     setProgress(null)
     setIsStreaming(false)
-  }, [])
+  }, [conversationId, deactivateMutation])
 
   return {
+    conversationId,
     messages,
     progress,
     isStreaming,
+    isRestoring: historyQuery.isLoading,
     sendMessage,
     retryMessage,
     stopStreaming,

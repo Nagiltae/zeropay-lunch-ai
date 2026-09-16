@@ -21,6 +21,7 @@ ZeroPay Lunch AI의 메인 애플리케이션 백엔드입니다. 외부 요청�
 - Spring Data JPA: 도메인 데이터 영속성
 - MySQL Connector/J: 운영 및 로컬 MySQL 연결
 - H2: 외부 데이터베이스 없이 테스트 컨텍스트 실행
+- Flyway: 프로필별 스키마 migration과 local/dev 샘플 데이터 관리
 
 기본 영속성 기술은 Spring Data JPA입니다. QueryDSL은 동적 조건이나 복합 조회를 처음 구현할 때 추가합니다.
 
@@ -34,7 +35,7 @@ Accept: text/event-stream
 Content-Type: application/json
 ```
 
-현재는 SSE 연결 검증을 위한 안내형 응답을 전송합니다. 대화 영속화, FastAPI 호출, 음식점 추천은 이후 단계에서 구현합니다. 이벤트별 계약은 `docs/api-contract.md`를 참고하세요.
+Spring Boot는 대화와 메시지를 MySQL에 저장하고 현재 영업 중인 개발용 샘플 음식점을 결정론적으로 추천합니다. FastAPI 호출과 실제 음식점 데이터는 아직 연결하지 않았습니다. 이벤트별 계약은 `docs/api-contract.md`를 참고하세요.
 
 ## 실행
 
@@ -44,10 +45,13 @@ Content-Type: application/json
 cd ..
 docker compose up -d mysql qdrant
 cd backend
+SPRING_PROFILES_ACTIVE=local \
+MYSQL_USER=zeropay \
+MYSQL_PASSWORD=zeropay_local \
 ./gradlew bootRun
 ```
 
-기본 서버 주소는 `http://localhost:8080`이며, 운영 상태는 `GET /actuator/health`에서 확인할 수 있습니다. 기본 데이터베이스 접속값은 루트 `.env.example` 및 `docker-compose.yml`과 일치합니다. 필요하면 `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD` 환경 변수로 재정의할 수 있습니다.
+기본 서버 주소는 `http://localhost:8080`이며, 운영 상태는 `GET /actuator/health`에서 확인할 수 있습니다. Spring Boot 프로필은 `local`, `dev`, `prod`로 분리되어 있고 민감 정보는 환경변수로만 전달합니다.
 
 전체 통합 환경에서는 루트의 `docker compose up --build -d` 명령으로 실행합니다. 이때 백엔드는 Compose 내부의 `mysql:3306`과 `ai:8001`을 사용합니다.
 

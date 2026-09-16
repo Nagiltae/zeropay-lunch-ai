@@ -71,6 +71,42 @@ export function MessageList({
                 <span className="stream-cursor" aria-hidden="true" />
               )}
             </div>
+            {message.recommendations && message.recommendations.length > 0 && (
+              <div className="recommendation-list" aria-label="추천 음식점">
+                {message.recommendations.map((restaurant) => (
+                  <article
+                    className="recommendation-card"
+                    key={restaurant.restaurantId}
+                  >
+                    <div className="recommendation-card__heading">
+                      <div>
+                        <strong>{restaurant.name}</strong>
+                        <span>
+                          {restaurant.category} · {restaurant.locationLabel}
+                        </span>
+                      </div>
+                      {restaurant.sampleData && <em>샘플 데이터</em>}
+                    </div>
+                    <dl>
+                      <div>
+                        <dt>대표 메뉴</dt>
+                        <dd>{restaurant.representativeMenu}</dd>
+                      </div>
+                      <div>
+                        <dt>예상 가격</dt>
+                        <dd>{restaurant.averagePrice.toLocaleString()}원</dd>
+                      </div>
+                      <div>
+                        <dt>제로페이</dt>
+                        <dd>{restaurant.zeroPayAvailable ? '가능' : '불가'}</dd>
+                      </div>
+                    </dl>
+                    <p>{restaurant.reason}</p>
+                    <small>{restaurant.address}</small>
+                  </article>
+                ))}
+              </div>
+            )}
             {message.status === 'error' && (
               <button
                 className="message-action"

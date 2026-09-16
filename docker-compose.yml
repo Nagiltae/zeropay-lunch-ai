@@ -14,6 +14,7 @@ services:
       context: ./backend
     restart: unless-stopped
     environment:
+      SPRING_PROFILES_ACTIVE: dev
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-zeropay_lunch}
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-zeropay}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-zeropay_local}

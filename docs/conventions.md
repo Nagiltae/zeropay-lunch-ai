@@ -15,6 +15,7 @@
 - API 기본 URL은 Spring Boot만 가리키도록 설정합니다.
 - 조회, 캐시, 재검증이 필요한 서버 상태는 TanStack Query(React Query)를 사용합니다. 입력값, 열림 상태, 진행 중인 SSE 메시지처럼 화면에 한정된 상태는 React 로컬 상태로 관리합니다.
 - TanStack Query 의존성은 실제 서버 상태 조회 기능을 구현할 때 추가합니다.
+- 저장된 대화 기록은 TanStack Query로 조회하고, 진행 중인 SSE 메시지와 AbortController는 React 로컬 상태로 관리합니다.
 - 강남구 위치 프리셋은 서버 위치 계약 전까지 UI 전용 데이터로 취급하며 실제 좌표나 경계 검증 결과로 사용하지 않습니다.
 
 ## 백엔드

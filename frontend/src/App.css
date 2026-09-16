@@ -315,6 +315,89 @@ h1 {
   box-shadow: 0 0.5rem 1.3rem rgba(40, 101, 71, 0.16);
 }
 
+.recommendation-list {
+  display: grid;
+  gap: 0.65rem;
+  width: min(100%, 32rem);
+  margin-top: 0.65rem;
+}
+
+.recommendation-card {
+  padding: 0.9rem;
+  border: 1px solid #dbe6dd;
+  border-radius: 1rem;
+  background: #f6fbf7;
+  box-shadow: 0 0.4rem 1.2rem rgba(55, 48, 36, 0.05);
+}
+
+.recommendation-card__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.recommendation-card__heading > div {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.recommendation-card__heading strong {
+  color: #244d37;
+  font-size: 0.92rem;
+}
+
+.recommendation-card__heading span,
+.recommendation-card small {
+  color: #7b7469;
+  font-size: 0.7rem;
+}
+
+.recommendation-card__heading em {
+  flex: 0 0 auto;
+  padding: 0.22rem 0.45rem;
+  border-radius: 999px;
+  color: #8a5b19;
+  background: #fff0d7;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.recommendation-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+}
+
+.recommendation-card dl > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.5rem;
+  border-radius: 0.65rem;
+  background: white;
+}
+
+.recommendation-card dt {
+  color: #8a8277;
+  font-size: 0.62rem;
+}
+
+.recommendation-card dd {
+  margin: 0;
+  color: #39342d;
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.recommendation-card p {
+  margin: 0 0 0.4rem;
+  color: #456451;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
 .starter-prompts {
   display: grid;
   gap: 0.55rem;
