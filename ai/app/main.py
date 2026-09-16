@@ -16,4 +16,3 @@ app = FastAPI(
 @app.get("/health", response_model=HealthResponse, tags=["system"])
 def health() -> HealthResponse:
     return HealthResponse(status="ok", service="ai")
-

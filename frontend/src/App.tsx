@@ -1,15 +1,61 @@
+import { useState } from 'react'
 import './App.css'
+import { ChatHeader } from './components/chat/ChatHeader'
+import { LocationSelector } from './components/chat/LocationSelector'
+import { MessageComposer } from './components/chat/MessageComposer'
+import { MessageList } from './components/chat/MessageList'
+import { useChatStream } from './hooks/useChatStream'
+import type { GangnamLocation } from './types/chat'
 
 function App() {
+  const [selectedLocation, setSelectedLocation] =
+    useState<GangnamLocation | null>(null)
+  const {
+    messages,
+    progress,
+    isStreaming,
+    sendMessage,
+    retryMessage,
+    stopStreaming,
+    resetConversation,
+  } = useChatStream()
+
+  const resetWithConfirmation = () => {
+    if (
+      messages.length > 1 &&
+      !window.confirm(
+        '현재 대화 내용을 초기화할까요? 선택한 기준 위치는 유지됩니다.',
+      )
+    ) {
+      return
+    }
+    resetConversation()
+  }
+
   return (
     <main className="app-shell">
-      <section className="hero" aria-labelledby="page-title">
-        <p className="eyebrow">ZeroPay Lunch AI</p>
-        <h1 id="page-title">오늘 점심, 상황에 맞게 골라드릴게요.</h1>
-        <p className="description">
-          자연어 요청과 취향, 예산, 최근 식사 기록을 함께 고려하는 추천 서비스를 준비하고 있습니다.
-        </p>
-        <span className="status">1단계 · 프로젝트 뼈대 구축</span>
+      <section className="chat-app" aria-labelledby="page-title">
+        <ChatHeader
+          hasConversation={messages.length > 1 || isStreaming}
+          onReset={resetWithConfirmation}
+        />
+        <LocationSelector
+          selectedLocation={selectedLocation}
+          onSelect={setSelectedLocation}
+        />
+        <MessageList
+          messages={messages}
+          progress={progress}
+          locationSelected={selectedLocation !== null}
+          onPromptSelect={(prompt) => void sendMessage(prompt)}
+          onRetry={(messageId) => void retryMessage(messageId)}
+        />
+        <MessageComposer
+          disabled={selectedLocation === null}
+          isStreaming={isStreaming}
+          onSend={(message) => void sendMessage(message)}
+          onStop={stopStreaming}
+        />
       </section>
     </main>
   )

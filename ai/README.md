@@ -6,6 +6,8 @@
 
 현재 1단계 범위는 상태 확인 엔드포인트로 제한됩니다. LangGraph, LangChain, 모델 SDK, 벡터 저장소, 관측성 관련 의존성은 해당 기능을 구현할 때만 추가합니다.
 
+로컬 벡터 저장소는 Qdrant로 결정했으며 Docker Compose에서 `http://qdrant:6333`으로 접근합니다. 아직 검색 기능을 구현하지 않았으므로 Qdrant Python 클라이언트 의존성은 추가하지 않았습니다.
+
 ```bash
 poetry install
 poetry run uvicorn app.main:app --reload --port 8001

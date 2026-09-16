@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Pretendard, "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #242019;
   background: #f3efe6;
   font-synthesis: none;
@@ -16,6 +16,6 @@ body {
   min-height: 100vh;
   background:
     radial-gradient(circle at 15% 20%, rgba(102, 162, 125, 0.2), transparent 34rem),
+    radial-gradient(circle at 88% 82%, rgba(227, 177, 91, 0.14), transparent 28rem),
     #f3efe6;
 }
-
