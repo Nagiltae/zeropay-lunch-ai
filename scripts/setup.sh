@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Harness Role: 새 로컬 환경을 검증 가능한 개발 상태로 준비하는 단일 진입점이다.
+# Agent Usage: fresh clone이나 의존성이 준비되지 않은 세션에서 최초 한 번 실행한다.
+# Why: 누락된 도구와 개인별 수동 설치 상태 때문에 이후 검사가 다르게 실패하는 것을 방지한다.
+# Connection: 잠금 파일, .env.example, docker-compose.yml과 모든 check 스크립트의 선행 환경을 준비한다.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -123,9 +127,10 @@ docker compose config --quiet
 ok "Docker Compose configuration valid"
 
 echo
-echo "== Starting local data services =="
-docker compose up -d --wait --wait-timeout 120 mysql qdrant
-ok "MySQL and Qdrant are healthy"
+echo "== Starting required local data service =="
+docker compose up -d --wait --wait-timeout 120 mysql
+ok "MySQL is healthy"
+echo "[INFO] Qdrant is optional until AI search is implemented: docker compose up -d qdrant"
 
 echo
 echo "Setup completed successfully."

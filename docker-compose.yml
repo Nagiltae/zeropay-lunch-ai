@@ -1,3 +1,8 @@
+# Harness Role: 로컬·통합 검증에서 동일한 서비스 토폴로지와 health 조건을 재현한다.
+# Agent Usage: Docker 실행 구조나 서비스 의존성을 바꿀 때 읽고 check-integration.sh에서 실행한다.
+# Why: 개인 PC의 수동 설정에 따라 결과가 달라지거나 존재하지 않는 의존성을 가정하는 것을 방지한다.
+# Connection: .env.example의 변수, 각 Dockerfile, setup.sh와 check-integration.sh를 하나의 실행 환경으로 묶는다.
+
 services:
   frontend:
     build:
@@ -18,7 +23,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-zeropay_lunch}
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-zeropay}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-zeropay_local}
-      AI_BASE_URL: http://ai:8001
+      AI_BASE_URL: ${AI_BASE_URL:-http://ai:8001}
       AI_CONNECT_TIMEOUT: ${AI_CONNECT_TIMEOUT:-2s}
       AI_RESPONSE_TIMEOUT: ${AI_RESPONSE_TIMEOUT:-8s}
       AI_MAX_ATTEMPTS: ${AI_MAX_ATTEMPTS:-1}
@@ -27,8 +32,6 @@ services:
       - "127.0.0.1:${BACKEND_PORT:-8080}:8080"
     depends_on:
       mysql:
-        condition: service_healthy
-      ai:
         condition: service_healthy
 
   ai:
@@ -39,9 +42,6 @@ services:
       QDRANT_URL: http://qdrant:6333
     ports:
       - "127.0.0.1:${AI_PORT:-8001}:8001"
-    depends_on:
-      qdrant:
-        condition: service_healthy
 
   mysql:
     image: mysql:8.4

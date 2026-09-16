@@ -1,5 +1,7 @@
 # 검증 및 통합 테스트 전략
 
+> **Harness Role:** 어떤 변경에 어떤 검사가 필요하고 현재 통합 테스트가 어디까지 보장하는지 정의합니다. Agent는 구현 계획과 완료 판단 시 읽습니다. 이 문서가 없으면 단위 테스트만 통과하고 서비스 간 흐름도 검증됐다고 오판할 수 있습니다. `scripts/check-*.sh`, Docker Compose와 `AGENTS.md`의 Definition of Done을 연결합니다.
+
 ## 목적
 
 검증은 코드를 작성했다는 사실이 아니라 관찰 가능한 동작을 기준으로 완료 여부를 판단하기 위해 사용합니다. 가장 좁은 대상 검사를 먼저 실행하고, 여러 서비스나 실행 환경에 영향을 주는 변경은 `./scripts/check-all.sh`로 최종 확인합니다.
@@ -8,15 +10,15 @@
 
 | 명령 | 범위 |
 | --- | --- |
-| `./scripts/check-format.sh` | Git 공백 오류, AI Ruff 포맷 |
+| `./scripts/check-format.sh` | tracked 변경과 untracked 텍스트 파일의 공백 오류, AI Ruff 포맷 |
 | `./scripts/check-lint.sh` | React ESLint, AI Ruff lint |
 | `./scripts/check-frontend.sh` | npm 의존성 상태, TypeScript를 포함한 프로덕션 빌드, 존재하는 경우 테스트 |
-| `./scripts/check-backend.sh` | Gradle compile, 테스트, 패키징 |
+| `./scripts/check-backend.sh` | Gradle compiler lint(`-Xlint:all,-serial -Werror`), 테스트, 패키징 |
 | `./scripts/check-ai.sh` | Poetry 메타데이터, FastAPI import, Pytest |
 | `./scripts/check-integration.sh` | Docker health, 인증·세션·대화 소유권과 Nginx→Spring SSE 흐름 |
 | `./scripts/check-all.sh` | 위 검사의 canonical 전체 실행 |
 
-프런트엔드는 Vitest로 인증 API의 CSRF 헤더와 401 처리, 취향·식사 기록 요청, 대화 생성 요청, 청크 경계가 나뉜 SSE 추천 이벤트 파싱을 검증합니다. 컴포넌트 브라우저 테스트는 아직 없습니다.
+프런트엔드는 Vitest로 인증 API의 CSRF 헤더와 401 처리, 취향·식사 기록 요청, 대화 생성 요청, 청크 경계가 나뉜 SSE 추천 이벤트 파싱을 검증합니다. jsdom 컴포넌트 테스트는 선호·비선호 상호 배제와 저장, 추천 카드의 명시적인 `먹었어요` 동작을 검증합니다. 실제 브라우저 자동화는 아직 없습니다.
 
 ## Progressive integration levels
 
@@ -76,11 +78,15 @@ Spring Boot가 실제 FastAPI 내부 API를 호출하는 기능이 생길 때 �
 7. USER 및 ASSISTANT 메시지 저장
 8. 추천 결과가 포함된 대화 기록 조회
 9. 대화 비활성화
-10. 로그아웃 후 인증 API 및 대화 접근 거부
+10. 사용자 취향 저장과 고정 제로페이 정책 확인
+11. 추천 카드에 대한 명시적·멱등 식사 기록과 최근 기록 조회
+12. 로그아웃 후 인증 API 및 대화 접근 거부
 
 백엔드 자동 테스트는 취향 충돌 검증, 최근 72시간 식사 범위, 다른 사용자의 추천 기록 차단, 제로페이 불가 음식점 제외, 기본 예산·비선호·최근 식사 필터와 AI 분석 fallback을 포함합니다.
 
 브라우저 자동화와 실제 AI 추천 결과 검증은 아직 포함하지 않습니다.
+
+Compose에서 Spring Boot는 아직 호출하지 않는 FastAPI를 시작 조건으로 요구하지 않으며, FastAPI도 아직 사용하지 않는 Qdrant를 시작 조건으로 요구하지 않습니다. 전체 통합 검사는 저장소에 정의된 각 서비스의 health를 확인하지만 이 독립성 자체를 장애 시나리오로 검증하지는 않습니다.
 
 브라우저 자동화나 대규모 E2E 도구는 이 흐름이 안정된 뒤 실제 필요가 있을 때만 추가합니다.
 

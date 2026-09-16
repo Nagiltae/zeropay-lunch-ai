@@ -2,6 +2,13 @@
 
 이 파일은 이 저장소에서 작업하는 코딩 에이전트의 정책 진입점입니다. 세부 설계는 관련 문서를 필요한 범위만 읽고 확인합니다.
 
+## Harness study note
+
+- **Harness Role:** 모든 Agent가 공유하는 작업 절차, 안전 경계와 완료 조건의 단일 기준입니다.
+- **Agent Usage:** 어떤 작업이든 수정 전에 가장 먼저 읽고, 최종 보고 전에 Definition of Done을 다시 확인합니다.
+- **Why:** 이 기준이 없으면 Agent마다 아키텍처, 검증 범위와 완료 판단이 달라질 수 있습니다.
+- **Connection:** `tasks/`와 관련 `docs/`로 읽기 범위를 좁히고, `scripts/check-*.sh`로 구현 결과를 검증합니다.
+
 ## Project purpose
 
 ZeroPay Lunch AI는 사용자의 자연어 요청, 취향, 예산, 위치, 최근 식사 기록을 바탕으로 서울특별시 강남구의 음식점을 추천하는 서비스입니다.
@@ -38,6 +45,7 @@ Spring Boot는 공개 API와 비즈니스 데이터 및 결정론적 로직을 �
 - 코딩 및 상태 관리 규칙: `docs/conventions.md`
 - 실행과 배포: `docs/deployment.md`
 - 검증과 통합 테스트 단계: `docs/testing.md`
+- Harness 학습 가이드: `docs/harness-study.md`
 - 비자명 작업 명세: `tasks/README.md` 및 해당 task 파일
 
 ## Core rules
@@ -52,6 +60,15 @@ Spring Boot는 공개 API와 비즈니스 데이터 및 결정론적 로직을 �
 8. 실제 필요가 없는 의존성이나 포트폴리오용 복잡성을 추가하지 않습니다.
 9. 새 패턴을 추가하기 전에 기존 코드와 규칙을 확인합니다.
 10. 사용자의 기존 작업과 관련 없는 파일을 수정하거나 되돌리지 않습니다.
+
+## Database migration rules
+
+- `backend/src/main/resources/db/migration`의 versioned migration은 한 번 적용되면 불변입니다.
+- 현재 적용 기준인 `V1`, `V2`, `V3` 파일은 수정하지 않습니다.
+- 스키마 변경은 항상 다음 번호의 새 `V<n>__<description>.sql` migration으로 추가합니다.
+- 과거 migration의 오류를 보완할 때도 파일을 고쳐 쓰지 않고 새 migration에서 순방향으로 수정합니다.
+- sample repeatable migration은 스키마 변경 용도로 사용하지 않습니다.
+- DB 변경 작업은 실제 MySQL을 사용하는 통합 검사와 `docs/database.md` 갱신 여부를 확인합니다.
 
 ## Documentation updates
 
@@ -127,7 +144,7 @@ Spring Boot는 공개 API와 비즈니스 데이터 및 결정론적 로직을 �
 7. 관련 없는 파일을 변경하지 않았습니다.
 8. 계약이나 설계 변경에 해당하는 문서를 갱신했습니다.
 9. 작업 내용을 `AI_CHANGELOG.md`에 기록했습니다.
-10. 최종 Git diff를 검토했습니다.
+10. `git status --short`와 최종 Git diff를 함께 검토하여 untracked 파일을 포함한 모든 변경을 확인했습니다.
 11. 최종 보고에 다음 내용을 포함했습니다.
     - 무엇을 변경했는지
     - 변경한 파일과 이유

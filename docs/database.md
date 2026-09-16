@@ -1,5 +1,7 @@
 # 데이터베이스
 
+> **Harness Role:** MySQL 데이터 소유권, 현재 테이블, Flyway 규칙과 샘플 데이터 정책의 기준입니다. Agent는 엔티티나 스키마를 바꾸기 전에 읽습니다. 이 문서가 없으면 적용된 migration을 수정하거나 prod에 샘플 데이터를 넣는 실수가 생길 수 있습니다. `AGENTS.md`의 migration guardrail, 실제 `db/migration`, 백엔드 및 Docker 통합 검사와 연결됩니다.
+
 ## 현재 결정 사항
 
 MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compose에 로컬 MySQL 8.4 서비스를 정의해 두었습니다.
@@ -11,6 +13,14 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 영속성 기술은 Spring Data JPA를 사용합니다. 단순 조회는 Spring Data 저장소 기능으로 구현하고, 동적 조건이나 복합 조회가 필요해지는 시점에 QueryDSL을 추가합니다. 사용 코드가 생기기 전에는 QueryDSL 의존성과 생성 설정을 미리 추가하지 않습니다.
 
 스키마는 Flyway가 `backend/src/main/resources/db/migration`에서 관리합니다. JPA는 실행 시 Flyway가 만든 스키마와 엔티티 매핑을 검증하며 운영 스키마를 자동 생성하지 않습니다.
+
+## Migration 규칙
+
+- versioned migration은 적용 후 수정하지 않습니다. 현재 `V1`, `V2`, `V3`는 불변입니다.
+- 스키마 변경은 항상 다음 번호의 새 `V<n>__<description>.sql` 파일로 순방향 적용합니다.
+- 이미 배포된 migration의 오류도 과거 파일을 고치지 않고 새 migration에서 보완합니다.
+- `db/sample`의 repeatable migration은 local/dev 데이터용이며 스키마 변경에 사용하지 않습니다.
+- DB 변경은 H2 기반 백엔드 테스트와 실제 MySQL Docker 통합 검사를 모두 확인합니다.
 
 ## 현재 테이블
 

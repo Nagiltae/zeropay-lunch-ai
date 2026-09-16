@@ -10,16 +10,17 @@ React -> Spring Boot -> FastAPI
 
 ## 현재 상태
 
-현재 이 저장소는 프로젝트 뼈대 구성을 마치고 대화형 추천 UI와 API 연결을 구현하는 단계입니다.
+현재 이 저장소는 FastAPI의 실제 AI 기능을 연결하기 전에 필요한 인증, 대화 영속화와 개인화 추천 기반까지 구현한 상태입니다.
 
 | 영역 | 상태 |
 | --- | --- |
-| 프런트엔드 | React Query 대화 복구, POST SSE와 샘플 추천 카드 구현 완료 |
-| 메인 백엔드 | Flyway/JPA 대화 영속화, 영업시간 필터, 샘플 추천 SSE 구현 완료 |
+| 프런트엔드 | 세션 인증, React Query 대화·취향·최근 식사 상태, POST SSE, 추천 카드와 `먹었어요` 흐름 구현 완료 |
+| 메인 백엔드 | 인증·Spring Session JDBC, 대화·취향·식사 기록 영속화, 제로페이·영업시간·개인화 필터와 샘플 추천 SSE 구현 완료 |
 | AI 서버 | 최소 구성의 FastAPI 상태 확인 엔드포인트와 테스트 작성 완료 |
-| MySQL | 로컬 Docker Compose 서비스 정의 완료 |
-| Qdrant | 로컬 Docker Compose 서비스 정의 완료, AI 연동 대기 중 |
-| API 계약 및 아키텍처 | 초기 문서 작성 완료 |
+| MySQL | Flyway V1~V3 스키마와 local/dev 샘플 음식점 3개 적용 |
+| Qdrant | 로컬 Docker Compose 서비스만 정의, AI 검색 연동 대기 중 |
+| Spring→FastAPI | 내부 의도 분석 계약과 fallback 경계만 준비, 실제 HTTP 클라이언트는 미구현 |
+| API 계약 및 아키텍처 | 현재 구현과 계획 범위를 `docs/`에 구분해 기록 |
 
 ## 저장소 구조
 
@@ -32,6 +33,8 @@ zeropay-lunch-ai/
 ├── tasks/       # 비자명 작업의 실행 명세와 템플릿
 └── scripts/     # 로컬 검증 명령어
 ```
+
+Agent가 이 저장소에서 규칙을 읽고 구현을 검증하는 전체 구조를 공부하려면 `docs/harness-study.md`를 먼저 참고하세요.
 
 ## 필수 도구
 
@@ -54,7 +57,7 @@ docker compose up --build -d --wait
 docker compose ps
 ```
 
-`setup.sh`는 잠금 파일을 사용해 프로젝트 의존성을 준비하고 MySQL과 Qdrant가 정상 상태가 될 때까지 기다립니다. `docker compose up`은 React, Spring Boot, FastAPI까지 포함한 전체 서비스를 실행합니다.
+`setup.sh`는 잠금 파일을 사용해 프로젝트 의존성을 준비하고 현재 필수 저장소인 MySQL이 정상 상태가 될 때까지 기다립니다. `docker compose up`은 React, Spring Boot, FastAPI, MySQL과 향후 검색용 Qdrant를 실행하지만 아직 연결되지 않은 FastAPI와 Qdrant는 Spring Boot의 시작 조건이 아닙니다.
 
 | 서비스 | 로컬 주소 |
 | --- | --- |
@@ -70,7 +73,7 @@ docker compose ps
 ./scripts/check-all.sh
 ```
 
-검증은 포맷, 린트, 서비스별 빌드와 테스트, Docker health 및 현재 구현된 Nginx→Spring Boot SSE 흐름을 확인합니다. 자세한 단계는 `docs/testing.md`를 참고하세요.
+검증은 변경 파일 공백, 린트, 서비스별 빌드와 테스트, Docker health 및 인증→취향→Nginx→Spring Boot SSE→식사 기록 흐름을 확인합니다. 자세한 단계는 `docs/testing.md`를 참고하세요.
 
 컨테이너를 중지할 때는 다음 명령을 사용합니다.
 

@@ -1,5 +1,7 @@
 # API 계약
 
+> **Harness Role:** React↔Spring Boot 공개 API와 계획된 Spring Boot↔FastAPI 내부 계약의 기준입니다. Agent는 Controller, API client, DTO 또는 SSE event를 바꾸기 전에 읽고 같은 변경에서 갱신합니다. 이 문서가 없으면 호출 양쪽이 서로 다른 필드나 이벤트 순서를 구현할 수 있습니다. `architecture.md`의 서비스 경계를 구체화하고 API 테스트와 `check-integration.sh`의 기대 동작으로 이어집니다.
+
 이 문서는 구현된 엔드포인트와 계획 중인 계약을 구분합니다. 계획으로 표시된 경로와 페이로드는 아직 사용할 수 없습니다.
 
 ## 구현됨: AI 상태 확인

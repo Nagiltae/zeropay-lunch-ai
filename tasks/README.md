@@ -2,6 +2,13 @@
 
 `tasks/`는 에이전트가 긴 대화 없이도 범위와 완료 조건을 이해해야 하는 비자명 작업의 실행 명세를 보관합니다.
 
+## Harness study note
+
+- **Harness Role:** 비자명한 작업의 범위, 제외 대상과 관찰 가능한 완료 조건을 구현 전에 고정합니다.
+- **Agent Usage:** 여러 계층, API, DB migration 또는 AI workflow를 바꾸기 전에 읽거나 새 명세를 작성합니다.
+- **Why:** 명세가 없으면 Agent가 요청 범위를 넓히거나 일부 요구사항을 완료했다고 잘못 판단할 수 있습니다.
+- **Connection:** `AGENTS.md`의 정책을 구체적인 작업 단위로 좁히고 관련 `docs/`와 검증 명령을 연결합니다.
+
 ## When to create a task spec
 
 다음 중 하나 이상에 해당하면 구현 전에 task 파일을 작성합니다.
@@ -34,6 +41,10 @@ Implement tasks/<task-name>.md.
 
 ```markdown
 # Task: <name>
+
+## Status
+
+계획 / 진행 중 / 완료 / 일부 완료 중 하나를 기록하고, 일부 완료이면 남은 범위를 적습니다.
 
 ## Goal
 
@@ -85,4 +96,4 @@ Implement tasks/<task-name>.md.
 
 ## Completion
 
-구현 완료 시 task 파일의 요구사항을 기준으로 결과를 확인하되, task 파일 자체를 임의로 성공 상태로 바꾸지 않습니다. 최종 보고는 `AGENTS.md`의 Definition of Done을 따릅니다.
+구현 완료 시 task 파일의 요구사항과 검증 결과를 확인한 뒤 상태를 갱신합니다. 요구사항 일부가 남았다면 `완료`로 표시하지 않고 남은 범위를 적습니다. 최종 보고는 `AGENTS.md`의 Definition of Done을 따릅니다.

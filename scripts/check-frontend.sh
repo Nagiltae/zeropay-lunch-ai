@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Harness Role: 프런트엔드 타입 검사, production build와 Vitest를 묶은 feedback loop다.
+# Agent Usage: React UI, hook, API client 또는 TypeScript 타입 변경 후 실행한다.
+# Why: 개발 화면만 보고 production build 실패나 회귀 테스트 실패를 놓치는 것을 방지한다.
+# Connection: package.json의 build/test 명령을 실행하며 check-lint.sh, check-all.sh와 함께 사용한다.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

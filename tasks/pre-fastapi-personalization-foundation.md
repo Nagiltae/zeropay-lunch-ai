@@ -1,12 +1,16 @@
 # Task: FastAPI 이전 개인화 추천 기반 구축
 
+## Status
+
+완료. 2026-09-17에 현재 로컬 Harness의 `./scripts/check-all.sh` 전체 검증이 통과했습니다. FastAPI HTTP 연동, LLM과 Qdrant 검색은 계획 범위로 남아 있습니다.
+
 ## Goal
 
 FastAPI와 실제 AI 모델을 연결하기 전에 사용자 취향, 최근 식사 기록, 결정론적 음식점 후보 필터, 내부 AI 계약과 장애 대체 정책을 React와 Spring Boot에 완성합니다.
 
 ## Background
 
-현재 추천은 사용자 메시지와 위치만 사용합니다. 개인화 AI가 사용할 안정적인 컨텍스트를 만들려면 MySQL이 소유하는 취향과 식사 기록, Spring Boot가 강제하는 필수 조건, FastAPI와 교환할 구조화 계약이 먼저 필요합니다.
+작성 당시 추천은 사용자 메시지와 위치만 사용했습니다. 현재는 MySQL이 소유하는 취향과 식사 기록, Spring Boot가 강제하는 필수 조건과 FastAPI 연동에 사용할 Java 구조화 계약까지 구현되었습니다.
 
 ## In scope
 

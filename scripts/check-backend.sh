@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Harness Role: Java compiler lint, Spring 테스트와 패키징을 Gradle build 하나로 검증한다.
+# Agent Usage: backend 코드, 설정, migration 또는 Java 계약 변경 후 실행한다.
+# Why: 코드 작성만 끝내고 컴파일·JPA 매핑·Flyway·테스트 실패를 놓치는 것을 방지한다.
+# Connection: Gradle wrapper와 backend/build.gradle을 사용하고 check-all.sh에 결과를 제공한다.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

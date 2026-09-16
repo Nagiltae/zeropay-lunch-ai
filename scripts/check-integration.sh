@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Harness Role: 실제 Docker 서비스 사이의 인증·DB·SSE 사용자 흐름을 검증한다.
+# Agent Usage: API 경계, DB, Docker, 인증 또는 여러 서비스를 함께 바꾼 뒤 실행한다.
+# Why: 각 서비스 테스트는 통과하지만 proxy, cookie, migration이나 서비스 연결이 깨지는 문제를 찾는다.
+# Connection: docker-compose.yml을 기동하고 실패 시 상태와 로그를 보여 주며 check-all.sh의 마지막 단계가 된다.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

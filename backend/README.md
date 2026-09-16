@@ -35,7 +35,7 @@ Accept: text/event-stream
 Content-Type: application/json
 ```
 
-Spring Boot는 대화와 메시지를 MySQL에 저장하고 현재 영업 중인 개발용 샘플 음식점을 결정론적으로 추천합니다. FastAPI 호출과 실제 음식점 데이터는 아직 연결하지 않았습니다. 이벤트별 계약은 `docs/api-contract.md`를 참고하세요.
+Spring Boot는 세션 인증과 대화 소유권을 처리하고 대화, 메시지, 사용자 취향과 명시적인 식사 기록을 MySQL에 저장합니다. 추천에서는 현재 영업 중이고 제로페이가 가능한 개발용 샘플 음식점에 예산, 비선호 카테고리와 최근 72시간 식사 기록을 결정론적으로 적용합니다. FastAPI 호출과 실제 음식점 데이터는 아직 연결하지 않았습니다. 이벤트별 계약은 `docs/api-contract.md`를 참고하세요.
 
 ## 실행
 
@@ -53,7 +53,7 @@ MYSQL_PASSWORD=zeropay_local \
 
 기본 서버 주소는 `http://localhost:8080`이며, 운영 상태는 `GET /actuator/health`에서 확인할 수 있습니다. Spring Boot 프로필은 `local`, `dev`, `prod`로 분리되어 있고 민감 정보는 환경변수로만 전달합니다.
 
-전체 통합 환경에서는 루트의 `docker compose up --build -d` 명령으로 실행합니다. 이때 백엔드는 Compose 내부의 `mysql:3306`과 `ai:8001`을 사용합니다.
+전체 통합 환경에서는 루트의 `docker compose up --build -d` 명령으로 실행합니다. 이때 백엔드는 Compose 내부의 `mysql:3306`을 사용합니다. `ai:8001` 주소는 향후 HTTP 클라이언트용으로 설정되어 있지만 현재 시작 의존성이나 호출 경로는 아닙니다.
 
 ## 검증
 

@@ -1,8 +1,10 @@
 # 실행 및 배포
 
+> **Harness Role:** local/dev/prod 환경과 Docker 실행 방식을 재현 가능한 절차로 설명합니다. Agent는 환경변수, profile, container 또는 실행 명령을 바꾸기 전에 읽습니다. 이 문서가 없으면 개인 PC 상태에 의존하거나 잘못된 서비스 주소를 사용할 수 있습니다. `.env.example`, profile YAML, `docker-compose.yml`, `setup.sh`와 연결됩니다.
+
 ## 로컬 개발
 
-처음 환경을 준비할 때는 저장소 루트의 `./scripts/setup.sh`를 실행합니다. 스크립트는 필수 도구를 검사하고 잠금 파일 기반 의존성을 준비한 뒤 MySQL과 Qdrant를 기동하여 health 상태를 확인합니다.
+처음 환경을 준비할 때는 저장소 루트의 `./scripts/setup.sh`를 실행합니다. 스크립트는 필수 도구를 검사하고 잠금 파일 기반 의존성을 준비한 뒤 현재 애플리케이션의 필수 저장소인 MySQL을 기동하여 health 상태를 확인합니다. Qdrant는 검색 기능을 개발할 때 Compose에서 별도로 기동할 수 있습니다.
 
 애플리케이션 코드를 각 런타임에서 직접 실행하고 데이터 저장소만 Docker Compose로 실행할 수도 있습니다.
 
@@ -58,7 +60,7 @@ docker compose up --build -d
 docker compose ps
 ```
 
-React 정적 파일은 Nginx가 제공합니다. Nginx는 `/api/` 요청을 Spring Boot로 전달하며 FastAPI를 직접 노출하지 않습니다. Spring Boot는 Compose 내부 호스트명 `ai`와 `mysql`을 사용하고, FastAPI는 `qdrant`를 사용합니다.
+React 정적 파일은 Nginx가 제공합니다. Nginx는 `/api/` 요청을 Spring Boot로 전달하며 FastAPI를 직접 노출하지 않습니다. Spring Boot는 Compose 내부 호스트명 `mysql`을 사용합니다. `AI_BASE_URL`과 `QDRANT_URL`은 향후 연동을 위해 준비되어 있지만 현재 Spring Boot는 FastAPI를 호출하지 않고 FastAPI도 Qdrant를 호출하지 않으므로 서로의 시작 조건이 아닙니다.
 
 Compose는 Spring Boot에 `SPRING_PROFILES_ACTIVE=dev`를 설정합니다.
 
@@ -69,8 +71,10 @@ Compose는 Spring Boot에 `SPRING_PROFILES_ACTIVE=dev`를 설정합니다.
   -> Nginx + React
       -> Spring Boot
           -> MySQL
-          -> FastAPI
-              -> Qdrant
+
+현재 독립 실행(연동 예정):
+  FastAPI
+  Qdrant
 ```
 
 컨테이너는 `docker compose down`으로 중지합니다. 이 명령은 `mysql-data`와 `qdrant-data` 볼륨을 삭제하지 않습니다.

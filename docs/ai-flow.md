@@ -1,5 +1,7 @@
 # AI 워크플로
 
+> **Harness Role:** 현재 임시 분석과 향후 FastAPI·LLM 역할을 구분해 AI 변경 범위를 제한합니다. Agent는 추천 분석, fallback 또는 AI 계약을 수정하기 전에 읽습니다. 이 문서가 없으면 미구현 기능을 구현된 것으로 가정하거나 LLM에 필수 필터를 맡길 수 있습니다. `architecture.md`, `api-contract.md`와 AI·백엔드 테스트에 연결됩니다.
+
 ## 목표 흐름
 
 ```text

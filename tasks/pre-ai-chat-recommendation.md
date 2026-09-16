@@ -1,12 +1,16 @@
 # Task: FastAPI 이전 채팅 추천 기반 구축
 
+## Status
+
+완료. 이 문서는 구현 당시 범위를 보존한 실행 명세이며 현재 상태는 `README.md`와 관련 `docs/`를 기준으로 확인합니다.
+
 ## Goal
 
 FastAPI 없이도 React와 Spring Boot가 강남구 위치, MySQL 대화 기록, 영업 중인 샘플 음식점 데이터를 이용해 결정론적인 추천 흐름을 제공하도록 합니다.
 
 ## Background
 
-현재 React와 Spring Boot 사이의 POST SSE 연결만 구현되어 있고 대화, 메시지, 음식점은 영속화하지 않습니다. 실제 음식점 데이터를 적재하기 전에는 사용자가 승인한 가상 음식점 3개를 local과 dev 환경에서만 사용합니다.
+작성 당시에는 React와 Spring Boot 사이의 POST SSE 연결만 구현되어 있었고 대화, 메시지, 음식점은 영속화하지 않았습니다. 현재는 이 task의 범위가 구현되었으며 실제 음식점 데이터를 적재하기 전까지 승인된 가상 음식점 3개를 local과 dev 환경에서만 사용합니다.
 
 ## In scope
 

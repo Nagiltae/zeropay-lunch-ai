@@ -4,6 +4,21 @@
 
 새로운 작업을 완료할 때마다 이 파일의 최상단에 작업 내역을 추가합니다.
 
+## [2026-09-17] Harness 학습 설명과 저장소 기반 학습 가이드 추가
+- 핵심 정책·계약·환경 문서에 Harness Role, Agent Usage, Why와 Connection 관점의 짧은 설명 추가
+- setup과 모든 check script에 실행 시점, 실패 방지 목적과 연결 관계를 설명하는 주석 추가
+- 현재 실제 파일, 추천 읽기 순서, Agent 실행 흐름, feedback loop, guardrail과 애플리케이션 코드의 구분을 `docs/harness-study.md`에 정리
+- 실행 명령, 설정값과 비즈니스 로직은 변경하지 않음
+
+## [2026-09-17] 현재 코드 기준 로컬 Harness 정합성 개선
+- **문서·명세**: 인증, 개인화, 식사 기록과 현재 FastAPI/Qdrant 미연동 상태를 README, 아키텍처, 배포, 테스트 및 task 상태에 반영
+- **Flyway 안전성**: 적용된 V1~V3 불변과 이후 스키마 변경 시 신규 migration 추가 규칙을 Agent 정책과 DB 문서에 명시
+- **Docker**: Spring Boot의 미사용 FastAPI 시작 의존성과 FastAPI의 미사용 Qdrant 시작 의존성을 제거하고 환경변수 설명을 실제 Compose 동작과 일치시킴
+- **검증**: tracked 변경 전체와 untracked 텍스트 파일의 공백 검사를 추가하고 Java compiler lint를 warning-as-error로 적용
+- **프런트엔드 테스트**: 선호·비선호 상호 배제·저장과 명시적 `먹었어요` 흐름의 jsdom 컴포넌트 테스트 추가
+- **검증 결과**: `./scripts/check-all.sh`의 Format, Lint, Frontend, Backend, AI, Integration 전체 통과
+- **제외 범위**: 사용자 지시에 따라 GitHub Actions 및 CI/CD는 후속 작업으로 유지
+
 ## [2026-09-17] FastAPI 이전 개인화 추천 기반 완성
 - **정책 결정**: 제로페이는 선택 설정이 아닌 모든 추천의 필수 조건이며, 식사 기록은 사용자가 `먹었어요`를 누를 때만 생성하고 최근 72시간만 추천에 사용
 - **백엔드**:
