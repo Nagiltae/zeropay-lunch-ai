@@ -1,0 +1,72 @@
+package com.zeropaylunch.backend.restaurant.infrastructure;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.LocalTime;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
+
+@SpringBootTest
+@Transactional
+class RestaurantJpaRepositoryTests {
+
+    @Autowired
+    private RestaurantJpaRepository restaurantRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @BeforeEach
+    void insertRestaurantSchedule() {
+        jdbcTemplate.update("""
+                INSERT INTO restaurants (
+                    id, name, category, representative_menu, average_price, address,
+                    location_id, zero_pay_available, sample_data, active, created_at, updated_at
+                ) VALUES (
+                    9001, '테스트 음식점', 'KOREAN', '테스트 메뉴', 9000, '강남구 테스트 주소',
+                    'gangnam', TRUE, TRUE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                )
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_schedules (id, restaurant_id, name)
+                VALUES (9101, 9001, '월요일 일정')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_operating_days (id, schedule_id, day_of_week)
+                VALUES (9201, 9101, 'MONDAY')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_operating_hours (id, schedule_id, opens_at, closes_at)
+                VALUES (9301, 9101, '11:00:00', '21:00:00')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_closed_hours (id, schedule_id, starts_at, ends_at)
+                VALUES (9401, 9101, '15:00:00', '17:00:00')
+                """);
+    }
+
+    @Test
+    void returnsRestaurantDuringOperatingHours() {
+        assertThat(restaurantRepository.findOpenRestaurants(
+                "MONDAY", LocalTime.of(12, 0)
+        )).extracting("id").contains(9001L);
+    }
+
+    @Test
+    void excludesRestaurantDuringClosedHours() {
+        assertThat(restaurantRepository.findOpenRestaurants(
+                "MONDAY", LocalTime.of(15, 30)
+        )).extracting("id").doesNotContain(9001L);
+    }
+
+    @Test
+    void excludesRestaurantOutsideOperatingDays() {
+        assertThat(restaurantRepository.findOpenRestaurants(
+                "SUNDAY", LocalTime.of(12, 0)
+        )).extracting("id").doesNotContain(9001L);
+    }
+}

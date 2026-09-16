@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: backend
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Seoul
+        type:
+          preferred_uuid_jdbc_type: CHAR
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  mvc:
+    async:
+      request-timeout: 60s
+
+app:
+  time-zone: Asia/Seoul
