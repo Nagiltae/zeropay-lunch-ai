@@ -39,6 +39,7 @@ function restoreMessages(history: ConversationHistory): ChatMessage[] {
           ? '이전 답변이 완료되지 않았어요.'
           : message.content),
       status: restoredMessageStatus(message.status),
+      serverMessageId: message.messageId,
       recommendations: message.recommendations,
     })),
   ]
@@ -107,6 +108,10 @@ export function useChatStream(locationId: string | null, isAuthenticated: boolea
     (event: ChatStreamEvent, assistantId: string) => {
       switch (event.event) {
         case 'accepted':
+          updateMessage(assistantId, (message) => ({
+            ...message,
+            serverMessageId: event.data.assistantMessageId,
+          }))
           return
         case 'progress':
           setProgress(event.data.message)

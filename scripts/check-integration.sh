@@ -109,6 +109,17 @@ ME_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
 [[ "$ME_RESPONSE" == *"\"email\":\"$OWNER_EMAIL\""* ]]
 echo "[PASS] Signup, login, session cookie, and current-user lookup"
 
+PREFERENCE_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
+  -X PUT \
+  "http://$FRONTEND_ADDRESS/api/preferences/me" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
+  --data '{"defaultBudget":12000,"spiceLevel":"MEDIUM","preferredCategories":["KOREAN_SOUP"],"dislikedCategories":["SALAD"],"allergies":["땅콩"]}')"
+[[ "$PREFERENCE_RESPONSE" == *'"defaultBudget":12000'* ]]
+[[ "$PREFERENCE_RESPONSE" == *'"zeroPayRequired":true'* ]]
+echo "[PASS] User preference persistence and fixed ZeroPay policy"
+
 CONVERSATION_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
   -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
   -X POST \
@@ -176,7 +187,41 @@ SSE_RESPONSE="$(curl --fail --silent --show-error --no-buffer --max-time 30 \
 [[ "$SSE_RESPONSE" == *'event:recommendations'* ]]
 [[ "$SSE_RESPONSE" == *'event:assistant_delta'* ]]
 [[ "$SSE_RESPONSE" == *'event:completed'* ]]
+[[ "$SSE_RESPONSE" != *'"zeroPayAvailable":false'* ]]
 echo "[PASS] Nginx to Spring Boot SSE flow"
+
+ASSISTANT_MESSAGE_ID="$(printf '%s' "$SSE_RESPONSE" \
+  | sed -n 's/.*"assistantMessageId":"\([^"]*\)".*/\1/p' \
+  | head -n 1)"
+RESTAURANT_ID="$(printf '%s' "$SSE_RESPONSE" \
+  | sed -n 's/.*"restaurantId":\([0-9]*\).*/\1/p' \
+  | head -n 1)"
+[[ -n "$ASSISTANT_MESSAGE_ID" ]]
+[[ -n "$RESTAURANT_ID" ]]
+
+MEAL_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/meals" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
+  --data "{\"restaurantId\":$RESTAURANT_ID,\"sourceMessageId\":\"$ASSISTANT_MESSAGE_ID\"}")"
+MEAL_ID="$(printf '%s' "$MEAL_RESPONSE" \
+  | sed -n 's/.*"mealId":"\([^"]*\)".*/\1/p')"
+[[ -n "$MEAL_ID" ]]
+REPEATED_MEAL_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/meals" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
+  --data "{\"restaurantId\":$RESTAURANT_ID,\"sourceMessageId\":\"$ASSISTANT_MESSAGE_ID\"}")"
+[[ "$REPEATED_MEAL_RESPONSE" == *"\"mealId\":\"$MEAL_ID\""* ]]
+RECENT_MEALS_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" \
+  "http://$FRONTEND_ADDRESS/api/meals/recent")"
+[[ "$RECENT_MEALS_RESPONSE" == *"\"mealId\":\"$MEAL_ID\""* ]]
+echo "[PASS] Explicit and idempotent recent meal recording"
 
 HISTORY_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
   -b "$OWNER_COOKIE_JAR" \

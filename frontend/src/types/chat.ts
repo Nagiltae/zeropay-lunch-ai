@@ -6,6 +6,7 @@ export type ChatMessage = {
   text: string
   status: MessageStatus
   requestText?: string
+  serverMessageId?: string
   recommendations?: RestaurantRecommendation[]
 }
 

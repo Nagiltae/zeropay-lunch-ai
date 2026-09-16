@@ -20,3 +20,9 @@ spring:
 
 app:
   time-zone: Asia/Seoul
+  ai:
+    base-url: http://localhost:8001
+    connect-timeout: 2s
+    response-timeout: 8s
+    max-attempts: 1
+    fallback-enabled: true

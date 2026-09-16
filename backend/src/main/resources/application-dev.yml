@@ -10,4 +10,5 @@ spring:
     locations: classpath:db/migration,classpath:db/sample
 
 app:
-  ai-base-url: ${AI_BASE_URL:http://ai:8001}
+  ai:
+    base-url: ${AI_BASE_URL:http://ai:8001}

@@ -24,3 +24,8 @@ spring:
 
 app:
   time-zone: Asia/Seoul
+  ai:
+    connect-timeout: ${AI_CONNECT_TIMEOUT:2s}
+    response-timeout: ${AI_RESPONSE_TIMEOUT:8s}
+    max-attempts: ${AI_MAX_ATTEMPTS:1}
+    fallback-enabled: ${AI_FALLBACK_ENABLED:true}

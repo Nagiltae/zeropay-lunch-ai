@@ -140,7 +140,7 @@ React는 진행 중인 assistant 말풍선에 `text`를 순서대로 이어 붙�
 }
 ```
 
-현재 Spring Boot는 `만원 이하`, `국물`, `샐러드`, `가볍게`, `한식`, `제로페이`처럼 제한된 키워드만 임시로 해석합니다. 영업시간 조회, 필터와 최종 순위는 Spring Boot와 MySQL이 처리합니다. FastAPI 자연어 분석은 아직 구현되지 않았습니다.
+현재 Spring Boot는 `만원 이하`, `국물`, `샐러드`, `가볍게`, `한식`처럼 제한된 키워드만 임시로 해석합니다. 제로페이 가능 여부는 사용자 선택과 무관한 필수 조건입니다. 영업시간 조회, 취향·최근 식사 필터와 최종 순위는 Spring Boot와 MySQL이 처리합니다. FastAPI 자연어 분석은 아직 구현되지 않았습니다.
 
 ## 구현됨: 대화 생성
 
@@ -287,6 +287,123 @@ POST /api/auth/logout
 
 로그인 성공 시 기존 HTTP 세션 ID는 교체되며 인증 컨텍스트는 Spring Session JDBC에 저장됩니다.
 
-## 계획: AI 추천
+## 구현됨: 사용자 취향 조회·저장
 
-FastAPI 연동 시 외부 계약은 계속 Spring Boot가 소유합니다. Spring Boot와 FastAPI 사이의 구조화된 의도 분석 계약은 별도의 내부 API로 문서화하고 양쪽에서 검증합니다. FastAPI는 현재의 임시 키워드 분석만 대체하며 영업시간 필터와 최종 순위를 소유하지 않습니다.
+```http
+GET /api/preferences/me
+PUT /api/preferences/me
+Content-Type: application/json
+```
+
+`PUT` 요청:
+
+```json
+{
+  "defaultBudget": 12000,
+  "spiceLevel": "MEDIUM",
+  "preferredCategories": ["KOREAN", "KOREAN_SOUP"],
+  "dislikedCategories": ["SALAD"],
+  "allergies": ["땅콩"]
+}
+```
+
+응답:
+
+```json
+{
+  "defaultBudget": 12000,
+  "spiceLevel": "MEDIUM",
+  "preferredCategories": ["KOREAN", "KOREAN_SOUP"],
+  "dislikedCategories": ["SALAD"],
+  "allergies": ["땅콩"],
+  "zeroPayRequired": true
+}
+```
+
+- `defaultBudget`: 미설정은 `null`, 설정 시 1,000~100,000원
+- `spiceLevel`: `ANY`, `MILD`, `MEDIUM`, `HOT`
+- 카테고리: 현재 `KOREAN`, `KOREAN_SOUP`, `SALAD`
+- 같은 카테고리를 선호와 비선호에 동시에 저장할 수 없음
+- `zeroPayRequired`는 항상 `true`이며 수정 가능한 요청 필드가 아님
+- 알레르기와 매운맛은 AI 컨텍스트에 포함되지만 실제 재료·매운맛 음식점 데이터가 생기기 전에는 결정론적 필터로 사용하지 않음
+
+## 구현됨: 최근 식사 기록
+
+식사 기록은 추천을 받았다는 이유만으로 생성되지 않습니다. 사용자가 추천 카드의 `먹었어요` 버튼을 누를 때만 다음 API를 호출합니다.
+
+```http
+POST /api/meals
+Content-Type: application/json
+```
+
+```json
+{
+  "restaurantId": 1001,
+  "sourceMessageId": "46448535-1bcf-4568-91ff-3186de828bb5"
+}
+```
+
+Spring Boot는 `sourceMessageId`가 현재 사용자 대화의 assistant 추천 메시지이고 해당 음식점이 실제 추천 결과에 포함됐는지 검증합니다. 같은 사용자·메시지·음식점 요청은 기존 기록을 반환해 중복 생성하지 않습니다.
+
+```http
+GET /api/meals/recent
+```
+
+현재 시각 기준 최근 72시간의 기록만 최신순으로 반환합니다.
+
+```json
+[
+  {
+    "mealId": "23a34e5b-cdf8-4f79-97b7-e46bb735488a",
+    "restaurantId": 1001,
+    "restaurantName": "강남 샘플 한식당",
+    "category": "KOREAN",
+    "sourceMessageId": "46448535-1bcf-4568-91ff-3186de828bb5",
+    "eatenAt": "2026-09-17T03:00:00Z"
+  }
+]
+```
+
+## 계약 확정: Spring Boot → FastAPI 의도 분석
+
+FastAPI 구현 시 사용할 내부 경로는 `POST /internal/v1/intent-analysis`로 정의합니다. 현재는 HTTP 호출 없이 같은 필드의 Java 계약과 임시 결정론적 분석기를 사용합니다.
+
+요청:
+
+```json
+{
+  "message": "만원 이하 국물 음식 추천해줘",
+  "locationId": "gangnam",
+  "defaultBudget": 12000,
+  "spiceLevel": "MEDIUM",
+  "preferredCategories": ["KOREAN_SOUP"],
+  "dislikedCategories": ["SALAD"],
+  "allergies": ["땅콩"],
+  "recentMeals": [
+    {
+      "restaurantId": 1002,
+      "category": "KOREAN_SOUP",
+      "eatenAt": "2026-09-16T03:00:00Z"
+    }
+  ]
+}
+```
+
+응답:
+
+```json
+{
+  "intent": "RECOMMEND_RESTAURANT",
+  "maximumPrice": 10000,
+  "category": "KOREAN_SOUP",
+  "keywords": ["국물"],
+  "clarificationRequired": false,
+  "clarificationQuestion": null
+}
+```
+
+FastAPI 응답은 Spring Boot에서 enum과 타입을 다시 검증합니다. FastAPI는 후보 음식점을 만들거나 제로페이·강남구·영업시간·최근 식사 조건과 최종 순위를 변경하지 않습니다.
+
+## 계획: AI 추천 구현
+
+FastAPI는 위 내부 계약의 자연어 의도 분석부터 구현합니다. 이후 LLM 설명 생성과 Qdrant 의미 검색은 별도 계약으로 추가하며 영업시간 필터와 최종 순위는 계속 Spring Boot가 소유합니다.

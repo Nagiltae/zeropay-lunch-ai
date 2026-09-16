@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { ChatMessage } from '../../types/chat'
+import { useMealHistory } from '../../hooks/useMealHistory'
 
 const starterPrompts = [
   '만원 이하로 든든한 점심 추천해줘',
@@ -22,6 +23,8 @@ export function MessageList({
   onPromptSelect,
   onRetry,
 }: MessageListProps) {
+  const { recentMeals, markEaten, markingRequest, isMarking, markError } =
+    useMealHistory()
   const containerRef = useRef<HTMLDivElement | null>(null)
   const endRef = useRef<HTMLDivElement | null>(null)
   const shouldFollowRef = useRef(true)
@@ -73,6 +76,9 @@ export function MessageList({
             </div>
             {message.recommendations && message.recommendations.length > 0 && (
               <div className="recommendation-list" aria-label="추천 음식점">
+                <p className="meal-guidance">
+                  실제로 드셨다면 <strong>먹었어요</strong>를 눌러 주세요. 최근 3일 기록은 다음 추천에 반영됩니다.
+                </p>
                 {message.recommendations.map((restaurant) => (
                   <article
                     className="recommendation-card"
@@ -103,8 +109,39 @@ export function MessageList({
                     </dl>
                     <p>{restaurant.reason}</p>
                     <small>{restaurant.address}</small>
+                    {message.serverMessageId && (
+                      <button
+                        className="meal-button"
+                        type="button"
+                        disabled={
+                          recentMeals.some(
+                            (meal) =>
+                              meal.sourceMessageId === message.serverMessageId &&
+                              meal.restaurantId === restaurant.restaurantId,
+                          ) ||
+                          (isMarking &&
+                            markingRequest?.sourceMessageId === message.serverMessageId &&
+                            markingRequest.restaurantId === restaurant.restaurantId)
+                        }
+                        onClick={() =>
+                          void markEaten({
+                            sourceMessageId: message.serverMessageId!,
+                            restaurantId: restaurant.restaurantId,
+                          })
+                        }
+                      >
+                        {recentMeals.some(
+                          (meal) =>
+                            meal.sourceMessageId === message.serverMessageId &&
+                            meal.restaurantId === restaurant.restaurantId,
+                        )
+                          ? '먹었다고 기록했어요'
+                          : '먹었어요'}
+                      </button>
+                    )}
                   </article>
                 ))}
+                {markError && <p className="meal-error">{markError.message}</p>}
               </div>
             )}
             {message.status === 'error' && (

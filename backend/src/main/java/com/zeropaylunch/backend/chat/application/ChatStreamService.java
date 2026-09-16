@@ -65,6 +65,7 @@ public class ChatStreamService {
             pause();
 
             List<RecommendationItem> recommendations = recommendationService.recommend(
+                    exchange.userId(),
                     userMessage,
                     exchange.locationId()
             );

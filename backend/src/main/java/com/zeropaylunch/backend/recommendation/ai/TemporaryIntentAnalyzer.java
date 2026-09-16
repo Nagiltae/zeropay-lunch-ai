@@ -1,22 +1,28 @@
-package com.zeropaylunch.backend.restaurant.application;
+package com.zeropaylunch.backend.recommendation.ai;
 
+import com.zeropaylunch.backend.recommendation.ai.AnalyzedIntent.IntentType;
 import com.zeropaylunch.backend.restaurant.domain.RestaurantCategory;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TemporaryRequestParser {
+public class TemporaryIntentAnalyzer {
 
     private static final Pattern TEN_THOUSAND_WON_PATTERN =
             Pattern.compile("(?:(\\d+)\\s*)?만\\s*원?\\s*이하");
 
-    public RequestConditions parse(String message) {
-        return new RequestConditions(
-                parseMaximumPrice(message),
-                parseCategory(message),
-                message.contains("제로페이")
+    public AnalyzedIntent analyze(IntentAnalysisRequest request) {
+        return new AnalyzedIntent(
+                IntentType.RECOMMEND_RESTAURANT,
+                parseMaximumPrice(request.message()),
+                parseCategory(request.message()),
+                parseKeywords(request.message()),
+                false,
+                null
         );
     }
 
@@ -42,10 +48,13 @@ public class TemporaryRequestParser {
         return Optional.empty();
     }
 
-    public record RequestConditions(
-            Integer maximumPrice,
-            Optional<RestaurantCategory> category,
-            boolean zeroPayRequired
-    ) {
+    private List<String> parseKeywords(String message) {
+        List<String> keywords = new ArrayList<>();
+        for (String keyword : List.of("국물", "국밥", "샐러드", "가볍게", "한식", "제육")) {
+            if (message.contains(keyword)) {
+                keywords.add(keyword);
+            }
+        }
+        return List.copyOf(keywords);
     }
 }

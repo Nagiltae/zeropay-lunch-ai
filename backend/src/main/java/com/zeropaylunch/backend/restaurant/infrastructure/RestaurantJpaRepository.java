@@ -16,6 +16,7 @@ public interface RestaurantJpaRepository extends JpaRepository<Restaurant, Long>
             JOIN restaurant_operating_days operating_day ON operating_day.schedule_id = schedule.id
             JOIN restaurant_operating_hours operating_hour ON operating_hour.schedule_id = schedule.id
             WHERE r.active = TRUE
+              AND r.zero_pay_available = TRUE
               AND operating_day.day_of_week = :dayOfWeek
               AND :currentTime >= operating_hour.opens_at
               AND :currentTime <= operating_hour.closes_at

@@ -5,6 +5,7 @@ import { LocationSelector } from './components/chat/LocationSelector'
 import { MessageComposer } from './components/chat/MessageComposer'
 import { MessageList } from './components/chat/MessageList'
 import { AuthScreen } from './components/auth/AuthScreen'
+import { PreferencePanel } from './components/preferences/PreferencePanel'
 import { gangnamLocations } from './data/gangnamLocations'
 import { useChatStream } from './hooks/useChatStream'
 import { useCurrentUser, useAuthMutations } from './hooks/useAuth'
@@ -22,6 +23,7 @@ function App() {
   const { logout } = useAuthMutations()
   const [selectedLocation, setSelectedLocation] =
     useState<GangnamLocation | null>(restoreLocation)
+  const [preferencesOpen, setPreferencesOpen] = useState(false)
   const {
     conversationId,
     messages,
@@ -93,6 +95,7 @@ function App() {
         <ChatHeader
           hasConversation={conversationId !== null || messages.length > 1}
           onReset={() => void resetWithConfirmation()}
+          onOpenPreferences={() => setPreferencesOpen(true)}
           onLogout={() => void logoutAndClearChat()}
         />
         <LocationSelector
@@ -113,6 +116,9 @@ function App() {
           onStop={stopStreaming}
         />
       </section>
+      {preferencesOpen && (
+        <PreferencePanel onClose={() => setPreferencesOpen(false)} />
+      )}
     </main>
   )
 }

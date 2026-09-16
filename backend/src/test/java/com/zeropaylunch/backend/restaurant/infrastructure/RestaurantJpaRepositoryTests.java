@@ -47,6 +47,27 @@ class RestaurantJpaRepositoryTests {
                 INSERT INTO restaurant_closed_hours (id, schedule_id, starts_at, ends_at)
                 VALUES (9401, 9101, '15:00:00', '17:00:00')
                 """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurants (
+                    id, name, category, representative_menu, average_price, address,
+                    location_id, zero_pay_available, sample_data, active, created_at, updated_at
+                ) VALUES (
+                    9002, '제로페이 불가 음식점', 'SALAD', '테스트 샐러드', 8000, '강남구 테스트 주소',
+                    'gangnam', FALSE, TRUE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                )
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_schedules (id, restaurant_id, name)
+                VALUES (9102, 9002, '월요일 일정')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_operating_days (id, schedule_id, day_of_week)
+                VALUES (9202, 9102, 'MONDAY')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_operating_hours (id, schedule_id, opens_at, closes_at)
+                VALUES (9302, 9102, '11:00:00', '21:00:00')
+                """);
     }
 
     @Test
@@ -68,5 +89,12 @@ class RestaurantJpaRepositoryTests {
         assertThat(restaurantRepository.findOpenRestaurants(
                 "SUNDAY", LocalTime.of(12, 0)
         )).extracting("id").doesNotContain(9001L);
+    }
+
+    @Test
+    void alwaysExcludesRestaurantsWithoutZeroPay() {
+        assertThat(restaurantRepository.findOpenRestaurants(
+                "MONDAY", LocalTime.of(12, 0)
+        )).extracting("id").doesNotContain(9002L);
     }
 }

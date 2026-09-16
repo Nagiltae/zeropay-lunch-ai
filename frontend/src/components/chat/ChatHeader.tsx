@@ -1,10 +1,16 @@
 type ChatHeaderProps = {
   hasConversation: boolean
   onReset: () => void
+  onOpenPreferences: () => void
   onLogout: () => void
 }
 
-export function ChatHeader({ hasConversation, onReset, onLogout }: ChatHeaderProps) {
+export function ChatHeader({
+  hasConversation,
+  onReset,
+  onOpenPreferences,
+  onLogout,
+}: ChatHeaderProps) {
   return (
     <header className="chat-header">
       <div className="brand-mark" aria-hidden="true">
@@ -15,6 +21,13 @@ export function ChatHeader({ hasConversation, onReset, onLogout }: ChatHeaderPro
         <h1 id="page-title">오늘의 점심 대화</h1>
       </div>
       <div className="header-actions">
+        <button
+          className="preference-button"
+          type="button"
+          onClick={onOpenPreferences}
+        >
+          취향 설정
+        </button>
         <button
           className="new-chat-button"
           type="button"

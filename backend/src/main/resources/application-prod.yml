@@ -10,4 +10,5 @@ spring:
     locations: classpath:db/migration
 
 app:
-  ai-base-url: ${AI_BASE_URL}
+  ai:
+    base-url: ${AI_BASE_URL}

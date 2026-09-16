@@ -44,12 +44,13 @@ class ChatControllerTests {
                     UUID conversationId = invocation.getArgument(0);
                     return new PendingExchange(
                             conversationId,
+                            invocation.getArgument(1),
                             "gangnam",
                             UUID.randomUUID(),
                             UUID.randomUUID()
                     );
                 });
-        when(recommendationService.recommend(anyString(), anyString()))
+        when(recommendationService.recommend(any(UUID.class), anyString(), anyString()))
                 .thenReturn(java.util.List.of(new RecommendationItem(
                         1001L,
                         "강남 샘플 한식당",

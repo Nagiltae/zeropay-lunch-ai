@@ -29,10 +29,17 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 | `restaurant_closed_days` | 음식점별 정기 휴무 요일 |
 | `restaurant_closed_hours` | 일정별 하루 중 휴무시간 또는 브레이크타임 |
 | `message_recommendations` | assistant 메시지와 추천 음식점, 순위, 이유 연결 |
+| `user_preferences` | 사용자 기본 예산과 매운맛 선호 |
+| `user_preferred_categories` | 사용자 선호 음식 카테고리 |
+| `user_disliked_categories` | 사용자 비선호 음식 카테고리 |
+| `user_allergies` | AI 컨텍스트용 사용자 알레르기 정보 |
+| `meal_history` | 사용자가 `먹었어요`로 확정한 식사와 원본 추천 메시지 |
 
 대화 초기화와 위치 변경은 데이터를 삭제하지 않습니다. `conversations.active`를 `false`로 바꾸고 `deactivated_at`을 기록합니다. UUID를 사용하고 영속성 접근을 애플리케이션 서비스에 모아 두어 향후 채팅 기록을 MongoDB로 이전할 때 API와 추천 로직에 미치는 영향을 제한합니다. MongoDB 의존성과 이중 저장은 아직 추가하지 않았습니다.
 
 `conversations.user_id`는 기존 데이터와 마이그레이션 호환성을 위해 DB에서는 nullable이지만, 현재 애플리케이션의 대화 생성 API는 로그인을 요구하고 항상 사용자 ID를 저장합니다. 조회, 메시지 전송과 비활성화도 같은 사용자 ID로 소유권을 검증합니다.
+
+`meal_history`는 사용자가 명시적으로 `먹었어요`를 누른 경우에만 생성합니다. `(user_id, source_message_id, restaurant_id)` unique 제약으로 같은 추천에 대한 중복 기록을 막습니다. 추천 컨텍스트에서는 `eaten_at`이 현재 시각 기준 72시간 이내인 기록만 사용하며, 오래된 기록을 삭제하지는 않습니다.
 
 ## 영업 중 조회
 
@@ -42,6 +49,9 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 2. 현재 시각이 `restaurant_operating_hours` 범위에 있음
 3. 현재 요일이 `restaurant_closed_days`에 없음
 4. 현재 시각이 `restaurant_closed_hours` 범위에 없음
+5. `restaurants.zero_pay_available=true`
+
+제로페이는 사용자 취향 옵션이 아니라 모든 후보 조회에서 강제되는 서비스 정책입니다. 현재 비선호 카테고리와 최근 72시간 내 먹은 음식점도 애플리케이션 계층에서 제외합니다.
 
 현재 스키마는 시작 시각보다 종료 시각이 늦은 당일 영업 구간을 지원합니다. 자정을 넘기는 영업시간과 특정 공휴일 예외는 실제 데이터 계약을 정할 때 별도 일정으로 확장합니다.
 
@@ -56,6 +66,7 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 | 선릉 샘플 샐러드 | 월~토 10:30~20:30 | 일 | 15:00~16:00 |
 
 샘플 데이터는 고정 식별자와 존재 여부 조건을 사용해 중복 삽입하지 않습니다.
+선릉 샘플 샐러드는 `zero_pay_available=false`이므로 데이터·조회 검증에는 남아 있지만 실제 추천 후보에서는 항상 제외됩니다.
 
 운영 및 로컬 실행은 MySQL Connector/J를 사용합니다. 테스트에서는 H2 MySQL 모드에서 동일한 Flyway 기준 스키마와 JPA 매핑을 검증합니다. Docker 통합 검사는 실제 MySQL에 스키마와 샘플 데이터를 적용하고 대화 저장·조회까지 확인합니다.
 

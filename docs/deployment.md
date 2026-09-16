@@ -35,6 +35,18 @@ MYSQL_PASSWORD=zeropay_local \
 
 위 값은 로컬 예시이며 운영 값으로 사용하지 않습니다. `local`과 `dev`는 샘플 음식점 migration을 실행하고 `prod`는 공통 스키마 migration만 실행합니다.
 
+FastAPI 연동 정책은 환경변수로 조정합니다.
+
+| 환경변수 | 기본값 | 용도 |
+| --- | --- | --- |
+| `AI_BASE_URL` | local `http://localhost:8001`, dev `http://ai:8001` | 내부 FastAPI 주소 |
+| `AI_CONNECT_TIMEOUT` | `2s` | 연결 제한 시간 |
+| `AI_RESPONSE_TIMEOUT` | `8s` | 응답 제한 시간 |
+| `AI_MAX_ATTEMPTS` | `1` | 최대 호출 횟수, 기본은 자동 재시도 없음 |
+| `AI_FALLBACK_ENABLED` | `true` | AI 호출 실패 시 임시 분석기 사용 여부 |
+
+현재 실제 FastAPI HTTP 클라이언트는 없으므로 timeout과 최대 시도 설정은 클라이언트 구현 시 적용됩니다. fallback 선택과 임시 분석기는 현재 추천 흐름에서 동작합니다.
+
 MySQL과 Qdrant 포트는 로컬 호스트에만 바인딩됩니다. 컨테이너가 없어도 Compose가 이미지를 내려받고 컨테이너와 영속 볼륨을 생성합니다.
 
 ## 로컬 통합 테스트

@@ -83,6 +83,7 @@ public class ChatPersistenceService {
         );
         return new PendingExchange(
                 conversation.getId(),
+                conversation.getUserId(),
                 conversation.getLocationId(),
                 userMessage.getId(),
                 assistantMessage.getId()
@@ -195,6 +196,7 @@ public class ChatPersistenceService {
 
     public record PendingExchange(
             UUID conversationId,
+            UUID userId,
             String locationId,
             UUID userMessageId,
             UUID assistantMessageId
