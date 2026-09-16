@@ -1,0 +1,29 @@
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+
+# Backend
+backend/.gradle/
+backend/build/
+backend/out/
+
+# Python
+ai/.venv/
+ai/.pytest_cache/
+ai/.ruff_cache/
+ai/.mypy_cache/
+ai/__pycache__/
+ai/**/__pycache__/
+*.py[cod]
+
