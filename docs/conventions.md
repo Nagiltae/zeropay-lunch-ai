@@ -1,34 +1,35 @@
-# Conventions
+# 개발 규칙
 
-## General
+## 공통
 
-- Prefer clear feature-oriented code over speculative abstractions.
-- Keep service responsibilities aligned with `architecture.md`.
-- Validate data at API boundaries.
-- Update documentation in the same change when a contract or architectural decision changes.
-- Do not commit secrets, local environment files, generated output, or IDE metadata.
+- 불확실한 미래를 위한 추상화보다 기능 중심의 명확한 코드를 우선합니다.
+- 서비스 책임을 `architecture.md`의 정의와 일치시킵니다.
+- API 경계에서 데이터를 검증합니다.
+- 계약이나 아키텍처 결정이 변경되면 같은 변경 작업에서 문서도 갱신합니다.
+- 비밀 정보, 로컬 환경 파일, 생성된 결과물, IDE 메타데이터를 커밋하지 않습니다.
 
-## Frontend
+## 프런트엔드
 
-- Use React function components and TypeScript strict mode.
-- Keep all server communication behind a dedicated API layer when API integration begins.
-- Configure the API base URL for Spring Boot only.
+- React 함수 컴포넌트와 TypeScript 엄격 모드를 사용합니다.
+- API 연동을 시작할 때 모든 서버 통신을 전용 API 계층 뒤에 둡니다.
+- API 기본 URL은 Spring Boot만 가리키도록 설정합니다.
 
-## Backend
+## 백엔드
 
-- Use Java 21 and Spring Boot.
-- Make transaction boundaries explicit around business use cases.
-- Map external API and AI server failures into stable application errors.
-- Add tests for validation, business rules, persistence behavior, and service integration where they provide meaningful coverage.
+- Java 21과 Spring Boot를 사용합니다.
+- 기본 영속성 기술은 Spring Data JPA를 사용합니다.
+- QueryDSL은 동적 조건이나 복합 조회가 필요한 기능과 함께 추가합니다.
+- 비즈니스 사용 사례를 기준으로 트랜잭션 경계를 명확히 합니다.
+- 외부 API와 AI 서버의 오류를 일관된 애플리케이션 오류로 변환합니다.
+- 유의미한 범위를 검증할 수 있도록 유효성 검사, 비즈니스 규칙, 영속성 동작, 서비스 연동 테스트를 추가합니다.
 
-## AI server
+## AI 서버
 
-- Use type hints and Pydantic models at request, response, and LLM-output boundaries.
-- Keep deterministic filters and ranking independent from prompts.
-- Add framework and model-provider dependencies only with the feature that needs them.
-- Test parsing, validation, workflow branching, fallback, and response contracts.
+- 요청, 응답, LLM 출력 경계에서 타입 힌트와 Pydantic 모델을 사용합니다.
+- 결정론적 필터와 순위 결정은 프롬프트와 독립적으로 유지합니다.
+- 프레임워크와 모델 제공자 의존성은 해당 의존성이 필요한 기능을 구현할 때만 추가합니다.
+- 분석, 검증, 워크플로 분기, 대체 처리, 응답 계약을 테스트합니다.
 
-## Validation
+## 검증
 
-Run the focused script for the changed service or run `./scripts/check-all.sh` for the repository. If a required runtime or generated project is missing, report it rather than claiming the check passed.
-
+변경한 서비스의 전용 스크립트 또는 저장소 전체를 검사하는 `./scripts/check-all.sh`를 실행합니다. 필요한 런타임이나 생성된 프로젝트가 없다면 검증을 통과했다고 하지 말고 해당 상황을 보고합니다.

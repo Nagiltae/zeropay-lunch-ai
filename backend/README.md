@@ -1,27 +1,43 @@
-# Backend bootstrap
+# 백엔드
 
-The Spring Boot project has intentionally not been generated yet. Generate it into this `backend/` directory with Spring Initializr using these choices:
+ZeroPay Lunch AI의 메인 애플리케이션 백엔드입니다. 외부 요청의 단일 진입점으로서 인증, 비즈니스 규칙, 영속성, 외부 데이터 연동, AI 서버 호출을 담당합니다.
 
-| Option | Value |
+| 항목 | 값 |
 | --- | --- |
-| Project | Gradle - Groovy |
-| Language | Java |
-| Spring Boot | Latest stable version compatible with Java 21 |
-| Group | `com.zeropaylunch` |
-| Artifact / Name | `backend` |
-| Package name | `com.zeropaylunch.backend` |
-| Packaging | Jar |
+| 프로젝트 | Gradle - Groovy |
+| 언어 | Java |
+| Spring Boot | 4.1.1 |
+| 그룹 | `com.zeropaylunch` |
+| 아티팩트 / 이름 | `backend` |
+| 패키지 이름 | `com.zeropaylunch.backend` |
+| 패키징 | Jar |
 | Java | 21 |
 
-Add only these dependencies for the Phase 1 health-check application:
+## 의존성
 
-- Spring Web
-- Validation
-- Spring Boot Actuator
+- Spring Web MVC: HTTP API 제공
+- Validation: API 요청과 응답 경계의 데이터 검증
+- Spring Boot Actuator: 운영 상태 확인
+- Spring Data JPA: 도메인 데이터 영속성
+- MySQL Connector/J: 운영 및 로컬 MySQL 연결
+- H2: 외부 데이터베이스 없이 테스트 컨텍스트 실행
 
-Database access will be introduced in Phase 2 after deciding between Spring Data JPA and MyBatis. At that point, add the MySQL driver and the selected persistence dependency.
+기본 영속성 기술은 Spring Data JPA입니다. QueryDSL은 동적 조건이나 복합 조회를 처음 구현할 때 추가합니다.
 
-Extract the generated project so that `backend/gradlew`, `backend/build.gradle`, and `backend/src/` exist directly under this directory. Keep this README or merge its instructions into the root README after generation.
+## 실행
 
-The first backend endpoint should act as the service-facing health check. FastAPI's internal health endpoint is documented separately and must only be called by Spring Boot.
+```bash
+cd ..
+docker compose up -d mysql
+cd backend
+./gradlew bootRun
+```
 
+기본 서버 주소는 `http://localhost:8080`이며, 운영 상태는 `GET /actuator/health`에서 확인할 수 있습니다. 기본 데이터베이스 접속값은 루트 `.env.example` 및 `docker-compose.yml`과 일치합니다. 필요하면 `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD` 환경 변수로 재정의할 수 있습니다.
+
+## 검증
+
+```bash
+./gradlew test
+./gradlew build
+```

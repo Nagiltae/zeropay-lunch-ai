@@ -1,27 +1,26 @@
-# AI Workflow
+# AI 워크플로
 
-## Target flow
+## 목표 흐름
 
 ```text
-User query
-  -> intent parsing
-  -> user context lookup
-  -> restaurant candidate lookup
-  -> hard filters
-  -> semantic retrieval
-  -> deterministic ranking
-  -> optional constraint relaxation
-  -> recommendation explanation
-  -> response validation
+사용자 요청
+  -> 의도 분석
+  -> 사용자 컨텍스트 조회
+  -> 음식점 후보 조회
+  -> 필수 조건 필터링
+  -> 의미 기반 검색
+  -> 결정론적 순위 결정
+  -> 선택적 제약 조건 완화
+  -> 추천 설명 생성
+  -> 응답 검증
 ```
 
-## Responsibility rule
+## 책임 분리 원칙
 
-Distance, price, opening status, ZeroPay availability, recent history, exact filters, and final numeric ranking belong to application code and the database. The LLM interprets ambiguous natural language and generates explanations from already selected candidates.
+거리, 가격, 영업 여부, 제로페이 사용 가능 여부, 최근 기록, 정확한 필터, 최종 수치 기반 순위 결정은 애플리케이션 코드와 데이터베이스가 담당합니다. LLM은 모호한 자연어를 해석하고 이미 선택된 후보를 바탕으로 설명을 생성합니다.
 
-LLM output must use a validated structured schema whenever it feeds program logic. Free-form model output must not directly control exact filters or ranking.
+LLM 출력이 프로그램 로직에 사용될 때는 반드시 검증된 구조화 스키마를 사용해야 합니다. 자유 형식의 모델 출력이 정확한 필터나 순위 결정을 직접 제어해서는 안 됩니다.
 
-## Current implementation
+## 현재 구현 상태
 
-Only the FastAPI service and its health endpoint exist. Intent parsing, recommendation schemas, retrieval, ranking, LangGraph, LLM providers, and fallback behavior are planned features.
-
+현재는 FastAPI 서비스와 상태 확인 엔드포인트만 구현되어 있습니다. 의도 분석, 추천 스키마, 검색, 순위 결정, LangGraph, LLM 제공자, 대체 처리 방식은 구현 예정입니다.

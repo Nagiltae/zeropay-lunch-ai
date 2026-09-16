@@ -1,46 +1,45 @@
-# Architecture
+# 아키텍처
 
-## Fixed service boundary
+## 고정된 서비스 경계
 
 ```text
-Browser
-  -> React frontend
-  -> Spring Boot main backend
-  -> FastAPI AI server
+브라우저
+  -> React 프런트엔드
+  -> Spring Boot 메인 백엔드
+  -> FastAPI AI 서버
 ```
 
-React never calls FastAPI directly. Spring Boot is the public application API and owns authentication, business rules, persistence, external data integration, and AI request context assembly. FastAPI exposes internal AI capabilities to Spring Boot.
+React는 FastAPI를 직접 호출하지 않습니다. Spring Boot는 공개 애플리케이션 API이며 인증, 비즈니스 규칙, 영속성, 외부 데이터 연동, AI 요청 컨텍스트 구성을 담당합니다. FastAPI는 Spring Boot에 내부 AI 기능을 제공합니다.
 
-## Responsibilities
+## 책임
 
-### Frontend
+### 프런트엔드
 
-- Natural-language recommendation input
-- Recommendation result presentation
-- Preference, meal-history, and feedback user interfaces
-- Calls only Spring Boot APIs
+- 자연어 추천 요청 입력
+- 추천 결과 표시
+- 취향, 식사 기록, 피드백 사용자 인터페이스
+- Spring Boot API만 호출
 
-### Main backend
+### 메인 백엔드
 
-- Users, authentication, preferences, restaurants, meal history, and feedback
-- Transaction boundaries and persistent data
-- Exact filters such as distance, price, business hours, and ZeroPay availability
-- Deterministic scoring and ranking
-- External API integration and failure handling
-- AI server request construction and response validation
+- 사용자, 인증, 취향, 음식점, 식사 기록, 피드백
+- 트랜잭션 경계와 영속 데이터
+- 거리, 가격, 영업시간, 제로페이 사용 가능 여부 등의 정확한 필터
+- 결정론적 점수 계산과 순위 결정
+- 외부 API 연동과 실패 처리
+- AI 서버 요청 구성과 응답 검증
 
-### AI server
+### AI 서버
 
-- Natural-language intent parsing into validated structured data
-- Semantic retrieval and AI workflow orchestration
-- LLM calls and recommendation explanation generation
-- AI-specific retry, fallback, evaluation, and observability as features mature
+- 자연어 의도를 분석해 검증된 구조화 데이터로 변환
+- 의미 기반 검색과 AI 워크플로 조정
+- LLM 호출과 추천 설명 생성
+- 기능 성숙도에 따른 AI 전용 재시도, 대체 처리, 평가, 관측성 제공
 
-## Current implementation boundary
+## 현재 구현 범위
 
-The frontend shell and FastAPI health endpoint exist. The Spring Boot project is pending generation. Recommendation, persistence, external APIs, LLM integration, vector search, and LangGraph are planned and are not yet implemented.
+프런트엔드 기본 화면, Spring Boot 애플리케이션 뼈대와 운영 상태 확인 기능, Spring Data JPA 및 MySQL 연결 기반, FastAPI 상태 확인 엔드포인트가 구현되어 있습니다. 엔티티와 실제 영속성 기능, 추천, 외부 API, LLM 연동, 벡터 검색, LangGraph는 계획 단계이며 아직 구현되지 않았습니다.
 
-## Data ownership
+## 데이터 소유권
 
-MySQL is the system of record for application data. A future vector database may store derived embeddings and retrieval metadata; it will not replace MySQL as the source of truth.
-
+MySQL은 애플리케이션 데이터의 기준 저장소입니다. 향후 벡터 데이터베이스가 파생 임베딩과 검색 메타데이터를 저장할 수 있지만, 원본 데이터의 기준인 MySQL을 대체하지는 않습니다.

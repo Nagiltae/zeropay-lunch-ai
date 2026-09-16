@@ -1,17 +1,18 @@
-# Database
+# 데이터베이스
 
-## Current decision
+## 현재 결정 사항
 
-MySQL is the application system of record. Docker Compose defines a local MySQL 8.4 service.
+MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compose에 로컬 MySQL 8.4 서비스를 정의해 두었습니다.
 
-No application schema exists yet. Entity tables, relationships, constraints, and indexes will be designed during Phase 2 for these initial domains:
+영속성 기술은 Spring Data JPA를 사용합니다. 단순 조회는 Spring Data 저장소 기능으로 구현하고, 동적 조건이나 복합 조회가 필요해지는 시점에 QueryDSL을 추가합니다. 사용 코드가 생기기 전에는 QueryDSL 의존성과 생성 설정을 미리 추가하지 않습니다.
 
-- User
-- Restaurant
-- User preference
-- Meal history
+아직 애플리케이션 스키마는 없습니다. 2단계에서 다음 초기 도메인의 엔티티 테이블, 관계, 제약 조건, 인덱스를 설계합니다.
 
-The choice between Spring Data JPA and MyBatis remains open. It will be made from the query patterns and transaction needs before adding a persistence dependency.
+- 사용자
+- 음식점
+- 사용자 취향
+- 식사 기록
 
-External API payloads and application-owned data must remain distinguishable. Derived vector embeddings will not be treated as the authoritative restaurant record.
+운영 및 로컬 실행은 MySQL Connector/J를 사용합니다. 테스트에서는 외부 MySQL 없이 애플리케이션 컨텍스트를 검증할 수 있도록 H2를 테스트 런타임에서만 사용합니다. MySQL 고유 동작이나 실제 쿼리 호환성이 중요한 영속성 테스트는 향후 MySQL 기반 통합 테스트로 보완합니다.
 
+외부 API 페이로드와 애플리케이션 소유 데이터는 구분할 수 있어야 합니다. 파생된 벡터 임베딩은 음식점의 기준 데이터로 취급하지 않습니다.
