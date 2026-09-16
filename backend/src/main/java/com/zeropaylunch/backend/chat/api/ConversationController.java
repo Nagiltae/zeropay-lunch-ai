@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import java.time.Instant;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,12 @@ public class ConversationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ConversationResponse create(@Valid @RequestBody CreateConversationRequest request) {
-        Conversation conversation = chatPersistenceService.createConversation(request.locationId());
+    public ConversationResponse create(
+            @Valid @RequestBody CreateConversationRequest request,
+            Authentication authentication
+    ) {
+        UUID userId = (UUID) authentication.getPrincipal();
+        Conversation conversation = chatPersistenceService.createConversation(request.locationId(), userId);
         return new ConversationResponse(
                 conversation.getId(),
                 conversation.getLocationId(),
@@ -39,13 +44,19 @@ public class ConversationController {
 
     @PostMapping("/{conversationId}/deactivate")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deactivate(@PathVariable UUID conversationId) {
-        chatPersistenceService.deactivateConversation(conversationId);
+    public void deactivate(@PathVariable UUID conversationId, Authentication authentication) {
+        chatPersistenceService.deactivateConversation(
+                conversationId,
+                (UUID) authentication.getPrincipal()
+        );
     }
 
     @GetMapping("/{conversationId}")
-    public ConversationHistory history(@PathVariable UUID conversationId) {
-        return chatPersistenceService.getHistory(conversationId);
+    public ConversationHistory history(@PathVariable UUID conversationId, Authentication authentication) {
+        return chatPersistenceService.getHistory(
+                conversationId,
+                (UUID) authentication.getPrincipal()
+        );
     }
 
     public record ConversationResponse(

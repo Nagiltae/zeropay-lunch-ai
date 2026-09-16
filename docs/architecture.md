@@ -43,15 +43,24 @@ React는 FastAPI를 직접 호출하지 않습니다. Spring Boot는 공개 애�
 
 ### 데이터 저장소
 
-- MySQL: 애플리케이션 원본 데이터와 결정론적 조회의 기준 저장소
+- MySQL: 애플리케이션 원본 데이터와 결정론적 조회의 기준 저장소 (Spring Session의 세션 저장소 포함)
 - Qdrant: MySQL 데이터에서 파생된 임베딩과 검색 메타데이터 저장
 - Qdrant 데이터는 원본으로 취급하지 않으며 MySQL 데이터로 재생성 가능해야 함
+
+## 인증 및 세션
+
+- 인증 방식: Spring Security 기반 폼 로그인이 아닌 커스텀 REST API (`/api/auth/login`) 방식을 사용합니다.
+- 세션 관리: 별도의 Redis 없이 Spring Session JDBC를 사용해 MySQL에 세션을 유지합니다. 브라우저와 통신하기 위해 세션 쿠키(`SESSION`)를 사용합니다.
+- 보안 설정: 외부 공격(CSRF) 방어를 위해 쿠키 기반 CSRF 토큰(`XSRF-TOKEN`)을 발행하며 프런트엔드는 상태를 변경하는 모든 요청(POST, PUT, DELETE)에서 이를 헤더로 제출합니다.
+- 인증 정보 저장 금지: React는 브라우저 저장소(localStorage 등)에 세션이나 비밀번호를 일절 저장하지 않으며, 현재 인증 상태는 React Query와 서버의 `/api/auth/me` 응답으로만 판단합니다.
+- 대화 소유권: 모든 대화 API는 인증을 요구하며 Spring Boot 서비스 계층에서 현재 사용자와 `conversations.user_id` 일치를 검증합니다. 프런트엔드 화면 가드는 보안 경계로 사용하지 않습니다.
+- 세션 고정 방어: 로그인 성공 시 Spring Security의 세션 인증 전략으로 기존 세션 ID를 교체한 뒤 보안 컨텍스트를 저장합니다.
 
 ## 현재 구현 범위
 
 프런트엔드 채팅 화면, 강남구 기준 위치 선택과 서버 검증, React에서 Spring Boot로 메시지를 보내고 SSE로 답변과 구조화된 음식점 추천을 받는 흐름이 구현되어 있습니다. Spring Boot는 MySQL에 대화, 메시지, 추천 결과와 음식점 영업 일정을 저장하고 현재 영업 중인 샘플 음식점을 결정론적으로 필터링합니다. 대화 초기화와 위치 변경은 기존 대화를 삭제하지 않고 비활성화합니다. React Query는 저장된 대화 기록을 복구하며 진행 중인 SSE 상태는 로컬 상태로 관리합니다.
 
-현재 자연어 처리는 Spring Boot의 제한된 임시 키워드 규칙입니다. 실제 음식점 데이터, 사용자·취향·식사 기록, 외부 API, FastAPI 채팅 연동, LLM, Qdrant 검색과 LangGraph는 아직 구현되지 않았습니다.
+현재 자연어 처리는 Spring Boot의 제한된 임시 키워드 규칙입니다. 사용자 인증과 MySQL 세션은 구현되었지만 실제 음식점 데이터, 사용자 취향·식사 기록, 외부 API, FastAPI 채팅 연동, LLM, Qdrant 검색과 LangGraph는 아직 구현되지 않았습니다.
 
 ## 데이터 소유권
 

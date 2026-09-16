@@ -16,7 +16,11 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 
 | 테이블 | 역할 |
 | --- | --- |
-| `conversations` | UUID, 기준 위치, 활성 여부, 생성·수정·비활성 시각 |
+| `users` | 사용자 계정, 이메일, 활성/정지/탈퇴 상태, 권한, 생성일, 최종 로그인 일시 (UUID PK) |
+| `user_credentials` | BCrypt 비밀번호 해시, 비밀번호 변경 일시, 로그인 실패 횟수, 계정 잠금 일시 (`users` 1:1 FK) |
+| `SPRING_SESSION` | Spring Session JDBC가 사용하는 세션 저장 테이블 (Flyway 관리) |
+| `SPRING_SESSION_ATTRIBUTES` | Spring Session 속성 저장 테이블 |
+| `conversations` | UUID, 사용자(user_id) 연결, 기준 위치, 활성 여부, 생성·수정·비활성 시각 |
 | `chat_messages` | 대화별 USER/ASSISTANT 메시지와 처리 상태 |
 | `restaurants` | 강남구 음식점 기준 정보와 샘플 여부 |
 | `restaurant_schedules` | 같은 요일·시간 정책을 묶는 영업 일정 |
@@ -27,6 +31,8 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 | `message_recommendations` | assistant 메시지와 추천 음식점, 순위, 이유 연결 |
 
 대화 초기화와 위치 변경은 데이터를 삭제하지 않습니다. `conversations.active`를 `false`로 바꾸고 `deactivated_at`을 기록합니다. UUID를 사용하고 영속성 접근을 애플리케이션 서비스에 모아 두어 향후 채팅 기록을 MongoDB로 이전할 때 API와 추천 로직에 미치는 영향을 제한합니다. MongoDB 의존성과 이중 저장은 아직 추가하지 않았습니다.
+
+`conversations.user_id`는 기존 데이터와 마이그레이션 호환성을 위해 DB에서는 nullable이지만, 현재 애플리케이션의 대화 생성 API는 로그인을 요구하고 항상 사용자 ID를 저장합니다. 조회, 메시지 전송과 비활성화도 같은 사용자 ID로 소유권을 검증합니다.
 
 ## 영업 중 조회
 

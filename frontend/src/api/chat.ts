@@ -1,4 +1,5 @@
 import type { RestaurantRecommendation } from '../types/chat'
+import { fetchWithAuth } from './client'
 
 type AcceptedEvent = {
   event: 'accepted'
@@ -91,7 +92,7 @@ async function readError(response: Response) {
 }
 
 export async function createConversation(locationId: string) {
-  const response = await fetch('/api/conversations', {
+  const response = await fetchWithAuth('/api/conversations', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ locationId }),
@@ -105,7 +106,7 @@ export async function createConversation(locationId: string) {
 }
 
 export async function deactivateConversation(conversationId: string) {
-  const response = await fetch(
+  const response = await fetchWithAuth(
     `/api/conversations/${encodeURIComponent(conversationId)}/deactivate`,
     { method: 'POST' },
   )
@@ -117,7 +118,7 @@ export async function deactivateConversation(conversationId: string) {
 }
 
 export async function getConversation(conversationId: string) {
-  const response = await fetch(
+  const response = await fetchWithAuth(
     `/api/conversations/${encodeURIComponent(conversationId)}`,
   )
   if (!response.ok) {
@@ -172,7 +173,7 @@ export async function streamChatMessage(
   onEvent: (event: ChatStreamEvent) => void,
   signal: AbortSignal,
 ) {
-  const response = await fetch(
+  const response = await fetchWithAuth(
     `/api/conversations/${encodeURIComponent(conversationId)}/messages`,
     {
       method: 'POST',

@@ -49,29 +49,31 @@ public class ChatPersistenceService {
     }
 
     @Transactional
-    public Conversation createConversation(String locationId) {
+    public Conversation createConversation(String locationId, UUID userId) {
         GangnamLocation location;
         try {
             location = GangnamLocation.fromId(locationId);
         } catch (IllegalArgumentException exception) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, exception.getMessage());
         }
-        return conversationRepository.save(Conversation.create(location.id(), clock.instant()));
+        return conversationRepository.save(Conversation.create(location.id(), userId, clock.instant()));
     }
 
     @Transactional
-    public void deactivateConversation(UUID conversationId) {
-        Conversation conversation = findConversation(conversationId);
+    public void deactivateConversation(UUID conversationId, UUID userId) {
+        Conversation conversation = findOwnedConversation(conversationId, userId);
         conversation.deactivate(clock.instant());
     }
 
     @Transactional
-    public PendingExchange startExchange(UUID conversationId, String userContent) {
-        Conversation conversation = conversationRepository.findByIdAndActiveTrue(conversationId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.CONFLICT,
-                        "활성 상태인 대화를 찾을 수 없습니다. 새 대화를 시작해 주세요."
-                ));
+    public PendingExchange startExchange(UUID conversationId, UUID userId, String userContent) {
+        Conversation conversation = findOwnedConversation(conversationId, userId);
+        if (!conversation.isActive()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "활성 상태인 대화를 찾을 수 없습니다. 새 대화를 시작해 주세요."
+            );
+        }
         Instant now = clock.instant();
         ChatMessage userMessage = messageRepository.save(
                 ChatMessage.completedUser(conversationId, userContent, now)
@@ -114,8 +116,8 @@ public class ChatPersistenceService {
     }
 
     @Transactional(readOnly = true)
-    public ConversationHistory getHistory(UUID conversationId) {
-        Conversation conversation = findConversation(conversationId);
+    public ConversationHistory getHistory(UUID conversationId, UUID userId) {
+        Conversation conversation = findOwnedConversation(conversationId, userId);
         List<ChatMessage> messages = messageRepository
                 .findByConversationIdOrderByCreatedAtAsc(conversationId);
         List<UUID> messageIds = messages.stream().map(ChatMessage::getId).toList();
@@ -179,8 +181,8 @@ public class ChatPersistenceService {
         );
     }
 
-    private Conversation findConversation(UUID conversationId) {
-        return conversationRepository.findById(conversationId)
+    private Conversation findOwnedConversation(UUID conversationId, UUID userId) {
+        return conversationRepository.findByIdAndUserId(conversationId, userId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "대화를 찾을 수 없습니다."
                 ));

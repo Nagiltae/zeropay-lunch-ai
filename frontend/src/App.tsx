@@ -4,8 +4,10 @@ import { ChatHeader } from './components/chat/ChatHeader'
 import { LocationSelector } from './components/chat/LocationSelector'
 import { MessageComposer } from './components/chat/MessageComposer'
 import { MessageList } from './components/chat/MessageList'
+import { AuthScreen } from './components/auth/AuthScreen'
 import { gangnamLocations } from './data/gangnamLocations'
 import { useChatStream } from './hooks/useChatStream'
+import { useCurrentUser, useAuthMutations } from './hooks/useAuth'
 import type { GangnamLocation } from './types/chat'
 
 const locationStorageKey = 'zeropay-lunch-selected-location'
@@ -16,6 +18,8 @@ function restoreLocation() {
 }
 
 function App() {
+  const { isAuthenticated, isUserLoading } = useCurrentUser()
+  const { logout } = useAuthMutations()
   const [selectedLocation, setSelectedLocation] =
     useState<GangnamLocation | null>(restoreLocation)
   const {
@@ -28,7 +32,13 @@ function App() {
     retryMessage,
     stopStreaming,
     resetConversation,
-  } = useChatStream(selectedLocation?.id ?? null)
+    clearLocalConversation,
+  } = useChatStream(selectedLocation?.id ?? null, isAuthenticated)
+
+  const logoutAndClearChat = async () => {
+    await logout()
+    clearLocalConversation()
+  }
 
   const resetWithConfirmation = async () => {
     if (
@@ -69,12 +79,21 @@ function App() {
     }
   }
 
+  if (isUserLoading) {
+    return <div className="loading-screen">로딩 중...</div>
+  }
+
+  if (!isAuthenticated) {
+    return <AuthScreen />
+  }
+
   return (
     <main className="app-shell">
       <section className="chat-app" aria-labelledby="page-title">
         <ChatHeader
           hasConversation={conversationId !== null || messages.length > 1}
           onReset={() => void resetWithConfirmation()}
+          onLogout={() => void logoutAndClearChat()}
         />
         <LocationSelector
           selectedLocation={selectedLocation}

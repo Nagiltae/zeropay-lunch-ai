@@ -4,6 +4,7 @@ import com.zeropaylunch.backend.chat.application.ChatStreamService;
 import jakarta.validation.Valid;
 import java.util.UUID;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,8 +29,13 @@ public class ChatController {
     )
     public SseEmitter sendMessage(
             @PathVariable UUID conversationId,
-            @Valid @RequestBody ChatMessageRequest request
+            @Valid @RequestBody ChatMessageRequest request,
+            Authentication authentication
     ) {
-        return chatStreamService.streamReply(conversationId, request.message().trim());
+        return chatStreamService.streamReply(
+                conversationId,
+                (UUID) authentication.getPrincipal(),
+                request.message().trim()
+        );
     }
 }

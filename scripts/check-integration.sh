@@ -16,6 +16,15 @@ failure_report() {
 
 trap failure_report ERR
 
+OWNER_COOKIE_JAR="$(mktemp "${TMPDIR:-/tmp}/zeropay-owner-cookies.XXXXXX")"
+OTHER_COOKIE_JAR="$(mktemp "${TMPDIR:-/tmp}/zeropay-other-cookies.XXXXXX")"
+
+cleanup() {
+  rm -f "$OWNER_COOKIE_JAR" "$OTHER_COOKIE_JAR"
+}
+
+trap cleanup EXIT
+
 echo "== Integration verification =="
 
 if ! command -v docker >/dev/null 2>&1; then
@@ -60,22 +69,108 @@ AI_HEALTH="$(curl --fail --silent --show-error --max-time 10 "http://$AI_ADDRESS
 [[ "$AI_HEALTH" == *'"service":"ai"'* ]]
 echo "[PASS] FastAPI health"
 
+curl --fail --silent --show-error --max-time 10 \
+  -c "$OWNER_COOKIE_JAR" \
+  "http://$FRONTEND_ADDRESS/api/auth/csrf" \
+  -o /dev/null
+OWNER_CSRF_TOKEN="$(awk '$6 == "XSRF-TOKEN" {print $7}' "$OWNER_COOKIE_JAR")"
+[[ -n "$OWNER_CSRF_TOKEN" ]]
+
+RUN_ID="$(date +%s)-$$"
+OWNER_EMAIL="integration-owner-$RUN_ID@example.com"
+OTHER_EMAIL="integration-other-$RUN_ID@example.com"
+PASSWORD="integration-password-123"
+
+curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/auth/signup" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
+  --data "{\"email\":\"$OWNER_EMAIL\",\"password\":\"$PASSWORD\",\"displayName\":\"통합 검사 소유자\"}" \
+  -o /dev/null
+
+LOGIN_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/auth/login" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
+  --data "{\"email\":\"$OWNER_EMAIL\",\"password\":\"$PASSWORD\"}")"
+OWNER_USER_ID="$(printf '%s' "$LOGIN_RESPONSE" \
+  | sed -n 's/.*"userId":"\([^"]*\)".*/\1/p')"
+SESSION_COOKIE="$(awk '$6 == "SESSION" {print $7}' "$OWNER_COOKIE_JAR")"
+[[ -n "$OWNER_USER_ID" ]]
+[[ -n "$SESSION_COOKIE" ]]
+
+ME_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" \
+  "http://$FRONTEND_ADDRESS/api/auth/me")"
+[[ "$ME_RESPONSE" == *"\"email\":\"$OWNER_EMAIL\""* ]]
+echo "[PASS] Signup, login, session cookie, and current-user lookup"
+
 CONVERSATION_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
   -X POST \
   "http://$FRONTEND_ADDRESS/api/conversations" \
   -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
   --data '{"locationId":"gangnam"}')"
 CONVERSATION_ID="$(printf '%s' "$CONVERSATION_RESPONSE" \
   | sed -n 's/.*"conversationId":"\([^"]*\)".*/\1/p')"
 [[ -n "$CONVERSATION_ID" ]]
 [[ "$CONVERSATION_RESPONSE" == *'"active":true'* ]]
-echo "[PASS] Conversation creation"
+CONVERSATION_USER_ID="$(printf "SELECT user_id FROM conversations WHERE id = '%s';\n" "$CONVERSATION_ID" \
+  | docker compose exec -T mysql sh -c \
+    'mysql --batch --skip-column-names -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"')"
+[[ "$CONVERSATION_USER_ID" == "$OWNER_USER_ID" ]]
+echo "[PASS] Authenticated conversation ownership persisted in MySQL"
+
+curl --fail --silent --show-error --max-time 10 \
+  -c "$OTHER_COOKIE_JAR" \
+  "http://$FRONTEND_ADDRESS/api/auth/csrf" \
+  -o /dev/null
+OTHER_CSRF_TOKEN="$(awk '$6 == "XSRF-TOKEN" {print $7}' "$OTHER_COOKIE_JAR")"
+curl --fail --silent --show-error --max-time 10 \
+  -b "$OTHER_COOKIE_JAR" -c "$OTHER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/auth/signup" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OTHER_CSRF_TOKEN" \
+  --data "{\"email\":\"$OTHER_EMAIL\",\"password\":\"$PASSWORD\",\"displayName\":\"통합 검사 타 사용자\"}" \
+  -o /dev/null
+curl --fail --silent --show-error --max-time 10 \
+  -b "$OTHER_COOKIE_JAR" -c "$OTHER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/auth/login" \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OTHER_CSRF_TOKEN" \
+  --data "{\"email\":\"$OTHER_EMAIL\",\"password\":\"$PASSWORD\"}" \
+  -o /dev/null
+OTHER_HISTORY_STATUS="$(curl --silent --show-error --max-time 10 \
+  -b "$OTHER_COOKIE_JAR" \
+  -o /dev/null -w '%{http_code}' \
+  "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID")"
+OTHER_MESSAGE_STATUS="$(curl --silent --show-error --max-time 10 \
+  -b "$OTHER_COOKIE_JAR" \
+  -X POST \
+  -H 'Accept: text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OTHER_CSRF_TOKEN" \
+  --data '{"message":"소유권 검사"}' \
+  -o /dev/null -w '%{http_code}' \
+  "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID/messages")"
+[[ "$OTHER_HISTORY_STATUS" == "404" ]]
+[[ "$OTHER_MESSAGE_STATUS" == "404" ]]
+echo "[PASS] Conversation ownership isolation"
 
 SSE_RESPONSE="$(curl --fail --silent --show-error --no-buffer --max-time 30 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
   -X POST \
   "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID/messages" \
   -H 'Accept: text/event-stream' \
   -H 'Content-Type: application/json' \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
   --data '{"message":"통합 검사 메시지"}')"
 [[ "$SSE_RESPONSE" == *'event:accepted'* ]]
 [[ "$SSE_RESPONSE" == *'event:recommendations'* ]]
@@ -84,6 +179,7 @@ SSE_RESPONSE="$(curl --fail --silent --show-error --no-buffer --max-time 30 \
 echo "[PASS] Nginx to Spring Boot SSE flow"
 
 HISTORY_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" \
   "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID")"
 [[ "$HISTORY_RESPONSE" == *'"role":"USER"'* ]]
 [[ "$HISTORY_RESPONSE" == *'"role":"ASSISTANT"'* ]]
@@ -91,13 +187,34 @@ HISTORY_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
 echo "[PASS] Persisted conversation history and sample recommendation"
 
 curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
   -X POST \
   "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID/deactivate" \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
   -o /dev/null
 DEACTIVATED_RESPONSE="$(curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" \
   "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID")"
 [[ "$DEACTIVATED_RESPONSE" == *'"active":false'* ]]
 echo "[PASS] Conversation deactivation"
+
+curl --fail --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" -c "$OWNER_COOKIE_JAR" \
+  -X POST \
+  "http://$FRONTEND_ADDRESS/api/auth/logout" \
+  -H "X-XSRF-TOKEN: $OWNER_CSRF_TOKEN" \
+  -o /dev/null
+ME_AFTER_LOGOUT_STATUS="$(curl --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" \
+  -o /dev/null -w '%{http_code}' \
+  "http://$FRONTEND_ADDRESS/api/auth/me")"
+CONVERSATION_AFTER_LOGOUT_STATUS="$(curl --silent --show-error --max-time 10 \
+  -b "$OWNER_COOKIE_JAR" \
+  -o /dev/null -w '%{http_code}' \
+  "http://$FRONTEND_ADDRESS/api/conversations/$CONVERSATION_ID")"
+[[ "$ME_AFTER_LOGOUT_STATUS" == "401" ]]
+[[ "$CONVERSATION_AFTER_LOGOUT_STATUS" == "401" ]]
+echo "[PASS] Logout invalidates authenticated access"
 
 trap - ERR
 echo "[PASS] Docker service health and current cross-service flow"

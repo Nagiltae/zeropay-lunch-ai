@@ -23,6 +23,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -38,7 +39,7 @@ class ChatControllerTests {
         ChatPersistenceService persistenceService = mock(ChatPersistenceService.class);
         RestaurantRecommendationService recommendationService =
                 mock(RestaurantRecommendationService.class);
-        when(persistenceService.startExchange(any(UUID.class), anyString()))
+        when(persistenceService.startExchange(any(UUID.class), any(UUID.class), anyString()))
                 .thenAnswer(invocation -> {
                     UUID conversationId = invocation.getArgument(0);
                     return new PendingExchange(
@@ -80,10 +81,12 @@ class ChatControllerTests {
     @Test
     void streamsChatReplyAsServerSentEvents() throws Exception {
         UUID conversationId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
         MvcResult pendingResult = mockMvc.perform(post(
                         "/api/conversations/{conversationId}/messages",
                         conversationId
                 )
+                        .principal(new UsernamePasswordAuthenticationToken(userId, null))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.TEXT_EVENT_STREAM)
                         .content("""

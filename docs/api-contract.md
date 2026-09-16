@@ -40,6 +40,8 @@ GET /actuator/health
 
 React가 사용자 메시지를 Spring Boot로 보내고 답변을 Server-Sent Events로 받는 공개 API입니다. 브라우저는 `EventSource` 대신 POST 응답의 `ReadableStream`을 읽습니다. React는 FastAPI를 직접 호출하지 않습니다.
 
+모든 `/api/conversations/**` API는 로그인이 필요합니다. Spring Boot는 요청한 사용자가 해당 대화의 `user_id`와 일치할 때만 생성 이후 조회, 메시지 전송과 비활성화를 허용합니다. 미인증 요청은 `401 Unauthorized`, 다른 사용자의 대화 ID를 사용한 요청은 대화 존재 여부를 노출하지 않도록 `404 Not Found`를 반환합니다.
+
 ```http
 POST /api/conversations/{conversationId}/messages
 Accept: text/event-stream
@@ -156,6 +158,7 @@ Content-Type: application/json
 ```
 
 지원하는 값은 `gangnam`, `yeoksam`, `seolleung`, `samseong`, `sinsa`, `apgujeong`, `cheongdam`, `suseo`입니다.
+생성된 대화는 현재 세션의 사용자와 연결됩니다.
 
 응답 `201 Created`:
 
@@ -183,6 +186,106 @@ POST /api/conversations/{conversationId}/deactivate
 ```
 
 응답은 `204 No Content`입니다. 대화와 메시지를 삭제하지 않고 `active=false`와 비활성 시각을 기록합니다. 같은 요청을 다시 보내도 삭제는 발생하지 않습니다.
+
+## 구현됨: CSRF 토큰 조회
+
+```http
+GET /api/auth/csrf
+```
+
+브라우저 쿠키(CSRF 토큰) 갱신 용도의 더미 엔드포인트입니다. Spring Security가 요청을 가로채 CSRF 쿠키를 갱신합니다.
+
+## 구현됨: 회원가입
+
+```http
+POST /api/auth/signup
+Content-Type: application/json
+```
+
+요청:
+```json
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "displayName": "사용자이름"
+}
+```
+
+입력 제약:
+
+- `email`: 유효한 이메일 형식, 최대 255자
+- `password`: 8~72자이며 BCrypt 제한을 위해 UTF-8 기준 최대 72바이트
+- `displayName`: 공백이 아닌 문자열, 최대 100자
+
+응답 `200 OK`:
+```json
+{
+  "userId": "uuid-...",
+  "email": "user@example.com",
+  "displayName": "사용자이름"
+}
+```
+
+이미 사용 중인 이메일이면 `409 Conflict`와 `EMAIL_ALREADY_IN_USE` 오류를 반환합니다.
+
+## 구현됨: 로그인
+
+```http
+POST /api/auth/login
+Content-Type: application/json
+```
+
+요청:
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+응답 `200 OK`:
+```json
+{
+  "userId": "uuid-...",
+  "email": "user@example.com",
+  "displayName": "사용자이름"
+}
+```
+
+응답 `401 Unauthorized`:
+```json
+{
+  "code": "INVALID_CREDENTIALS",
+  "message": "이메일 또는 비밀번호가 올바르지 않습니다."
+}
+```
+
+## 구현됨: 현재 사용자 조회
+
+```http
+GET /api/auth/me
+```
+
+응답 `200 OK` (로그인 상태일 때):
+```json
+{
+  "userId": "uuid-...",
+  "email": "user@example.com",
+  "displayName": "사용자이름"
+}
+```
+
+응답 `401 Unauthorized` (미인증 시)
+
+## 구현됨: 로그아웃
+
+```http
+POST /api/auth/logout
+```
+
+응답 `204 No Content`. 세션과 관련 쿠키가 삭제됩니다.
+
+로그인 성공 시 기존 HTTP 세션 ID는 교체되며 인증 컨텍스트는 Spring Session JDBC에 저장됩니다.
 
 ## 계획: AI 추천
 

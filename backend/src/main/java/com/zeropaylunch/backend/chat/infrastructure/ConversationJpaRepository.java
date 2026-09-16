@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ConversationJpaRepository extends JpaRepository<Conversation, UUID> {
 
-    Optional<Conversation> findByIdAndActiveTrue(UUID id);
+    Optional<Conversation> findByIdAndUserId(UUID id, UUID userId);
 }

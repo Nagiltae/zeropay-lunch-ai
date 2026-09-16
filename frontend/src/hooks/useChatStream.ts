@@ -44,7 +44,7 @@ function restoreMessages(history: ConversationHistory): ChatMessage[] {
   ]
 }
 
-export function useChatStream(locationId: string | null) {
+export function useChatStream(locationId: string | null, isAuthenticated: boolean) {
   const [conversationId, setConversationId] = useState<string | null>(() =>
     window.localStorage.getItem(conversationStorageKey),
   )
@@ -58,7 +58,7 @@ export function useChatStream(locationId: string | null) {
   const historyQuery = useQuery({
     queryKey: ['conversation', conversationId],
     queryFn: () => getConversation(conversationId!),
-    enabled: conversationId !== null,
+    enabled: isAuthenticated && conversationId !== null,
     staleTime: Number.POSITIVE_INFINITY,
   })
   const createMutation = useMutation({ mutationFn: createConversation })
@@ -283,6 +283,18 @@ export function useChatStream(locationId: string | null) {
     setIsStreaming(false)
   }, [conversationId, deactivateMutation])
 
+  const clearLocalConversation = useCallback(() => {
+    abortControllerRef.current?.abort()
+    abortControllerRef.current = null
+    activeAssistantIdRef.current = null
+    restoredConversationRef.current = null
+    window.localStorage.removeItem(conversationStorageKey)
+    setConversationId(null)
+    setMessages([welcomeMessage])
+    setProgress(null)
+    setIsStreaming(false)
+  }, [])
+
   return {
     conversationId,
     messages,
@@ -293,5 +305,6 @@ export function useChatStream(locationId: string | null) {
     retryMessage,
     stopStreaming,
     resetConversation,
+    clearLocalConversation,
   }
 }

@@ -17,6 +17,9 @@ public class Conversation {
     @Column(name = "location_id", nullable = false, length = 32)
     private String locationId;
 
+    @Column(name = "user_id")
+    private UUID userId;
+
     @Column(nullable = false)
     private boolean active;
 
@@ -32,16 +35,17 @@ public class Conversation {
     protected Conversation() {
     }
 
-    private Conversation(UUID id, String locationId, Instant now) {
+    private Conversation(UUID id, String locationId, UUID userId, Instant now) {
         this.id = id;
         this.locationId = locationId;
+        this.userId = userId;
         this.active = true;
         this.createdAt = now;
         this.updatedAt = now;
     }
 
-    public static Conversation create(String locationId, Instant now) {
-        return new Conversation(UUID.randomUUID(), locationId, now);
+    public static Conversation create(String locationId, UUID userId, Instant now) {
+        return new Conversation(UUID.randomUUID(), locationId, userId, now);
     }
 
     public void deactivate(Instant now) {
@@ -63,6 +67,10 @@ public class Conversation {
 
     public boolean isActive() {
         return active;
+    }
+
+    public UUID getUserId() {
+        return userId;
     }
 
     public Instant getCreatedAt() {

@@ -35,9 +35,10 @@ public class ChatStreamService {
         this.recommendationService = recommendationService;
     }
 
-    public SseEmitter streamReply(UUID conversationId, String userMessage) {
+    public SseEmitter streamReply(UUID conversationId, UUID userId, String userMessage) {
         PendingExchange exchange = chatPersistenceService.startExchange(
                 conversationId,
+                userId,
                 userMessage
         );
         SseEmitter emitter = new SseEmitter(STREAM_TIMEOUT_MILLIS);

@@ -13,16 +13,16 @@
 | `./scripts/check-frontend.sh` | npm 의존성 상태, TypeScript를 포함한 프로덕션 빌드, 존재하는 경우 테스트 |
 | `./scripts/check-backend.sh` | Gradle compile, 테스트, 패키징 |
 | `./scripts/check-ai.sh` | Poetry 메타데이터, FastAPI import, Pytest |
-| `./scripts/check-integration.sh` | Docker health와 현재 구현된 Nginx→Spring SSE 흐름 |
+| `./scripts/check-integration.sh` | Docker health, 인증·세션·대화 소유권과 Nginx→Spring SSE 흐름 |
 | `./scripts/check-all.sh` | 위 검사의 canonical 전체 실행 |
 
-프런트엔드는 Vitest로 대화 생성 요청과 청크 경계가 나뉜 SSE 추천 이벤트 파싱을 검증합니다. 컴포넌트 브라우저 테스트는 아직 없습니다.
+프런트엔드는 Vitest로 인증 API의 CSRF 헤더와 401 처리, 대화 생성 요청, 청크 경계가 나뉜 SSE 추천 이벤트 파싱을 검증합니다. 컴포넌트 브라우저 테스트는 아직 없습니다.
 
 ## Progressive integration levels
 
 통합 검사는 실제 기능이 존재하는 단계까지만 확장합니다.
 
-### Level 1 — service health and current public flow
+### Level 1 — service health and current authenticated flow
 
 현재 구현되어 있습니다.
 
@@ -31,7 +31,8 @@
 - Nginx `/healthz`
 - Spring Boot `/actuator/health`
 - FastAPI `/health`
-- Nginx `/api/` 프록시를 통한 대화 생성과 Spring Boot SSE 이벤트 완료
+- Nginx `/api/` 프록시를 통한 회원가입·로그인·현재 사용자 조회
+- 인증된 대화 생성과 Spring Boot SSE 이벤트 완료
 
 `check-integration.sh`는 전체 이미지를 조용한 출력으로 빌드한 뒤 `docker compose up -d --wait`로 스택을 기동합니다. 검사 후 컨테이너와 볼륨을 삭제하지 않습니다. 실패 시 `docker compose ps`와 관련 서비스의 최근 로그를 출력합니다.
 
@@ -64,12 +65,16 @@ Spring Boot가 실제 FastAPI 내부 API를 호출하는 기능이 생길 때 �
 
 현재 Docker 통합 검사에는 다음 사용자 흐름의 서버/API 부분이 포함됩니다.
 
-1. 대화 생성
-2. 사용자 메시지 전송
-3. 구조화된 추천 및 SSE 답변 수신
-4. USER 및 ASSISTANT 메시지 저장
-5. 추천 결과가 포함된 대화 기록 조회
-6. 대화 비활성화
+1. 회원가입과 로그인
+2. 세션 쿠키 발급과 현재 사용자 조회
+3. 인증된 대화 생성과 MySQL `user_id` 저장 확인
+4. 다른 사용자의 대화 조회 및 메시지 전송 거부
+5. 사용자 메시지 전송
+6. 구조화된 추천 및 SSE 답변 수신
+7. USER 및 ASSISTANT 메시지 저장
+8. 추천 결과가 포함된 대화 기록 조회
+9. 대화 비활성화
+10. 로그아웃 후 인증 API 및 대화 접근 거부
 
 브라우저 자동화와 실제 AI 추천 결과 검증은 아직 포함하지 않습니다.
 
