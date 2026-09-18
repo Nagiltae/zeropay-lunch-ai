@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class NaverRestaurantMatcherTests {
@@ -17,11 +18,19 @@ class NaverRestaurantMatcherTests {
     private final NaverMatchingProperties matchingPolicy = policy();
     private final NaverRestaurantCategoryPolicy categoryPolicy =
             new NaverRestaurantCategoryPolicy();
-    private final NaverRestaurantMatcher matcher = new NaverRestaurantMatcher(
-            new NaverTextNormalizer(), new GeoDistanceCalculator(),
-            new NaverCoordinateParser(),
-            new NaverCandidateHardGate(matchingPolicy, categoryPolicy),
-            matchingPolicy);
+    private NaverRestaurantMatcher matcher;
+
+    @BeforeEach
+    void setUp() {
+        NaverMatchingProperties policy = policy();
+        this.matcher = new NaverRestaurantMatcher(
+                new NaverTextNormalizer(),
+                new GeoDistanceCalculator(),
+                new NaverCoordinateParser(),
+                new NaverCandidateHardGate(policy, new NaverRestaurantCategoryPolicy()),
+                new NaverAddressParser(),
+                policy);
+    }
 
     @Test
     void sameNameAndAddressAreMatched() {
@@ -71,7 +80,7 @@ class NaverRestaurantMatcherTests {
     void exactNameWithWeakAddressAndMoreThanFiftyMetersIsAmbiguous() {
         NaverMatchDecision decision = matcher.match(
                 restaurant(), List.of(candidate(
-                        "토브", "서울 강남구 학동로 9", 127.03072, 37.5000)),
+                        "토브", "서울 강남구 논현동 99", 127.03072, 37.5000)),
                 "토브 논현동");
 
         assertThat(decision.distanceMeters()).isBetween(60.0, 70.0);
@@ -263,5 +272,42 @@ class NaverRestaurantMatcherTests {
                 30, 25, 15, 8, 0.70, 0.45,
                 20, 14, 6, 10, 300, 70, 45, 8,
                 22, 32, 25, 50);
+    }
+
+    @Test
+    void strongAddressMatch_spacingInRoadNameAndBuildingNumber() {
+        assertAddressScore("서울특별시 강남구 강남대로 156길 17-1", "서울특별시 강남구 강남대로156길 17-1", 30.0);
+        assertAddressScore("헌릉로569길9", "헌릉로569길 9", 30.0);
+        assertAddressScore("압구정로 34길 16", "압구정로34길 16", 30.0);
+        assertAddressScore("논현로 175길 61", "논현로175길 61", 30.0);
+    }
+
+    @Test
+    void strongAddressMatch_detailAddressIsIgnoredIfCoreMatches() {
+        assertAddressScore("도곡로63길 28", "도곡로63길 28 1층", 30.0);
+        assertAddressScore("도곡로63길 28 101호", "도곡로63길 28", 30.0);
+    }
+
+    @Test
+    void differentBuildingNumbersAreNotStrongMatch() {
+        assertAddressScore("논현로71길 29", "논현로71길 37", 0.0);
+    }
+
+    @Test
+    void completelyDifferentRoadNamesAreNotStrongMatch() {
+        assertAddressScore("테헤란로 103", "강남대로 396", 0.0);
+        assertAddressScore("언주로134길 33", "학동로45길 3", 0.0);
+    }
+
+    private void assertAddressScore(String sourceAddress, String candidateAddress, double expectedScore) {
+        Restaurant r = restaurant("테스트가게", sourceAddress, null, "37.5", "127.0", "논현동");
+        NaverSearchCandidate c = candidate("테스트가게", candidateAddress, 127.0, 37.5);
+        
+        NaverMatchDecision decision = matcher.match(r, List.of(c), "테스트가게");
+        if (decision.selected() != null) {
+            assertThat(decision.selected().addressScore()).isEqualTo(expectedScore);
+        } else {
+            // Unmatched if score < 70
+        }
     }
 }

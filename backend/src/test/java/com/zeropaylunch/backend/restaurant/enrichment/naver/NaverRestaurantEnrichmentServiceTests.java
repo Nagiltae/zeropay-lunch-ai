@@ -40,6 +40,7 @@ class NaverRestaurantEnrichmentServiceTests {
             new NaverTextNormalizer(), new GeoDistanceCalculator(),
             new NaverCoordinateParser(),
             new NaverCandidateHardGate(matchingPolicy(), categoryPolicy),
+            new NaverAddressParser(),
             matchingPolicy());
     private final RecommendationEligibilityPolicy eligibilityPolicy =
             new RecommendationEligibilityPolicy(categoryPolicy);

@@ -4,6 +4,18 @@
 
 새로운 작업을 완료할 때마다 이 파일의 최상단에 작업 내역을 추가합니다.
 
+## [2026-09-19] NAVER Local Address Matching 개선
+- **목표**: NAVER Local 매칭 중 실제 같은 주소이나 띄어쓰기/상세주소 차이로 점수가 낮게 나오는 문제 해결 및 지번 번호가 다른 거짓 양성(False Positive) 방어
+- **백엔드 (Spring Boot)**
+  - `NaverAddressParser` 컴포넌트 추가: 정규식을 이용해 서울특별시/강남구 접두어를 제거하고, 순수 도로명(공백 제거)과 건물 본번/부번을 분리하여 파싱
+  - `NaverRestaurantMatcher`의 `singleAddressScore` 로직 개선: 도로명이 정확히 일치할 때, 건물 번호가 같으면 즉시 `addressExactScore(30)` 부여, 다르면 `0.0`으로 처리하여 부당한 강한 일치(Strong Match) 승격 차단
+  - 지번/도로명 혼용으로 파싱 불가능한 경우 기존의 `tokenSimilarity` 백폴백(fallback) 로직 정상 유지
+- **DevOps / Testing**
+  - `NaverRestaurantMatcherTests`에 도로명/건물번호 일치/불일치 관련 회귀 테스트 케이스 추가 및 생성자 의존성 주입 반영
+  - 오프라인 스크립트를 통해 3,272건의 데이터를 NAVER API 재호출 없이 재평가 수행
+  - 재평가 결과 MATCHED 69건 순증 (AMBIGUOUS 71건 승격, 거짓 양성 의심 MATCHED 2건 강등)
+- **결과**: `check-backend.sh` 통과. NAVER API 호출 없이 오프라인 재평가 완료.
+
 ## [2026-09-19] NAVER Local 최초 전체 3,272건 매칭
 - **실행 승인**: MATCHED 20건 인간 검토 후 사용자의 명시적 승인으로 `--all` 1회 실행; 주 1회 Scheduler는 미구현·미활성
 - **실행 결과**: processed 3,272, MATCHED 1,982, AMBIGUOUS 163, UNMATCHED 1,127, API_ERROR 0; inserted 3,172, updated 100, skipped 0

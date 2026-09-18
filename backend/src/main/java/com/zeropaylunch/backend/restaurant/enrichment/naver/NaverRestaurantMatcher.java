@@ -17,6 +17,7 @@ class NaverRestaurantMatcher {
     private final GeoDistanceCalculator distanceCalculator;
     private final NaverCoordinateParser coordinateParser;
     private final NaverCandidateHardGate hardGate;
+    private final NaverAddressParser addressParser;
     private final NaverMatchingProperties policy;
 
     NaverRestaurantMatcher(
@@ -24,11 +25,13 @@ class NaverRestaurantMatcher {
             GeoDistanceCalculator distanceCalculator,
             NaverCoordinateParser coordinateParser,
             NaverCandidateHardGate hardGate,
+            NaverAddressParser addressParser,
             NaverMatchingProperties policy) {
         this.normalizer = normalizer;
         this.distanceCalculator = distanceCalculator;
         this.coordinateParser = coordinateParser;
         this.hardGate = hardGate;
+        this.addressParser = addressParser;
         this.policy = policy;
     }
 
@@ -145,6 +148,26 @@ class NaverRestaurantMatcher {
         if (!StringUtils.hasText(source) || !StringUtils.hasText(candidate)) {
             return 0.0;
         }
+
+        NaverAddressParser.ParsedAddress parsedSource = addressParser.parse(source);
+        NaverAddressParser.ParsedAddress parsedCandidate = addressParser.parse(candidate);
+
+        if (parsedSource != null && parsedCandidate != null) {
+            System.out.println("DEBUG: source=" + source + " (" + parsedSource + ")");
+            System.out.println("DEBUG: candidate=" + candidate + " (" + parsedCandidate + ")");
+            if (parsedSource.roadName().equals(parsedCandidate.roadName())) {
+                if (parsedSource.buildingNumber().equals(parsedCandidate.buildingNumber())) {
+                    System.out.println("DEBUG: return exact!");
+                    return policy.addressExactScore();
+                } else {
+                    System.out.println("DEBUG: return 0.0!");
+                    return 0.0;
+                }
+            }
+        }
+
+        System.out.println("DEBUG: fallback contains? " + source + " / " + candidate);
+
         if (source.equals(candidate) || source.contains(candidate) || candidate.contains(source)) {
             return policy.addressExactScore();
         }
