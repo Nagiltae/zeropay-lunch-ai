@@ -26,3 +26,58 @@ app:
     response-timeout: 8s
     max-attempts: 1
     fallback-enabled: true
+  komsco:
+    base-url: https://example.test/komsco
+    service-key: ""
+    page-size: 100
+    connect-timeout: 1s
+    read-timeout: 1s
+    import-enabled: false
+    replace-existing: false
+    scheduler-enabled: false
+    scheduler-cron: "0 0 3 * * *"
+    scheduler-zone: Asia/Seoul
+  naver-local:
+    base-url: https://example.test/naver-local
+    client-id: ""
+    client-secret: ""
+    connect-timeout: 1s
+    read-timeout: 1s
+    request-interval: 0ms
+    retry-backoff: 1ms
+    max-attempts: 2
+    display: 5
+    enrichment-enabled: false
+    enrichment-limit: 20
+    max-search-queries: 2
+    max-validation-limit: 100
+    matched-refresh-ttl: 720h
+    ambiguous-retry-delay: 168h
+    unmatched-retry-delay: 168h
+    api-error-retry-delay: 1h
+    report-directory: build/reports/naver-enrichment-test
+    matching:
+      name-exact-score: 40
+      name-contains-score: 35
+      name-high-similarity-score: 32
+      name-moderate-similarity-score: 22
+      high-name-similarity: 0.85
+      moderate-name-similarity: 0.70
+      address-exact-score: 30
+      address-high-similarity-score: 25
+      address-moderate-similarity-score: 15
+      same-dong-score: 8
+      high-address-similarity: 0.70
+      moderate-address-similarity: 0.45
+      distance-50m-score: 20
+      distance-100m-score: 14
+      distance-300m-score: 6
+      category-score: 10
+      maximum-distance-meters: 300
+      matched-threshold: 70
+      viable-threshold: 45
+      ambiguity-margin: 8
+      minimum-name-score: 22
+      strong-name-score: 32
+      strong-address-score: 25
+      strong-evidence-distance-meters: 50

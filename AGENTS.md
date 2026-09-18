@@ -64,7 +64,7 @@ Spring Boot는 공개 API와 비즈니스 데이터 및 결정론적 로직을 �
 ## Database migration rules
 
 - `backend/src/main/resources/db/migration`의 versioned migration은 한 번 적용되면 불변입니다.
-- 현재 적용 기준인 `V1`, `V2`, `V3` 파일은 수정하지 않습니다.
+- 현재 적용 기준인 `V1`, `V2`, `V3`, `V4`, `V5`, `V6`, `V7` 파일은 수정하지 않습니다.
 - 스키마 변경은 항상 다음 번호의 새 `V<n>__<description>.sql` migration으로 추가합니다.
 - 과거 migration의 오류를 보완할 때도 파일을 고쳐 쓰지 않고 새 migration에서 순방향으로 수정합니다.
 - sample repeatable migration은 스키마 변경 용도로 사용하지 않습니다.
@@ -128,6 +128,7 @@ Spring Boot는 공개 API와 비즈니스 데이터 및 결정론적 로직을 �
 - `--force`, `git reset --hard`, `git checkout --` 등 파괴적인 Git 작업 실행
 - 관련 없는 대규모 코드 재작성
 - Kubernetes, Redis, 별도 태스크 러너나 모노레포 도구 도입
+- 공공데이터 또는 유료 외부 API를 실제 호출(호출 전 비밀값을 가린 요청 URL과 query를 사용자에게 보여주고 명시적 승인을 받음)
 
 작업을 완료하려면 이러한 변경이 꼭 필요할 경우 중단하고 이유와 영향을 설명한 뒤 명시적인 승인을 요청합니다.
 

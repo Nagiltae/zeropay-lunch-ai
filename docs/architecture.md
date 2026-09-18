@@ -65,7 +65,15 @@ React는 FastAPI를 직접 호출하지 않습니다. Spring Boot는 공개 애�
 
 프런트엔드 채팅 화면, 강남구 기준 위치, 취향 설정, 명시적인 식사 기록과 SSE 추천 흐름이 구현되어 있습니다. Spring Boot는 MySQL에 사용자 취향과 식사 기록을 저장하고 현재 영업 중이면서 제로페이가 가능한 샘플 음식점을 결정론적으로 필터링합니다. 비선호 카테고리와 최근 72시간 내 먹은 음식점은 제외하고, 메시지 예산이 없으면 사용자 기본 예산을 사용합니다. 대화 초기화와 위치 변경은 기존 대화를 삭제하지 않고 비활성화합니다.
 
-현재 자연어 처리는 `AiIntentAnalyzer` 경계 뒤의 제한된 임시 키워드 규칙입니다. 위치는 실제 거리 계산이 아니라 강남구 위치 ID 일치 점수로만 반영합니다. 사용자 인증, 취향과 식사 기록은 구현되었지만 실제 음식점 데이터, FastAPI 의도 분석 endpoint와 Spring HTTP 클라이언트, LLM, Qdrant 검색과 LangGraph는 아직 구현되지 않았습니다.
+현재 자연어 처리는 `AiIntentAnalyzer` 경계 뒤의 제한된 임시 키워드 규칙입니다. 위치는 실제 거리 계산이 아니라 강남구 위치 ID 일치 점수로만 반영합니다. 사용자 인증, 취향과 식사 기록은 구현되었습니다. Spring Boot에는 KOMSCO 모바일 가맹점 OpenAPI의 강남구 14개 법정동을 수집해 MySQL에 멱등 적재하는 수동 import와 일일 Scheduler가 있습니다. 수집, 최신 행 선택, 필터, 저장 책임을 분리했으며 전체 페이지 수집 실패 시 DB 쓰기를 시작하지 않습니다.
+
+KOMSCO 음식점의 검색 정보를 보강하기 위한 NAVER API HUB Local 연동도 Spring Boot가 소유합니다. 수동 runner가 검증 표본, 증분 또는 명시적 전체 범위를 순차 조회하고, API client·표본 선택·정규화·좌표 변환·점수 정책·후보 판별·DB upsert·CSV 리포트 책임을 분리합니다. 첫 검색 결과를 그대로 채택하지 않고 상호명, 주소, WGS84 거리와 음식점 카테고리를 결정론적으로 점수화합니다. 점수 전에 비음식점 category와 최소 이름 증거 미달 후보를 제외하고, MATCHED에는 강한 주소 일치 또는 강한 이름과 50m 이내 좌표라는 추가 증거를 요구해 total만 높은 후보는 AMBIGUOUS로 남깁니다. API 장애는 별도 시도 상태로 기록하고 기존 정상 매칭을 보존합니다. KOMSCO 동기화는 신규·매칭 입력 변경 ID를 결과로 제공하지만 NAVER 호출을 자동 실행하지 않아 두 외부 연동을 느슨하게 유지합니다.
+
+추천 가능 상태는 KOMSCO 원본이나 NAVER match status와 분리해 `restaurants`에 저장합니다. 재사용 가능한 NAVER category 정책이 matching Hard Gate와 eligibility 판정에 동일하게 적용됩니다. 명확한 음식점 MATCHED만 ELIGIBLE이고 비음식점 MATCHED는 INELIGIBLE이며, 미조회·불명·불확실·API 장애는 UNKNOWN입니다. 추천 조회는 ELIGIBLE만 허용하지만 `recommendation_ready`는 메뉴·가격·영업시간 보강 완료라는 별도 조건으로 계속 유지합니다.
+
+일일 Scheduler는 `Asia/Seoul` 기준 새벽 3시에 실행됩니다. 기존 가맹점의 최신 사업자 상태와 서비스 범위를 확인해 `active`를 비활성화하거나 복구하고 동기화 시각을 갱신합니다. 현재 단일 Spring Boot 인스턴스를 전제로 하며 다중 인스턴스 배포 시에는 중복 실행을 막는 분산 lock을 별도 설계해야 합니다.
+
+KOMSCO 원본에는 메뉴, 가격과 영업시간이 없으므로 import 행은 `recommendation_ready=false`로 저장됩니다. 현재 추천 흐름은 추천 정보와 영업 일정이 갖춰진 행만 조회합니다. FastAPI 의도 분석 endpoint와 Spring HTTP 클라이언트, LLM, Qdrant 검색과 LangGraph는 아직 구현되지 않았습니다.
 
 ## 데이터 소유권
 

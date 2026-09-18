@@ -84,9 +84,16 @@ Spring Boot가 실제 FastAPI 내부 API를 호출하는 기능이 생길 때 �
 
 백엔드 자동 테스트는 취향 충돌 검증, 최근 72시간 식사 범위, 다른 사용자의 추천 기록 차단, 제로페이 불가 음식점 제외, 기본 예산·비선호·최근 식사 필터와 AI 분석 fallback을 포함합니다.
 
+KOMSCO import 자동 테스트는 외부 API를 호출하지 않고 JSON/nullable 매핑, 14개 법정동 pagination, 필수 필드 제외, `alt_text`별 최신 기준일자, 최신 폐업 상태 우선, 계속사업자·KSIC 561·강남구·제공기관 필터, 최초 insert, 동일 실행 중복 방지, 같은 날짜 변경, 최신/과거 날짜 upsert, API 실패 전 무쓰기와 기존 KOMSCO snapshot 트랜잭션 교체를 검증합니다. H2 테스트는 V4 migration과 JPA 매핑까지 확인하며 실제 MySQL 문법은 Docker 통합 검사에서 확인합니다.
+
+일일 동기화 테스트는 새벽 3시 cron 설정, Scheduler의 서비스 호출과 오류 격리, 동일 원본의 timestamp 갱신, 폐업·부적격 가맹점 비활성화, 조건 복구 시 재활성화, 더 오래된 원본으로 상태를 되돌리지 않는 정책을 검증합니다. 자동 테스트에서는 실제 공공데이터 API를 호출하지 않습니다.
+
+NAVER Local 테스트는 실제 외부 API를 호출하지 않고 JSON/nullable 필드, HTML·괄호·지점명과 주소 정규화, 소수점 및 `10^7` 배율 좌표 변환, Haversine 거리, 가장 좋은 후보와 runner-up gap, 다른 프랜차이즈 지점·비음식점 category·최소 이름 증거 미달 제외, 300m 초과 제외, MATCHED strong evidence, 모호한 후보와 미매칭 판정, 법정동별 deterministic 표본, 2차 강남구 query 상한, 상태별 증분 선택, 인증/개별 장애 정책, 기존 매칭의 API 실패 보존과 `(restaurant_id, provider)` 기반 반복 upsert를 검증합니다. 음식점/비음식점/미분류 category와 ELIGIBLE/INELIGIBLE/UNKNOWN 판정, 추천 조회의 ELIGIBLE 강제, KOMSCO 매칭 입력 변경 시 UNKNOWN 초기화도 검증합니다. 수미초밥과 구야네 실제 검증 사례도 회귀 테스트로 고정합니다. 실제 외부 호출은 redacted 요청 범위를 사용자에게 보여주고 승인받은 경우에만 별도로 실행합니다.
+
 브라우저 자동화와 실제 AI 추천 결과 검증은 아직 포함하지 않습니다.
 
 Compose에서 Spring Boot는 아직 호출하지 않는 FastAPI를 시작 조건으로 요구하지 않으며, FastAPI도 아직 사용하지 않는 Qdrant를 시작 조건으로 요구하지 않습니다. 전체 통합 검사는 저장소에 정의된 각 서비스의 health를 확인하지만 이 독립성 자체를 장애 시나리오로 검증하지는 않습니다.
+통합 검사 실행 중에는 KOMSCO import/Scheduler와 NAVER enrichment를 강제로 비활성화해 사용자 승인 없는 외부 API 호출을 방지합니다.
 
 브라우저 자동화나 대규모 E2E 도구는 이 흐름이 안정된 뒤 실제 필요가 있을 때만 추가합니다.
 

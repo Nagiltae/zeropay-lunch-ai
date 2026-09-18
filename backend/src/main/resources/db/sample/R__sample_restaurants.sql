@@ -1,31 +1,37 @@
 INSERT INTO restaurants (
     id, name, category, representative_menu, average_price, address, location_id,
-    latitude, longitude, zero_pay_available, sample_data, active, created_at, updated_at
+    latitude, longitude, zero_pay_available, sample_data, active,
+    recommendation_eligibility, created_at, updated_at
 )
 SELECT
     1001, '강남 샘플 한식당', 'KOREAN', '제육볶음', 9000,
     '서울특별시 강남구 강남대로 샘플 101', 'gangnam',
-    37.4979520, 127.0276190, TRUE, TRUE, TRUE, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6)
+    37.4979520, 127.0276190, TRUE, TRUE, TRUE,
+    'ELIGIBLE', CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6)
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE id = 1001);
 
 INSERT INTO restaurants (
     id, name, category, representative_menu, average_price, address, location_id,
-    latitude, longitude, zero_pay_available, sample_data, active, created_at, updated_at
+    latitude, longitude, zero_pay_available, sample_data, active,
+    recommendation_eligibility, created_at, updated_at
 )
 SELECT
     1002, '역삼 샘플 국밥집', 'KOREAN_SOUP', '돼지국밥', 10000,
     '서울특별시 강남구 테헤란로 샘플 202', 'yeoksam',
-    37.5006580, 127.0364300, TRUE, TRUE, TRUE, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6)
+    37.5006580, 127.0364300, TRUE, TRUE, TRUE,
+    'ELIGIBLE', CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6)
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE id = 1002);
 
 INSERT INTO restaurants (
     id, name, category, representative_menu, average_price, address, location_id,
-    latitude, longitude, zero_pay_available, sample_data, active, created_at, updated_at
+    latitude, longitude, zero_pay_available, sample_data, active,
+    recommendation_eligibility, created_at, updated_at
 )
 SELECT
     1003, '선릉 샘플 샐러드', 'SALAD', '닭가슴살 샐러드', 11000,
     '서울특별시 강남구 선릉로 샘플 303', 'seolleung',
-    37.5044870, 127.0489570, FALSE, TRUE, TRUE, CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6)
+    37.5044870, 127.0489570, FALSE, TRUE, TRUE,
+    'ELIGIBLE', CURRENT_TIMESTAMP(6), CURRENT_TIMESTAMP(6)
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE id = 1003);
 
 INSERT INTO restaurant_schedules (id, restaurant_id, name)

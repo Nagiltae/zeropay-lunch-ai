@@ -4,6 +4,75 @@
 
 새로운 작업을 완료할 때마다 이 파일의 최상단에 작업 내역을 추가합니다.
 
+## [2026-09-19] NAVER Local 최초 전체 3,272건 매칭
+- **실행 승인**: MATCHED 20건 인간 검토 후 사용자의 명시적 승인으로 `--all` 1회 실행; 주 1회 Scheduler는 미구현·미활성
+- **실행 결과**: processed 3,272, MATCHED 1,982, AMBIGUOUS 163, UNMATCHED 1,127, API_ERROR 0; inserted 3,172, updated 100, skipped 0
+- **추천 상태**: ELIGIBLE 1,939, INELIGIBLE 0, UNKNOWN 1,333; MATCHED+UNKNOWN 43건은 현재 category 정책에서 음식점임을 확정할 수 없어 추천에서 제외
+- **무결성**: NAVER 3,272행/서로 다른 restaurant 3,272건, duplicate 0, 명시적 비음식점 category+ELIGIBLE 0, 모든 마지막 API 시도 SUCCESS
+- **KOMSCO 보존**: 원본 필드 checksum이 실행 전·후 `XOR=1973841089`, `SUM=6969399285795`로 일치
+- **리포트**: 전체 `backend/build/reports/naver-enrichment/naver-all-20260919-033129.csv`, 복합 위험 상위 50건 `naver-full-review-20260919-033129.csv`
+
+## [2026-09-19] Restaurant 추천 가능 상태 분리
+- **상태 설계**: KOMSCO 원본을 유지하면서 `restaurants.recommendation_eligibility`에 ELIGIBLE/INELIGIBLE/UNKNOWN을 저장하는 Flyway V7 추가
+- **공유 정책**: NAVER category를 FOOD/NON_FOOD/UNKNOWN으로 분류하는 정책을 Candidate Hard Gate와 추천 가능 판정에서 공유
+- **추천 안전성**: 추천 repository는 기존 `recommendation_ready` 조건과 함께 ELIGIBLE만 반환하고, KOMSCO 매칭 입력 변경·API_ERROR는 UNKNOWN으로 되돌림
+- **실제 100건 재실행**: 사용자 승인 후 MATCHED 60, AMBIGUOUS 8, UNMATCHED 32, API_ERROR 0; ELIGIBLE 60, INELIGIBLE 0, UNKNOWN 40
+- **DB 검증**: NAVER enrichment 100행/서로 다른 restaurant 100건으로 중복 없음; 전체 3,272건은 실행하지 않음
+- **검토 리포트**: `backend/build/reports/naver-enrichment/naver-validation-20260919-030231.csv`, MATCHED 20건 `naver-matched-review-20260919-030231.csv`
+- **검증**: eligibility/category/repository/writer/report 회귀 테스트, `./scripts/check-backend.sh`, `./scripts/check-all.sh` 통과
+
+## [2026-09-19] NAVER Matching false-positive Hard Gate 보정
+- **근거 분석**: 기존 MATCHED 중 주소 점수 25 미만 20건은 거리 30m 이내 15건, 30~50m 3건, 50m 초과 2건으로 확인
+- **거리 결정**: 기존 최고 거리점수 경계와 실제 분포를 근거로 strong evidence 거리 기준을 50m로 선택; 기존 300m 후보 제외는 유지
+- **Candidate Hard Gate**: 명시된 NAVER category가 음식점 계열이 아니거나 이름 점수가 22점 미만인 후보를 점수 경쟁에서 제외
+- **MATCHED Gate**: 기존 70점·runner-up gap 8점에 더해 주소 25점 이상 또는 이름 32점 이상+50m 이내를 요구하고, 근거가 부족하면 AMBIGUOUS 처리
+- **정책 유지**: 기존 이름/주소/거리/category 40/30/20/10 가중치와 viable 45점은 변경하지 않음
+- **오프라인 재평가**: API 재호출 없이 기존 100건 CSV/DB로 MATCHED 63→59, AMBIGUOUS 9→8, UNMATCHED 28→33 확인
+- **핵심 사례**: 수미초밥 MATCHED→AMBIGUOUS, 구야네·열린약국 MATCHED→UNMATCHED; 수미초밥과 구야네를 실제 값 기반 회귀 테스트로 고정
+- **실행 범위**: 전체 3,272건 NAVER 호출 및 기존 DB status 일괄 갱신은 수행하지 않음
+
+## [2026-09-19] NAVER Local 100건 검증·증분 갱신 기반
+- **검증 표본**: 활성 KOMSCO 음식점을 법정동 코드별 ID 순서로 round-robin 선택해 14개 동이 7~8건씩 포함되는 deterministic 100건 모드 구현
+- **판정 근거**: 기존 40/30/20/10점, MATCHED 70점, gap 8점, 300m 기준은 유지하고 점수 breakdown, runner-up, gap, 실제 query를 DB와 CSV에 기록
+- **정규화 보강**: HTML·공백·특수문자·괄호·띄어쓰기 차이를 정리하고 양쪽의 명시적 프랜차이즈 지점명이 다르면 후보에서 제외
+- **실행 안전성**: 검증 `--limit=100`, 제한 증분 `--incremental --limit=<n>`, 명시적 전체 `--all`을 분리하고 순차 호출·timeout·제한 retry 유지
+- **증분 정책**: enrichment 부재, 상호·주소·좌표 등 source hash 변경, 상태별 retry 도래, MATCHED refresh TTL 만료만 재조회; KOMSCO sync는 변경 ID를 반환하되 NAVER를 자동 호출하지 않음
+- **장애 보존**: `API_ERROR` 시도 상태와 다음 retry를 분리하고 기존 정상 MATCHED 후보·점수·동기화 시각은 유지
+- **DB**: V1~V5를 유지하고 V6에 점수 상세, source hash, 마지막 시도 상태·시각, 다음 retry 시각 및 조회 index 추가
+- **실제 검증**: 사용자 승인 100건에서 MATCHED 63, AMBIGUOUS 9, UNMATCHED 28, API_ERROR 0; 80건 insert, 기존 20건 update, restaurant/provider 중복 0
+- **리포트**: `backend/build/reports/naver-enrichment/naver-validation-20260919-023530.csv`에 header 포함 101행 생성
+- **검증**: `./scripts/check-backend.sh`, `./scripts/check-all.sh` 전체 통과, 실제 MySQL Flyway V6 적용 및 기존 NAVER 20행 보존 확인
+
+## [2026-09-18] NAVER Local 음식점 매칭 및 보강
+- **외부 연동**: NAVER API HUB 지역 검색을 opt-in 수동 runner로 연결하고 활성 KOMSCO 음식점을 기본 20개까지만 순차 처리
+- **검색 정책**: `상호명+법정동`과 제한된 `상호명+강남구` fallback, 검색당 최대 5개 후보, 429·5xx 제한 재시도와 401/403 fast-fail 적용
+- **결정론적 매칭**: HTML/공백 상호 정규화, 주소 토큰, Haversine 거리와 음식점 category를 100점 정책으로 합산해 MATCHED/AMBIGUOUS/UNMATCHED 분류
+- **좌표 호환**: 실제 API 진단에서 확인한 WGS84 `10^7` 배율 정수와 소수점 좌표를 모두 decimal degree로 변환
+- **DB**: 기존 V1~V4를 유지하고 V5 `restaurant_external_places`를 추가해 KOMSCO 원본과 NAVER 보강을 분리; `(restaurant_id, provider)` unique upsert 적용
+- **환경**: 기존 `.env`의 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`을 local 프로세스 또는 Compose가 주입하며 기본 실행은 비활성
+- **실제 검증**: 사용자 승인 범위 20건에서 MATCHED 14, AMBIGUOUS 2, UNMATCHED 4, API 실패 0; 수정 전 생성된 같은 20행을 전부 update해 총 20행/음식점 20개 유지
+- **자동 검증**: NAVER 파싱, nullable, 정규화, 좌표, 거리, 후보 선택, 상태 판정, fallback, 장애 격리, 인증 실패와 idempotent upsert 테스트 추가; `check-backend.sh`와 최종 `check-all.sh` 통과
+
+## [2026-09-18] KOMSCO 음식점 일일 동기화 Scheduler 추가
+- **실행 시간**: Spring Scheduler가 `Asia/Seoul` 기준 매일 새벽 3시에 승인된 KOMSCO 강남구 전체 조회를 실행
+- **상태 동기화**: 기존 행은 매 실행마다 `last_synced_at`, `updated_at`과 원본 필드를 갱신하고, 계속사업자·KSIC 561·강남구·제공기관 조건에서 벗어나면 `active=false`, 다시 만족하면 `active=true`로 복구
+- **신규 데이터**: 모든 저장 조건을 만족하는 신규 `alt_text`만 삽입하고, 응답에서 완전히 사라진 ID는 임의 비활성화하지 않음
+- **장애 안전성**: 전체 pagination·최신화 성공 후에만 DB 동기화를 시작하며 API 실패 시 기존 DB를 유지
+- **설정**: `KOMSCO_SCHEDULER_ENABLED`, `KOMSCO_SCHEDULER_CRON`, `KOMSCO_SCHEDULER_ZONE`을 추가하고 Docker Compose에서 기본 활성화
+- **검증**: Scheduler 위임·오류 격리, timestamp 갱신, 비활성화·재활성화와 과거 데이터 보호 테스트 추가
+- **검증 결과**: `./scripts/check-backend.sh`, `./scripts/check-all.sh` 전체 통과 및 실행 중 컨테이너에서 `enabled=true`, `cron=0 0 3 * * *`, `zone=Asia/Seoul` 확인
+
+## [2026-09-18] KOMSCO 강남구 음식점 원본 import 구현
+- **외부 수집**: 한국조폐공사 모바일 가맹점기본정보 API를 14개 강남구 법정동별로 끝까지 pagination하고, 전체 수집 성공 후에만 DB 저장을 시작하도록 구현
+- **정제 정책**: `alt_text`별 최신 `crtr_ymd`를 먼저 선택한 뒤 제공기관 `I0000002`, `ksic_cd=561`, `bzmn_stts_nm=계속사업자`, 강남구 증거를 순서대로 검증
+- **DB**: 기존 V1~V3를 유지하고 V4에서 KOMSCO 원본 컬럼, `recommendation_ready`, `(source_provider, external_merchant_id)` unique 제약을 추가
+- **추천 경계**: 메뉴·가격·영업시간이 없는 KOMSCO 행은 `recommendation_ready=false`로 저장해 보강 전 추천 후보에서 제외
+- **실행 방식**: 공개 API와 Scheduler 없이 opt-in one-shot `ApplicationRunner`로 구현하고 `.env`의 키를 local 실행 환경 또는 Docker Compose가 명시적으로 주입
+- **실제 적재**: 61,941건 조회 → 최신화 30,783건 → 필터 통과 및 신규 적재 3,272건; DB에서 KOMSCO 3,272행과 distinct ID 3,272개 확인
+- **전체 교체**: 사용자 승인 후 전체 조회 성공 시에만 기존 KOMSCO 행을 삭제·재삽입하는 트랜잭션 교체 모드를 추가하고 3,272건으로 재적재; 샘플 음식점 3건 보존
+- **검증**: `./scripts/check-backend.sh` 및 `./scripts/check-all.sh` 전체 통과, 실제 MySQL Flyway V4 적용 성공
+- **안전 규칙**: 이후 공공데이터·유료 API의 실제 호출 전 redacted URL/query를 사용자에게 제시하고 명시적 승인을 받도록 `AGENTS.md`에 추가
+
 ## [2026-09-17] Harness 학습 설명과 저장소 기반 학습 가이드 추가
 - 핵심 정책·계약·환경 문서에 Harness Role, Agent Usage, Why와 Connection 관점의 짧은 설명 추가
 - setup과 모든 check script에 실행 시점, 실패 방지 목적과 연결 관계를 설명하는 주석 추가

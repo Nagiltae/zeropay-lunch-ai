@@ -25,10 +25,12 @@ class RestaurantJpaRepositoryTests {
         jdbcTemplate.update("""
                 INSERT INTO restaurants (
                     id, name, category, representative_menu, average_price, address,
-                    location_id, zero_pay_available, sample_data, active, created_at, updated_at
+                    location_id, zero_pay_available, sample_data, active,
+                    recommendation_eligibility, created_at, updated_at
                 ) VALUES (
                     9001, '테스트 음식점', 'KOREAN', '테스트 메뉴', 9000, '강남구 테스트 주소',
-                    'gangnam', TRUE, TRUE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                    'gangnam', TRUE, TRUE, TRUE, 'ELIGIBLE',
+                    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
                 )
                 """);
         jdbcTemplate.update("""
@@ -50,10 +52,12 @@ class RestaurantJpaRepositoryTests {
         jdbcTemplate.update("""
                 INSERT INTO restaurants (
                     id, name, category, representative_menu, average_price, address,
-                    location_id, zero_pay_available, sample_data, active, created_at, updated_at
+                    location_id, zero_pay_available, sample_data, active,
+                    recommendation_eligibility, created_at, updated_at
                 ) VALUES (
                     9002, '제로페이 불가 음식점', 'SALAD', '테스트 샐러드', 8000, '강남구 테스트 주소',
-                    'gangnam', FALSE, TRUE, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                    'gangnam', FALSE, TRUE, TRUE, 'ELIGIBLE',
+                    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
                 )
                 """);
         jdbcTemplate.update("""
@@ -67,6 +71,28 @@ class RestaurantJpaRepositoryTests {
         jdbcTemplate.update("""
                 INSERT INTO restaurant_operating_hours (id, schedule_id, opens_at, closes_at)
                 VALUES (9302, 9102, '11:00:00', '21:00:00')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurants (
+                    id, name, category, representative_menu, average_price, address,
+                    location_id, zero_pay_available, sample_data, active, recommendation_ready,
+                    created_at, updated_at
+                ) VALUES (
+                    9003, '보강 전 음식점', NULL, NULL, NULL, '서울특별시 강남구 테스트 주소',
+                    NULL, TRUE, FALSE, TRUE, FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                )
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_schedules (id, restaurant_id, name)
+                VALUES (9103, 9003, '월요일 일정')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_operating_days (id, schedule_id, day_of_week)
+                VALUES (9203, 9103, 'MONDAY')
+                """);
+        jdbcTemplate.update("""
+                INSERT INTO restaurant_operating_hours (id, schedule_id, opens_at, closes_at)
+                VALUES (9303, 9103, '11:00:00', '21:00:00')
                 """);
     }
 
@@ -96,5 +122,25 @@ class RestaurantJpaRepositoryTests {
         assertThat(restaurantRepository.findOpenRestaurants(
                 "MONDAY", LocalTime.of(12, 0)
         )).extracting("id").doesNotContain(9002L);
+    }
+
+    @Test
+    void excludesRestaurantUntilRecommendationDataIsReady() {
+        assertThat(restaurantRepository.findOpenRestaurants(
+                "MONDAY", LocalTime.of(12, 0)
+        )).extracting("id").doesNotContain(9003L);
+    }
+
+    @Test
+    void excludesRestaurantWhenRecommendationEligibilityIsUnknown() {
+        jdbcTemplate.update("""
+                UPDATE restaurants
+                SET recommendation_eligibility = 'UNKNOWN'
+                WHERE id = 9001
+                """);
+
+        assertThat(restaurantRepository.findOpenRestaurants(
+                "MONDAY", LocalTime.of(12, 0)
+        )).extracting("id").doesNotContain(9001L);
     }
 }
