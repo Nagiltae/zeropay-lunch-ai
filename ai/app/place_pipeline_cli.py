@@ -29,28 +29,25 @@ from app.place_resolver import (
     PlaceCandidate,
     Resolution,
     ResolutionStatus,
-    nearest_station,
     query_for,
-    station_query,
 )
 from app.place_resolver_cli import (
+    DEFAULT_CHECKPOINT_NAME,
     load_komsco_population,
     load_local_env,
-    load_stations,
     load_verified_checkpoint,
     preflight,
     run_one,
     save_verified_checkpoint,
-    _existing_place_mapping,
+    _existing_pcmap_mapping,
     write_resolved_to_db,
 )
 from app.qwen_candidate_matcher import OllamaClient, QwenCandidateMatcher
 
 FIELDS = [
-    "restaurant_id", "komsco_name", "komsco_address", "previous_naver_status",
-    "naver_matched_external_name", "naver_matched_address", "naver_matched_road_address",
+    "restaurant_id", "komsco_name", "komsco_address",
     "query", "place_id", "place_url", "resolve_status", "detail_status",
-    "matcher_source", "qwen_used", "qwen_confidence", "naver_db_fallback_available",
+    "matcher_source", "qwen_used", "qwen_confidence",
     "qwen_ranking", "resolved_rank", "detail_validation_attempts",
     "validation_attempts_json",
     "detail_access_method", "http_result", "playwright_result",
@@ -62,8 +59,6 @@ FIELDS = [
     "persistence_status", "persistence_error",
     "elapsed_ms",
 ]
-
-
 def is_blocked_error(error: BaseException) -> bool:
     return str(error).startswith("BLOCKED:")
 
@@ -213,7 +208,7 @@ class PipelineWriter:
         self.stream.close()
 
 
-def _row(result, previous: str, detail_result, elapsed: int, reason: str = "", naver_reference=None, *, persistence_status="NOT_ATTEMPTED", persistence_error="") -> dict[str, object]:
+def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_status="NOT_ATTEMPTED", persistence_error="") -> dict[str, object]:
     detail = detail_result.detail
     menus = getattr(detail, "menus", ()) if detail else ()
     menu_count = (
@@ -230,10 +225,6 @@ def _row(result, previous: str, detail_result, elapsed: int, reason: str = "", n
         "restaurant_id": result.reference.restaurant_id,
         "komsco_name": result.reference.komsco_name,
         "komsco_address": result.reference.komsco_address,
-        "previous_naver_status": previous,
-        "naver_matched_external_name": getattr(naver_reference, "naver_local_name", ""),
-        "naver_matched_address": getattr(naver_reference, "naver_local_address", ""),
-        "naver_matched_road_address": getattr(naver_reference, "naver_local_road_address", ""),
         "query": result.query,
         "place_id": result.place_id or "",
         "place_url": f"https://pcmap.place.naver.com/restaurant/{result.place_id}/home" if result.place_id else "",
@@ -253,7 +244,6 @@ def _row(result, previous: str, detail_result, elapsed: int, reason: str = "", n
             [attempt.__dict__ for attempt in getattr(result, "validation_attempts_detail", ())],
             ensure_ascii=False,
         ),
-        "naver_db_fallback_available": previous == "MATCHED",
         "detail_access_method": detail_result.access_method,
         "http_result": detail_result.http_result,
         "playwright_result": detail_result.playwright_result,
@@ -297,7 +287,6 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--force-resolve", action="store_true")
-    parser.add_argument("--include-unmatched", action="store_true")
     parser.add_argument("--manifest", type=Path, help="고정 KOMSCO restaurant_id 목록")
     parser.add_argument("--ledger", type=Path, help="terminal 상태 resume ledger")
     parser.add_argument("--status", action="store_true", help="ledger 상태만 출력하고 네트워크/DB 작업을 하지 않음")
@@ -318,18 +307,15 @@ def main() -> int:
         return 0
     load_local_env(root)
     output = args.output or root / "ai/build/reports/naver-place-pipeline" / f"pipeline-{datetime.now():%Y%m%d-%H%M%S}.csv"
-    # The historical checkpoint may contain IDs resolved through the retired
-    # NAVER Local fallback.  New Nonhyeon runs use an isolated KOMSCO-only file.
-    checkpoint = args.checkpoint or root / "ai/build/reports/naver-place-pipeline/verified-place-ids-komsco-only.csv"
+    # Legacy checkpoints are intentionally not loaded; this is KOMSCO-only.
+    checkpoint = args.checkpoint or root / "ai/build/reports/naver-place-pipeline" / DEFAULT_CHECKPOINT_NAME
     preflight(root, output, args.write_db, require_resolver=True)
     # Apply an explicit restaurant-id filter before any population limit.  The
     # previous implicit ``limit=1`` optimization could truncate the source
     # before the requested id was selected, producing a misleading zero-target
     # run for ids that were not the first row.
     population_limit = args.limit if args.restaurant_id is None else None
-    population = load_komsco_population(
-        root, population_limit, matched_only=not args.include_unmatched
-    )
+    population = load_komsco_population(root, population_limit)
     manifest_ids = load_batch_manifest(args.manifest) if args.manifest else None
     requested_ids = manifest_ids if manifest_ids is not None else args.restaurant_id
     refs = select_pipeline_references(
@@ -352,7 +338,6 @@ def main() -> int:
     ledger_completed = ledger.completed_ids(retry_failed=args.retry_failed, force_resolve=args.force_resolve) if ledger else set()
     refs = [r for r in refs if r.restaurant_id not in completed and r.restaurant_id not in ledger_completed]
     print(f"Pipeline targets: {len(refs)} (resume skipped: {len(completed)})")
-    stations = load_stations(root)
     matcher = QwenCandidateMatcher(OllamaClient())
     verified = load_verified_checkpoint(checkpoint)
     dom_crawler = PlaceDomDetailCrawler()
@@ -379,28 +364,26 @@ def main() -> int:
                 if stop: break
                 item_started = monotonic()
                 try:
-                    station = nearest_station(reference, stations)
                     result = None
                     checkpoint_row = verified.get(reference.restaurant_id)
                     if checkpoint_row and not args.force_resolve:
                         result = checkpoint_result(reference, checkpoint_row)
                     else:
-                        for stage, query in (("station", station_query(reference, station)), ("dong", query_for(reference))):
-                            result = run_one(
-                                page, reference, query, stage, matcher,
-                                before_navigation=limiter.before_navigation,
-                            )
-                            if result.resolution.status == ResolutionStatus.RESOLVED:
-                                owner = _existing_place_mapping(root, result.place_id)
-                                if owner is None or owner == reference.restaurant_id:
-                                    save_verified_checkpoint(checkpoint, result)
-                                verified[reference.restaurant_id] = {
-                                    "restaurant_id": str(reference.restaurant_id), "place_id": result.place_id,
-                                    "resolved_name": result.candidate.name if result.candidate else "",
-                                    "resolved_address": result.candidate.address if result.candidate else "",
-                                    "verification_status": "RESOLVED",
-                                }
-                                break
+                        query = query_for(reference)
+                        result = run_one(
+                            page, reference, query, "KOMSCO", matcher,
+                            before_navigation=limiter.before_navigation,
+                        )
+                        if result.resolution.status == ResolutionStatus.RESOLVED:
+                            owner = _existing_pcmap_mapping(root, result.place_id)
+                            if owner is None or owner == reference.restaurant_id:
+                                save_verified_checkpoint(checkpoint, result)
+                            verified[reference.restaurant_id] = {
+                                "restaurant_id": str(reference.restaurant_id), "place_id": result.place_id,
+                                "resolved_name": result.candidate.name if result.candidate else "",
+                                "resolved_address": result.candidate.address if result.candidate else "",
+                                "verification_status": "RESOLVED",
+                            }
                 except RuntimeError as error:
                     if is_blocked_error(error):
                         blocked = True
@@ -466,7 +449,7 @@ def main() -> int:
                 persistence_error = ""
                 if args.write_db and result.resolution.status == ResolutionStatus.RESOLVED and detail_result.detail:
                     try:
-                        owner = _existing_place_mapping(root, result.place_id)
+                        owner = _existing_pcmap_mapping(root, result.place_id)
                         if owner is not None and owner != reference.restaurant_id:
                             raise RuntimeError(
                                 f"PLACE_ID_CONFLICT: {result.place_id} already mapped to restaurant {owner}"
@@ -497,10 +480,8 @@ def main() -> int:
                 elapsed = int((monotonic() - item_started) * 1000)
                 row = _row(
                     result,
-                    population.previous_naver_statuses.get(reference.restaurant_id, "NOT_ENRICHED"),
                     detail_result,
                     elapsed,
-                    naver_reference=None,
                     persistence_status=persistence_status,
                     persistence_error=persistence_error or locals().get("detail_error", ""),
                 )

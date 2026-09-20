@@ -34,19 +34,6 @@ class RestaurantReference:
     komsco_latitude: float | None
     komsco_longitude: float | None
     legal_dong: str
-    naver_local_name: str
-    naver_local_address: str
-    naver_local_category: str
-    naver_local_latitude: float | None
-    naver_local_longitude: float | None
-    naver_local_road_address: str = ""
-
-
-@dataclass(frozen=True)
-class StationReference:
-    name: str
-    latitude: float
-    longitude: float
 
 
 @dataclass(frozen=True)
@@ -368,34 +355,6 @@ def deterministic_fast_path(
     return candidate
 
 
-def query_for(reference: RestaurantReference, fallback: bool = False) -> str:
-    if fallback:
-        return f"강남구 {reference.komsco_name}".strip()
+def query_for(reference: RestaurantReference) -> str:
+    """Build the PCMap query from KOMSCO fields only."""
     return f"{reference.legal_dong} {reference.komsco_name}".strip()
-
-
-def nearest_station(
-    reference: RestaurantReference,
-    stations: Iterable[StationReference],
-) -> StationReference | None:
-    if reference.komsco_latitude is None or reference.komsco_longitude is None:
-        return None
-    return min(
-        stations,
-        key=lambda station: (
-            distance_meters(
-                reference.komsco_latitude,
-                reference.komsco_longitude,
-                station.latitude,
-                station.longitude,
-            )
-            or float("inf")
-        ),
-        default=None,
-    )
-
-
-def station_query(reference: RestaurantReference, station: StationReference | None) -> str:
-    if station is None:
-        return query_for(reference)
-    return f"{station.name} {reference.komsco_name}".strip()

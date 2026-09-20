@@ -34,7 +34,6 @@ echo "== Integration verification =="
 # Verification must never spend an external API quota or mutate imported snapshots.
 export KOMSCO_IMPORT_ENABLED=false
 export KOMSCO_SCHEDULER_ENABLED=false
-export NAVER_ENRICHMENT_ENABLED=false
 
 if ! command -v docker >/dev/null 2>&1; then
   echo "[FAIL] Docker is not installed. Run ./scripts/setup.sh after installing Docker."

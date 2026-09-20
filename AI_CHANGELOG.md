@@ -1,5 +1,11 @@
 # AI Agent Work History
 
+## [2026-09-20] KOMSCO-only PCMap resolver 정리
+- Place ID Resolver 입력을 KOMSCO reference로 단일화하고 stored NAVER MATCHED fallback 및 legacy checkpoint 자동 사용을 제거
+- 좌표가 없는 KOMSCO row도 name/address 기반 PCMap 검색 대상에 포함
+- 신규 기본 checkpoint를 `verified-place-ids-komsco-only.csv`로 통일하고 Local API credential 의존성을 최종 pipeline에서 제거
+- PCMap DOM/Detail 흐름과 rate limit 정책은 유지하고 관련 테스트·문서를 갱신
+
 ## [2026-09-20] KOMSCO 초기 cleanup 경로 및 주간 동기화
 - KOMSCO source 전용 1회성 cleanup/dry-run service를 추가하고 사용자 meal/recommendation 참조 restaurant는 보호
 - FK child를 고려한 transaction 삭제 순서를 정의했으며 실제 cleanup/import는 실행하지 않음

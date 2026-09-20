@@ -67,11 +67,6 @@ def reference() -> RestaurantReference:
         komsco_latitude=37.5,
         komsco_longitude=127.0,
         legal_dong="역삼동",
-        naver_local_name="테스트 식당",
-        naver_local_address="서울특별시 강남구 테헤란로 1",
-        naver_local_category="음식점>한식",
-        naver_local_latitude=37.5,
-        naver_local_longitude=127.0,
     )
 
 
@@ -94,10 +89,21 @@ def test_population_is_komsco_only_nonhyeon_without_naver_join(monkeypatch, tmp_
     monkeypatch.setattr(cli, "_mysql_rows", fake_rows)
     population = cli.load_komsco_population(tmp_path, None)
     assert population.references[0].komsco_name == "논현 식당"
-    assert population.references[0].naver_local_name == ""
     assert "11680108" in seen[0]
     assert "restaurant_external_places" not in seen[0]
     assert "I0000002" not in seen[0]
+
+
+def test_population_keeps_coordinate_null_komsco_row(monkeypatch, tmp_path) -> None:
+    monkeypatch.setattr(cli, "_mysql_rows", lambda _root, _sql: [{
+        "restaurant_id": 8, "name": "좌표없는 식당", "address": "서울 강남구 논현동",
+        "detail_address": "", "latitude": "", "longitude": "",
+        "legal_dong_name": "논현동", "industry_name": "음식점",
+    }])
+    population = cli.load_komsco_population(tmp_path, None)
+    assert len(population.references) == 1
+    assert population.references[0].komsco_latitude is None
+    assert population.references[0].komsco_longitude is None
 
 
 def test_extracts_only_explicit_place_path() -> None:
@@ -307,7 +313,7 @@ def test_verified_checkpoint_round_trip(tmp_path) -> None:
     loaded = cli.load_verified_checkpoint(path)
     assert loaded[1]["place_id"] == "38648810"
     assert loaded[1]["verification_status"] == "RESOLVED"
-def test_resume_rejects_legacy_naver_local_output(tmp_path) -> None:
+def test_resume_rejects_non_komsco_output(tmp_path) -> None:
     report = tmp_path / "legacy.csv"
     report.write_text("restaurant_id,final_status\n1,RESOLVED\n", encoding="utf-8")
     writer = cli.ReportWriter(report, resume=True)
@@ -386,11 +392,6 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
         komsco_latitude=None,
         komsco_longitude=None,
         legal_dong="개포동",
-        naver_local_name="테스트 식당",
-        naver_local_address="서울 강남구 테스트로 1",
-        naver_local_category="음식점",
-        naver_local_latitude=None,
-        naver_local_longitude=None,
     )
     first = cli.CandidateDom(
         cli.PlaceCandidate("테스트 식당 1", "", "음식점", "", "111"), object(), 0, ("111",)
@@ -431,7 +432,7 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
         (),
         {"choose": lambda self, _reference, _candidates: type("Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"})()},
     )()
-    result = cli.run_one(object(), reference, "query", "station", matcher)
+    result = cli.run_one(object(), reference, "query", "KOMSCO", matcher)
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
     assert result.place_id == "222"
     assert result.detail_validation_attempts == 2
@@ -456,7 +457,7 @@ def test_resume_write_db_is_apply_only_and_never_starts_resolver(tmp_path, monke
     monkeypatch.setattr(
         cli,
         "load_komsco_population",
-        lambda _root, _limit: cli.KomscoPopulation((), {}, 0, 0, 0),
+        lambda _root, _limit: cli.KomscoPopulation((), 0),
     )
     monkeypatch.setattr(cli, "apply_resolved_csv_to_db", lambda _path, _root: (applied.append(1) or (1, 0)))
 
@@ -482,7 +483,7 @@ def test_csv_only_mode_does_not_apply_db_or_start_for_empty_fixture(tmp_path, mo
     monkeypatch.setattr(
         cli,
         "load_komsco_population",
-        lambda _root, _limit: cli.KomscoPopulation((), {}, 0, 0, 0),
+        lambda _root, _limit: cli.KomscoPopulation((), 0),
     )
     monkeypatch.setattr(cli, "apply_resolved_csv_to_db", lambda *_args: applied.append(1))
     monkeypatch.setattr(cli, "sync_playwright", lambda: (_ for _ in ()).throw(AssertionError("no resolver")))

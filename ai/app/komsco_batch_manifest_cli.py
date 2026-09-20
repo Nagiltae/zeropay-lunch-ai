@@ -17,7 +17,7 @@ def main() -> int:
         parser.error("--size must be positive")
     root = Path(__file__).resolve().parents[2]
     load_local_env(root)
-    population = load_komsco_population(root, None, matched_only=False)
+    population = load_komsco_population(root, None)
     ids = [reference.restaurant_id for reference in population.references]
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for index in range(0, len(ids), args.size):

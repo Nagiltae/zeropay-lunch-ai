@@ -140,28 +140,9 @@ SPRING_PROFILES_ACTIVE=local KOMSCO_IMPORT_ENABLED=true \
 
 Docker Compose의 백엔드는 `Asia/Seoul` 기준 매주 일요일 새벽 3시에 동일한 전체 조회를 실행합니다. 최신 상태가 계속사업자가 아니거나 KSIC 561·논현동 조건에서 벗어난 기존 가맹점은 삭제하지 않고 `active=false`로 전환합니다. 조건을 다시 만족하면 `active=true`로 복구하며, 확인된 기존 행은 `last_synced_at`과 `updated_at`을 갱신합니다. 직접 실행 환경에서는 `KOMSCO_SCHEDULER_ENABLED=true`로 활성화할 수 있습니다.
 
-## NAVER Local API
+## PCMap Place ID
 
-NAVER Local API 연동은 제거되었습니다. 기존 `restaurant_external_places` 행과 과거 보고서는 historical 데이터로 보존하며 신규 KOMSCO/PCMap pipeline의 입력이나 fallback으로 사용하지 않습니다.
-
-Spring Boot는 `.env`를 자동으로 읽지 않으므로 직접 실행할 때 환경변수로 내보냅니다. 실제 API 실행은 호출 범위와 redacted 요청을 확인하고 승인한 뒤에만 수행합니다.
-
-```bash
-set -a
-source .env
-set +a
-cd backend
-SPRING_PROFILES_ACTIVE=local NAVER_ENRICHMENT_ENABLED=true \
-  ./gradlew bootRun --args='--spring.main.web-application-type=none --limit=100'
-```
-
-검증 모드는 법정동 코드와 음식점 ID를 기준으로 deterministic round-robin 표본을 선택하고 CSV를 `build/reports/naver-enrichment`에 남깁니다. 증분 실행은 `--incremental --limit=100`, 전체 실행은 별도 사용자 확인 후에만 `--all`을 지정합니다. 증분 대상은 보강 행 부재, KOMSCO 매칭 입력 변경, 상태별 재시도 시각 도래 또는 refresh TTL 만료 행입니다.
-
-검색은 `상호명 법정동명`을 먼저 사용하고 신뢰할 수 있는 후보가 없을 때 `상호명 강남구`를 한 번만 추가합니다. 각 검색은 최대 5개 후보만 받고, 상호명·주소·300m 이내 거리·음식점 카테고리 점수를 적용합니다. 명시된 category가 음식점 계열이 아니거나 이름 증거가 최소 기준보다 낮으면 점수 계산 후보에서 제외합니다. MATCHED는 기존 70점·gap 8점 외에도 주소 25점 이상 또는 이름 32점 이상이면서 50m 이내라는 strong evidence가 필요하고, total만 높은 경우 AMBIGUOUS로 남깁니다. 401/403은 실행을 중단하며 개별 일시 장애는 `API_ERROR` 시도로 기록하되 기존 정상 매칭을 제거하지 않습니다.
-
-`MATCHED+음식점 category`만 ELIGIBLE입니다. `MATCHED+명확한 비음식점 category`는 INELIGIBLE이고 AMBIGUOUS, UNMATCHED, API_ERROR, 미조회 또는 category 불명은 UNKNOWN입니다. 추천 조회는 기존 영업·제로페이·보강 완료 조건과 함께 ELIGIBLE을 강제합니다.
-
-NAVER의 WGS84 좌표는 응답에 따라 소수점 도(degree) 또는 `10^7` 배율 정수 문자열로 올 수 있으므로 저장·거리 계산 전에 소수점 좌표로 정규화합니다.
+Place ID 수집은 KOMSCO 논현동 원천 데이터와 Playwright PCMap 후보 DOM만 사용합니다. `data-nlog-params`의 명시적 Place ID를 추출하고 `/home` 상세 검증 후 DOM 기반 메뉴·영업시간·리뷰를 수집합니다. 과거 `restaurant_external_places` 행과 보고서는 historical 자료로만 보존하며 신규 검색 입력으로 사용하지 않습니다.
 
 ## 검사 명령
 

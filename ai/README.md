@@ -19,7 +19,7 @@ poetry run python -m app.place_resolver_cli --limit 5 --dry-run --output build/r
 poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-nonhyeon.csv
 
 # 중단된 CSV 재개
-poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-fallback-full.csv --resume
+poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-only.csv --resume
 ```
 
 실행 전 Python/Playwright Chromium/Ollama 모델/MySQL 네트워크를 preflight로 확인합니다. 결과는 처리 즉시 `ai/build/reports/naver-place-resolver/`에 CSV로 저장되며 기본 모드에서는 MySQL을 쓰지 않습니다. CAPTCHA, 403/429 또는 서비스 접근 제한이 감지되면 즉시 중단합니다. 로그인·CAPTCHA·anti-bot 우회와 NAVER 내부 API 사용은 하지 않습니다.
@@ -28,7 +28,7 @@ RESOLVED이고 detail validation이 `PASS`인 결과만 검토 후 다음처럼 
 
 ```bash
 cd ai
-poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-fallback-full.csv --resume --write-db
+poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-only.csv --resume --write-db
 ```
 
 중단 시 이미 저장된 CSV는 보존되며, 터미널에 표시된 `--resume` 명령으로 재개합니다. CSV의 `final_status`, `place_id`, `reason`, `elapsed_ms`와 종료 summary의 상태별 수치를 검토합니다.
@@ -72,20 +72,20 @@ cd ai
 # 고정 manifest 한 batch 실행(실제 DB 반영)
 poetry run python -m app.place_pipeline_cli \
   --manifest build/reports/naver-place-pipeline/komsco-batch-0001.manifest \
-  --include-unmatched --limit 100 --write-db --resume \
+  --limit 100 --write-db --resume \
   --output build/reports/naver-place-pipeline/komsco-batch-0001.csv \
   --ledger build/reports/naver-place-pipeline/komsco-batch-0001.ledger.csv
 
 # 중단 후 같은 batch 재개
 poetry run python -m app.place_pipeline_cli \
   --manifest build/reports/naver-place-pipeline/komsco-batch-0001.manifest \
-  --include-unmatched --limit 100 --write-db --resume \
+  --limit 100 --write-db --resume \
   --output build/reports/naver-place-pipeline/komsco-batch-0001.csv \
   --ledger build/reports/naver-place-pipeline/komsco-batch-0001.ledger.csv
 
 # 특정 음식점만 실행
 poetry run python -m app.place_pipeline_cli --restaurant-id 4280 \
-  --include-unmatched --write-db --output build/reports/naver-place-pipeline/restaurant-4280.csv
+  --write-db --output build/reports/naver-place-pipeline/restaurant-4280.csv
 
 # ledger 상태만 확인(네트워크/DB 작업 없음)
 poetry run python -m app.place_pipeline_cli --status \
@@ -94,7 +94,7 @@ poetry run python -m app.place_pipeline_cli --status \
 # terminal 결과를 명시적으로 다시 처리
 poetry run python -m app.place_pipeline_cli \
   --manifest build/reports/naver-place-pipeline/komsco-batch-0001.manifest \
-  --include-unmatched --write-db --resume --force-resolve \
+  --write-db --resume --force-resolve \
   --output build/reports/naver-place-pipeline/komsco-batch-0001-force.csv \
   --ledger build/reports/naver-place-pipeline/komsco-batch-0001-force.ledger.csv
 ```

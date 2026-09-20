@@ -13,11 +13,10 @@ from playwright.sync_api import sync_playwright
 
 from app.place_apollo_parser import parse_place_detail_state
 from app.place_dom_detail_crawler import PlaceDomDetailCrawler
-from app.place_resolver import ResolutionStatus, nearest_station, query_for, station_query
+from app.place_resolver import ResolutionStatus, query_for
 from app.place_resolver_cli import (
     load_komsco_population,
     load_local_env,
-    load_stations,
     preflight,
     run_one,
 )
@@ -56,9 +55,8 @@ def main() -> int:
     root = Path(__file__).resolve().parents[2]
     load_local_env(root)
     preflight(root, args.output, False, require_resolver=True)
-    population = load_komsco_population(root, args.limit, matched_only=True)
+    population = load_komsco_population(root, args.limit)
     refs = list(population.references)[: args.limit]
-    stations = load_stations(root)
     matcher = QwenCandidateMatcher(OllamaClient())
     dom_crawler = PlaceDomDetailCrawler()
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -72,15 +70,8 @@ def main() -> int:
             page.set_default_timeout(3_000)
             try:
                 for index, reference in enumerate(refs, 1):
-                    station = nearest_station(reference, stations)
-                    result = None
-                    for stage, query in (
-                        ("station", station_query(reference, station)),
-                        ("dong", query_for(reference)),
-                    ):
-                        result = run_one(page, reference, query, stage, matcher)
-                        if result.resolution.status == ResolutionStatus.RESOLVED:
-                            break
+                    query = query_for(reference)
+                    result = run_one(page, reference, query, "KOMSCO", matcher)
                     assert result is not None
                     row = {field: "" for field in FIELDS}
                     row.update(

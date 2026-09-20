@@ -83,10 +83,9 @@ class OllamaClient:
 def build_user_prompt(reference, candidates) -> str:
     lines = [
         "기준 음식점:",
-        f"이름: {reference.naver_local_name or reference.komsco_name or '없음'}",
-        f"도로명 주소: {reference.naver_local_road_address or '없음'}",
-        f"지번 주소: {reference.naver_local_address or reference.komsco_address or '없음'}",
-        f"카테고리: {reference.naver_local_category or '없음'}",
+        f"이름: {reference.komsco_name or '없음'}",
+        f"주소: {reference.komsco_address or '없음'}",
+        "카테고리: 음식점",
         "",
         "네이버 플레이스 검색 후보:",
     ]

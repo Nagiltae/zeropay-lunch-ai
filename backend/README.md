@@ -57,7 +57,7 @@ MYSQL_PASSWORD=zeropay_local \
 
 KOMSCO 적재는 루트 `.env`를 셸 환경으로 내보낸 뒤 `KOMSCO_IMPORT_ENABLED=true`와 `--spring.main.web-application-type=none`을 함께 지정해 한 번 실행합니다. 자세한 명령과 환경변수는 루트 `README.md`와 `docs/deployment.md`를 참고하세요.
 
-NAVER Local 보강도 같은 수동 runner 패턴을 사용합니다. `NAVER_ENRICHMENT_ENABLED=true`와 `--limit=100`은 법정동별 검증 표본, `--incremental --limit=100`은 변경·TTL·재시도 대상, `--all`은 명시적 전체 실행입니다. 기본값은 비활성이고 Scheduler와 공개 API는 없습니다. 각 실행은 CSV 검증 리포트를 생성합니다.
+Place ID 보강은 별도 Local API runner 없이 AI의 KOMSCO→PCMap DOM pipeline에서 수행합니다. 기존 `restaurant_external_places` 데이터는 historical mapping으로 보존됩니다.
 
 ## 검증
 

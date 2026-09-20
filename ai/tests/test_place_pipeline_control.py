@@ -28,12 +28,6 @@ def test_verified_checkpoint_reuses_place_id_without_resolution():
         komsco_latitude=None,
         komsco_longitude=None,
         legal_dong="신사동",
-        naver_local_name="",
-        naver_local_address="",
-        naver_local_road_address="",
-        naver_local_category="음식점",
-        naver_local_latitude=None,
-        naver_local_longitude=None,
     )
     result = pipeline.checkpoint_result(reference, {
         "place_id": "1618902912",
@@ -44,6 +38,10 @@ def test_verified_checkpoint_reuses_place_id_without_resolution():
     assert result.matcher_source == "VERIFIED_CHECKPOINT"
     assert result.place_id == "1618902912"
     assert result.resolution.status is ResolutionStatus.RESOLVED
+
+
+def test_default_checkpoint_is_komsco_only():
+    assert pipeline.DEFAULT_CHECKPOINT_NAME == "verified-place-ids-komsco-only.csv"
 
 
 def test_navigation_rate_limiter_is_injectable_and_paces_calls():

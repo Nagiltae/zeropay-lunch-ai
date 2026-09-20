@@ -27,18 +27,15 @@ from app.place_resolver import (
     Resolution,
     ResolutionStatus,
     RestaurantReference,
-    StationReference,
     deterministic_fast_path,
     distance_meters,
     candidate_evidence,
     extract_candidate_place_ids,
-    nearest_station,
     normalize_text,
     query_for,
     hard_rejection_reason,
     rank_candidates,
     resolve_candidate,
-    station_query,
 )
 from app.place_request_limiter import NavigationRateLimiter
 from app.qwen_candidate_matcher import LlmUnavailable, OllamaClient, QwenCandidateMatcher
@@ -129,15 +126,13 @@ class RunResult:
 @dataclass(frozen=True)
 class KomscoPopulation:
     references: tuple[RestaurantReference, ...]
-    previous_naver_statuses: dict[int, str]
     total_count: int
-    previously_matched_count: int
-    previously_unmatched_count: int
 
 
 VERIFIED_CHECKPOINT_FIELDS = (
     "restaurant_id", "place_id", "resolved_name", "resolved_address", "verification_status", "verified_at"
 )
+DEFAULT_CHECKPOINT_NAME = "verified-place-ids-komsco-only.csv"
 
 
 def load_verified_checkpoint(path: Path) -> dict[int, dict[str, str]]:
@@ -231,9 +226,7 @@ def _docker_mysql_command(sql: str) -> list[str]:
     ]
 
 
-def load_komsco_population(
-    root: Path, limit: int | None, *, matched_only: bool = False
-) -> KomscoPopulation:
+def load_komsco_population(root: Path, limit: int | None) -> KomscoPopulation:
     sql = """
 SELECT JSON_OBJECT(
     'restaurant_id', r.id,
@@ -254,12 +247,10 @@ WHERE r.source_provider = 'KOMSCO'
   AND r.legal_dong_code = '11680108'
   AND NULLIF(TRIM(r.name), '') IS NOT NULL
   AND NULLIF(TRIM(r.address), '') IS NOT NULL
-  AND r.latitude IS NOT NULL
-  AND r.longitude IS NOT NULL
 ORDER BY r.legal_dong_name, r.id
 """
     rows = _mysql_rows(root, sql)
-    # KOMSCO is the sole population source; NAVER match status never limits it.
+    # KOMSCO is the sole population source; external-place rows are not joined.
     matched = []
     unmatched = rows
     if limit is None:
@@ -292,21 +283,11 @@ ORDER BY r.legal_dong_name, r.id
             komsco_latitude=_float(str(row.get("latitude") or "")),
             komsco_longitude=_float(str(row.get("longitude") or "")),
             legal_dong=str(row.get("legal_dong_name") or ""),
-            naver_local_name="",
-            naver_local_address="",
-            naver_local_road_address="",
-            naver_local_category=str(row.get("industry_name") or ""),
-            naver_local_latitude=None,
-            naver_local_longitude=None,
         )
         for row in selected
     )
-    statuses = {int(row["restaurant_id"]): "NOT_ENRICHED" for row in selected}
     return KomscoPopulation(
         references,
-        statuses,
-        len(rows),
-        0,
         len(rows),
     )
 
@@ -543,20 +524,6 @@ def load_detail_page(page, candidate: PlaceCandidate, *, before_navigation=None)
         bool(address_data.get("route_found")),
         str(address_data.get("status") or "NO_DATA"),
     )
-
-
-def load_stations(root: Path) -> list[StationReference]:
-    values: list[StationReference] = []
-    pattern = re.compile(r"\('[^']+',\s*'([^']+)',\s*'[^']+',\s*([0-9.]+),\s*([0-9.]+),")
-    for migration in (
-        root / "backend/src/main/resources/db/migration/V10__create_subway_stations.sql",
-        root / "backend/src/main/resources/db/migration/V11__add_gangnam_stations.sql",
-    ):
-        for match in pattern.finditer(migration.read_text(encoding="utf-8")):
-            values.append(
-                StationReference(match.group(1), float(match.group(2)), float(match.group(3)))
-            )
-    return list({station.name: station for station in values}.values())
 
 
 def _empty_result(reference, query, stage, candidates, status, flags, started, **kwargs):
@@ -850,10 +817,9 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
 
 
 REPORT_FIELDS = [
-    "source_type", "previous_naver_status", "restaurant_id", "reference_name",
+    "source_type", "restaurant_id", "reference_name",
     "query", "query_stage",
-    "initial_status", "naver_fallback_used", "naver_fallback_result",
-    "fallback_recovered", "final_status",
+    "final_status",
     "original_candidate_count", "filtered_candidate_count", "matcher_source",
     "qwen_ranking", "selected_candidate_index", "selected_candidate_name",
     "qwen_used", "qwen_confidence", "candidate_url", "place_id", "place_id_source",
@@ -867,11 +833,6 @@ REPORT_FIELDS = [
 
 def result_row(
     result: RunResult,
-    previous_naver_status: str,
-    initial_status: str,
-    fallback_used: bool,
-    fallback_result: str,
-    fallback_recovered: bool,
 ) -> dict[str, object]:
     status = result.resolution.status.value
     ranking = list(result.qwen_candidate_indices)
@@ -882,15 +843,10 @@ def result_row(
     )
     return {
         "source_type": "KOMSCO_ONLY",
-        "previous_naver_status": previous_naver_status,
         "restaurant_id": result.reference.restaurant_id,
         "reference_name": result.reference.komsco_name,
         "query": result.query,
         "query_stage": result.query_stage,
-        "initial_status": initial_status,
-        "naver_fallback_used": fallback_used,
-        "naver_fallback_result": fallback_result,
-        "fallback_recovered": fallback_recovered,
         "final_status": status,
         "original_candidate_count": result.original_candidate_count,
         "filtered_candidate_count": result.filtered_candidate_count,
@@ -969,21 +925,9 @@ class ReportWriter:
     def append(
         self,
         result: RunResult,
-        previous_naver_status: str,
-        initial_status: str,
-        fallback_used: bool,
-        fallback_result: str,
-        fallback_recovered: bool,
     ) -> None:
         self.writer.writerow(
-            result_row(
-                result,
-                previous_naver_status,
-                initial_status,
-                fallback_used,
-                fallback_result,
-                fallback_recovered,
-            )
+            result_row(result)
         )
         self.stream.flush()
         os.fsync(self.stream.fileno())
@@ -1042,7 +986,6 @@ def preflight(
         except Exception as error:
             raise RuntimeError(f"[FAIL] Ollama {ollama_url}: {error}") from error
         print(f"[OK] Ollama {ollama_url} / {model}")
-        print("[SAFE] NAVER Local API credentials are not used")
     else:
         print("[SAFE] CSV apply-only mode: resolver network checks disabled")
 
@@ -1082,7 +1025,7 @@ def _sql_value(value: str | None) -> str:
     return f"'{_sql_escape(value)}'"
 
 
-def _existing_place_mapping(root: Path, place_id: str) -> int | None:
+def _existing_pcmap_mapping(root: Path, place_id: str) -> int | None:
     rows = _mysql_rows(
         root,
         "SELECT JSON_OBJECT('restaurant_id', restaurant_id) "
@@ -1115,10 +1058,10 @@ def _write_place_mapping(
 ) -> bool:
     if not place_id.isdigit():
         return False
-    existing_place_owner = _existing_place_mapping(root, place_id)
+    existing_place_owner = _existing_pcmap_mapping(root, place_id)
     if existing_place_owner is not None and existing_place_owner != restaurant_id:
         raise RuntimeError(
-            f"NAVER Place ID {place_id} is already mapped to restaurant "
+            f"PCMap Place ID {place_id} is already mapped to restaurant "
             f"{existing_place_owner}; refusing remap"
         )
     link = f"https://pcmap.place.naver.com/restaurant/{place_id}/home"
@@ -1249,7 +1192,7 @@ def main() -> int:
     parser.add_argument(
         "--write-db",
         action="store_true",
-        help="RESOLVED + PASS + valid place_id 결과만 NAVER mapping에 반영",
+        help="RESOLVED + PASS + valid place_id 결과만 PCMap mapping에 반영",
     )
     args = parser.parse_args()
     if args.limit is not None and args.limit < 1:
@@ -1269,12 +1212,8 @@ def main() -> int:
     population = load_komsco_population(root, args.limit)
     refs = list(population.references)
     if args.limit is not None and len(refs) < args.limit:
-        raise RuntimeError(f"KOMSCO-direct 대상이 {args.limit}건보다 적습니다")
-    print(
-        f"KOMSCO-direct target: {population.total_count} "
-        f"(previous MATCHED: {population.previously_matched_count}, "
-        f"previous unmatched/not-enriched: {population.previously_unmatched_count})"
-    )
+        raise RuntimeError(f"KOMSCO-only 대상이 {args.limit}건보다 적습니다")
+    print(f"KOMSCO-only target: {population.total_count}")
     writer = ReportWriter(output, args.resume)
     completed_ids = writer.completed_ids() if args.resume else set()
     if completed_ids:
@@ -1285,7 +1224,7 @@ def main() -> int:
         db_writes, missing_external_rows = apply_resolved_csv_to_db(output, root)
         print(
             f"Applied reviewed RESOLVED rows: {db_writes} "
-            f"(missing existing NAVER rows: {missing_external_rows})"
+            f"(missing existing PCMap rows: {missing_external_rows})"
         )
         writer.close()
         print("CSV DB apply mode complete; no restaurants were crawled.")
@@ -1298,7 +1237,6 @@ def main() -> int:
         print(f"All selected restaurants are already complete. CSV: {output}")
         print(f"DB writes: {db_writes}")
         return 0
-    stations = load_stations(root)
     matcher = QwenCandidateMatcher(OllamaClient())
     stopped = False
     counts = {status.value: 0 for status in ResolutionStatus}
@@ -1316,38 +1254,22 @@ def main() -> int:
         try:
             for index, reference in enumerate(pending_refs, start=1):
                 restaurant_started = monotonic()
-                station = nearest_station(reference, stations)
-                stages = [
-                    ("station", station_query(reference, station)),
-                    ("dong", query_for(reference)),
-                    ("gangnam", query_for(reference, fallback=True)),
-                ]
                 result = None
-                for stage, query in stages:
-                    try:
-                        result = run_one(
-                            page, reference, query, stage, matcher,
-                            before_navigation=limiter.before_navigation,
+                query = query_for(reference)
+                try:
+                    result = run_one(
+                        page, reference, query, "KOMSCO", matcher,
+                        before_navigation=limiter.before_navigation,
+                    )
+                except RuntimeError as error:
+                    if str(error).startswith("BLOCKED:"):
+                        result = _empty_result(
+                            reference, query, "KOMSCO", (), ResolutionStatus.BLOCKED,
+                            (str(error),), monotonic(),
                         )
-                    except RuntimeError as error:
-                        if str(error).startswith("BLOCKED:"):
-                            result = _empty_result(
-                                reference,
-                                query,
-                                stage,
-                                (),
-                                ResolutionStatus.BLOCKED,
-                                (str(error),),
-                                monotonic(),
-                            )
-                            stopped = True
-                            break
+                        stopped = True
+                    else:
                         raise
-                    if result.resolution.status in {
-                        ResolutionStatus.RESOLVED,
-                        ResolutionStatus.AMBIGUOUS,
-                    }:
-                        break
                 if result:
                     initial_status = result.resolution.status.value
                     initial_counts[initial_status] += 1
@@ -1356,14 +1278,7 @@ def main() -> int:
                         result,
                         elapsed_ms=int((monotonic() - restaurant_started) * 1000),
                     )
-                    writer.append(
-                        result,
-                        "NOT_ENRICHED",
-                        initial_status,
-                        False,
-                        "NOT_USED",
-                        False,
-                    )
+                    writer.append(result)
                     counts[result.resolution.status.value] += 1
                     if args.write_db and result.resolution.status == ResolutionStatus.RESOLVED:
                         if write_resolved_to_db(result, root):
@@ -1384,7 +1299,6 @@ def main() -> int:
     print(f"Processed: {processed} / {len(refs)}")
     print("Initial: " + " ".join(f"{key}: {value}" for key, value in initial_counts.items()))
     print(" ".join(f"{key}: {value}" for key, value in counts.items()))
-    print("NAVER Local API calls: 0 (removed)")
     print(f"Qwen resolver calls: {qwen_calls}")
     print(f"DB writes: {db_writes}")
     print(f"Total time: {time.strftime('%H:%M:%S', time.gmtime(monotonic() - run_started))}")

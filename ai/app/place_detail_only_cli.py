@@ -12,7 +12,12 @@ from time import monotonic
 from playwright.sync_api import sync_playwright
 
 from app.place_dom_detail_crawler import PlaceDomDetailCrawler
-from app.place_resolver_cli import load_local_env, load_verified_checkpoint, preflight
+from app.place_resolver_cli import (
+    DEFAULT_CHECKPOINT_NAME,
+    load_local_env,
+    load_verified_checkpoint,
+    preflight,
+)
 
 FIELDS = [
     "restaurant_id", "place_id", "resolved_name", "home", "hours", "menu_page",
@@ -30,7 +35,7 @@ def main() -> int:
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     load_local_env(root)
-    checkpoint = args.checkpoint or root / "ai/build/reports/naver-place-pipeline/verified-place-ids.csv"
+    checkpoint = args.checkpoint or root / "ai/build/reports/naver-place-pipeline" / DEFAULT_CHECKPOINT_NAME
     preflight(root, args.output, False, require_resolver=True)
     rows = list(load_verified_checkpoint(checkpoint).values())[: args.limit]
     args.output.parent.mkdir(parents=True, exist_ok=True)

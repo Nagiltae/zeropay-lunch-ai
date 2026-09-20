@@ -73,25 +73,7 @@ KOMSCO 일회성 import 설정은 다음과 같습니다.
 
 Docker Compose는 사용자가 승인한 KOMSCO 쿼리를 매주 일요일 03:00에 실행하도록 Scheduler를 기본 활성화합니다. IntelliJ나 Gradle의 `local` 직접 실행은 기본 비활성이므로 필요하면 `KOMSCO_SCHEDULER_ENABLED=true`를 명시합니다. Scheduler는 단일 백엔드 인스턴스를 전제로 하며, AWS에서 여러 인스턴스를 동시에 운영하기 전에는 DB 기반 분산 lock 또는 별도 단일 실행 주체를 결정해야 합니다.
 
-과거 NAVER API HUB 보강 환경변수는 신규 pipeline에서 사용하지 않습니다. 기존 historical 설정이 남아 있는 배포 환경에서는 삭제 전 영향 확인이 필요합니다.
-
-| 환경변수 | 기본값 | 용도 |
-| --- | --- | --- |
-| `NAVER_CLIENT_ID` / `NAVER_CLIENT_SECRET` | 사용 안 함 | 신규 pipeline은 NAVER Local API를 호출하지 않음 |
-| `NAVER_CONNECT_TIMEOUT` | `3s` | 연결 제한 시간 |
-| `NAVER_READ_TIMEOUT` | `5s` | 응답 제한 시간 |
-| `NAVER_REQUEST_INTERVAL` | `200ms` | 순차 호출 사이 최소 간격 |
-| `NAVER_RETRY_BACKOFF` | `500ms` | 429·5xx·일시적 연결 장애 재시도 대기 |
-| `NAVER_MAX_ATTEMPTS` | `2` | 한 검색의 최대 시도 횟수 |
-| `NAVER_ENRICHMENT_ENABLED` | `false` | opt-in 수동 `ApplicationRunner` 활성화 |
-| `NAVER_ENRICHMENT_LIMIT` | `100` | 검증·증분 실행에서 `--limit` 생략 시 처리 상한 |
-| `NAVER_MATCHED_REFRESH_TTL` | `720h` | 변경 없는 MATCHED 결과 재확인 주기 |
-| `NAVER_AMBIGUOUS_RETRY_DELAY` | `168h` | AMBIGUOUS 재시도 대기 |
-| `NAVER_UNMATCHED_RETRY_DELAY` | `168h` | UNMATCHED 재시도 대기 |
-| `NAVER_API_ERROR_RETRY_DELAY` | `1h` | 개별 API 장애 재시도 대기 |
-| `NAVER_REPORT_DIRECTORY` | `build/reports/naver-enrichment` | 실행별 CSV 리포트 경로 |
-
-`.env`는 Compose에서만 자동 변수 치환됩니다. IntelliJ/Gradle의 `local` 실행에서는 위 자격 증명과 실행 플래그를 프로세스 환경변수로 전달해야 합니다. Compose에도 변수가 연결되어 있지만 기본 실행은 `NAVER_ENRICHMENT_ENABLED=false`이며 Scheduler는 없습니다. 기본 실행은 최대 100개 법정동별 표본 검증이고, `--incremental --limit=<n>`과 별도 승인 후 `--all`을 명시할 수 있습니다. 인증 실패(401/403)는 즉시 중단하고, 429와 일시적인 5xx만 제한적으로 재시도합니다.
+신규 Place ID pipeline은 NAVER credential이나 Local API connectivity를 요구하지 않습니다. PCMap 접근은 AI Playwright pipeline에서만 수행하며 403/429 발생 시 batch를 중단합니다.
 
 MySQL과 Qdrant 포트는 로컬 호스트에만 바인딩됩니다. 컨테이너가 없어도 Compose가 이미지를 내려받고 컨테이너와 영속 볼륨을 생성합니다.
 
