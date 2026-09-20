@@ -1,8 +1,36 @@
 # API 계약
 
+## When to read
+- API endpoint 추가/변경
+- Request/Response 스키마 변경
+- Server-Sent Events(SSE) 추가
+
+
 > **Harness Role:** React↔Spring Boot 공개 API와 계획된 Spring Boot↔FastAPI 내부 계약의 기준입니다. Agent는 Controller, API client, DTO 또는 SSE event를 바꾸기 전에 읽고 같은 변경에서 갱신합니다. 이 문서가 없으면 호출 양쪽이 서로 다른 필드나 이벤트 순서를 구현할 수 있습니다. `architecture.md`의 서비스 경계를 구체화하고 API 테스트와 `check-integration.sh`의 기대 동작으로 이어집니다.
 
 이 문서는 구현된 엔드포인트와 계획 중인 계약을 구분합니다. 계획으로 표시된 경로와 페이로드는 아직 사용할 수 없습니다.
+
+## Historical: 활성 지하철역 목록
+
+기존 위치 선택 기능의 historical API입니다. 신규 React 대화 흐름에서는 호출하지 않습니다.
+
+```http
+GET /api/stations
+```
+
+응답 `200 OK`:
+
+```json
+[
+  {
+    "id": "gangnam",
+    "name": "강남역",
+    "line": "2호선/신분당선"
+  }
+]
+```
+
+인증되지 않은 요청은 `401 Unauthorized`입니다.
 
 ## 구현됨: AI 상태 확인
 
@@ -52,7 +80,7 @@ Content-Type: application/json
 
 `conversationId`는 Spring Boot가 대화 생성 시 발급합니다. 대화, 메시지와 추천 결과는 MySQL에 저장되며 React는 브라우저에 활성 대화 ID를 보관해 새로고침 후 기록을 복구합니다.
 
-기준 위치는 대화 생성 요청에 포함하며 대화 도중에는 바뀌지 않습니다. 위치 변경 시 기존 대화를 비활성화한 뒤 새 대화를 생성합니다.
+서비스 범위는 강남구 논현동으로 고정되며 대화 생성 요청에 위치 필드를 포함하지 않습니다.
 
 요청:
 
@@ -113,8 +141,6 @@ React는 진행 중인 assistant 말풍선에 `text`를 순서대로 이어 붙�
       "representativeMenu": "제육볶음",
       "averagePrice": 9000,
       "address": "서울특별시 강남구 강남대로 샘플 101",
-      "locationId": "gangnam",
-      "locationLabel": "강남역",
       "zeroPayAvailable": true,
       "sampleData": true,
       "reason": "선택한 강남역 기준 위치와 일치해요."
@@ -154,20 +180,16 @@ Content-Type: application/json
 요청:
 
 ```json
-{
-  "locationId": "gangnam"
-}
+{}
 ```
 
-지원하는 값은 `gangnam`, `yeoksam`, `seolleung`, `samseong`, `sinsa`, `apgujeong`, `cheongdam`, `suseo`입니다.
-생성된 대화는 현재 세션의 사용자와 연결됩니다.
+생성된 대화는 강남구 논현동 고정 서비스 범위와 현재 세션의 사용자에 연결됩니다.
 
 응답 `201 Created`:
 
 ```json
 {
   "conversationId": "a9b53de8-3de6-4a90-a2ae-014322947d92",
-  "locationId": "gangnam",
   "active": true,
   "createdAt": "2026-09-16T14:00:00Z"
 }

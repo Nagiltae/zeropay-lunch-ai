@@ -1,0 +1,27 @@
+"""Conservative, injectable pacing for Playwright PCMap requests."""
+
+from __future__ import annotations
+
+import time
+from collections.abc import Callable
+
+
+class NavigationRateLimiter:
+    def __init__(self, navigation_delay: float = 2.5, restaurant_delay: float = 5.0, *, clock: Callable[[], float] = time.monotonic, sleeper: Callable[[float], None] = time.sleep) -> None:
+        self.navigation_delay = max(0.0, navigation_delay)
+        self.restaurant_delay = max(0.0, restaurant_delay)
+        self._clock = clock
+        self._sleep = sleeper
+        self._last_navigation: float | None = None
+
+    def before_navigation(self) -> None:
+        now = self._clock()
+        if self._last_navigation is not None:
+            remaining = self.navigation_delay - (now - self._last_navigation)
+            if remaining > 0:
+                self._sleep(remaining)
+        self._last_navigation = self._clock()
+
+    def after_restaurant(self) -> None:
+        if self.restaurant_delay > 0:
+            self._sleep(self.restaurant_delay)

@@ -1,0 +1,21 @@
+restaurant_id,name,place_id,resolve_status,matcher_source,qwen_used,apollo_state,apollo_entities,apollo_place_entities,apollo_menu_entities,apollo_review_entities,apollo_hours_entities,apollo_base,apollo_menu,apollo_hours,apollo_review_stats,apollo_keywords,dom_base,dom_menu,dom_hours,dom_review_stats,dom_keywords,dom_reviews,dom_sections,apollo_ms,dom_ms,dom_status,dom_declared_menu_count,dom_menu_count,dom_hours_count,dom_keyword_count,dom_menu_mention_count,dom_theme_count,dom_representative_count,reason
+4282,선02,2063978135,AMBIGUOUS,QWEN,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4298,빨간모자피자,11580560,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4278,오레노 카츠,1488199141,RESOLVED,QWEN,True,True,69,11,13,4,2,True,False,False,False,False,True,False,True,False,False,True,,47,7664,PARTIAL,,0,1,0,15,15,10,
+4279,카츠오우 도곡점,1003690665,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4289,수궁갈비집,13150128,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4296,돌리고제주도야지,,NOT_FOUND,DETERMINISTIC,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO_CONFIDENT_CANDIDATE
+4419,파리바게뜨 수서역점,11684209,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4280,소나무,1618902912,AMBIGUOUS,QWEN,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+5719,서울동,1813928080,RESOLVED,QWEN,True,True,76,11,31,4,2,True,False,False,False,False,True,True,True,False,False,False,,41,555,PARTIAL,,30,1,0,0,0,0,
+4295,전라도밥집 순천댁,,NOT_FOUND,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,PLACE_ID_NOT_IN_CANDIDATE_DOM
+4333,문,1773108313,RESOLVED,QWEN,True,True,56,11,7,4,4,True,False,False,False,False,True,True,True,False,False,False,,35,841,PARTIAL,,6,1,0,0,0,0,
+4284,카페알케미,136397665,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4361,강남햅쌀만꼬마김밥,1170046203,RESOLVED,SINGLE_CANDIDATE,False,True,72,11,16,4,4,True,False,False,False,False,True,True,True,False,False,False,,35,944,PARTIAL,,14,1,0,0,0,0,
+4276,광부,13098230,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4299,오마뎅 개포래미안포레스트점,1195725724,RESOLVED,SINGLE_CANDIDATE,False,True,51,11,5,4,4,True,False,False,False,False,True,True,True,False,False,False,,34,935,PARTIAL,,4,1,0,0,0,0,
+4321,대포집,1609486868,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4283,카발,64158581,AMBIGUOUS,QWEN,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4288,사리원,11710938,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4294,야키니쿠규,1697940428,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
+4616,미가,159945533,AMBIGUOUS,QWEN,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED

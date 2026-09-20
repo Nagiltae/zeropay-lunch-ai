@@ -134,15 +134,15 @@ SPRING_PROFILES_ACTIVE=local KOMSCO_IMPORT_ENABLED=true \
   ./gradlew bootRun --args='--spring.main.web-application-type=none'
 ```
 
-실행 전 MySQL이 떠 있어야 합니다. 14개 강남구 법정동의 모든 페이지 수집이 성공한 뒤에만 DB upsert를 시작하며 결과 집계를 로그로 출력합니다. KOMSCO에는 메뉴·가격·영업시간이 없으므로 적재 직후 행은 `recommendation_ready=false`이고 기존 추천 후보에는 포함되지 않습니다.
+실행 전 MySQL이 떠 있어야 합니다. 현재 설정된 논현동 코드 `11680108`의 모든 페이지 수집이 성공한 뒤에만 DB upsert를 시작하며 결과 집계를 로그로 출력합니다. KOMSCO에는 메뉴·가격·영업시간이 없으므로 적재 직후 행은 `recommendation_ready=false`이고 기존 추천 후보에는 포함되지 않습니다.
 
 기존 KOMSCO snapshot을 새 필터 결과로 완전히 교체할 때만 `KOMSCO_REPLACE_EXISTING=true`를 함께 지정합니다. 전체 API 조회와 정제가 성공한 뒤 하나의 DB 트랜잭션에서 `source_provider=KOMSCO` 행만 삭제·재삽입하며, 실패하면 삭제까지 롤백합니다.
 
-Docker Compose의 백엔드는 `Asia/Seoul` 기준 매일 새벽 3시에 동일한 전체 조회를 실행합니다. 최신 상태가 계속사업자가 아니거나 KSIC 561·강남구·제공기관 조건에서 벗어난 기존 가맹점은 삭제하지 않고 `active=false`로 전환합니다. 조건을 다시 만족하면 `active=true`로 복구하며, 확인된 기존 행은 `last_synced_at`과 `updated_at`을 갱신합니다. 직접 실행 환경에서는 `KOMSCO_SCHEDULER_ENABLED=true`로 활성화할 수 있습니다.
+Docker Compose의 백엔드는 `Asia/Seoul` 기준 매주 일요일 새벽 3시에 동일한 전체 조회를 실행합니다. 최신 상태가 계속사업자가 아니거나 KSIC 561·논현동 조건에서 벗어난 기존 가맹점은 삭제하지 않고 `active=false`로 전환합니다. 조건을 다시 만족하면 `active=true`로 복구하며, 확인된 기존 행은 `last_synced_at`과 `updated_at`을 갱신합니다. 직접 실행 환경에서는 `KOMSCO_SCHEDULER_ENABLED=true`로 활성화할 수 있습니다.
 
-## NAVER Local 음식점 보강
+## NAVER Local API
 
-활성 KOMSCO 음식점을 NAVER API HUB 지역 검색 결과와 비교하는 기능은 공개 API나 Scheduler가 아닌 opt-in `ApplicationRunner`입니다. KOMSCO 상호·주소·좌표를 원본으로 유지하며 NAVER 결과와 `MATCHED`/`AMBIGUOUS`/`UNMATCHED`, 점수 근거와 마지막 API 시도 상태는 별도 `restaurant_external_places` 테이블에 저장합니다. 추천 가능 여부는 `restaurants.recommendation_eligibility`의 `ELIGIBLE`/`INELIGIBLE`/`UNKNOWN`으로 별도 관리하며 기본 검증 범위는 100개입니다.
+NAVER Local API 연동은 제거되었습니다. 기존 `restaurant_external_places` 행과 과거 보고서는 historical 데이터로 보존하며 신규 KOMSCO/PCMap pipeline의 입력이나 fallback으로 사용하지 않습니다.
 
 Spring Boot는 `.env`를 자동으로 읽지 않으므로 직접 실행할 때 환경변수로 내보냅니다. 실제 API 실행은 호출 범위와 redacted 요청을 확인하고 승인한 뒤에만 수행합니다.
 

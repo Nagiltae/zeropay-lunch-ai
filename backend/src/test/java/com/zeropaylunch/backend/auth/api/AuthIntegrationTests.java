@@ -43,7 +43,7 @@ class AuthIntegrationTests {
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"locationId":"gangnam"}
+                                {}
                                 """))
                 .andExpect(status().isUnauthorized());
     }
@@ -80,7 +80,7 @@ class AuthIntegrationTests {
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"locationId":"gangnam"}
+                                {}
                                 """))
                 .andExpect(status().isCreated())
                 .andReturn();

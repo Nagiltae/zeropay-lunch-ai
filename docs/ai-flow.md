@@ -1,5 +1,12 @@
 # AI 워크플로
 
+## When to read
+- FastAPI 수정
+- LLM prompt / 연동 변경
+- Embedding / Qdrant 변경
+- LangGraph 워크플로 변경
+
+
 > **Harness Role:** 현재 임시 분석과 향후 FastAPI·LLM 역할을 구분해 AI 변경 범위를 제한합니다. Agent는 추천 분석, fallback 또는 AI 계약을 수정하기 전에 읽습니다. 이 문서가 없으면 미구현 기능을 구현된 것으로 가정하거나 LLM에 필수 필터를 맡길 수 있습니다. `architecture.md`, `api-contract.md`와 AI·백엔드 테스트에 연결됩니다.
 
 ## 목표 흐름
@@ -8,7 +15,7 @@
 사용자 요청
   -> 의도 분석
   -> 사용자 컨텍스트 조회
-  -> 강남구 음식점 후보 조회
+  -> 강남구 논현동 음식점 후보 조회
   -> 필수 조건 필터링
   -> 의미 기반 검색
   -> 결정론적 순위 결정
@@ -52,3 +59,80 @@ LLM 출력이 프로그램 로직에 사용될 때는 반드시 검증된 구조
 현재 timeout과 최대 시도 설정은 계약과 환경설정으로 준비되어 있으며 실제 HTTP 클라이언트가 구현될 때 적용합니다. fallback 선택 로직과 테스트는 이미 구현되어 있습니다.
 
 Qdrant 클라이언트 연동, 컬렉션 구성, 의미 검색, LangGraph, LLM 제공자와 대체 처리 방식은 구현 예정입니다.
+
+## NAVER Place Resolver PoC
+
+Place ID 검증기는 `PCMap /place/list`를 직접 열어 공개 검색 결과 DOM을 읽습니다.
+후보별 `data-nlog-params.place_id`만 후보 DOM 범위 안에서 추출하고, 결정론적 matcher가 확정하지 못할 때만 로컬 Qwen3 8B가 최대 5개 후보 index를 순위화합니다. Qwen에는 Place ID를 전달하지 않으며, 순위 순서대로 각 후보의 ID로 `/restaurant/{placeId}/home` 상세 화면을 재검증해 첫 성공을 사용합니다. 좌표·category·부분 주소 누락은 UNKNOWN으로 유지하고 명백한 오답만 hard reject합니다.
+
+Resolver 입력은 KOMSCO 원천 음식점뿐이다. `source_provider=KOMSCO`, active, zero-pay, KSIC `561`, 계속사업자, 논현동 법정동 `11680108`, 이름·주소·좌표 필수 조건을 적용한다. `restaurant_external_places`의 historical NAVER row는 신규 resolver 입력이나 fallback으로 사용하지 않는다.
+
+```text
+PCMap direct search
+  -> candidate DOM extraction
+  -> deterministic matching
+  -> (ambiguous only) Qwen3 8B candidateIndex
+  -> candidate DOM data-nlog-params.place_id
+  -> PCMap restaurant detail verification
+  -> result (no stored NAVER fallback)
+```
+
+이 PoC는 `map.naver.com`과 `searchIframe`을 사용하거나 fallback하지 않습니다. Place ID Resolver의 애매한 후보 순위에만 로컬 Qwen3 8B를 사용할 수 있으며, NAVER Local API를 Place ID pipeline의 fallback으로 재호출하지 않습니다. 로컬 실행은 `OLLAMA_BASE_URL`(기본 `http://localhost:11434`)과 `LOCAL_LLM_MODEL`(기본 `qwen3:8b`)을 사용하며, 모델 준비는 `ollama pull qwen3:8b`입니다.
+
+### KOMSCO-only resolver
+
+신규 resolver는 KOMSCO reference로 PCMap 후보를 검색하고, 결정론적 비교와 필요한 경우 Qwen 후보 ranking 후 상세 페이지를 검증합니다. NAVER Local API와 저장된 NAVER fallback은 사용하지 않습니다.
+
+### Local Place Resolver Runbook
+
+1. `cd ai && poetry install && poetry run playwright install chromium`으로 환경을 준비하고, Ollama에서 `ollama pull qwen3:8b`를 실행합니다. CLI preflight가 Python, Chromium, Ollama, MySQL 네트워크와 출력 디렉터리를 확인합니다.
+2. 먼저 `cd ai && poetry run python -m app.place_resolver_cli --limit 5 --dry-run --output build/reports/naver-place-resolver/komsco-local-5.csv`으로 5건 CSV-only 검증을 수행합니다.
+3. 전체 CSV 수집은 `cd ai && poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-nonhyeon.csv`로 실행합니다. `--write-db`가 없으면 DB는 변경되지 않습니다.
+4. 터미널의 현재/전체, 상태별 누적 수, ETA를 확인합니다. Ctrl+C로 종료해도 결과는 건별 flush됩니다.
+5. 중단 후에는 같은 KOMSCO-only CSV에 `--resume`을 붙여 이미 완료된 `restaurant_id`를 건너뛰고 재개합니다. 이전 NAVER Local 모집단 CSV는 재사용하지 않습니다.
+6. CSV를 검토한 뒤에만 `cd ai && poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-fallback-full.csv --resume --write-db`를 추가합니다. `RESOLVED` + detail validation `PASS` + numeric Place ID만 `external_place_id`/도메인 URL을 upsert하며, NAVER row가 없으면 insert합니다. 다른 상태는 DB에 쓰지 않습니다.
+   `--resume --write-db`는 CSV 반영 후 즉시 종료하며 추가 PCMap 수집을 실행하지 않습니다.
+
+NAVER Local matching 검증은 Spring Boot에서 `--report-only`를 함께 사용합니다. 예를 들어
+`--balanced-status-sample --limit=45 --report-only`는 기존 MATCHED/AMBIGUOUS/UNMATCHED를
+각 15건씩 읽어 NAVER Local과 결정론적 matcher를 실행하고 audit CSV만 생성합니다. 이 모드에서는
+`restaurant_external_places`를 포함한 모든 DB write를 건너뜁니다.
+report-only CSV는 각 음식점 처리 직후 flush되며, `--resume`은
+`naver-deterministic-validation-*.csv` checkpoint를 우선 사용합니다. semantic/Qwen/Embedding
+컬럼이 있는 과거 실험 CSV는 자동 resume 입력에서 제외되며, 필요하면
+`--resume-source=/path/to/deterministic.csv`로 검증된 checkpoint를 명시할 수 있습니다.
+`--all` 진행률 total은 설정 limit이 아니라 실제 미처리 KOMSCO 대상 수이며, NAVER Local 호출 횟수와
+누적 latency가 로그에 표시됩니다.
+## Place detail pipeline
+
+Place ID가 `RESOLVED`된 뒤 `ai/app/place_detail_crawler.py`가 Resolver에서
+재사용한 Playwright context로 공개 PCMap `/restaurant/{placeId}/home`을 엽니다.
+페이지의 `window.__APOLLO_STATE__`를 `evaluate`로 Python에 전달하고 전용 파서
+(`place_apollo_parser.py`)가 기본정보, 영업시간, 메뉴와 리뷰 집계를 정규화합니다.
+일반 HTTP 방식은 별도 보조 경로로 유지하지만 접근 제한 비율이 높아 실제 기본
+경로로 사용하지 않습니다. 메뉴가 없거나 `menuCount`보다 부족할 때만 `/menu/list`를
+요청합니다.
+대표 리뷰 요청도 별도 선택 단계이며 전체 페이지를 역공학하지 않습니다.
+
+`PlaceDetail`의 수집 상태(`SUCCESS`, `PARTIAL`, `FAILED`)는 Place ID resolve
+상태와 분리됩니다. 기본 `place_pipeline_cli.py` 실행은 CSV-only이고,
+`--write-db`일 때만 V13 테이블에 idempotent upsert합니다. KOMSCO와 기존 NAVER
+deterministic Match는 이 파이프라인에서 덮어쓰지 않습니다. `--resume`은 완료된
+행을 건너뛰며, `--retry-failed`는 `PARTIAL`/`FAILED` checkpoint만 재처리합니다.
+
+Apollo와 화면 DOM의 안정성은 `app/place_detail_experiment_cli.py`로 별도 비교할
+수 있습니다. 이 실험은 기존 Match/DB를 바꾸지 않고 CSV만 생성합니다. 현재 20건
+비교에서는 Apollo와 DOM 모두 기본정보 일부만 확보했고 메뉴·영업시간·리뷰 통계는
+안정적으로 확보하지 못했으므로, 전체 수집을 성공으로 간주하지 않고 `PARTIAL`로
+남깁니다. 생성 CSS class는 parser 계약으로 사용하지 않습니다.
+
+제공된 실제 contract는 `data-nlog-area` 기반으로 유지합니다. 메뉴는
+`plc_qmn.tpiratesmore`에서 `/menu/list`로 이동한 뒤 `plc_bmv.menu` 카드를
+읽고, 영업시간은 `plc_btp.bzhour`를 펼칩니다. 리뷰는 `plc_rrr.rvmore`,
+`plc_rrv.rrvtab`, `plc_rrv.chartmore`, `plc_rrv.menufilter`,
+`plc_rrv.filter`, `#_review_list`, `rvshowmore`를 우선 사용합니다.
+
+검증된 Place ID는 `verified-place-ids.csv` checkpoint에 저장하며 다음 실행에서
+재검색하지 않고 상세 수집에 재사용합니다. `--force-resolve`가 명시된 경우에만
+재검색합니다. Checkpoint와 DB 저장은 독립적이며 report-only 실행도 checkpoint를
+생성할 수 있습니다.

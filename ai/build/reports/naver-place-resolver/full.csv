@@ -1,0 +1,68 @@
+restaurant_id,reference_name,query,query_stage,original_candidate_count,filtered_candidate_count,matcher_source,qwen_ranking,selected_candidate_index,selected_candidate_name,qwen_used,qwen_confidence,candidate_url,place_id,place_id_source,resolved_rank,detail_validation,detail_name,detail_address,detail_category,name_evidence,address_evidence,final_status,reason,risk_flags,elapsed_ms,detail_validation_attempts
+4282,집밥식당 선02,매봉역 선02,station,9,5,QWEN,"0,1,2",0,집밥식당 선02,True,LOW,#,1793398137,DOM_DATA_NLOG,1,PASS,집밥식당 선02,서울 강남구 개포로25길 5 1층,,EXACT,PARTIAL,RESOLVED,,,3084,1
+4299,오마뎅 개포래미안포레스트점,개포동 오마뎅 개포래미안포레스트점,dong,1,1,SINGLE_CANDIDATE,0,0,오마뎅 개포래미안포레스트점분식,False,,#,1195725724,DOM_DATA_NLOG,1,PASS,오마뎅 개포래미안포레스트점분식,서울 강남구 개포로 264 제 상가1동 1층 103-1호,,CONTAINED,PARTIAL,RESOLVED,,,1034,1
+4301,캠토토스트 국악고점,매봉역 캠토토스트국악고점,station,1,1,SINGLE_CANDIDATE,0,0,캠토토스트 국악고점토스트,False,,#,1782675433,DOM_DATA_NLOG,1,PASS,캠토토스트 국악고점토스트,서울 강남구 개포로22길 47 101호,,CONTAINED,PARTIAL,RESOLVED,,,1104,1
+4302,피자스쿨 개포1단지점,개포동 피자스쿨개포1단지점,dong,1,1,SINGLE_CANDIDATE,0,0,피자스쿨 개포1단지점피자,False,,https://pcmap.place.naver.com/restaurant/20823678/home,20823678,DOM_DATA_NLOG,,FAIL,피자스쿨 개포1단지점피자,서울 강남구 선릉로6길 8,,CONTAINED,DIFFERENT,AMBIGUOUS,TOP_K_DETAIL_VALIDATION_FAILED,TOP_K_DETAIL_VALIDATION_FAILED,987,1
+4348,이치진 강남개포점,매봉역 이치진,station,1,1,SINGLE_CANDIDATE,0,0,이치진 강남개포점,False,,#,1310475948,DOM_DATA_NLOG,1,PASS,이치진 강남개포점,서울 강남구 논현로18길 15 1층 이치진,,EXACT,PARTIAL,RESOLVED,,,977,1
+4358,대청만찬,강남구 대청만찬,gangnam,1,1,SINGLE_CANDIDATE,0,0,,False,,,,,,NOT_ATTEMPTED,,,,UNKNOWN,UNKNOWN,NOT_FOUND,PLACE_ID_NOT_IN_CANDIDATE_DOM,PLACE_ID_NOT_IN_CANDIDATE_DOM,460,0
+4360,김의영의 춘천닭갈비,구룡역 춘천닭갈비,station,3,3,QWEN,"0,1,2",0,김의영의 춘천닭갈비닭갈비,True,LOW,#,36883812,DOM_DATA_NLOG,1,PASS,김의영의 춘천닭갈비닭갈비,서울 강남구 선릉로8길 5 102호,,CONTAINED,PARTIAL,RESOLVED,,,2504,1
+4367,맛찬,대모산입구역 맛찬,station,1,1,SINGLE_CANDIDATE,0,0,맛찬한식,False,,#,1558499234,DOM_DATA_NLOG,1,PASS,맛찬한식,서울 강남구 개포로 615,,CONTAINED,PARTIAL,RESOLVED,,,1053,1
+4374,개포시장 봉평메밀막국수 칼국수,개포동역 봉평메밀 막국수,station,3,3,QWEN,"0,1,2",0,개포시장 봉평메밀막국수 칼국수막국수,True,LOW,#,1203242428,DOM_DATA_NLOG,1,PASS,개포시장 봉평메밀막국수 칼국수막국수,서울 강남구 개포로82길 5-8,,CONTAINED,EXACT,RESOLVED,,,2517,1
+4466,은율네,강남구 은율네,gangnam,1,1,SINGLE_CANDIDATE,0,0,,False,,,,,,NOT_ATTEMPTED,,,,UNKNOWN,UNKNOWN,NOT_FOUND,PLACE_ID_NOT_IN_CANDIDATE_DOM,PLACE_ID_NOT_IN_CANDIDATE_DOM,528,0
+4494,오븐데이 개포점,매봉역 오븐데이개포점,station,1,1,SINGLE_CANDIDATE,0,0,"오븐데이 개포점치킨,닭강정",False,,#,34465978,DOM_DATA_NLOG,1,PASS,"오븐데이 개포점치킨,닭강정",서울 강남구 논현로10길 29 강남친환경식품유통센터,,CONTAINED,PARTIAL,RESOLVED,,,1306,1
+4507,coffee the juda,매봉역 coffee the juda,station,2,2,QWEN,"0,1",0,커피더주다카페,True,LOW,https://pcmap.place.naver.com/restaurant/1512256507/home,1512256507,DOM_DATA_NLOG,,FAIL,커피더주다카페,서울 강남구 개포로30길 13 지상1층,,DIFFERENT,PARTIAL,AMBIGUOUS,TOP_K_DETAIL_VALIDATION_FAILED,TOP_K_DETAIL_VALIDATION_FAILED,2447,1
+4546,리엔,매봉역 리엔,station,4,4,QWEN,"0,1,2",0,리엔중식당,True,LOW,#,179387776,DOM_DATA_NLOG,1,PASS,리엔중식당,서울 강남구 개포로28길 9,,CONTAINED,PARTIAL,RESOLVED,,,2388,1
+4570,동대문엽기떡볶이 개포동역점,개포동역 불닭발동대문엽기떡볶이 개포동역점,station,1,1,SINGLE_CANDIDATE,0,0,동대문엽기떡볶이 개포동역점분식,False,,#,36601251,DOM_DATA_NLOG,1,PASS,동대문엽기떡볶이 개포동역점분식,서울 강남구 개포로 506 청우빌딩 103호,,CONTAINED,PARTIAL,RESOLVED,,,959,1
+4581,리미티드 하누,매봉역 리미티드 하누,station,1,1,SINGLE_CANDIDATE,0,0,리미티드 하누,False,,#,33243499,DOM_DATA_NLOG,1,PASS,리미티드 하누,서울 강남구 논현로10길 29 2층 (친환경 유통센터),,EXACT,PARTIAL,RESOLVED,,,1059,1
+4599,도야족발 개포점,개포동역 도야족발,station,1,1,SINGLE_CANDIDATE,0,0,"도야족발 개포점족발,보쌈",False,,#,38494858,DOM_DATA_NLOG,1,PASS,"도야족발 개포점족발,보쌈",서울 강남구 개포로 512 개포종합상가 115호,,CONTAINED,PARTIAL,RESOLVED,,,1058,1
+4622,교촌치킨 개포2호점,개포동 교촌치킨 개포2호점,dong,1,1,SINGLE_CANDIDATE,0,0,교촌치킨 개포2호점,False,,#,1742242826,DOM_DATA_NLOG,1,PASS,교촌치킨 개포2호점,서울 강남구 선릉로6길 12 교촌치킨 개포2호점,,EXACT,PARTIAL,RESOLVED,,,1069,1
+4627,시골밥상,매봉역 시골밥상,station,3,3,QWEN,"0,1,2",0,시골밥상한식,True,LOW,#,18423901,DOM_DATA_NLOG,1,PASS,시골밥상한식,서울 강남구 개포로25길 6,,CONTAINED,PARTIAL,RESOLVED,,,3255,1
+4658,미도리,매봉역 미도리,station,1,1,SINGLE_CANDIDATE,0,0,"미도리초밥,롤",False,,#,1124953384,DOM_DATA_NLOG,1,PASS,"미도리초밥,롤",서울 강남구 논현로18길 11,,CONTAINED,PARTIAL,RESOLVED,,,688,1
+4682,생선쓰,개포동역 생선쓰,station,1,1,SINGLE_CANDIDATE,0,0,"생선쓰초밥,롤",False,,#,1530589732,DOM_DATA_NLOG,1,PASS,"생선쓰초밥,롤",서울 강남구 개포로82길 7 삼성빌딩 204호,,CONTAINED,PARTIAL,RESOLVED,,,1090,1
+4704,개포골,개포동역 개포골,station,1,1,SINGLE_CANDIDATE,0,0,개포골한식,False,,#,36003999,DOM_DATA_NLOG,1,PASS,개포골한식,서울 강남구 삼성로 38,,CONTAINED,PARTIAL,RESOLVED,,,909,1
+4769,주박사 닭갈비,개포동역 주박사닭갈비,station,1,1,SINGLE_CANDIDATE,0,0,주박사 닭갈비,False,,#,1386806494,DOM_DATA_NLOG,1,PASS,주박사 닭갈비,서울 강남구 개포로 508 2층 204호,,EXACT,PARTIAL,RESOLVED,,,965,1
+4783,제주꿀꿀이족발,강남구 제주꿀꿀이족발,gangnam,1,1,SINGLE_CANDIDATE,0,0,,False,,,,,,NOT_ATTEMPTED,,,,UNKNOWN,UNKNOWN,NOT_FOUND,PLACE_ID_NOT_IN_CANDIDATE_DOM,PLACE_ID_NOT_IN_CANDIDATE_DOM,762,0
+4834,소담,대모산입구역 소담,station,6,5,QWEN,"0,1,2",0,소담한식,True,LOW,#,1816161265,DOM_DATA_NLOG,1,PASS,소담한식,서울 강남구 개포로 615,,CONTAINED,PARTIAL,RESOLVED,,,3264,1
+4864,그고깃집,개포동 그고깃집,dong,2,2,QWEN,"0,1",0,그고깃집,True,LOW,#,1522965415,DOM_DATA_NLOG,1,PASS,그고깃집,서울 강남구 선릉로6길 13 1층,,EXACT,PARTIAL,RESOLVED,,,2607,1
+4897,블루버드 카페,매봉역 블루버드,station,3,3,QWEN,"0,1,2",0,"블루버드카페카페,디저트",True,LOW,#,195013348,DOM_DATA_NLOG,1,PASS,"블루버드카페카페,디저트",서울 강남구 개포로22길 22 1층,블루버드카페,CONTAINED,PARTIAL,RESOLVED,,,2729,1
+4955,원베이커리 개포점,매봉역 원 베이커리,station,1,1,SINGLE_CANDIDATE,0,0,원베이커리 개포점베이커리,False,,#,1698895425,DOM_DATA_NLOG,1,PASS,원베이커리 개포점베이커리,서울 강남구 개포로 225,,CONTAINED,PARTIAL,RESOLVED,,,1012,1
+4991,채선당 개포점,개포동역 채선당개포점,station,1,1,SINGLE_CANDIDATE,0,0,채선당 개포점샤브샤브,False,,#,19452520,DOM_DATA_NLOG,1,PASS,채선당 개포점샤브샤브,서울 강남구 개포로82길 7,,CONTAINED,PARTIAL,RESOLVED,,,830,1
+5029,모리,대청역 모리,station,1,1,SINGLE_CANDIDATE,0,0,모리일식당,False,,#,342041480,DOM_DATA_NLOG,1,PASS,모리일식당,서울 강남구 개포로 623 대청타워 지하1층108~109호,,CONTAINED,PARTIAL,RESOLVED,,,973,1
+5120,소풍가는날두번째이야기,매봉역 소풍가는날 두번째이야기,station,1,1,SINGLE_CANDIDATE,0,0,소풍가는날두번째이야기종합분식,False,,#,37437787,DOM_DATA_NLOG,1,PASS,소풍가는날두번째이야기종합분식,서울 강남구 개포로25길 7,,CONTAINED,PARTIAL,RESOLVED,,,899,1
+5210,리애,개포동 리애,dong,1,1,SINGLE_CANDIDATE,0,0,리애,False,,#,36995601,DOM_DATA_NLOG,1,PASS,리애,서울 강남구 선릉로16길 6 1층,,EXACT,PARTIAL,RESOLVED,,,911,1
+5250,서울회관,매봉역 서울회관,station,9,5,QWEN,"0,1,2",0,서울회관한식,True,LOW,#,1047017858,DOM_DATA_NLOG,1,PASS,서울회관한식,서울 강남구 개포로20길 7,,CONTAINED,PARTIAL,RESOLVED,,,2816,1
+5287,봉화면옥 개포본점,매봉역 봉화면옥,station,1,1,SINGLE_CANDIDATE,0,0,봉화면옥 개포본점냉면,False,,#,38290219,DOM_DATA_NLOG,1,PASS,봉화면옥 개포본점냉면,서울 강남구 논현로 44 우신빌딩,,CONTAINED,PARTIAL,RESOLVED,,,1147,1
+5290,파파존스 개포점,매봉역 파파존스 개포점,station,1,1,SINGLE_CANDIDATE,0,0,파파존스 개포점,False,,#,13172797,DOM_DATA_NLOG,1,PASS,파파존스 개포점,서울 강남구 논현로 68,,EXACT,EXACT,RESOLVED,,,835,1
+5425,장독묵은지,개포동역 장독묵은지,station,1,1,SINGLE_CANDIDATE,0,0,"장독묵은지육류,고기요리",False,,#,18419672,DOM_DATA_NLOG,1,PASS,"장독묵은지육류,고기요리",서울 강남구 삼성로 38,,CONTAINED,PARTIAL,RESOLVED,,,740,1
+5537,치킨이맛있는집 개포본점,매봉역 치킨이맛있는집,station,1,1,SINGLE_CANDIDATE,0,0,"치킨이맛있는집 개포본점치킨,닭강정",False,,#,37426478,DOM_DATA_NLOG,1,PASS,"치킨이맛있는집 개포본점치킨,닭강정","서울 강남구 논현로16길 14-3 1층 101,102호",,CONTAINED,PARTIAL,RESOLVED,,,1078,1
+5550,맘스터치 포이사거리점,매봉역 맘스터치 포이사거리점,station,1,1,SINGLE_CANDIDATE,0,0,맘스터치 포이사거리점맘스터치,False,,#,1242694135,DOM_DATA_NLOG,1,PASS,맘스터치 포이사거리점맘스터치,서울 강남구 논현로 78,,CONTAINED,PARTIAL,RESOLVED,,,898,1
+5608,이디야커피 대청역점,대청역 이디야커피 대청역점,station,1,1,SINGLE_CANDIDATE,0,0,이디야커피 대청역점,False,,#,37827936,DOM_DATA_NLOG,1,PASS,이디야커피 대청역점,서울 강남구 개포로109길 34,,EXACT,PARTIAL,RESOLVED,,,1273,1
+5701,잭슨피자 개포점,개포동 잭슨피자개포점,dong,1,1,SINGLE_CANDIDATE,0,0,잭슨피자 개포점,False,,#,1212497776,DOM_DATA_NLOG,1,PASS,잭슨피자 개포점,서울 강남구 개포로 264 개포래미안포레스트 상가1동 101호,,EXACT,PARTIAL,RESOLVED,,,1008,1
+5742,파리바게뜨 개포점,개포동역 파리바게트개포점,station,1,1,SINGLE_CANDIDATE,0,0,파리바게뜨 개포점,False,,#,11684198,DOM_DATA_NLOG,1,PASS,파리바게뜨 개포점,서울 강남구 개포로82길 13-9 세종빌딩,,EXACT,PARTIAL,RESOLVED,,,1271,1
+5821,민박사봉평메밀촌,대모산입구역 민박사봉평메밀촌,station,1,1,SINGLE_CANDIDATE,0,0,민박사봉평메밀촌한식,False,,#,31793927,DOM_DATA_NLOG,1,PASS,민박사봉평메밀촌한식,서울 강남구 개포로 615 석탑프라자 B1 108호,,CONTAINED,PARTIAL,RESOLVED,,,752,1
+5829,투다리 개포점,개포동역 투다리,station,2,2,QWEN,"0,1",0,"투다리 개포점오뎅,꼬치",True,LOW,#,11762167,DOM_DATA_NLOG,1,PASS,"투다리 개포점오뎅,꼬치",서울 강남구 개포로82길 7,,CONTAINED,PARTIAL,RESOLVED,,,2327,1
+5837,BBQ치킨 개포점,매봉역 BBQ치킨 개포점,station,1,1,SINGLE_CANDIDATE,0,0,BBQ치킨 개포점,False,,#,1292561799,DOM_DATA_NLOG,1,PASS,BBQ치킨 개포점,서울 강남구 개포로 250 1층,,EXACT,PARTIAL,RESOLVED,,,1054,1
+5946,신석기부대찌개,강남구 신석기부대찌개,gangnam,1,1,SINGLE_CANDIDATE,0,0,,False,,,,,,NOT_ATTEMPTED,,,,UNKNOWN,UNKNOWN,NOT_FOUND,PLACE_ID_NOT_IN_CANDIDATE_DOM,PLACE_ID_NOT_IN_CANDIDATE_DOM,515,0
+5975,숙아채콩나물국밥,매봉역 숙아채콩나물국밥,station,1,1,SINGLE_CANDIDATE,0,0,숙아채콩나물국밥국밥,False,,#,13101198,DOM_DATA_NLOG,1,PASS,숙아채콩나물국밥국밥,서울 강남구 개포로20길 17,,CONTAINED,PARTIAL,RESOLVED,,,914,1
+6031,비어씨티,개포동 비어씨티,dong,1,1,SINGLE_CANDIDATE,0,0,"비어씨티맥주,호프",False,,#,1179814231,DOM_DATA_NLOG,1,PASS,"비어씨티맥주,호프",서울 강남구 선릉로10길 4-6,,CONTAINED,PARTIAL,RESOLVED,,,1080,1
+6032,콩뿌리전주콩나물국밥 개포점,매봉역 콩뿌리전주콩나물국밥,station,3,3,QWEN,"0,2,1",0,콩뿌리전주콩나물국밥 개포점국밥,True,LOW,#,32721281,DOM_DATA_NLOG,1,PASS,콩뿌리전주콩나물국밥 개포점국밥,서울 강남구 개포로 240 혜영빌딩,,CONTAINED,PARTIAL,RESOLVED,,,2537,1
+6054,포이제면소,매봉역 포이제면소,station,1,1,SINGLE_CANDIDATE,0,0,"포이제면소우동,소바",False,,#,1662253151,DOM_DATA_NLOG,1,PASS,"포이제면소우동,소바",서울 강남구 개포로30길 6 1층,,CONTAINED,PARTIAL,RESOLVED,,,1009,1
+6063,서희네,매봉역 서희네,station,1,1,SINGLE_CANDIDATE,0,0,"서희네백반,가정식",False,,#,1849117994,DOM_DATA_NLOG,1,PASS,"서희네백반,가정식",서울 강남구 개포로22길 41,,CONTAINED,PARTIAL,RESOLVED,,,913,1
+6074,정가네부엌,매봉역 정가네부엌,station,1,1,SINGLE_CANDIDATE,0,0,정가네부엌한식,False,,#,1562045377,DOM_DATA_NLOG,1,PASS,정가네부엌한식,서울 강남구 개포로15길 5 1 층 101,,CONTAINED,PARTIAL,RESOLVED,,,938,1
+6081,신전떡볶이 개포점,개포동역 신전떡볶이개포점,station,1,1,SINGLE_CANDIDATE,0,0,신전떡볶이 개포점분식,False,,#,1946598459,DOM_DATA_NLOG,1,PASS,신전떡볶이 개포점분식,"서울 강남구 개포로 508 101호, 102호",,CONTAINED,PARTIAL,RESOLVED,,,1087,1
+6086,최가남도마당,대청역 최가남도마당,station,1,1,SINGLE_CANDIDATE,0,0,최가남도마당한식,False,,https://pcmap.place.naver.com/restaurant/1346637793/home,1346637793,DOM_DATA_NLOG,,FAIL,최가남도마당한식,대청역 8번출구 (서울주택도시공사) 방향 지하상가로 진입하시면 오른쪽에 남도마당이 있습니다:-),,CONTAINED,DIFFERENT,AMBIGUOUS,TOP_K_DETAIL_VALIDATION_FAILED,TOP_K_DETAIL_VALIDATION_FAILED,932,1
+6121,서연옥 순대국 감자탕,매봉역 서연옥,station,1,1,SINGLE_CANDIDATE,0,0,서연옥 순대국 감자탕한식,False,,#,35278367,DOM_DATA_NLOG,1,PASS,서연옥 순대국 감자탕한식,서울 강남구 개포로22길 10,,CONTAINED,PARTIAL,RESOLVED,,,931,1
+6152,형제곱창 포이점,매봉역 형제곱창,station,2,2,QWEN,"0,1",0,"형제곱창 포이점곱창,막창,양",True,LOW,#,36947809,DOM_DATA_NLOG,1,PASS,"형제곱창 포이점곱창,막창,양",서울 강남구 논현로20길 24,,CONTAINED,PARTIAL,RESOLVED,,,2626,1
+6164,라피드커피,대청역 라피드커피,station,1,1,SINGLE_CANDIDATE,0,0,라피드커피,False,,#,1525153902,DOM_DATA_NLOG,1,PASS,라피드커피,서울 강남구 개포로 623 대청타워 지하1층 라피드커피,,EXACT,PARTIAL,RESOLVED,,,1039,1
+6247,원조식당,개포동역 원조식당,station,3,3,QWEN,"0,1,2",0,원조식당한식,True,LOW,#,1439599983,DOM_DATA_NLOG,1,PASS,원조식당한식,서울 강남구 개포로82길 7,원조식당,CONTAINED,PARTIAL,RESOLVED,,,2740,1
+6272,연스시,개포동역 연스시,station,1,1,SINGLE_CANDIDATE,0,0,"연스시초밥,롤",False,,#,1845971091,DOM_DATA_NLOG,1,PASS,"연스시초밥,롤",서울 강남구 개포로 512,,CONTAINED,PARTIAL,RESOLVED,,,858,1
+6276,진가네,매봉역 진가네,station,1,1,SINGLE_CANDIDATE,0,0,"진가네족발,보쌈",False,,#,1965904313,DOM_DATA_NLOG,1,PASS,"진가네족발,보쌈",서울 강남구 논현로16길 17 1층 104호,,CONTAINED,PARTIAL,RESOLVED,,,953,1
+6277,파리바게뜨 개포행복점,개포동 파리바게트 개포행복점,dong,1,1,SINGLE_CANDIDATE,0,0,파리바게뜨 개포행복점,False,,#,18800388,DOM_DATA_NLOG,1,PASS,파리바게뜨 개포행복점,서울 강남구 선릉로 50 경빌딩,,EXACT,PARTIAL,RESOLVED,,,835,1
+6367,대가 삼겹살부대찌개,매봉역 대가,station,4,4,QWEN,"0,1,2",0,"대가삼겹살부대찌개육류,고기요리",True,LOW,#,37943647,DOM_DATA_NLOG,1,PASS,"대가삼겹살부대찌개육류,고기요리",서울 강남구 개포로20길 26,,CONTAINED,PARTIAL,RESOLVED,,,2719,1
+6370,강남초장,개포동역 강남초장,station,1,1,SINGLE_CANDIDATE,0,0,강남초장생선회,False,,#,1277913587,DOM_DATA_NLOG,1,PASS,강남초장생선회,서울 강남구 개포로82길 5-8 1층 5~6호,,CONTAINED,PARTIAL,RESOLVED,,,953,1
+6395,제주왕솥뚜껑삼겹살,매봉역 제주왕솥뚜껑삼겹살,station,1,1,SINGLE_CANDIDATE,0,0,제주왕솥뚜껑삼겹살돼지고기구이,False,,#,38276203,DOM_DATA_NLOG,1,PASS,제주왕솥뚜껑삼겹살돼지고기구이,서울 강남구 개포로20길 8,,CONTAINED,PARTIAL,RESOLVED,,,908,1
+6398,유연정,강남구 유연정,gangnam,1,1,SINGLE_CANDIDATE,0,0,,False,,,,,,NOT_ATTEMPTED,,,,UNKNOWN,UNKNOWN,NOT_FOUND,PLACE_ID_NOT_IN_CANDIDATE_DOM,PLACE_ID_NOT_IN_CANDIDATE_DOM,496,0
+6406,을지로 만선호프,개포동역 만선호프,station,1,1,SINGLE_CANDIDATE,0,0,을지로만선호프,False,,#,1678750949,DOM_DATA_NLOG,1,PASS,을지로만선호프,서울 강남구 개포로82길 5-8 1층 104호,,EXACT,PARTIAL,RESOLVED,,,910,1
+6437,강운식당,강남구 강운식당,gangnam,1,1,SINGLE_CANDIDATE,0,0,,False,,,,,,NOT_ATTEMPTED,,,,UNKNOWN,UNKNOWN,NOT_FOUND,PLACE_ID_NOT_IN_CANDIDATE_DOM,PLACE_ID_NOT_IN_CANDIDATE_DOM,431,0
+6467,이모네 전,개포동역 이모네,station,4,4,QWEN,"0,1,2",0,"이모네전전,빈대떡",True,LOW,#,1884878916,DOM_DATA_NLOG,1,PASS,"이모네전전,빈대떡",서울 강남구 개포로 508,,CONTAINED,PARTIAL,RESOLVED,,,2780,1
+6500,바른치킨 개포점,개포동 바른치킨 개포점,dong,1,1,SINGLE_CANDIDATE,0,0,바른치킨 개포점,False,,#,1672689874,DOM_DATA_NLOG,1,PASS,바른치킨 개포점,서울 강남구 선릉로6길 17,,EXACT,PARTIAL,RESOLVED,,,1072,1

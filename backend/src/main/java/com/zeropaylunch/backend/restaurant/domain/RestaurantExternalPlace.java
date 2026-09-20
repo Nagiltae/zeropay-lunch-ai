@@ -35,6 +35,9 @@ public class RestaurantExternalPlace {
     @Column(nullable = false, length = 32)
     private ExternalPlaceProvider provider;
 
+    @Column(name = "external_place_id", length = 64)
+    private String externalPlaceId;
+
     @Column(name = "external_name")
     private String externalName;
 
@@ -195,6 +198,10 @@ public class RestaurantExternalPlace {
 
     public String getExternalName() {
         return externalName;
+    }
+
+    public String getExternalPlaceId() {
+        return externalPlaceId;
     }
 
     public BigDecimal getMatchScore() {

@@ -15,7 +15,7 @@ const conversationStorageKey = 'zeropay-lunch-active-conversation'
 const welcomeMessage: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
-  text: '안녕하세요! 먼저 강남구 안에서 기준 위치를 선택하고, 오늘 먹고 싶은 점심을 편하게 이야기해 주세요.',
+  text: '안녕하세요! 강남구 논현동에서 오늘 먹고 싶은 점심을 편하게 이야기해 주세요.',
   status: 'complete',
 }
 
@@ -45,7 +45,7 @@ function restoreMessages(history: ConversationHistory): ChatMessage[] {
   ]
 }
 
-export function useChatStream(locationId: string | null, isAuthenticated: boolean) {
+export function useChatStream(isAuthenticated: boolean) {
   const [conversationId, setConversationId] = useState<string | null>(() =>
     window.localStorage.getItem(conversationStorageKey),
   )
@@ -147,15 +147,12 @@ export function useChatStream(locationId: string | null, isAuthenticated: boolea
     if (conversationId) {
       return conversationId
     }
-    if (!locationId) {
-      throw new Error('먼저 강남구 내 기준 위치를 선택해 주세요.')
-    }
-    const created = await createMutation.mutateAsync(locationId)
+    const created = await createMutation.mutateAsync()
     window.localStorage.setItem(conversationStorageKey, created.conversationId)
     setConversationId(created.conversationId)
     restoredConversationRef.current = created.conversationId
     return created.conversationId
-  }, [conversationId, createMutation, locationId])
+  }, [conversationId, createMutation])
 
   const runStream = useCallback(
     async (assistantId: string, requestText: string) => {
@@ -204,7 +201,6 @@ export function useChatStream(locationId: string | null, isAuthenticated: boolea
       const trimmedMessage = text.trim()
       if (
         !trimmedMessage ||
-        !locationId ||
         isStreaming ||
         activeAssistantIdRef.current
       ) {
@@ -231,7 +227,7 @@ export function useChatStream(locationId: string | null, isAuthenticated: boolea
 
       await runStream(assistantId, trimmedMessage)
     },
-    [isStreaming, locationId, runStream],
+    [isStreaming, runStream],
   )
 
   const retryMessage = useCallback(

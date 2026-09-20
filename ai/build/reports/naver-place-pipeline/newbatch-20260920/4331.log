@@ -1,0 +1,14 @@
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+Stopping batch on service block: BLOCKED: HTTP 429
+=== Pipeline Summary ===
+Processed: 0
+{}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4331.csv

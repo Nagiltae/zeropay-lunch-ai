@@ -14,7 +14,7 @@ class FallbackAwareIntentAnalyzerTests {
 
     private final TemporaryIntentAnalyzer fallback = new TemporaryIntentAnalyzer();
     private final IntentAnalysisRequest request = new IntentAnalysisRequest(
-            "국물 음식 추천해줘", "gangnam", null, SpiceLevel.ANY,
+            "국물 음식 추천해줘", null, SpiceLevel.ANY,
             Set.of(), Set.of(), Set.of(), List.of()
     );
 

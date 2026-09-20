@@ -2,6 +2,7 @@ package com.zeropaylunch.backend.chat.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -45,12 +46,11 @@ class ChatControllerTests {
                     return new PendingExchange(
                             conversationId,
                             invocation.getArgument(1),
-                            "gangnam",
                             UUID.randomUUID(),
                             UUID.randomUUID()
                     );
                 });
-        when(recommendationService.recommend(any(UUID.class), anyString(), anyString()))
+        when(recommendationService.recommend(any(UUID.class), anyString()))
                 .thenReturn(java.util.List.of(new RecommendationItem(
                         1001L,
                         "강남 샘플 한식당",
@@ -58,8 +58,6 @@ class ChatControllerTests {
                         "제육볶음",
                         9000,
                         "서울특별시 강남구 강남대로 샘플 101",
-                        "gangnam",
-                        "강남역",
                         true,
                         true,
                         "선택한 강남역 기준 위치와 일치해요."

@@ -7,8 +7,6 @@ public record RecommendationItem(
         String representativeMenu,
         int averagePrice,
         String address,
-        String locationId,
-        String locationLabel,
         boolean zeroPayAvailable,
         boolean sampleData,
         String reason

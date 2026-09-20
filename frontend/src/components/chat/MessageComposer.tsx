@@ -66,7 +66,7 @@ export function MessageComposer({
           }}
           placeholder={
             disabled
-              ? '먼저 강남구 내 기준 위치를 선택해 주세요'
+              ? '먹고 싶은 메뉴나 상황을 이야기해 주세요'
               : '먹고 싶은 메뉴나 상황을 이야기해 주세요'
           }
           rows={1}

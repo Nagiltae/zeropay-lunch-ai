@@ -1,0 +1,146 @@
+=== START 4277 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 0 (resume skipped: 0)
+=== Pipeline Summary ===
+Processed: 0
+{}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4277.csv
+=== START 4308 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+[1/1] 100.0% 으뜸청담맛집 RESOLVED 3.91s ETA 00:00:00
+=== Pipeline Summary ===
+Processed: 1
+{'RESOLVED': 1}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4308.csv
+=== START 4309 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 0 (resume skipped: 0)
+=== Pipeline Summary ===
+Processed: 0
+{}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4309.csv
+=== START 4310 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 0 (resume skipped: 0)
+=== Pipeline Summary ===
+Processed: 0
+{}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4310.csv
+=== START 4311 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+[1/1] 100.0% 사운드온더펍 대치점 RESOLVED 6.87s ETA 00:00:00
+=== Pipeline Summary ===
+Processed: 1
+{'RESOLVED': 1}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4311.csv
+=== START 4312 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 0 (resume skipped: 0)
+=== Pipeline Summary ===
+Processed: 0
+{}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4312.csv
+=== START 4313 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 0 (resume skipped: 0)
+=== Pipeline Summary ===
+Processed: 0
+{}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4313.csv
+=== START 4314 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+[1/1] 100.0% 쿠데타(KUDETA) AMBIGUOUS 7.46s ETA 00:00:00
+=== Pipeline Summary ===
+Processed: 1
+{'AMBIGUOUS': 1}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4314.csv
+=== START 4315 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+[1/1] 100.0% 대림옥 RESOLVED 5.99s ETA 00:00:00
+=== Pipeline Summary ===
+Processed: 1
+{'RESOLVED': 1}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4315.csv
+=== START 4316 ===
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+[1/1] 100.0% 올라아보 RESOLVED 3.87s ETA 00:00:00
+=== Pipeline Summary ===
+Processed: 1
+{'RESOLVED': 1}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4316.csv
+=== START 4317 ===

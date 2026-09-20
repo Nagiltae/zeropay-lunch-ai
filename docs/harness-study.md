@@ -1,5 +1,9 @@
 # Harness Engineering in This Project
 
+## When to read
+- Agent Harness 시스템 자체의 설계 철학 이해가 필요할 때
+
+
 ZeroPay Lunch AI에서 Harness Engineering은 Agent를 위한 별도 프레임워크가 아닙니다. Agent가 같은 규칙을 읽고, 현재 아키텍처와 계약 안에서 제한된 변경을 만들고, 반복 가능한 명령으로 결과를 검증한 뒤 근거와 함께 완료를 보고하도록 저장소 자체를 구성한 방식입니다.
 
 이 저장소의 Harness는 네 부분이 연결되어 동작합니다.

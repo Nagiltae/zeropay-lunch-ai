@@ -172,6 +172,13 @@ public class Restaurant {
         }
     }
 
+    /** Marks a source row inactive when it is absent from a completed full source fetch. */
+    public void deactivateAsStale(Instant syncedAt) {
+        active = false;
+        lastSyncedAt = syncedAt;
+        updatedAt = syncedAt;
+    }
+
     public void updateRecommendationEligibility(
             RecommendationEligibility eligibility, Instant updatedAt) {
         recommendationEligibility = Objects.requireNonNull(eligibility);

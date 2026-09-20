@@ -10,8 +10,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Component
 class KomscoMerchantHttpClient implements KomscoPageClient {
 
-    private static final String PROVIDER_CODE = "I0000002";
-
     private final RestClient restClient;
     private final KomscoImportProperties properties;
 
@@ -30,7 +28,6 @@ class KomscoMerchantHttpClient implements KomscoPageClient {
                 .queryParam("serviceKey", properties.serviceKey())
                 .queryParam("page", page)
                 .queryParam("perPage", pageSize)
-                .queryParam("cond[pvsn_inst_cd::EQ]", PROVIDER_CODE)
                 .queryParam("cond[emd_cd::EQ]", legalDongCode)
                 .queryParam("returnType", "JSON")
                 .build()

@@ -48,8 +48,6 @@ describe('MessageList meal recording', () => {
             representativeMenu: '제육볶음',
             averagePrice: 9000,
             address: '서울특별시 강남구 강남대로 샘플 101',
-            locationId: 'gangnam',
-            locationLabel: '강남역',
             zeroPayAvailable: true,
             sampleData: true,
             reason: '요청 조건과 일치해요.',
@@ -62,7 +60,6 @@ describe('MessageList meal recording', () => {
       <MessageList
         messages={messages}
         progress={null}
-        locationSelected
         onPromptSelect={vi.fn()}
         onRetry={vi.fn()}
       />,

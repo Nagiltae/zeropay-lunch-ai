@@ -17,6 +17,9 @@ public class Conversation {
     @Column(name = "location_id", nullable = false, length = 32)
     private String locationId;
 
+    @Column(name = "radius_meters", nullable = false)
+    private Integer radiusMeters;
+
     @Column(name = "user_id")
     private UUID userId;
 
@@ -35,17 +38,19 @@ public class Conversation {
     protected Conversation() {
     }
 
-    private Conversation(UUID id, String locationId, UUID userId, Instant now) {
+    private Conversation(UUID id, UUID userId, Instant now) {
         this.id = id;
-        this.locationId = locationId;
+        // Legacy non-null columns are retained for schema compatibility only.
+        this.locationId = "nonhyeon";
+        this.radiusMeters = 0;
         this.userId = userId;
         this.active = true;
         this.createdAt = now;
         this.updatedAt = now;
     }
 
-    public static Conversation create(String locationId, UUID userId, Instant now) {
-        return new Conversation(UUID.randomUUID(), locationId, userId, now);
+    public static Conversation create(UUID userId, Instant now) {
+        return new Conversation(UUID.randomUUID(), userId, now);
     }
 
     public void deactivate(Instant now) {
@@ -63,6 +68,10 @@ public class Conversation {
 
     public String getLocationId() {
         return locationId;
+    }
+
+    public Integer getRadiusMeters() {
+        return radiusMeters;
     }
 
     public boolean isActive() {

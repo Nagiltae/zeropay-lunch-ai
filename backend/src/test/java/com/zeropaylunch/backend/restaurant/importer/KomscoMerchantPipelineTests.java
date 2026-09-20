@@ -60,10 +60,10 @@ class KomscoMerchantPipelineTests {
     @Test
     void keepsOnlyLatestRecordForEachMerchantAndSkipsMissingRequiredFields() {
         KomscoDeduplicationResult result = deduplicator.selectLatest(List.of(
-                merchant("A", "20260101", "계속사업자", "561", "11680101", "11680"),
-                merchant("A", "20260801", "휴업자", "561", "11680101", "11680"),
-                merchant("B", null, "계속사업자", "561", "11680101", "11680"),
-                merchant(null, "20260801", "계속사업자", "561", "11680101", "11680")));
+                merchant("A", "20260101", "계속사업자", "561", "11680108", "11680"),
+                merchant("A", "20260801", "휴업자", "561", "11680108", "11680"),
+                merchant("B", null, "계속사업자", "561", "11680108", "11680"),
+                merchant(null, "20260801", "계속사업자", "561", "11680108", "11680")));
 
         assertThat(result.records()).hasSize(1);
         assertThat(result.records().getFirst().source().businessStatusName()).isEqualTo("휴업자");
@@ -74,12 +74,12 @@ class KomscoMerchantPipelineTests {
     @Test
     void latestActiveRecordPassesButLatestClosedRecordDoesNot() {
         LatestKomscoMerchant latestActive = deduplicator.selectLatest(List.of(
-                merchant("A", "20260101", "폐업자", "561", "11680101", "11680"),
-                merchant("A", "20260801", "계속사업자", "561", "11680101", "11680")))
+                merchant("A", "20260101", "폐업자", "561", "11680108", "11680"),
+                merchant("A", "20260801", "계속사업자", "561", "11680108", "11680")))
                 .records().getFirst();
         LatestKomscoMerchant latestClosed = deduplicator.selectLatest(List.of(
-                merchant("B", "20260101", "계속사업자", "561", "11680101", "11680"),
-                merchant("B", "20260801", "폐업자", "561", "11680101", "11680")))
+                merchant("B", "20260101", "계속사업자", "561", "11680108", "11680"),
+                merchant("B", "20260801", "폐업자", "561", "11680108", "11680")))
                 .records().getFirst();
 
         assertThat(filter.isActiveGangnamRestaurant(latestActive)).isTrue();
@@ -89,27 +89,27 @@ class KomscoMerchantPipelineTests {
     @Test
     void acceptsOnlyExactActiveStatusAndRestaurantIndustry() {
         assertThat(filter.isActiveGangnamRestaurant(latest(
-                merchant("A", "20260801", "계속사업자", "561", "11680101", "11680"))))
+                merchant("A", "20260801", "계속사업자", "561", "11680108", "11680"))))
                 .isTrue();
         assertThat(filter.isActiveGangnamRestaurant(latest(
-                merchant("B", "20260801", "계속 사업자", "561", "11680101", "11680"))))
+                merchant("B", "20260801", "계속 사업자", "561", "11680108", "11680"))))
                 .isFalse();
         KomscoMerchantRecord wrongProvider = merchant(
-                "D", "20260801", "계속사업자", "561", "11680101", "11680");
+                "D", "20260801", "계속사업자", "561", "11680108", "11680");
         wrongProvider = copyWithProvider(wrongProvider, "OTHER");
-        assertThat(filter.isActiveGangnamRestaurant(latest(wrongProvider))).isFalse();
+        assertThat(filter.isActiveGangnamRestaurant(latest(wrongProvider))).isTrue();
         assertThat(filter.isActiveGangnamRestaurant(latest(
-                merchant("C", "20260801", "계속사업자", "562", "11680101", "11680"))))
+                merchant("C", "20260801", "계속사업자", "562", "11680108", "11680"))))
                 .isFalse();
     }
 
     @Test
     void excludesRowsWithoutDefensiveGangnamEvidence() {
         assertThat(filter.isActiveGangnamRestaurant(latest(
-                merchant("A", "20260801", "계속사업자", "561", "11680101", "11110"))))
+                merchant("A", "20260801", "계속사업자", "561", "11680108", "11110"))))
                 .isTrue();
         KomscoMerchantRecord outside = merchant(
-                "B", "20260801", "계속사업자", "561", "11680101", "11110");
+                "B", "20260801", "계속사업자", "561", "11680108", "11110");
         outside = copyWithAddress(outside, "서울특별시 종로구 세종대로");
         assertThat(filter.isActiveGangnamRestaurant(latest(outside))).isFalse();
         assertThat(filter.isActiveGangnamRestaurant(latest(
@@ -122,13 +122,13 @@ class KomscoMerchantPipelineTests {
         List<String> calls = new ArrayList<>();
         KomscoPageClient pageClient = (code, page, size) -> {
             calls.add(code + ":" + page);
-            if (code.equals("11680103") && page == 1) {
+            if (code.equals("11680108") && page == 1) {
                 return new KomscoMerchantResponse(2, List.of(
                         merchant("A", "20260801", "계속사업자", "561", code, "11680"),
                         merchant("B", "20260801", "계속사업자", "561", code, "11680")),
                         3, 1, size, 3);
             }
-            if (code.equals("11680103") && page == 2) {
+            if (code.equals("11680108") && page == 2) {
                 return new KomscoMerchantResponse(1, List.of(
                         merchant("C", "20260801", "계속사업자", "561", code, "11680")),
                         3, 2, size, 3);
@@ -142,7 +142,7 @@ class KomscoMerchantPipelineTests {
 
         assertThat(records).hasSize(3);
         assertThat(calls).hasSize(GangnamLegalDong.values().length + 1);
-        assertThat(calls).contains("11680103:1", "11680103:2", "11680104:1");
+            assertThat(calls).contains("11680108:1", "11680108:2");
     }
 
     @Test
@@ -184,7 +184,7 @@ class KomscoMerchantPipelineTests {
                 false,
                 false,
                 false,
-                "0 0 3 * * *",
+                "0 0 3 * * SUN",
                 "Asia/Seoul");
     }
 

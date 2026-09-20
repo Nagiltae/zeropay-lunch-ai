@@ -28,12 +28,11 @@ public class RecommendationContextService {
     }
 
     @Transactional(readOnly = true)
-    public RecommendationContext build(UUID userId, String message, String locationId) {
+    public RecommendationContext build(UUID userId, String message) {
         PreferenceSnapshot preferences = preferenceService.get(userId);
         var recentMeals = mealHistoryService.findRecent(userId);
         IntentAnalysisRequest request = new IntentAnalysisRequest(
                 message,
-                locationId,
                 preferences.defaultBudget(),
                 preferences.spiceLevel(),
                 preferences.preferredCategories(),

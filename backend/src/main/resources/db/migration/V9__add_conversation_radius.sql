@@ -1,0 +1,2 @@
+ALTER TABLE conversations
+ADD COLUMN radius_meters INT NOT NULL DEFAULT 500;

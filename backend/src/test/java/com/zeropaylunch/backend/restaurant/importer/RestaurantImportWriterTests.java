@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -147,6 +148,16 @@ class RestaurantImportWriterTests {
     }
 
     @Test
+    void completedFullFetchDeactivatesMissingNonhyeonMerchantOnly() {
+        writer.upsert(snapshot("merchant-stale", "2026-09-18", "계속사업자", "사라진 매장"));
+
+        RestaurantSyncWriteResult result = writer.synchronizeKomscoRestaurants(List.of(), Set.of());
+
+        assertThat(result.deactivatedCount()).isEqualTo(1);
+        assertThat(find("merchant-stale").isActive()).isFalse();
+    }
+
+    @Test
     void matchingSourceChangeResetsEligibilityButStatusOnlyChangeDoesNot() {
         Instant firstSync = Instant.parse("2026-09-18T00:00:00Z");
         Restaurant restaurant = Restaurant.fromExternalSource(
@@ -184,8 +195,8 @@ class RestaurantImportWriterTests {
                 "06200",
                 new BigDecimal("37.5000000"),
                 new BigDecimal("127.0300000"),
-                "11680101",
-                "역삼동",
+                "11680108",
+                "논현동",
                 "561",
                 "음식점 및 주점업",
                 "I0000002",

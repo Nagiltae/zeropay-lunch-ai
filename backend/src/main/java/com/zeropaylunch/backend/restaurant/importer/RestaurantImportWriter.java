@@ -8,6 +8,7 @@ import java.time.Clock;
 import java.time.Instant;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -62,6 +63,14 @@ class RestaurantImportWriter {
     @Transactional
     public RestaurantSyncWriteResult synchronizeKomscoRestaurants(
             List<RestaurantSyncCandidate> candidates) {
+        return synchronizeKomscoRestaurants(candidates, candidates.stream()
+                .map(candidate -> candidate.snapshot().externalMerchantId())
+                .collect(Collectors.toSet()));
+    }
+
+    @Transactional
+    public RestaurantSyncWriteResult synchronizeKomscoRestaurants(
+            List<RestaurantSyncCandidate> candidates, Set<String> observedMerchantIds) {
         Map<String, Restaurant> existingByMerchantId = repository
                 .findAllBySourceProvider(RestaurantSourceProvider.KOMSCO)
                 .stream()
@@ -113,6 +122,14 @@ class RestaurantImportWriter {
                 deactivated++;
             } else if (!wasActive && candidate.eligible()) {
                 reactivated++;
+            }
+        }
+        for (Restaurant existing : existingByMerchantId.values()) {
+            if ("11680108".equals(existing.getLegalDongCode())
+                    && !observedMerchantIds.contains(existing.getExternalMerchantId())
+                    && existing.isActive()) {
+                existing.deactivateAsStale(syncedAt);
+                deactivated++;
             }
         }
         repository.flush();

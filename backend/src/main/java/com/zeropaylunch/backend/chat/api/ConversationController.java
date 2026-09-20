@@ -33,10 +33,10 @@ public class ConversationController {
             Authentication authentication
     ) {
         UUID userId = (UUID) authentication.getPrincipal();
-        Conversation conversation = chatPersistenceService.createConversation(request.locationId(), userId);
+        Conversation conversation = chatPersistenceService.createConversation(
+                userId);
         return new ConversationResponse(
                 conversation.getId(),
-                conversation.getLocationId(),
                 conversation.isActive(),
                 conversation.getCreatedAt()
         );
@@ -61,7 +61,6 @@ public class ConversationController {
 
     public record ConversationResponse(
             UUID conversationId,
-            String locationId,
             boolean active,
             Instant createdAt
     ) {

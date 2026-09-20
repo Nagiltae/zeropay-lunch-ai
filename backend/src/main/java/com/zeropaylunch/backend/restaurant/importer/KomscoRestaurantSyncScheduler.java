@@ -23,7 +23,7 @@ class KomscoRestaurantSyncScheduler {
         try {
             RestaurantSyncResult result = importService.synchronizeRestaurants();
             LOGGER.info(
-                    "KOMSCO daily sync completed: fetchedCount={}, deduplicatedCount={}, "
+                    "KOMSCO weekly sync completed: fetchedCount={}, deduplicatedCount={}, "
                             + "eligibleRestaurantCount={}, insertedCount={}, updatedCount={}, "
                             + "unchangedCount={}, changedForNaverCount={}, deactivatedCount={}, "
                             + "reactivatedCount={}, skippedCount={}",
@@ -38,7 +38,7 @@ class KomscoRestaurantSyncScheduler {
                     result.reactivatedCount(),
                     result.skippedCount());
         } catch (KomscoImportException exception) {
-            LOGGER.error("KOMSCO daily sync failed before database synchronization: {}",
+            LOGGER.error("KOMSCO weekly sync failed before database synchronization: {}",
                     exception.getMessage());
         }
     }

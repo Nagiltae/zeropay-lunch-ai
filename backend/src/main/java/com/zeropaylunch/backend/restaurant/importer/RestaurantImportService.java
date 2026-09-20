@@ -5,6 +5,8 @@ import com.zeropaylunch.backend.restaurant.domain.RestaurantSourceSnapshot;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -52,7 +54,13 @@ public class RestaurantImportService {
                 .filter(candidate -> candidate.snapshot().name() != null)
                 .filter(candidate -> candidate.snapshot().address() != null)
                 .count();
-        RestaurantSyncWriteResult writeResult = writer.synchronizeKomscoRestaurants(candidates);
+        Set<String> observedMerchantIds = deduplicated.records().stream()
+                .map(merchant -> merchant.source().altText())
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .collect(Collectors.toSet());
+        RestaurantSyncWriteResult writeResult = writer.synchronizeKomscoRestaurants(
+                candidates, observedMerchantIds);
         int skipped = fetched.size()
                 - writeResult.insertedCount()
                 - writeResult.updatedCount()

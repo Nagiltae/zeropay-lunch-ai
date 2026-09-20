@@ -25,11 +25,11 @@ class RestaurantJpaRepositoryTests {
         jdbcTemplate.update("""
                 INSERT INTO restaurants (
                     id, name, category, representative_menu, average_price, address,
-                    location_id, zero_pay_available, sample_data, active,
+                    location_id, legal_dong_code, zero_pay_available, sample_data, active,
                     recommendation_eligibility, created_at, updated_at
                 ) VALUES (
                     9001, '테스트 음식점', 'KOREAN', '테스트 메뉴', 9000, '강남구 테스트 주소',
-                    'gangnam', TRUE, TRUE, TRUE, 'ELIGIBLE',
+                    'gangnam', '11680108', TRUE, TRUE, TRUE, 'ELIGIBLE',
                     CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
                 )
                 """);
@@ -52,11 +52,11 @@ class RestaurantJpaRepositoryTests {
         jdbcTemplate.update("""
                 INSERT INTO restaurants (
                     id, name, category, representative_menu, average_price, address,
-                    location_id, zero_pay_available, sample_data, active,
+                    location_id, legal_dong_code, zero_pay_available, sample_data, active,
                     recommendation_eligibility, created_at, updated_at
                 ) VALUES (
                     9002, '제로페이 불가 음식점', 'SALAD', '테스트 샐러드', 8000, '강남구 테스트 주소',
-                    'gangnam', FALSE, TRUE, TRUE, 'ELIGIBLE',
+                    'gangnam', '11680108', FALSE, TRUE, TRUE, 'ELIGIBLE',
                     CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
                 )
                 """);
@@ -75,11 +75,11 @@ class RestaurantJpaRepositoryTests {
         jdbcTemplate.update("""
                 INSERT INTO restaurants (
                     id, name, category, representative_menu, average_price, address,
-                    location_id, zero_pay_available, sample_data, active, recommendation_ready,
+                    location_id, legal_dong_code, zero_pay_available, sample_data, active, recommendation_ready,
                     created_at, updated_at
                 ) VALUES (
                     9003, '보강 전 음식점', NULL, NULL, NULL, '서울특별시 강남구 테스트 주소',
-                    NULL, TRUE, FALSE, TRUE, FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+                    NULL, '11680108', TRUE, FALSE, TRUE, FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
                 )
                 """);
         jdbcTemplate.update("""

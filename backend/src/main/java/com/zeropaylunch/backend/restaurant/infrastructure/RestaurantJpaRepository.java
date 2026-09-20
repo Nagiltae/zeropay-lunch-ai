@@ -39,6 +39,7 @@ public interface RestaurantJpaRepository extends JpaRepository<Restaurant, Long>
               AND r.recommendation_ready = TRUE
               AND r.recommendation_eligibility = 'ELIGIBLE'
               AND r.zero_pay_available = TRUE
+              AND r.legal_dong_code = '11680108'
               AND operating_day.day_of_week = :dayOfWeek
               AND :currentTime >= operating_hour.opens_at
               AND :currentTime <= operating_hour.closes_at

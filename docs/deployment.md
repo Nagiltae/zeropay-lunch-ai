@@ -1,5 +1,11 @@
 # 실행 및 배포
 
+## When to read
+- Docker / Docker Compose 설정 변경
+- 환경변수 추가/수정
+- 배포 인프라(AWS 등) 작업
+
+
 > **Harness Role:** local/dev/prod 환경과 Docker 실행 방식을 재현 가능한 절차로 설명합니다. Agent는 환경변수, profile, container 또는 실행 명령을 바꾸기 전에 읽습니다. 이 문서가 없으면 개인 PC 상태에 의존하거나 잘못된 서비스 주소를 사용할 수 있습니다. `.env.example`, profile YAML, `docker-compose.yml`, `setup.sh`와 연결됩니다.
 
 ## 로컬 개발
@@ -60,19 +66,18 @@ KOMSCO 일회성 import 설정은 다음과 같습니다.
 | `KOMSCO_IMPORT_ENABLED` | `false` | opt-in `ApplicationRunner` 활성화 |
 | `KOMSCO_REPLACE_EXISTING` | `false` | 성공한 전체 snapshot으로 기존 KOMSCO 행을 트랜잭션 교체 |
 | `KOMSCO_SCHEDULER_ENABLED` | direct 실행 `false`, Compose `true` | 일일 동기화 활성화 |
-| `KOMSCO_SCHEDULER_CRON` | `0 0 3 * * *` | Spring cron, 기본 매일 03:00 |
+| `KOMSCO_SCHEDULER_CRON` | `0 0 3 * * SUN` | Spring cron, 기본 매주 일요일 03:00 |
 | `KOMSCO_SCHEDULER_ZONE` | `Asia/Seoul` | cron 해석 timezone |
 
 루트 `.env`는 Docker Compose가 변수 치환에 사용하지만 Spring Boot를 IntelliJ나 Gradle로 직접 실행할 때는 자동 로드되지 않습니다. 직접 실행할 때는 `.env` 값을 환경변수로 내보내고 `KOMSCO_IMPORT_ENABLED=true`와 `--spring.main.web-application-type=none`을 지정합니다. 일회성 import의 일반 기본값은 `false`입니다. 전체 교체는 사용자가 범위와 API 쿼리를 승인한 경우에만 `KOMSCO_REPLACE_EXISTING=true`로 실행합니다. 공개 HTTP import API는 없으며 수동 runner와 Scheduler가 같은 `RestaurantImportService`를 사용합니다.
 
-Docker Compose는 사용자가 승인한 KOMSCO 쿼리를 매일 실행하도록 Scheduler를 기본 활성화합니다. IntelliJ나 Gradle의 `local` 직접 실행은 기본 비활성이므로 필요하면 `KOMSCO_SCHEDULER_ENABLED=true`를 명시합니다. Scheduler는 단일 백엔드 인스턴스를 전제로 하며, AWS에서 여러 인스턴스를 동시에 운영하기 전에는 DB 기반 분산 lock 또는 별도 단일 실행 주체를 결정해야 합니다.
+Docker Compose는 사용자가 승인한 KOMSCO 쿼리를 매주 일요일 03:00에 실행하도록 Scheduler를 기본 활성화합니다. IntelliJ나 Gradle의 `local` 직접 실행은 기본 비활성이므로 필요하면 `KOMSCO_SCHEDULER_ENABLED=true`를 명시합니다. Scheduler는 단일 백엔드 인스턴스를 전제로 하며, AWS에서 여러 인스턴스를 동시에 운영하기 전에는 DB 기반 분산 lock 또는 별도 단일 실행 주체를 결정해야 합니다.
 
-NAVER API HUB Local 보강 설정은 다음과 같습니다.
+과거 NAVER API HUB 보강 환경변수는 신규 pipeline에서 사용하지 않습니다. 기존 historical 설정이 남아 있는 배포 환경에서는 삭제 전 영향 확인이 필요합니다.
 
 | 환경변수 | 기본값 | 용도 |
 | --- | --- | --- |
-| `NAVER_CLIENT_ID` | 없음 | API HUB Client ID, 저장소·로그에 기록하지 않음 |
-| `NAVER_CLIENT_SECRET` | 없음 | API HUB Client Secret, 저장소·로그에 기록하지 않음 |
+| `NAVER_CLIENT_ID` / `NAVER_CLIENT_SECRET` | 사용 안 함 | 신규 pipeline은 NAVER Local API를 호출하지 않음 |
 | `NAVER_CONNECT_TIMEOUT` | `3s` | 연결 제한 시간 |
 | `NAVER_READ_TIMEOUT` | `5s` | 응답 제한 시간 |
 | `NAVER_REQUEST_INTERVAL` | `200ms` | 순차 호출 사이 최소 간격 |

@@ -1,0 +1,14 @@
+=== Place Resolver Preflight ===
+[OK] Python 3.11.16
+[OK] output directory writable: build/reports/naver-place-pipeline/newbatch-20260920
+[OK] Playwright Chromium
+[OK] Ollama http://localhost:11434 / qwen3:8b
+[OK] NAVER Local credentials configured
+[OK] MySQL network localhost:3306
+[OK] MySQL credentials
+Pipeline targets: 1 (resume skipped: 0)
+[1/1] 100.0% 행복한 만두 RESOLVED 8.21s ETA 00:00:00
+=== Pipeline Summary ===
+Processed: 1
+{'RESOLVED': 1}
+CSV: build/reports/naver-place-pipeline/newbatch-20260920/4305.csv

@@ -1,0 +1,21 @@
+restaurant_id,query,query_stage,NAVER Local name,NAVER Local address,NAVER Local category,candidate_count,candidate name,candidate href/url,candidate address,candidate category,place_id,detail_name,detail_address,detail_category,name evidence,address evidence,distance evidence,final_status,risk flags
+4282,강남구 선02,gangnam,집밥식당 선02,서울특별시 강남구 개포동 1257-6 1층,음식점>한식,9,집밥식당 선02 플레이스 플러스 한식,,서울 강남구 개포동,한식,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4298,강남구 빨간모자피자,gangnam,빨간모자피자 논현점,서울특별시 강남구 논현동 140-8,음식점>피자,3,빨간모자피자 논현점피자,,서울 강남구 논현동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4278,강남구 오레노 카츠,gangnam,오레노카츠 대치점,서울특별시 강남구 대치동 924-4,음식점>일식>돈가스,4,오레노카츠 대치점 네이버페이 톡톡,,서울 강남구 대치동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4279,강남구 카츠오우 도곡점,gangnam,카츠오우 도곡점,서울특별시 강남구 도곡동 420-2 1층,음식점>일식>돈가스,1,카츠오우 도곡점돈가스,,서울 강남구 도곡동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4289,강남구 수궁갈비집,gangnam,수궁갈비집,서울특별시 강남구 삼성동 77-25,음식점>한식,1,수궁갈비집한식,,서울 강남구 삼성동,수궁갈비집한식,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4296,강남구 돌리고제주도야지,gangnam,돌리고제주도야지 세곡점,서울특별시 강남구 세곡동 587 강남지웰파인즈 1층 101호,"육류,고기요리>돼지고기구이",2,돌리고제주도야지 세곡점돼지고기구이,,서울 강남구 세곡동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4419,강남구 파리바게뜨 수서역점,gangnam,파리바게뜨 수서역점,서울특별시 강남구 수서동 724 로즈데일오피스텔 지상1층 105호,"카페,디저트>베이커리",1,파리바게뜨 수서역점 네이버페이,,서울 강남구 수서동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4280,강남구 소나무,gangnam,소나무,서울특별시 강남구 신사동 576-3 1층,한식>소고기구이,9,역삼소나무공원근린공원,,서울 강남구 역삼동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+5719,강남구 서울동,gangnam,서울동,서울특별시 강남구 압구정동 494 갤러리아백화점 명품관 WEST 고메이494 지하1층,음식점>일식>일식당,9,서울동일식당,,서울동일식당,서울동일식당,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4295,강남구 전라도밥집 순천댁,gangnam,전라도밥집 순천댁,서울특별시 강남구 역삼동 837-26 삼일프라자 1층,음식점>한식,1,전라도밥집 순천댁한식,,서울 강남구 역삼동,전라도밥집 순천댁한식,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4333,강남구 문,gangnam,문,서울특별시 강남구 율현동 194-7,"음식점>카페,디저트",9,"이건창호 강남논현점 톡톡 문,창문",,서울 강남구 논현동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4284,강남구 카페알케미,gangnam,카페알케미,서울특별시 강남구 일원동 646-4 1층,"음식점>카페,디저트",1,"카페알케미카페,디저트",,서울 강남구 일원동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4361,강남구 강남햅쌀만꼬마김밥,gangnam,강남햅쌀만꼬마김밥,서울특별시 강남구 자곡동 672 강남훼미리타운A동 104호 강남햅쌀만꼬마김밥,분식>종합분식,1,강남햅쌀만꼬마김밥종합분식,,서울 강남구 자곡동,강남햅쌀만꼬마김밥종합분식,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4276,강남구 광부,gangnam,광부,서울특별시 강남구 청담동 22-20,한식>소고기구이,2,한국파독광부간호사간호조무사연합회사회복지단체,,서울 서초구 양재동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4299,강남구 오마뎅 개포래미안포레스트점,gangnam,오마뎅 개포래미안포레스트점,서울특별시 강남구 개포동 1282 제 상가1동 1층 103-1호,음식점>분식,1,오마뎅 개포래미안포레스트점분식,,서울 강남구 개포동,오마뎅 개포래미안포레스트점분식,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4321,강남구 대포집,gangnam,대포집 논현본점,서울특별시 강남구 논현동 184-21 1층,한식>돼지고기구이,5,대포집 논현본점 플레이스 플러스 돼지고기구이,,서울 강남구 논현동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4283,강남구 카발,gangnam,카발,서울특별시 강남구 대치동 897-10,음식점>이탈리아음식,2,카발 플레이스 플러스 쿠폰 이탈리아음식,,서울 강남구 대치동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4288,강남구 사리원,gangnam,사리원 도곡점,서울특별시 강남구 도곡동 411-5,"한식>육류,고기요리",2,"사리원 도곡점육류,고기요리",,서울 강남구 도곡동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4294,강남구 야키니쿠규,gangnam,야키니쿠 규,서울특별시 강남구 삼성동 152-11 1층,한식>소고기구이,1,야키니쿠 규 플레이스 플러스 톡톡 소고기구이,,서울 강남구 삼성동,,,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH
+4616,강남구 미가,gangnam,미가 부대찌개,서울특별시 강남구 세곡동 164-10 미가부대찌개,"한식>찌개,전골",9,"미가 부대찌개찌개,전골",,서울 강남구 세곡동,,,,,,CONTAINED,PARTIAL,UNKNOWN,NOT_FOUND,

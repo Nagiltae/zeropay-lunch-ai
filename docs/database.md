@@ -1,5 +1,12 @@
 # 데이터베이스
 
+## When to read
+- Schema 변경
+- Flyway migration 추가
+- Repository/Query 변경
+- Sync 데이터 저장 정책 변경
+
+
 > **Harness Role:** MySQL 데이터 소유권, 현재 테이블, Flyway 규칙과 샘플 데이터 정책의 기준입니다. Agent는 엔티티나 스키마를 바꾸기 전에 읽습니다. 이 문서가 없으면 적용된 migration을 수정하거나 prod에 샘플 데이터를 넣는 실수가 생길 수 있습니다. `AGENTS.md`의 migration guardrail, 실제 `db/migration`, 백엔드 및 Docker 통합 검사와 연결됩니다.
 
 ## 현재 결정 사항
@@ -30,10 +37,17 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 | `user_credentials` | BCrypt 비밀번호 해시, 비밀번호 변경 일시, 로그인 실패 횟수, 계정 잠금 일시 (`users` 1:1 FK) |
 | `SPRING_SESSION` | Spring Session JDBC가 사용하는 세션 저장 테이블 (Flyway 관리) |
 | `SPRING_SESSION_ATTRIBUTES` | Spring Session 속성 저장 테이블 |
-| `conversations` | UUID, 사용자(user_id) 연결, 기준 위치, 활성 여부, 생성·수정·비활성 시각 |
+| `conversations` | UUID, 사용자(user_id) 연결, 활성 여부, 생성·수정·비활성 시각 (기존 위치 컬럼은 historical 호환용) |
+| `subway_stations` | 강남구 기준 위치로 사용할 활성 지하철역, 호선, 좌표와 데이터 출처 |
+| `shedlock` | 다중 인스턴스 Scheduler 중복 실행 방지용 JDBC lock |
 | `chat_messages` | 대화별 USER/ASSISTANT 메시지와 처리 상태 |
-| `restaurants` | 강남구 음식점, 추천용 보강 정보, KOMSCO 원본 출처와 동기화 상태 |
+| `restaurants` | 강남구 논현동 음식점, 추천용 보강 정보, KOMSCO 원본 출처와 동기화 상태 |
 | `restaurant_external_places` | 음식점별 외부 검색 제공자의 보강 필드와 매칭 판정·동기화 시각 |
+| `restaurant_menus` | NAVER Place에서 수집한 메뉴·가격의 정규화 행 |
+| `restaurant_business_hours` | 외부 장소별 요일 영업시간·휴무·브레이크타임 |
+| `restaurant_review_summaries` | 방문자/블로그 리뷰 집계 |
+| `restaurant_review_keywords` | 리뷰 테마·메뉴 언급·투표 키워드 |
+| `restaurant_representative_reviews` | 공개 화면에 포함된 대표 리뷰 원문 |
 | `restaurant_schedules` | 같은 요일·시간 정책을 묶는 영업 일정 |
 | `restaurant_operating_days` | 일정별 영업 요일 |
 | `restaurant_operating_hours` | 일정별 영업 시작·종료 시각 |
@@ -68,6 +82,28 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 
 현재 스키마는 시작 시각보다 종료 시각이 늦은 당일 영업 구간을 지원합니다. 자정을 넘기는 영업시간과 특정 공휴일 예외는 실제 데이터 계약을 정할 때 별도 일정으로 확장합니다.
 
+## 지하철역과 반경 (historical)
+
+기존 migration과 station 데이터는 삭제하지 않고 historical 호환용으로 보존합니다. 신규 추천 runtime은 역·반경을 사용하지 않고 논현동 모집단을 기준으로 합니다.
+
+### 역 좌표 provenance 감사
+
+V11의 `source='SEOUL_OPEN_DATA'`를 뒷받침하는 원본 파일, 다운로드 시각, 행 단위 매핑은 현재 Repository와 migration에 남아 있지 않습니다. 따라서 현재 27개 좌표가 아래 공식 데이터셋에서 직접 추출되었다고 확정할 수 없으며, `SEOUL_OPEN_DATA`는 검증되지 않은 내부 라벨로 취급합니다.
+
+확인한 공식/공공 데이터셋은 다음과 같습니다.
+
+| 데이터셋 | 제공 기관 | 공식 URL/식별자 | 좌표 정보 |
+| --- | --- | --- | --- |
+| 서울교통공사 1~8호선 역사 좌표(위경도) 정보 | 서울교통공사 | [공공데이터포털 15099316](https://www.data.go.kr/data/15099316/fileData.do) | 위도·경도 십진 좌표(컬럼명 기준). 페이지에 별도 CRS 식별자는 없음 |
+| 서울교통공사 9호선 2~3단계 역사 좌표(위경도) 정보 | 서울교통공사 | [서울 열린데이터광장 OA-22447](https://data.seoul.go.kr/dataList/OA-22447/F/1/datasetView.do) | 위도·경도 십진 좌표(컬럼 설명 기준). 페이지에 별도 CRS 식별자는 없음 |
+| 서울시 지하철역 정보(역명) | 서울특별시 | [서울 데이터 허브 데이터셋 599](https://data.seoul.go.kr/bsp/wgs/dataView/data300View/599.do) | 역명 검색 API. 현재 V11 좌표를 이 API에서 취득했다는 증거는 없음 |
+
+위 공식 페이지들은 `위도`/`경도`를 제공하지만 이 감사에서 좌표 기준계(EPSG/WGS84)를 명시한 메타데이터는 확인하지 못했습니다. 애플리케이션은 십진 위·경도와 Haversine 계산을 사용하므로, 향후 원본을 재수집할 때 실제 CRS를 확인하고 기록해야 합니다. V11의 좌표가 위 데이터셋에서 직접 온 것인지 확인되기 전에는 migration을 수정하지 않습니다.
+
+`source_updated_at=CURRENT_TIMESTAMP`는 migration이 DB에 반영된 시각이며 공공데이터 자체의 갱신일이 아닙니다. 공공 원천의 작성일/갱신일을 확인하지 못한 상태에서 임의의 날짜를 채우지 않습니다.
+
+`subway_stations.line`은 환승역을 한 물리적 역 행으로 유지하기 위해 여러 호선을 `/`로 합친 문자열입니다. 따라서 같은 역이 호선별로 중복 저장되지 않습니다.
+
 ## KOMSCO 음식점 원본
 
 Flyway `V4__add_komsco_restaurant_source_fields.sql`은 기존 V1~V3를 변경하지 않고 `restaurants`에 다음 책임을 추가합니다.
@@ -77,17 +113,19 @@ Flyway `V4__add_komsco_restaurant_source_fields.sql`은 기존 V1~V3를 변경�
 - 원본 업종·상태: `industry_code`, `industry_name`, `provider_institution_code`, `business_status_code`, `business_status_name`
 - 추천 경계: `recommendation_ready`
 
-`(source_provider, external_merchant_id)` unique 제약이 같은 KOMSCO `alt_text`의 중복 행을 막습니다. import는 전체 응답에서 `alt_text`별 가장 최신 `crtr_ymd`를 먼저 선택한 다음 `I0000002`, `ksic_cd=561`, `bzmn_stts_nm=계속사업자`, 강남구 조건을 적용합니다. 더 최신 기준일자는 갱신하고, 같은 기준일자는 실제 원본 필드가 달라졌을 때만 갱신하며, 더 오래된 기준일자는 무시합니다.
+`(source_provider, external_merchant_id)` unique 제약이 같은 KOMSCO `alt_text`의 중복 행을 막습니다. import는 전체 응답에서 `alt_text`별 가장 최신 `crtr_ymd`를 먼저 선택한 다음 `ksic_cd=561`, `bzmn_stts_nm=계속사업자`, 강남구 조건을 적용합니다. 더 최신 기준일자는 갱신하고, 같은 기준일자는 실제 원본 필드가 달라졌을 때만 갱신하며, 더 오래된 기준일자는 무시합니다.
 
 기존 `category`, `representative_menu`, `average_price`, `location_id`는 추천용 보강 데이터이며 KOMSCO가 제공하지 않으므로 nullable입니다. KOMSCO import 행은 `zero_pay_available=true`, `recommendation_ready=false`로 저장됩니다. 영업시간이 보강되기 전에는 실제 현재 영업 중 여부를 판정할 수 없고 추천 조회에도 들어가지 않습니다.
 
 기본 import는 API 실패나 snapshot에 없는 행을 이유로 기존 데이터를 삭제하지 않는 upsert 방식입니다. 명시적으로 `KOMSCO_REPLACE_EXISTING=true`를 지정한 전체 snapshot 교체는 모든 페이지 조회·정제 성공 후 하나의 트랜잭션에서 KOMSCO 행만 삭제하고 필터 결과를 재삽입합니다. 삭제나 삽입이 실패하면 전체 교체를 롤백하며 샘플 및 다른 출처의 음식점은 삭제하지 않습니다.
 
-매일 새벽 3시 동기화는 전체 snapshot에서 `alt_text`별 최신 행을 선택한 뒤 기존 KOMSCO 행과 비교합니다. 신규 행은 계속사업자·KSIC 561·강남구·제공기관 조건을 모두 만족할 때만 삽입합니다. 기존 행은 같은 기준일자여도 `last_synced_at`과 `updated_at`을 갱신합니다. 최신 상태가 계속사업자가 아니거나 나머지 저장 조건에서 벗어나면 삭제하지 않고 `active=false`로 전환하며, 이후 조건을 다시 만족하면 `active=true`로 복구합니다. 응답 snapshot에서 완전히 사라진 ID는 자동 비활성화하지 않습니다.
+매일 새벽 3시 동기화는 전체 snapshot에서 `alt_text`별 최신 행을 선택한 뒤 기존 KOMSCO 행과 비교합니다. 신규 행은 계속사업자·KSIC 561·강남구 조건을 모두 만족할 때만 삽입합니다. 기존 행은 같은 기준일자여도 `last_synced_at`과 `updated_at`을 갱신합니다. 최신 상태가 계속사업자가 아니거나 나머지 저장 조건에서 벗어나면 삭제하지 않고 `active=false`로 전환하며, 이후 조건을 다시 만족하면 `active=true`로 복구합니다. 응답 snapshot에서 완전히 사라진 ID는 자동 비활성화하지 않습니다.
 
 ## NAVER Local 보강
 
-Flyway `V5__create_restaurant_external_places.sql`은 KOMSCO 원본과 외부 검색 결과의 책임을 분리하기 위해 `restaurant_external_places`를 추가합니다. `(restaurant_id, provider)` unique 제약으로 음식점마다 `NAVER` 행을 하나만 유지하며 반복 실행은 insert가 아니라 update가 됩니다. 음식점 삭제 시 보강 행만 함께 정리되도록 FK에 cascade를 적용하며 반대 방향으로 NAVER 데이터가 `restaurants`를 변경하지는 않습니다.
+Flyway `V5__create_restaurant_external_places.sql`은 KOMSCO 원본과 외부 검색 결과의 책임을 분리하기 위해 `restaurant_external_places`를 추가합니다. `(restaurant_id, provider)` unique 제약으로 음식점마다 `NAVER` 행을 하나만 유지하며 반복 실행은 insert가 아니라 update가 됩니다. V12의 `external_place_id`는 URL에서 다시 파싱하지 않고 외부 Place ID를 별도 값으로 저장합니다. `(provider, external_place_id)` unique index는 하나의 NAVER Place ID가 여러 음식점에 중복 매핑되는 것을 막습니다(NULL은 여러 행에 허용).
+
+KOMSCO-direct Place Resolver의 `--write-db`는 `RESOLVED`이면서 detail validation이 `PASS`이고 numeric `place_id`인 결과만 NAVER 외부 행에 반영합니다. 기존 `(restaurant_id, NAVER)` 행은 update하고, KOMSCO-only 음식점은 외부 행을 insert합니다. `AMBIGUOUS`, `NOT_FOUND`, `ERROR`, `BLOCKED`, invalid ID는 저장하지 않으며, 반복 실행에도 동일 row를 업데이트해 중복을 만들지 않습니다.
 
 Flyway `V6__add_naver_matching_lifecycle.sql`은 `name_score`, `address_score`, `distance_score`, `category_score`, `runner_up_score`, `score_gap`을 추가해 판정 근거를 보존합니다. `source_content_hash`는 상호·주소·상세주소·좌표·법정동처럼 매칭에 영향을 주는 KOMSCO 필드만 반영합니다. `last_attempt_status`, `last_match_attempt_at`, `next_retry_at`은 매칭 결과와 API 장애를 분리하고 상태별 재시도 및 refresh TTL을 지원합니다. 기존 정상 매칭 뒤 API가 실패하면 NAVER 후보와 `match_status`/`last_synced_at`은 유지하고 마지막 시도 정보만 갱신합니다.
 

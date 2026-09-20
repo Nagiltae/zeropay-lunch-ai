@@ -32,7 +32,7 @@ class ChatPersistenceServiceTests {
     @Test
     void deactivatesConversationInsteadOfDeletingIt() {
         UUID userId = createUser();
-        Conversation conversation = chatPersistenceService.createConversation("gangnam", userId);
+        Conversation conversation = chatPersistenceService.createConversation(userId);
 
         chatPersistenceService.deactivateConversation(conversation.getId(), userId);
 
@@ -43,7 +43,7 @@ class ChatPersistenceServiceTests {
     @Test
     void returnsEmptyHistoryForNewConversation() {
         UUID userId = createUser();
-        Conversation conversation = chatPersistenceService.createConversation("gangnam", userId);
+        Conversation conversation = chatPersistenceService.createConversation(userId);
 
         var history = chatPersistenceService.getHistory(conversation.getId(), userId);
 
@@ -54,7 +54,7 @@ class ChatPersistenceServiceTests {
     @Test
     void rejectsConversationAccessByAnotherUser() {
         UUID ownerId = createUser();
-        Conversation conversation = chatPersistenceService.createConversation("gangnam", ownerId);
+        Conversation conversation = chatPersistenceService.createConversation(ownerId);
 
         assertThatThrownBy(() -> chatPersistenceService.getHistory(
                 conversation.getId(),

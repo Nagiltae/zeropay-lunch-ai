@@ -66,8 +66,7 @@ public class ChatStreamService {
 
             List<RecommendationItem> recommendations = recommendationService.recommend(
                     exchange.userId(),
-                    userMessage,
-                    exchange.locationId()
+                    userMessage
             );
             String reply = createReply(recommendations);
             chatPersistenceService.completeExchange(

@@ -38,49 +38,5 @@ app:
     import-enabled: ${KOMSCO_IMPORT_ENABLED:false}
     replace-existing: ${KOMSCO_REPLACE_EXISTING:false}
     scheduler-enabled: ${KOMSCO_SCHEDULER_ENABLED:false}
-    scheduler-cron: "${KOMSCO_SCHEDULER_CRON:0 0 3 * * *}"
+    scheduler-cron: "${KOMSCO_SCHEDULER_CRON:0 0 3 * * SUN}"
     scheduler-zone: ${KOMSCO_SCHEDULER_ZONE:Asia/Seoul}
-  naver-local:
-    base-url: ${NAVER_LOCAL_BASE_URL:https://naverapihub.apigw.ntruss.com/search/v1/local}
-    client-id: ${NAVER_CLIENT_ID:}
-    client-secret: ${NAVER_CLIENT_SECRET:}
-    connect-timeout: ${NAVER_CONNECT_TIMEOUT:3s}
-    read-timeout: ${NAVER_READ_TIMEOUT:5s}
-    request-interval: ${NAVER_REQUEST_INTERVAL:200ms}
-    retry-backoff: ${NAVER_RETRY_BACKOFF:500ms}
-    max-attempts: ${NAVER_MAX_ATTEMPTS:2}
-    display: 5
-    enrichment-enabled: ${NAVER_ENRICHMENT_ENABLED:false}
-    enrichment-limit: ${NAVER_ENRICHMENT_LIMIT:100}
-    max-search-queries: 2
-    max-validation-limit: 100
-    matched-refresh-ttl: ${NAVER_MATCHED_REFRESH_TTL:720h}
-    ambiguous-retry-delay: ${NAVER_AMBIGUOUS_RETRY_DELAY:168h}
-    unmatched-retry-delay: ${NAVER_UNMATCHED_RETRY_DELAY:168h}
-    api-error-retry-delay: ${NAVER_API_ERROR_RETRY_DELAY:1h}
-    report-directory: ${NAVER_REPORT_DIRECTORY:build/reports/naver-enrichment}
-    matching:
-      name-exact-score: 40
-      name-contains-score: 35
-      name-high-similarity-score: 32
-      name-moderate-similarity-score: 22
-      high-name-similarity: 0.85
-      moderate-name-similarity: 0.70
-      address-exact-score: 30
-      address-high-similarity-score: 25
-      address-moderate-similarity-score: 15
-      same-dong-score: 8
-      high-address-similarity: 0.70
-      moderate-address-similarity: 0.45
-      distance-50m-score: 20
-      distance-100m-score: 14
-      distance-300m-score: 6
-      category-score: 10
-      maximum-distance-meters: 300
-      matched-threshold: 70
-      viable-threshold: 45
-      ambiguity-margin: 8
-      minimum-name-score: 22
-      strong-name-score: 32
-      strong-address-score: 25
-      strong-evidence-distance-meters: 50

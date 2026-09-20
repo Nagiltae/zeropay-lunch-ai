@@ -17,8 +17,6 @@ export type RestaurantRecommendation = {
   representativeMenu: string
   averagePrice: number
   address: string
-  locationId: string
-  locationLabel: string
   zeroPayAvailable: boolean
   sampleData: boolean
   reason: string

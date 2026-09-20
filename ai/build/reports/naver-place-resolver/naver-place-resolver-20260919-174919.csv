@@ -1,0 +1,4 @@
+restaurant_id,query,query_stage,naver_local_name,naver_local_address,candidate_count,matcher_source,selected_candidate_index,selected_candidate_name,qwen_used,qwen_confidence,candidate_url,place_id,place_id_source,detail_name,detail_address,detail_category,name_evidence,address_evidence,final_status,risk_flags,elapsed_ms
+4282,매봉역 선02,station,집밥식당 선02,서울특별시 강남구 개포동 1257-6 1층,5,QWEN,,,True,LOW,,,,,,,UNKNOWN,UNKNOWN,AMBIGUOUS,NO_CONFIDENT_CANDIDATE,5923
+4298,논현역 빨간모자피자,station,빨간모자피자 논현점,서울특별시 강남구 논현동 140-8,1,QWEN,,,True,LOW,,,,,,,UNKNOWN,UNKNOWN,AMBIGUOUS,NO_CONFIDENT_CANDIDATE,1976
+4278,한티역 오레노 카츠,station,오레노카츠 대치점,서울특별시 강남구 대치동 924-4,2,QWEN,,,True,LOW,,,,,,,UNKNOWN,UNKNOWN,AMBIGUOUS,NO_CONFIDENT_CANDIDATE,2014

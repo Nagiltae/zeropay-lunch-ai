@@ -8,7 +8,6 @@ import java.util.Set;
 
 public record IntentAnalysisRequest(
         String message,
-        String locationId,
         Integer defaultBudget,
         SpiceLevel spiceLevel,
         Set<RestaurantCategory> preferredCategories,

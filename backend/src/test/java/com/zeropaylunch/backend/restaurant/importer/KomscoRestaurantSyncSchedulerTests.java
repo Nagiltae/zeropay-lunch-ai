@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 class KomscoRestaurantSyncSchedulerTests {
 
     @Test
-    void delegatesDailySynchronizationAndUsesConfiguredThreeAmSchedule() throws Exception {
+    void delegatesWeeklySynchronizationAndUsesConfiguredThreeAmSchedule() throws Exception {
         RestaurantImportService importService = mock(RestaurantImportService.class);
         RestaurantSyncResult result = new RestaurantSyncResult(
                 100, 80, 20, 1, 18, 1, 2, 1, 80, List.of(10L, 11L));

@@ -11,7 +11,6 @@ const starterPrompts = [
 type MessageListProps = {
   messages: ChatMessage[]
   progress: string | null
-  locationSelected: boolean
   onPromptSelect: (prompt: string) => void
   onRetry: (messageId: string) => void
 }
@@ -19,7 +18,6 @@ type MessageListProps = {
 export function MessageList({
   messages,
   progress,
-  locationSelected,
   onPromptSelect,
   onRetry,
 }: MessageListProps) {
@@ -88,7 +86,7 @@ export function MessageList({
                       <div>
                         <strong>{restaurant.name}</strong>
                         <span>
-                          {restaurant.category} · {restaurant.locationLabel}
+                          {restaurant.category} · 강남구 논현동
                         </span>
                       </div>
                       {restaurant.sampleData && <em>샘플 데이터</em>}
@@ -163,15 +161,12 @@ export function MessageList({
       {messages.length === 1 && (
         <div className="starter-prompts" aria-label="추천 질문">
           <p>
-            {locationSelected
-              ? '이렇게 물어보세요'
-              : '위치를 선택하면 바로 대화를 시작할 수 있어요'}
+            이렇게 물어보세요
           </p>
           {starterPrompts.map((prompt) => (
             <button
               type="button"
               key={prompt}
-              disabled={!locationSelected}
               onClick={() => onPromptSelect(prompt)}
             >
               {prompt}

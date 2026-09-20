@@ -6,7 +6,6 @@ import com.zeropaylunch.backend.chat.domain.MessageRecommendation;
 import com.zeropaylunch.backend.chat.infrastructure.ChatMessageJpaRepository;
 import com.zeropaylunch.backend.chat.infrastructure.ConversationJpaRepository;
 import com.zeropaylunch.backend.chat.infrastructure.MessageRecommendationJpaRepository;
-import com.zeropaylunch.backend.location.domain.GangnamLocation;
 import com.zeropaylunch.backend.restaurant.application.RecommendationItem;
 import com.zeropaylunch.backend.restaurant.domain.Restaurant;
 import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantJpaRepository;
@@ -49,14 +48,8 @@ public class ChatPersistenceService {
     }
 
     @Transactional
-    public Conversation createConversation(String locationId, UUID userId) {
-        GangnamLocation location;
-        try {
-            location = GangnamLocation.fromId(locationId);
-        } catch (IllegalArgumentException exception) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, exception.getMessage());
-        }
-        return conversationRepository.save(Conversation.create(location.id(), userId, clock.instant()));
+    public Conversation createConversation(UUID userId) {
+        return conversationRepository.save(Conversation.create(userId, clock.instant()));
     }
 
     @Transactional
@@ -84,7 +77,6 @@ public class ChatPersistenceService {
         return new PendingExchange(
                 conversation.getId(),
                 conversation.getUserId(),
-                conversation.getLocationId(),
                 userMessage.getId(),
                 assistantMessage.getId()
         );
@@ -150,16 +142,13 @@ public class ChatPersistenceService {
                                 .getOrDefault(message.getId(), List.of())
                                 .stream()
                                 .sorted(Comparator.comparingInt(MessageRecommendation::getRank))
-                                .map(saved -> toRecommendation(saved, restaurants.get(
-                                        saved.getRestaurantId()
-                                )))
+                                .map(saved -> toRecommendation(saved, restaurants.get(saved.getRestaurantId())))
                                 .toList()
                 ))
                 .toList();
 
         return new ConversationHistory(
                 conversation.getId(),
-                conversation.getLocationId(),
                 conversation.isActive(),
                 conversation.getCreatedAt(),
                 historyMessages
@@ -173,11 +162,10 @@ public class ChatPersistenceService {
         if (restaurant == null) {
             throw new IllegalStateException("추천 음식점 정보를 찾을 수 없습니다.");
         }
-        GangnamLocation location = GangnamLocation.fromId(restaurant.getLocationId());
         return new RecommendationItem(
                 restaurant.getId(), restaurant.getName(), restaurant.getCategory().label(),
                 restaurant.getRepresentativeMenu(), restaurant.getAveragePrice(),
-                restaurant.getAddress(), restaurant.getLocationId(), location.label(),
+                restaurant.getAddress(),
                 restaurant.isZeroPayAvailable(), restaurant.isSampleData(), saved.getReason()
         );
     }
@@ -197,7 +185,6 @@ public class ChatPersistenceService {
     public record PendingExchange(
             UUID conversationId,
             UUID userId,
-            String locationId,
             UUID userMessageId,
             UUID assistantMessageId
     ) {
@@ -205,7 +192,6 @@ public class ChatPersistenceService {
 
     public record ConversationHistory(
             UUID conversationId,
-            String locationId,
             boolean active,
             Instant createdAt,
             List<HistoryMessage> messages

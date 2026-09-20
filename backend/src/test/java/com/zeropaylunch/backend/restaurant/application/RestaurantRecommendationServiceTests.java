@@ -1,12 +1,14 @@
 package com.zeropaylunch.backend.restaurant.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.data.Offset.offset;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.zeropaylunch.backend.preference.domain.SpiceLevel;
+import com.zeropaylunch.backend.location.domain.SubwayStation;
 import com.zeropaylunch.backend.recommendation.ai.AnalyzedIntent;
 import com.zeropaylunch.backend.recommendation.ai.AnalyzedIntent.IntentType;
 import com.zeropaylunch.backend.recommendation.ai.IntentAnalysisRequest;
@@ -14,10 +16,12 @@ import com.zeropaylunch.backend.recommendation.application.RecommendationContext
 import com.zeropaylunch.backend.recommendation.application.RecommendationContextService.RecommendationContext;
 import com.zeropaylunch.backend.restaurant.domain.Restaurant;
 import com.zeropaylunch.backend.restaurant.domain.RestaurantCategory;
+import com.zeropaylunch.backend.location.infrastructure.SubwayStationJpaRepository;
 import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantJpaRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -40,7 +44,6 @@ class RestaurantRecommendationServiceTests {
 
         IntentAnalysisRequest request = new IntentAnalysisRequest(
                 "점심 추천해줘",
-                "gangnam",
                 12_000,
                 SpiceLevel.ANY,
                 Set.of(RestaurantCategory.KOREAN),
@@ -58,7 +61,7 @@ class RestaurantRecommendationServiceTests {
                 false,
                 null
         );
-        when(contextService.build(userId, "점심 추천해줘", "gangnam"))
+        when(contextService.build(userId, "점심 추천해줘"))
                 .thenReturn(new RecommendationContext(request, intent));
         RestaurantRecommendationService service = new RestaurantRecommendationService(
                 repository,
@@ -69,12 +72,19 @@ class RestaurantRecommendationServiceTests {
                 )
         );
 
-        assertThat(service.recommend(userId, "점심 추천해줘", "gangnam"))
+        assertThat(service.recommend(userId, "점심 추천해줘"))
                 .extracting(RecommendationItem::restaurantId)
                 .containsExactly(4L);
     }
 
     private Restaurant restaurant(Long id, RestaurantCategory category, int price) {
+        return restaurant(id, category, price,
+                new BigDecimal("37.4980"), new BigDecimal("127.0276"));
+    }
+
+    private Restaurant restaurant(
+            Long id, RestaurantCategory category, int price,
+            BigDecimal latitude, BigDecimal longitude) {
         Restaurant restaurant = mock(Restaurant.class);
         when(restaurant.getId()).thenReturn(id);
         when(restaurant.getName()).thenReturn("테스트 식당 " + id);
@@ -84,7 +94,19 @@ class RestaurantRecommendationServiceTests {
         when(restaurant.getAddress()).thenReturn("서울특별시 강남구 테스트로 " + id);
         when(restaurant.getLocationId()).thenReturn("gangnam");
         when(restaurant.isZeroPayAvailable()).thenReturn(true);
+        when(restaurant.getLatitude()).thenReturn(latitude);
+        when(restaurant.getLongitude()).thenReturn(longitude);
         when(restaurant.isSampleData()).thenReturn(true);
         return restaurant;
+    }
+
+    private SubwayStation station(String id, double latitude, double longitude) {
+        return new SubwayStation(
+                id, "강남역", "2호선", BigDecimal.valueOf(latitude),
+                BigDecimal.valueOf(longitude), true, "TEST");
+    }
+
+    private BigDecimal latitudeAtMeters(double meters) {
+        return BigDecimal.valueOf(37.4980 + Math.toDegrees(meters / 6_371_000.0));
     }
 }

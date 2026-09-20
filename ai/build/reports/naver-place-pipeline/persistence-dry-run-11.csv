@@ -1,0 +1,12 @@
+restaurant_id,place_id,menu_rows_planned,business_hours_rows_planned,review_summary_planned,review_keyword_rows_planned,representative_review_rows_planned,db_write
+4279,1003690665,20,1,true,39,10,0
+4280,1618902912,6,1,true,34,10,0
+4282,1793398137,21,0,true,35,10,0
+4283,36665270,8,1,true,40,10,0
+4284,136397665,4,1,true,35,10,0
+4288,11710938,21,1,true,36,10,0
+4289,13150128,6,1,true,33,10,0
+4294,1697940428,32,1,true,39,10,0
+4298,11580560,55,1,true,22,10,0
+4321,1609486868,18,1,true,39,10,0
+4419,11684209,0,0,true,37,10,0

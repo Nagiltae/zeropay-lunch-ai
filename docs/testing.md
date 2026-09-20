@@ -1,5 +1,11 @@
 # 검증 및 통합 테스트 전략
 
+## When to read
+- 새로운 통합 테스트 작성
+- 테스트 환경(Mocking, Testcontainers) 설정 변경
+- Check script 원리 확인
+
+
 > **Harness Role:** 어떤 변경에 어떤 검사가 필요하고 현재 통합 테스트가 어디까지 보장하는지 정의합니다. Agent는 구현 계획과 완료 판단 시 읽습니다. 이 문서가 없으면 단위 테스트만 통과하고 서비스 간 흐름도 검증됐다고 오판할 수 있습니다. `scripts/check-*.sh`, Docker Compose와 `AGENTS.md`의 Definition of Done을 연결합니다.
 
 ## 목적

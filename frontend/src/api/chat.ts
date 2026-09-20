@@ -66,7 +66,6 @@ const eventNames = new Set([
 
 export type ConversationResponse = {
   conversationId: string
-  locationId: string
   active: boolean
   createdAt: string
 }
@@ -91,11 +90,11 @@ async function readError(response: Response) {
   }
 }
 
-export async function createConversation(locationId: string) {
+export async function createConversation() {
   const response = await fetchWithAuth('/api/conversations', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ locationId }),
+    body: JSON.stringify({}),
   })
   if (!response.ok) {
     throw new Error(

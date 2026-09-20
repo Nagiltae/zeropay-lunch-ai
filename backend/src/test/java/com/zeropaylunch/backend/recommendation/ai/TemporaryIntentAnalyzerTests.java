@@ -16,7 +16,6 @@ class TemporaryIntentAnalyzerTests {
     void parsesOnlySupportedTemporaryConditions() {
         var result = analyzer.analyze(new IntentAnalysisRequest(
                 "만원 이하로 제로페이 되는 국물 음식 추천해줘",
-                "gangnam",
                 null,
                 SpiceLevel.ANY,
                 Set.of(),

@@ -6,12 +6,11 @@ afterEach(() => {
 })
 
 describe('chat API', () => {
-  it('creates a conversation with the selected location', async () => {
+  it('creates a conversation without location parameters', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
           conversationId: 'conversation-id',
-          locationId: 'gangnam',
           active: true,
           createdAt: '2026-09-16T00:00:00Z',
         }),
@@ -20,13 +19,13 @@ describe('chat API', () => {
     )
     vi.stubGlobal('fetch', fetchMock)
 
-    const result = await createConversation('gangnam')
+    const result = await createConversation()
 
     expect(result.conversationId).toBe('conversation-id')
     expect(fetchMock).toHaveBeenCalledWith('/api/conversations', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ locationId: 'gangnam' }),
+      body: JSON.stringify({}),
     })
   })
 

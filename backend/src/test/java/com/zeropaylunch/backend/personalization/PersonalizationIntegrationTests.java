@@ -108,7 +108,7 @@ class PersonalizationIntegrationTests {
     void storesOnlyOwnedRecommendationsAndUsesOnlyRecentThreeDays() {
         UUID userId = createUser("meal-owner");
         UUID otherUserId = createUser("meal-other");
-        var conversation = chatPersistenceService.createConversation("gangnam", userId);
+        var conversation = chatPersistenceService.createConversation(userId);
 
         var oldExchange = chatPersistenceService.startExchange(
                 conversation.getId(), userId, "첫 추천"
