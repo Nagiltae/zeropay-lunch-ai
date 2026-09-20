@@ -158,13 +158,23 @@ def parse_qwen_decision(raw: str, candidate_count: int) -> QwenDecision:
 
 
 def parse_qwen_semantic_decision(raw: str) -> QwenSemanticDecision:
+    text = raw.strip()
+    if "```" in text:
+        text = text.replace("```json", "").replace("```", "").strip()
+    if not text.startswith("{"):
+        start = text.find("{")
+        end = text.rfind("}")
+        if start >= 0 and end > start:
+            text = text[start:end + 1]
     try:
-        payload = json.loads(raw)
+        payload = json.loads(text)
     except (json.JSONDecodeError, TypeError) as error:
         raise ValueError("invalid Qwen semantic JSON") from error
     if not isinstance(payload, dict) or payload.get("decision") not in {"MATCH", "UNCERTAIN", "NO_MATCH"}:
         raise ValueError("invalid Qwen semantic decision")
     conflicts = payload.get("conflicts", [])
+    if isinstance(conflicts, str):
+        conflicts = [conflicts] if conflicts else []
     if not isinstance(conflicts, list) or any(not isinstance(value, str) for value in conflicts):
         raise ValueError("invalid Qwen semantic conflicts")
     return QwenSemanticDecision(
@@ -235,7 +245,7 @@ class QwenCandidateMatcher:
         last_error: Exception | None = None
         for attempt in range(2):
             if attempt:
-                prompt += "\n반드시 decision을 MATCH, UNCERTAIN, NO_MATCH 중 하나로 반환하라."
+                prompt += "\n반드시 decision과 짧은 reason을 포함한 JSON만 반환하라."
             try:
                 raw = self.client.complete(
                     "/no_think\n너는 음식점 entity matching 검증기다. Place ID를 생성하거나 추측하지 마라.",

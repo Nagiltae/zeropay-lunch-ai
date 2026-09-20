@@ -478,6 +478,15 @@ def test_qwen_semantic_parser_rejects_unknown_decision() -> None:
         raise AssertionError("unknown semantic decision must fail closed")
 
 
+def test_qwen_semantic_parser_accepts_wrapped_json_and_string_conflict() -> None:
+    decision = parse_qwen_semantic_decision(
+        '설명\n```json\n{"decision":"UNCERTAIN","conflicts":"주소 확인 필요",'
+        '"reason":"evidence 부족"}\n```'
+    )
+    assert decision.decision == "UNCERTAIN"
+    assert decision.conflicts == ("주소 확인 필요",)
+
+
 def test_dynamic_qwen_schema_limits_candidate_indices() -> None:
     fake = FakeLlm('{"candidateIndices": [1, 0, 2], "confidence": "LOW"}')
     matcher = QwenCandidateMatcher(fake)

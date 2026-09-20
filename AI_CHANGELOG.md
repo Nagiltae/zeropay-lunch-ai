@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Qwen semantic JSON parsing hardening
+- Qwen semantic 응답의 markdown/preamble 래핑과 `conflicts` 단일 문자열을 구조화 parser에서 안전하게 정규화
+- semantic schema/판단/veto 정책은 변경하지 않고 retry 최대 1회를 유지
+- 실패 4건 단일 resolver retest 결과 `RESOLVED 3 / AMBIGUOUS 1`; DB write 없음
+
 ## [2026-09-21] Semantic validation veto 정리
 - 이름/주소 표현 차이를 pre-filter에서 다시 hard reject하지 않고 Qwen semantic 검증으로 전달
 - fatal veto는 명백한 비음식점과 객관적인 행정구 불일치만 유지하고, 주소 파싱 실패는 `UNCERTAIN` 후보 실패로 기록
