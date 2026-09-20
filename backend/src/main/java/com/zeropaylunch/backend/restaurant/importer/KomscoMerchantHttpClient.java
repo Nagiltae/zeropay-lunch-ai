@@ -29,6 +29,7 @@ class KomscoMerchantHttpClient implements KomscoPageClient {
                 .queryParam("page", page)
                 .queryParam("perPage", pageSize)
                 .queryParam("cond[emd_cd::EQ]", legalDongCode)
+                .queryParam("cond[pvsn_inst_cd::EQ]", "I0000002")
                 .queryParam("returnType", "JSON")
                 .build()
                 .encode()

@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] KOMSCO 논현동 I0000002 모집단 전환
+- KOMSCO API 요청에 논현동 `11680108`과 제공기관 `I0000002` 조건을 적용하고 후처리 필터에서도 동일 provider를 검증
+- 기존 KOMSCO 2,011건을 명시적 cleanup 경로로 삭제한 뒤 새 조건으로 514건을 재적재
+- NAVER/PCMap/Resolver는 실행하지 않았으며, weekly scheduler와 stale 동기화도 동일 필터 scope를 사용
+
 ## [2026-09-21] Qwen 지점 주소 semantic 판정 보강
 - Resolver/veto/ranking은 변경하지 않고 semantic prompt에서 주소의 구·동·도로명·건물번호를 상호명 유사성보다 우선하도록 명시
 - 같은 브랜드라도 실제 지점 위치가 다르면 `NO_MATCH`, 주소가 불충분하면 `UNCERTAIN`으로 판단하도록 안내

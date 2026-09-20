@@ -97,7 +97,7 @@ class KomscoMerchantPipelineTests {
         KomscoMerchantRecord wrongProvider = merchant(
                 "D", "20260801", "계속사업자", "561", "11680108", "11680");
         wrongProvider = copyWithProvider(wrongProvider, "OTHER");
-        assertThat(filter.isActiveGangnamRestaurant(latest(wrongProvider))).isTrue();
+        assertThat(filter.isActiveGangnamRestaurant(latest(wrongProvider))).isFalse();
         assertThat(filter.isActiveGangnamRestaurant(latest(
                 merchant("C", "20260801", "계속사업자", "562", "11680108", "11680"))))
                 .isFalse();
