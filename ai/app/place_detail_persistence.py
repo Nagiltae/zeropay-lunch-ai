@@ -88,6 +88,33 @@ class PlaceDetailPersistence:
             )
         self._run("; ".join(statements) + ";")
 
+    def persist_verification(
+        self,
+        restaurant_id: int,
+        status: str,
+        reason: str,
+        place_id: str | None,
+        model_name: str | None,
+    ) -> None:
+        eligible = "ELIGIBLE" if status == "VERIFIED" else (
+            "INELIGIBLE" if reason in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else "UNKNOWN"
+        )
+        verified_at = "CURRENT_TIMESTAMP(6)" if status == "VERIFIED" else "NULL"
+        sql = f"""
+            INSERT INTO restaurant_naver_verifications
+              (restaurant_id,provider,verification_status,verification_reason,
+               external_place_id,model_name,verified_at,last_attempt_at)
+            VALUES ({restaurant_id},'NAVER',{_sql(status)},{_sql(reason)},
+                    {_sql(place_id)},{_sql(model_name)},{verified_at},CURRENT_TIMESTAMP(6))
+            ON DUPLICATE KEY UPDATE verification_status=VALUES(verification_status),
+              verification_reason=VALUES(verification_reason),
+              external_place_id=VALUES(external_place_id), model_name=VALUES(model_name),
+              verified_at=VALUES(verified_at), last_attempt_at=VALUES(last_attempt_at);
+            UPDATE restaurants SET recommendation_eligibility={_sql(eligible)}
+              WHERE id={restaurant_id};
+        """
+        self._run(sql)
+
     @staticmethod
     def preview(detail: PlaceDetail) -> dict[str, int | bool]:
         """Return the write set without opening a database connection."""

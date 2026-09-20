@@ -303,8 +303,7 @@ def _candidate_from_item(item, index: int) -> CandidateDom | None:
     lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
     if not lines:
         return None
-    name = lines[0]
-    category = next((line for line in lines if ">" in line or line.endswith(CATEGORY_TERMS)), "")
+    name, category = _candidate_name_category(item, lines)
     address = next(
         (
             line
@@ -326,6 +325,25 @@ def _candidate_from_item(item, index: int) -> CandidateDom | None:
         index,
         place_ids,
     )
+
+
+def _candidate_name_category(item, lines: list[str]) -> tuple[str, str]:
+    """Prefer semantic link/child text over a concatenated first text line."""
+    links = item.locator('a[href*="/place/"], a[href*="/restaurant/"]')
+    name = ""
+    category = ""
+    if links.count():
+        link = links.first
+        parts = [part.strip() for part in link.locator("span").all_inner_texts() if part.strip()]
+        link_text = (link.inner_text(timeout=1000) or "").strip()
+        if len(parts) >= 2 and normalize_text("".join(parts)) == normalize_text(link_text):
+            name, category = parts[0], parts[-1]
+        elif link_text:
+            name = link_text
+    name = name or (lines[0] if lines else "")
+    if not category:
+        category = next((line for line in lines if line != name and (">" in line or line.endswith(CATEGORY_TERMS))), "")
+    return name, category
 
 
 def _check_block(page, response) -> None:
@@ -593,10 +611,15 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         item for item, reason in zip(raw_candidates, rejection_reasons, strict=True) if not reason
     )
     if not candidates:
+        reason = "NO_SEARCH_RESULT" if original_candidate_count == 0 else (
+            "NON_FOOD" if "NON_FOOD_CATEGORY" in rejection_reasons else
+            "PLACE_ID_MISSING" if "CANDIDATE_PLACE_ID_MISSING" in rejection_reasons else
+            "NO_MATCH"
+        )
         return _empty_result(
             reference, query, stage, raw_candidates,
             ResolutionStatus.NOT_FOUND,
-            tuple(reason for reason in rejection_reasons if reason) or ("NO_VALID_CANDIDATE",),
+            (reason,),
             started,
             original_candidate_count=original_candidate_count,
             filtered_candidate_count=0,
@@ -841,10 +864,21 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
             )
     if attempts == 0:
         status = ResolutionStatus.NOT_FOUND
-        flags = ("PLACE_ID_NOT_IN_CANDIDATE_DOM",)
+        flags = ("PLACE_ID_MISSING",)
     else:
         status = ResolutionStatus.AMBIGUOUS
-        flags = ("TOP_K_DETAIL_VALIDATION_FAILED",)
+        semantic_results = {
+            attempt.semantic_decision for attempt in validation_attempts_detail
+            if attempt.semantic_decision
+        }
+        if semantic_results and semantic_results <= {"NO_MATCH"}:
+            flags = ("NO_MATCH",)
+        elif "UNCERTAIN" in semantic_results:
+            flags = ("SEMANTIC_UNCERTAIN",)
+        elif any(attempt.failure_reason == "LOCATOR_TIMEOUT" for attempt in validation_attempts_detail):
+            flags = ("DETAIL_LOAD_FAILED",)
+        else:
+            flags = ("TOP_K_DETAIL_VALIDATION_FAILED",)
     resolution = replace(
         last_resolution
         or Resolution(

@@ -64,7 +64,7 @@ HTML_TAG = re.compile(r"<[^>]+>")
 NON_TEXT = re.compile(r"[^0-9a-z가-힣]")
 NON_FOOD_TERMS = (
     "약국", "병원", "의원", "치과", "복지", "사회복지", "소프트웨어", "세무사",
-    "법률", "부동산", "자동차정비", "여행사", "광고", "공방",
+    "법률", "부동산", "자동차정비", "여행사", "광고", "공방", "미용실",
 )
 NAME_LEGAL_PREFIXES = ("주식회사", "유한회사", "주")
 NAME_DESCRIPTIVE_SUFFIXES = (
@@ -332,6 +332,10 @@ def fatal_veto_reason(reference: RestaurantReference, candidate: PlaceCandidate)
     candidate_districts = districts(candidate.address)
     if source_districts and candidate_districts and source_districts.isdisjoint(candidate_districts):
         return "DISTRICT_CONTRADICTION"
+    source_dong = normalize_text(reference.legal_dong)
+    candidate_dongs = set(re.findall(r"[가-힣]+동", candidate.address or ""))
+    if candidate_dongs and source_dong and source_dong not in candidate_dongs:
+        return "OUT_OF_SCOPE"
     return None
 
 

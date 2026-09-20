@@ -279,6 +279,30 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
     }
 
 
+def _verification_reason(result) -> str:
+    if result.resolution.status == ResolutionStatus.RESOLVED:
+        return "VERIFIED"
+    attempts = getattr(result, "validation_attempts_detail", ()) or ()
+    reasons = {attempt.failure_reason for attempt in attempts}
+    vetoes = {attempt.fatal_veto for attempt in attempts}
+    flags = set(getattr(result.resolution, "risk_flags", ()) or ())
+    if "OUT_OF_SCOPE" in reasons or "OUT_OF_SCOPE" in vetoes:
+        return "OUT_OF_SCOPE"
+    if "NON_FOOD" in reasons or "NON_FOOD_CATEGORY" in vetoes:
+        return "NON_FOOD"
+    if any("TIMEOUT" in reason for reason in reasons) or any("QWEN" in flag for flag in flags):
+        return "QWEN_TIMEOUT"
+    if any("NO_MATCH" in reason for reason in reasons) or "NO_MATCH" in flags:
+        return "NO_MATCH"
+    if any("UNCERTAIN" in reason for reason in reasons) or "SEMANTIC_UNCERTAIN" in flags:
+        return "SEMANTIC_UNCERTAIN"
+    if result.resolution.status == ResolutionStatus.NOT_FOUND:
+        return "NO_SEARCH_RESULT"
+    if result.resolution.status == ResolutionStatus.BLOCKED:
+        return "RATE_LIMITED"
+    return "DETAIL_LOAD_FAILED" if result.resolution.status == ResolutionStatus.ERROR else "SEMANTIC_UNCERTAIN"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="KOMSCO PCMap detail pipeline")
     parser.add_argument("--restaurant-id", type=int, action="append")
@@ -466,18 +490,32 @@ def main() -> int:
                     )()
                 persistence_status = "NOT_ATTEMPTED"
                 persistence_error = ""
-                if args.write_db and result.resolution.status == ResolutionStatus.RESOLVED and detail_result.detail:
+                if args.write_db:
                     try:
-                        owner = _existing_pcmap_mapping(root, result.place_id)
-                        if owner is not None and owner != reference.restaurant_id:
-                            raise RuntimeError(
-                                f"PLACE_ID_CONFLICT: {result.place_id} already mapped to restaurant {owner}"
+                        if result.resolution.status == ResolutionStatus.RESOLVED and detail_result.detail:
+                            owner = _existing_pcmap_mapping(root, result.place_id)
+                            if owner is not None and owner != reference.restaurant_id:
+                                raise RuntimeError(
+                                    f"PLACE_ID_CONFLICT: {result.place_id} already mapped to restaurant {owner}"
+                                )
+                            write_resolved_to_db(result, root)
+                            persistence.persist(
+                                reference.restaurant_id,
+                                result.place_id,
+                                detail_result.detail.to_place_detail(result.place_id),
                             )
-                        write_resolved_to_db(result, root)
-                        persistence.persist(
+                        verification_status = "VERIFIED" if result.resolution.status == ResolutionStatus.RESOLVED else (
+                            "BLOCKED" if result.resolution.status == ResolutionStatus.BLOCKED else
+                            "ERROR" if result.resolution.status == ResolutionStatus.ERROR else
+                            "REJECTED" if _verification_reason(result) in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else
+                            "UNRESOLVED"
+                        )
+                        persistence.persist_verification(
                             reference.restaurant_id,
+                            verification_status,
+                            _verification_reason(result),
                             result.place_id,
-                            detail_result.detail.to_place_detail(result.place_id),
+                            os.getenv("LOCAL_LLM_MODEL", "qwen3:8b"),
                         )
                         persistence_status = "SUCCESS"
                     except RuntimeError as error:

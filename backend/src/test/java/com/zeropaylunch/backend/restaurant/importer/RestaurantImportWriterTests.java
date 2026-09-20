@@ -6,7 +6,11 @@ import com.zeropaylunch.backend.restaurant.domain.Restaurant;
 import com.zeropaylunch.backend.restaurant.domain.RestaurantSourceProvider;
 import com.zeropaylunch.backend.restaurant.domain.RestaurantSourceSnapshot;
 import com.zeropaylunch.backend.restaurant.domain.RecommendationEligibility;
+import com.zeropaylunch.backend.restaurant.domain.NaverVerificationReason;
+import com.zeropaylunch.backend.restaurant.domain.NaverVerificationStatus;
+import com.zeropaylunch.backend.restaurant.domain.RestaurantNaverVerification;
 import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantJpaRepository;
+import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantNaverVerificationJpaRepository;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Instant;
@@ -18,6 +22,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @SpringBootTest
 @Transactional
@@ -28,6 +34,12 @@ class RestaurantImportWriterTests {
 
     @Autowired
     private RestaurantJpaRepository repository;
+
+    @Autowired
+    private RestaurantNaverVerificationJpaRepository verificationRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Test
     void insertsOnceAndDoesNotDuplicateTheSameSourceRecord() {
@@ -178,6 +190,26 @@ class RestaurantImportWriterTests {
                 Instant.parse("2026-09-20T00:00:00Z"));
         assertThat(restaurant.getRecommendationEligibility())
                 .isEqualTo(RecommendationEligibility.UNKNOWN);
+    }
+
+    @Test
+    void matchingSourceChangeMarksNaverVerificationForRecheck() {
+        Instant syncedAt = Instant.parse("2026-09-18T00:00:00Z");
+        writer.upsert(snapshot("merchant-verification", "2026-09-18", "원래 이름"));
+        Restaurant restaurant = find("merchant-verification");
+        verificationRepository.save(RestaurantNaverVerification.of(
+                restaurant, "NAVER", NaverVerificationStatus.VERIFIED,
+                NaverVerificationReason.VERIFIED, "123", "qwen3:8b", syncedAt, syncedAt));
+
+        writer.synchronizeKomscoRestaurants(List.of(new RestaurantSyncCandidate(
+                snapshot("merchant-verification", "2026-09-19", "변경 이름"), true)));
+
+        entityManager.flush();
+        entityManager.clear();
+        RestaurantNaverVerification verification = verificationRepository
+                .findByRestaurantIdAndProvider(restaurant.getId(), "NAVER").orElseThrow();
+        assertThat(verification.getVerificationStatus()).isEqualTo(NaverVerificationStatus.UNRESOLVED);
+        assertThat(verification.getVerificationReason()).isEqualTo(NaverVerificationReason.SOURCE_CHANGED);
     }
 
     private RestaurantSourceSnapshot snapshot(String id, String date, String name) {

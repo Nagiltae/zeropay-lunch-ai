@@ -30,10 +30,31 @@ def test_address_best_evidence_ignores_trailing_detail_and_mixed_sources() -> No
     assert compare_address_pair(
         "서울특별시 강남구 도산대로30길 46 tov토브", "서울 강남구 도산대로30길 46"
     ) == "STRONG_MATCH"
+
+
     assert best_address_evidence(
         ("서울 강남구 논현동 80-6", "서울 강남구 학동로 123"),
         ("서울 강남구 학동로 123 2층", ""),
     ) == "STRONG_MATCH"
+
+
+def test_candidate_name_category_prefers_semantic_child_text() -> None:
+    class FakeLocator:
+        def count(self): return 1
+        def __getitem__(self, _): return self
+        @property
+        def first(self): return self
+        def locator(self, _): return self
+        def inner_text(self, **_): return "나향반점중식당"
+        def all_inner_texts(self): return ["나향반점", "중식당"]
+
+    class FakeItem:
+        def locator(self, selector):
+            return FakeLocator()
+
+    assert cli._candidate_name_category(FakeItem(), ["나향반점중식당", "서울 강남구 논현로 1"]) == (
+        "나향반점", "중식당"
+    )
 
 
 def test_address_missing_is_unknown_and_not_different() -> None:
@@ -182,6 +203,12 @@ def test_fatal_veto_rejects_obvious_non_food_categories() -> None:
     source = reference()
     candidate = PlaceCandidate("베이직", "서울 강남구 논현로 1", "약국", "", "9")
     assert fatal_veto_reason(source, candidate) == "NON_FOOD_CATEGORY"
+
+
+def test_fatal_veto_rejects_explicitly_out_of_scope_dong() -> None:
+    source = reference()
+    candidate = PlaceCandidate("같은 식당", "서울 강남구 청담동 학동로 1", "한식", "", "10")
+    assert fatal_veto_reason(source, candidate) == "OUT_OF_SCOPE"
 
 
 def test_query_variants_are_deterministic_and_kosmsco_only() -> None:

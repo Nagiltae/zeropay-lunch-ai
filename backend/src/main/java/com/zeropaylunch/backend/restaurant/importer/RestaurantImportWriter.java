@@ -4,6 +4,7 @@ import com.zeropaylunch.backend.restaurant.domain.Restaurant;
 import com.zeropaylunch.backend.restaurant.domain.RestaurantSourceProvider;
 import com.zeropaylunch.backend.restaurant.domain.RestaurantSourceSnapshot;
 import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantJpaRepository;
+import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantNaverVerificationJpaRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
@@ -20,10 +22,20 @@ class RestaurantImportWriter {
 
     private final RestaurantJpaRepository repository;
     private final Clock clock;
+    private final RestaurantNaverVerificationJpaRepository naverVerificationRepository;
 
     RestaurantImportWriter(RestaurantJpaRepository repository, Clock clock) {
+        this(repository, clock, null);
+    }
+
+    @Autowired
+    RestaurantImportWriter(
+            RestaurantJpaRepository repository,
+            Clock clock,
+            RestaurantNaverVerificationJpaRepository naverVerificationRepository) {
         this.repository = repository;
         this.clock = clock;
+        this.naverVerificationRepository = naverVerificationRepository;
     }
 
     @Transactional
@@ -117,6 +129,9 @@ class RestaurantImportWriter {
             }
             if (matchingSourceChanged) {
                 changedRestaurantIds.add(existing.getId());
+                if (naverVerificationRepository != null) {
+                    naverVerificationRepository.markStaleForSourceChange(existing.getId());
+                }
             }
             if (wasActive && !candidate.eligible()) {
                 deactivated++;

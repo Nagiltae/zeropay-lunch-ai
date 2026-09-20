@@ -1,5 +1,12 @@
 # AI Agent Work History
 
+## [2026-09-21] PCMap 검증 provenance 및 후보 데이터 품질 분리
+- PCMap 후보 DOM에서 상호명과 category를 semantic child text로 분리하고 논현동 범위·비음식점 안전 검증을 보강
+- Qwen semantic prompt에 정보 누락/충돌, 비음식 업종, 지점·주소 동일성 원칙을 명시
+- `restaurant_naver_verifications`에 NAVER 검증 상태·reason·모델·Place ID provenance를 저장하고 KOMSCO 원천 변경 시 `SOURCE_CHANGED`로 재검증 대기 처리
+- report-only는 DB를 쓰지 않고, write-db 경로에서만 verification 및 recommendation eligibility를 갱신
+- AI/Backend/Frontend 검증 통과
+
 ## [2026-09-21] KOMSCO 논현동 I0000002 모집단 전환
 - KOMSCO API 요청에 논현동 `11680108`과 제공기관 `I0000002` 조건을 적용하고 후처리 필터에서도 동일 provider를 검증
 - 기존 KOMSCO 2,011건을 명시적 cleanup 경로로 삭제한 뒤 새 조건으로 514건을 재적재
