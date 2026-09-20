@@ -1,5 +1,11 @@
 # AI Agent Work History
 
+## [2026-09-21] Qwen 지점 주소 semantic 판정 보강
+- Resolver/veto/ranking은 변경하지 않고 semantic prompt에서 주소의 구·동·도로명·건물번호를 상호명 유사성보다 우선하도록 명시
+- 같은 브랜드라도 실제 지점 위치가 다르면 `NO_MATCH`, 주소가 불충분하면 `UNCERTAIN`으로 판단하도록 안내
+- 기존 법인명·지점명·층/호·도로명/지번 표현 차이 허용 원칙은 유지
+- 7554 raw 응답 실패가 JSON 형식이 아닌 Ollama timeout임을 확인해 client 대기시간만 30초로 조정
+
 ## [2026-09-21] Qwen semantic JSON parsing hardening
 - Qwen semantic 응답의 markdown/preamble 래핑과 `conflicts` 단일 문자열을 구조화 parser에서 안전하게 정규화
 - semantic schema/판단/veto 정책은 변경하지 않고 retry 최대 1회를 유지

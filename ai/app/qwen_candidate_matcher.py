@@ -54,7 +54,7 @@ class OllamaClient:
         self,
         base_url: str | None = None,
         model: str | None = None,
-        timeout: float = 15.0,
+        timeout: float = 30.0,
     ) -> None:
         self.base_url = base_url or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
         self.model = model or os.getenv("LOCAL_LLM_MODEL", "qwen3:8b")
@@ -132,8 +132,13 @@ def build_semantic_prompt(reference, candidate) -> str:
             f"좌표: {candidate.latitude}, {candidate.longitude}",
             "",
             "문자열 완전 일치가 아니라 실제 같은 사업장인지 판단하라. "
-            "법인명·지점명·괄호·단어 순서·층/호·도로명/지번 표현 차이는 허용한다. "
-            "단 하나의 단어만 겹치거나 주소·업종이 명백히 다르면 MATCH하지 마라.",
+            "주소를 이름보다 우선하는 핵심 동일성 증거로 사용하라. "
+            "시·구·동, 도로명, 건물번호가 서로 다르면 같은 구라는 이유만으로 MATCH하지 말고, "
+            "상호가 비슷하거나 같은 브랜드여도 실제 지점이 다르면 반드시 NO_MATCH로 판단하라. "
+            "법인명·지점명·본점/직영점·괄호·단어 순서·층/호·건물명 생략·도로명/지번 표현 차이는 "
+            "주소의 핵심 위치가 같거나 양립할 때만 허용한다. "
+            "주소 정보가 없거나 일부만 있어 동일성을 확정할 수 없으면 UNCERTAIN으로 판단하라. "
+            "단 하나의 단어가 겹친다는 이유로 MATCH하지 말고, 주소·업종·지점 위치가 명백히 다르면 MATCH하지 마라.",
         )
     )
 

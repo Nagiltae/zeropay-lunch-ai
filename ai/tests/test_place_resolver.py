@@ -20,6 +20,7 @@ from app.qwen_candidate_matcher import (
     QwenCandidateMatcher,
     QwenDecision,
     QwenSemanticDecision,
+    build_semantic_prompt,
     parse_qwen_semantic_decision,
     parse_qwen_decision,
 )
@@ -467,6 +468,17 @@ def test_qwen_semantic_decision_is_structured_and_never_exposes_place_id() -> No
     )
     assert "38648810" not in fake.user
     assert "place_id" not in fake.user
+
+
+def test_semantic_prompt_prioritizes_branch_address_over_name_similarity() -> None:
+    prompt = build_semantic_prompt(
+        reference(),
+        PlaceCandidate("부산아지매국밥 GS타워점", "서울 강남구 테헤란로27길 26", "한식", "", "1"),
+    )
+    assert "주소를 이름보다 우선" in prompt
+    assert "실제 지점이 다르면 반드시 NO_MATCH" in prompt
+    assert "주소의 핵심 위치가 같거나 양립할 때만 허용" in prompt
+    assert "확정할 수 없으면 UNCERTAIN" in prompt
 
 
 def test_qwen_semantic_parser_rejects_unknown_decision() -> None:
