@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-20] KOMSCO PCMap 검색 변형 및 이름 표시 정규화
+- 법인 표기와 관찰된 업종 설명 suffix를 비교 전용으로 제거해 동일 Place 후보의 이름 검증을 보강
+- 원문 KOMSCO query 실패 시 정규화 상호명·주소를 사용하는 결정론적 PCMap query variant를 제한적으로 시도
+- 30건 실패 19건 재검증에서 `(주)상해루`, `주식회사 정육공방` 2건을 추가 RESOLVED; 기존 11건은 재요청하지 않음
+
 ## [2026-09-20] KOMSCO-only PCMap resolver 정리
 - Place ID Resolver 입력을 KOMSCO reference로 단일화하고 stored NAVER MATCHED fallback 및 legacy checkpoint 자동 사용을 제거
 - 좌표가 없는 KOMSCO row도 name/address 기반 PCMap 검색 대상에 포함

@@ -11,6 +11,8 @@ from app.place_resolver import (
     extract_place_id,
     extract_place_ids_from_nlog_params,
     normalize_text,
+    normalize_name_for_match,
+    query_variants_for,
     resolve_candidate,
 )
 from app.qwen_candidate_matcher import (
@@ -131,6 +133,30 @@ def test_resolves_exact_name_and_address() -> None:
     result = resolve_candidate(reference(), [candidate])
     assert result.status == ResolutionStatus.RESOLVED
     assert result.candidate.place_id == "12345"
+
+
+def test_name_match_ignores_observed_legal_and_category_suffixes() -> None:
+    candidate = PlaceCandidate(
+        "상해루중식당",
+        "서울 강남구 강남대로 512 지하1층",
+        "중식당",
+        "",
+        "12345",
+    )
+    source = RestaurantReference(
+        2, "(주)상해루", "서울 강남구 강남대로 512 지하1층 (논현동)", 37.5, 127.0, "논현동"
+    )
+    assert normalize_name_for_match("(주)상해루") == "상해루"
+    assert resolve_candidate(source, [candidate]).status == ResolutionStatus.RESOLVED
+
+
+def test_query_variants_are_deterministic_and_kosmsco_only() -> None:
+    values = query_variants_for(
+        RestaurantReference(3, "(주)상해루", "서울 강남구 강남대로 512, 지하1층 (논현동)", None, None, "논현동")
+    )
+    assert values[0] == "논현동 (주)상해루"
+    assert "논현동 상해루" in values
+    assert any("강남대로 512" in value for value in values)
 
 
 def test_prefers_unresolved_when_name_or_address_does_not_support_identity() -> None:

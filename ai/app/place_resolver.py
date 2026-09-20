@@ -66,6 +66,11 @@ NON_FOOD_TERMS = (
     "약국", "병원", "의원", "치과", "복지", "사회복지", "소프트웨어", "세무사",
     "법률", "부동산", "자동차정비", "여행사", "광고", "공방",
 )
+NAME_LEGAL_PREFIXES = ("주식회사", "유한회사", "주")
+NAME_DESCRIPTIVE_SUFFIXES = (
+    "중식당", "한식당", "일식당", "양식당", "분식", "카페디저트", "카페",
+    "곱창막창양", "순대순댓국", "찌개전골", "족발보쌈", "분식", "음식점",
+)
 ADDRESS_EVIDENCE_ORDER = {
     "DIFFERENT": 0,
     "UNKNOWN": 1,
@@ -112,6 +117,20 @@ def normalize_text(value: str | None) -> str:
     return NON_TEXT.sub("", value)
 
 
+def normalize_name_for_match(value: str | None) -> str:
+    """Remove only observed legal/category display noise from a name."""
+    normalized = normalize_text(value)
+    for prefix in NAME_LEGAL_PREFIXES:
+        if normalized.startswith(prefix):
+            normalized = normalized[len(prefix):]
+            break
+    for suffix in sorted(NAME_DESCRIPTIVE_SUFFIXES, key=len, reverse=True):
+        if normalized.endswith(suffix) and len(normalized) > len(suffix):
+            normalized = normalized[:-len(suffix)]
+            break
+    return normalized
+
+
 def extract_place_id(url: str) -> str | None:
     """Extract only an explicit numeric NAVER place or restaurant URL path."""
     parsed = urlparse(url)
@@ -148,6 +167,14 @@ def _name_evidence(reference: RestaurantReference, candidate: PlaceCandidate) ->
     if expected == actual:
         return "EXACT"
     if expected in actual or actual in expected:
+        return "CONTAINED"
+    expected_alias = normalize_name_for_match(reference.komsco_name)
+    actual_alias = normalize_name_for_match(candidate.name)
+    if expected_alias and actual_alias and (
+        expected_alias == actual_alias
+        or expected_alias in actual_alias
+        or actual_alias in expected_alias
+    ):
         return "CONTAINED"
     return "DIFFERENT"
 
@@ -358,3 +385,17 @@ def deterministic_fast_path(
 def query_for(reference: RestaurantReference) -> str:
     """Build the PCMap query from KOMSCO fields only."""
     return f"{reference.legal_dong} {reference.komsco_name}".strip()
+
+
+def query_variants_for(reference: RestaurantReference) -> tuple[str, ...]:
+    """Return deterministic KOMSCO-only search variants, primary first."""
+    primary = query_for(reference)
+    variants = [primary]
+    normalized_name = normalize_name_for_match(reference.komsco_name)
+    if normalized_name and normalized_name != normalize_text(reference.komsco_name):
+        variants.append(f"{reference.legal_dong} {normalized_name}".strip())
+    address = re.sub(r"\([^)]*\)", " ", reference.komsco_address)
+    address = re.sub(r"\s+", " ", address).strip()
+    if address:
+        variants.append(f"{normalized_name or reference.komsco_name} {address}".strip())
+    return tuple(dict.fromkeys(variants))

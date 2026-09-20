@@ -30,6 +30,7 @@ from app.place_resolver import (
     Resolution,
     ResolutionStatus,
     query_for,
+    query_variants_for,
 )
 from app.place_resolver_cli import (
     DEFAULT_CHECKPOINT_NAME,
@@ -369,11 +370,25 @@ def main() -> int:
                     if checkpoint_row and not args.force_resolve:
                         result = checkpoint_result(reference, checkpoint_row)
                     else:
-                        query = query_for(reference)
-                        result = run_one(
-                            page, reference, query, "KOMSCO", matcher,
-                            before_navigation=limiter.before_navigation,
-                        )
+                        result = None
+                        primary_result = None
+                        for query in query_variants_for(reference):
+                            candidate_result = run_one(
+                                page, reference, query, "KOMSCO", matcher,
+                                before_navigation=limiter.before_navigation,
+                            )
+                            if primary_result is None:
+                                primary_result = candidate_result
+                            if candidate_result.resolution.status == ResolutionStatus.RESOLVED:
+                                result = candidate_result
+                                break
+                            if (
+                                result is None
+                                or result.resolution.status == ResolutionStatus.NOT_FOUND
+                                and candidate_result.resolution.status != ResolutionStatus.NOT_FOUND
+                            ):
+                                result = candidate_result
+                        result = result or primary_result
                         if result.resolution.status == ResolutionStatus.RESOLVED:
                             owner = _existing_pcmap_mapping(root, result.place_id)
                             if owner is None or owner == reference.restaurant_id:
