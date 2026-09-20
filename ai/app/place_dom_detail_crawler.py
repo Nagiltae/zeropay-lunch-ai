@@ -247,7 +247,8 @@ class PlaceDomDetailCrawler:
 
     @staticmethod
     def _declared_menu_count(body: str) -> int | None:
-        match = re.search(r"메뉴\s*([\d,]+)", body)
+        # A bare ``메뉴,`` label is present on some pages; it is not a count.
+        match = re.search(r"메뉴\s*(\d[\d,]*)", body)
         return int(match.group(1).replace(",", "")) if match else None
 
     def _menus(self, page, place_id: str, *, before_navigation=None) -> tuple[tuple[dict[str, str | None], ...], bool]:

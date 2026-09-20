@@ -31,6 +31,7 @@ from app.place_resolver import (
     distance_meters,
     candidate_evidence,
     extract_candidate_place_ids,
+    fatal_veto_reason,
     normalize_text,
     query_for,
     hard_rejection_reason,
@@ -90,6 +91,9 @@ class CandidateValidationAttempt:
     address_comparison: str
     validation_result: str
     failure_reason: str
+    semantic_decision: str = ""
+    semantic_reason: str = ""
+    fatal_veto: str = ""
 
 
 @dataclass(frozen=True)
@@ -728,9 +732,59 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
             category=detail.category or candidate.category,
             url=detail.url or candidate.url,
         )
-        resolution = replace(resolve_candidate(reference, [verified]), query=query)
-        last_candidate, last_detail, last_resolution = verified, detail, resolution
         name_result, address_result, _, _ = candidate_evidence(reference, verified)
+        semantic_decision = ""
+        semantic_reason = ""
+        address_insufficient = detail.address_status != "SUCCESS" or not detail.address
+        veto = fatal_veto_reason(reference, verified)
+        semantic_validator = getattr(matcher, "validate", None) if matcher is not None else None
+        if callable(semantic_validator):
+            try:
+                semantic = semantic_validator(reference, verified)
+                semantic_decision = semantic.decision
+                semantic_reason = semantic.reason
+            except (LlmUnavailable, ValueError) as error:
+                return _empty_result(
+                    reference,
+                    query,
+                    stage,
+                    candidates,
+                    ResolutionStatus.ERROR,
+                    ("QWEN_SEMANTIC_FAILURE", str(error)),
+                    started,
+                    matcher_source=matcher_source,
+                    qwen_used=True,
+                    qwen_confidence=qwen_confidence,
+                    qwen_candidate_indices=ranked_indices,
+                    candidate=verified,
+                    place_id=verified.place_id,
+                    detail=detail,
+                    detail_validation_attempts=attempts,
+                    original_candidate_count=original_candidate_count,
+                    filtered_candidate_count=len(candidates),
+                    validation_attempts_detail=tuple(validation_attempts_detail),
+                )
+            if semantic_decision == "MATCH" and not veto and not address_insufficient:
+                resolution = Resolution(
+                    reference, query, verified, ResolutionStatus.RESOLVED,
+                    name_result, address_result, candidate_evidence(reference, verified)[2], (),
+                )
+            else:
+                if address_insufficient and semantic_decision == "MATCH":
+                    semantic_decision = "UNCERTAIN"
+                    semantic_reason = (
+                        f"{semantic_reason}; detail address evidence unavailable"
+                    )
+                resolution = Resolution(
+                    reference, query, verified, ResolutionStatus.AMBIGUOUS,
+                    name_result, address_result, candidate_evidence(reference, verified)[2],
+                    tuple(filter(None, (veto, f"QWEN_{semantic_decision}"))),
+                )
+        else:
+            # Backward-compatible test/mocking path; production matcher always
+            # provides semantic validation.
+            resolution = replace(resolve_candidate(reference, [verified]), query=query)
+        last_candidate, last_detail, last_resolution = verified, detail, resolution
         source_name = reference.komsco_name
         source_address = reference.komsco_address
         validation_attempts_detail.append(
@@ -751,9 +805,15 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 normalized_detail_jibun_address=normalize_text(detail.jibun_address),
                 address_comparison=address_result,
                 validation_result=resolution.status.value,
-                failure_reason=_validation_failure_reason(
-                    resolution, detail, name_result, address_result
+                failure_reason=(
+                    "FATAL_VETO" if veto and semantic_decision == "MATCH"
+                    else "DETAIL_ADDRESS_INVALID" if address_insufficient
+                    else f"QWEN_{semantic_decision}" if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
+                    else _validation_failure_reason(resolution, detail, name_result, address_result)
                 ),
+                semantic_decision=semantic_decision,
+                semantic_reason=semantic_reason,
+                fatal_veto=veto or "",
             )
         )
         if resolution.status == ResolutionStatus.RESOLVED:
@@ -1245,6 +1305,8 @@ def main() -> int:
     initial_counts = {status.value: 0 for status in ResolutionStatus}
     run_started = monotonic()
     qwen_calls = 0
+    qwen_semantic_calls = 0
+    fatal_vetoes = 0
     limiter = NavigationRateLimiter(
         navigation_delay=float(os.getenv("NAVER_NAVIGATION_DELAY_SECONDS", "2.5")),
         restaurant_delay=float(os.getenv("NAVER_RESTAURANT_DELAY_SECONDS", "5")),
@@ -1276,6 +1338,14 @@ def main() -> int:
                     initial_status = result.resolution.status.value
                     initial_counts[initial_status] += 1
                     qwen_calls += int(result.qwen_used)
+                    qwen_semantic_calls += sum(
+                        1 for attempt in result.validation_attempts_detail
+                        if attempt.semantic_decision
+                    )
+                    fatal_vetoes += sum(
+                        1 for attempt in result.validation_attempts_detail
+                        if attempt.fatal_veto
+                    )
                     result = replace(
                         result,
                         elapsed_ms=int((monotonic() - restaurant_started) * 1000),
@@ -1302,6 +1372,8 @@ def main() -> int:
     print("Initial: " + " ".join(f"{key}: {value}" for key, value in initial_counts.items()))
     print(" ".join(f"{key}: {value}" for key, value in counts.items()))
     print(f"Qwen resolver calls: {qwen_calls}")
+    print(f"Qwen semantic validation calls: {qwen_semantic_calls}")
+    print(f"Fatal vetoes: {fatal_vetoes}")
     print(f"DB writes: {db_writes}")
     print(f"Total time: {time.strftime('%H:%M:%S', time.gmtime(monotonic() - run_started))}")
     print(f"CSV: {output}")

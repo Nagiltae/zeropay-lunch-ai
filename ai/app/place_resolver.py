@@ -131,6 +131,21 @@ def normalize_name_for_match(value: str | None) -> str:
     return normalized
 
 
+def _longest_common_substring_length(first: str, second: str) -> int:
+    if not first or not second:
+        return 0
+    previous = [0] * (len(second) + 1)
+    longest = 0
+    for left in first:
+        current = [0]
+        for index, right in enumerate(second, start=1):
+            value = previous[index - 1] + 1 if left == right else 0
+            current.append(value)
+            longest = max(longest, value)
+        previous = current
+    return longest
+
+
 def extract_place_id(url: str) -> str | None:
     """Extract only an explicit numeric NAVER place or restaurant URL path."""
     parsed = urlparse(url)
@@ -176,6 +191,13 @@ def _name_evidence(reference: RestaurantReference, candidate: PlaceCandidate) ->
         or actual_alias in expected_alias
     ):
         return "CONTAINED"
+    # Observed PCMap display variants can reorder a brand/branch phrase or
+    # append a category suffix.  Require a substantial shared contiguous core;
+    # this does not make short generic names (e.g. 베이직/부산집) match.
+    if min(len(expected_alias), len(actual_alias)) >= 4:
+        shared = _longest_common_substring_length(expected_alias, actual_alias)
+        if shared / min(len(expected_alias), len(actual_alias)) >= 0.75:
+            return "CONTAINED"
     return "DIFFERENT"
 
 
@@ -290,8 +312,26 @@ def hard_rejection_reason(reference: RestaurantReference, candidate: PlaceCandid
     if category and any(term in category for term in NON_FOOD_TERMS):
         return "NON_FOOD_CATEGORY"
     name, address, _, _ = candidate_evidence(reference, candidate)
-    if name == "DIFFERENT" and address == "DIFFERENT":
-        return "NAME_AND_ADDRESS_MISMATCH"
+    # Name/address disagreement is semantic evidence, not a pre-Qwen veto.
+    # Branch names, reordered brands, and road/jibun formatting frequently
+    # differ between KOMSCO and PCMap.  Final identity decisions happen after
+    # detail-page semantic validation.
+    return None
+
+
+def fatal_veto_reason(reference: RestaurantReference, candidate: PlaceCandidate) -> str | None:
+    """Return only objective contradictions safe to apply after Qwen MATCH."""
+    category = normalize_text(candidate.category)
+    if category and any(term in category for term in NON_FOOD_TERMS):
+        return "NON_FOOD_CATEGORY"
+    def districts(value: str) -> set[str]:
+        normalized = normalize_text(value)
+        return {normalized[max(0, index - 2): index + 1] for index, char in enumerate(normalized) if char == "구"}
+
+    source_districts = districts(reference.komsco_address)
+    candidate_districts = districts(candidate.address)
+    if source_districts and candidate_districts and source_districts.isdisjoint(candidate_districts):
+        return "DISTRICT_CONTRADICTION"
     return None
 
 

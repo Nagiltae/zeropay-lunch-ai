@@ -1,5 +1,16 @@
 # AI Agent Work History
 
+## [2026-09-21] Semantic validation veto 정리
+- 이름/주소 표현 차이를 pre-filter에서 다시 hard reject하지 않고 Qwen semantic 검증으로 전달
+- fatal veto는 명백한 비음식점과 객관적인 행정구 불일치만 유지하고, 주소 파싱 실패는 `UNCERTAIN` 후보 실패로 기록
+- 17건 최종 resolver-only 재검증 결과 `RESOLVED 8 / NOT_FOUND 5 / ERROR 4 / BLOCKED 0`; DB write 없음
+
+## [2026-09-21] Qwen semantic entity validation
+- PCMap 후보 단계에서는 Place ID/깨진 DOM/명백한 비음식점만 제거하고 이름·주소 표현 차이는 Qwen 단계까지 유지
+- 상세 HOME evidence를 대상으로 구조화된 `MATCH`/`UNCERTAIN`/`NO_MATCH` semantic validation을 추가하고 Place ID는 계속 DOM `data-nlog-params`에서만 추출
+- Qwen MATCH 뒤에도 비음식점 같은 객관적 fatal veto를 적용하며, rank 1 실패 시 Top-5 다음 후보를 계속 검증
+- semantic decision, reason, veto를 validation diagnostics에 기록하고 관련 regression test를 추가
+
 ## [2026-09-20] PCMap 후보 recall 범위 확장
 - 검색 결과를 최대 20개 수집하고 명백한 오답만 제거한 뒤 최대 12개 soft-ranked 후보를 Qwen에 전달
 - Qwen 응답은 기존처럼 최대 Top-5 index만 사용하고 `/home` 순차 strict validation을 유지

@@ -42,6 +42,11 @@ def test_review_count_parser_accepts_rendered_spacing():
     assert PlaceDomDetailCrawler._number_after("블로그 리뷰 56", r"블로그\s*리뷰") == 56
 
 
+def test_declared_menu_count_ignores_label_without_numeric_count():
+    assert PlaceDomDetailCrawler._declared_menu_count("메뉴, 찾아가는길") is None
+    assert PlaceDomDetailCrawler._declared_menu_count("메뉴 12") == 12
+
+
 def test_persistence_wraps_all_detail_writes_in_transaction(monkeypatch, tmp_path):
     calls = []
 

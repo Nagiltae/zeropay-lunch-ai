@@ -63,7 +63,7 @@ Qdrant 클라이언트 연동, 컬렉션 구성, 의미 검색, LangGraph, LLM �
 ## NAVER Place Resolver PoC
 
 Place ID 검증기는 `PCMap /place/list`를 직접 열어 공개 검색 결과 DOM을 읽습니다.
-후보별 `data-nlog-params.place_id`만 후보 DOM 범위 안에서 추출하고, 결정론적 matcher가 확정하지 못할 때만 로컬 Qwen3 8B가 최대 5개 후보 index를 순위화합니다. Qwen에는 Place ID를 전달하지 않으며, 순위 순서대로 각 후보의 ID로 `/restaurant/{placeId}/home` 상세 화면을 재검증해 첫 성공을 사용합니다. 좌표·category·부분 주소 누락은 UNKNOWN으로 유지하고 명백한 오답만 hard reject합니다.
+후보는 최대 20개를 수집하고 Place ID 누락·깨진 DOM·명백한 비음식점만 pre-filter에서 제거합니다. 이름·주소 표현 차이는 Qwen 후보 ranking까지 유지하며 최대 12개를 전달하고 Top-5를 반환합니다. 각 상세 HOME의 실제 evidence는 구조화된 Qwen semantic validator가 `MATCH`/`UNCERTAIN`/`NO_MATCH`로 판단하고, 코드에는 객관적인 fatal veto만 남습니다. Qwen에는 Place ID를 전달하지 않으며 ID는 후보 DOM의 `data-nlog-params.place_id`에서만 추출합니다.
 
 Resolver 입력은 KOMSCO 원천 음식점뿐이다. `source_provider=KOMSCO`, active, zero-pay, KSIC `561`, 계속사업자, 논현동 법정동 `11680108`, 이름·주소 필수 조건을 적용하며 좌표는 보조 evidence다. `restaurant_external_places`의 historical NAVER row는 신규 resolver 입력이나 fallback으로 사용하지 않는다.
 

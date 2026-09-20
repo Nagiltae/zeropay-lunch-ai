@@ -34,6 +34,17 @@ class QwenDecision:
     confidence: str
 
 
+@dataclass(frozen=True)
+class QwenSemanticDecision:
+    decision: str
+    name_evidence: str
+    address_evidence: str
+    category_evidence: str
+    coordinate_evidence: str
+    conflicts: tuple[str, ...]
+    reason: str
+
+
 class LocalLlmClient(Protocol):
     def complete(self, system: str, user: str, response_schema: dict) -> str: ...
 
@@ -65,7 +76,10 @@ class OllamaClient:
                 },
                 "required": ["candidateIndices", "confidence"],
             },
-            "options": {"temperature": 0, "num_predict": 80},
+            # Semantic validation returns several evidence fields; keep enough
+            # room for a complete structured response rather than truncating
+            # the JSON before required fields are emitted.
+            "options": {"temperature": 0, "num_predict": 384},
         }
         try:
             request = Request(
@@ -102,6 +116,28 @@ def build_user_prompt(reference, candidates) -> str:
     return "\n".join(lines)
 
 
+def build_semantic_prompt(reference, candidate) -> str:
+    """Build a detail-page identity prompt without exposing Place IDs."""
+    return "\n".join(
+        (
+            "기준 KOMSCO 음식점:",
+            f"이름: {reference.komsco_name or '없음'}",
+            f"주소: {reference.komsco_address or '없음'}",
+            f"좌표: {reference.komsco_latitude}, {reference.komsco_longitude}",
+            "",
+            "PCMap 상세 음식점:",
+            f"이름: {candidate.name or '없음'}",
+            f"주소: {candidate.address or '없음'}",
+            f"카테고리: {candidate.category or '없음'}",
+            f"좌표: {candidate.latitude}, {candidate.longitude}",
+            "",
+            "문자열 완전 일치가 아니라 실제 같은 사업장인지 판단하라. "
+            "법인명·지점명·괄호·단어 순서·층/호·도로명/지번 표현 차이는 허용한다. "
+            "단 하나의 단어만 겹치거나 주소·업종이 명백히 다르면 MATCH하지 마라.",
+        )
+    )
+
+
 def parse_qwen_decision(raw: str, candidate_count: int) -> QwenDecision:
     try:
         payload = json.loads(raw)
@@ -119,6 +155,27 @@ def parse_qwen_decision(raw: str, candidate_count: int) -> QwenDecision:
     if len(set(indices)) != len(indices):
         raise ValueError("Qwen candidateIndices must be unique")
     return QwenDecision(tuple(indices), confidence)
+
+
+def parse_qwen_semantic_decision(raw: str) -> QwenSemanticDecision:
+    try:
+        payload = json.loads(raw)
+    except (json.JSONDecodeError, TypeError) as error:
+        raise ValueError("invalid Qwen semantic JSON") from error
+    if not isinstance(payload, dict) or payload.get("decision") not in {"MATCH", "UNCERTAIN", "NO_MATCH"}:
+        raise ValueError("invalid Qwen semantic decision")
+    conflicts = payload.get("conflicts", [])
+    if not isinstance(conflicts, list) or any(not isinstance(value, str) for value in conflicts):
+        raise ValueError("invalid Qwen semantic conflicts")
+    return QwenSemanticDecision(
+        payload["decision"],
+        str(payload.get("name_evidence") or ""),
+        str(payload.get("address_evidence") or ""),
+        str(payload.get("category_evidence") or ""),
+        str(payload.get("coordinate_evidence") or ""),
+        tuple(conflicts),
+        str(payload.get("reason") or ""),
+    )
 
 
 class QwenCandidateMatcher:
@@ -156,3 +213,36 @@ class QwenCandidateMatcher:
             except (ValueError, LlmUnavailable) as error:
                 last_error = error
         raise ValueError("Qwen response failed after one retry") from last_error
+
+    def validate(self, reference, candidate) -> QwenSemanticDecision:
+        schema = {
+            "type": "object",
+            "properties": {
+                "decision": {"type": "string", "enum": ["MATCH", "UNCERTAIN", "NO_MATCH"]},
+                "name_evidence": {"type": "string"},
+                "address_evidence": {"type": "string"},
+                "category_evidence": {"type": "string"},
+                "coordinate_evidence": {"type": "string"},
+                "conflicts": {"type": "array", "items": {"type": "string"}},
+                "reason": {"type": "string"},
+            },
+            "required": [
+                "decision", "name_evidence", "address_evidence", "category_evidence",
+                "coordinate_evidence", "conflicts", "reason",
+            ],
+        }
+        prompt = build_semantic_prompt(reference, candidate)
+        last_error: Exception | None = None
+        for attempt in range(2):
+            if attempt:
+                prompt += "\n반드시 decision을 MATCH, UNCERTAIN, NO_MATCH 중 하나로 반환하라."
+            try:
+                raw = self.client.complete(
+                    "/no_think\n너는 음식점 entity matching 검증기다. Place ID를 생성하거나 추측하지 마라.",
+                    prompt,
+                    schema,
+                )
+                return parse_qwen_semantic_decision(raw)
+            except (ValueError, LlmUnavailable) as error:
+                last_error = error
+        raise ValueError("Qwen semantic response failed after one retry") from last_error
