@@ -394,8 +394,15 @@ def query_variants_for(reference: RestaurantReference) -> tuple[str, ...]:
     normalized_name = normalize_name_for_match(reference.komsco_name)
     if normalized_name and normalized_name != normalize_text(reference.komsco_name):
         variants.append(f"{reference.legal_dong} {normalized_name}".strip())
-    address = re.sub(r"\([^)]*\)", " ", reference.komsco_address)
+    raw_address = re.sub(r"\s+", " ", reference.komsco_address).strip()
+    address = re.sub(r"\([^)]*\)", " ", raw_address)
     address = re.sub(r"\s+", " ", address).strip()
-    if address:
+    if raw_address:
+        variants.append(f"{reference.komsco_name} {raw_address}".strip())
+    if address and address != raw_address:
         variants.append(f"{normalized_name or reference.komsco_name} {address}".strip())
+    elif address:
+        variants.append(f"{normalized_name or reference.komsco_name} {address}".strip())
+    if normalized_name:
+        variants.append(normalized_name)
     return tuple(dict.fromkeys(variants))

@@ -50,6 +50,7 @@ FIELDS = [
     "query", "place_id", "place_url", "resolve_status", "detail_status",
     "matcher_source", "qwen_used", "qwen_confidence",
     "qwen_ranking", "resolved_rank", "detail_validation_attempts",
+    "candidate_count_before_filter", "candidate_count_after_filter", "qwen_pool_count",
     "validation_attempts_json",
     "detail_access_method", "http_result", "playwright_result",
     "menu_count", "parsed_menu_count", "menu_complete", "menu_fallback_used",
@@ -241,6 +242,9 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
             else ""
         ),
         "detail_validation_attempts": result.detail_validation_attempts,
+        "candidate_count_before_filter": getattr(result, "original_candidate_count", ""),
+        "candidate_count_after_filter": getattr(result, "filtered_candidate_count", ""),
+        "qwen_pool_count": len(getattr(result, "candidates", ()) or ()),
         "validation_attempts_json": json.dumps(
             [attempt.__dict__ for attempt in getattr(result, "validation_attempts_detail", ())],
             ensure_ascii=False,

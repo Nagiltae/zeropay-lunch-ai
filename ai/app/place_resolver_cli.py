@@ -49,6 +49,8 @@ BLOCK_MARKERS = (
     "robot",
 )
 CATEGORY_TERMS = ("한식", "일식", "중식", "양식", "분식", "음식점", "카페", "식당", "술집")
+SEARCH_CANDIDATE_LIMIT = 20
+QWEN_CANDIDATE_LIMIT = 12
 
 
 @dataclass(frozen=True)
@@ -483,7 +485,7 @@ def search_direct(
             item.index,
         )
     )
-    return tuple(candidates[:5]), len(candidates)
+    return tuple(candidates[:SEARCH_CANDIDATE_LIMIT]), len(candidates)
 
 
 def load_detail_page(page, candidate: PlaceCandidate, *, before_navigation=None) -> DetailData:
@@ -595,7 +597,7 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
             original_candidate_count=original_candidate_count,
             filtered_candidate_count=0,
         )
-    # Evidence ordering is deterministic; Qwen only ranks this already-filtered Top-5.
+    # Evidence ordering is deterministic; Qwen sees a bounded soft-ranked pool.
     ordered = rank_candidates(reference, [item.candidate for item in candidates])
     remaining = list(candidates)
     ordered_dom: list[CandidateDom] = []
@@ -606,7 +608,7 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         )
         if match_index is not None:
             ordered_dom.append(remaining.pop(match_index))
-    candidates = tuple(ordered_dom)
+    candidates = tuple(ordered_dom[:QWEN_CANDIDATE_LIMIT])
     plain = [item.candidate for item in candidates]
     pending = [replace(candidate, place_id="pending") for candidate in plain]
     deterministic = resolve_candidate(reference, pending)

@@ -157,6 +157,72 @@ def test_query_variants_are_deterministic_and_kosmsco_only() -> None:
     assert values[0] == "논현동 (주)상해루"
     assert "논현동 상해루" in values
     assert any("강남대로 512" in value for value in values)
+    assert values[-1] == "상해루"
+
+
+def test_qwen_receives_bounded_soft_ranked_pool_larger_than_top_five(monkeypatch) -> None:
+    reference_value = reference()
+    candidates = tuple(
+        cli.CandidateDom(
+            cli.PlaceCandidate(f"테스트 식당 후보{i}", "서울 강남구 테헤란로 99", "한식", "", str(i)),
+            object(), i, (str(i),)
+        )
+        for i in range(8)
+    )
+    monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: (candidates, 8))
+    monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
+    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
+    monkeypatch.setattr(
+        cli, "load_detail_page",
+        lambda *_args, **_kwargs: cli.DetailData(
+            "/restaurant/1/home", "다른 식당", "서울 강남구 테헤란로 99", "한식"
+        ),
+    )
+    seen = []
+    matcher = type(
+        "Matcher", (), {
+            "choose": lambda self, _reference, values: (
+                seen.append(len(values))
+                or type("Decision", (), {"candidate_indices": (0, 1, 2, 3, 4), "confidence": "LOW"})()
+            )
+        }
+    )()
+    result = cli.run_one(object(), reference_value, "query", "KOMSCO", matcher)
+    assert seen == [8]
+    assert result.qwen_candidate_indices == (0, 1, 2, 3, 4)
+    assert result.resolution.status is cli.ResolutionStatus.AMBIGUOUS
+    assert result.detail_validation_attempts == 5
+
+
+def test_qwen_rank_one_failure_continues_to_rank_two(monkeypatch) -> None:
+    source = reference()
+    first = cli.CandidateDom(
+        cli.PlaceCandidate(source.komsco_name, source.komsco_address, "한식", "", "111"),
+        object(), 0, ("111",)
+    )
+    second = cli.CandidateDom(
+        cli.PlaceCandidate(source.komsco_name, source.komsco_address, "한식", "", "222"),
+        object(), 1, ("222",)
+    )
+    monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
+    monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
+    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
+    def detail(_page, candidate, **_kwargs):
+        if candidate.place_id == "111":
+            return cli.DetailData("/restaurant/111/home", "전혀 다른 곳", "서울 강남구 다른로 9", "한식")
+        return cli.DetailData("/restaurant/222/home", source.komsco_name, source.komsco_address, "한식")
+    monkeypatch.setattr(cli, "load_detail_page", detail)
+    matcher = type(
+        "Matcher", (), {
+            "choose": lambda self, _reference, _values: type(
+                "Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"}
+            )()
+        }
+    )()
+    result = cli.run_one(object(), source, "query", "KOMSCO", matcher)
+    assert result.resolution.status is cli.ResolutionStatus.RESOLVED
+    assert result.place_id == "222"
+    assert result.detail_validation_attempts == 2
 
 
 def test_prefers_unresolved_when_name_or_address_does_not_support_identity() -> None:

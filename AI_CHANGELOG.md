@@ -1,5 +1,11 @@
 # AI Agent Work History
 
+## [2026-09-20] PCMap 후보 recall 범위 확장
+- 검색 결과를 최대 20개 수집하고 명백한 오답만 제거한 뒤 최대 12개 soft-ranked 후보를 Qwen에 전달
+- Qwen 응답은 기존처럼 최대 Top-5 index만 사용하고 `/home` 순차 strict validation을 유지
+- KOMSCO 주소·정규화 상호명·name-only를 포함한 제한적 query variant와 후보 수 진단 필드를 추가
+- 남은 실패 17건 재검증은 `AMBIGUOUS 11 / NOT_FOUND 6`으로 종료됐으며 신규 false-positive RESOLVED는 없음
+
 ## [2026-09-20] KOMSCO PCMap 검색 변형 및 이름 표시 정규화
 - 법인 표기와 관찰된 업종 설명 suffix를 비교 전용으로 제거해 동일 Place 후보의 이름 검증을 보강
 - 원문 KOMSCO query 실패 시 정규화 상호명·주소를 사용하는 결정론적 PCMap query variant를 제한적으로 시도
