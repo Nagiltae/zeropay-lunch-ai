@@ -13,7 +13,7 @@
 
 MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compose에 로컬 MySQL 8.4 서비스를 정의해 두었습니다.
 
-서비스 대상 음식점은 서울특별시 강남구 소재로 제한합니다. 음식점 데이터 적재 시 행정구역과 위치 좌표를 검증하고, 애플리케이션 조회에서도 강남구 조건을 강제해야 합니다. 구체적인 주소 필드, 좌표 형식, 경계 판정 방식은 음식점 스키마를 설계할 때 확정합니다.
+서비스 대상 음식점은 서울특별시 강남구 논현동(`11680108`)의 KOMSCO I0000002·KSIC 561·계속사업자 범위로 제한합니다. 음식점 데이터 적재와 애플리케이션 조회에서 이 법정동 조건을 강제하며, 좌표는 optional metadata로 보존합니다.
 
 벡터 데이터베이스는 Qdrant를 사용합니다. 로컬 개발과 통합 테스트에서는 Docker Compose가 Qdrant 1.19.1 컨테이너와 영속 볼륨을 생성합니다. 컬렉션 구조, 벡터 차원, 거리 함수는 임베딩 모델을 선택할 때 결정합니다.
 
@@ -113,15 +113,17 @@ Flyway `V4__add_komsco_restaurant_source_fields.sql`은 기존 V1~V3를 변경�
 - 원본 업종·상태: `industry_code`, `industry_name`, `provider_institution_code`, `business_status_code`, `business_status_name`
 - 추천 경계: `recommendation_ready`
 
-`(source_provider, external_merchant_id)` unique 제약이 같은 KOMSCO `alt_text`의 중복 행을 막습니다. import는 전체 응답에서 `alt_text`별 가장 최신 `crtr_ymd`를 먼저 선택한 다음 `ksic_cd=561`, `bzmn_stts_nm=계속사업자`, 강남구 조건을 적용합니다. 더 최신 기준일자는 갱신하고, 같은 기준일자는 실제 원본 필드가 달라졌을 때만 갱신하며, 더 오래된 기준일자는 무시합니다.
+`(source_provider, external_merchant_id)` unique 제약이 같은 KOMSCO `alt_text`의 중복 행을 막습니다. import는 전체 응답에서 `alt_text`별 가장 최신 `crtr_ymd`를 먼저 선택한 다음 `legal_dong_code=11680108`, `provider_institution_code=I0000002`, `ksic_cd=561`, `bzmn_stts_nm=계속사업자` 조건을 적용합니다. 더 최신 기준일자는 갱신하고, 같은 기준일자는 실제 원본 필드가 달라졌을 때만 갱신하며, 더 오래된 기준일자는 무시합니다.
 
 기존 `category`, `representative_menu`, `average_price`, `location_id`는 추천용 보강 데이터이며 KOMSCO가 제공하지 않으므로 nullable입니다. KOMSCO import 행은 `zero_pay_available=true`, `recommendation_ready=false`로 저장됩니다. 영업시간이 보강되기 전에는 실제 현재 영업 중 여부를 판정할 수 없고 추천 조회에도 들어가지 않습니다.
 
 기본 import는 API 실패나 snapshot에 없는 행을 이유로 기존 데이터를 삭제하지 않는 upsert 방식입니다. 명시적으로 `KOMSCO_REPLACE_EXISTING=true`를 지정한 전체 snapshot 교체는 모든 페이지 조회·정제 성공 후 하나의 트랜잭션에서 KOMSCO 행만 삭제하고 필터 결과를 재삽입합니다. 삭제나 삽입이 실패하면 전체 교체를 롤백하며 샘플 및 다른 출처의 음식점은 삭제하지 않습니다.
 
-매일 새벽 3시 동기화는 전체 snapshot에서 `alt_text`별 최신 행을 선택한 뒤 기존 KOMSCO 행과 비교합니다. 신규 행은 계속사업자·KSIC 561·강남구 조건을 모두 만족할 때만 삽입합니다. 기존 행은 같은 기준일자여도 `last_synced_at`과 `updated_at`을 갱신합니다. 최신 상태가 계속사업자가 아니거나 나머지 저장 조건에서 벗어나면 삭제하지 않고 `active=false`로 전환하며, 이후 조건을 다시 만족하면 `active=true`로 복구합니다. 응답 snapshot에서 완전히 사라진 ID는 자동 비활성화하지 않습니다.
+매주 일요일 새벽 3시 동기화는 전체 snapshot에서 `alt_text`별 최신 행을 선택한 뒤 기존 KOMSCO 행과 비교합니다. 신규 행은 계속사업자·KSIC 561·I0000002·논현동 조건을 모두 만족할 때만 삽입합니다. 최신 상태가 조건에서 벗어나면 삭제하지 않고 `active=false`로 전환하며, 이후 조건을 다시 만족하면 `active=true`로 복구합니다. 응답 snapshot에서 완전히 사라진 ID도 정상 full fetch가 끝난 경우 논현동 scope에서 stale inactive 처리합니다.
 
-## NAVER Local 보강
+## External place history and current PCMap verification
+
+현재 신규 resolver는 NAVER Local API를 호출하지 않는다. 아래의 `restaurant_external_places` lifecycle/score 컬럼 설명은 historical Local row와 성공한 외부 Place mapping의 보존 schema를 설명하는 것이며 신규 KOMSCO-only 검색 입력이 아니다. 현재 검증 provenance는 V14 `restaurant_naver_verifications`가 별도로 저장한다.
 
 Flyway `V5__create_restaurant_external_places.sql`은 KOMSCO 원본과 외부 검색 결과의 책임을 분리하기 위해 `restaurant_external_places`를 추가합니다. `(restaurant_id, provider)` unique 제약으로 음식점마다 `NAVER` 행을 하나만 유지하며 반복 실행은 insert가 아니라 update가 됩니다. V12의 `external_place_id`는 URL에서 다시 파싱하지 않고 외부 Place ID를 별도 값으로 저장합니다. `(provider, external_place_id)` unique index는 하나의 NAVER Place ID가 여러 음식점에 중복 매핑되는 것을 막습니다(NULL은 여러 행에 허용).
 

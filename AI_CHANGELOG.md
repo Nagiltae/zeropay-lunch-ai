@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Agent onboarding documentation alignment
+- AGENTS.md에 현재 논현동 KOMSCO-only 모집단, 모듈 책임, PCMap/Qwen pipeline, verification provenance와 Completed/In Progress/Next/Deferred 상태를 정리
+- README·architecture·database 문서의 오래된 강남구 전체·일일 scheduler·NAVER Local runtime 설명을 현재 구현에 맞게 정정
+- 코드 변경 없이 문서와 Git 기준을 대조함
+
 ## [2026-09-21] PCMap 검증 provenance 및 후보 데이터 품질 분리
 - PCMap 후보 DOM에서 상호명과 category를 semantic child text로 분리하고 논현동 범위·비음식점 안전 검증을 보강
 - Qwen semantic prompt에 정보 누락/충돌, 비음식 업종, 지점·주소 동일성 원칙을 명시

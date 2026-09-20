@@ -1,43 +1,99 @@
-# ZeroPay Lunch AI Agent Guide
+# Project Overview
 
-**Project**: ZeroPay Lunch AI (자연어, 취향, 예산을 바탕으로 강남구 음식점을 추천)
-**Architecture**: React -> Spring Boot (API & DB) -> FastAPI (LLM & Qdrant)
+ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록을 바탕으로 음식점을 추천하는 모노레포다. 현재 서비스 모집단은 KOMSCO 공공데이터의 서울 강남구 논현동(`legal_dong_code=11680108`, `providerInstitutionCode=I0000002`, `industryCode=561`, `businessStatusName=계속사업자`) 음식점이다.
 
-## Core Safety Rules (절대 규칙)
-1. **사용자 환경 보호**: 사용자 데이터, DB, Docker 볼륨 삭제 금지. `--force`, `git reset` 등 파괴적 Git 작업 금지.
-2. **Secret 금지**: 실제 API 키, 인증 정보를 출력하거나 코드에 포함하지 마.
-3. **Database**: Flyway 기적용 `V<n>` 마이그레이션 파일 수정 금지. 스키마 변경은 반드시 새 파일로 작성.
-4. **선택적 탐색**: 모든 문서를 기본적으로 읽지 마. 작업과 관련 없는 코드를 수정하거나 탐색하지 마.
-5. **승인 우선**: API, DB, 아키텍처, 인증 무단 변경 금지. 확신이 안 서면 사용자와 먼저 논의.
-6. **테스트 보호**: 실패를 피할 목적으로 테스트를 무단 삭제, 비활성화(skip)하거나 검증(assertion)을 약화하지 마. 변경 시 정당한 사유가 필수.
+핵심 흐름은 `React → Spring Boot → MySQL`이며, FastAPI는 AI 내부 경계의 health/계약 기반만 구현되어 있고 Spring에서 실제 호출하지 않는다. 별도의 `ai/` Python CLI는 KOMSCO→PCMap Place ID 검증·상세 수집을 담당한다.
 
-## Agent Exploration & Output Policy
-- **선택적 읽기**: Repository 전체 탐색 금지. `tasks/<task-name>.md`의 `# Read First` 지정 문서만 읽어.
-- **On-Demand Context**: `docs/` 파일들은 파일 상단의 `## When to read` 조건에 맞을 때만 읽어.
-- **출력 최소화**: `cat` 전체 출력, 긴 로그, 대규모 CSV, 전체 Git diff 출력을 피해. (핵심 요약, `tail`, `grep` 우선)
-- **최소 충분 검증**: Backend/Frontend/AI 중 변경된 영역에 해당하는 `./scripts/check-*.sh`만 실행. 다중 변경일 때만 `check-all.sh`.
-- **반복 최소화**: 한 번 파악한 설계는 다시 묻지 말고 워킹 메모리로 유지. 동일 명령 재실행 최소화.
+# Architecture
 
-## Documentation Map
-작업 영역에 따라 아래 AGENTS.md 및 문서를 추가로 읽어:
-- **[Backend]**: `backend/AGENTS.md` (Spring Boot, DB, Scheduler)
-- **[Frontend]**: `frontend/AGENTS.md` (React, UI)
-- **[AI]**: `ai/AGENTS.md` (FastAPI, LLM, Vector DB)
-- **[Architecture]**: `docs/architecture.md`
-- **[Database]**: `docs/database.md`
-- **[Changelog]**: `AI_CHANGELOG.md` (과거 이력이 명시적으로 필요할 때만 참조)
+- React: 인증된 채팅, 취향·식사 기록 UI, Spring API/SSE 호출. FastAPI를 직접 호출하지 않는다.
+- Spring Boot: 공개 API, 인증/세션, 대화·취향·식사 영속화, KOMSCO import/scheduler, 추천 business rule과 MySQL persistence.
+- FastAPI: 현재 `/health` 중심의 AI 서비스. LangGraph/Qdrant/실제 Spring→FastAPI 호출은 아직 미구현이다.
+- `ai/`: Playwright PCMap resolver/detail crawler와 Ollama/Qwen 평가·report CLI. 운영 추천 요청 경로와 별개다.
+- MySQL/Flyway: 원본·검증·추천 데이터의 기준 저장소. Qdrant는 현재 파생 검색 저장소로만 계획되어 있다.
 
-## Definition of Done & Report
-작업 완료 시 `AI_CHANGELOG.md` 최상단에 변경 사항을 요약하고, 다음 짧은 포맷으로 보고해:
+자세한 책임 경계는 [docs/architecture.md](docs/architecture.md), API는 `docs/api-contract.md`, 스키마는 `docs/database.md`를 canonical 문서로 본다.
 
-```markdown
-## Changed
-(핵심 변경 3~7개)
-## Validation
-(실행한 검증과 패스 여부)
-## Risk
-(문제나 수동 확인이 필요할 때만)
-## Remaining
-(남은 일이 있을 때만)
+# Module Ownership
+
+| 영역 | 소유 로직 |
+|---|---|
+| `frontend/` | 화면, 인증 상태, 채팅/SSE, 취향·식사 기록 요청 |
+| `backend/.../restaurant/importer` | KOMSCO API pagination/dedup/filter/upsert, Sunday scheduler, cleanup |
+| `backend/.../restaurant` | Restaurant source state, recommendation eligibility, deterministic candidate query |
+| `backend/.../recommendation` | 추천 context, fallback intent 분석, 결정론적 후보 필터/순위 |
+| `ai/app/place_resolver_cli.py` | PCMap DOM candidate 수집, Place ID(`data-nlog-params`) 추출, `/home` 검증 |
+| `ai/app/qwen_candidate_matcher.py` | Ollama `qwen3:8b` 기본 candidate ranking/semantic structured validation |
+| `ai/app/place_dom_detail_crawler.py` | 검증된 HOME 재사용, HOME/MENU/REVIEW DOM 수집 |
+
+# Current State
+
+## Completed
+
+- 논현동·I0000002 KOMSCO importer와 주간 일요일 03:00(Asia/Seoul) 동기화/명시적 cleanup 경로.
+- React와 Spring의 역/반경 선택 runtime 계약 제거; 좌표 metadata와 historical schema는 보존.
+- KOMSCO-only PCMap resolver: 최대 20 candidate 수집, 최대 12개 Qwen pool, Top-5 detail validation, 429/403 즉시 중단, rate limit 기본 2.5초 navigation/5초 restaurant.
+- NAVER Local API와 stored Local fallback은 신규 resolver에서 사용하지 않는다.
+- DOM-only HOME/MENU/REVIEW crawler와 idempotent detail persistence.
+- `restaurant_naver_verifications` V14 provenance/status/reason 구조. `restaurants.active`, `recommendation_eligibility`, 외부 Place mapping과 분리된다.
+- parser, semantic prompt, out-of-scope/non-food safety, source-change 재검증 회귀 테스트.
+
+## In Progress
+
+- 현재 코드 작업은 진행 중인 것으로 기록되어 있지 않다. 50건 Qwen3:8b baseline/manual review artifact는 로컬 runtime 자료이며 Git에 포함하지 않는다.
+
+## Next
+
+- 필요 시 V14 migration이 적용된 로컬 DB에서 검토된 KOMSCO-only report를 `--write-db`로 반영하고, 같은 manifest를 재사용한 평가를 수행한다.
+- 실제 대규모 crawl 전에 report-only/DB write, checkpoint/ledger, rate-limit 운영 절차를 확인한다.
+
+## Deferred
+
+- Qwen3.5 교체, 514건 전체 crawl, 실제 Spring→FastAPI AI 연동, LangGraph/Qdrant 검색, 사용자 GPS/거리 추천은 아직 실행·구현하지 않았다.
+
+# Important Design Decisions
+
+- KOMSCO 공공데이터가 모집단 Source of Truth다. NAVER Local API, historical Local row, legacy checkpoint는 신규 resolver 입력이 아니다.
+- deterministic 코드는 candidate 수집/명백한 non-food·지역 contradiction·기술 안전장치만 담당하고, 비정형 entity 의미 판단은 Qwen이 담당한다. Qwen은 Place ID를 생성하거나 단독 확정하지 않는다.
+- Place ID는 candidate DOM의 `data-nlog-params` JSON에서만 추출한다. marker/internal NAVER API는 금지한다.
+- `restaurants.active`(원천 운영 상태), `recommendation_eligibility`(추천 가능성), `restaurant_naver_verifications`(NAVER 검증 provenance), `restaurant_external_places`(성공한 외부 mapping)는 서로 다른 의미다.
+- report-only는 DB/checkpoint를 쓰지 않는다. `--write-db`에서만 detail와 verification persistence를 수행한다.
+- 적용된 Flyway migration은 수정하지 않고 다음 V 번호로만 변경한다.
+
+# Data Pipeline
+
+`KOMSCO name/address/optional coordinates → PCMap search → deterministic ordering/safety → Qwen ranking → candidate Place ID → reused /home strict/semantic validation → VERIFIED/REJECTED/UNRESOLVED/ERROR/BLOCKED reason → HOME/MENU/REVIEW DOM → MySQL upsert`.
+
+검증 성공 후에도 detail section 상태는 Place ID 상태와 독립이다. KOMSCO source matching field가 바뀌면 기존 NAVER verification은 `UNRESOLVED/SOURCE_CHANGED`로 재검증 대상이 된다.
+
+# Development / Harness
+
+저장소 루트에서 변경 범위에 맞게 실행한다.
+
+```bash
+./scripts/check-ai.sh
+./scripts/check-backend.sh
+./scripts/check-frontend.sh
+./scripts/check-integration.sh   # Docker/MySQL/Flyway 포함 변경일 때
+git diff --check
 ```
-*(장황한 서론, 코드 설명, 테스트 전체 로그는 생략할 것)*
+
+AI resolver CLI와 manifest/status/ledger 명령은 `ai/README.md`를 읽는다. 실제 NAVER/KOMSCO 요청, DB write, cleanup은 사용자의 명시적 승인과 opt-in이 없으면 실행하지 않는다.
+
+# Safety / Do Not Break
+
+- 사용자·대화·취향·history·Docker volume을 삭제하지 않는다. `TRUNCATE`, DB 재생성, destructive Git, force push 금지.
+- secrets/API key를 출력하거나 커밋하지 않는다.
+- 429/403/BLOCKED는 retry/proxy 우회 없이 현재 batch를 즉시 종료한다. checkpoint/ledger/report는 보존한다.
+- 적용된 V migration, legacy checkpoint/report, runtime manifest/ledger/checkpoint/log는 임의 수정·커밋하지 않는다.
+- Resolver/Qwen/threshold/veto를 평가 중 임의 완화하지 않는다. 50건 baseline과 실패 원인은 report로 남긴다.
+- 코드가 아닌 문서/아키텍처 milestone이 바뀌면 작업 완료 시 이 파일의 `Current State`/`Next`를 갱신한다. 사소한 수정마다 갱신하지 않는다.
+
+# Key Files
+
+- `README.md`, `docs/architecture.md`, `docs/database.md`, `docs/testing.md`
+- `backend/src/main/java/.../restaurant/importer/` 및 `.../restaurant/domain/Restaurant.java`
+- `backend/src/main/resources/db/migration/V14__create_naver_verifications.sql`
+- `ai/app/place_pipeline_cli.py`, `place_resolver_cli.py`, `place_resolver.py`
+- `ai/app/qwen_candidate_matcher.py`, `place_dom_detail_crawler.py`, `place_detail_persistence.py`
+- `ai/tests/`, `backend/src/test/`, `scripts/check-*.sh`

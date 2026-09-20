@@ -1,6 +1,6 @@
 # ZeroPay Lunch AI
 
-ZeroPay Lunch AI는 자연어 요청, 사용자 취향, 예산, 최근 식사 기록, 위치, 상황 정보를 바탕으로 주변 음식점을 추천합니다.
+ZeroPay Lunch AI는 자연어 요청, 사용자 취향, 예산, 최근 식사 기록과 상황 정보를 바탕으로 서울 강남구 논현동 음식점을 추천합니다.
 
 이 서비스는 모노레포 구조를 사용하며, Spring Boot를 애플리케이션의 단일 진입점으로 둡니다.
 
@@ -10,14 +10,14 @@ React -> Spring Boot -> FastAPI
 
 ## 현재 상태
 
-현재 이 저장소는 FastAPI의 실제 AI 기능을 연결하기 전에 필요한 인증, 대화 영속화와 개인화 추천 기반까지 구현한 상태입니다.
+현재 인증·대화·취향·식사 기록·논현동 고정 추천 기반과 KOMSCO→PCMap DOM 데이터 구축 pipeline이 구현되어 있습니다. FastAPI의 Spring 연동과 Qdrant/LangGraph 추천 검색은 아직 구현되지 않았습니다.
 
 | 영역 | 상태 |
 | --- | --- |
 | 프런트엔드 | 세션 인증, React Query 대화·취향·최근 식사 상태, POST SSE, 추천 카드와 `먹었어요` 흐름 구현 완료 |
 | 메인 백엔드 | 인증·Spring Session JDBC, 대화·취향·식사 기록 영속화, 제로페이·영업시간·개인화 필터와 샘플 추천 SSE 구현 완료 |
 | AI 서버 | 최소 구성의 FastAPI 상태 확인 엔드포인트와 테스트 작성 완료 |
-| MySQL | Flyway V1~V6 스키마, local/dev 샘플 음식점 3개, KOMSCO 원본과 NAVER Local 보강 결과 저장 |
+| MySQL | Flyway V1~V14 스키마, local/dev 샘플 음식점 3개, KOMSCO 원본·PCMap detail·검증 provenance 저장 |
 | Qdrant | 로컬 Docker Compose 서비스만 정의, AI 검색 연동 대기 중 |
 | Spring→FastAPI | 내부 의도 분석 계약과 fallback 경계만 준비, 실제 HTTP 클라이언트는 미구현 |
 | API 계약 및 아키텍처 | 현재 구현과 계획 범위를 `docs/`에 구분해 기록 |
