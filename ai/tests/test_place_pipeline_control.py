@@ -117,3 +117,14 @@ def test_manifest_rejects_duplicate_ids(tmp_path):
         assert "duplicate" in str(error)
     else:
         raise AssertionError("duplicate manifest ids must be rejected")
+
+
+def test_stable_manifest_reads_external_merchant_identity(tmp_path):
+    manifest = tmp_path / "stable.manifest"
+    manifest.write_text(
+        "# stable KOMSCO sample\nexternal_merchant_id,restaurant_id\nmerchant-a,10\nmerchant-b,11\n",
+        encoding="utf-8",
+    )
+    ids, rows = pipeline.load_manifest(manifest)
+    assert ids is None
+    assert [row["external_merchant_id"] for row in rows] == ["merchant-a", "merchant-b"]

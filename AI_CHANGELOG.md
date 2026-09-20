@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Stable KOMSCO sample manifest support
+- 기존 50건 baseline의 restaurant PK 대신 KOMSCO `external_merchant_id`를 primary identity로 저장하는 stable manifest를 생성
+- pipeline이 stable manifest를 현재 KOMSCO restaurant_id로 resolve하고, manifest 사용 시 population limit으로 항목이 누락되지 않도록 수정
+- exact name/address read-only mapping으로 50/50을 확인했으며 resolver/NAVER/Qwen 평가는 실행하지 않음
+
 ## [2026-09-21] Agent onboarding documentation alignment
 - AGENTS.md에 현재 논현동 KOMSCO-only 모집단, 모듈 책임, PCMap/Qwen pipeline, verification provenance와 Completed/In Progress/Next/Deferred 상태를 정리
 - README·architecture·database 문서의 오래된 강남구 전체·일일 scheduler·NAVER Local runtime 설명을 현재 구현에 맞게 정정

@@ -119,6 +119,30 @@ def load_batch_manifest(path: Path) -> list[int]:
     return values
 
 
+def load_stable_manifest(path: Path) -> list[dict[str, str]]:
+    """Read a stable KOMSCO manifest keyed by external_merchant_id."""
+    with path.open(newline="", encoding="utf-8") as stream:
+        rows = [row for row in csv.DictReader(
+            line for line in stream if line.strip() and not line.lstrip().startswith("#")
+        )]
+    if not rows or "external_merchant_id" not in rows[0]:
+        raise RuntimeError(f"stable manifest requires external_merchant_id column: {path}")
+    identities = [row.get("external_merchant_id", "").strip() for row in rows]
+    if any(not identity for identity in identities) or len(identities) != len(set(identities)):
+        raise RuntimeError(f"stable manifest contains missing or duplicate external_merchant_id: {path}")
+    return rows
+
+
+def load_manifest(path: Path) -> tuple[list[int] | None, list[dict[str, str]] | None]:
+    first_data = next(
+        (line for line in path.read_text(encoding="utf-8").splitlines()
+         if line.strip() and not line.lstrip().startswith("#")), ""
+    )
+    if first_data.lower().startswith("external_merchant_id,"):
+        return None, load_stable_manifest(path)
+    return load_batch_manifest(path), None
+
+
 TERMINAL_LEDGER_STATES = {"RESOLVED", "AMBIGUOUS", "NOT_FOUND", "PLACE_ID_CONFLICT"}
 
 
@@ -343,15 +367,25 @@ def main() -> int:
     # previous implicit ``limit=1`` optimization could truncate the source
     # before the requested id was selected, producing a misleading zero-target
     # run for ids that were not the first row.
-    population_limit = args.limit if args.restaurant_id is None else None
+    population_limit = None if args.manifest else (args.limit if args.restaurant_id is None else None)
     population = load_komsco_population(root, population_limit)
-    manifest_ids = load_batch_manifest(args.manifest) if args.manifest else None
+    manifest_ids, stable_manifest_rows = load_manifest(args.manifest) if args.manifest else (None, None)
     requested_ids = manifest_ids if manifest_ids is not None else args.restaurant_id
-    refs = select_pipeline_references(
-        population.references,
-        restaurant_id=requested_ids,
-        limit=None if manifest_ids is not None else args.limit,
-    )
+    if stable_manifest_rows is not None:
+        by_identity = {reference.external_merchant_id: reference for reference in population.references}
+        missing = [row["external_merchant_id"] for row in stable_manifest_rows
+                   if row["external_merchant_id"] not in by_identity]
+        if missing:
+            raise RuntimeError(f"stable manifest identity not found in KOMSCO population: {missing[:10]}")
+        refs = [by_identity[row["external_merchant_id"]] for row in stable_manifest_rows]
+        if args.limit is not None:
+            refs = refs[: args.limit]
+    else:
+        refs = select_pipeline_references(
+            population.references,
+            restaurant_id=requested_ids,
+            limit=None if manifest_ids is not None else args.limit,
+        )
     if manifest_ids is not None:
         found = {reference.restaurant_id for reference in refs}
         missing = [restaurant_id for restaurant_id in manifest_ids if restaurant_id not in found]

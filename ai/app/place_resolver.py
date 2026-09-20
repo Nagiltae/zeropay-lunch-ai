@@ -34,6 +34,7 @@ class RestaurantReference:
     komsco_latitude: float | None
     komsco_longitude: float | None
     legal_dong: str
+    external_merchant_id: str | None = None
 
 
 @dataclass(frozen=True)

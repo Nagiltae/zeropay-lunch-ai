@@ -236,6 +236,7 @@ def load_komsco_population(root: Path, limit: int | None) -> KomscoPopulation:
     sql = """
 SELECT JSON_OBJECT(
     'restaurant_id', r.id,
+    'external_merchant_id', r.external_merchant_id,
     'name', r.name,
     'address', r.address,
     'detail_address', COALESCE(r.detail_address, ''),
@@ -289,6 +290,7 @@ ORDER BY r.legal_dong_name, r.id
             komsco_latitude=_float(str(row.get("latitude") or "")),
             komsco_longitude=_float(str(row.get("longitude") or "")),
             legal_dong=str(row.get("legal_dong_name") or ""),
+            external_merchant_id=str(row.get("external_merchant_id") or "") or None,
         )
         for row in selected
     )
