@@ -34,7 +34,9 @@ from app.place_resolver import (
     rank_candidates,
     resolve_candidate,
 )
-from app.qwen_candidate_matcher import LlmUnavailable, OllamaClient, QwenCandidateMatcher
+from app.qwen_candidate_matcher import (
+    LlmUnavailable, OllamaClient, QwenCandidateMatcher, configured_qwen_model,
+)
 
 BLOCK_MARKERS = (
     "captcha",
@@ -1110,7 +1112,7 @@ def preflight(
         print("[OK] Playwright Chromium")
 
         ollama_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/")
-        model = os.getenv("LOCAL_LLM_MODEL", "qwen3:8b")
+        model = configured_qwen_model()
         try:
             with urlopen(Request(f"{ollama_url}/api/tags"), timeout=3) as response:
                 payload = json.loads(response.read().decode())

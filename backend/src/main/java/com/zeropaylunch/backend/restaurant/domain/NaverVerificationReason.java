@@ -1,6 +1,7 @@
 package com.zeropaylunch.backend.restaurant.domain;
 
 public enum NaverVerificationReason {
+    NO_CANDIDATE,
     NO_SEARCH_RESULT,
     NON_FOOD,
     OUT_OF_SCOPE,

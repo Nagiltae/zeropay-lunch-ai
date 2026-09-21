@@ -28,6 +28,11 @@ class LlmUnavailable(RuntimeError):
     """Ollama could not provide a response."""
 
 
+def configured_qwen_model() -> str:
+    """Single switch for ranking and semantic Entity Resolution models."""
+    return os.getenv("QWEN_MODEL") or os.getenv("LOCAL_LLM_MODEL") or "qwen3.5:9b"
+
+
 @dataclass(frozen=True)
 class QwenDecision:
     candidate_indices: tuple[int, ...]
@@ -64,7 +69,7 @@ class OllamaClient:
         timeout: float = 30.0,
     ) -> None:
         self.base_url = base_url or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-        self.model = model or os.getenv("LOCAL_LLM_MODEL", "qwen3:8b")
+        self.model = model or configured_qwen_model()
         self.timeout = timeout
 
     def complete(self, system: str, user: str, response_schema: dict | None = None) -> str:

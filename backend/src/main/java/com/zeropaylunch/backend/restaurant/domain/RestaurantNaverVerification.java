@@ -39,6 +39,9 @@ public class RestaurantNaverVerification {
     @Column(name = "verification_reason", nullable = false, length = 64)
     private NaverVerificationReason verificationReason;
 
+    @Column(name = "source_fingerprint", length = 64)
+    private String sourceFingerprint;
+
     @Column(name = "external_place_id", length = 64)
     private String externalPlaceId;
 
@@ -62,6 +65,20 @@ public class RestaurantNaverVerification {
             String modelName,
             Instant verifiedAt,
             Instant lastAttemptAt) {
+        return of(restaurant, provider, status, reason, externalPlaceId, modelName,
+                null, verifiedAt, lastAttemptAt);
+    }
+
+    public static RestaurantNaverVerification of(
+            Restaurant restaurant,
+            String provider,
+            NaverVerificationStatus status,
+            NaverVerificationReason reason,
+            String externalPlaceId,
+            String modelName,
+            String sourceFingerprint,
+            Instant verifiedAt,
+            Instant lastAttemptAt) {
         RestaurantNaverVerification verification = new RestaurantNaverVerification();
         verification.restaurant = restaurant;
         verification.provider = provider;
@@ -69,6 +86,7 @@ public class RestaurantNaverVerification {
         verification.verificationReason = reason;
         verification.externalPlaceId = externalPlaceId;
         verification.modelName = modelName;
+        verification.sourceFingerprint = sourceFingerprint;
         verification.verifiedAt = verifiedAt;
         verification.lastAttemptAt = lastAttemptAt;
         return verification;
@@ -80,5 +98,9 @@ public class RestaurantNaverVerification {
 
     public NaverVerificationReason getVerificationReason() {
         return verificationReason;
+    }
+
+    public String getSourceFingerprint() {
+        return sourceFingerprint;
     }
 }

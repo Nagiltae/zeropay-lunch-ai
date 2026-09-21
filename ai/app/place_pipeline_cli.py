@@ -43,7 +43,7 @@ from app.place_resolver_cli import (
     _existing_pcmap_mapping,
     write_resolved_to_db,
 )
-from app.qwen_candidate_matcher import OllamaClient, QwenCandidateMatcher
+from app.qwen_candidate_matcher import OllamaClient, QwenCandidateMatcher, configured_qwen_model
 
 FIELDS = [
     "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
@@ -628,7 +628,15 @@ def main() -> int:
                             verification_status,
                             _verification_reason(result),
                             result.place_id,
-                            os.getenv("LOCAL_LLM_MODEL", "qwen3:8b"),
+                            configured_qwen_model(),
+                            source={
+                                "external_merchant_id": reference.external_merchant_id,
+                                "name": reference.komsco_name,
+                                "address": reference.komsco_address,
+                                "latitude": reference.komsco_latitude,
+                                "longitude": reference.komsco_longitude,
+                                "legal_dong_code": "11680108",
+                            },
                         )
                         persistence_status = "SUCCESS"
                     except RuntimeError as error:

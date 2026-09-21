@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Qwen3.5 Entity Resolution and quality gate
+- `QWEN_MODEL` 설정으로 ranking/semantic Ollama 모델을 분리하고 로컬 `qwen3.5:9b` tag를 smoke 검증
+- `ACCEPT/REJECT/UNKNOWN` quality gate와 source fingerprint 기반 REJECT 재사용 정책을 추가
+- V15 verification fingerprint를 추가하고 source 변경 시 기존 verification을 `SOURCE_CHANGED/UNRESOLVED`로 무효화
+
 ## [2026-09-21] Switch NAVER provider to API HUB
 - NAVER 공식 provider를 Naver API HUB `/search/v1/local`로 전환하고 NCP API Gateway headers와 `format=json`을 적용
 - API HUB `items` 응답의 title/category/address/roadAddress/mapx/mapy/link mapping을 smoke로 검증

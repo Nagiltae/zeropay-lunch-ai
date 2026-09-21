@@ -9,6 +9,7 @@ from pathlib import Path
 
 from app.place_detail_models import PlaceDetail
 from app.place_resolver_cli import _docker_mysql_command
+from app.verification_quality_gate import source_fingerprint
 
 
 def _sql(value: object | None) -> str:
@@ -95,6 +96,7 @@ class PlaceDetailPersistence:
         reason: str,
         place_id: str | None,
         model_name: str | None,
+        source: dict[str, object] | None = None,
     ) -> None:
         eligible = "ELIGIBLE" if status == "VERIFIED" else (
             "INELIGIBLE" if reason in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else "UNKNOWN"
@@ -103,11 +105,13 @@ class PlaceDetailPersistence:
         sql = f"""
             INSERT INTO restaurant_naver_verifications
               (restaurant_id,provider,verification_status,verification_reason,
-               external_place_id,model_name,verified_at,last_attempt_at)
+               source_fingerprint,external_place_id,model_name,verified_at,last_attempt_at)
             VALUES ({restaurant_id},'NAVER',{_sql(status)},{_sql(reason)},
+                    {_sql(source_fingerprint(source) if source else None)},
                     {_sql(place_id)},{_sql(model_name)},{verified_at},CURRENT_TIMESTAMP(6))
             ON DUPLICATE KEY UPDATE verification_status=VALUES(verification_status),
               verification_reason=VALUES(verification_reason),
+              source_fingerprint=VALUES(source_fingerprint),
               external_place_id=VALUES(external_place_id), model_name=VALUES(model_name),
               verified_at=VALUES(verified_at), last_attempt_at=VALUES(last_attempt_at);
             UPDATE restaurants SET recommendation_eligibility={_sql(eligible)}

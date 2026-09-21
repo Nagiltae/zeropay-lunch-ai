@@ -77,7 +77,7 @@ NAVER Map UI search
   -> result (no stored NAVER fallback)
 ```
 
-이 PoC는 browser UI가 발생시킨 응답만 사용하며, `searchIframe` DOM 후보 parser나 직접 allSearch request replay를 사용하지 않습니다. Place ID Resolver의 애매한 후보 순위에만 로컬 Qwen3 8B를 사용할 수 있으며, NAVER Local API를 Place ID pipeline의 fallback으로 재호출하지 않습니다. 로컬 실행은 `OLLAMA_BASE_URL`(기본 `http://localhost:11434`)과 `LOCAL_LLM_MODEL`(기본 `qwen3:8b`)을 사용하며, 모델 준비는 `ollama pull qwen3:8b`입니다.
+이 PoC는 browser UI가 발생시킨 응답만 사용하며, `searchIframe` DOM 후보 parser나 직접 allSearch request replay를 사용하지 않습니다. Place ID Resolver의 애매한 후보 순위에만 로컬 Qwen을 사용할 수 있으며, NAVER Local API를 Place ID pipeline의 fallback으로 재호출하지 않습니다. Entity Resolution 모델은 `QWEN_MODEL`(현재 `qwen3.5:9b`)로 설정하고, 모델 준비는 `ollama pull qwen3.5:9b`입니다. 검증 결과는 `ACCEPT`만 downstream/detail/recommendation gate를 통과하며, `REJECT`와 기술적 `UNKNOWN`은 분리해 보존합니다.
 
 ### KOMSCO-only resolver
 
