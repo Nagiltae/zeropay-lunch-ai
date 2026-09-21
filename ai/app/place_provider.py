@@ -17,6 +17,14 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 
+class ProviderHTTPError(RuntimeError):
+    """Safe provider error containing status and documented error fields only."""
+
+    def __init__(self, status: int, detail: str = ""):
+        super().__init__(f"HTTP_{status}{(' ' + detail) if detail else ''}")
+        self.status = status
+
+
 @dataclass(frozen=True)
 class PlaceSearchCandidate:
     provider: str
@@ -54,18 +62,33 @@ def _html_text(value: Any) -> str:
 
 def _request_json(url: str, *, headers: dict[str, str], params: dict[str, Any]) -> dict[str, Any]:
     request = Request(f"{url}?{urlencode(params)}", headers=headers, method="GET")
-    with urlopen(request, timeout=15) as response:  # noqa: S310 - fixed official endpoints
-        body = response.read().decode("utf-8")
-        payload = json.loads(body)
-        if not isinstance(payload, dict):
-            raise ValueError("provider response is not an object")
-        return payload
+    try:
+        with urlopen(request, timeout=15) as response:  # noqa: S310 - fixed official endpoints
+            body = response.read().decode("utf-8")
+            payload = json.loads(body)
+    except HTTPError as error:
+        body = error.read().decode("utf-8", errors="replace")[:1000]
+        try:
+            error_payload = json.loads(body)
+        except json.JSONDecodeError:
+            error_payload = {}
+        if not isinstance(error_payload, dict):
+            error_payload = {}
+        code = error_payload.get("code") or error_payload.get("errorCode") or ""
+        message = error_payload.get("msg") or error_payload.get("errorMessage") or ""
+        detail = " ".join(str(value).replace("\n", " ") for value in (code, message) if value)
+        raise ProviderHTTPError(error.code, detail[:300]) from error
+    if not isinstance(payload, dict):
+        raise ValueError("provider response is not an object")
+    return payload
 
 
 def _safe_error(error: BaseException) -> str:
     """Expose diagnostic class/status only; never include request headers or URLs."""
     if isinstance(error, HTTPError):
         return f"HTTP_{error.code}"
+    if isinstance(error, ProviderHTTPError):
+        return str(error)
     if isinstance(error, URLError):
         return "NETWORK_ERROR"
     return type(error).__name__

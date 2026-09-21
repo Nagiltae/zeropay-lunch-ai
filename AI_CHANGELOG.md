@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Official provider authentication smoke
+- Kakao 공식 Local API smoke가 `KakaoAK` 헤더로 3건 성공하고 구조화 후보 필드를 확인함
+- NAVER 공식 Local API는 `HTTP_401`, `errorCode 024` 인증 거부를 반환했으며 credential 원문은 기록하지 않음
+- 50건 provider retrieval은 NAVER 인증 blocker로 실행하지 않음
+
 ## [2026-09-21] Official provider candidate retrieval (experimental)
 - 공식 Kakao Local/NAVER Local Search API를 공통 `PlaceSearchCandidate`로 변환하는 report-only provider layer와 50건 비교 CLI를 추가
 - Playwright/allSearch·Qwen·DB write와 분리하고, category/주소/좌표/원본 metadata 및 수동 gold rank 컬럼을 보존
