@@ -96,12 +96,17 @@ NAVER Map UI search
 
 ### Official provider candidate retrieval (experimental)
 
-`app.provider_candidate_retrieval_cli`는 DB에 저장된 KOMSCO reference를 기준으로
-공식 Kakao Local keyword API와 NAVER Local Search API의 후보만 수집하는 report-only
-실험 경로입니다. Playwright/allSearch, Qwen, semantic filtering, DB write는 사용하지
-않습니다. 공통 후보 모델은 provider가 실제 반환한 id/name/category/address/road address/
-coordinates/phone/link만 보존하고 누락 필드는 비워 둡니다. `--smoke`로 manifest 첫
-3건을 확인한 뒤 50건 report를 생성하며, credential은 `.env`에서만 읽습니다.
+`app.provider_candidate_retrieval_cli`는 stable KOMSCO manifest를 기준으로 공식 Kakao
+Local keyword API와 NAVER Local Search API의 후보만 수집하는 report-only 경로입니다.
+DB read/write, Playwright/allSearch, Qwen은 사용하지 않습니다. `app.provider_input`이
+manifest를 직접 읽으므로 provider 경로에는 Playwright 간접 의존도 없습니다.
+
+`app.provider_entity_resolution_cli`는 같은 manifest를 입력으로 두 provider 후보를 합친 뒤
+기존 Qwen3.5 ranking/semantic schema와 quality gate를 실행합니다. `ACCEPT`만 `ELIGIBLE`,
+semantic `REJECT`는 `INELIGIBLE`, provider/Qwen/structured output 오류와 후보 없음은
+`UNKNOWN`으로 report에 기록합니다. `--cache`로 이전 fusion report를 전달하면 동일
+source fingerprint의 `REJECT`만 Kakao/NAVER와 Qwen 모두 건너뜁니다. 이 경로는 DB,
+Playwright, allSearch를 호출하지 않으며 Canonical Restaurant를 생성하지 않습니다.
 ## Place detail pipeline
 
 Place ID가 `RESOLVED`된 뒤 `PlaceDomDetailCrawler`가 Resolver에서 재사용한

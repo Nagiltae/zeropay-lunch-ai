@@ -23,7 +23,8 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 | `backend/.../restaurant` | Restaurant source state, recommendation eligibility, deterministic candidate query |
 | `backend/.../recommendation` | 추천 context, fallback intent 분석, 결정론적 후보 필터/순위 |
 | `ai/app/place_resolver_cli.py` | PCMap DOM candidate 수집, Place ID(`data-nlog-params`) 추출, `/home` 검증 |
-| `ai/app/qwen_candidate_matcher.py` | Ollama `qwen3:8b` 기본 candidate ranking/semantic structured validation |
+| `ai/app/qwen_candidate_matcher.py` | `QWEN_MODEL` 기반 Qwen candidate ranking/semantic structured validation |
+| `ai/app/provider_entity_resolution_cli.py` | Kakao/NAVER official candidate fusion, Qwen Entity Resolution, report-only quality gate/cache |
 | `ai/app/place_dom_detail_crawler.py` | 검증된 HOME 재사용, HOME/MENU/REVIEW DOM 수집 |
 
 # Current State
@@ -35,12 +36,13 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 - KOMSCO-only PCMap resolver: 최대 20 candidate 수집, 최대 12개 Qwen pool, Top-5 detail validation, 429/403 즉시 중단, rate limit 기본 2.5초 navigation/5초 restaurant.
 - NAVER Local API와 stored Local fallback은 신규 resolver에서 사용하지 않는다.
 - DOM-only HOME/MENU/REVIEW crawler와 idempotent detail persistence.
-- `restaurant_naver_verifications` V14 provenance/status/reason 구조. `restaurants.active`, `recommendation_eligibility`, 외부 Place mapping과 분리된다.
+- `restaurant_naver_verifications` V14 provenance/status/reason 구조와 V15 source fingerprint. `restaurants.active`, `recommendation_eligibility`, 외부 Place mapping과 분리된다.
+- Official Kakao/NAVER provider fusion과 Qwen3.5 report-only Entity Resolution 경로. stable manifest 입력으로 DB/Playwright 없이 실행하며 동일 source fingerprint REJECT만 재사용한다.
 - parser, semantic prompt, out-of-scope/non-food safety, source-change 재검증 회귀 테스트.
 
 ## In Progress
 
-- 현재 코드 작업은 진행 중인 것으로 기록되어 있지 않다. 50건 Qwen3:8b baseline/manual review artifact는 로컬 runtime 자료이며 Git에 포함하지 않는다.
+- held-out 평가 전 official provider fusion 실행 경로를 구현했고, 50건 Qwen3:8b baseline/manual review artifact는 로컬 runtime 자료이며 Git에 포함하지 않는다.
 
 ## Next
 
@@ -49,7 +51,7 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## Deferred
 
-- Qwen3.5 교체, 514건 전체 crawl, 실제 Spring→FastAPI AI 연동, LangGraph/Qdrant 검색, 사용자 GPS/거리 추천은 아직 실행·구현하지 않았다.
+- held-out 50건 평가, 514건 전체 crawl, 실제 Spring→FastAPI AI 연동, LangGraph/Qdrant 검색, 사용자 GPS/거리 추천은 아직 실행·구현하지 않았다.
 
 # Important Design Decisions
 
@@ -93,7 +95,8 @@ AI resolver CLI와 manifest/status/ledger 명령은 `ai/README.md`를 읽는다.
 
 - `README.md`, `docs/architecture.md`, `docs/database.md`, `docs/testing.md`
 - `backend/src/main/java/.../restaurant/importer/` 및 `.../restaurant/domain/Restaurant.java`
-- `backend/src/main/resources/db/migration/V14__create_naver_verifications.sql`
+- `backend/src/main/resources/db/migration/V14__create_naver_verifications.sql`, `V15__add_verification_source_fingerprint.sql`
 - `ai/app/place_pipeline_cli.py`, `place_resolver_cli.py`, `place_resolver.py`
+- `ai/app/provider_input.py`, `provider_candidate_retrieval_cli.py`, `provider_entity_resolution_cli.py`
 - `ai/app/qwen_candidate_matcher.py`, `place_dom_detail_crawler.py`, `place_detail_persistence.py`
 - `ai/tests/`, `backend/src/test/`, `scripts/check-*.sh`

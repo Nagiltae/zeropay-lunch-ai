@@ -9,10 +9,13 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from app.place_provider import (KakaoPlaceSearchProvider, NaverPlaceSearchProvider,
-                                PlaceSearchCandidate, candidate_json)
-from app.place_resolver_cli import load_komsco_population, load_local_env
-
+from app.place_provider import (
+    KakaoPlaceSearchProvider,
+    NaverPlaceSearchProvider,
+    PlaceSearchCandidate,
+    candidate_json,
+)
+from app.provider_input import load_local_env, load_provider_manifest
 
 FIELDS = (
     "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
@@ -72,12 +75,7 @@ def main() -> int:
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     load_local_env(root)
-    population = load_komsco_population(root, None)
-    by_identity = {r.external_merchant_id: r for r in population.references}
-    with args.manifest.open(newline="", encoding="utf-8") as stream:
-        rows = list(csv.DictReader(line for line in stream if line.strip() and not line.startswith("#")))
-    references = [by_identity[row["external_merchant_id"]] for row in rows
-                  if row.get("external_merchant_id") in by_identity]
+    references = list(load_provider_manifest(args.manifest))
     if args.smoke:
         references = references[:3]
     elif args.limit is not None:
@@ -108,10 +106,16 @@ def main() -> int:
             counts["kakao_only"] += int(k and not n)
             counts["naver_only"] += int(n and not k)
             counts["neither"] += int(not k and not n)
-            print(f"[{index}/{len(references)}] restaurant_id={reference.restaurant_id} "
-                  f"Kakao={row['kakao_candidate_count']} NAVER={row['naver_candidate_count']}", flush=True)
-    print(json.dumps({"processed": len(references), "elapsed_seconds": round(time.monotonic() - started, 2), **counts},
-                     ensure_ascii=False))
+            print(
+                f"[{index}/{len(references)}] restaurant_id={reference.restaurant_id} "
+                f"Kakao={row['kakao_candidate_count']} NAVER={row['naver_candidate_count']}",
+                flush=True,
+            )
+    print(json.dumps({
+        "processed": len(references),
+        "elapsed_seconds": round(time.monotonic() - started, 2),
+        **counts,
+    }, ensure_ascii=False))
     return 0
 
 
