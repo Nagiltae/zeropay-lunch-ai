@@ -36,7 +36,7 @@ FIELDS = (
     "provider_calls_skipped", "qwen_calls_skipped", "kakao_candidate_count",
     "naver_candidate_count", "candidates_json", "kakao_error", "naver_error",
     "qwen_model", "qwen_ranking", "qwen_decision", "qwen_business_type",
-    "qwen_location_scope", "qwen_reason", "error",
+    "qwen_location_scope", "qwen_reason", "qwen_selected_index", "selected_provider", "selected_external_id", "error",
 )
 
 
@@ -108,6 +108,9 @@ def _base(reference, fingerprint: str) -> dict[str, str]:
         "qwen_business_type": "",
         "qwen_location_scope": "",
         "qwen_reason": "",
+        "qwen_selected_index": "",
+        "selected_provider": "",
+        "selected_external_id": "",
         "error": "",
     }
 
@@ -169,6 +172,16 @@ def evaluate_reference(reference, kakao, naver, matcher, cached=None) -> dict[st
             None,
         )
         selected = accepted or decisions[-1]
+
+        selected_index = ""
+        selected_provider = ""
+        selected_external_id = ""
+        if accepted:
+            idx = ranking.candidate_indices[len(decisions) - 1]
+            selected_index = str(idx)
+            selected_provider = candidates[idx].provider
+            selected_external_id = candidates[idx].external_place_id
+
         all_rejected = decisions and all(
             item.final_decision == "REJECT" for item in decisions
         )
@@ -184,6 +197,9 @@ def evaluate_reference(reference, kakao, naver, matcher, cached=None) -> dict[st
             "qwen_business_type": selected.business_type,
             "qwen_location_scope": selected.location_scope,
             "qwen_reason": selected.reason,
+            "qwen_selected_index": selected_index,
+            "selected_provider": selected_provider,
+            "selected_external_id": selected_external_id,
         })
     except (ValueError, RuntimeError) as error:
         result = technical_unknown("STRUCTURED_OUTPUT_ERROR", configured_qwen_model())
