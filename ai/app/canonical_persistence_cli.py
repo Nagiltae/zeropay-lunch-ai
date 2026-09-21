@@ -21,7 +21,7 @@ def _execute_sql(root: Path, sql: str) -> None:
     # Use docker compose exec -T mysql
     command = [
         "docker", "compose", "exec", "-T", "mysql", "sh", "-c",
-        f'MYSQL_PWD="zeropay_password" mysql --batch --raw -u zeropay zeropay_lunch'
+        f'MYSQL_PWD="zeropay_local" mysql --default-character-set=utf8mb4 --batch --raw -u zeropay zeropay_lunch'
     ]
     process = subprocess.run(command, input=sql.encode("utf-8"), cwd=str(root), capture_output=True)
     if process.returncode != 0:
@@ -37,6 +37,26 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
         reader = csv.DictReader(stream)
         for row in reader:
             decision = row.get("decision", "")
+
+            if not dry_run:
+                # Late import to avoid circular dependencies if any
+                from app.place_detail_persistence import PlaceDetailPersistence
+                persistence = PlaceDetailPersistence(root)
+                ver_status = "VERIFIED" if decision == "ACCEPT" else ("REJECTED" if decision == "REJECT" else "ERROR")
+                ver_reason = row.get("reason", "")
+
+                try:
+                    persistence.persist_verification(
+                        restaurant_id=int(row["restaurant_id"]),
+                        status=ver_status,
+                        reason=ver_reason,
+                        place_id=None,
+                        model_name="qwen2.5",
+                        source=None
+                    )
+                except Exception as e:
+                    print(f"Failed to persist verification for {row['restaurant_id']}: {e}")
+
             if decision != "ACCEPT":
                 skipped += 1
                 continue

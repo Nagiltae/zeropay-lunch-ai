@@ -68,11 +68,23 @@ def main():
 
     print(f"Fetching up to {args.limit} candidates for linking...")
     sql = f"""
-    SELECT c.restaurant_id, c.name, c.address, e.external_name, e.address as ext_address, e.road_address as ext_road_address, e.external_place_id, e.provider
+    SELECT
+        c.restaurant_id,
+        c.name,
+        c.address,
+        COALESCE(e.external_name, c.name) as external_name,
+        COALESCE(e.address, c.address) as ext_address,
+        COALESCE(e.road_address, c.road_address) as ext_road_address,
+        e.external_place_id,
+        'NAVER' as provider
     FROM canonical_restaurants c
-    JOIN restaurant_external_places e ON c.restaurant_id = e.restaurant_id
-    WHERE e.provider IN ('NAVER', 'NAVER_LOCAL')
-    AND (e.external_place_id IS NULL OR e.external_place_id NOT REGEXP '^[0-9]+$')
+    LEFT JOIN restaurant_external_places e
+        ON c.restaurant_id = e.restaurant_id
+        AND e.provider IN ('NAVER', 'NAVER_LOCAL')
+    JOIN restaurants r ON c.restaurant_id = r.id
+    WHERE (e.external_place_id IS NULL OR e.external_place_id NOT REGEXP '^[0-9]+$')
+      AND (e.match_status IS NULL OR e.match_status NOT IN ('MATCHED', 'UNRESOLVED', 'AMBIGUOUS'))
+      AND r.recommendation_eligibility = 'ELIGIBLE'
     LIMIT {args.limit};
     """
 
@@ -127,16 +139,31 @@ def main():
             print(f"[{restaurant_id}] Result: {new_place_id} (Status: {status})")
 
             if not args.dry_run:
-                place_id_expr = f"'{new_place_id}'" if new_place_id else "IF(external_place_id REGEXP '^[0-9]+$', external_place_id, NULL)"
-                update_sql = f"""
-                UPDATE restaurant_external_places
-                SET
-                    external_place_id = {place_id_expr},
-                    match_status = '{status}',
-                    updated_at = NOW()
-                WHERE restaurant_id = {restaurant_id} AND provider = '{provider}';
-                """
-                _execute_sql_write(update_sql)
+                escaped_query = query.replace("'", "''")
+                if new_place_id:
+                    sql_write = f"""
+                    INSERT INTO restaurant_external_places
+                        (restaurant_id, provider, external_place_id, match_status, match_score, query_used, matched_at, updated_at, created_at)
+                    VALUES ({restaurant_id}, '{provider}', '{new_place_id}', 'MATCHED', 100.00, '{escaped_query}', NOW(), NOW(), NOW())
+                    ON DUPLICATE KEY UPDATE
+                        external_place_id = '{new_place_id}',
+                        match_status = 'MATCHED',
+                        match_score = 100.00,
+                        query_used = '{escaped_query}',
+                        matched_at = NOW(),
+                        updated_at = NOW();
+                    """
+                else:
+                    sql_write = f"""
+                    INSERT INTO restaurant_external_places
+                        (restaurant_id, provider, match_status, match_score, query_used, updated_at, created_at)
+                    VALUES ({restaurant_id}, '{provider}', '{status}', 0.00, '{escaped_query}', NOW(), NOW())
+                    ON DUPLICATE KEY UPDATE
+                        match_status = '{status}',
+                        query_used = '{escaped_query}',
+                        updated_at = NOW();
+                    """
+                _execute_sql_write(sql_write)
 
         browser.close()
 

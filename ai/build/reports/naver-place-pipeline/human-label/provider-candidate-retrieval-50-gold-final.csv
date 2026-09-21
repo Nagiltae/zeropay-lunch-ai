@@ -1,0 +1,51 @@
+﻿restaurant_id,external_merchant_id,komsco_name,komsco_address,komsco_lat,komsco_lon,gold_kakao_rank,gold_naver_rank,gold_final_decision,gold_reject_reason,reviewer_comment,reviewer_detail,gold_note
+9559,d060db16e889916add491c4defce1605,모우리,서울특별시 강남구 학동로2길 20 (논현동) 논현동 142-9번지 2층,37.5100543,127.0226261,1,1,ACCEPT,,,,Reviewed draft accepted.
+9571,6e5772191bbe0e83289a4e6fe8cbd3fd,피자스쿨 강남논현점,서울시 강남구 강남대로122길 41 102호,37.5088137,127.0262907,1,1,ACCEPT,,,,Reviewed draft accepted.
+9583,d76087fc516a1b7954eee6703a195ec5,파파존스 논현점,서울 강남구 학동로 328 1층 1층,37.516233,127.0389427,1,1,ACCEPT,,,,Reviewed draft accepted.
+9594,984ee758a63777ed63a09ffe745f58c7,돼지가엔푸드,서울특별시 강남구 봉은사로11길 6 (논현동) 지하1층,37.506358,127.0288218,,1,ACCEPT,,같은 매장이라고 봐도 무방,,Reviewer confirmed same store despite address difference.
+9606,8b0e09234362e7a8c36322cfa0a01205,제이콥스플래닝앤디자인,서울특별시 강남구 학동로53길 3-12 (논현동) 제이콥스플래닝앤디자인,37.5171393,127.0394058,1,1,REJECT,NON_FOOD,,,"Reviewed draft: same/related entity may exist, but not a restaurant."
+9617,941c1e1a6327a290d00c58b738ccd8c3,(주)에스지푸드 논현역 마성떡볶이,서울특별시 강남구 학동로 지하 102 (논현동) 지하 1층 732-102호 (논현역),,,,,REJECT,NOT_EXIST,komsco 정보 자체를 사용하지 않는걸로 결정,가게 없음,Reviewer: 가게 없음; do not use KOMSCO record.
+9619,9f8d1a40c78ab764c0aeac0bf3d72af8,우정양곱창,서울시 강남구 도산대로30길 23 1층,37.5184384,127.0301249,1,1,ACCEPT,,,,Reviewed draft accepted.
+9631,171bfc5a110b3b2f4d9fa86b416b3b92,"오늘, 와인한잔","서울특별시 강남구 봉은사로1길 33, 1층 (논현동) 오늘, 와인한잔",37.5068332,127.0241392,1,,ACCEPT,,,,Reviewed draft accepted.
+9643,3a403f5d0faadbc5036cf975188bd18e,반포식스선정릉역점,서울시 강남구 선릉로 603 2층,37.5107792,127.0434777,1,1,ACCEPT,,,,Reviewed draft accepted.
+9654,41fce4115743043e1bbc31eb1a3b5dcd,지리산,서울특별시 강남구 학동로43길 7 (논현동) 지상,37.5165902,127.0372315,1,,ACCEPT,,,,Reviewed draft accepted.
+9666,7b1ef64a327db61923ab2c3390cdae5b,봉추찜닭 강남구청역점,서울특별시 강남구 학동로 343 (논현동) 지하2층,37.5174482,127.0406303,1,1,ACCEPT,,,,Reviewed draft accepted.
+9678,b22d6080c568c44452c1b43fa60e47ac,The A(더에이),서울특별시 강남구 언주로150길 41 (논현동) The A(더에이),37.5219282,127.037628,1,,REJECT,NON_FOOD,,,"Reviewed draft: same/related entity may exist, but not a restaurant."
+9690,402d56a0708840cbd307c3471ce8cb59,단스시,서울특별시 강남구 언주로 652(논현동) 쿠쿠빌딩2층,37.5151352,127.0358028,1,1,ACCEPT,,,,Reviewed draft accepted.
+9701,46423f0bfb39b3a0113a536bc387504c,사계절투어,"서울특별시 강남구 학동로 170 410호(논현동, 베트라이프빌딩)",37.5133409,127.0296751,,1,REJECT,NON_FOOD,,,"Reviewed draft: same/related entity may exist, but not a restaurant."
+9713,1b1736d2b6361417c420646737839343,김밥나라,서울특별시 강남구 강남대로120길 40 (논현동) 1층,37.5076344,127.0266038,,,REJECT,NOT_EXIST,komsco 정보 자체를 사용하지 않는걸로 결정,가게 없음,Reviewer: 가게 없음; do not use KOMSCO record.
+9722,c8171f72d52e8df2543d7ff7165965fc,호두당 신사점,서울특별시 강남구 도산대로 지하102(신사동) 327-114호,,,,,REJECT,NOT_EXIST,komsco 정보 자체를 사용하지 않는걸로 결정,가게 없음,Reviewer: 가게 없음; do not use KOMSCO record.
+9726,64bfcff15437895ed6cbd6c9bd790178,알잘딱깔센,"서울특별시 강남구 학동로34길 24, 지상1층 (논현동) 알잘딱깔센",37.5129878,127.033737,,,REJECT,NON_FOOD,komsco 정보 자체를 사용하지 않는걸로 결정,음식점이 아님,Reviewer: 음식점이 아님; do not use KOMSCO record.
+9738,73ecb9ef9521fd867e83beeff538fdf2,오수양푼이동태탕,"서울특별시 강남구 논현로111길 18, 1층 (논현동) 오수양푼이동태탕",37.5075539,127.032051,2,,ACCEPT,,,,Reviewed draft accepted.
+9750,6bbe35c681ddf05895a74b466598acfb,종로떡폐백,서울시 강남구 강남대로124길 19 1층 101-2호,37.5092777,127.0241371,1,,ACCEPT,,,,Reviewed draft accepted.
+9761,63b5b0be639f418bacd2904b75172483,도리토리본점,서울시 강남구 선릉로127길 5 1동,37.5153857,127.0414267,1,1,ACCEPT,,같은 매장이라고 봐도 무방,,Reviewer confirmed same store.
+9763,2ed6c72256d7ed707b7a9176ce3739f9,noodle talk,"서울특별시 강남구 봉은사로 지하 102 지하2층, 4-2호 누들톡 (논현동, 9호선 신논현역)",,,1,,ACCEPT,,,,Reviewed draft accepted.
+9772,bea2bde91c804f96a699c37d71404a28,핫브레드 논현역점,서울특별시 강남구 학동로 지하102(논현동) 지하2층 731-201호,,,1,1,ACCEPT,,,,Reviewed draft accepted.
+9775,49ba7d653ad34a7806f948c086ffa139,일언족발,서울특별시 강남구 봉은사로37길 11(논현동) 1층,37.5090308,127.0365751,1,1,ACCEPT,,,,Reviewed draft accepted.
+9787,eb55facccc6a5ab3eacda382443e07e8,한옥집 김치찜,서울특별시 강남구 언주로148길 6 1층 한옥집 김치찜,37.5202022,127.0351511,,,REJECT,OUT_OF_SCOPE,"네이버상 역삼역으로 나옴, 정보 사용하지 않음",논현이 아님,"Reviewer: 네이버상 역삼역, 논현이 아님."
+9799,bfbdf58e6f501d52f66c0d2e3dcf64e6,술이 그린 밤,서울특별시 강남구 강남대로124길 3-6 102호 술이 그린 밤,37.509078,127.0230903,1,1,ACCEPT,,,,Reviewed draft accepted.
+9807,c3cf4ce0e1ad31be42f903b5c938ed03,(주)마리킹 신사역점,서울특별시 강남구 도산대로 지하102(신사동) 327-113호,,,,,REJECT,NOT_EXIST,komsco 정보 자체를 사용하지 않는걸로 결정,가게 없음,Reviewer: 가게 없음; do not use KOMSCO record.
+9812,c57f70384745663fc8740d4ed332501f,테이블105,서울특별시 강남구 도산대로26길 11 (논현동) 1층 테이블105,37.5185138,127.0278244,1,1,ACCEPT,,,,Reviewed draft accepted.
+9823,0909c94196d2d06061c36a4a095c95c4,방일해장국,서울특별시 강남구 봉은사로37길 31 (논현동) 1층방일해장국,37.5101599,127.035581,1,2,ACCEPT,,,,Reviewed draft accepted.
+9835,8830d80cc1023ec640de6a0d4ae86148,보전식당,서울시 강남구 언주로 725 보전식당,37.519295,127.0344487,1,1,ACCEPT,,,,Reviewed draft accepted.
+9847,fd05bc55fa6d805c0e03a179a7f2793d,풍천장어,서울특별시 강남구 학동로2길 40(논현동) 풍천장어,37.5089748,127.0231836,1,,ACCEPT,,,,Reviewed draft accepted.
+9859,3eb9e37bfeca2f6f24d0e42b803eec64,탕탕미엔,"서울특별시 강남구 강남대로122길 16, 1층 1호 (논현동) 탕탕미엔",37.5080184,127.0244054,,,REJECT,NOT_EXIST,komsco 정보 자체를 사용하지 않는걸로 결정,가게 없음,Reviewer: 가게 없음; do not use KOMSCO record.
+9871,c483220b6c5ae036f49df8caefbd1390,나주곰탕,"서울특별시 강남구 학동로 221 (논현동, 지상1층) 나주곰탕",37.5150652,127.0333556,1,,ACCEPT,,같은 매장이라고 봐도 무방,나주곰탕' 이라는 매장임. 직접 방문함,Reviewer confirmed same store and personally visited.
+9882,2f05f1516bbc8848871e5971806a33e5,학동부대,서울특별시 강남구 학동로 224(논현동) B 101호 B 102호,37.514462,127.0335294,1,1,ACCEPT,,,,Reviewed draft accepted.
+9894,e31758f89046a5a74f396c47dd870449,반포식스 논현점,서울특별시 강남구 강남대로118길 51 (논현동) 2층 반포식스,37.5074895,127.0272657,1,1,ACCEPT,,,,Reviewed draft accepted.
+9906,35a963ca448e97773c3dc97915dab301,케이디,"서울특별시 강남구 학동로43길 38 (논현동, 논현웰스톤) 지하1층 B141호",37.5184409,127.0380207,,,REJECT,NON_FOOD,komsco 정보 자체를 사용하지 않는걸로 결정,사진 스튜디오임,Reviewer: 사진 스튜디오임.
+9918,95b8bb04d23df7348f2020b18f18cf81,하남돼지집 학동역점,서울특별시 강남구 언주로133길 18(논현동) 1층,37.5163705,127.033723,1,1,ACCEPT,,,,Reviewed draft accepted.
+9930,57c7678df9e733852ed9f0fd4edff173,텐트리키친,서울특별시 강남구 학동로4길 35(논현동) 지하1층,37.5091939,127.0239878,1,1,ACCEPT,,,,Reviewed draft accepted.
+9941,37f084cf60b613f6bfad18dab89d5f04,본죽본죽&비빔밥 강남구청역점,서울특별시 강남구 선릉로131길 24 (논현동) 1층,37.5174254,127.0390046,1,1,ACCEPT,,,,Reviewed draft accepted.
+9953,03c0ac11e11ec4172d42f322a0a5d03b,빨간떡볶이,서울특별시 강남구 강남대로118길 62 (논현동) 지하1층 103호,37.507149,127.0278709,1,,ACCEPT,,,,Reviewed draft accepted.
+9965,4241c8c0d183b51f738d8e20dc147165,마구로다찌,서울시 강남구 언주로150길 48 1층 102호 마구로다찌(논현동),37.5218961,127.0380663,,,REJECT,NOT_EXIST,komsco 정보 자체를 사용하지 않는걸로 결정,가게 없음,Reviewer: 가게 없음; do not use KOMSCO record.
+9977,99dee38f9313ece20ec94d22c7d11cce,돌곰네,"서울특별시 강남구 언주로146길 18 (논현동, 동현아파트) 동현상가 지하",37.5193597,127.0367435,1,1,ACCEPT,,,,Reviewed draft accepted.
+9988,1b25639897fb2f6938d8587b56bdd576,태권브이,서울특별시 강남구 강남대로124길 3-6 3층 태권브이,37.509078,127.0230903,1,1,ACCEPT,,,,Reviewed draft accepted.
+10000,a376a29efebdd2c89c0b73647f912776,(주)청담고수 논현점,서울특별시 강남구 논현로149길 12(논현동) 1층 (논현동),37.518579,127.0273334,,,REJECT,MOVED_OR_STALE,komsco 정보 자체를 사용하지 않는걸로 결정,이사한걸로 추정,Reviewer: 이사한 것으로 추정; do not use KOMSCO record.
+10012,b5c1e569543540d4dc5dab000213a4a6,나향반점,서울특별시 강남구 선릉로111길 43 (논현동) 나향반점,37.5098934,127.0401045,1,1,ACCEPT,,,,Reviewed draft accepted.
+10024,ccd42c9b15adaad1e6d13e9e2663a268,논현감자탕,"서울특별시 강남구 학동로 235, 2층 (논현동) 논현감자탕",37.515605,127.0350255,1,,ACCEPT,,,,Reviewed draft accepted.
+10036,acff3701907479ce6e610837028f900f,금홍 짬뽕,"서울시 강남구 논현로149길 35 금홍짬뽕(논현동, 동보빌딩)",37.5176284,127.0257547,1,1,ACCEPT,,,,Reviewed draft accepted.
+10047,2d950d8406732e5f143e87957ae8f93c,리미지,서울특별시 강남구 언주로147길 18 지1층 리미지,37.5198188,127.0327776,1,,ACCEPT,,,,Reviewed draft accepted.
+10059,25a13f8b185c64b92f035f1493c22d70,메이크 어 딜리버리,"서울특별시 강남구 학동로34길 24, 지상1층 (논현동) 메이크 어 딜리버리",37.5129878,127.033737,1,2,ACCEPT,,,,Reviewed draft accepted.
+10064,dd8884ae20f6a6d97b282ea7a0dc481b,천안상회,서울시 강남구 강남대로122길 천안상회,,,,1,REJECT,NON_FOOD,,,"Reviewed draft: same/related entity may exist, but not a restaurant."
+10072,984b12c68cbd387f1758d4520c6e7a5d,찌개마을 시골촌,서울특별시 강남구 학동로34길 17 (논현동) 지상1층,37.5134478,127.033753,1,1,ACCEPT,,,,Reviewed draft accepted.

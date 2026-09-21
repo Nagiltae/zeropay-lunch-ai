@@ -198,6 +198,10 @@ def evaluate_reference(reference, kakao, naver, matcher, cached=None) -> dict[st
             idx = accepted_indices["NAVER"]
             naver_selected_index = str(idx)
             naver_external_id = candidates[idx].external_place_id or ""
+        elif "NAVER_LOCAL" in accepted_indices:
+            idx = accepted_indices["NAVER_LOCAL"]
+            naver_selected_index = str(idx)
+            naver_external_id = candidates[idx].external_place_id or ""
 
         all_rejected = decisions and all(
             item.final_decision == "REJECT" for item in decisions

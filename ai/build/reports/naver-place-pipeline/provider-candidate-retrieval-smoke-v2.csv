@@ -1,0 +1,4 @@
+restaurant_id,external_merchant_id,komsco_name,komsco_address,komsco_lat,komsco_lon,kakao_candidate_count,kakao_candidates_json,naver_candidate_count,naver_candidates_json,kakao_no_result,naver_no_result,kakao_error,naver_error,kakao_gold_rank,naver_gold_rank,reviewer_note
+9559,d060db16e889916add491c4defce1605,모우리,서울특별시 강남구 학동로2길 20 (논현동) 논현동 142-9번지 2층,37.5100543,127.0226261,0,[],0,[],true,true,HTTP_403,HTTP_401,,,
+9571,6e5772191bbe0e83289a4e6fe8cbd3fd,피자스쿨 강남논현점,서울시 강남구 강남대로122길 41 102호,37.5088137,127.0262907,0,[],0,[],true,true,HTTP_403,HTTP_401,,,
+9583,d76087fc516a1b7954eee6703a195ec5,파파존스 논현점,서울 강남구 학동로 328 1층 1층,37.516233,127.0389427,0,[],0,[],true,true,HTTP_403,HTTP_401,,,

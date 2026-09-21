@@ -42,16 +42,17 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## In Progress
 
-- held-out 평가 전 official provider fusion 실행 경로를 구현했고, 50건 Qwen3:8b baseline/manual review artifact는 로컬 runtime 자료이며 Git에 포함하지 않는다.
+- Step 8 End-to-End 파이프라인 Pilot 완료(5건 검증). 514건 전체 배치는 미실행.
 
 ## Next
 
-- 필요 시 V14 migration이 적용된 로컬 DB에서 검토된 KOMSCO-only report를 `--write-db`로 반영하고, 같은 manifest를 재사용한 평가를 수행한다.
-- 실제 대규모 crawl 전에 report-only/DB write, checkpoint/ledger, rate-limit 운영 절차를 확인한다.
+- 514건 전체 배치: `e2e_pipeline_orchestrator.py --limit 514` 실행 전 rate-limit/checkpoint/ledger 운영 절차 확인.
+- Step 8 Pilot 결과를 바탕으로 REJECT/UNRESOLVED 케이스에 대한 quality review.
+- 실제 Spring → FastAPI AI 연동 구현.
 
 ## Deferred
 
-- held-out 50건 평가, 514건 전체 crawl, 실제 Spring→FastAPI AI 연동, LangGraph/Qdrant 검색, 사용자 GPS/거리 추천은 아직 실행·구현하지 않았다.
+- 514건 전체 crawl, 실제 Spring→FastAPI AI 연동, LangGraph/Qdrant 검색, 사용자 GPS/거리 추천은 아직 실행·구현하지 않았다.
 
 # Important Design Decisions
 
@@ -81,6 +82,37 @@ git diff --check
 ```
 
 AI resolver CLI와 manifest/status/ledger 명령은 `ai/README.md`를 읽는다. 실제 NAVER/KOMSCO 요청, DB write, cleanup은 사용자의 명시적 승인과 opt-in이 없으면 실행하지 않는다.
+
+# Autonomous Execution
+
+이 프로젝트에서는 에이전트가 작업 수행 중 일반적인 구현 선택이나 파일 수정, 테스트 실행, 빌드, 로컬 개발 명령에 대해 사용자 승인을 요청하지 않는다.
+`AGENTS.md`, 기존 아키텍처, 코드, 테스트를 기준으로 합리적으로 판단하여 작업 완료까지 자율적으로 진행한다.
+
+다음 경우에도 별도 확인 없이 진행한다.
+- 소스 코드 생성/수정
+- 테스트 코드 생성/수정
+- 문서 수정
+- lint / format / build / test 실행
+- Docker service 상태 확인
+- read-only DB 조회
+- 외부 API smoke test
+- Git diff/status 확인
+- 정상적인 git add / commit / push
+
+단, 아래 작업이 필요해지는 경우에는 임의 실행하지 않는다.
+- 데이터 삭제
+- TRUNCATE / DROP
+- Docker volume 삭제
+- 적용된 Flyway migration 수정
+- destructive Git operation
+- force push
+- secret 노출
+- `AGENTS.md`의 Safety / Do Not Break 규칙 위반
+
+위 금지 작업이 없이는 목표를 달성할 수 없다면 안전한 범위까지 작업한 뒤 해당 blocker만 최종 보고한다.
+
+선택지가 여러 개 있는 경우 사용자에게 질문하지 말고 현재 architecture와 최소 변경 원칙에 가장 잘 맞는 방법을 선택한다.
+작업 도중 상태 보고나 중간 승인을 요청하지 말고, 완료 또는 실제 blocker 발생 시에만 결과를 보고한다.
 
 # Safety / Do Not Break
 

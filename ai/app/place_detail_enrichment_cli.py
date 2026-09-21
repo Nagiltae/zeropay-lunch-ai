@@ -39,9 +39,13 @@ def main():
     SELECT c.restaurant_id, c.name, e.external_place_id, e.provider
     FROM canonical_restaurants c
     JOIN restaurant_external_places e ON c.restaurant_id = e.restaurant_id
+    JOIN restaurants r ON c.restaurant_id = r.id
+    LEFT JOIN restaurant_review_summaries h ON c.restaurant_id = h.restaurant_id
     WHERE e.provider IN ('NAVER', 'NAVER_LOCAL')
       AND e.match_status = 'MATCHED'
       AND e.external_place_id REGEXP '^[0-9]+$'
+      AND r.recommendation_eligibility = 'ELIGIBLE'
+      AND h.restaurant_id IS NULL
     LIMIT {args.limit};
     """
     
