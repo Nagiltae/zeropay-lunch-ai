@@ -210,8 +210,12 @@ class PlaceDomDetailCrawler:
         body = _text(page.locator("body"), 3000)
         if not body or any(marker in body for marker in ("접근이 제한", "비정상적인 접근", "CAPTCHA")):
             return self._failed("HOME_BLOCKED_OR_EMPTY")
-        name = _text(page.locator('meta[property="og:title"]')) or _text(page.locator("h1").first)
-        category = _text(page.locator('meta[property="og:description"]')) or _label_row(page, "카테고리")
+        try:
+            name = page.locator('meta[property="og:title"]').get_attribute("content", timeout=1000) or _text(page.locator("h1").first)
+            category = page.locator('meta[property="og:description"]').get_attribute("content", timeout=1000) or _label_row(page, "카테고리")
+        except Exception:
+            name = _text(page.locator("h1").first)
+            category = _label_row(page, "카테고리")
         address = _label_row(page, "주소")
         phone = _label_row(page, "전화번호")
         convenience_text = _label_row(page, "편의")
@@ -277,6 +281,11 @@ class PlaceDomDetailCrawler:
     def _parse_menu_card_text(raw: str) -> dict[str, str | None]:
         """Use rendered card line structure so descriptions never become names."""
         lines = [line.strip() for line in raw.splitlines() if line.strip()]
+
+        # Remove known badges that appear as their own line above the name
+        if lines and lines[0] in {"대표", "추천", "HIT", "NEW", "BEST", "인기"}:
+            lines = lines[1:]
+
         text = " ".join(lines)
         prices = _PRICE.findall(text)
         price = prices[-1] if prices else None
@@ -299,7 +308,10 @@ class PlaceDomDetailCrawler:
         if visitor.count() and visitor.first.get_attribute("aria-selected") != "true":
             _click(visitor.first)
         body = _text(page.locator("body"), 3000)
-        meta_description = _text(page.locator('meta[property="og:description"]'))
+        try:
+            meta_description = page.locator('meta[property="og:description"]').get_attribute("content", timeout=3000) or ""
+        except Exception:
+            meta_description = ""
         total = self._number_after(meta_description or body, "방문자\\s*리뷰")
         blog = self._number_after(meta_description or body, "블로그\\s*리뷰")
         chart = page.locator('a[data-nlog-area="plc_rrv.chartmore"]')
