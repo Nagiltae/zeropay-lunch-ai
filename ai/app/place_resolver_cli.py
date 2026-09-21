@@ -847,7 +847,11 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 address_comparison=address_result,
                 validation_result=resolution.status.value,
                 failure_reason=(
-                    f"QWEN_{semantic_decision}" if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
+                    "NON_FOOD" if final_decision == "REJECT" and business_type == "NON_FOOD" else
+                    "OUT_OF_SCOPE" if final_decision == "REJECT" and location_scope == "OUT_OF_SCOPE" else
+                    "QWEN_NO_MATCH" if final_decision == "REJECT" else
+                    "QWEN_UNCERTAIN" if final_decision == "UNCERTAIN" else
+                    "QWEN_MATCH" if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
                     else _validation_failure_reason(resolution, detail, name_result, address_result)
                 ),
                 semantic_decision=semantic_decision,
