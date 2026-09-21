@@ -8,6 +8,7 @@ from app.provider_input import load_local_env
 from app.place_dom_detail_crawler import PlaceDomDetailCrawler
 from app.place_detail_persistence import PlaceDetailPersistence
 from app.place_request_limiter import NavigationRateLimiter
+from app.batch_progress import BatchProgress
 
 
 def _is_blocked_error(error: Exception) -> bool:
@@ -76,6 +77,7 @@ def main():
         return
 
     print(f"Found {len(rows)} candidates.")
+    progress = BatchProgress("Detail", len(rows), {"success": "success", "failure": "failure"})
 
     dom_crawler = PlaceDomDetailCrawler()
     persistence = PlaceDetailPersistence(root) if not args.dry_run else None
@@ -94,22 +96,26 @@ def main():
             place_id = row['external_place_id']
             canonical_name = row['name']
 
-            print(f"[{restaurant_id}] Enriching details for '{canonical_name}' (Place ID: {place_id})...")
+            progress.current(restaurant_id, canonical_name)
+            print(f"[{restaurant_id}] Enriching details for '{canonical_name}' (Place ID: {place_id})...", flush=True)
 
             try:
                 dom_detail = dom_crawler.collect(page, place_id, include_reviews=True,
                                                  before_navigation=limiter.before_navigation)
             except Exception as e:
                 if _is_blocked_error(e):
+                    progress.error(restaurant_id, str(e))
                     raise
-                print(f"[{restaurant_id}] Crawler threw exception: {e}")
+                progress.error(restaurant_id, f"Crawler threw exception: {e}")
                 limiter.after_restaurant()
+                progress.complete(failure=1)
                 continue
 
             if not dom_detail.home_success:
                 warnings = ", ".join(dom_detail.warnings)
                 print(f"[{restaurant_id}] Detail collection failed (home_success=False). Warnings: {warnings}. Skipping persistence to protect existing data.")
                 limiter.after_restaurant()
+                progress.complete(failure=1)
                 continue
 
             print(f"[{restaurant_id}] Collected DOM successfully:")
@@ -118,16 +124,19 @@ def main():
             print(f"  - Business Hours: {len(dom_detail.business_hours)} rows")
             print(f"  - Reviews: {dom_detail.review_total} visitor, {dom_detail.blog_review_total} blog")
 
+            persisted = True
             if persistence:
                 try:
                     place_detail = dom_detail.to_place_detail(place_id)
                     persistence.persist(restaurant_id, place_id, place_detail)
                     print(f"[{restaurant_id}] Successfully persisted details to DB.")
                 except Exception as e:
-                    print(f"[{restaurant_id}] Persistence failed: {e}")
+                    persisted = False
+                    progress.error(restaurant_id, f"Persistence failed: {e}")
 
             # Rate limit: prevent 429 on large batches
             limiter.after_restaurant()
+            progress.complete(success=int(persisted), failure=int(not persisted))
 
         browser.close()
 

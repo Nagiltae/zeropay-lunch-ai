@@ -114,6 +114,14 @@ fingerprint가 같은 `REJECTED` row는 DB reject cache로 재사용하여 provi
 provider entity evidence 상태이며 numeric NAVER Place ID 보유 여부와 독립적입니다.
 공식 NAVER Local evidence에 numeric ID가 없으면 `NAVER_LOCAL/MATCHED/NULL`을 보존하고,
 Place ID linker가 이를 근거로 별도 `NAVER/MATCHED/<numeric id>` mapping을 생성합니다.
+
+전체 E2E 명령은 `cd ai && poetry run python -u -m app.e2e_pipeline_orchestrator --limit 513`입니다.
+하위 Python도 unbuffered로 실행되고 stdout/stderr가 즉시 전달됩니다. 각 단계는 현재
+restaurant ID/이름을 표시하고 기본 10건마다 누적 상태·경과 시간·건당 평균·ETA를
+출력합니다. 요약 간격은 `BATCH_PROGRESS_EVERY=25`처럼 조정할 수 있습니다.
+진행 로그는 checkpoint가 아니며, 중단 후에는 같은 명령을 실행해 MySQL의 기존
+verification/Place ID/detail 상태와 Reject Cache를 기준으로 재개합니다.
+
 ## Place detail pipeline
 
 Place ID가 `RESOLVED`된 뒤 `PlaceDomDetailCrawler`가 Resolver에서 재사용한

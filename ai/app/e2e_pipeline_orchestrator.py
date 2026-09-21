@@ -31,10 +31,20 @@ def _pending(row: dict[str, str]) -> bool:
         or row["source_fingerprint"] != source_fingerprint(_source(reference))
     )
 
-def _run_cmd(cmd: list[str]) -> bool:
-    print(f"\n[RUN] {' '.join(cmd)}")
-    result = subprocess.run(cmd)
-    return result.returncode == 0
+def _run_cmd(cmd: list[str], *, cwd: Path | None = None, on_line=None) -> bool:
+    """Forward child output as it arrives while retaining lightweight counters."""
+    print(f"\n[RUN] {' '.join(cmd)}", flush=True)
+    environment = {**os.environ, "PYTHONUNBUFFERED": "1"}
+    with subprocess.Popen(
+        cmd, cwd=cwd, env=environment, stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT, text=True, errors="replace", bufsize=1,
+    ) as process:
+        assert process.stdout is not None
+        for line in process.stdout:
+            print(line, end="", flush=True)
+            if on_line is not None:
+                on_line(line)
+        return process.wait() == 0
 
 def main():
     parser = argparse.ArgumentParser(description="End-to-End Orchestrator")
@@ -116,8 +126,8 @@ def main():
         print("\n=============================================")
         print("Step 2: Provider Fusion & Qwen Entity Resolution")
         print("=============================================")
-        qwen_cmd = ["poetry", "run", "python", "-m", "app.provider_entity_resolution_cli", "--manifest", str(manifest_path), "--output", str(csv_path), "--db-reject-cache"]
-        if not _run_cmd(qwen_cmd):
+        qwen_cmd = ["poetry", "run", "python", "-u", "-m", "app.provider_entity_resolution_cli", "--manifest", str(manifest_path), "--output", str(csv_path), "--db-reject-cache"]
+        if not _run_cmd(qwen_cmd, cwd=ai_dir):
             print("Provider resolution failed.")
             sys.exit(1)
 
@@ -126,7 +136,7 @@ def main():
             for row in reader:
                 if row.get("qwen_calls_skipped") == "true":
                     cache_skips += 1
-                else:
+                elif int(row.get("kakao_candidate_count") or 0) + int(row.get("naver_candidate_count") or 0) > 0:
                     qwen_calls += 1
                 if row.get("decision") == "ACCEPT": accepts += 1
                 elif row.get("decision") == "REJECT": rejects += 1
@@ -135,8 +145,8 @@ def main():
         print("\n=============================================")
         print("Step 3: Canonical Persistence (ACCEPT only)")
         print("=============================================")
-        canonical_cmd = ["poetry", "run", "python", "-m", "app.canonical_persistence_cli", "--csv", str(csv_path)]
-        if not _run_cmd(canonical_cmd):
+        canonical_cmd = ["poetry", "run", "python", "-u", "-m", "app.canonical_persistence_cli", "--csv", str(csv_path)]
+        if not _run_cmd(canonical_cmd, cwd=ai_dir):
             print("Canonical persistence failed.")
             sys.exit(1)
     else:
@@ -148,35 +158,39 @@ def main():
     print("\n=============================================")
     print("Step 4: NAVER Place ID Linking (MATCHED only)")
     print("=============================================")
-    linker_cmd = ["poetry", "run", "python", "-m", "app.place_id_linker_cli", "--limit", str(args.limit)]
+    linker_cmd = ["poetry", "run", "python", "-u", "-m", "app.place_id_linker_cli", "--limit", str(args.limit)]
     if requested_ids:
         linker_cmd.extend(["--restaurant-ids", ",".join(map(str, requested_ids))])
-    linker_result = subprocess.run(linker_cmd, capture_output=True, text=True)
-    print(linker_result.stdout)
-    if linker_result.stderr:
-        print(linker_result.stderr, file=sys.stderr)
-    if linker_result.returncode != 0:
+    matched = ambiguous = unresolved = 0
+    def count_linker(line: str) -> None:
+        nonlocal matched, ambiguous, unresolved
+        if "Result:" not in line:
+            return
+        matched += int("Status: MATCHED" in line)
+        ambiguous += int("Status: AMBIGUOUS" in line)
+        unresolved += int("Status: UNRESOLVED" in line)
+
+    if not _run_cmd(linker_cmd, cwd=ai_dir, on_line=count_linker):
         print("Place ID linking failed.")
         sys.exit(1)
-        
-    matched = linker_result.stdout.count("Status: MATCHED")
-    ambiguous = linker_result.stdout.count("Status: AMBIGUOUS")
-    unresolved = linker_result.stdout.count("Status: UNRESOLVED")
         
     print("\n=============================================")
     print("Step 5: Detail Enrichment (Numeric Place ID only)")
     print("=============================================")
-    detail_cmd = ["poetry", "run", "python", "-m", "app.place_detail_enrichment_cli", "--limit", str(args.limit)]
+    detail_cmd = ["poetry", "run", "python", "-u", "-m", "app.place_detail_enrichment_cli", "--limit", str(args.limit)]
     if requested_ids:
         detail_cmd.extend(["--restaurant-ids", ",".join(map(str, requested_ids))])
-    detail_result = subprocess.run(detail_cmd, capture_output=True, text=True)
-    print(detail_result.stdout)
-    if detail_result.returncode != 0:
+    detail_success = detail_skip = 0
+    def count_detail(line: str) -> None:
+        nonlocal detail_success, detail_skip
+        detail_success += int("Successfully persisted details to DB" in line)
+        detail_skip += int(any(token in line for token in (
+            "Skipping persistence to protect existing data", "Crawler threw exception", "Persistence failed",
+        )))
+
+    if not _run_cmd(detail_cmd, cwd=ai_dir, on_line=count_detail):
         print("Detail enrichment failed.")
         sys.exit(1)
-        
-    detail_success = detail_result.stdout.count("Successfully persisted details to DB")
-    detail_skip = detail_result.stdout.count("Skipping persistence to protect existing data")
     
     elapsed = time.time() - start_time
     avg_time = elapsed / target_count if target_count > 0 else 0
@@ -187,7 +201,7 @@ def main():
     print("[Pilot Report]")
     print(f"- 총 대상 (Target): {target_count}")
     print(f"- Cache Skip (DB Verifications): DB 레벨에서 기 처리 건 제외됨")
-    print(f"- 실제 Qwen 호출 수: {qwen_calls}")
+    print(f"- Qwen 호출 음식점 수: {qwen_calls}")
     print(f"- Reject Cache skip: {cache_skips}")
     print(f"- ACCEPT: {accepts}")
     print(f"- REJECT: {rejects}")

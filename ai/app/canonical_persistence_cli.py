@@ -13,6 +13,7 @@ from app.place_provider import PlaceSearchCandidate
 from app.place_resolver import RestaurantReference
 from app.provider_input import load_local_env
 from app.qwen_candidate_matcher import configured_qwen_model
+from app.batch_progress import BatchProgress
 
 
 import subprocess
@@ -52,13 +53,18 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
     verification_rows: list[dict[str, str]] = []
 
     with path.open(newline="", encoding="utf-8") as stream:
-        reader = csv.DictReader(stream)
-        for row in reader:
+        verification_rows = list(csv.DictReader(stream))
+        progress = BatchProgress(
+            "Canonical Prepare", len(verification_rows),
+            {"accept": "ACCEPT", "skipped": "REJECT/UNKNOWN"},
+        )
+        for row in verification_rows:
             decision = row.get("decision", "")
-            verification_rows.append(row)
+            progress.current(row["restaurant_id"], row.get("komsco_name", ""))
 
             if decision != "ACCEPT":
                 skipped += 1
+                progress.complete(skipped=1)
                 continue
 
             kakao_idx_str = row.get("kakao_selected_index", "")
@@ -125,15 +131,22 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
             from app.canonical_builder import generate_canonical_sql
             all_sql.append(generate_canonical_sql(canonical, accepted_candidates))
             created += 1
+            progress.complete(accept=1)
 
     if not dry_run and all_sql:
+        print(f"[Canonical Persistence] writing {len(all_sql)} canonical rows", flush=True)
         _execute_sql(root, "\n".join(all_sql))
 
     if not dry_run:
         from app.place_detail_persistence import PlaceDetailPersistence
 
         persistence = PlaceDetailPersistence(root)
+        progress = BatchProgress(
+            "Verification Persistence", len(verification_rows),
+            {"saved": "saved"},
+        )
         for row in verification_rows:
+            progress.current(row["restaurant_id"], row.get("komsco_name", ""))
             ver_status, ver_reason, model_name = verification_metadata(row)
             try:
                 persistence.persist_verification(
@@ -146,9 +159,11 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
                     eligibility=row.get("recommendation_eligibility") or None,
                 )
             except Exception as error:
+                progress.error(row["restaurant_id"], str(error))
                 raise RuntimeError(
                     f"Failed to persist verification for {row['restaurant_id']}"
                 ) from error
+            progress.complete(saved=1)
 
     return created, skipped
 

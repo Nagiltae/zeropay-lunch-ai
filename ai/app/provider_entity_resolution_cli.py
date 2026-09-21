@@ -8,6 +8,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from app.batch_progress import BatchProgress
 from app.place_provider import (
     KakaoPlaceSearchProvider,
     NaverPlaceSearchProvider,
@@ -301,20 +302,49 @@ def main() -> int:
     matcher = QwenCandidateMatcher(OllamaClient())
     args.output.parent.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
+    progress = BatchProgress(
+        "Entity Resolution", len(references),
+        {"cache_skip": "cache skip", "qwen": "Qwen 호출 음식점", "accept": "ACCEPT",
+         "reject": "REJECT", "unknown": "UNKNOWN"},
+    )
     with args.output.open("w", newline="", encoding="utf-8") as stream:
         writer = csv.DictWriter(stream, fieldnames=FIELDS)
         writer.writeheader()
         for reference in references:
-            row = evaluate_reference(
-                reference,
-                kakao,
-                naver,
-                matcher,
-                cache.get(reference.external_merchant_id or ""),
-            )
+            progress.current(reference.restaurant_id, reference.komsco_name)
+            try:
+                row = evaluate_reference(
+                    reference,
+                    kakao,
+                    naver,
+                    matcher,
+                    cache.get(reference.external_merchant_id or ""),
+                )
+            except Exception as error:
+                progress.error(reference.restaurant_id, str(error))
+                raise
             writer.writerow(row)
             stream.flush()
-    print(f"processed={len(references)} elapsed_seconds={time.monotonic() - started:.2f}")
+            if row.get("error") or row.get("kakao_error") or row.get("naver_error"):
+                errors = "; ".join(filter(None, (
+                    row.get("error"), row.get("kakao_error"), row.get("naver_error"),
+                )))
+                progress.error(reference.restaurant_id, errors)
+            cache_skipped = row["qwen_calls_skipped"] == "true"
+            has_candidates = (
+                int(row["kakao_candidate_count"]) + int(row["naver_candidate_count"]) > 0
+            )
+            progress.complete(
+                cache_skip=int(cache_skipped),
+                qwen=int(not cache_skipped and has_candidates),
+                accept=int(row["decision"] == "ACCEPT"),
+                reject=int(row["decision"] == "REJECT"),
+                unknown=int(row["decision"] == "UNKNOWN"),
+            )
+    print(
+        f"processed={len(references)} elapsed_seconds={time.monotonic() - started:.2f}",
+        flush=True,
+    )
     return 0
 
 

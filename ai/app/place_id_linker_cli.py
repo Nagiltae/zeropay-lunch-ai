@@ -8,6 +8,7 @@ from app.place_allsearch import parse_allsearch_candidates
 from app.place_resolver import normalize_text, compare_address_pair
 from app.provider_input import load_local_env
 from app.place_request_limiter import NavigationRateLimiter
+from app.batch_progress import BatchProgress
 
 
 def _is_blocked_error(error: Exception) -> bool:
@@ -117,6 +118,10 @@ def main():
         return
 
     print(f"Found {len(rows)} candidates.")
+    progress = BatchProgress(
+        "Place ID", len(rows),
+        {"matched": "MATCHED", "unresolved": "UNRESOLVED", "ambiguous": "AMBIGUOUS"},
+    )
     limiter = NavigationRateLimiter(
         navigation_delay=float(os.environ.get("NAVER_NAVIGATION_DELAY_SECONDS", "2.5")),
         restaurant_delay=float(os.environ.get("NAVER_RESTAURANT_DELAY_SECONDS", "3.0")),
@@ -137,7 +142,8 @@ def main():
 
             target_name = naver_name or canonical_name
             query = f"논현동 {target_name}".strip()
-            print(f"[{restaurant_id}] Searching '{query}'...")
+            progress.current(restaurant_id, target_name)
+            print(f"[{restaurant_id}] Searching '{query}'...", flush=True)
 
             status = "UNRESOLVED"
             new_place_id = None
@@ -161,11 +167,12 @@ def main():
                     status = "UNRESOLVED"
             except Exception as e:
                 if _is_blocked_error(e):
+                    progress.error(restaurant_id, str(e))
                     raise
-                print(f"[{restaurant_id}] Capture failed: {e}")
+                progress.error(restaurant_id, f"Capture failed: {e}")
                 status = "UNRESOLVED"
 
-            print(f"[{restaurant_id}] Result: {new_place_id} (Status: {status})")
+            print(f"[{restaurant_id}] Result: {new_place_id} (Status: {status})", flush=True)
 
             if not args.dry_run:
                 escaped_query = query.replace("'", "''")
@@ -196,6 +203,11 @@ def main():
 
             # Rate limit: prevent 429 on large batches
             limiter.after_restaurant()
+            progress.complete(
+                matched=int(status == "MATCHED"),
+                unresolved=int(status == "UNRESOLVED"),
+                ambiguous=int(status == "AMBIGUOUS"),
+            )
 
         browser.close()
 
