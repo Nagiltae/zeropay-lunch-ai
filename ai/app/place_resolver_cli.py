@@ -441,6 +441,9 @@ def search_direct(
         if any(marker in response_text for marker in BLOCK_MARKERS):
             raise RuntimeError("BLOCKED: CAPTCHA/접근 제한/HTTP 차단 징후 감지")
         payload = response.json()
+        result = payload.get("result") if isinstance(payload, dict) else None
+        if isinstance(result, dict) and result.get("ncaptcha"):
+            raise RuntimeError("BLOCKED: allSearch CAPTCHA 응답")
     except PlaywrightTimeoutError:
         raise
     except RuntimeError:

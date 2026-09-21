@@ -3,8 +3,8 @@
 ## [2026-09-21] Structured allSearch candidate resolution
 - PCMap 후보 수집을 DOM heuristic parser에서 NAVER allSearch JSON 구조화 parser로 전환
 - 상호명·주소·카테고리 semantic veto와 deterministic fast path를 제거하고 Qwen ranking/semantic decision을 최종 identity 판단으로 사용
-- allSearch 필드 누락을 UNKNOWN으로 보존하고 기술 오류·Place ID·접근 제한 guard와 기존 report-only/resume 흐름은 유지
-- Resolver regression 70건 및 AI/Backend/Frontend harness 통과
+- allSearch 필드 누락을 UNKNOWN으로 보존하고 기술 오류·Place ID·접근 제한/CAPTCHA guard와 기존 report-only/resume 흐름은 유지
+- Resolver regression 71건 및 AI/Backend/Frontend harness 통과
 
 ## [2026-09-21] Stable KOMSCO sample manifest support
 - 기존 50건 baseline의 restaurant PK 대신 KOMSCO `external_merchant_id`를 primary identity로 저장하는 stable manifest를 생성

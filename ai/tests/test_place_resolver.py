@@ -102,6 +102,28 @@ def test_allsearch_http_block_is_raised_as_batch_blocked() -> None:
         raise AssertionError("allSearch 429 must stop the batch")
 
 
+def test_allsearch_ncaptcha_response_is_blocked() -> None:
+    class Response:
+        status = 200
+        def text(self):
+            return '{"result":{"place":null,"ncaptcha":{"confirmRules":"CE_EMPTY_TOKEN"}}}'
+        def json(self):
+            return {"result": {"place": None, "ncaptcha": {"confirmRules": "CE_EMPTY_TOKEN"}}}
+    class Request:
+        def get(self, _url, timeout):
+            return Response()
+    class Context:
+        request = Request()
+    class Page:
+        context = Context()
+    try:
+        cli.search_direct(Page(), "query", reference())
+    except RuntimeError as error:
+        assert str(error).startswith("BLOCKED:")
+    else:
+        raise AssertionError("allSearch CAPTCHA response must stop the batch")
+
+
 def test_address_missing_is_unknown_and_not_different() -> None:
     assert compare_address_pair("서울 강남구 학동로 123", "") == "UNKNOWN"
     assert best_address_evidence(("서울 강남구 학동로 123",), ("",)) == "UNKNOWN"
