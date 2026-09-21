@@ -37,7 +37,7 @@ def build_canonical(reference: RestaurantReference, candidate: PlaceSearchCandid
     )
 
 def _sql_value(value: str | float | None) -> str:
-    if value is None:
+    if value is None or value == "":
         return "NULL"
     if isinstance(value, float):
         return str(value)

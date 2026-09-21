@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import subprocess
 import time
 from pathlib import Path
 
@@ -86,6 +87,40 @@ def _cache_rows(path: Path | None) -> dict[str, dict[str, str]]:
         }
 
 
+def _db_reject_cache(root: Path) -> dict[str, dict[str, str]]:
+    query = """
+    SELECT r.external_merchant_id, v.source_fingerprint, v.verification_reason, v.model_name
+    FROM restaurant_naver_verifications v
+    JOIN restaurants r ON r.id = v.restaurant_id
+    WHERE v.provider = 'NAVER' AND v.verification_status = 'REJECTED'
+    """
+    command = [
+        "docker", "compose", "exec", "-T", "mysql", "sh", "-c",
+        f'MYSQL_PWD="zeropay_local" mysql --default-character-set=utf8mb4 --batch --raw -u zeropay zeropay_lunch -e "{query}"',
+    ]
+    process = subprocess.run(command, cwd=root, capture_output=True, text=True)
+    if process.returncode != 0:
+        raise RuntimeError(f"MySQL reject cache query failed: {process.stderr}")
+    lines = process.stdout.strip().splitlines()
+    if len(lines) <= 1:
+        return {}
+    headers = lines[0].split("\t")
+    cache = {}
+    for line in lines[1:]:
+        values = line.split("\t")
+        row = dict(zip(headers, values))
+        merchant_id = row.get("external_merchant_id")
+        if merchant_id:
+            cache[merchant_id] = {
+                "external_merchant_id": merchant_id,
+                "source_fingerprint": row.get("source_fingerprint", ""),
+                "verification_reason": row.get("verification_reason", ""),
+                "qwen_model": row.get("model_name", ""),
+                "decision": "REJECT",
+            }
+    return cache
+
+
 def _base(reference, fingerprint: str) -> dict[str, str]:
     return {
         "restaurant_id": str(reference.restaurant_id),
@@ -130,6 +165,7 @@ def evaluate_reference(reference, kakao, naver, matcher, cached=None) -> dict[st
         row.update({key: value for key, value in cached.items() if key in FIELDS})
         row["restaurant_id"] = str(reference.restaurant_id)
         row["source_fingerprint"] = fingerprint
+        row["recommendation_eligibility"] = "INELIGIBLE"
         row["provider_calls_skipped"] = "true"
         row["qwen_calls_skipped"] = "true"
         return row
@@ -246,6 +282,10 @@ def main() -> int:
         "--cache", type=Path,
         help="previous fusion report; only unchanged REJECT rows are reused",
     )
+    parser.add_argument(
+        "--db-reject-cache", action="store_true",
+        help="reuse unchanged REJECT decisions from MySQL without provider or Qwen calls",
+    )
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
@@ -254,6 +294,8 @@ def main() -> int:
     if args.limit is not None:
         references = references[:args.limit]
     cache = _cache_rows(args.cache)
+    if args.db_reject_cache:
+        cache.update(_db_reject_cache(root))
     kakao = KakaoPlaceSearchProvider()
     naver = NaverPlaceSearchProvider()
     matcher = QwenCandidateMatcher(OllamaClient())

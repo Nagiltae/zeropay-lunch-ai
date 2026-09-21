@@ -1,6 +1,7 @@
 from app import place_detail_persistence
 from app.place_dom_detail_crawler import DomCollectedDetail, PlaceDomDetailCrawler
 from app.place_detail_persistence import PlaceDetailPersistence
+import pytest
 
 
 def test_dom_detail_section_statuses_keep_place_and_sections_separate():
@@ -98,3 +99,9 @@ def test_menu_card_parser_separates_name_description_and_price():
     assert item["name"] == "이디야 아메리카노"
     assert item["description"] == "진한 에스프레소와 부드러운 우유가 어우러진 음료"
     assert item["price_value"] == "4500"
+
+
+@pytest.mark.parametrize("body", ["CAPTCHA", "captcha challenge", "접근이 제한", "비정상적인 접근"])
+def test_access_restriction_stops_detail_batch(body):
+    with pytest.raises(RuntimeError, match="BLOCKED"):
+        PlaceDomDetailCrawler._check_body_access(body)

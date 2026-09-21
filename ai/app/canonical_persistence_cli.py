@@ -12,12 +12,29 @@ from app.canonical_builder import build_canonical
 from app.place_provider import PlaceSearchCandidate
 from app.place_resolver import RestaurantReference
 from app.provider_input import load_local_env
+from app.qwen_candidate_matcher import configured_qwen_model
 
 
 import subprocess
 
+
+def verification_metadata(row: dict[str, str]) -> tuple[str, str, str]:
+    decision = row.get("decision", "")
+    status = "VERIFIED" if decision == "ACCEPT" else (
+        "REJECTED" if decision == "REJECT" else "ERROR"
+    )
+    reason = row.get("verification_reason", "")
+    if len(reason) > 64:
+        reason = (
+            "NON_FOOD" if row.get("qwen_business_type") == "NON_FOOD" else
+            "OUT_OF_SCOPE" if row.get("qwen_location_scope") == "OUT_OF_SCOPE" else
+            "MATCHED" if decision == "ACCEPT" else
+            "NO_MATCH" if decision == "REJECT" else
+            "SEMANTIC_UNCERTAIN"
+        )
+    return status, reason, row.get("qwen_model") or configured_qwen_model()
+
 def _execute_sql(root: Path, sql: str) -> None:
-    script = f'MYSQL_PWD="zeropay_password" mysql --batch --raw -u zeropay -h 127.0.0.1 -P 3306 zeropay_lunch'
     # Use docker compose exec -T mysql
     command = [
         "docker", "compose", "exec", "-T", "mysql", "sh", "-c",
@@ -32,30 +49,13 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
     created = 0
     skipped = 0
     all_sql = []
+    verification_rows: list[dict[str, str]] = []
 
     with path.open(newline="", encoding="utf-8") as stream:
         reader = csv.DictReader(stream)
         for row in reader:
             decision = row.get("decision", "")
-
-            if not dry_run:
-                # Late import to avoid circular dependencies if any
-                from app.place_detail_persistence import PlaceDetailPersistence
-                persistence = PlaceDetailPersistence(root)
-                ver_status = "VERIFIED" if decision == "ACCEPT" else ("REJECTED" if decision == "REJECT" else "ERROR")
-                ver_reason = row.get("reason", "")
-
-                try:
-                    persistence.persist_verification(
-                        restaurant_id=int(row["restaurant_id"]),
-                        status=ver_status,
-                        reason=ver_reason,
-                        place_id=None,
-                        model_name="qwen2.5",
-                        source=None
-                    )
-                except Exception as e:
-                    print(f"Failed to persist verification for {row['restaurant_id']}: {e}")
+            verification_rows.append(row)
 
             if decision != "ACCEPT":
                 skipped += 1
@@ -65,15 +65,13 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
             naver_idx_str = row.get("naver_selected_index", "")
 
             if not kakao_idx_str and not naver_idx_str:
-                skipped += 1
-                continue
+                raise ValueError(f"ACCEPT row {row['restaurant_id']} has no selected candidate")
 
             candidates_json = row.get("candidates_json", "[]")
             try:
                 candidates_data = json.loads(candidates_json)
-            except json.JSONDecodeError:
-                skipped += 1
-                continue
+            except json.JSONDecodeError as error:
+                raise ValueError(f"ACCEPT row {row['restaurant_id']} has invalid candidates") from error
 
             accepted_candidates = []
 
@@ -108,8 +106,7 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
                 accepted_candidates.append(kakao_candidate)
 
             if not accepted_candidates:
-                skipped += 1
-                continue
+                raise ValueError(f"ACCEPT row {row['restaurant_id']} has no usable candidate")
 
             reference = RestaurantReference(
                 restaurant_id=int(row["restaurant_id"]),
@@ -131,6 +128,27 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
 
     if not dry_run and all_sql:
         _execute_sql(root, "\n".join(all_sql))
+
+    if not dry_run:
+        from app.place_detail_persistence import PlaceDetailPersistence
+
+        persistence = PlaceDetailPersistence(root)
+        for row in verification_rows:
+            ver_status, ver_reason, model_name = verification_metadata(row)
+            try:
+                persistence.persist_verification(
+                    restaurant_id=int(row["restaurant_id"]),
+                    status=ver_status,
+                    reason=ver_reason,
+                    place_id=None,
+                    model_name=model_name,
+                    source_fingerprint_value=row.get("source_fingerprint") or None,
+                    eligibility=row.get("recommendation_eligibility") or None,
+                )
+            except Exception as error:
+                raise RuntimeError(
+                    f"Failed to persist verification for {row['restaurant_id']}"
+                ) from error
 
     return created, skipped
 

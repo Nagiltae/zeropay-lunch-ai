@@ -107,6 +107,13 @@ semantic `REJECT`는 `INELIGIBLE`, provider/Qwen/structured output 오류와 후
 `UNKNOWN`으로 report에 기록합니다. `--cache`로 이전 fusion report를 전달하면 동일
 source fingerprint의 `REJECT`만 Kakao/NAVER와 Qwen 모두 건너뜁니다. 이 경로는 DB,
 Playwright, allSearch를 호출하지 않으며 Canonical Restaurant를 생성하지 않습니다.
+
+E2E orchestrator는 운영 checkpoint를 MySQL의 `restaurant_naver_verifications`로 관리합니다.
+fingerprint가 같은 `REJECTED` row는 DB reject cache로 재사용하여 provider와 Qwen을 호출하지
+않고, fingerprint가 없거나 source가 변경된 row는 재검증합니다. `MATCHED` external row는
+provider entity evidence 상태이며 numeric NAVER Place ID 보유 여부와 독립적입니다.
+공식 NAVER Local evidence에 numeric ID가 없으면 `NAVER_LOCAL/MATCHED/NULL`을 보존하고,
+Place ID linker가 이를 근거로 별도 `NAVER/MATCHED/<numeric id>` mapping을 생성합니다.
 ## Place detail pipeline
 
 Place ID가 `RESOLVED`된 뒤 `PlaceDomDetailCrawler`가 Resolver에서 재사용한

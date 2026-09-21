@@ -97,17 +97,21 @@ class PlaceDetailPersistence:
         place_id: str | None,
         model_name: str | None,
         source: dict[str, object] | None = None,
+        source_fingerprint_value: str | None = None,
+        eligibility: str | None = None,
     ) -> None:
-        eligible = "ELIGIBLE" if status == "VERIFIED" else (
+        eligible = eligibility or ("ELIGIBLE" if status == "VERIFIED" else (
             "INELIGIBLE" if reason in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else "UNKNOWN"
-        )
+        ))
+        if eligible not in {"ELIGIBLE", "INELIGIBLE", "UNKNOWN"}:
+            raise ValueError("invalid recommendation eligibility")
         verified_at = "CURRENT_TIMESTAMP(6)" if status == "VERIFIED" else "NULL"
         sql = f"""
             INSERT INTO restaurant_naver_verifications
               (restaurant_id,provider,verification_status,verification_reason,
                source_fingerprint,external_place_id,model_name,verified_at,last_attempt_at)
             VALUES ({restaurant_id},'NAVER',{_sql(status)},{_sql(reason)},
-                    {_sql(source_fingerprint(source) if source else None)},
+                    {_sql(source_fingerprint_value or (source_fingerprint(source) if source else None))},
                     {_sql(place_id)},{_sql(model_name)},{verified_at},CURRENT_TIMESTAMP(6))
             ON DUPLICATE KEY UPDATE verification_status=VALUES(verification_status),
               verification_reason=VALUES(verification_reason),

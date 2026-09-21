@@ -203,12 +203,18 @@ class PlaceDomDetailCrawler:
                 if before_navigation:
                     before_navigation()
                 response = page.goto(home_url, wait_until="domcontentloaded", timeout=15_000)
+                self._check_response(response)
                 home_success = bool(response and response.ok)
             self._ensure_place(page, place_id)
+        except RuntimeError as error:
+            if str(error).startswith("BLOCKED:"):
+                raise
+            return self._failed(f"HOME:{type(error).__name__}")
         except Exception as error:
             return self._failed(f"HOME:{type(error).__name__}")
         body = _text(page.locator("body"), 3000)
-        if not body or any(marker in body for marker in ("접근이 제한", "비정상적인 접근", "CAPTCHA")):
+        self._check_body_access(body)
+        if not body:
             return self._failed("HOME_BLOCKED_OR_EMPTY")
         try:
             name = page.locator('meta[property="og:title"]').get_attribute("content", timeout=1000) or _text(page.locator("h1").first)
@@ -225,6 +231,8 @@ class PlaceDomDetailCrawler:
         try:
             menus, menu_success = self._menus(page, place_id, before_navigation=before_navigation)
         except RuntimeError as error:
+            if str(error).startswith("BLOCKED:"):
+                raise
             warnings.append(str(error))
             menus, menu_success = (), False
         try:
@@ -232,6 +240,8 @@ class PlaceDomDetailCrawler:
             "success": False, "total": None, "blog": None, "keywords": (), "mentions": (), "themes": (), "representative": ()
             }
         except RuntimeError as error:
+            if str(error).startswith("BLOCKED:"):
+                raise
             warnings.append(str(error))
             review = {"success": False, "total": None, "blog": None, "keywords": (), "mentions": (), "themes": (), "representative": ()}
         return DomCollectedDetail(
@@ -260,12 +270,14 @@ class PlaceDomDetailCrawler:
         # Preview links can lead to booking/ordering pages for some places.
         if before_navigation:
             before_navigation()
-        page.goto(
+        response = page.goto(
             f"https://pcmap.place.naver.com/restaurant/{place_id}/menu/list",
             wait_until="domcontentloaded",
             timeout=15_000,
         )
+        self._check_response(response)
         self._ensure_place(page, place_id)
+        self._check_body_access(_text(page.locator("body"), 3000))
         try:
             page.locator('a[data-nlog-area="plc_bmv.menu"]').first.wait_for(state="visible", timeout=5000)
         except Exception:
@@ -298,12 +310,14 @@ class PlaceDomDetailCrawler:
     def _reviews(self, page, place_id: str, *, before_navigation=None) -> dict[str, object]:
         if before_navigation:
             before_navigation()
-        page.goto(
+        response = page.goto(
             f"https://pcmap.place.naver.com/restaurant/{place_id}/review/visitor",
             wait_until="domcontentloaded",
             timeout=15_000,
         )
+        self._check_response(response)
         self._ensure_place(page, place_id)
+        self._check_body_access(_text(page.locator("body"), 3000))
         visitor = page.locator('a[data-nlog-area="plc_rrv.rrvtab"]')
         if visitor.count() and visitor.first.get_attribute("aria-selected") != "true":
             _click(visitor.first)
@@ -337,3 +351,13 @@ class PlaceDomDetailCrawler:
     def _ensure_place(page, place_id: str) -> None:
         if f"/restaurant/{place_id}/" not in page.url:
             raise RuntimeError(f"PLACE_ID_URL_MISMATCH:{page.url}")
+
+    @staticmethod
+    def _check_response(response) -> None:
+        if response is not None and response.status in (403, 429):
+            raise RuntimeError(f"BLOCKED: HTTP {response.status}")
+
+    @staticmethod
+    def _check_body_access(body: str) -> None:
+        if any(marker in body.upper() for marker in ("접근이 제한", "비정상적인 접근", "CAPTCHA")):
+            raise RuntimeError("BLOCKED: access restriction")

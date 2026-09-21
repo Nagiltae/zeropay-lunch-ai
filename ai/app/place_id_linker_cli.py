@@ -1,5 +1,5 @@
 import argparse
-import sys
+import os
 import subprocess
 from playwright.sync_api import sync_playwright
 
@@ -7,6 +7,12 @@ from app.place_resolver_cli import _search_ui_response
 from app.place_allsearch import parse_allsearch_candidates
 from app.place_resolver import normalize_text, compare_address_pair
 from app.provider_input import load_local_env
+from app.place_request_limiter import NavigationRateLimiter
+
+
+def _is_blocked_error(error: Exception) -> bool:
+    message = str(error).upper()
+    return any(token in message for token in ("403", "429", "CAPTCHA", "BLOCKED"))
 
 def _execute_sql_read(sql: str) -> list[dict[str, str]]:
     command = [
@@ -60,8 +66,20 @@ def is_exact_match(candidate, naver_external_name, naver_address, naver_road_add
 def main():
     parser = argparse.ArgumentParser(description="Step 6 NAVER Place ID Linking")
     parser.add_argument("--limit", type=int, default=3, help="Smoke test limit")
+    parser.add_argument("--restaurant-ids", help="Comma-separated restaurant IDs for a bounded preflight")
     parser.add_argument("--dry-run", action="store_true", help="Do not write to DB")
     args = parser.parse_args()
+    if args.limit < 1:
+        parser.error("--limit must be positive")
+    id_filter = ""
+    if args.restaurant_ids:
+        try:
+            ids = [int(value) for value in args.restaurant_ids.split(",")]
+        except ValueError:
+            parser.error("--restaurant-ids must contain only integers")
+        if not ids or any(value < 1 for value in ids) or len(ids) > args.limit:
+            parser.error("--restaurant-ids requires 1..limit positive IDs")
+        id_filter = f"AND c.restaurant_id IN ({','.join(map(str, ids))})"
 
     from pathlib import Path
     load_local_env(Path(__file__).resolve().parent.parent.parent)
@@ -75,16 +93,21 @@ def main():
         COALESCE(e.external_name, c.name) as external_name,
         COALESCE(e.address, c.address) as ext_address,
         COALESCE(e.road_address, c.road_address) as ext_road_address,
-        e.external_place_id,
+        n.external_place_id,
         'NAVER' as provider
     FROM canonical_restaurants c
     LEFT JOIN restaurant_external_places e
         ON c.restaurant_id = e.restaurant_id
-        AND e.provider IN ('NAVER', 'NAVER_LOCAL')
+        AND e.provider = 'NAVER_LOCAL'
+    LEFT JOIN restaurant_external_places n
+        ON c.restaurant_id = n.restaurant_id AND n.provider = 'NAVER'
     JOIN restaurants r ON c.restaurant_id = r.id
-    WHERE (e.external_place_id IS NULL OR e.external_place_id NOT REGEXP '^[0-9]+$')
-      AND (e.match_status IS NULL OR e.match_status NOT IN ('MATCHED', 'UNRESOLVED', 'AMBIGUOUS'))
+    WHERE (n.external_place_id IS NULL OR n.external_place_id NOT REGEXP '^[0-9]+$')
+      AND (e.match_status IS NULL OR e.match_status NOT IN ('UNRESOLVED', 'AMBIGUOUS'))
+      AND (n.match_status IS NULL OR n.match_status NOT IN ('UNRESOLVED', 'AMBIGUOUS'))
       AND r.recommendation_eligibility = 'ELIGIBLE'
+      {id_filter}
+    ORDER BY c.restaurant_id
     LIMIT {args.limit};
     """
 
@@ -94,6 +117,10 @@ def main():
         return
 
     print(f"Found {len(rows)} candidates.")
+    limiter = NavigationRateLimiter(
+        navigation_delay=float(os.environ.get("NAVER_NAVIGATION_DELAY_SECONDS", "2.5")),
+        restaurant_delay=float(os.environ.get("NAVER_RESTAURANT_DELAY_SECONDS", "3.0")),
+    )
 
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
@@ -115,7 +142,7 @@ def main():
             status = "UNRESOLVED"
             new_place_id = None
             try:
-                response, payload = _search_ui_response(page, query)
+                response, payload = _search_ui_response(page, query, before_navigation=limiter.before_navigation)
                 candidates = parse_allsearch_candidates(payload)
 
                 matches = []
@@ -133,6 +160,8 @@ def main():
                 else:
                     status = "UNRESOLVED"
             except Exception as e:
+                if _is_blocked_error(e):
+                    raise
                 print(f"[{restaurant_id}] Capture failed: {e}")
                 status = "UNRESOLVED"
 
@@ -164,6 +193,9 @@ def main():
                         updated_at = NOW();
                     """
                 _execute_sql_write(sql_write)
+
+            # Rate limit: prevent 429 on large batches
+            limiter.after_restaurant()
 
         browser.close()
 

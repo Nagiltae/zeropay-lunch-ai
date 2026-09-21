@@ -27,3 +27,5 @@ ai/__pycache__/
 ai/**/__pycache__/
 *.py[cod]
 
+# Generated E2E manifests and reports
+ai/build/reports/naver-place-pipeline/e2e/

@@ -60,6 +60,18 @@ docker compose config --quiet
 docker compose build --quiet
 docker compose up -d --wait --wait-timeout 180
 
+# A previous explicit KOMSCO cleanup can leave local sample rows absent even
+# though Flyway's repeatable sample migration is already recorded as applied.
+docker compose exec -T mysql sh -c \
+  'mysql --default-character-set=utf8mb4 -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' \
+  < "$ROOT_DIR/backend/src/main/resources/db/sample/R__sample_restaurants.sql"
+
+# A dedicated Nonhyeon-dong fixture exercises the current recommendation scope
+# without changing an applied migration or mislabeling the older sample addresses.
+docker compose exec -T mysql sh -c \
+  'mysql --default-character-set=utf8mb4 -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' \
+  < "$ROOT_DIR/scripts/fixtures/integration_restaurant.sql"
+
 FRONTEND_ADDRESS="$(docker compose port frontend 80)"
 BACKEND_ADDRESS="$(docker compose port backend 8080)"
 AI_ADDRESS="$(docker compose port ai 8001)"

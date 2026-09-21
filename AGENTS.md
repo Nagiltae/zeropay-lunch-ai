@@ -42,12 +42,16 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## In Progress
 
-- Step 8 End-to-End 파이프라인 Pilot 완료(5건 검증). 514건 전체 배치는 미실행.
+- Step 8 End-to-End preflight에서 legacy VERIFIED 10건을 Qwen3.5로 재검증해 fingerprint를 저장했고,
+  동일 fingerprint REJECT 5건의 provider/Qwen 0호출을 확인했다. NAVER_LOCAL 5건은 실제
+  PCMap UI allSearch capture로 numeric NAVER Place ID를 연결했고, 그중 3건의
+  HOME/MENU/영업시간/REVIEW를 저장했다. 동일 대상 재실행은 Qwen/link/detail 0건이었다.
+  513건 전체 배치는 미실행.
 
 ## Next
 
-- 514건 전체 배치: `e2e_pipeline_orchestrator.py --limit 514` 실행 전 rate-limit/checkpoint/ledger 운영 절차 확인.
-- Step 8 Pilot 결과를 바탕으로 REJECT/UNRESOLVED 케이스에 대한 quality review.
+- preflight DB 정합성·harness·Git push를 마친 뒤 513건 전체 배치를 별도 실행.
+- 전체 배치 중 403/429/CAPTCHA 발생 시 즉시 중단하고 DB 기반으로 재개.
 - 실제 Spring → FastAPI AI 연동 구현.
 
 ## Deferred
