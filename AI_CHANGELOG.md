@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Official provider candidate retrieval (experimental)
+- 공식 Kakao Local/NAVER Local Search API를 공통 `PlaceSearchCandidate`로 변환하는 report-only provider layer와 50건 비교 CLI를 추가
+- Playwright/allSearch·Qwen·DB write와 분리하고, category/주소/좌표/원본 metadata 및 수동 gold rank 컬럼을 보존
+- 로컬 smoke에서 Kakao HTTP 403, NAVER HTTP 401로 인증/권한 blocker를 확인했으며 50건 평가는 실행하지 않음
+
 ## [2026-09-21] Separate semantic entity and service eligibility
 - Qwen semantic structured output을 entity/business/location/final decision 축으로 분리하고 기존 semantic 결과를 candidate attempt에 보존
 - allSearch category 배열과 후보 좌표·주소·semantic 오류를 report 및 manual-review sidecar에 보존

@@ -93,6 +93,15 @@ NAVER Map UI search
 6. CSV를 검토한 뒤에만 `cd ai && poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-only.csv --resume --write-db`를 실행합니다. `RESOLVED` + detail validation `PASS` + numeric Place ID만 `external_place_id`/도메인 URL을 upsert하며, 다른 상태는 DB에 쓰지 않습니다. `--resume --write-db`는 CSV 반영 후 즉시 종료하며 추가 PCMap 수집을 실행하지 않습니다.
 
 과거 Local API 검증 CSV와 legacy 결과는 신규 KOMSCO-only 입력으로 재사용하지 않습니다. report-only CSV는 각 음식점 처리 직후 flush되며, `--resume`은 같은 KOMSCO-only 출력의 완료 항목을 건너뜁니다.
+
+### Official provider candidate retrieval (experimental)
+
+`app.provider_candidate_retrieval_cli`는 DB에 저장된 KOMSCO reference를 기준으로
+공식 Kakao Local keyword API와 NAVER Local Search API의 후보만 수집하는 report-only
+실험 경로입니다. Playwright/allSearch, Qwen, semantic filtering, DB write는 사용하지
+않습니다. 공통 후보 모델은 provider가 실제 반환한 id/name/category/address/road address/
+coordinates/phone/link만 보존하고 누락 필드는 비워 둡니다. `--smoke`로 manifest 첫
+3건을 확인한 뒤 50건 report를 생성하며, credential은 `.env`에서만 읽습니다.
 ## Place detail pipeline
 
 Place ID가 `RESOLVED`된 뒤 `PlaceDomDetailCrawler`가 Resolver에서 재사용한
