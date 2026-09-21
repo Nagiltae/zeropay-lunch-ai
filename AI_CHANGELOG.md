@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Separate semantic entity and service eligibility
+- Qwen semantic structured output을 entity/business/location/final decision 축으로 분리하고 기존 semantic 결과를 candidate attempt에 보존
+- allSearch category 배열과 후보 좌표·주소·semantic 오류를 report 및 manual-review sidecar에 보존
+- report-only 수동 검토 CSV 생성과 regression 테스트를 추가했으며 live 평가는 실행하지 않음
+
 ## [2026-09-21] Capture allSearch from NAVER UI network
 - resolver가 allSearch URL을 직접 호출하지 않고 정상 Playwright 지도 UI 검색의 query-matched network response만 후보 source로 사용
 - DOM 후보 parser/heuristic fallback을 실행 경로에서 배제하고 structured `result.place.list` 필드만 변환

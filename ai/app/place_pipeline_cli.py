@@ -46,7 +46,8 @@ from app.place_resolver_cli import (
 from app.qwen_candidate_matcher import OllamaClient, QwenCandidateMatcher
 
 FIELDS = [
-    "restaurant_id", "komsco_name", "komsco_address",
+    "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
+    "komsco_latitude", "komsco_longitude",
     "query", "place_id", "place_url", "resolve_status", "detail_status",
     "matcher_source", "qwen_used", "qwen_confidence",
     "qwen_ranking", "resolved_rank", "detail_validation_attempts",
@@ -57,7 +58,9 @@ FIELDS = [
     "home_status", "hours_status", "menu_status", "review_status",
     "review_requested", "review_count", "review_keyword_count",
     "review_menu_mention_count", "review_theme_count", "representative_review_count",
-    "detail_warnings", "result", "reason",
+    "detail_warnings", "result", "reason", "verification_status", "verification_reason",
+    "selected_category", "selected_category_values", "selected_road_address",
+    "selected_jibun_address", "selected_x", "selected_y", "candidate_attempts_json",
     "persistence_status", "persistence_error",
     "elapsed_ms",
 ]
@@ -234,6 +237,60 @@ class PipelineWriter:
         self.stream.close()
 
 
+MANUAL_REVIEW_FIELDS = (
+    "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
+    "komsco_latitude", "komsco_longitude", "final_status", "verification_status",
+    "verification_reason", "elapsed_ms", "selected_rank", "place_id", "selected_name",
+    "selected_category", "selected_category_values", "selected_address",
+    "selected_road_address", "selected_jibun_address", "selected_x", "selected_y",
+    "qwen_ranking", "candidate_attempts_json", "gold_label", "correct_place_id",
+    "reviewer_note",
+)
+
+
+def write_manual_review_csv(report: Path) -> Path:
+    """Create a review-sidecar without changing the report or database."""
+    manual = report.with_name(f"{report.stem}-manual-review.csv")
+    with report.open(newline="", encoding="utf-8") as source, manual.open(
+        "w", newline="", encoding="utf-8"
+    ) as target:
+        reader = csv.DictReader(source)
+        writer = csv.DictWriter(target, fieldnames=MANUAL_REVIEW_FIELDS)
+        writer.writeheader()
+        for row in reader:
+            attempts = json.loads(row.get("candidate_attempts_json") or "[]")
+            selected = next(
+                (item for item in attempts if item.get("place_id") == row.get("place_id")),
+                attempts[0] if attempts else {},
+            )
+            writer.writerow({
+                "restaurant_id": row.get("restaurant_id", ""),
+                "external_merchant_id": row.get("external_merchant_id", ""),
+                "komsco_name": row.get("komsco_name", ""),
+                "komsco_address": row.get("komsco_address", ""),
+                "komsco_latitude": row.get("komsco_latitude", ""),
+                "komsco_longitude": row.get("komsco_longitude", ""),
+                "final_status": row.get("resolve_status", ""),
+                "verification_status": row.get("verification_status", ""),
+                "verification_reason": row.get("verification_reason", ""),
+                "elapsed_ms": row.get("elapsed_ms", ""),
+                "selected_rank": row.get("resolved_rank", "") or selected.get("rank", ""),
+                "place_id": row.get("place_id", "") or selected.get("place_id", ""),
+                "selected_name": selected.get("detail_name") or selected.get("candidate_name", ""),
+                "selected_category": selected.get("category", ""),
+                "selected_category_values": json.dumps(selected.get("category_values", ()), ensure_ascii=False),
+                "selected_address": selected.get("candidate_jibun_address") or selected.get("detail_jibun_address", ""),
+                "selected_road_address": selected.get("candidate_road_address") or selected.get("detail_road_address", ""),
+                "selected_jibun_address": selected.get("candidate_jibun_address") or selected.get("detail_jibun_address", ""),
+                "selected_x": selected.get("candidate_longitude", ""),
+                "selected_y": selected.get("candidate_latitude", ""),
+                "qwen_ranking": row.get("qwen_ranking", ""),
+                "candidate_attempts_json": row.get("candidate_attempts_json", "[]"),
+                "gold_label": "", "correct_place_id": "", "reviewer_note": "",
+            })
+    return manual
+
+
 def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_status="NOT_ATTEMPTED", persistence_error="") -> dict[str, object]:
     detail = detail_result.detail
     menus = getattr(detail, "menus", ()) if detail else ()
@@ -249,8 +306,11 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
     representative_reviews = getattr(detail, "representative_reviews", ()) if detail else ()
     return {
         "restaurant_id": result.reference.restaurant_id,
+        "external_merchant_id": result.reference.external_merchant_id or "",
         "komsco_name": result.reference.komsco_name,
         "komsco_address": result.reference.komsco_address,
+        "komsco_latitude": result.reference.komsco_latitude if result.reference.komsco_latitude is not None else "",
+        "komsco_longitude": result.reference.komsco_longitude if result.reference.komsco_longitude is not None else "",
         "query": result.query,
         "place_id": result.place_id or "",
         "place_url": f"https://pcmap.place.naver.com/restaurant/{result.place_id}/home" if result.place_id else "",
@@ -273,6 +333,18 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
             [attempt.__dict__ for attempt in getattr(result, "validation_attempts_detail", ())],
             ensure_ascii=False,
         ),
+        "candidate_attempts_json": json.dumps(
+            [attempt.__dict__ for attempt in getattr(result, "validation_attempts_detail", ())],
+            ensure_ascii=False,
+        ),
+        "selected_category": getattr(result.candidate, "category", "") if result.candidate else "",
+        "selected_category_values": json.dumps(
+            getattr(result.candidate, "category_values", ()), ensure_ascii=False
+        ) if result.candidate else "",
+        "selected_road_address": getattr(result.candidate, "road_address", "") if result.candidate else "",
+        "selected_jibun_address": getattr(result.candidate, "jibun_address", "") if result.candidate else "",
+        "selected_x": getattr(result.candidate, "longitude", "") if result.candidate else "",
+        "selected_y": getattr(result.candidate, "latitude", "") if result.candidate else "",
         "detail_access_method": detail_result.access_method,
         "http_result": detail_result.http_result,
         "playwright_result": detail_result.playwright_result,
@@ -297,6 +369,13 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
         "detail_warnings": ";".join(getattr(detail, "warnings", ())) if detail else "",
         "result": "SUCCESS" if result.resolution.status == ResolutionStatus.RESOLVED and detail_result.status == "SUCCESS" else detail_result.status,
         "reason": reason or ";".join(result.resolution.risk_flags),
+        "verification_status": (
+            "VERIFIED" if result.resolution.status == ResolutionStatus.RESOLVED else
+            "UNRESOLVED" if result.resolution.status == ResolutionStatus.AMBIGUOUS else
+            "REJECTED" if result.resolution.status == ResolutionStatus.NOT_FOUND else
+            "BLOCKED" if result.resolution.status == ResolutionStatus.BLOCKED else "ERROR"
+        ),
+        "verification_reason": _verification_reason(result),
         "persistence_status": persistence_status,
         "persistence_error": persistence_error,
         "elapsed_ms": elapsed,
@@ -588,7 +667,8 @@ def main() -> int:
         finally:
             browser.close(); writer.close()
     processed = sum(counts.values())
-    print(f"=== Pipeline Summary ===\nProcessed: {processed}\nRemaining: {len(refs) - processed}\n{counts}\nDB persistence: {persistence_counts}\nCSV: {output}")
+    manual_review = write_manual_review_csv(output)
+    print(f"=== Pipeline Summary ===\nProcessed: {processed}\nRemaining: {len(refs) - processed}\n{counts}\nDB persistence: {persistence_counts}\nCSV: {output}\nManual review: {manual_review}")
     return 2 if blocked else 0
 
 

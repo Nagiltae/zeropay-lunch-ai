@@ -62,7 +62,7 @@ Qdrant 클라이언트 연동, 컬렉션 구성, 의미 검색, LangGraph, LLM �
 
 ## NAVER Place Resolver PoC
 
-Place ID 검증기는 정상 Chromium 세션에서 사용자가 입력한 NAVER Map 검색 UI가 발생시킨 `allSearch` JSON만 관찰해 구조화된 후보를 최대 20개 수집합니다. resolver가 allSearch URL을 직접 조립하거나 replay하지 않으며, 검색 query와 일치하는 응답만 연결합니다. 이름·주소·카테고리 표현 차이는 Qwen 후보 ranking까지 유지하며 최대 12개를 전달하고 Top-5를 반환합니다. 각 상세 HOME의 실제 evidence는 구조화된 Qwen semantic validator가 `MATCH`/`UNCERTAIN`/`NO_MATCH`로 판단합니다. 개발자 코드에는 JSON/HTTP/Place ID/DB 무결성 guard만 남기며 semantic veto는 적용하지 않습니다. Place ID는 allSearch의 구조화된 필드에서만 가져옵니다.
+Place ID 검증기는 정상 Chromium 세션에서 사용자가 입력한 NAVER Map 검색 UI가 발생시킨 `allSearch` JSON만 관찰해 구조화된 후보를 최대 20개 수집합니다. resolver가 allSearch URL을 직접 조립하거나 replay하지 않으며, 검색 query와 일치하는 응답만 연결합니다. 이름·주소·카테고리 표현 차이는 Qwen 후보 ranking까지 유지하며 최대 12개를 전달하고 Top-5를 반환합니다. 각 상세 HOME의 실제 evidence는 Qwen이 `entity_match`, `business_type`, `location_scope`, `final_decision` 축으로 판단합니다. 개발자 코드는 이 구조화 결과를 상태로 저장하고 JSON/HTTP/Place ID/DB 무결성 guard만 담당하며 semantic veto는 적용하지 않습니다. Place ID는 allSearch의 구조화된 필드에서만 가져옵니다.
 
 Resolver 입력은 KOMSCO 원천 음식점뿐이다. `source_provider=KOMSCO`, active, zero-pay, KSIC `561`, 계속사업자, 논현동 법정동 `11680108`, 이름·주소 필수 조건을 적용하며 좌표는 보조 evidence다. `restaurant_external_places`의 historical NAVER row는 신규 resolver 입력이나 fallback으로 사용하지 않는다.
 

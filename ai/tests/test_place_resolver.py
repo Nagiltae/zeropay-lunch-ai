@@ -56,6 +56,7 @@ def test_allsearch_category_array_is_preserved_as_structured_text() -> None:
     assert candidate.road_address.endswith("논현로 1")
     assert candidate.latitude == 37.5
     assert candidate.longitude == 127.0
+    assert candidate.category_values == ("중식", "중식당")
 
 
 def test_allsearch_missing_category_is_unknown_and_not_non_food() -> None:
@@ -548,10 +549,34 @@ def test_qwen_semantic_decision_is_structured_and_never_exposes_place_id() -> No
     candidate = PlaceCandidate("돈돌 부대찌개 매니아 강남구청점", "서울 강남구 선릉로129길 11", "한식", "", "38648810")
     decision = matcher.validate(reference(), candidate)
     assert decision == QwenSemanticDecision(
-        "MATCH", "same brand", "same building", "food", "unknown", (), "same shop"
+        "MATCH", "UNKNOWN", "UNKNOWN", "ACCEPT",
+        "same brand", "same building", "food", "unknown", "same shop", ()
     )
     assert "38648810" not in fake.user
     assert "place_id" not in fake.user
+
+
+def test_qwen_semantic_axes_separate_entity_and_service_eligibility() -> None:
+    decision = parse_qwen_semantic_decision(
+        '{"entity_match":"MATCH","business_type":"NON_FOOD",'
+        '"location_scope":"IN_SCOPE","final_decision":"REJECT",'
+        '"name_evidence":"same","address_evidence":"same",'
+        '"category_evidence":"여행사","coordinate_evidence":"same",'
+        '"reason":"same business but not food"}'
+    )
+    assert decision.entity_match == "MATCH"
+    assert decision.business_type == "NON_FOOD"
+    assert decision.final_decision == "REJECT"
+
+
+def test_qwen_semantic_missing_category_is_unknown_not_non_food() -> None:
+    decision = parse_qwen_semantic_decision(
+        '{"entity_match":"UNCERTAIN","business_type":"UNKNOWN",'
+        '"location_scope":"UNKNOWN","final_decision":"UNCERTAIN",'
+        '"reason":"insufficient evidence"}'
+    )
+    assert decision.business_type == "UNKNOWN"
+    assert decision.final_decision == "UNCERTAIN"
 
 
 def test_semantic_prompt_prioritizes_branch_address_over_name_similarity() -> None:
@@ -563,6 +588,37 @@ def test_semantic_prompt_prioritizes_branch_address_over_name_similarity() -> No
     assert "실제 지점이 다르면 반드시 NO_MATCH" in prompt
     assert "주소의 핵심 위치가 같거나 양립할 때만 허용" in prompt
     assert "확정할 수 없으면 UNCERTAIN" in prompt
+
+
+def test_reject_then_structured_error_preserves_both_candidate_attempts(monkeypatch) -> None:
+    source = reference()
+    first = cli.CandidateDom(
+        cli.PlaceCandidate("후보1", source.komsco_address, "여행사", "", "701"), object(), 0, ("701",)
+    )
+    second = cli.CandidateDom(
+        cli.PlaceCandidate("후보2", source.komsco_address, "한식", "", "702"), object(), 1, ("702",)
+    )
+    monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
+    monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
+    monkeypatch.setattr(cli, "load_detail_page", lambda _page, candidate, **_kwargs: cli.DetailData(
+        f"/restaurant/{candidate.place_id}/home", candidate.name, source.komsco_address,
+        candidate.category, address_status="SUCCESS"
+    ))
+    class SemanticMatcher:
+        def choose(self, _reference, _candidates):
+            return type("Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"})()
+        def validate(self, _reference, candidate):
+            if candidate.place_id == "701":
+                return type("Decision", (), {
+                    "entity_match": "MATCH", "business_type": "NON_FOOD",
+                    "location_scope": "IN_SCOPE", "final_decision": "REJECT", "reason": "여행사",
+                })()
+            raise ValueError("invalid structured output")
+    result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
+    assert result.resolution.status is ResolutionStatus.ERROR
+    assert len(result.validation_attempts_detail) == 2
+    assert result.validation_attempts_detail[0].final_decision == "REJECT"
+    assert result.validation_attempts_detail[1].semantic_error == "invalid structured output"
 
 
 def test_qwen_semantic_parser_rejects_unknown_decision() -> None:

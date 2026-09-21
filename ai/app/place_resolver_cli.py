@@ -89,6 +89,18 @@ class CandidateValidationAttempt:
     semantic_decision: str = ""
     semantic_reason: str = ""
     fatal_veto: str = ""
+    category: str = ""
+    category_values: tuple[str, ...] = ()
+    candidate_road_address: str = ""
+    candidate_jibun_address: str = ""
+    candidate_latitude: float | None = None
+    candidate_longitude: float | None = None
+    entity_match: str = ""
+    business_type: str = ""
+    location_scope: str = ""
+    final_decision: str = ""
+    semantic_error: str = ""
+    processing_time_ms: int = 0
 
 
 @dataclass(frozen=True)
@@ -728,13 +740,56 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         name_result, address_result, _, _ = candidate_evidence(reference, verified)
         semantic_decision = ""
         semantic_reason = ""
+        entity_match = ""
+        business_type = ""
+        location_scope = ""
+        final_decision = ""
+        semantic_error = ""
+        attempt_started = monotonic()
         semantic_validator = getattr(matcher, "validate", None) if matcher is not None else None
         if callable(semantic_validator):
             try:
                 semantic = semantic_validator(reference, verified)
-                semantic_decision = semantic.decision
-                semantic_reason = semantic.reason
+                entity_match = getattr(semantic, "entity_match", getattr(semantic, "decision", ""))
+                semantic_decision = entity_match
+                business_type = getattr(semantic, "business_type", "UNKNOWN")
+                location_scope = getattr(semantic, "location_scope", "UNKNOWN")
+                final_decision = getattr(
+                    semantic, "final_decision",
+                    {"MATCH": "ACCEPT", "NO_MATCH": "REJECT", "UNCERTAIN": "UNCERTAIN"}.get(entity_match, "UNCERTAIN"),
+                )
+                semantic_reason = getattr(semantic, "reason", "")
             except (LlmUnavailable, ValueError) as error:
+                semantic_error = str(error)
+                validation_attempts_detail.append(
+                    CandidateValidationAttempt(
+                        rank=len(validation_attempts_detail) + 1,
+                        candidate_name=selected.candidate.name,
+                        candidate_address=selected.candidate.address,
+                        place_id=verified.place_id or "",
+                        detail_url=detail.url,
+                        detail_name=detail.name,
+                        detail_road_address=detail.address,
+                        detail_jibun_address=detail.jibun_address,
+                        normalized_source_name=normalize_text(reference.komsco_name),
+                        normalized_detail_name=normalize_text(detail.name),
+                        name_comparison=name_result,
+                        normalized_source_address=normalize_text(reference.komsco_address),
+                        normalized_detail_road_address=normalize_text(detail.address),
+                        normalized_detail_jibun_address=normalize_text(detail.jibun_address),
+                        address_comparison=address_result,
+                        validation_result=ResolutionStatus.ERROR.value,
+                        failure_reason="QWEN_SEMANTIC_FAILURE",
+                        category=verified.category,
+                        category_values=verified.category_values,
+                        candidate_road_address=verified.road_address,
+                        candidate_jibun_address=verified.jibun_address,
+                        candidate_latitude=verified.latitude,
+                        candidate_longitude=verified.longitude,
+                        semantic_error=semantic_error,
+                        processing_time_ms=int((monotonic() - attempt_started) * 1000),
+                    )
+                )
                 return _empty_result(
                     reference,
                     query,
@@ -755,7 +810,7 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                     filtered_candidate_count=len(candidates),
                     validation_attempts_detail=tuple(validation_attempts_detail),
                 )
-            if semantic_decision == "MATCH":
+            if final_decision == "ACCEPT":
                 resolution = Resolution(
                     reference, query, verified, ResolutionStatus.RESOLVED,
                     name_result, address_result, candidate_evidence(reference, verified)[2], (),
@@ -798,6 +853,18 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 semantic_decision=semantic_decision,
                 semantic_reason=semantic_reason,
                 fatal_veto="",
+                category=verified.category,
+                category_values=verified.category_values,
+                candidate_road_address=verified.road_address,
+                candidate_jibun_address=verified.jibun_address,
+                candidate_latitude=verified.latitude,
+                candidate_longitude=verified.longitude,
+                entity_match=entity_match,
+                business_type=business_type,
+                location_scope=location_scope,
+                final_decision=final_decision,
+                semantic_error=semantic_error,
+                processing_time_ms=int((monotonic() - attempt_started) * 1000),
             )
         )
         if resolution.status == ResolutionStatus.RESOLVED:
@@ -827,17 +894,17 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         status = ResolutionStatus.NOT_FOUND
         flags = ("PLACE_ID_MISSING",)
     else:
-        semantic_results = {
-            attempt.semantic_decision for attempt in validation_attempts_detail
-            if attempt.semantic_decision
+        final_decisions = {
+            attempt.final_decision for attempt in validation_attempts_detail
+            if attempt.final_decision
         }
-        if semantic_results and semantic_results <= {"NO_MATCH"}:
+        if final_decisions and final_decisions <= {"REJECT"}:
             # Existing public enum uses NOT_FOUND for a definitive rejected
             # match; the reason flag preserves the semantic distinction from
             # an empty search result.
             status = ResolutionStatus.NOT_FOUND
             flags = ("NO_MATCH",)
-        elif "UNCERTAIN" in semantic_results:
+        elif "UNCERTAIN" in final_decisions:
             status = ResolutionStatus.AMBIGUOUS
             flags = ("SEMANTIC_UNCERTAIN",)
         elif any(attempt.failure_reason == "LOCATOR_TIMEOUT" for attempt in validation_attempts_detail):

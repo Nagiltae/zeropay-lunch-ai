@@ -36,13 +36,20 @@ class QwenDecision:
 
 @dataclass(frozen=True)
 class QwenSemanticDecision:
-    decision: str
+    entity_match: str
+    business_type: str
+    location_scope: str
+    final_decision: str
     name_evidence: str
     address_evidence: str
     category_evidence: str
     coordinate_evidence: str
-    conflicts: tuple[str, ...]
     reason: str
+    conflicts: tuple[str, ...] = ()
+
+    @property
+    def decision(self) -> str:
+        return self.entity_match
 
 
 class LocalLlmClient(Protocol):
@@ -112,6 +119,7 @@ def build_user_prompt(reference, candidates) -> str:
                 f"도로명주소: {getattr(candidate, 'road_address', '') or 'UNKNOWN'}",
                 f"지번주소: {getattr(candidate, 'jibun_address', '') or 'UNKNOWN'}",
                 f"카테고리: {candidate.category or '없음'}",
+                f"카테고리 원본: {json.dumps(getattr(candidate, 'category_values', ()), ensure_ascii=False)}",
             ]
         )
     lines.append("가능한 후보 중 상위 min(5, 후보 수)개를 유사도 순서대로 모두 반환해라.")
@@ -131,13 +139,17 @@ def build_semantic_prompt(reference, candidate) -> str:
             f"이름: {candidate.name or '없음'}",
             f"주소: {candidate.address or '없음'}",
             f"카테고리: {candidate.category or '없음'}",
+            f"카테고리 원본: {json.dumps(getattr(candidate, 'category_values', ()), ensure_ascii=False)}",
             f"도로명주소: {getattr(candidate, 'road_address', '') or candidate.address or 'UNKNOWN'}",
             f"지번주소: {getattr(candidate, 'jibun_address', '') or 'UNKNOWN'}",
             f"좌표: {candidate.latitude}, {candidate.longitude}",
             "",
+            "entity_match(같은 사업체/지점), business_type(음식점 적격성), "
+            "location_scope(논현동 범위), final_decision(최종 수용 여부)를 분리해 판단하라. "
             "문자열 완전 일치가 아니라 실제 같은 사업장인지 판단하라. "
             "KOMSCO가 음식점으로 등록되어 있어도 그 사실만으로 PCMap을 음식점으로 확정하지 마라. "
-            "PCMap 상세 category가 미용실·병원·치과·약국·부동산·여행사 등 명백한 비음식 업종이면 NO_MATCH로 판단하라. "
+            "PCMap 상세 category가 미용실·병원·치과·약국·부동산·여행사 등 명백한 비음식 업종이면 "
+            "business_type=NON_FOOD로 판단하라. 같은 사업체라면 entity_match=MATCH일 수 있지만 final_decision은 REJECT다. "
             "정보가 생략된 것과 실제로 충돌하는 것을 구분하라. 논현동·층·호·건물명이 한쪽에 없다는 것만으로 NO_MATCH하지 마라. "
             "주소를 이름보다 우선하는 핵심 동일성 증거로 사용하라. "
             "시·구·동, 도로명, 건물번호가 서로 다르면 같은 구라는 이유만으로 MATCH하지 말고, "
@@ -148,7 +160,15 @@ def build_semantic_prompt(reference, candidate) -> str:
             "주소 정보가 없거나 일부만 있어 동일성을 확정할 수 없으면 UNCERTAIN으로 판단하라. "
             "단 하나의 단어가 겹친다는 이유로 MATCH하지 말고, 주소·업종·지점 위치가 명백히 다르면 MATCH하지 마라. "
             "정보가 없다는 것과 반대되는 정보가 있다는 것을 구분하고, UNKNOWN category나 좌표 없음만으로 NO_MATCH하지 마라. "
-            "동일 브랜드라도 도로명·건물번호·지점이 다르면 NO_MATCH이며, KOMSCO 원천 자체가 틀릴 가능성도 고려하라.",
+            "동일 브랜드라도 도로명·건물번호·지점이 다르면 NO_MATCH이며, KOMSCO 원천 자체가 틀릴 가능성도 고려하라. "
+            "KOMSCO가 음식점이어도 원천 데이터가 틀릴 수 있다. 여행사·미용실·식료품점·정보통신·병원 등은 "
+            "같은 사업체일 수 있어도 business_type=NON_FOOD이고 final_decision=REJECT다. "
+            "category가 없거나 좌표가 없으면 UNKNOWN으로 두며, 정보 부족은 UNCERTAIN으로 처리한다. "
+            "음식점이고 논현동이면 FOOD/IN_SCOPE/ACCEPT, 명백히 다른 지점·주소면 REJECT다. "
+            '반드시 다음 JSON만 반환하라: {"entity_match":"MATCH|NO_MATCH|UNCERTAIN",'
+            '"business_type":"FOOD|NON_FOOD|UNKNOWN","location_scope":"IN_SCOPE|OUT_OF_SCOPE|UNKNOWN",'
+            '"final_decision":"ACCEPT|REJECT|UNCERTAIN","name_evidence":"...",'
+            '"address_evidence":"...","category_evidence":"...","coordinate_evidence":"...","reason":"..."}',
         )
     )
 
@@ -185,21 +205,38 @@ def parse_qwen_semantic_decision(raw: str) -> QwenSemanticDecision:
         payload = json.loads(text)
     except (json.JSONDecodeError, TypeError) as error:
         raise ValueError("invalid Qwen semantic JSON") from error
-    if not isinstance(payload, dict) or payload.get("decision") not in {"MATCH", "UNCERTAIN", "NO_MATCH"}:
-        raise ValueError("invalid Qwen semantic decision")
-    conflicts = payload.get("conflicts", [])
+    if not isinstance(payload, dict):
+        raise ValueError("invalid Qwen semantic object")
+    entity_match = payload.get("entity_match", payload.get("decision"))
+    if entity_match not in {"MATCH", "UNCERTAIN", "NO_MATCH"}:
+        raise ValueError("invalid Qwen entity_match")
+    business_type = payload.get("business_type", "UNKNOWN")
+    location_scope = payload.get("location_scope", "UNKNOWN")
+    if business_type not in {"FOOD", "NON_FOOD", "UNKNOWN"}:
+        raise ValueError("invalid Qwen business_type")
+    if location_scope not in {"IN_SCOPE", "OUT_OF_SCOPE", "UNKNOWN"}:
+        raise ValueError("invalid Qwen location_scope")
+    final_decision = payload.get("final_decision")
+    if final_decision is None:
+        final_decision = {"MATCH": "ACCEPT", "NO_MATCH": "REJECT", "UNCERTAIN": "UNCERTAIN"}[entity_match]
+    if final_decision not in {"ACCEPT", "REJECT", "UNCERTAIN"}:
+        raise ValueError("invalid Qwen final_decision")
+    conflicts = payload.get("conflicts", ())
     if isinstance(conflicts, str):
-        conflicts = [conflicts] if conflicts else []
-    if not isinstance(conflicts, list) or any(not isinstance(value, str) for value in conflicts):
+        conflicts = (conflicts,) if conflicts else ()
+    if not isinstance(conflicts, (list, tuple)) or any(not isinstance(value, str) for value in conflicts):
         raise ValueError("invalid Qwen semantic conflicts")
     return QwenSemanticDecision(
-        payload["decision"],
+        entity_match,
+        business_type,
+        location_scope,
+        final_decision,
         str(payload.get("name_evidence") or ""),
         str(payload.get("address_evidence") or ""),
         str(payload.get("category_evidence") or ""),
         str(payload.get("coordinate_evidence") or ""),
-        tuple(conflicts),
         str(payload.get("reason") or ""),
+        tuple(conflicts),
     )
 
 
@@ -243,24 +280,26 @@ class QwenCandidateMatcher:
         schema = {
             "type": "object",
             "properties": {
-                "decision": {"type": "string", "enum": ["MATCH", "UNCERTAIN", "NO_MATCH"]},
+                "entity_match": {"type": "string", "enum": ["MATCH", "UNCERTAIN", "NO_MATCH"]},
+                "business_type": {"type": "string", "enum": ["FOOD", "NON_FOOD", "UNKNOWN"]},
+                "location_scope": {"type": "string", "enum": ["IN_SCOPE", "OUT_OF_SCOPE", "UNKNOWN"]},
+                "final_decision": {"type": "string", "enum": ["ACCEPT", "REJECT", "UNCERTAIN"]},
                 "name_evidence": {"type": "string"},
                 "address_evidence": {"type": "string"},
                 "category_evidence": {"type": "string"},
                 "coordinate_evidence": {"type": "string"},
-                "conflicts": {"type": "array", "items": {"type": "string"}},
                 "reason": {"type": "string"},
             },
             "required": [
-                "decision", "name_evidence", "address_evidence", "category_evidence",
-                "coordinate_evidence", "conflicts", "reason",
+                "entity_match", "business_type", "location_scope", "final_decision",
+                "reason",
             ],
         }
         prompt = build_semantic_prompt(reference, candidate)
         last_error: Exception | None = None
         for attempt in range(2):
             if attempt:
-                prompt += "\n반드시 decision과 짧은 reason을 포함한 JSON만 반환하라."
+                prompt += "\n반드시 4개 enum과 짧은 evidence/reason을 포함한 JSON만 반환하라."
             try:
                 raw = self.client.complete(
                     "/no_think\n너는 음식점 entity matching 검증기다. Place ID를 생성하거나 추측하지 마라.",

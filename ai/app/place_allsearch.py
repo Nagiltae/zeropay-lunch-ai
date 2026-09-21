@@ -30,6 +30,19 @@ def _first_text(item: dict[str, Any], keys: tuple[str, ...]) -> str:
     return ""
 
 
+def _category_values(item: dict[str, Any]) -> tuple[str, ...]:
+    for key in _CATEGORY_KEYS:
+        value = item.get(key)
+        if isinstance(value, list) and all(isinstance(entry, str) for entry in value):
+            values = tuple(entry.strip() for entry in value if entry.strip())
+            if values:
+                return values
+        text = _text(value)
+        if text:
+            return (text,)
+    return ()
+
+
 def _place_id(item: dict[str, Any]) -> str:
     for key in _ID_KEYS:
         value = item.get(key)
@@ -93,6 +106,7 @@ def parse_allsearch_candidates(payload: Any) -> tuple[PlaceCandidate, ...]:
                 longitude=_coordinate(item, ("longitude", "lng", "lon", "x")),
                 road_address=road,
                 jibun_address=jibun,
+                category_values=_category_values(item),
             )
         )
         if place_id:

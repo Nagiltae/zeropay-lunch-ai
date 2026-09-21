@@ -48,6 +48,7 @@ class PlaceCandidate:
     longitude: float | None = None
     road_address: str = ""
     jibun_address: str = ""
+    category_values: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
