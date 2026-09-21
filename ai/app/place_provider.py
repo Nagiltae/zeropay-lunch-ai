@@ -182,7 +182,7 @@ class KakaoPlaceSearchProvider:
 
 class NaverPlaceSearchProvider:
     provider = "NAVER_LOCAL"
-    endpoint = "https://openapi.naver.com/v1/search/local.json"
+    endpoint = "https://naverapihub.apigw.ntruss.com/search/v1/local"
 
     def __init__(self, client_id: str | None = None, client_secret: str | None = None,
                  *, display: int = 5):
@@ -196,9 +196,10 @@ class NaverPlaceSearchProvider:
         try:
             payload = _request_json(
                 self.endpoint,
-                headers={"X-Naver-Client-Id": self.client_id,
-                         "X-Naver-Client-Secret": self.client_secret},
-                params={"query": query, "display": self.display, "start": 1, "sort": "random"},
+                headers={"X-NCP-APIGW-API-KEY-ID": self.client_id,
+                         "X-NCP-APIGW-API-KEY": self.client_secret},
+                params={"query": query, "display": self.display, "start": 1,
+                        "sort": "random", "format": "json"},
             )
             return ProviderSearchResult(self.provider, query, parse_naver_candidates(payload))
         except Exception as error:

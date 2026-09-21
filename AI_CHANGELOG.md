@@ -1,5 +1,10 @@
 # AI Agent Work History
 
+## [2026-09-21] Switch NAVER provider to API HUB
+- NAVER 공식 provider를 Naver API HUB `/search/v1/local`로 전환하고 NCP API Gateway headers와 `format=json`을 적용
+- API HUB `items` 응답의 title/category/address/roadAddress/mapx/mapy/link mapping을 smoke로 검증
+- 모우리·피자스쿨 논현점·파파존스 논현점 3건 모두 후보 수신 성공
+
 ## [2026-09-21] Official provider authentication smoke
 - Kakao 공식 Local API smoke가 `KakaoAK` 헤더로 3건 성공하고 구조화 후보 필드를 확인함
 - NAVER 공식 Local API는 `HTTP_401`, `errorCode 024` 인증 거부를 반환했으며 credential 원문은 기록하지 않음
