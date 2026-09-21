@@ -46,6 +46,8 @@ class PlaceCandidate:
     place_id: str | None
     latitude: float | None = None
     longitude: float | None = None
+    road_address: str = ""
+    jibun_address: str = ""
 
 
 @dataclass(frozen=True)
@@ -63,10 +65,6 @@ class Resolution:
 PLACE_PATH = re.compile(r"/(?:entry/)?place/(\d+)(?:[/?#]|$)|/restaurant/(\d+)(?:[/?#]|$)")
 HTML_TAG = re.compile(r"<[^>]+>")
 NON_TEXT = re.compile(r"[^0-9a-z가-힣]")
-NON_FOOD_TERMS = (
-    "약국", "병원", "의원", "치과", "복지", "사회복지", "소프트웨어", "세무사",
-    "법률", "부동산", "자동차정비", "여행사", "광고", "공방", "미용실",
-)
 NAME_LEGAL_PREFIXES = ("주식회사", "유한회사", "주")
 NAME_DESCRIPTIVE_SUFFIXES = (
     "중식당", "한식당", "일식당", "양식당", "분식", "카페디저트", "카페",
@@ -302,44 +300,6 @@ def candidate_evidence(
     return name, address, distance_evidence, score
 
 
-def hard_rejection_reason(reference: RestaurantReference, candidate: PlaceCandidate) -> str | None:
-    """Reject only evidence of an unambiguous wrong candidate.
-
-    Missing category/address/coordinates are unknown evidence, not mismatches.
-    """
-    if not candidate.place_id or not candidate.place_id.isdigit():
-        return "CANDIDATE_PLACE_ID_MISSING"
-    category = normalize_text(candidate.category)
-    if category and any(term in category for term in NON_FOOD_TERMS):
-        return "NON_FOOD_CATEGORY"
-    name, address, _, _ = candidate_evidence(reference, candidate)
-    # Name/address disagreement is semantic evidence, not a pre-Qwen veto.
-    # Branch names, reordered brands, and road/jibun formatting frequently
-    # differ between KOMSCO and PCMap.  Final identity decisions happen after
-    # detail-page semantic validation.
-    return None
-
-
-def fatal_veto_reason(reference: RestaurantReference, candidate: PlaceCandidate) -> str | None:
-    """Return only objective contradictions safe to apply after Qwen MATCH."""
-    category = normalize_text(candidate.category)
-    if category and any(term in category for term in NON_FOOD_TERMS):
-        return "NON_FOOD_CATEGORY"
-    def districts(value: str) -> set[str]:
-        normalized = normalize_text(value)
-        return {normalized[max(0, index - 2): index + 1] for index, char in enumerate(normalized) if char == "구"}
-
-    source_districts = districts(reference.komsco_address)
-    candidate_districts = districts(candidate.address)
-    if source_districts and candidate_districts and source_districts.isdisjoint(candidate_districts):
-        return "DISTRICT_CONTRADICTION"
-    source_dong = normalize_text(reference.legal_dong)
-    candidate_dongs = set(re.findall(r"[가-힣]+동", candidate.address or ""))
-    if candidate_dongs and source_dong and source_dong not in candidate_dongs:
-        return "OUT_OF_SCOPE"
-    return None
-
-
 def rank_candidates(
     reference: RestaurantReference, candidates: Iterable[PlaceCandidate]
 ) -> tuple[PlaceCandidate, ...]:
@@ -398,33 +358,6 @@ def resolve_candidate(
         best[4],
         tuple(risk_flags),
     )
-
-
-def deterministic_fast_path(
-    reference: RestaurantReference,
-    candidates: Iterable[PlaceCandidate],
-) -> PlaceCandidate | None:
-    """Select only a single candidate with strong, independent evidence.
-
-    This deliberately does not lower the general matcher thresholds: one exact
-    normalized name, meaningful address evidence, and an explicit food category
-    are required. Multiple candidates always remain eligible for Qwen ranking.
-    """
-    values = list(candidates)
-    if len(values) != 1:
-        return None
-    candidate = values[0]
-    if _name_evidence(reference, candidate) != "EXACT":
-        return None
-    if _address_evidence(reference, candidate) not in {"EXACT", "PARTIAL"}:
-        return None
-    category = normalize_text(candidate.category)
-    if not category or not any(
-        term in category
-        for term in ("한식", "일식", "중식", "양식", "분식", "음식점", "식당", "카페", "술집")
-    ):
-        return None
-    return candidate
 
 
 def query_for(reference: RestaurantReference) -> str:

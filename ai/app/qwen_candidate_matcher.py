@@ -109,6 +109,8 @@ def build_user_prompt(reference, candidates) -> str:
                 f"[{index}]",
                 f"이름: {candidate.name or '없음'}",
                 f"주소: {candidate.address or '없음'}",
+                f"도로명주소: {getattr(candidate, 'road_address', '') or 'UNKNOWN'}",
+                f"지번주소: {getattr(candidate, 'jibun_address', '') or 'UNKNOWN'}",
                 f"카테고리: {candidate.category or '없음'}",
             ]
         )
@@ -129,6 +131,8 @@ def build_semantic_prompt(reference, candidate) -> str:
             f"이름: {candidate.name or '없음'}",
             f"주소: {candidate.address or '없음'}",
             f"카테고리: {candidate.category or '없음'}",
+            f"도로명주소: {getattr(candidate, 'road_address', '') or candidate.address or 'UNKNOWN'}",
+            f"지번주소: {getattr(candidate, 'jibun_address', '') or 'UNKNOWN'}",
             f"좌표: {candidate.latitude}, {candidate.longitude}",
             "",
             "문자열 완전 일치가 아니라 실제 같은 사업장인지 판단하라. "
@@ -142,7 +146,9 @@ def build_semantic_prompt(reference, candidate) -> str:
             "주소의 핵심 위치가 같거나 양립할 때만 허용한다. "
             "도로명과 건물번호가 같고 핵심 상호명이 양립하면 강한 MATCH 증거다. "
             "주소 정보가 없거나 일부만 있어 동일성을 확정할 수 없으면 UNCERTAIN으로 판단하라. "
-            "단 하나의 단어가 겹친다는 이유로 MATCH하지 말고, 주소·업종·지점 위치가 명백히 다르면 MATCH하지 마라.",
+            "단 하나의 단어가 겹친다는 이유로 MATCH하지 말고, 주소·업종·지점 위치가 명백히 다르면 MATCH하지 마라. "
+            "정보가 없다는 것과 반대되는 정보가 있다는 것을 구분하고, UNKNOWN category나 좌표 없음만으로 NO_MATCH하지 마라. "
+            "동일 브랜드라도 도로명·건물번호·지점이 다르면 NO_MATCH이며, KOMSCO 원천 자체가 틀릴 가능성도 고려하라.",
         )
     )
 

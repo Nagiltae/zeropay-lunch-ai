@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import html
 import json
 import os
 import re
@@ -22,23 +21,19 @@ from urllib.request import Request, urlopen
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
+from app.place_allsearch import parse_allsearch_candidates
+from app.place_request_limiter import NavigationRateLimiter
 from app.place_resolver import (
     PlaceCandidate,
     Resolution,
     ResolutionStatus,
     RestaurantReference,
-    deterministic_fast_path,
-    distance_meters,
     candidate_evidence,
-    extract_candidate_place_ids,
-    fatal_veto_reason,
     normalize_text,
     query_for,
-    hard_rejection_reason,
     rank_candidates,
     resolve_candidate,
 )
-from app.place_request_limiter import NavigationRateLimiter
 from app.qwen_candidate_matcher import LlmUnavailable, OllamaClient, QwenCandidateMatcher
 
 BLOCK_MARKERS = (
@@ -99,7 +94,7 @@ class CandidateValidationAttempt:
 @dataclass(frozen=True)
 class CandidateDom:
     candidate: PlaceCandidate
-    locator: object
+    locator: object | None
     index: int
     place_ids: tuple[str, ...]
 
@@ -300,54 +295,6 @@ ORDER BY r.legal_dong_name, r.id
     )
 
 
-def _candidate_from_item(item, index: int) -> CandidateDom | None:
-    raw_text = item.inner_text(timeout=1000) or ""
-    lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
-    if not lines:
-        return None
-    name, category = _candidate_name_category(item, lines)
-    address = next(
-        (
-            line
-            for line in lines
-            if ("서울" in line or "강남구" in line) and any(c.isdigit() for c in line)
-        ),
-        next((line for line in lines if "길" in line), ""),
-    )
-    anchors = item.locator("a")
-    href = anchors.first.get_attribute("href") if anchors.count() else ""
-    nlog = item.locator("[data-nlog-params]")
-    attributes = [
-        nlog.nth(i).get_attribute("data-nlog-params") for i in range(min(nlog.count(), 20))
-    ]
-    place_ids = extract_candidate_place_ids(attributes)
-    return CandidateDom(
-        PlaceCandidate(name, address, category, href or "", place_ids[0] if place_ids else None),
-        item,
-        index,
-        place_ids,
-    )
-
-
-def _candidate_name_category(item, lines: list[str]) -> tuple[str, str]:
-    """Prefer semantic link/child text over a concatenated first text line."""
-    links = item.locator('a[href*="/place/"], a[href*="/restaurant/"]')
-    name = ""
-    category = ""
-    if links.count():
-        link = links.first
-        parts = [part.strip() for part in link.locator("span").all_inner_texts() if part.strip()]
-        link_text = (link.inner_text(timeout=1000) or "").strip()
-        if len(parts) >= 2 and normalize_text("".join(parts)) == normalize_text(link_text):
-            name, category = parts[0], parts[-1]
-        elif link_text:
-            name = link_text
-    name = name or (lines[0] if lines else "")
-    if not category:
-        category = next((line for line in lines if line != name and (">" in line or line.endswith(CATEGORY_TERMS))), "")
-    return name, category
-
-
 def _check_block(page, response) -> None:
     if response is not None and response.status in {403, 429}:
         raise RuntimeError(f"BLOCKED: HTTP {response.status}")
@@ -483,33 +430,29 @@ def _address_data_from_page(page) -> dict[str, object]:
 def search_direct(
     page, query: str, reference: RestaurantReference, *, before_navigation=None
 ) -> tuple[tuple[CandidateDom, ...], int]:
-    url = f"https://pcmap.place.naver.com/place/list?query={quote(query)}"
+    url = f"https://map.naver.com/p/api/search/allSearch?query={quote(query)}"
     if before_navigation:
         before_navigation()
-    response = page.goto(url, wait_until="commit", timeout=10_000)
-    _check_block(page, response)
-    page.locator("body").wait_for(state="attached", timeout=5_000)
-    items = page.locator("li")
-    candidates: list[CandidateDom] = []
-    for index in range(min(items.count(), 30)):
-        try:
-            candidate = _candidate_from_item(items.nth(index), index)
-        except (PlaywrightTimeoutError, ValueError):
-            continue
-        if candidate and candidate.candidate.name:
-            candidates.append(candidate)
-    expected = normalize_text(reference.komsco_name)
-    candidates.sort(
-        key=lambda item: (
-            0
-            if normalize_text(item.candidate.name) == expected
-            else 1
-            if expected and expected in normalize_text(item.candidate.name)
-            else 2,
-            item.index,
-        )
+    try:
+        response = page.context.request.get(url, timeout=10_000)
+        if response.status in {403, 429}:
+            raise RuntimeError(f"BLOCKED: HTTP {response.status}")
+        response_text = response.text().lower() if hasattr(response, "text") else ""
+        if any(marker in response_text for marker in BLOCK_MARKERS):
+            raise RuntimeError("BLOCKED: CAPTCHA/접근 제한/HTTP 차단 징후 감지")
+        payload = response.json()
+    except PlaywrightTimeoutError:
+        raise
+    except RuntimeError:
+        raise
+    except Exception as error:
+        raise RuntimeError(f"ALLSEARCH_RESPONSE_FAILED: {error}") from error
+    structured = parse_allsearch_candidates(payload)
+    candidates = tuple(
+        CandidateDom(candidate, None, index, (candidate.place_id,) if candidate.place_id else ())
+        for index, candidate in enumerate(structured[:SEARCH_CANDIDATE_LIMIT])
     )
-    return tuple(candidates[:SEARCH_CANDIDATE_LIMIT]), len(candidates)
+    return candidates, len(structured)
 
 
 def load_detail_page(page, candidate: PlaceCandidate, *, before_navigation=None) -> DetailData:
@@ -605,13 +548,14 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
     raw_candidates, original_candidate_count = search_direct(
         page, query, reference, before_navigation=before_navigation
     )
+    # allSearch already returns structured place objects.  Candidate identity,
+    # category, address and coordinates are semantic evidence for Qwen; no
+    # name/address/category business rule runs before ranking.
     rejection_reasons = tuple(
-        hard_rejection_reason(reference, item.candidate) or ""
+        "CANDIDATE_PLACE_ID_MISSING" if not item.candidate.place_id else ""
         for item in raw_candidates
     )
-    candidates = tuple(
-        item for item, reason in zip(raw_candidates, rejection_reasons, strict=True) if not reason
-    )
+    candidates = tuple(item for item in raw_candidates if item.candidate.place_id)
     if not candidates:
         reason = "NO_SEARCH_RESULT" if original_candidate_count == 0 else (
             "NON_FOOD" if "NON_FOOD_CATEGORY" in rejection_reasons else
@@ -639,27 +583,12 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
             ordered_dom.append(remaining.pop(match_index))
     candidates = tuple(ordered_dom[:QWEN_CANDIDATE_LIMIT])
     plain = [item.candidate for item in candidates]
-    pending = [replace(candidate, place_id="pending") for candidate in plain]
-    deterministic = resolve_candidate(reference, pending)
     selected_index = None
     ranked_indices: tuple[int, ...] = ()
     matcher_source = "DETERMINISTIC"
     qwen_used = False
     qwen_confidence = ""
-    fast_candidate = deterministic_fast_path(reference, plain)
-    if fast_candidate is not None:
-        selected_index = next((i for i, item in enumerate(plain) if item == fast_candidate), None)
-        ranked_indices = (selected_index,) if selected_index is not None else ()
-    elif deterministic.status == ResolutionStatus.RESOLVED and deterministic.candidate:
-        selected_index = next(
-            (i for i, item in enumerate(pending) if item == deterministic.candidate), None
-        )
-        ranked_indices = (selected_index,) if selected_index is not None else ()
-    elif len(candidates) == 1:
-        selected_index = 0
-        ranked_indices = (0,)
-        matcher_source = "SINGLE_CANDIDATE"
-    elif candidates and matcher is not None:
+    if candidates and matcher is not None:
         qwen_used = True
         matcher_source = "QWEN"
         try:
@@ -756,12 +685,12 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
             address=detail.address or candidate.address,
             category=detail.category or candidate.category,
             url=detail.url or candidate.url,
+            road_address=detail.address or candidate.road_address,
+            jibun_address=detail.jibun_address or candidate.jibun_address,
         )
         name_result, address_result, _, _ = candidate_evidence(reference, verified)
         semantic_decision = ""
         semantic_reason = ""
-        address_insufficient = detail.address_status != "SUCCESS" or not detail.address
-        veto = fatal_veto_reason(reference, verified)
         semantic_validator = getattr(matcher, "validate", None) if matcher is not None else None
         if callable(semantic_validator):
             try:
@@ -789,25 +718,20 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                     filtered_candidate_count=len(candidates),
                     validation_attempts_detail=tuple(validation_attempts_detail),
                 )
-            if semantic_decision == "MATCH" and not veto and not address_insufficient:
+            if semantic_decision == "MATCH":
                 resolution = Resolution(
                     reference, query, verified, ResolutionStatus.RESOLVED,
                     name_result, address_result, candidate_evidence(reference, verified)[2], (),
                 )
             else:
-                if address_insufficient and semantic_decision == "MATCH":
-                    semantic_decision = "UNCERTAIN"
-                    semantic_reason = (
-                        f"{semantic_reason}; detail address evidence unavailable"
-                    )
                 resolution = Resolution(
                     reference, query, verified, ResolutionStatus.AMBIGUOUS,
                     name_result, address_result, candidate_evidence(reference, verified)[2],
-                    tuple(filter(None, (veto, f"QWEN_{semantic_decision}"))),
+                    (f"QWEN_{semantic_decision}",),
                 )
         else:
-            # Backward-compatible test/mocking path; production matcher always
-            # provides semantic validation.
+            # Test/dry adapters may omit semantic validation; production
+            # always supplies QwenCandidateMatcher.validate.
             resolution = replace(resolve_candidate(reference, [verified]), query=query)
         last_candidate, last_detail, last_resolution = verified, detail, resolution
         source_name = reference.komsco_name
@@ -831,14 +755,12 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 address_comparison=address_result,
                 validation_result=resolution.status.value,
                 failure_reason=(
-                    "FATAL_VETO" if veto and semantic_decision == "MATCH"
-                    else "DETAIL_ADDRESS_INVALID" if address_insufficient
-                    else f"QWEN_{semantic_decision}" if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
+                    f"QWEN_{semantic_decision}" if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
                     else _validation_failure_reason(resolution, detail, name_result, address_result)
                 ),
                 semantic_decision=semantic_decision,
                 semantic_reason=semantic_reason,
-                fatal_veto=veto or "",
+                fatal_veto="",
             )
         )
         if resolution.status == ResolutionStatus.RESOLVED:
@@ -868,18 +790,24 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         status = ResolutionStatus.NOT_FOUND
         flags = ("PLACE_ID_MISSING",)
     else:
-        status = ResolutionStatus.AMBIGUOUS
         semantic_results = {
             attempt.semantic_decision for attempt in validation_attempts_detail
             if attempt.semantic_decision
         }
         if semantic_results and semantic_results <= {"NO_MATCH"}:
+            # Existing public enum uses NOT_FOUND for a definitive rejected
+            # match; the reason flag preserves the semantic distinction from
+            # an empty search result.
+            status = ResolutionStatus.NOT_FOUND
             flags = ("NO_MATCH",)
         elif "UNCERTAIN" in semantic_results:
+            status = ResolutionStatus.AMBIGUOUS
             flags = ("SEMANTIC_UNCERTAIN",)
         elif any(attempt.failure_reason == "LOCATOR_TIMEOUT" for attempt in validation_attempts_detail):
+            status = ResolutionStatus.AMBIGUOUS
             flags = ("DETAIL_LOAD_FAILED",)
         else:
+            status = ResolutionStatus.AMBIGUOUS
             flags = ("TOP_K_DETAIL_VALIDATION_FAILED",)
     resolution = replace(
         last_resolution
@@ -1369,7 +1297,15 @@ def main() -> int:
                         )
                         stopped = True
                     else:
-                        raise
+                        result = _empty_result(
+                            reference, query, "KOMSCO", (), ResolutionStatus.ERROR,
+                            ("ALLSEARCH_RESPONSE_FAILED", str(error)), monotonic(),
+                        )
+                except (PlaywrightTimeoutError, ValueError) as error:
+                    result = _empty_result(
+                        reference, query, "KOMSCO", (), ResolutionStatus.ERROR,
+                        ("TECHNICAL_FAILURE", str(error)), monotonic(),
+                    )
                 if result:
                     initial_status = result.resolution.status.value
                     initial_counts[initial_status] += 1

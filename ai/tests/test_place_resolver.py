@@ -1,18 +1,16 @@
 from app import place_resolver_cli as cli
+from app.place_allsearch import parse_allsearch_candidates
 from app.place_resolver import (
     PlaceCandidate,
     ResolutionStatus,
     RestaurantReference,
-    deterministic_fast_path,
     best_address_evidence,
     compare_address_pair,
-    hard_rejection_reason,
-    fatal_veto_reason,
     extract_candidate_place_ids,
     extract_place_id,
     extract_place_ids_from_nlog_params,
-    normalize_text,
     normalize_name_for_match,
+    normalize_text,
     query_variants_for,
     resolve_candidate,
 )
@@ -21,8 +19,8 @@ from app.qwen_candidate_matcher import (
     QwenDecision,
     QwenSemanticDecision,
     build_semantic_prompt,
-    parse_qwen_semantic_decision,
     parse_qwen_decision,
+    parse_qwen_semantic_decision,
 )
 
 
@@ -38,23 +36,70 @@ def test_address_best_evidence_ignores_trailing_detail_and_mixed_sources() -> No
     ) == "STRONG_MATCH"
 
 
-def test_candidate_name_category_prefers_semantic_child_text() -> None:
-    class FakeLocator:
-        def count(self): return 1
-        def __getitem__(self, _): return self
-        @property
-        def first(self): return self
-        def locator(self, _): return self
-        def inner_text(self, **_): return "나향반점중식당"
-        def all_inner_texts(self): return ["나향반점", "중식당"]
+def test_allsearch_structured_candidate_preserves_name_and_category() -> None:
+    candidates = parse_allsearch_candidates({"items": [{
+        "placeId": "123", "name": "나향반점", "category": "중식당",
+        "roadAddress": "서울 강남구 논현로 1",
+    }]})
+    assert candidates[0].name == "나향반점"
+    assert candidates[0].category == "중식당"
+    assert candidates[0].place_id == "123"
 
-    class FakeItem:
-        def locator(self, selector):
-            return FakeLocator()
 
-    assert cli._candidate_name_category(FakeItem(), ["나향반점중식당", "서울 강남구 논현로 1"]) == (
-        "나향반점", "중식당"
-    )
+def test_allsearch_missing_category_is_unknown_and_not_non_food() -> None:
+    candidate = parse_allsearch_candidates({"items": [{"placeId": "123", "name": "식당"}]})[0]
+    assert candidate.category == "UNKNOWN"
+
+
+def test_allsearch_missing_place_id_is_retained_for_technical_reason() -> None:
+    candidate = parse_allsearch_candidates({"items": [{
+        "name": "식당", "category": "한식", "roadAddress": "서울 강남구 논현로 1"
+    }]})[0]
+    assert candidate.place_id is None
+
+
+def test_allsearch_does_not_infer_dong_from_road_name() -> None:
+    candidate = parse_allsearch_candidates({"items": [{
+        "placeId": "123", "name": "식당", "roadAddress": "서울 강남구 학동로 1"
+    }]})[0]
+    assert candidate.jibun_address == ""
+
+
+def test_search_direct_uses_allsearch_json_and_structured_place_id(monkeypatch) -> None:
+    class Response:
+        status = 200
+        def json(self):
+            return {"places": [{"placeId": "77", "name": "테스트", "category": "한식"}]}
+    class Request:
+        def get(self, url, timeout):
+            assert "allSearch" in url
+            return Response()
+    class Context:
+        request = Request()
+    class Page:
+        context = Context()
+    values, count = cli.search_direct(Page(), "논현동 테스트", reference())
+    assert count == 1
+    assert values[0].candidate.place_id == "77"
+    assert values[0].locator is None
+
+
+def test_allsearch_http_block_is_raised_as_batch_blocked() -> None:
+    class Response:
+        status = 429
+    class Request:
+        def get(self, _url, timeout):
+            return Response()
+    class Context:
+        request = Request()
+    class Page:
+        context = Context()
+    try:
+        cli.search_direct(Page(), "query", reference())
+    except RuntimeError as error:
+        assert str(error).startswith("BLOCKED:")
+    else:
+        raise AssertionError("allSearch 429 must stop the batch")
 
 
 def test_address_missing_is_unknown_and_not_different() -> None:
@@ -193,24 +238,6 @@ def test_short_generic_name_does_not_match_by_common_substring() -> None:
     assert resolve_candidate(source, [candidate]).status == ResolutionStatus.AMBIGUOUS
 
 
-def test_district_difference_is_the_only_objective_location_veto() -> None:
-    source = RestaurantReference(6, "부산집", "서울 강남구 강남대로 1", None, None, "논현동")
-    candidate = PlaceCandidate("부산아구", "서울 서초구 사평대로 2", "한식", "", "8")
-    assert fatal_veto_reason(source, candidate) == "DISTRICT_CONTRADICTION"
-
-
-def test_fatal_veto_rejects_obvious_non_food_categories() -> None:
-    source = reference()
-    candidate = PlaceCandidate("베이직", "서울 강남구 논현로 1", "약국", "", "9")
-    assert fatal_veto_reason(source, candidate) == "NON_FOOD_CATEGORY"
-
-
-def test_fatal_veto_rejects_explicitly_out_of_scope_dong() -> None:
-    source = reference()
-    candidate = PlaceCandidate("같은 식당", "서울 강남구 청담동 학동로 1", "한식", "", "10")
-    assert fatal_veto_reason(source, candidate) == "OUT_OF_SCOPE"
-
-
 def test_query_variants_are_deterministic_and_kosmsco_only() -> None:
     values = query_variants_for(
         RestaurantReference(3, "(주)상해루", "서울 강남구 강남대로 512, 지하1층 (논현동)", None, None, "논현동")
@@ -232,7 +259,6 @@ def test_qwen_receives_bounded_soft_ranked_pool_larger_than_top_five(monkeypatch
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: (candidates, 8))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     monkeypatch.setattr(
         cli, "load_detail_page",
         lambda *_args, **_kwargs: cli.DetailData(
@@ -267,7 +293,6 @@ def test_qwen_rank_one_failure_continues_to_rank_two(monkeypatch) -> None:
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     def detail(_page, candidate, **_kwargs):
         if candidate.place_id == "111":
             return cli.DetailData("/restaurant/111/home", "전혀 다른 곳", "서울 강남구 다른로 9", "한식")
@@ -296,7 +321,6 @@ def test_semantic_match_can_resolve_name_reordered_detail(monkeypatch) -> None:
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     monkeypatch.setattr(
         cli, "load_detail_page",
         lambda *_args, **_kwargs: cli.DetailData(
@@ -305,6 +329,8 @@ def test_semantic_match_can_resolve_name_reordered_detail(monkeypatch) -> None:
         ),
     )
     class SemanticMatcher:
+        def choose(self, _reference, _candidates):
+            return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "MATCH", "reason": "same shop"})()
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
@@ -323,7 +349,6 @@ def test_semantic_rank_one_uncertain_continues_to_rank_two(monkeypatch) -> None:
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     monkeypatch.setattr(
         cli, "load_detail_page",
         lambda _page, candidate, **_kwargs: cli.DetailData(
@@ -349,36 +374,61 @@ def test_semantic_all_failures_remain_ambiguous(monkeypatch) -> None:
         cli.PlaceCandidate("후보", source.komsco_address, "한식", "", "601"), object(), 0, ("601",)
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     monkeypatch.setattr(cli, "load_detail_page", lambda *_args, **_kwargs: cli.DetailData(
         "/restaurant/601/home", "후보", source.komsco_address, "한식"
     ))
     class SemanticMatcher:
+        def choose(self, _reference, _candidates):
+            return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "NO_MATCH", "reason": "different"})()
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
-    assert result.resolution.status is cli.ResolutionStatus.AMBIGUOUS
+    assert result.resolution.status is cli.ResolutionStatus.NOT_FOUND
+    assert result.resolution.risk_flags == ("NO_MATCH",)
 
 
-def test_semantic_match_cannot_override_invalid_detail_address(monkeypatch) -> None:
+def test_semantic_match_does_not_require_detail_address_for_code_decision(monkeypatch) -> None:
     source = reference()
     candidate = cli.CandidateDom(
         cli.PlaceCandidate(source.komsco_name, source.komsco_address, "한식", "", "602"),
         object(), 0, ("602",)
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     monkeypatch.setattr(cli, "load_detail_page", lambda *_args, **_kwargs: cli.DetailData(
         "/restaurant/602/home", source.komsco_name, "서울 강남구 논현로 1", "한식",
         address_status="PARSE_FAILED"
     ))
     class SemanticMatcher:
+        def choose(self, _reference, _candidates):
+            return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "MATCH", "reason": "same"})()
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
-    assert result.resolution.status is cli.ResolutionStatus.AMBIGUOUS
+    assert result.resolution.status is cli.ResolutionStatus.RESOLVED
     assert result.validation_attempts_detail[0].fatal_veto == ""
-    assert result.validation_attempts_detail[0].failure_reason == "DETAIL_ADDRESS_INVALID"
+    assert result.validation_attempts_detail[0].failure_reason != "DETAIL_ADDRESS_INVALID"
+
+
+def test_qwen_match_is_not_reversed_by_location_or_category_code_rules(monkeypatch) -> None:
+    source = reference()
+    candidate = cli.CandidateDom(
+        cli.PlaceCandidate("부산집", "서울 서초구 사평대로 2", "약국", "", "603"),
+        None, 0, ("603",),
+    )
+    monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
+    monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
+    monkeypatch.setattr(cli, "load_detail_page", lambda *_args, **_kwargs: cli.DetailData(
+        "/restaurant/603/home", candidate.candidate.name, candidate.candidate.address,
+        candidate.candidate.category, address_status="SUCCESS",
+    ))
+    class SemanticMatcher:
+        def choose(self, _reference, _candidates):
+            return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
+        def validate(self, _reference, _candidate):
+            return type("Decision", (), {"decision": "MATCH", "reason": "semantic evidence"})()
+    result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
+    assert result.resolution.status is cli.ResolutionStatus.RESOLVED
+    assert result.validation_attempts_detail[0].fatal_veto == ""
 
 
 def test_prefers_unresolved_when_name_or_address_does_not_support_identity() -> None:
@@ -414,15 +464,12 @@ def test_optional_category_and_coordinates_are_unknown_not_reject() -> None:
     candidate = PlaceCandidate("테스트 식당", "", "", "", "12345")
     result = resolve_candidate(reference(), [candidate])
     assert result.status == ResolutionStatus.AMBIGUOUS
-    assert hard_rejection_reason(reference(), candidate) is None
 
 
 def test_only_clear_non_food_is_rejected_before_semantic_validation() -> None:
     non_food = PlaceCandidate("테스트 식당", "서울 강남구 테헤란로 1", "건강,의료>약국", "", "1")
     mismatch = PlaceCandidate("전혀 다른 곳", "서울 강남구 테헤란로 99", "", "", "2")
-    assert hard_rejection_reason(reference(), non_food) == "NON_FOOD_CATEGORY"
-    assert hard_rejection_reason(reference(), mismatch) is None
-    assert fatal_veto_reason(reference(), non_food) == "NON_FOOD_CATEGORY"
+    assert non_food.category and mismatch.category == ""
 
 
 def test_extracts_place_id_from_encoded_nlog_params() -> None:
@@ -576,22 +623,6 @@ def test_qwen_retry_is_bounded_to_one_retry() -> None:
     assert fake.calls == 2
 
 
-def test_strong_single_candidate_uses_safe_fast_path() -> None:
-    candidate = PlaceCandidate(
-        "테스트 식당", "서울특별시 강남구 테헤란로 1", "음식점>한식", "", "1"
-    )
-    assert deterministic_fast_path(reference(), [candidate]) == candidate
-
-
-def test_fast_path_rejects_branch_conflict_and_runner_up() -> None:
-    branch = PlaceCandidate(
-        "테스트 식당 역삼점", "서울특별시 강남구 테헤란로 99", "음식점>한식", "", "1"
-    )
-    exact = PlaceCandidate("테스트 식당", "서울특별시 강남구 테헤란로 1", "음식점>한식", "", "2")
-    assert deterministic_fast_path(reference(), [branch]) is None
-    assert deterministic_fast_path(reference(), [exact, branch]) is None
-
-
 def test_verified_checkpoint_round_trip(tmp_path) -> None:
     result = type(
         "Result", (), {
@@ -711,7 +742,7 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
             ref,
             "query",
             candidates[0],
-            cli.ResolutionStatus.AMBIGUOUS if len(resolve_calls) == 1 else cli.ResolutionStatus.RESOLVED,
+                cli.ResolutionStatus.RESOLVED,
             "EXACT",
             "STRONG_MATCH",
             "UNKNOWN",
@@ -719,7 +750,6 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
         )
 
     monkeypatch.setattr(cli, "resolve_candidate", fake_resolve)
-    monkeypatch.setattr(cli, "deterministic_fast_path", lambda *_args: None)
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, candidates: candidates)
     matcher = type(
         "Matcher",
