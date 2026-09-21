@@ -46,6 +46,18 @@ def test_allsearch_structured_candidate_preserves_name_and_category() -> None:
     assert candidates[0].place_id == "123"
 
 
+def test_allsearch_category_array_is_preserved_as_structured_text() -> None:
+    candidate = parse_allsearch_candidates({"result": {"place": {"list": [{
+        "id": "124", "name": "나향반점", "category": ["중식", "중식당"],
+        "address": "서울 강남구 논현동 1", "roadAddress": "서울 강남구 논현로 1",
+        "x": "127.0", "y": "37.5",
+    }]}}})[0]
+    assert candidate.category == "중식 > 중식당"
+    assert candidate.road_address.endswith("논현로 1")
+    assert candidate.latitude == 37.5
+    assert candidate.longitude == 127.0
+
+
 def test_allsearch_missing_category_is_unknown_and_not_non_food() -> None:
     candidate = parse_allsearch_candidates({"items": [{"placeId": "123", "name": "식당"}]})[0]
     assert candidate.category == "UNKNOWN"
@@ -68,56 +80,32 @@ def test_allsearch_does_not_infer_dong_from_road_name() -> None:
 def test_search_direct_uses_allsearch_json_and_structured_place_id(monkeypatch) -> None:
     class Response:
         status = 200
-        def json(self):
-            return {"places": [{"placeId": "77", "name": "테스트", "category": "한식"}]}
-    class Request:
-        def get(self, url, timeout):
-            assert "allSearch" in url
-            return Response()
-    class Context:
-        request = Request()
-    class Page:
-        context = Context()
-    values, count = cli.search_direct(Page(), "논현동 테스트", reference())
+    payload = {"result": {"place": {"list": [{
+        "id": "77", "name": "테스트", "category": ["한식"],
+    }]}}}
+    monkeypatch.setattr(cli, "_search_ui_response", lambda *_args, **_kwargs: (Response(), payload))
+    values, count = cli.search_direct(object(), "논현동 테스트", reference())
     assert count == 1
     assert values[0].candidate.place_id == "77"
     assert values[0].locator is None
 
 
-def test_allsearch_http_block_is_raised_as_batch_blocked() -> None:
+def test_allsearch_http_block_is_raised_as_batch_blocked(monkeypatch) -> None:
     class Response:
         status = 429
-    class Request:
-        def get(self, _url, timeout):
-            return Response()
-    class Context:
-        request = Request()
-    class Page:
-        context = Context()
+    monkeypatch.setattr(cli, "_search_ui_response", lambda *_args, **_kwargs: (_ for _ in ()).throw(RuntimeError("BLOCKED: HTTP 429")))
     try:
-        cli.search_direct(Page(), "query", reference())
+        cli.search_direct(object(), "query", reference())
     except RuntimeError as error:
         assert str(error).startswith("BLOCKED:")
     else:
         raise AssertionError("allSearch 429 must stop the batch")
 
 
-def test_allsearch_ncaptcha_response_is_blocked() -> None:
-    class Response:
-        status = 200
-        def text(self):
-            return '{"result":{"place":null,"ncaptcha":{"confirmRules":"CE_EMPTY_TOKEN"}}}'
-        def json(self):
-            return {"result": {"place": None, "ncaptcha": {"confirmRules": "CE_EMPTY_TOKEN"}}}
-    class Request:
-        def get(self, _url, timeout):
-            return Response()
-    class Context:
-        request = Request()
-    class Page:
-        context = Context()
+def test_allsearch_ncaptcha_response_is_blocked(monkeypatch) -> None:
+    monkeypatch.setattr(cli, "_search_ui_response", lambda *_args, **_kwargs: (_ for _ in ()).throw(RuntimeError("BLOCKED: allSearch CAPTCHA 응답")))
     try:
-        cli.search_direct(Page(), "query", reference())
+        cli.search_direct(object(), "query", reference())
     except RuntimeError as error:
         assert str(error).startswith("BLOCKED:")
     else:

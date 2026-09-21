@@ -15,7 +15,11 @@ _JIBUN_KEYS = ("jibunAddress", "jibun_address", "address")
 
 
 def _text(value: Any) -> str:
-    return value.strip() if isinstance(value, str) else ""
+    if isinstance(value, str):
+        return value.strip()
+    if isinstance(value, list) and all(isinstance(item, str) for item in value):
+        return " > ".join(item.strip() for item in value if item.strip())
+    return ""
 
 
 def _first_text(item: dict[str, Any], keys: tuple[str, ...]) -> str:

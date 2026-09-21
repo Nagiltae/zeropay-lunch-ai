@@ -62,12 +62,13 @@ Qdrant 클라이언트 연동, 컬렉션 구성, 의미 검색, LangGraph, LLM �
 
 ## NAVER Place Resolver PoC
 
-Place ID 검증기는 NAVER Map `allSearch` JSON을 읽어 구조화된 후보를 최대 20개 수집합니다. 이름·주소·카테고리 표현 차이는 Qwen 후보 ranking까지 유지하며 최대 12개를 전달하고 Top-5를 반환합니다. 각 상세 HOME의 실제 evidence는 구조화된 Qwen semantic validator가 `MATCH`/`UNCERTAIN`/`NO_MATCH`로 판단합니다. 개발자 코드에는 JSON/HTTP/Place ID/DB 무결성 guard만 남기며 semantic veto는 적용하지 않습니다. Place ID는 allSearch의 구조화된 필드에서만 가져옵니다.
+Place ID 검증기는 정상 Chromium 세션에서 사용자가 입력한 NAVER Map 검색 UI가 발생시킨 `allSearch` JSON만 관찰해 구조화된 후보를 최대 20개 수집합니다. resolver가 allSearch URL을 직접 조립하거나 replay하지 않으며, 검색 query와 일치하는 응답만 연결합니다. 이름·주소·카테고리 표현 차이는 Qwen 후보 ranking까지 유지하며 최대 12개를 전달하고 Top-5를 반환합니다. 각 상세 HOME의 실제 evidence는 구조화된 Qwen semantic validator가 `MATCH`/`UNCERTAIN`/`NO_MATCH`로 판단합니다. 개발자 코드에는 JSON/HTTP/Place ID/DB 무결성 guard만 남기며 semantic veto는 적용하지 않습니다. Place ID는 allSearch의 구조화된 필드에서만 가져옵니다.
 
 Resolver 입력은 KOMSCO 원천 음식점뿐이다. `source_provider=KOMSCO`, active, zero-pay, KSIC `561`, 계속사업자, 논현동 법정동 `11680108`, 이름·주소 필수 조건을 적용하며 좌표는 보조 evidence다. `restaurant_external_places`의 historical NAVER row는 신규 resolver 입력이나 fallback으로 사용하지 않는다.
 
 ```text
-NAVER allSearch JSON
+NAVER Map UI search
+  -> browser network allSearch response
   -> structured candidate extraction
   -> soft evidence ordering
   -> Qwen3 8B candidateIndex
@@ -76,7 +77,7 @@ NAVER allSearch JSON
   -> result (no stored NAVER fallback)
 ```
 
-이 PoC는 `map.naver.com`과 `searchIframe`을 사용하거나 fallback하지 않습니다. Place ID Resolver의 애매한 후보 순위에만 로컬 Qwen3 8B를 사용할 수 있으며, NAVER Local API를 Place ID pipeline의 fallback으로 재호출하지 않습니다. 로컬 실행은 `OLLAMA_BASE_URL`(기본 `http://localhost:11434`)과 `LOCAL_LLM_MODEL`(기본 `qwen3:8b`)을 사용하며, 모델 준비는 `ollama pull qwen3:8b`입니다.
+이 PoC는 browser UI가 발생시킨 응답만 사용하며, `searchIframe` DOM 후보 parser나 직접 allSearch request replay를 사용하지 않습니다. Place ID Resolver의 애매한 후보 순위에만 로컬 Qwen3 8B를 사용할 수 있으며, NAVER Local API를 Place ID pipeline의 fallback으로 재호출하지 않습니다. 로컬 실행은 `OLLAMA_BASE_URL`(기본 `http://localhost:11434`)과 `LOCAL_LLM_MODEL`(기본 `qwen3:8b`)을 사용하며, 모델 준비는 `ollama pull qwen3:8b`입니다.
 
 ### KOMSCO-only resolver
 

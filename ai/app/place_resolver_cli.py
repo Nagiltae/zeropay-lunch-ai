@@ -15,7 +15,7 @@ from dataclasses import dataclass, replace
 from datetime import datetime
 from pathlib import Path
 from time import monotonic
-from urllib.parse import quote
+from urllib.parse import parse_qs, urlparse
 from urllib.request import Request, urlopen
 
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
@@ -427,29 +427,63 @@ def _address_data_from_page(page) -> dict[str, object]:
     }
 
 
-def search_direct(
-    page, query: str, reference: RestaurantReference, *, before_navigation=None
-) -> tuple[tuple[CandidateDom, ...], int]:
-    url = f"https://map.naver.com/p/api/search/allSearch?query={quote(query)}"
+def _search_ui_response(page, query: str, *, before_navigation=None):
+    """Search through the visible Map UI and return its own allSearch response.
+
+    The resolver never constructs or replays the allSearch request.  The response
+    is captured only while the page performs the UI search in a normal browser
+    session.
+    """
     if before_navigation:
         before_navigation()
+    page.goto("https://map.naver.com/", wait_until="domcontentloaded", timeout=15_000)
+    _check_block(page, None)
+    search_input = None
+    inputs = page.locator("input.input_search")
+    for index in range(inputs.count()):
+        candidate = inputs.nth(index)
+        if candidate.is_visible():
+            search_input = candidate
+            break
+    if search_input is None:
+        raise RuntimeError("ALLSEARCH_RESPONSE_FAILED: visible NAVER search input not found")
+
+    def is_matching_response(response) -> bool:
+        if "/api/search/allSearch" not in response.url:
+            return False
+        request = getattr(response, "request", None)
+        if request is not None and getattr(request, "method", "GET") != "GET":
+            return False
+        observed_query = parse_qs(urlparse(response.url).query).get("query", [""])[0]
+        return observed_query == query
+
     try:
-        response = page.context.request.get(url, timeout=10_000)
+        with page.expect_response(is_matching_response, timeout=15_000) as response_info:
+            search_input.fill(query)
+            search_input.press("Enter")
+        response = response_info.value
         if response.status in {403, 429}:
             raise RuntimeError(f"BLOCKED: HTTP {response.status}")
-        response_text = response.text().lower() if hasattr(response, "text") else ""
-        if any(marker in response_text for marker in BLOCK_MARKERS):
-            raise RuntimeError("BLOCKED: CAPTCHA/접근 제한/HTTP 차단 징후 감지")
         payload = response.json()
         result = payload.get("result") if isinstance(payload, dict) else None
         if isinstance(result, dict) and result.get("ncaptcha"):
             raise RuntimeError("BLOCKED: allSearch CAPTCHA 응답")
+        response_text = json.dumps(payload, ensure_ascii=False).lower()
+        if any(marker in response_text for marker in BLOCK_MARKERS):
+            raise RuntimeError("BLOCKED: CAPTCHA/접근 제한/HTTP 차단 징후 감지")
+        return response, payload
     except PlaywrightTimeoutError:
-        raise
+        raise RuntimeError("ALLSEARCH_RESPONSE_FAILED: UI allSearch response not observed")
     except RuntimeError:
         raise
     except Exception as error:
         raise RuntimeError(f"ALLSEARCH_RESPONSE_FAILED: {error}") from error
+
+
+def search_direct(
+    page, query: str, reference: RestaurantReference, *, before_navigation=None
+) -> tuple[tuple[CandidateDom, ...], int]:
+    _response, payload = _search_ui_response(page, query, before_navigation=before_navigation)
     structured = parse_allsearch_candidates(payload)
     candidates = tuple(
         CandidateDom(candidate, None, index, (candidate.place_id,) if candidate.place_id else ())
