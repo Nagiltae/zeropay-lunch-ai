@@ -16,7 +16,7 @@ def _execute_sql_read(sql: str) -> list[dict[str, str]]:
     process = subprocess.run(command, capture_output=True, text=True)
     if process.returncode != 0:
         raise RuntimeError(f"MySQL query failed: {process.stderr}")
-    
+
     rows = []
     lines = process.stdout.strip().split('\n')
     if len(lines) > 1:
@@ -38,23 +38,23 @@ def _execute_sql_write(sql: str) -> None:
 def is_exact_match(candidate, naver_external_name, naver_address, naver_road_address):
     norm_cand_name = normalize_text(candidate.name)
     norm_db_name = normalize_text(naver_external_name)
-    
+
     if norm_cand_name != norm_db_name:
         if norm_db_name not in norm_cand_name and norm_cand_name not in norm_db_name:
             return False
-            
+
     c_addr = candidate.address or ""
     c_road = candidate.road_address or ""
-    
+
     db_addresses = [a for a in (naver_address, naver_road_address) if a]
     cand_addresses = [a for a in (c_addr, c_road) if a]
-    
+
     for db_a in db_addresses:
         for c_a in cand_addresses:
             evidence = compare_address_pair(db_a, c_a)
             if evidence in ("EXACT", "STRONG_MATCH"):
                 return True
-                
+
     return False
 
 def main():
@@ -62,7 +62,7 @@ def main():
     parser.add_argument("--limit", type=int, default=3, help="Smoke test limit")
     parser.add_argument("--dry-run", action="store_true", help="Do not write to DB")
     args = parser.parse_args()
-    
+
     from pathlib import Path
     load_local_env(Path(__file__).resolve().parent.parent.parent)
 
@@ -72,22 +72,22 @@ def main():
     FROM canonical_restaurants c
     JOIN restaurant_external_places e ON c.restaurant_id = e.restaurant_id
     WHERE e.provider IN ('NAVER', 'NAVER_LOCAL')
-    AND (e.external_place_id IS NULL OR e.external_place_id = '' OR e.external_place_id = 'UNRESOLVED' OR e.external_place_id NOT REGEXP '^[0-9]+$')
+    AND (e.external_place_id IS NULL OR e.external_place_id NOT REGEXP '^[0-9]+$')
     LIMIT {args.limit};
     """
-    
+
     rows = _execute_sql_read(sql)
     if not rows:
         print("No candidates found.")
         return
 
     print(f"Found {len(rows)} candidates.")
-    
+
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         page = browser.new_page()
         page.set_default_timeout(15_000)
-        
+
         for row in rows:
             restaurant_id = row['restaurant_id']
             provider = row['provider']
@@ -95,43 +95,49 @@ def main():
             naver_name = row['external_name']
             naver_addr = row['ext_address']
             naver_road = row['ext_road_address']
-            
+
             target_name = naver_name or canonical_name
             query = f"논현동 {target_name}".strip()
             print(f"[{restaurant_id}] Searching '{query}'...")
-            
-            new_place_id = "UNRESOLVED"
+
+            status = "UNRESOLVED"
+            new_place_id = None
             try:
                 response, payload = _search_ui_response(page, query)
                 candidates = parse_allsearch_candidates(payload)
-                
+
                 matches = []
                 for cand in candidates:
                     if not cand.place_id or not cand.place_id.isdigit():
                         continue
                     if is_exact_match(cand, target_name, naver_addr, naver_road):
                         matches.append(cand)
-                
+
                 if len(matches) == 1:
                     new_place_id = matches[0].place_id
+                    status = "MATCHED"
                 elif len(matches) > 1:
-                    new_place_id = "AMBIGUOUS"
+                    status = "AMBIGUOUS"
                 else:
-                    new_place_id = "UNRESOLVED"
+                    status = "UNRESOLVED"
             except Exception as e:
                 print(f"[{restaurant_id}] Capture failed: {e}")
-                new_place_id = "UNRESOLVED"
-                
-            print(f"[{restaurant_id}] Result: {new_place_id}")
-            
+                status = "UNRESOLVED"
+
+            print(f"[{restaurant_id}] Result: {new_place_id} (Status: {status})")
+
             if not args.dry_run:
+                place_id_expr = f"'{new_place_id}'" if new_place_id else "IF(external_place_id REGEXP '^[0-9]+$', external_place_id, NULL)"
                 update_sql = f"""
-                UPDATE restaurant_external_places 
-                SET external_place_id = '{new_place_id}', updated_at = NOW()
+                UPDATE restaurant_external_places
+                SET
+                    external_place_id = {place_id_expr},
+                    match_status = '{status}',
+                    updated_at = NOW()
                 WHERE restaurant_id = {restaurant_id} AND provider = '{provider}';
                 """
                 _execute_sql_write(update_sql)
-                
+
         browser.close()
 
 if __name__ == "__main__":
