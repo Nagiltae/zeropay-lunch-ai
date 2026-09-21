@@ -36,7 +36,8 @@ FIELDS = (
     "provider_calls_skipped", "qwen_calls_skipped", "kakao_candidate_count",
     "naver_candidate_count", "candidates_json", "kakao_error", "naver_error",
     "qwen_model", "qwen_ranking", "qwen_decision", "qwen_business_type",
-    "qwen_location_scope", "qwen_reason", "qwen_selected_index", "selected_provider", "selected_external_id", "error",
+    "qwen_location_scope", "qwen_reason",
+    "kakao_selected_index", "kakao_external_id", "naver_selected_index", "naver_external_id", "error",
 )
 
 
@@ -108,9 +109,10 @@ def _base(reference, fingerprint: str) -> dict[str, str]:
         "qwen_business_type": "",
         "qwen_location_scope": "",
         "qwen_reason": "",
-        "qwen_selected_index": "",
-        "selected_provider": "",
-        "selected_external_id": "",
+        "kakao_selected_index": "",
+        "kakao_external_id": "",
+        "naver_selected_index": "",
+        "naver_external_id": "",
         "error": "",
     }
 
@@ -162,25 +164,40 @@ def evaluate_reference(reference, kakao, naver, matcher, cached=None) -> dict[st
         ranking = matcher.choose(reference, candidates)
         row["qwen_ranking"] = ",".join(str(index) for index in ranking.candidate_indices)
         decisions = []
+        accepted_indices = {}
         for index in ranking.candidate_indices:
-            decision = matcher.validate(reference, candidates[index])
+            candidate = candidates[index]
+            if candidate.provider in accepted_indices:
+                continue
+
+            decision = matcher.validate(reference, candidate)
             decisions.append(decision)
             if decision.final_decision == "ACCEPT":
+                accepted_indices[candidate.provider] = index
+
+            if "KAKAO" in accepted_indices and "NAVER" in accepted_indices:
                 break
+
         accepted = next(
             (decision for decision in decisions if decision.final_decision == "ACCEPT"),
             None,
         )
         selected = accepted or decisions[-1]
 
-        selected_index = ""
-        selected_provider = ""
-        selected_external_id = ""
-        if accepted:
-            idx = ranking.candidate_indices[len(decisions) - 1]
-            selected_index = str(idx)
-            selected_provider = candidates[idx].provider
-            selected_external_id = candidates[idx].external_place_id
+        kakao_selected_index = ""
+        kakao_external_id = ""
+        naver_selected_index = ""
+        naver_external_id = ""
+
+        if "KAKAO" in accepted_indices:
+            idx = accepted_indices["KAKAO"]
+            kakao_selected_index = str(idx)
+            kakao_external_id = candidates[idx].external_place_id or ""
+
+        if "NAVER" in accepted_indices:
+            idx = accepted_indices["NAVER"]
+            naver_selected_index = str(idx)
+            naver_external_id = candidates[idx].external_place_id or ""
 
         all_rejected = decisions and all(
             item.final_decision == "REJECT" for item in decisions
@@ -197,9 +214,10 @@ def evaluate_reference(reference, kakao, naver, matcher, cached=None) -> dict[st
             "qwen_business_type": selected.business_type,
             "qwen_location_scope": selected.location_scope,
             "qwen_reason": selected.reason,
-            "qwen_selected_index": selected_index,
-            "selected_provider": selected_provider,
-            "selected_external_id": selected_external_id,
+            "kakao_selected_index": kakao_selected_index,
+            "kakao_external_id": kakao_external_id,
+            "naver_selected_index": naver_selected_index,
+            "naver_external_id": naver_external_id,
         })
     except (ValueError, RuntimeError) as error:
         result = technical_unknown("STRUCTURED_OUTPUT_ERROR", configured_qwen_model())

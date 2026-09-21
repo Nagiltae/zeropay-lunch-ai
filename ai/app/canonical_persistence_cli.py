@@ -41,34 +41,55 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
                 skipped += 1
                 continue
 
-            selected_idx_str = row.get("qwen_selected_index", "")
-            if not selected_idx_str:
+            kakao_idx_str = row.get("kakao_selected_index", "")
+            naver_idx_str = row.get("naver_selected_index", "")
+
+            if not kakao_idx_str and not naver_idx_str:
                 skipped += 1
                 continue
 
-            selected_idx = int(selected_idx_str)
             candidates_json = row.get("candidates_json", "[]")
             try:
                 candidates_data = json.loads(candidates_json)
-                selected_data = candidates_data[selected_idx]
-            except (json.JSONDecodeError, IndexError, KeyError):
+            except json.JSONDecodeError:
                 skipped += 1
                 continue
 
-            candidate = PlaceSearchCandidate(
-                provider=selected_data.get("provider", ""),
-                external_place_id=selected_data.get("external_place_id", ""),
-                name=selected_data.get("name", ""),
-                category=selected_data.get("category", ""),
-                address=selected_data.get("address", ""),
-                road_address=selected_data.get("road_address", ""),
-                latitude=float(selected_data["latitude"]) if selected_data.get("latitude") else None,
-                longitude=float(selected_data["longitude"]) if selected_data.get("longitude") else None,
-                phone=selected_data.get("phone", ""),
-                detail_url=selected_data.get("detail_url", ""),
-                distance=selected_data.get("distance", ""),
-                raw_metadata=selected_data.get("raw_metadata", {}),
-            )
+            accepted_candidates = []
+
+            def parse_candidate(idx_str):
+                if not idx_str:
+                    return None
+                try:
+                    selected_data = candidates_data[int(idx_str)]
+                    return PlaceSearchCandidate(
+                        provider=selected_data.get("provider", ""),
+                        external_place_id=selected_data.get("external_place_id", ""),
+                        name=selected_data.get("name", ""),
+                        category=selected_data.get("category", ""),
+                        address=selected_data.get("address", ""),
+                        road_address=selected_data.get("road_address", ""),
+                        latitude=float(selected_data["latitude"]) if selected_data.get("latitude") else None,
+                        longitude=float(selected_data["longitude"]) if selected_data.get("longitude") else None,
+                        phone=selected_data.get("phone", ""),
+                        detail_url=selected_data.get("detail_url", ""),
+                        distance=selected_data.get("distance", ""),
+                        raw_metadata=selected_data.get("raw_metadata", {}),
+                    )
+                except (IndexError, KeyError, ValueError):
+                    return None
+
+            naver_candidate = parse_candidate(naver_idx_str)
+            kakao_candidate = parse_candidate(kakao_idx_str)
+
+            if naver_candidate:
+                accepted_candidates.append(naver_candidate)
+            if kakao_candidate:
+                accepted_candidates.append(kakao_candidate)
+
+            if not accepted_candidates:
+                skipped += 1
+                continue
 
             reference = RestaurantReference(
                 restaurant_id=int(row["restaurant_id"]),
@@ -80,9 +101,12 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
                 external_merchant_id=row["external_merchant_id"],
             )
 
-            canonical = build_canonical(reference, candidate)
+            # Use NAVER as primary for canonical fields if available, else KAKAO
+            primary_candidate = naver_candidate if naver_candidate else kakao_candidate
+            canonical = build_canonical(reference, primary_candidate)
+
             from app.canonical_builder import generate_canonical_sql
-            all_sql.append(generate_canonical_sql(canonical, candidate))
+            all_sql.append(generate_canonical_sql(canonical, accepted_candidates))
             created += 1
 
     if not dry_run and all_sql:
