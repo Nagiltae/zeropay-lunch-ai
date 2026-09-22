@@ -1,3 +1,8 @@
+import csv
+
+import pytest
+
+from app import canonical_persistence_cli
 from app.canonical_builder import _sql_value, build_canonical, generate_mapping_sql
 from app.canonical_persistence_cli import process_csv, verification_metadata
 from app.place_detail_persistence import PlaceDetailPersistence
@@ -213,12 +218,56 @@ def test_canonical_is_written_before_verified_checkpoint(monkeypatch, tmp_path):
 
     events = []
     monkeypatch.setattr(
-        canonical_persistence_cli, "_execute_sql", lambda *_: events.append("canonical")
+        canonical_persistence_cli,
+        "_execute_sql",
+        lambda _, sql: events.append(("transaction", sql)),
     )
     monkeypatch.setattr(
         PlaceDetailPersistence,
-        "persist_verification",
-        lambda *_, **__: events.append("verification"),
+        "verification_sql",
+        lambda *_, **__: events.append("verification") or "UPDATE verification_marker;",
     )
     assert process_csv(path, tmp_path) == (1, 0)
-    assert events == ["canonical", "verification"]
+    assert events[0] == "verification"
+    assert events[1][0] == "transaction"
+    assert "INSERT INTO canonical_restaurants" in events[1][1]
+    assert "UPDATE verification_marker;" in events[1][1]
+
+
+def test_canonical_persistence_failure_stops_before_next_row(monkeypatch, tmp_path):
+    path = tmp_path / "result.csv"
+    with path.open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=["restaurant_id", "komsco_name", "decision", "verification_reason"],
+        )
+        writer.writeheader()
+        writer.writerow({
+            "restaurant_id": "1",
+            "komsco_name": "첫번째",
+            "decision": "REJECT",
+            "verification_reason": "NO_MATCH",
+        })
+        writer.writerow({
+            "restaurant_id": "2",
+            "komsco_name": "두번째",
+            "decision": "REJECT",
+            "verification_reason": "NO_MATCH",
+        })
+
+    executed = []
+
+    def fail_once(*_args):
+        executed.append("first")
+        raise RuntimeError("transaction failed")
+
+    monkeypatch.setattr(canonical_persistence_cli, "_execute_sql", fail_once)
+    monkeypatch.setattr(
+        PlaceDetailPersistence,
+        "verification_sql",
+        lambda *_, **__: "UPDATE verification_marker;",
+    )
+
+    with pytest.raises(RuntimeError, match="Failed to persist canonical/verification"):
+        canonical_persistence_cli.process_csv(path, tmp_path)
+    assert executed == ["first"]

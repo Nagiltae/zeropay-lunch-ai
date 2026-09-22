@@ -98,7 +98,7 @@ class PlaceDetailPersistence:
         if statements:
             self._run("; ".join(statements) + ";")
 
-    def persist_verification(
+    def verification_sql(
         self,
         restaurant_id: int,
         status: str,
@@ -108,7 +108,7 @@ class PlaceDetailPersistence:
         source: dict[str, object] | None = None,
         source_fingerprint_value: str | None = None,
         eligibility: str | None = None,
-    ) -> None:
+    ) -> str:
         # 검증 fingerprint와 detail section은 별도 계약이므로 한쪽 갱신이 다른 상태를 삭제하지 않는다.
         eligible = eligibility or ("ELIGIBLE" if status == "VERIFIED" else (
             "INELIGIBLE" if reason in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else "UNKNOWN"
@@ -131,7 +131,29 @@ class PlaceDetailPersistence:
             UPDATE restaurants SET recommendation_eligibility={_sql(eligible)}
               WHERE id={restaurant_id};
         """
-        self._run(sql)
+        return sql
+
+    def persist_verification(
+        self,
+        restaurant_id: int,
+        status: str,
+        reason: str,
+        place_id: str | None,
+        model_name: str | None,
+        source: dict[str, object] | None = None,
+        source_fingerprint_value: str | None = None,
+        eligibility: str | None = None,
+    ) -> None:
+        self._run(self.verification_sql(
+            restaurant_id=restaurant_id,
+            status=status,
+            reason=reason,
+            place_id=place_id,
+            model_name=model_name,
+            source=source,
+            source_fingerprint_value=source_fingerprint_value,
+            eligibility=eligibility,
+        ))
 
     @staticmethod
     def preview(detail: PlaceDetail) -> dict[str, int | bool]:

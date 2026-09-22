@@ -6,6 +6,7 @@ from app.verification_quality_gate import (
     recommendation_eligibility,
     source_fingerprint,
     technical_unknown,
+    unknown_reason_kind,
 )
 
 
@@ -102,3 +103,10 @@ def test_no_candidate_and_provider_errors_are_unknown():
     for reason in ("NO_CANDIDATE", "HTTP_503", "QWEN_TIMEOUT", "STRUCTURED_OUTPUT_ERROR"):
         result = technical_unknown(reason)
         assert result.decision is VerificationDecision.UNKNOWN
+
+
+def test_unknown_reason_kind_preserves_existing_contract_without_new_db_state():
+    assert unknown_reason_kind("SEMANTIC_UNCERTAIN") == "SEMANTIC"
+    assert unknown_reason_kind("NO_CANDIDATE") == "RETRIEVAL"
+    assert unknown_reason_kind("STRUCTURED_OUTPUT_ERROR") == "TECHNICAL"
+    assert unknown_reason_kind("HTTP_503") == "TECHNICAL"

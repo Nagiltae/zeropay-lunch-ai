@@ -15,6 +15,24 @@ class VerificationDecision(StrEnum):
     UNKNOWN = "UNKNOWN"
 
 
+TECHNICAL_UNKNOWN_REASONS = frozenset({
+    "STRUCTURED_OUTPUT_ERROR",
+    "NETWORK_ERROR",
+    "QWEN_TIMEOUT",
+})
+
+
+def unknown_reason_kind(reason: str) -> str:
+    """Classify UNKNOWN without changing its persisted DB status."""
+    if reason == "SEMANTIC_UNCERTAIN":
+        return "SEMANTIC"
+    if reason == "NO_CANDIDATE":
+        return "RETRIEVAL"
+    if reason in TECHNICAL_UNKNOWN_REASONS or reason.startswith("HTTP_"):
+        return "TECHNICAL"
+    return "UNKNOWN"
+
+
 @dataclass(frozen=True)
 class VerificationResult:
     decision: VerificationDecision

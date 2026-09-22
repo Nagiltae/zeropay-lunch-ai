@@ -34,6 +34,7 @@ from app.verification_quality_gate import (
     recommendation_eligibility,
     source_fingerprint,
     technical_unknown,
+    unknown_reason_kind,
 )
 
 FIELDS = (
@@ -615,6 +616,10 @@ def main() -> int:
                 cache_skipped = row["qwen_calls_skipped"] == "true"
                 if cache_skipped:
                     progress.record_reason("REJECT_CACHE_REUSED")
+                if row["decision"] == "UNKNOWN":
+                    unknown_reason = row.get("verification_reason", "UNKNOWN")
+                    progress.record_reason(f"UNKNOWN_{unknown_reason_kind(unknown_reason)}")
+                    progress.record_reason(f"UNKNOWN_REASON_{unknown_reason}")
                 has_candidates = (
                     int(row["kakao_candidate_count"]) + int(row["naver_candidate_count"]) > 0
                 )
