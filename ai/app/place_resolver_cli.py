@@ -35,7 +35,10 @@ from app.place_resolver import (
     resolve_candidate,
 )
 from app.qwen_candidate_matcher import (
-    LlmUnavailable, OllamaClient, QwenCandidateMatcher, configured_qwen_model,
+    LlmUnavailable,
+    OllamaClient,
+    QwenCandidateMatcher,
+    configured_qwen_model,
 )
 
 BLOCK_MARKERS = (
@@ -145,7 +148,12 @@ class KomscoPopulation:
 
 
 VERIFIED_CHECKPOINT_FIELDS = (
-    "restaurant_id", "place_id", "resolved_name", "resolved_address", "verification_status", "verified_at"
+    "restaurant_id",
+    "place_id",
+    "resolved_name",
+    "resolved_address",
+    "verification_status",
+    "verified_at",
 )
 DEFAULT_CHECKPOINT_NAME = "verified-place-ids-komsco-only.csv"
 
@@ -168,8 +176,16 @@ def save_verified_checkpoint(path: Path, result: RunResult) -> None:
     existing[result.reference.restaurant_id] = {
         "restaurant_id": str(result.reference.restaurant_id),
         "place_id": result.place_id,
-        "resolved_name": result.detail.name if result.detail else result.candidate.name if result.candidate else "",
-        "resolved_address": result.detail.address if result.detail else result.candidate.address if result.candidate else "",
+        "resolved_name": result.detail.name
+        if result.detail
+        else result.candidate.name
+        if result.candidate
+        else "",
+        "resolved_address": result.detail.address
+        if result.detail
+        else result.candidate.address
+        if result.candidate
+        else "",
         "verification_status": "RESOLVED",
         "verified_at": datetime.now().isoformat(timespec="seconds"),
     }
@@ -215,9 +231,7 @@ def _round_robin_by_dong(rows: list[dict[str, object]], limit: int) -> list[dict
 def _mysql_rows(root: Path, sql: str) -> list[dict[str, object]]:
     command = _docker_mysql_command(sql)
     try:
-        completed = subprocess.run(
-            command, cwd=root, capture_output=True, text=True, timeout=30
-        )
+        completed = subprocess.run(command, cwd=root, capture_output=True, text=True, timeout=30)
     except (OSError, subprocess.TimeoutExpired) as error:
         raise RuntimeError(f"KOMSCO target query failed: {error}") from error
     if completed.returncode != 0:
@@ -232,12 +246,20 @@ def _mysql_rows(root: Path, sql: str) -> list[dict[str, object]]:
 def _docker_mysql_command(sql: str) -> list[str]:
     script = (
         'MYSQL_PWD="$MYSQL_PASSWORD" mysql --batch --skip-column-names --raw '
-        '--default-character-set=utf8mb4 '
+        "--default-character-set=utf8mb4 "
         '-u "$MYSQL_USER" "$MYSQL_DATABASE" -e "$1"'
     )
     return [
-        "docker", "compose", "exec", "-T", "mysql", "sh", "-c", script,
-        "mysql-query", sql,
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "mysql",
+        "sh",
+        "-c",
+        script,
+        "mysql-query",
+        sql,
     ]
 
 
@@ -277,8 +299,8 @@ ORDER BY r.legal_dong_name, r.id
         first = _round_robin_by_dong(matched, matched_limit)
         second = _round_robin_by_dong(unmatched, unmatched_limit)
         selected = [item for pair in zip(first, second, strict=False) for item in pair]
-        selected.extend(first[len(second):])
-        selected.extend(second[len(first):])
+        selected.extend(first[len(second) :])
+        selected.extend(second[len(first) :])
         selected_ids = {int(row["restaurant_id"]) for row in selected}
         remaining = [row for row in rows if int(row["restaurant_id"]) not in selected_ids]
         selected.extend(_round_robin_by_dong(remaining, limit - len(selected)))
@@ -352,11 +374,15 @@ def _semantic_address_from_page(page) -> str:
         for index in range(labels.count()):
             label = labels.nth(index)
             try:
-                label_text = label.inner_text(timeout=1000) or label.get_attribute("aria-label") or ""
+                label_text = (
+                    label.inner_text(timeout=1000) or label.get_attribute("aria-label") or ""
+                )
                 for relation in ("xpath=..", "xpath=../..", "xpath=../../.."):
                     row_text = label.locator(relation).inner_text(timeout=1000)
                     value = parse_semantic_address_row(label_text, row_text)
-                    if value and any(token in value for token in ("서울", "구", "로", "길", "대로", "동")):
+                    if value and any(
+                        token in value for token in ("서울", "구", "로", "길", "대로", "동")
+                    ):
                         return value
             except Exception:
                 continue
@@ -366,8 +392,12 @@ def _semantic_address_from_page(page) -> str:
         label = labels.nth(index)
         try:
             for relation in ("xpath=..", "xpath=../..", "xpath=../../.."):
-                value = parse_semantic_address_row("주소", label.locator(relation).inner_text(timeout=1000))
-                if value and any(token in value for token in ("서울", "구", "로", "길", "대로", "동")):
+                value = parse_semantic_address_row(
+                    "주소", label.locator(relation).inner_text(timeout=1000)
+                )
+                if value and any(
+                    token in value for token in ("서울", "구", "로", "길", "대로", "동")
+                ):
                     return value
         except Exception:
             continue
@@ -487,7 +517,9 @@ def _search_ui_response(page, query: str, *, before_navigation=None):
             raise RuntimeError("BLOCKED: CAPTCHA/접근 제한/HTTP 차단 징후 감지")
         return response, payload
     except PlaywrightTimeoutError:
-        raise RuntimeError("ALLSEARCH_RESPONSE_FAILED: UI allSearch response not observed")
+        raise RuntimeError(
+            "ALLSEARCH_RESPONSE_FAILED: UI allSearch response not observed"
+        ) from None
     except RuntimeError:
         raise
     except Exception as error:
@@ -594,7 +626,9 @@ def _validation_failure_reason(
     return "DETAIL_EVIDENCE_INSUFFICIENT"
 
 
-def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None, *, before_navigation=None) -> RunResult:
+def run_one(
+    page, reference, query, stage, matcher: QwenCandidateMatcher | None, *, before_navigation=None
+) -> RunResult:
     started = monotonic()
     raw_candidates, original_candidate_count = search_direct(
         page, query, reference, before_navigation=before_navigation
@@ -608,13 +642,22 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
     )
     candidates = tuple(item for item in raw_candidates if item.candidate.place_id)
     if not candidates:
-        reason = "NO_SEARCH_RESULT" if original_candidate_count == 0 else (
-            "NON_FOOD" if "NON_FOOD_CATEGORY" in rejection_reasons else
-            "PLACE_ID_MISSING" if "CANDIDATE_PLACE_ID_MISSING" in rejection_reasons else
-            "NO_MATCH"
+        reason = (
+            "NO_SEARCH_RESULT"
+            if original_candidate_count == 0
+            else (
+                "NON_FOOD"
+                if "NON_FOOD_CATEGORY" in rejection_reasons
+                else "PLACE_ID_MISSING"
+                if "CANDIDATE_PLACE_ID_MISSING" in rejection_reasons
+                else "NO_MATCH"
+            )
         )
         return _empty_result(
-            reference, query, stage, raw_candidates,
+            reference,
+            query,
+            stage,
+            raw_candidates,
             ResolutionStatus.NOT_FOUND,
             (reason,),
             started,
@@ -713,14 +756,10 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                     detail_name=candidate.name,
                     detail_road_address="",
                     detail_jibun_address="",
-                    normalized_source_name=normalize_text(
-                        reference.komsco_name
-                    ),
+                    normalized_source_name=normalize_text(reference.komsco_name),
                     normalized_detail_name=normalize_text(candidate.name),
                     name_comparison="UNKNOWN",
-                    normalized_source_address=normalize_text(
-                        reference.komsco_address
-                    ),
+                    normalized_source_address=normalize_text(reference.komsco_address),
                     normalized_detail_road_address="",
                     normalized_detail_jibun_address="",
                     address_comparison="UNKNOWN",
@@ -757,8 +796,11 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 business_type = getattr(semantic, "business_type", "UNKNOWN")
                 location_scope = getattr(semantic, "location_scope", "UNKNOWN")
                 final_decision = getattr(
-                    semantic, "final_decision",
-                    {"MATCH": "ACCEPT", "NO_MATCH": "REJECT", "UNCERTAIN": "UNCERTAIN"}.get(entity_match, "UNCERTAIN"),
+                    semantic,
+                    "final_decision",
+                    {"MATCH": "ACCEPT", "NO_MATCH": "REJECT", "UNCERTAIN": "UNCERTAIN"}.get(
+                        entity_match, "UNCERTAIN"
+                    ),
                 )
                 semantic_reason = getattr(semantic, "reason", "")
             except (LlmUnavailable, ValueError) as error:
@@ -814,13 +856,24 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 )
             if final_decision == "ACCEPT":
                 resolution = Resolution(
-                    reference, query, verified, ResolutionStatus.RESOLVED,
-                    name_result, address_result, candidate_evidence(reference, verified)[2], (),
+                    reference,
+                    query,
+                    verified,
+                    ResolutionStatus.RESOLVED,
+                    name_result,
+                    address_result,
+                    candidate_evidence(reference, verified)[2],
+                    (),
                 )
             else:
                 resolution = Resolution(
-                    reference, query, verified, ResolutionStatus.AMBIGUOUS,
-                    name_result, address_result, candidate_evidence(reference, verified)[2],
+                    reference,
+                    query,
+                    verified,
+                    ResolutionStatus.AMBIGUOUS,
+                    name_result,
+                    address_result,
+                    candidate_evidence(reference, verified)[2],
                     (f"QWEN_{semantic_decision}",),
                 )
         else:
@@ -849,11 +902,16 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
                 address_comparison=address_result,
                 validation_result=resolution.status.value,
                 failure_reason=(
-                    "NON_FOOD" if final_decision == "REJECT" and business_type == "NON_FOOD" else
-                    "OUT_OF_SCOPE" if final_decision == "REJECT" and location_scope == "OUT_OF_SCOPE" else
-                    "QWEN_NO_MATCH" if final_decision == "REJECT" else
-                    "QWEN_UNCERTAIN" if final_decision == "UNCERTAIN" else
-                    "QWEN_MATCH" if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
+                    "NON_FOOD"
+                    if final_decision == "REJECT" and business_type == "NON_FOOD"
+                    else "OUT_OF_SCOPE"
+                    if final_decision == "REJECT" and location_scope == "OUT_OF_SCOPE"
+                    else "QWEN_NO_MATCH"
+                    if final_decision == "REJECT"
+                    else "QWEN_UNCERTAIN"
+                    if final_decision == "UNCERTAIN"
+                    else "QWEN_MATCH"
+                    if semantic_decision and resolution.status != ResolutionStatus.RESOLVED
                     else _validation_failure_reason(resolution, detail, name_result, address_result)
                 ),
                 semantic_decision=semantic_decision,
@@ -901,7 +959,8 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         flags = ("PLACE_ID_MISSING",)
     else:
         final_decisions = {
-            attempt.final_decision for attempt in validation_attempts_detail
+            attempt.final_decision
+            for attempt in validation_attempts_detail
             if attempt.final_decision
         }
         if final_decisions and final_decisions <= {"REJECT"}:
@@ -913,7 +972,9 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
         elif "UNCERTAIN" in final_decisions:
             status = ResolutionStatus.AMBIGUOUS
             flags = ("SEMANTIC_UNCERTAIN",)
-        elif any(attempt.failure_reason == "LOCATOR_TIMEOUT" for attempt in validation_attempts_detail):
+        elif any(
+            attempt.failure_reason == "LOCATOR_TIMEOUT" for attempt in validation_attempts_detail
+        ):
             status = ResolutionStatus.AMBIGUOUS
             flags = ("DETAIL_LOAD_FAILED",)
         else:
@@ -953,15 +1014,34 @@ def run_one(page, reference, query, stage, matcher: QwenCandidateMatcher | None,
 
 
 REPORT_FIELDS = [
-    "source_type", "restaurant_id", "reference_name",
-    "query", "query_stage",
+    "source_type",
+    "restaurant_id",
+    "reference_name",
+    "query",
+    "query_stage",
     "final_status",
-    "original_candidate_count", "filtered_candidate_count", "matcher_source",
-    "qwen_ranking", "selected_candidate_index", "selected_candidate_name",
-    "qwen_used", "qwen_confidence", "candidate_url", "place_id", "place_id_source",
-    "resolved_rank", "detail_validation", "detail_name", "detail_address",
-    "detail_category", "name_evidence", "address_evidence", "reason",
-    "risk_flags", "elapsed_ms", "detail_validation_attempts",
+    "original_candidate_count",
+    "filtered_candidate_count",
+    "matcher_source",
+    "qwen_ranking",
+    "selected_candidate_index",
+    "selected_candidate_name",
+    "qwen_used",
+    "qwen_confidence",
+    "candidate_url",
+    "place_id",
+    "place_id_source",
+    "resolved_rank",
+    "detail_validation",
+    "detail_name",
+    "detail_address",
+    "detail_category",
+    "name_evidence",
+    "address_evidence",
+    "reason",
+    "risk_flags",
+    "elapsed_ms",
+    "detail_validation_attempts",
     "candidate_rejection_reasons",
     "validation_attempts_json",
 ]
@@ -1062,9 +1142,7 @@ class ReportWriter:
         self,
         result: RunResult,
     ) -> None:
-        self.writer.writerow(
-            result_row(result)
-        )
+        self.writer.writerow(result_row(result))
         self.stream.flush()
         os.fsync(self.stream.fileno())
 
@@ -1234,9 +1312,7 @@ def _write_place_mapping(
         )
     command = _docker_mysql_command(sql)
     try:
-        completed = subprocess.run(
-            command, cwd=root, capture_output=True, text=True, timeout=15
-        )
+        completed = subprocess.run(command, cwd=root, capture_output=True, text=True, timeout=15)
     except (OSError, subprocess.TimeoutExpired) as error:
         raise RuntimeError(f"DB write command failed: {error}") from error
     if completed.returncode != 0:
@@ -1396,37 +1472,56 @@ def main() -> int:
                 query = query_for(reference)
                 try:
                     result = run_one(
-                        page, reference, query, "KOMSCO", matcher,
+                        page,
+                        reference,
+                        query,
+                        "KOMSCO",
+                        matcher,
                         before_navigation=limiter.before_navigation,
                     )
                 except RuntimeError as error:
                     if str(error).startswith("BLOCKED:"):
                         result = _empty_result(
-                            reference, query, "KOMSCO", (), ResolutionStatus.BLOCKED,
-                            (str(error),), monotonic(),
+                            reference,
+                            query,
+                            "KOMSCO",
+                            (),
+                            ResolutionStatus.BLOCKED,
+                            (str(error),),
+                            monotonic(),
                         )
                         stopped = True
                     else:
                         result = _empty_result(
-                            reference, query, "KOMSCO", (), ResolutionStatus.ERROR,
-                            ("ALLSEARCH_RESPONSE_FAILED", str(error)), monotonic(),
+                            reference,
+                            query,
+                            "KOMSCO",
+                            (),
+                            ResolutionStatus.ERROR,
+                            ("ALLSEARCH_RESPONSE_FAILED", str(error)),
+                            monotonic(),
                         )
                 except (PlaywrightTimeoutError, ValueError) as error:
                     result = _empty_result(
-                        reference, query, "KOMSCO", (), ResolutionStatus.ERROR,
-                        ("TECHNICAL_FAILURE", str(error)), monotonic(),
+                        reference,
+                        query,
+                        "KOMSCO",
+                        (),
+                        ResolutionStatus.ERROR,
+                        ("TECHNICAL_FAILURE", str(error)),
+                        monotonic(),
                     )
                 if result:
                     initial_status = result.resolution.status.value
                     initial_counts[initial_status] += 1
                     qwen_calls += int(result.qwen_used)
                     qwen_semantic_calls += sum(
-                        1 for attempt in result.validation_attempts_detail
+                        1
+                        for attempt in result.validation_attempts_detail
                         if attempt.semantic_decision
                     )
                     fatal_vetoes += sum(
-                        1 for attempt in result.validation_attempts_detail
-                        if attempt.fatal_veto
+                        1 for attempt in result.validation_attempts_detail if attempt.fatal_veto
                     )
                     result = replace(
                         result,
@@ -1461,8 +1556,7 @@ def main() -> int:
     print(f"CSV: {output}")
     if stopped:
         print(
-            "Resume with: poetry run python -m app.place_resolver_cli "
-            f"--output {output} --resume"
+            f"Resume with: poetry run python -m app.place_resolver_cli --output {output} --resume"
         )
     return 0
 

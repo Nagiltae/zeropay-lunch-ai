@@ -35,6 +35,7 @@ class RestaurantReference:
     komsco_longitude: float | None
     legal_dong: str
     external_merchant_id: str | None = None
+    processing_reason: str = ""
 
 
 @dataclass(frozen=True)
@@ -68,8 +69,19 @@ HTML_TAG = re.compile(r"<[^>]+>")
 NON_TEXT = re.compile(r"[^0-9a-z가-힣]")
 NAME_LEGAL_PREFIXES = ("주식회사", "유한회사", "주")
 NAME_DESCRIPTIVE_SUFFIXES = (
-    "중식당", "한식당", "일식당", "양식당", "분식", "카페디저트", "카페",
-    "곱창막창양", "순대순댓국", "찌개전골", "족발보쌈", "분식", "음식점",
+    "중식당",
+    "한식당",
+    "일식당",
+    "양식당",
+    "분식",
+    "카페디저트",
+    "카페",
+    "곱창막창양",
+    "순대순댓국",
+    "찌개전골",
+    "족발보쌈",
+    "분식",
+    "음식점",
 )
 ADDRESS_EVIDENCE_ORDER = {
     "DIFFERENT": 0,
@@ -122,11 +134,11 @@ def normalize_name_for_match(value: str | None) -> str:
     normalized = normalize_text(value)
     for prefix in NAME_LEGAL_PREFIXES:
         if normalized.startswith(prefix):
-            normalized = normalized[len(prefix):]
+            normalized = normalized[len(prefix) :]
             break
     for suffix in sorted(NAME_DESCRIPTIVE_SUFFIXES, key=len, reverse=True):
         if normalized.endswith(suffix) and len(normalized) > len(suffix):
-            normalized = normalized[:-len(suffix)]
+            normalized = normalized[: -len(suffix)]
             break
     return normalized
 
@@ -185,10 +197,14 @@ def _name_evidence(reference: RestaurantReference, candidate: PlaceCandidate) ->
         return "CONTAINED"
     expected_alias = normalize_name_for_match(reference.komsco_name)
     actual_alias = normalize_name_for_match(candidate.name)
-    if expected_alias and actual_alias and (
-        expected_alias == actual_alias
-        or expected_alias in actual_alias
-        or actual_alias in expected_alias
+    if (
+        expected_alias
+        and actual_alias
+        and (
+            expected_alias == actual_alias
+            or expected_alias in actual_alias
+            or actual_alias in expected_alias
+        )
     ):
         return "CONTAINED"
     # Observed PCMap display variants can reorder a brand/branch phrase or
@@ -238,10 +254,7 @@ def compare_address_pair(source: str, detail: str) -> str:
         expected_road
         and actual_road
         and expected_road == actual_road
-        and (
-            expected_buildings & actual_buildings
-            or expected_numbers & actual_numbers
-        )
+        and (expected_buildings & actual_buildings or expected_numbers & actual_numbers)
         and any(token in expected and token in actual for token in ("구", "시", "도"))
     ):
         return "STRONG_MATCH"
@@ -294,7 +307,13 @@ def candidate_evidence(
     )
     distance_evidence = "UNKNOWN" if distance is None else "NEAR" if distance <= 300 else "FAR"
     score = (50 if name == "EXACT" else 25 if name == "CONTAINED" else 0) + (
-        35 if address == "EXACT" else 30 if address == "STRONG_MATCH" else 15 if address == "PARTIAL" else 0
+        35
+        if address == "EXACT"
+        else 30
+        if address == "STRONG_MATCH"
+        else 15
+        if address == "PARTIAL"
+        else 0
     )
     if distance is not None:
         score += 15 if distance <= 50 else 5 if distance <= 300 else 0
@@ -306,7 +325,10 @@ def rank_candidates(
 ) -> tuple[PlaceCandidate, ...]:
     """Stable deterministic ordering used to form the Qwen Top-5 input."""
     values = list(candidates)
-    scored = [(candidate_evidence(reference, candidate)[3], index, candidate) for index, candidate in enumerate(values)]
+    scored = [
+        (candidate_evidence(reference, candidate)[3], index, candidate)
+        for index, candidate in enumerate(values)
+    ]
     scored.sort(key=lambda item: (-item[0], item[2].place_id or "", item[1]))
     return tuple(candidate for _, _, candidate in scored)
 

@@ -46,6 +46,7 @@ function App() {
     }
   }
 
+  // 인증이 끝나기 전에는 화면을 노출하지 않고, 인증 후에만 대화와 개인화 기능을 연결한다.
   if (isUserLoading) {
     return <div className="loading-screen">로딩 중...</div>
   }

@@ -65,6 +65,7 @@ export function useChatStream(isAuthenticated: boolean) {
   const createMutation = useMutation({ mutationFn: createConversation })
   const deactivateMutation = useMutation({ mutationFn: deactivateConversation })
 
+  // SSE 연결은 컴포넌트가 사라질 때 취소해 서버의 진행 중인 교환과 화면 상태가 어긋나지 않게 한다.
   useEffect(() => {
     const history = historyQuery.data
     if (!history || restoredConversationRef.current === history.conversationId) {

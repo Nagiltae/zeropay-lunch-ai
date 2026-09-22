@@ -5,41 +5,50 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import subprocess
 from pathlib import Path
 
-
+from app.batch_progress import BatchProgress
 from app.canonical_builder import build_canonical
 from app.place_provider import PlaceSearchCandidate
 from app.place_resolver import RestaurantReference
 from app.provider_input import load_local_env
 from app.qwen_candidate_matcher import configured_qwen_model
-from app.batch_progress import BatchProgress
-
-
-import subprocess
 
 
 def verification_metadata(row: dict[str, str]) -> tuple[str, str, str]:
     decision = row.get("decision", "")
-    status = "VERIFIED" if decision == "ACCEPT" else (
-        "REJECTED" if decision == "REJECT" else "ERROR"
+    status = (
+        "VERIFIED" if decision == "ACCEPT" else ("REJECTED" if decision == "REJECT" else "ERROR")
     )
     reason = row.get("verification_reason", "")
     if len(reason) > 64:
         reason = (
-            "NON_FOOD" if row.get("qwen_business_type") == "NON_FOOD" else
-            "OUT_OF_SCOPE" if row.get("qwen_location_scope") == "OUT_OF_SCOPE" else
-            "MATCHED" if decision == "ACCEPT" else
-            "NO_MATCH" if decision == "REJECT" else
-            "SEMANTIC_UNCERTAIN"
+            "NON_FOOD"
+            if row.get("qwen_business_type") == "NON_FOOD"
+            else "OUT_OF_SCOPE"
+            if row.get("qwen_location_scope") == "OUT_OF_SCOPE"
+            else "MATCHED"
+            if decision == "ACCEPT"
+            else "NO_MATCH"
+            if decision == "REJECT"
+            else "SEMANTIC_UNCERTAIN"
         )
     return status, reason, row.get("qwen_model") or configured_qwen_model()
+
 
 def _execute_sql(root: Path, sql: str) -> None:
     # Use docker compose exec -T mysql
     command = [
-        "docker", "compose", "exec", "-T", "mysql", "sh", "-c",
-        f'MYSQL_PWD="zeropay_local" mysql --default-character-set=utf8mb4 --batch --raw -u zeropay zeropay_lunch'
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "mysql",
+        "sh",
+        "-c",
+        'MYSQL_PWD="zeropay_local" mysql --default-character-set=utf8mb4 --batch '
+        '--raw -u zeropay zeropay_lunch',
     ]
     process = subprocess.run(command, input=sql.encode("utf-8"), cwd=str(root), capture_output=True)
     if process.returncode != 0:
@@ -55,7 +64,8 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
     with path.open(newline="", encoding="utf-8") as stream:
         verification_rows = list(csv.DictReader(stream))
         progress = BatchProgress(
-            "Canonical Prepare", len(verification_rows),
+            "Canonical Prepare",
+            len(verification_rows),
             {"accept": "ACCEPT", "skipped": "REJECT/UNKNOWN"},
         )
         for row in verification_rows:
@@ -77,15 +87,17 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
             try:
                 candidates_data = json.loads(candidates_json)
             except json.JSONDecodeError as error:
-                raise ValueError(f"ACCEPT row {row['restaurant_id']} has invalid candidates") from error
+                raise ValueError(
+                    f"ACCEPT row {row['restaurant_id']} has invalid candidates"
+                ) from error
 
             accepted_candidates = []
 
-            def parse_candidate(idx_str):
+            def parse_candidate(idx_str, candidate_rows=candidates_data):
                 if not idx_str:
                     return None
                 try:
-                    selected_data = candidates_data[int(idx_str)]
+                    selected_data = candidate_rows[int(idx_str)]
                     return PlaceSearchCandidate(
                         provider=selected_data.get("provider", ""),
                         external_place_id=selected_data.get("external_place_id", ""),
@@ -93,8 +105,12 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
                         category=selected_data.get("category", ""),
                         address=selected_data.get("address", ""),
                         road_address=selected_data.get("road_address", ""),
-                        latitude=float(selected_data["latitude"]) if selected_data.get("latitude") else None,
-                        longitude=float(selected_data["longitude"]) if selected_data.get("longitude") else None,
+                        latitude=float(selected_data["latitude"])
+                        if selected_data.get("latitude")
+                        else None,
+                        longitude=float(selected_data["longitude"])
+                        if selected_data.get("longitude")
+                        else None,
                         phone=selected_data.get("phone", ""),
                         detail_url=selected_data.get("detail_url", ""),
                         distance=selected_data.get("distance", ""),
@@ -129,6 +145,7 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
             canonical = build_canonical(reference, primary_candidate)
 
             from app.canonical_builder import generate_canonical_sql
+
             all_sql.append(generate_canonical_sql(canonical, accepted_candidates))
             created += 1
             progress.complete(accept=1)
@@ -142,7 +159,8 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
 
         persistence = PlaceDetailPersistence(root)
         progress = BatchProgress(
-            "Verification Persistence", len(verification_rows),
+            "Verification Persistence",
+            len(verification_rows),
             {"saved": "saved"},
         )
         for row in verification_rows:

@@ -24,7 +24,10 @@ def main() -> int:
         batch_number = index // args.size + 1
         path = args.output_dir / f"komsco-batch-{batch_number:04d}.manifest"
         temporary = path.with_name(f".{path.name}.tmp")
-        temporary.write_text("\n".join(str(value) for value in ids[index : index + args.size]) + "\n", encoding="utf-8")
+        temporary.write_text(
+            "\n".join(str(value) for value in ids[index : index + args.size]) + "\n",
+            encoding="utf-8",
+        )
         temporary.replace(path)
         print(f"{path}: {min(index + args.size, len(ids)) - index} restaurants")
     return 0

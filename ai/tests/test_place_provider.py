@@ -1,4 +1,6 @@
-from app.place_provider import parse_kakao_candidates, parse_naver_candidates
+import http.client
+
+from app.place_provider import ProviderHttpClient, parse_kakao_candidates, parse_naver_candidates
 
 
 def test_kakao_candidate_mapping_preserves_structured_fields():
@@ -31,3 +33,36 @@ def test_optional_provider_fields_are_empty_or_none():
     naver = parse_naver_candidates({"items": [{"title": "x"}]})[0]
     assert kakao.road_address == "" and kakao.latitude is None
     assert naver.category == "" and naver.longitude is None
+
+
+def test_provider_http_client_reuses_thread_connection_and_closes(monkeypatch):
+    created = []
+
+    class FakeResponse:
+        status = 200
+
+        def read(self):
+            return b"{}"
+
+    class FakeConnection:
+        def __init__(self, host, timeout):
+            self.host = host
+            self.closed = False
+            created.append(self)
+
+        def request(self, method, path, headers):
+            pass
+
+        def getresponse(self):
+            return FakeResponse()
+
+        def close(self):
+            self.closed = True
+
+    monkeypatch.setattr(http.client, "HTTPSConnection", FakeConnection)
+    client = ProviderHttpClient()
+    client.get_json("https://example.test/search", headers={}, params={"q": "a"})
+    client.get_json("https://example.test/search", headers={}, params={"q": "b"})
+    assert len(created) == 1
+    client.close()
+    assert created[0].closed

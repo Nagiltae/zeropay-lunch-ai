@@ -1,7 +1,8 @@
-from app import place_detail_persistence
-from app.place_dom_detail_crawler import DomCollectedDetail, PlaceDomDetailCrawler
-from app.place_detail_persistence import PlaceDetailPersistence
 import pytest
+
+from app import place_detail_persistence
+from app.place_detail_persistence import PlaceDetailPersistence
+from app.place_dom_detail_crawler import DomCollectedDetail, PlaceDomDetailCrawler
 
 
 def test_dom_detail_section_statuses_keep_place_and_sections_separate():
@@ -69,6 +70,7 @@ def test_persistence_wraps_all_detail_writes_in_transaction(monkeypatch, tmp_pat
 
 def test_persistence_surfaces_database_error(monkeypatch, tmp_path):
     calls = []
+
     class Result:
         returncode = 1
         stderr = "Duplicate entry 'x' for key 'uk_example'"

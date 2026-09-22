@@ -22,48 +22,85 @@ from types import SimpleNamespace
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
+from app.place_detail_persistence import PlaceDetailPersistence
 from app.place_dom_detail_crawler import PlaceDomDetailCrawler
 from app.place_request_limiter import NavigationRateLimiter
-from app.place_detail_persistence import PlaceDetailPersistence
 from app.place_resolver import (
     PlaceCandidate,
     Resolution,
     ResolutionStatus,
-    query_for,
     query_variants_for,
 )
 from app.place_resolver_cli import (
     DEFAULT_CHECKPOINT_NAME,
+    _existing_pcmap_mapping,
     load_komsco_population,
     load_local_env,
     load_verified_checkpoint,
     preflight,
     run_one,
     save_verified_checkpoint,
-    _existing_pcmap_mapping,
     write_resolved_to_db,
 )
 from app.qwen_candidate_matcher import OllamaClient, QwenCandidateMatcher, configured_qwen_model
 
 FIELDS = [
-    "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
-    "komsco_latitude", "komsco_longitude",
-    "query", "place_id", "place_url", "resolve_status", "detail_status",
-    "matcher_source", "qwen_used", "qwen_confidence",
-    "qwen_ranking", "resolved_rank", "detail_validation_attempts",
-    "candidate_count_before_filter", "candidate_count_after_filter", "qwen_pool_count",
+    "restaurant_id",
+    "external_merchant_id",
+    "komsco_name",
+    "komsco_address",
+    "komsco_latitude",
+    "komsco_longitude",
+    "query",
+    "place_id",
+    "place_url",
+    "resolve_status",
+    "detail_status",
+    "matcher_source",
+    "qwen_used",
+    "qwen_confidence",
+    "qwen_ranking",
+    "resolved_rank",
+    "detail_validation_attempts",
+    "candidate_count_before_filter",
+    "candidate_count_after_filter",
+    "qwen_pool_count",
     "validation_attempts_json",
-    "detail_access_method", "http_result", "playwright_result",
-    "menu_count", "parsed_menu_count", "menu_complete", "menu_fallback_used",
-    "home_status", "hours_status", "menu_status", "review_status",
-    "review_requested", "review_count", "review_keyword_count",
-    "review_menu_mention_count", "review_theme_count", "representative_review_count",
-    "detail_warnings", "result", "reason", "verification_status", "verification_reason",
-    "selected_category", "selected_category_values", "selected_road_address",
-    "selected_jibun_address", "selected_x", "selected_y", "candidate_attempts_json",
-    "persistence_status", "persistence_error",
+    "detail_access_method",
+    "http_result",
+    "playwright_result",
+    "menu_count",
+    "parsed_menu_count",
+    "menu_complete",
+    "menu_fallback_used",
+    "home_status",
+    "hours_status",
+    "menu_status",
+    "review_status",
+    "review_requested",
+    "review_count",
+    "review_keyword_count",
+    "review_menu_mention_count",
+    "review_theme_count",
+    "representative_review_count",
+    "detail_warnings",
+    "result",
+    "reason",
+    "verification_status",
+    "verification_reason",
+    "selected_category",
+    "selected_category_values",
+    "selected_road_address",
+    "selected_jibun_address",
+    "selected_x",
+    "selected_y",
+    "candidate_attempts_json",
+    "persistence_status",
+    "persistence_error",
     "elapsed_ms",
 ]
+
+
 def is_blocked_error(error: BaseException) -> bool:
     return str(error).startswith("BLOCKED:")
 
@@ -72,7 +109,14 @@ def is_fatal_persistence_error(error: BaseException) -> bool:
     text = str(error).lower()
     return any(
         marker in text
-        for marker in ("can't connect", "cannot connect", "connection refused", "timed out", "docker", "credential")
+        for marker in (
+            "can't connect",
+            "cannot connect",
+            "connection refused",
+            "timed out",
+            "docker",
+            "credential",
+        )
     )
 
 
@@ -93,23 +137,46 @@ def checkpoint_result(reference, checkpoint_row):
     candidate = PlaceCandidate(
         checkpoint_row.get("resolved_name", ""),
         checkpoint_row.get("resolved_address", ""),
-        "", f"https://pcmap.place.naver.com/restaurant/{checkpoint_row['place_id']}/home",
+        "",
+        f"https://pcmap.place.naver.com/restaurant/{checkpoint_row['place_id']}/home",
         checkpoint_row["place_id"],
     )
-    return type("CheckpointResult", (), {
-        "reference": reference, "query": "CHECKPOINT", "place_id": checkpoint_row["place_id"],
-        "candidate": candidate, "resolution": Resolution(
-            reference, "CHECKPOINT", candidate, ResolutionStatus.RESOLVED,
-            "CHECKPOINT", "CHECKPOINT", "CHECKPOINT", ()
-        ), "matcher_source": "VERIFIED_CHECKPOINT", "qwen_used": False,
-        "qwen_confidence": "", "selected_index": 0, "detail": None,
-        "qwen_candidate_indices": (0,), "detail_validation_attempts": 0,
-    })()
+    return type(
+        "CheckpointResult",
+        (),
+        {
+            "reference": reference,
+            "query": "CHECKPOINT",
+            "place_id": checkpoint_row["place_id"],
+            "candidate": candidate,
+            "resolution": Resolution(
+                reference,
+                "CHECKPOINT",
+                candidate,
+                ResolutionStatus.RESOLVED,
+                "CHECKPOINT",
+                "CHECKPOINT",
+                "CHECKPOINT",
+                (),
+            ),
+            "matcher_source": "VERIFIED_CHECKPOINT",
+            "qwen_used": False,
+            "qwen_confidence": "",
+            "selected_index": 0,
+            "detail": None,
+            "qwen_candidate_indices": (0,),
+            "detail_validation_attempts": 0,
+        },
+    )()
 
 
 def select_pipeline_references(references, *, restaurant_id=None, limit: int | None = None):
     """Apply explicit id filtering and a hard batch limit before processing."""
-    ids = None if restaurant_id is None else set(restaurant_id if isinstance(restaurant_id, list) else [restaurant_id])
+    ids = (
+        None
+        if restaurant_id is None
+        else set(restaurant_id if isinstance(restaurant_id, list) else [restaurant_id])
+    )
     selected = [item for item in references if ids is None or item.restaurant_id in ids]
     return selected[:limit] if limit is not None else selected
 
@@ -125,21 +192,30 @@ def load_batch_manifest(path: Path) -> list[int]:
 def load_stable_manifest(path: Path) -> list[dict[str, str]]:
     """Read a stable KOMSCO manifest keyed by external_merchant_id."""
     with path.open(newline="", encoding="utf-8") as stream:
-        rows = [row for row in csv.DictReader(
-            line for line in stream if line.strip() and not line.lstrip().startswith("#")
-        )]
+        rows = [
+            row
+            for row in csv.DictReader(
+                line for line in stream if line.strip() and not line.lstrip().startswith("#")
+            )
+        ]
     if not rows or "external_merchant_id" not in rows[0]:
         raise RuntimeError(f"stable manifest requires external_merchant_id column: {path}")
     identities = [row.get("external_merchant_id", "").strip() for row in rows]
     if any(not identity for identity in identities) or len(identities) != len(set(identities)):
-        raise RuntimeError(f"stable manifest contains missing or duplicate external_merchant_id: {path}")
+        raise RuntimeError(
+            f"stable manifest contains missing or duplicate external_merchant_id: {path}"
+        )
     return rows
 
 
 def load_manifest(path: Path) -> tuple[list[int] | None, list[dict[str, str]] | None]:
     first_data = next(
-        (line for line in path.read_text(encoding="utf-8").splitlines()
-         if line.strip() and not line.lstrip().startswith("#")), ""
+        (
+            line
+            for line in path.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ),
+        "",
     )
     if first_data.lower().startswith("external_merchant_id,"):
         return None, load_stable_manifest(path)
@@ -167,10 +243,16 @@ class ResumeLedger:
         if force_resolve:
             return set()
         if retry_failed:
-            return {rid for rid, row in self.rows.items() if row.get("status") in TERMINAL_LEDGER_STATES}
-        return {rid for rid, row in self.rows.items() if row.get("status") in TERMINAL_LEDGER_STATES}
+            return {
+                rid for rid, row in self.rows.items() if row.get("status") in TERMINAL_LEDGER_STATES
+            }
+        return {
+            rid for rid, row in self.rows.items() if row.get("status") in TERMINAL_LEDGER_STATES
+        }
 
-    def record(self, restaurant_id: int, status: str, *, place_id: str = "", reason: str = "") -> None:
+    def record(
+        self, restaurant_id: int, status: str, *, place_id: str = "", reason: str = ""
+    ) -> None:
         self.rows[restaurant_id] = {
             "restaurant_id": str(restaurant_id),
             "status": status,
@@ -184,7 +266,8 @@ class ResumeLedger:
             writer = csv.DictWriter(stream, fieldnames=self.FIELDS)
             writer.writeheader()
             writer.writerows(self.rows.values())
-            stream.flush(); os.fsync(stream.fileno())
+            stream.flush()
+            os.fsync(stream.fileno())
         temporary.replace(self.path)
 
 
@@ -196,7 +279,8 @@ class PipelineWriter:
         if resume and retry_failed and path.exists() and path.stat().st_size:
             with path.open(newline="", encoding="utf-8") as source:
                 retained = [
-                    row for row in csv.DictReader(source)
+                    row
+                    for row in csv.DictReader(source)
                     if row.get("detail_status") not in {"FAILED", "PARTIAL"}
                 ]
             resume = False
@@ -209,7 +293,8 @@ class PipelineWriter:
             self.flush()
 
     def flush(self):
-        self.stream.flush(); os.fsync(self.stream.fileno())
+        self.stream.flush()
+        os.fsync(self.stream.fileno())
 
     def completed(self, retry_failed: bool = False) -> set[int]:
         if not self.path.exists() or self.path.stat().st_size == 0:
@@ -231,19 +316,38 @@ class PipelineWriter:
             return completed
 
     def append(self, row: dict[str, object]):
-        self.writer.writerow(row); self.flush()
+        self.writer.writerow(row)
+        self.flush()
 
     def close(self):
         self.stream.close()
 
 
 MANUAL_REVIEW_FIELDS = (
-    "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
-    "komsco_latitude", "komsco_longitude", "final_status", "verification_status",
-    "verification_reason", "elapsed_ms", "selected_rank", "place_id", "selected_name",
-    "selected_category", "selected_category_values", "selected_address",
-    "selected_road_address", "selected_jibun_address", "selected_x", "selected_y",
-    "qwen_ranking", "candidate_attempts_json", "gold_label", "correct_place_id",
+    "restaurant_id",
+    "external_merchant_id",
+    "komsco_name",
+    "komsco_address",
+    "komsco_latitude",
+    "komsco_longitude",
+    "final_status",
+    "verification_status",
+    "verification_reason",
+    "elapsed_ms",
+    "selected_rank",
+    "place_id",
+    "selected_name",
+    "selected_category",
+    "selected_category_values",
+    "selected_address",
+    "selected_road_address",
+    "selected_jibun_address",
+    "selected_x",
+    "selected_y",
+    "qwen_ranking",
+    "candidate_attempts_json",
+    "gold_label",
+    "correct_place_id",
     "reviewer_note",
 )
 
@@ -251,9 +355,10 @@ MANUAL_REVIEW_FIELDS = (
 def write_manual_review_csv(report: Path) -> Path:
     """Create a review-sidecar without changing the report or database."""
     manual = report.with_name(f"{report.stem}-manual-review.csv")
-    with report.open(newline="", encoding="utf-8") as source, manual.open(
-        "w", newline="", encoding="utf-8"
-    ) as target:
+    with (
+        report.open(newline="", encoding="utf-8") as source,
+        manual.open("w", newline="", encoding="utf-8") as target,
+    ):
         reader = csv.DictReader(source)
         writer = csv.DictWriter(target, fieldnames=MANUAL_REVIEW_FIELDS)
         writer.writeheader()
@@ -263,41 +368,56 @@ def write_manual_review_csv(report: Path) -> Path:
                 (item for item in attempts if item.get("place_id") == row.get("place_id")),
                 attempts[0] if attempts else {},
             )
-            writer.writerow({
-                "restaurant_id": row.get("restaurant_id", ""),
-                "external_merchant_id": row.get("external_merchant_id", ""),
-                "komsco_name": row.get("komsco_name", ""),
-                "komsco_address": row.get("komsco_address", ""),
-                "komsco_latitude": row.get("komsco_latitude", ""),
-                "komsco_longitude": row.get("komsco_longitude", ""),
-                "final_status": row.get("resolve_status", ""),
-                "verification_status": row.get("verification_status", ""),
-                "verification_reason": row.get("verification_reason", ""),
-                "elapsed_ms": row.get("elapsed_ms", ""),
-                "selected_rank": row.get("resolved_rank", "") or selected.get("rank", ""),
-                "place_id": row.get("place_id", "") or selected.get("place_id", ""),
-                "selected_name": selected.get("detail_name") or selected.get("candidate_name", ""),
-                "selected_category": selected.get("category", ""),
-                "selected_category_values": json.dumps(selected.get("category_values", ()), ensure_ascii=False),
-                "selected_address": selected.get("candidate_jibun_address") or selected.get("detail_jibun_address", ""),
-                "selected_road_address": selected.get("candidate_road_address") or selected.get("detail_road_address", ""),
-                "selected_jibun_address": selected.get("candidate_jibun_address") or selected.get("detail_jibun_address", ""),
-                "selected_x": selected.get("candidate_longitude", ""),
-                "selected_y": selected.get("candidate_latitude", ""),
-                "qwen_ranking": row.get("qwen_ranking", ""),
-                "candidate_attempts_json": row.get("candidate_attempts_json", "[]"),
-                "gold_label": "", "correct_place_id": "", "reviewer_note": "",
-            })
+            writer.writerow(
+                {
+                    "restaurant_id": row.get("restaurant_id", ""),
+                    "external_merchant_id": row.get("external_merchant_id", ""),
+                    "komsco_name": row.get("komsco_name", ""),
+                    "komsco_address": row.get("komsco_address", ""),
+                    "komsco_latitude": row.get("komsco_latitude", ""),
+                    "komsco_longitude": row.get("komsco_longitude", ""),
+                    "final_status": row.get("resolve_status", ""),
+                    "verification_status": row.get("verification_status", ""),
+                    "verification_reason": row.get("verification_reason", ""),
+                    "elapsed_ms": row.get("elapsed_ms", ""),
+                    "selected_rank": row.get("resolved_rank", "") or selected.get("rank", ""),
+                    "place_id": row.get("place_id", "") or selected.get("place_id", ""),
+                    "selected_name": selected.get("detail_name")
+                    or selected.get("candidate_name", ""),
+                    "selected_category": selected.get("category", ""),
+                    "selected_category_values": json.dumps(
+                        selected.get("category_values", ()), ensure_ascii=False
+                    ),
+                    "selected_address": selected.get("candidate_jibun_address")
+                    or selected.get("detail_jibun_address", ""),
+                    "selected_road_address": selected.get("candidate_road_address")
+                    or selected.get("detail_road_address", ""),
+                    "selected_jibun_address": selected.get("candidate_jibun_address")
+                    or selected.get("detail_jibun_address", ""),
+                    "selected_x": selected.get("candidate_longitude", ""),
+                    "selected_y": selected.get("candidate_latitude", ""),
+                    "qwen_ranking": row.get("qwen_ranking", ""),
+                    "candidate_attempts_json": row.get("candidate_attempts_json", "[]"),
+                    "gold_label": "",
+                    "correct_place_id": "",
+                    "reviewer_note": "",
+                }
+            )
     return manual
 
 
-def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_status="NOT_ATTEMPTED", persistence_error="") -> dict[str, object]:
+def _row(
+    result,
+    detail_result,
+    elapsed: int,
+    reason: str = "",
+    *,
+    persistence_status="NOT_ATTEMPTED",
+    persistence_error="",
+) -> dict[str, object]:
     detail = detail_result.detail
     menus = getattr(detail, "menus", ()) if detail else ()
-    menu_count = (
-        getattr(detail, "menu_count", None)
-        if detail else None
-    )
+    menu_count = getattr(detail, "menu_count", None) if detail else None
     if menu_count is None and detail:
         menu_count = getattr(detail, "declared_menu_count", None)
     review_keywords = getattr(detail, "review_keywords", ()) if detail else ()
@@ -309,11 +429,17 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
         "external_merchant_id": result.reference.external_merchant_id or "",
         "komsco_name": result.reference.komsco_name,
         "komsco_address": result.reference.komsco_address,
-        "komsco_latitude": result.reference.komsco_latitude if result.reference.komsco_latitude is not None else "",
-        "komsco_longitude": result.reference.komsco_longitude if result.reference.komsco_longitude is not None else "",
+        "komsco_latitude": result.reference.komsco_latitude
+        if result.reference.komsco_latitude is not None
+        else "",
+        "komsco_longitude": result.reference.komsco_longitude
+        if result.reference.komsco_longitude is not None
+        else "",
         "query": result.query,
         "place_id": result.place_id or "",
-        "place_url": f"https://pcmap.place.naver.com/restaurant/{result.place_id}/home" if result.place_id else "",
+        "place_url": f"https://pcmap.place.naver.com/restaurant/{result.place_id}/home"
+        if result.place_id
+        else "",
         "resolve_status": result.resolution.status.value,
         "matcher_source": result.matcher_source,
         "qwen_used": result.qwen_used,
@@ -340,9 +466,15 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
         "selected_category": getattr(result.candidate, "category", "") if result.candidate else "",
         "selected_category_values": json.dumps(
             getattr(result.candidate, "category_values", ()), ensure_ascii=False
-        ) if result.candidate else "",
-        "selected_road_address": getattr(result.candidate, "road_address", "") if result.candidate else "",
-        "selected_jibun_address": getattr(result.candidate, "jibun_address", "") if result.candidate else "",
+        )
+        if result.candidate
+        else "",
+        "selected_road_address": getattr(result.candidate, "road_address", "")
+        if result.candidate
+        else "",
+        "selected_jibun_address": getattr(result.candidate, "jibun_address", "")
+        if result.candidate
+        else "",
         "selected_x": getattr(result.candidate, "longitude", "") if result.candidate else "",
         "selected_y": getattr(result.candidate, "latitude", "") if result.candidate else "",
         "detail_access_method": detail_result.access_method,
@@ -351,10 +483,7 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
         "detail_status": detail_result.status,
         "menu_count": menu_count if menu_count is not None else "",
         "parsed_menu_count": len(menus),
-        "menu_complete": (
-            getattr(detail, "menu_complete", False)
-            if detail else ""
-        ),
+        "menu_complete": (getattr(detail, "menu_complete", False) if detail else ""),
         "menu_fallback_used": detail_result.menu_fallback_used,
         "home_status": getattr(detail, "home_status", ""),
         "hours_status": getattr(detail, "hours_status", ""),
@@ -367,13 +496,21 @@ def _row(result, detail_result, elapsed: int, reason: str = "", *, persistence_s
         "review_theme_count": len(review_themes),
         "representative_review_count": len(representative_reviews),
         "detail_warnings": ";".join(getattr(detail, "warnings", ())) if detail else "",
-        "result": "SUCCESS" if result.resolution.status == ResolutionStatus.RESOLVED and detail_result.status == "SUCCESS" else detail_result.status,
+        "result": "SUCCESS"
+        if result.resolution.status == ResolutionStatus.RESOLVED
+        and detail_result.status == "SUCCESS"
+        else detail_result.status,
         "reason": reason or ";".join(result.resolution.risk_flags),
         "verification_status": (
-            "VERIFIED" if result.resolution.status == ResolutionStatus.RESOLVED else
-            "UNRESOLVED" if result.resolution.status == ResolutionStatus.AMBIGUOUS else
-            "REJECTED" if result.resolution.status == ResolutionStatus.NOT_FOUND else
-            "BLOCKED" if result.resolution.status == ResolutionStatus.BLOCKED else "ERROR"
+            "VERIFIED"
+            if result.resolution.status == ResolutionStatus.RESOLVED
+            else "UNRESOLVED"
+            if result.resolution.status == ResolutionStatus.AMBIGUOUS
+            else "REJECTED"
+            if result.resolution.status == ResolutionStatus.NOT_FOUND
+            else "BLOCKED"
+            if result.resolution.status == ResolutionStatus.BLOCKED
+            else "ERROR"
         ),
         "verification_reason": _verification_reason(result),
         "persistence_status": persistence_status,
@@ -403,7 +540,11 @@ def _verification_reason(result) -> str:
         return "NO_SEARCH_RESULT"
     if result.resolution.status == ResolutionStatus.BLOCKED:
         return "RATE_LIMITED"
-    return "DETAIL_LOAD_FAILED" if result.resolution.status == ResolutionStatus.ERROR else "SEMANTIC_UNCERTAIN"
+    return (
+        "DETAIL_LOAD_FAILED"
+        if result.resolution.status == ResolutionStatus.ERROR
+        else "SEMANTIC_UNCERTAIN"
+    )
 
 
 def main() -> int:
@@ -421,7 +562,9 @@ def main() -> int:
     parser.add_argument("--force-resolve", action="store_true")
     parser.add_argument("--manifest", type=Path, help="고정 KOMSCO restaurant_id 목록")
     parser.add_argument("--ledger", type=Path, help="terminal 상태 resume ledger")
-    parser.add_argument("--status", action="store_true", help="ledger 상태만 출력하고 네트워크/DB 작업을 하지 않음")
+    parser.add_argument(
+        "--status", action="store_true", help="ledger 상태만 출력하고 네트워크/DB 작업을 하지 않음"
+    )
     args = parser.parse_args()
     if args.resolve_only and args.crawl_only:
         parser.error("--resolve-only와 --crawl-only는 함께 사용할 수 없습니다")
@@ -438,24 +581,42 @@ def main() -> int:
         print(f"Ledger: {args.ledger}\nRows: {len(ledger.rows)}\n{counts}")
         return 0
     load_local_env(root)
-    output = args.output or root / "ai/build/reports/naver-place-pipeline" / f"pipeline-{datetime.now():%Y%m%d-%H%M%S}.csv"
+    output = (
+        args.output
+        or root
+        / "ai/build/reports/naver-place-pipeline"
+        / f"pipeline-{datetime.now():%Y%m%d-%H%M%S}.csv"
+    )
     # Legacy checkpoints are intentionally not loaded; this is KOMSCO-only.
-    checkpoint = args.checkpoint or root / "ai/build/reports/naver-place-pipeline" / DEFAULT_CHECKPOINT_NAME
+    checkpoint = (
+        args.checkpoint or root / "ai/build/reports/naver-place-pipeline" / DEFAULT_CHECKPOINT_NAME
+    )
     preflight(root, output, args.write_db, require_resolver=True)
     # Apply an explicit restaurant-id filter before any population limit.  The
     # previous implicit ``limit=1`` optimization could truncate the source
     # before the requested id was selected, producing a misleading zero-target
     # run for ids that were not the first row.
-    population_limit = None if args.manifest else (args.limit if args.restaurant_id is None else None)
+    population_limit = (
+        None if args.manifest else (args.limit if args.restaurant_id is None else None)
+    )
     population = load_komsco_population(root, population_limit)
-    manifest_ids, stable_manifest_rows = load_manifest(args.manifest) if args.manifest else (None, None)
+    manifest_ids, stable_manifest_rows = (
+        load_manifest(args.manifest) if args.manifest else (None, None)
+    )
     requested_ids = manifest_ids if manifest_ids is not None else args.restaurant_id
     if stable_manifest_rows is not None:
-        by_identity = {reference.external_merchant_id: reference for reference in population.references}
-        missing = [row["external_merchant_id"] for row in stable_manifest_rows
-                   if row["external_merchant_id"] not in by_identity]
+        by_identity = {
+            reference.external_merchant_id: reference for reference in population.references
+        }
+        missing = [
+            row["external_merchant_id"]
+            for row in stable_manifest_rows
+            if row["external_merchant_id"] not in by_identity
+        ]
         if missing:
-            raise RuntimeError(f"stable manifest identity not found in KOMSCO population: {missing[:10]}")
+            raise RuntimeError(
+                f"stable manifest identity not found in KOMSCO population: {missing[:10]}"
+            )
         refs = [by_identity[row["external_merchant_id"]] for row in stable_manifest_rows]
         if args.limit is not None:
             refs = refs[: args.limit]
@@ -469,16 +630,35 @@ def main() -> int:
         found = {reference.restaurant_id for reference in refs}
         missing = [restaurant_id for restaurant_id in manifest_ids if restaurant_id not in found]
         if missing:
-            raise RuntimeError(f"manifest restaurant_id not found in KOMSCO population: {missing[:10]}")
-        refs = [next(reference for reference in population.references if reference.restaurant_id == restaurant_id) for restaurant_id in manifest_ids]
+            raise RuntimeError(
+                f"manifest restaurant_id not found in KOMSCO population: {missing[:10]}"
+            )
+        refs = [
+            next(
+                reference
+                for reference in population.references
+                if reference.restaurant_id == restaurant_id
+            )
+            for restaurant_id in manifest_ids
+        ]
         if args.limit is not None:
             refs = refs[: args.limit]
     writer = PipelineWriter(output, args.resume, args.retry_failed)
-    completed = writer.completed(args.retry_failed) if args.resume and not args.force_resolve else set()
+    completed = (
+        writer.completed(args.retry_failed) if args.resume and not args.force_resolve else set()
+    )
     ledger_path = args.ledger or (output.with_suffix(".ledger.csv") if args.manifest else None)
     ledger = ResumeLedger(ledger_path, args.resume) if ledger_path else None
-    ledger_completed = ledger.completed_ids(retry_failed=args.retry_failed, force_resolve=args.force_resolve) if ledger else set()
-    refs = [r for r in refs if r.restaurant_id not in completed and r.restaurant_id not in ledger_completed]
+    ledger_completed = (
+        ledger.completed_ids(retry_failed=args.retry_failed, force_resolve=args.force_resolve)
+        if ledger
+        else set()
+    )
+    refs = [
+        r
+        for r in refs
+        if r.restaurant_id not in completed and r.restaurant_id not in ledger_completed
+    ]
     print(f"Pipeline targets: {len(refs)} (resume skipped: {len(completed)})")
     matcher = QwenCandidateMatcher(OllamaClient())
     verified = load_verified_checkpoint(checkpoint)
@@ -489,10 +669,12 @@ def main() -> int:
     )
     persistence = PlaceDetailPersistence(root) if args.write_db else None
     stop = False
+
     def handle_stop(_sig, _frame):
         nonlocal stop
         stop = True
         print("Stopping safely; completed rows are flushed.")
+
     signal.signal(signal.SIGINT, handle_stop)
     counts: dict[str, int] = {}
     persistence_counts: dict[str, int] = {}
@@ -500,10 +682,12 @@ def main() -> int:
     started = monotonic()
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
-        page = browser.new_page(); page.set_default_timeout(3_000)
+        page = browser.new_page()
+        page.set_default_timeout(3_000)
         try:
             for index, reference in enumerate(refs, 1):
-                if stop: break
+                if stop:
+                    break
                 item_started = monotonic()
                 try:
                     result = None
@@ -515,7 +699,11 @@ def main() -> int:
                         primary_result = None
                         for query in query_variants_for(reference):
                             candidate_result = run_one(
-                                page, reference, query, "KOMSCO", matcher,
+                                page,
+                                reference,
+                                query,
+                                "KOMSCO",
+                                matcher,
                                 before_navigation=limiter.before_navigation,
                             )
                             if primary_result is None:
@@ -535,9 +723,12 @@ def main() -> int:
                             if owner is None or owner == reference.restaurant_id:
                                 save_verified_checkpoint(checkpoint, result)
                             verified[reference.restaurant_id] = {
-                                "restaurant_id": str(reference.restaurant_id), "place_id": result.place_id,
+                                "restaurant_id": str(reference.restaurant_id),
+                                "place_id": result.place_id,
                                 "resolved_name": result.candidate.name if result.candidate else "",
-                                "resolved_address": result.candidate.address if result.candidate else "",
+                                "resolved_address": result.candidate.address
+                                if result.candidate
+                                else "",
                                 "verification_status": "RESOLVED",
                             }
                 except RuntimeError as error:
@@ -605,7 +796,10 @@ def main() -> int:
                 persistence_error = ""
                 if args.write_db:
                     try:
-                        if result.resolution.status == ResolutionStatus.RESOLVED and detail_result.detail:
+                        if (
+                            result.resolution.status == ResolutionStatus.RESOLVED
+                            and detail_result.detail
+                        ):
                             owner = _existing_pcmap_mapping(root, result.place_id)
                             if owner is not None and owner != reference.restaurant_id:
                                 raise RuntimeError(
@@ -617,11 +811,19 @@ def main() -> int:
                                 result.place_id,
                                 detail_result.detail.to_place_detail(result.place_id),
                             )
-                        verification_status = "VERIFIED" if result.resolution.status == ResolutionStatus.RESOLVED else (
-                            "BLOCKED" if result.resolution.status == ResolutionStatus.BLOCKED else
-                            "ERROR" if result.resolution.status == ResolutionStatus.ERROR else
-                            "REJECTED" if _verification_reason(result) in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else
-                            "UNRESOLVED"
+                        verification_status = (
+                            "VERIFIED"
+                            if result.resolution.status == ResolutionStatus.RESOLVED
+                            else (
+                                "BLOCKED"
+                                if result.resolution.status == ResolutionStatus.BLOCKED
+                                else "ERROR"
+                                if result.resolution.status == ResolutionStatus.ERROR
+                                else "REJECTED"
+                                if _verification_reason(result)
+                                in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"}
+                                else "UNRESOLVED"
+                            )
                         )
                         persistence.persist_verification(
                             reference.restaurant_id,
@@ -648,12 +850,18 @@ def main() -> int:
                 if ledger:
                     ledger_status = result.resolution.status.value
                     if persistence_status == "ERROR":
-                        ledger_status = "PLACE_ID_CONFLICT" if persistence_error.startswith("PLACE_ID_CONFLICT") else "ERROR"
+                        ledger_status = (
+                            "PLACE_ID_CONFLICT"
+                            if persistence_error.startswith("PLACE_ID_CONFLICT")
+                            else "ERROR"
+                        )
                     ledger.record(
                         reference.restaurant_id,
                         ledger_status,
                         place_id=result.place_id or "",
-                        reason=persistence_error or detail_error or ";".join(result.resolution.risk_flags),
+                        reason=persistence_error
+                        or detail_error
+                        or ";".join(result.resolution.risk_flags),
                     )
                 elapsed = int((monotonic() - item_started) * 1000)
                 row = _row(
@@ -666,17 +874,24 @@ def main() -> int:
                 writer.append(row)
                 status = result.resolution.status.value
                 counts[status] = counts.get(status, 0) + 1
-                persistence_counts[persistence_status] = persistence_counts.get(persistence_status, 0) + 1
+                persistence_counts[persistence_status] = (
+                    persistence_counts.get(persistence_status, 0) + 1
+                )
                 total_elapsed = monotonic() - started
                 eta = (len(refs) - index) * (total_elapsed / index) if index else 0
-                print(f"[{index}/{len(refs)}] {index/len(refs):.1%} restaurant_id={reference.restaurant_id} {reference.komsco_name} {status} {elapsed/1000:.2f}s ETA {time.strftime('%H:%M:%S', time.gmtime(eta))} summary={counts}")
+                print(
+                    f"[{index}/{len(refs)}] {index / len(refs):.1%} restaurant_id={reference.restaurant_id} {reference.komsco_name} {status} {elapsed / 1000:.2f}s ETA {time.strftime('%H:%M:%S', time.gmtime(eta))} summary={counts}"
+                )
                 if index < len(refs):
                     limiter.after_restaurant()
         finally:
-            browser.close(); writer.close()
+            browser.close()
+            writer.close()
     processed = sum(counts.values())
     manual_review = write_manual_review_csv(output)
-    print(f"=== Pipeline Summary ===\nProcessed: {processed}\nRemaining: {len(refs) - processed}\n{counts}\nDB persistence: {persistence_counts}\nCSV: {output}\nManual review: {manual_review}")
+    print(
+        f"=== Pipeline Summary ===\nProcessed: {processed}\nRemaining: {len(refs) - processed}\n{counts}\nDB persistence: {persistence_counts}\nCSV: {output}\nManual review: {manual_review}"
+    )
     return 2 if blocked else 0
 
 

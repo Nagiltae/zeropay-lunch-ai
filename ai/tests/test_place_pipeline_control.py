@@ -1,8 +1,8 @@
-from app import place_pipeline_cli as pipeline
-
-from app.place_resolver import ResolutionStatus, RestaurantReference
-from app.place_request_limiter import NavigationRateLimiter
 import csv
+
+from app import place_pipeline_cli as pipeline
+from app.place_request_limiter import NavigationRateLimiter
+from app.place_resolver import ResolutionStatus, RestaurantReference
 
 
 def test_blocked_stops_before_next_restaurant_handler():
@@ -30,11 +30,14 @@ def test_verified_checkpoint_reuses_place_id_without_resolution():
         komsco_longitude=None,
         legal_dong="신사동",
     )
-    result = pipeline.checkpoint_result(reference, {
-        "place_id": "1618902912",
-        "resolved_name": "소나무소고기구이",
-        "resolved_address": "서울 강남구 압구정로28길 22-9 1층",
-    })
+    result = pipeline.checkpoint_result(
+        reference,
+        {
+            "place_id": "1618902912",
+            "resolved_name": "소나무소고기구이",
+            "resolved_address": "서울 강남구 압구정로28길 22-9 1층",
+        },
+    )
 
     assert result.matcher_source == "VERIFIED_CHECKPOINT"
     assert result.place_id == "1618902912"
@@ -68,9 +71,7 @@ def test_pipeline_limit_stops_at_exactly_ten_items():
         def __init__(self, restaurant_id):
             self.restaurant_id = restaurant_id
 
-    selected = pipeline.select_pipeline_references(
-        [Item(index) for index in range(25)], limit=10
-    )
+    selected = pipeline.select_pipeline_references([Item(index) for index in range(25)], limit=10)
     calls = []
     for item in selected:
         calls.append(item.restaurant_id)
@@ -85,16 +86,24 @@ def test_manual_review_sidecar_preserves_category_coordinates_and_attempts(tmp_p
         writer = csv.DictWriter(stream, fieldnames=pipeline.FIELDS)
         writer.writeheader()
         row = {field: "" for field in pipeline.FIELDS}
-        row.update({
-            "restaurant_id": "1", "external_merchant_id": "stable-1",
-            "komsco_name": "테스트", "komsco_address": "주소",
-            "resolve_status": "RESOLVED", "verification_status": "VERIFIED",
-            "verification_reason": "MATCHED", "place_id": "99", "elapsed_ms": "10",
-            "qwen_ranking": "0", "candidate_attempts_json": '[{"rank":1,"place_id":"99",'
-            '"candidate_name":"테스트","category_values":["음식점","한식"],'
-            '"candidate_jibun_address":"서울 논현동 1","candidate_road_address":"논현로 1",'
-            '"candidate_longitude":127.0,"candidate_latitude":37.5,"final_decision":"ACCEPT"}]',
-        })
+        row.update(
+            {
+                "restaurant_id": "1",
+                "external_merchant_id": "stable-1",
+                "komsco_name": "테스트",
+                "komsco_address": "주소",
+                "resolve_status": "RESOLVED",
+                "verification_status": "VERIFIED",
+                "verification_reason": "MATCHED",
+                "place_id": "99",
+                "elapsed_ms": "10",
+                "qwen_ranking": "0",
+                "candidate_attempts_json": '[{"rank":1,"place_id":"99",'
+                '"candidate_name":"테스트","category_values":["음식점","한식"],'
+                '"candidate_jibun_address":"서울 논현동 1","candidate_road_address":"논현로 1",'
+                '"candidate_longitude":127.0,"candidate_latitude":37.5,"final_decision":"ACCEPT"}]',
+            }
+        )
         writer.writerow(row)
     sidecar = pipeline.write_manual_review_csv(report)
     review = list(csv.DictReader(sidecar.open(encoding="utf-8")))[0]
@@ -117,8 +126,15 @@ def test_pipeline_accepts_explicit_multi_id_batch():
 
 
 def test_persistence_connection_failure_is_batch_fatal_but_data_error_is_not():
-    assert pipeline.is_fatal_persistence_error(RuntimeError("detail persistence failed: connection refused"))
-    assert pipeline.is_fatal_persistence_error(RuntimeError("detail persistence failed: duplicate value")) is False
+    assert pipeline.is_fatal_persistence_error(
+        RuntimeError("detail persistence failed: connection refused")
+    )
+    assert (
+        pipeline.is_fatal_persistence_error(
+            RuntimeError("detail persistence failed: duplicate value")
+        )
+        is False
+    )
 
 
 def test_manifest_and_terminal_ledger_resume_atomic(tmp_path):
@@ -149,7 +165,9 @@ def test_manifest_rejects_duplicate_ids(tmp_path):
 def test_stable_manifest_reads_external_merchant_identity(tmp_path):
     manifest = tmp_path / "stable.manifest"
     manifest.write_text(
-        "# stable KOMSCO sample\nexternal_merchant_id,restaurant_id\nmerchant-a,10\nmerchant-b,11\n",
+        "# stable KOMSCO sample\n"
+        "external_merchant_id,restaurant_id\n"
+        "merchant-a,10\nmerchant-b,11\n",
         encoding="utf-8",
     )
     ids, rows = pipeline.load_manifest(manifest)

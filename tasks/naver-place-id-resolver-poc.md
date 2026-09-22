@@ -36,5 +36,5 @@ MySQL의 KOMSCO 원천 음식점 중 기존 hard filter를 만족하는 대상�
 
 - `poetry run pytest`
 - 변경 검증의 실제 실행은 최대 20건으로 제한하며 전체 모집단은 사용자 승인 전 실행하지 않는다.
-- `OLLAMA_BASE_URL=http://localhost:11434`, `LOCAL_LLM_MODEL=qwen3:8b`; 사전 준비: `ollama pull qwen3:8b`
+- `OLLAMA_BASE_URL=http://localhost:11434`, `QWEN_MODEL=qwen3.5:9b`; 사전 준비: `ollama pull qwen3.5:9b`
 - CAPTCHA, 접근 차단, HTTP 403/429가 감지되면 즉시 중단한다.

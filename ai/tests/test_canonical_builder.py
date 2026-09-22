@@ -1,5 +1,5 @@
-from app.canonical_builder import CanonicalRestaurant, build_canonical, _sql_value, generate_mapping_sql
-from app.canonical_persistence_cli import verification_metadata, process_csv
+from app.canonical_builder import _sql_value, build_canonical, generate_mapping_sql
+from app.canonical_persistence_cli import process_csv, verification_metadata
 from app.place_detail_persistence import PlaceDetailPersistence
 from app.place_provider import PlaceSearchCandidate
 from app.place_resolver import RestaurantReference
@@ -106,11 +106,13 @@ def test_generate_mapping_sql_empty_place_id_stores_null():
 
 def test_verification_metadata_uses_provider_reason_and_configured_model(monkeypatch):
     monkeypatch.setenv("QWEN_MODEL", "qwen3.5:9b")
-    status, reason, model = verification_metadata({
-        "decision": "REJECT",
-        "verification_reason": "OUT_OF_SCOPE",
-        "reason": "must not be used",
-    })
+    status, reason, model = verification_metadata(
+        {
+            "decision": "REJECT",
+            "verification_reason": "OUT_OF_SCOPE",
+            "reason": "must not be used",
+        }
+    )
     assert status == "REJECTED"
     assert reason == "OUT_OF_SCOPE"
     assert model == "qwen3.5:9b"
@@ -118,21 +120,25 @@ def test_verification_metadata_uses_provider_reason_and_configured_model(monkeyp
 
 def test_verification_metadata_preserves_actual_inference_model(monkeypatch):
     monkeypatch.setenv("QWEN_MODEL", "qwen3.5:9b")
-    _, _, model = verification_metadata({
-        "decision": "REJECT",
-        "verification_reason": "NO_MATCH",
-        "qwen_model": "model-recorded-in-result",
-    })
+    _, _, model = verification_metadata(
+        {
+            "decision": "REJECT",
+            "verification_reason": "NO_MATCH",
+            "qwen_model": "model-recorded-in-result",
+        }
+    )
     assert model == "model-recorded-in-result"
 
 
 def test_verification_metadata_normalizes_long_reason_to_structured_code():
-    status, reason, _ = verification_metadata({
-        "decision": "REJECT",
-        "verification_reason": "자연어 판단 사유 " * 20,
-        "qwen_business_type": "NON_FOOD",
-        "qwen_location_scope": "IN_SCOPE",
-    })
+    status, reason, _ = verification_metadata(
+        {
+            "decision": "REJECT",
+            "verification_reason": "자연어 판단 사유 " * 20,
+            "qwen_business_type": "NON_FOOD",
+            "qwen_location_scope": "IN_SCOPE",
+        }
+    )
     assert status == "REJECTED"
     assert reason == "NON_FOOD"
 
@@ -156,30 +162,63 @@ def test_persistence_accepts_csv_source_fingerprint(monkeypatch, tmp_path):
 def test_canonical_is_written_before_verified_checkpoint(monkeypatch, tmp_path):
     import csv
     import json
+
     from app import canonical_persistence_cli
 
     path = tmp_path / "result.csv"
     with path.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=[
-            "restaurant_id", "external_merchant_id", "komsco_name", "komsco_address",
-            "decision", "naver_selected_index", "kakao_selected_index", "candidates_json",
-            "source_fingerprint", "recommendation_eligibility", "verification_reason", "qwen_model",
-        ])
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=[
+                "restaurant_id",
+                "external_merchant_id",
+                "komsco_name",
+                "komsco_address",
+                "decision",
+                "naver_selected_index",
+                "kakao_selected_index",
+                "candidates_json",
+                "source_fingerprint",
+                "recommendation_eligibility",
+                "verification_reason",
+                "qwen_model",
+            ],
+        )
         writer.writeheader()
-        writer.writerow({
-            "restaurant_id": "1", "external_merchant_id": "merchant-1",
-            "komsco_name": "음식점", "komsco_address": "논현동 1", "decision": "ACCEPT",
-            "naver_selected_index": "0", "candidates_json": json.dumps([{
-                "provider": "NAVER_LOCAL", "external_place_id": "", "name": "음식점",
-                "address": "논현동 1", "category": "한식",
-            }]),
-            "source_fingerprint": "fingerprint", "recommendation_eligibility": "ELIGIBLE",
-            "verification_reason": "MATCHED", "qwen_model": "qwen3.5:9b",
-        })
+        writer.writerow(
+            {
+                "restaurant_id": "1",
+                "external_merchant_id": "merchant-1",
+                "komsco_name": "음식점",
+                "komsco_address": "논현동 1",
+                "decision": "ACCEPT",
+                "naver_selected_index": "0",
+                "candidates_json": json.dumps(
+                    [
+                        {
+                            "provider": "NAVER_LOCAL",
+                            "external_place_id": "",
+                            "name": "음식점",
+                            "address": "논현동 1",
+                            "category": "한식",
+                        }
+                    ]
+                ),
+                "source_fingerprint": "fingerprint",
+                "recommendation_eligibility": "ELIGIBLE",
+                "verification_reason": "MATCHED",
+                "qwen_model": "qwen3.5:9b",
+            }
+        )
 
     events = []
-    monkeypatch.setattr(canonical_persistence_cli, "_execute_sql", lambda *_: events.append("canonical"))
-    monkeypatch.setattr(PlaceDetailPersistence, "persist_verification",
-                        lambda *_, **__: events.append("verification"))
+    monkeypatch.setattr(
+        canonical_persistence_cli, "_execute_sql", lambda *_: events.append("canonical")
+    )
+    monkeypatch.setattr(
+        PlaceDetailPersistence,
+        "persist_verification",
+        lambda *_, **__: events.append("verification"),
+    )
     assert process_csv(path, tmp_path) == (1, 0)
     assert events == ["canonical", "verification"]

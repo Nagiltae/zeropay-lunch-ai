@@ -59,5 +59,6 @@ def load_provider_manifest(path: Path) -> tuple[RestaurantReference, ...]:
             komsco_longitude=_float(row.get("komsco_lon") or row.get("longitude")),
             legal_dong=row.get("legal_dong_name", "논현동"),
             external_merchant_id=identities[len(references)],
+            processing_reason=row.get("processing_reason", ""),
         ))
     return tuple(references)

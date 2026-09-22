@@ -25,33 +25,60 @@ from app.qwen_candidate_matcher import (
 
 
 def test_address_best_evidence_ignores_trailing_detail_and_mixed_sources() -> None:
-    assert compare_address_pair(
-        "서울특별시 강남구 도산대로30길 46 tov토브", "서울 강남구 도산대로30길 46"
-    ) == "STRONG_MATCH"
+    assert (
+        compare_address_pair(
+            "서울특별시 강남구 도산대로30길 46 tov토브", "서울 강남구 도산대로30길 46"
+        )
+        == "STRONG_MATCH"
+    )
 
-
-    assert best_address_evidence(
-        ("서울 강남구 논현동 80-6", "서울 강남구 학동로 123"),
-        ("서울 강남구 학동로 123 2층", ""),
-    ) == "STRONG_MATCH"
+    assert (
+        best_address_evidence(
+            ("서울 강남구 논현동 80-6", "서울 강남구 학동로 123"),
+            ("서울 강남구 학동로 123 2층", ""),
+        )
+        == "STRONG_MATCH"
+    )
 
 
 def test_allsearch_structured_candidate_preserves_name_and_category() -> None:
-    candidates = parse_allsearch_candidates({"items": [{
-        "placeId": "123", "name": "나향반점", "category": "중식당",
-        "roadAddress": "서울 강남구 논현로 1",
-    }]})
+    candidates = parse_allsearch_candidates(
+        {
+            "items": [
+                {
+                    "placeId": "123",
+                    "name": "나향반점",
+                    "category": "중식당",
+                    "roadAddress": "서울 강남구 논현로 1",
+                }
+            ]
+        }
+    )
     assert candidates[0].name == "나향반점"
     assert candidates[0].category == "중식당"
     assert candidates[0].place_id == "123"
 
 
 def test_allsearch_category_array_is_preserved_as_structured_text() -> None:
-    candidate = parse_allsearch_candidates({"result": {"place": {"list": [{
-        "id": "124", "name": "나향반점", "category": ["중식", "중식당"],
-        "address": "서울 강남구 논현동 1", "roadAddress": "서울 강남구 논현로 1",
-        "x": "127.0", "y": "37.5",
-    }]}}})[0]
+    candidate = parse_allsearch_candidates(
+        {
+            "result": {
+                "place": {
+                    "list": [
+                        {
+                            "id": "124",
+                            "name": "나향반점",
+                            "category": ["중식", "중식당"],
+                            "address": "서울 강남구 논현동 1",
+                            "roadAddress": "서울 강남구 논현로 1",
+                            "x": "127.0",
+                            "y": "37.5",
+                        }
+                    ]
+                }
+            }
+        }
+    )[0]
     assert candidate.category == "중식 > 중식당"
     assert candidate.road_address.endswith("논현로 1")
     assert candidate.latitude == 37.5
@@ -65,25 +92,36 @@ def test_allsearch_missing_category_is_unknown_and_not_non_food() -> None:
 
 
 def test_allsearch_missing_place_id_is_retained_for_technical_reason() -> None:
-    candidate = parse_allsearch_candidates({"items": [{
-        "name": "식당", "category": "한식", "roadAddress": "서울 강남구 논현로 1"
-    }]})[0]
+    candidate = parse_allsearch_candidates(
+        {"items": [{"name": "식당", "category": "한식", "roadAddress": "서울 강남구 논현로 1"}]}
+    )[0]
     assert candidate.place_id is None
 
 
 def test_allsearch_does_not_infer_dong_from_road_name() -> None:
-    candidate = parse_allsearch_candidates({"items": [{
-        "placeId": "123", "name": "식당", "roadAddress": "서울 강남구 학동로 1"
-    }]})[0]
+    candidate = parse_allsearch_candidates(
+        {"items": [{"placeId": "123", "name": "식당", "roadAddress": "서울 강남구 학동로 1"}]}
+    )[0]
     assert candidate.jibun_address == ""
 
 
 def test_search_direct_uses_allsearch_json_and_structured_place_id(monkeypatch) -> None:
     class Response:
         status = 200
-    payload = {"result": {"place": {"list": [{
-        "id": "77", "name": "테스트", "category": ["한식"],
-    }]}}}
+
+    payload = {
+        "result": {
+            "place": {
+                "list": [
+                    {
+                        "id": "77",
+                        "name": "테스트",
+                        "category": ["한식"],
+                    }
+                ]
+            }
+        }
+    }
     monkeypatch.setattr(cli, "_search_ui_response", lambda *_args, **_kwargs: (Response(), payload))
     values, count = cli.search_direct(object(), "논현동 테스트", reference())
     assert count == 1
@@ -94,7 +132,12 @@ def test_search_direct_uses_allsearch_json_and_structured_place_id(monkeypatch) 
 def test_allsearch_http_block_is_raised_as_batch_blocked(monkeypatch) -> None:
     class Response:
         status = 429
-    monkeypatch.setattr(cli, "_search_ui_response", lambda *_args, **_kwargs: (_ for _ in ()).throw(RuntimeError("BLOCKED: HTTP 429")))
+
+    monkeypatch.setattr(
+        cli,
+        "_search_ui_response",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(RuntimeError("BLOCKED: HTTP 429")),
+    )
     try:
         cli.search_direct(object(), "query", reference())
     except RuntimeError as error:
@@ -104,7 +147,13 @@ def test_allsearch_http_block_is_raised_as_batch_blocked(monkeypatch) -> None:
 
 
 def test_allsearch_ncaptcha_response_is_blocked(monkeypatch) -> None:
-    monkeypatch.setattr(cli, "_search_ui_response", lambda *_args, **_kwargs: (_ for _ in ()).throw(RuntimeError("BLOCKED: allSearch CAPTCHA 응답")))
+    monkeypatch.setattr(
+        cli,
+        "_search_ui_response",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            RuntimeError("BLOCKED: allSearch CAPTCHA 응답")
+        ),
+    )
     try:
         cli.search_direct(object(), "query", reference())
     except RuntimeError as error:
@@ -119,27 +168,29 @@ def test_address_missing_is_unknown_and_not_different() -> None:
 
 
 def test_semantic_address_parser_rejects_route_guidance() -> None:
-    assert cli.parse_semantic_address_row(
-        "주소", "주소 서울 강남구 도산대로30길 46"
-    ) == "서울 강남구 도산대로30길 46"
-    assert cli.parse_semantic_address_row(
-        "주소", "주소 7수인분당강남구청역 3-1번 출구에서 592m"
-    ) == ""
+    assert (
+        cli.parse_semantic_address_row("주소", "주소 서울 강남구 도산대로30길 46")
+        == "서울 강남구 도산대로30길 46"
+    )
+    assert (
+        cli.parse_semantic_address_row("주소", "주소 7수인분당강남구청역 3-1번 출구에서 592m") == ""
+    )
 
 
 def test_live_address_rows_keep_road_jibun_and_route_separate() -> None:
-    assert cli.parse_address_value_row(
-        "도로명", "도로명서울 강남구 도산대로30길 46 tov토브복사"
-    ) == "서울 강남구 도산대로30길 46 tov토브"
-    assert cli.parse_address_value_row(
-        "지번", "지번서울 강남구 논현동 80-6복사"
-    ) == "서울 강남구 논현동 80-6"
-    assert cli.parse_route_value_row(
-        "찾아가는길", "찾아가는길학동역8번출구 도보10분"
-    ) == "학동역8번출구 도보10분"
-    assert cli.parse_route_value_row(
-        "주소", "주소학동역8번출구 도보10분"
-    ) == ""
+    assert (
+        cli.parse_address_value_row("도로명", "도로명서울 강남구 도산대로30길 46 tov토브복사")
+        == "서울 강남구 도산대로30길 46 tov토브"
+    )
+    assert (
+        cli.parse_address_value_row("지번", "지번서울 강남구 논현동 80-6복사")
+        == "서울 강남구 논현동 80-6"
+    )
+    assert (
+        cli.parse_route_value_row("찾아가는길", "찾아가는길학동역8번출구 도보10분")
+        == "학동역8번출구 도보10분"
+    )
+    assert cli.parse_route_value_row("주소", "주소학동역8번출구 도보10분") == ""
 
 
 def reference() -> RestaurantReference:
@@ -158,16 +209,18 @@ def test_population_is_komsco_only_nonhyeon_without_naver_join(monkeypatch, tmp_
 
     def fake_rows(_root, sql):
         seen.append(sql)
-        return [{
-            "restaurant_id": 7,
-            "name": "논현 식당",
-            "address": "서울 강남구 논현동",
-            "detail_address": "",
-            "latitude": "37.51",
-            "longitude": "127.03",
-            "legal_dong_name": "논현동",
-            "industry_name": "음식점",
-        }]
+        return [
+            {
+                "restaurant_id": 7,
+                "name": "논현 식당",
+                "address": "서울 강남구 논현동",
+                "detail_address": "",
+                "latitude": "37.51",
+                "longitude": "127.03",
+                "legal_dong_name": "논현동",
+                "industry_name": "음식점",
+            }
+        ]
 
     monkeypatch.setattr(cli, "_mysql_rows", fake_rows)
     population = cli.load_komsco_population(tmp_path, None)
@@ -178,11 +231,22 @@ def test_population_is_komsco_only_nonhyeon_without_naver_join(monkeypatch, tmp_
 
 
 def test_population_keeps_coordinate_null_komsco_row(monkeypatch, tmp_path) -> None:
-    monkeypatch.setattr(cli, "_mysql_rows", lambda _root, _sql: [{
-        "restaurant_id": 8, "name": "좌표없는 식당", "address": "서울 강남구 논현동",
-        "detail_address": "", "latitude": "", "longitude": "",
-        "legal_dong_name": "논현동", "industry_name": "음식점",
-    }])
+    monkeypatch.setattr(
+        cli,
+        "_mysql_rows",
+        lambda _root, _sql: [
+            {
+                "restaurant_id": 8,
+                "name": "좌표없는 식당",
+                "address": "서울 강남구 논현동",
+                "detail_address": "",
+                "latitude": "",
+                "longitude": "",
+                "legal_dong_name": "논현동",
+                "industry_name": "음식점",
+            }
+        ],
+    )
     population = cli.load_komsco_population(tmp_path, None)
     assert len(population.references) == 1
     assert population.references[0].komsco_latitude is None
@@ -238,7 +302,9 @@ def test_name_match_allows_reordered_long_brand_core_with_strong_address() -> No
     candidate = PlaceCandidate(
         "돈돌 부대찌개 매니아 강남구청점찌개,전골",
         "서울 강남구 선릉로129길 11 논현동242-18 2층",
-        "찌개,전골", "", "12346",
+        "찌개,전골",
+        "",
+        "12346",
     )
     assert resolve_candidate(source, [candidate]).status == ResolutionStatus.RESOLVED
 
@@ -251,7 +317,9 @@ def test_short_generic_name_does_not_match_by_common_substring() -> None:
 
 def test_query_variants_are_deterministic_and_kosmsco_only() -> None:
     values = query_variants_for(
-        RestaurantReference(3, "(주)상해루", "서울 강남구 강남대로 512, 지하1층 (논현동)", None, None, "논현동")
+        RestaurantReference(
+            3, "(주)상해루", "서울 강남구 강남대로 512, 지하1층 (논현동)", None, None, "논현동"
+        )
     )
     assert values[0] == "논현동 (주)상해루"
     assert "논현동 상해루" in values
@@ -263,27 +331,36 @@ def test_qwen_receives_bounded_soft_ranked_pool_larger_than_top_five(monkeypatch
     reference_value = reference()
     candidates = tuple(
         cli.CandidateDom(
-            cli.PlaceCandidate(f"테스트 식당 후보{i}", "서울 강남구 테헤란로 99", "한식", "", str(i)),
-            object(), i, (str(i),)
+            cli.PlaceCandidate(
+                f"테스트 식당 후보{i}", "서울 강남구 테헤란로 99", "한식", "", str(i)
+            ),
+            object(),
+            i,
+            (str(i),),
         )
         for i in range(8)
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: (candidates, 8))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
     monkeypatch.setattr(
-        cli, "load_detail_page",
+        cli,
+        "load_detail_page",
         lambda *_args, **_kwargs: cli.DetailData(
             "/restaurant/1/home", "다른 식당", "서울 강남구 테헤란로 99", "한식"
         ),
     )
     seen = []
     matcher = type(
-        "Matcher", (), {
+        "Matcher",
+        (),
+        {
             "choose": lambda self, _reference, values: (
                 seen.append(len(values))
-                or type("Decision", (), {"candidate_indices": (0, 1, 2, 3, 4), "confidence": "LOW"})()
+                or type(
+                    "Decision", (), {"candidate_indices": (0, 1, 2, 3, 4), "confidence": "LOW"}
+                )()
             )
-        }
+        },
     )()
     result = cli.run_one(object(), reference_value, "query", "KOMSCO", matcher)
     assert seen == [8]
@@ -296,25 +373,37 @@ def test_qwen_rank_one_failure_continues_to_rank_two(monkeypatch) -> None:
     source = reference()
     first = cli.CandidateDom(
         cli.PlaceCandidate(source.komsco_name, source.komsco_address, "한식", "", "111"),
-        object(), 0, ("111",)
+        object(),
+        0,
+        ("111",),
     )
     second = cli.CandidateDom(
         cli.PlaceCandidate(source.komsco_name, source.komsco_address, "한식", "", "222"),
-        object(), 1, ("222",)
+        object(),
+        1,
+        ("222",),
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
+
     def detail(_page, candidate, **_kwargs):
         if candidate.place_id == "111":
-            return cli.DetailData("/restaurant/111/home", "전혀 다른 곳", "서울 강남구 다른로 9", "한식")
-        return cli.DetailData("/restaurant/222/home", source.komsco_name, source.komsco_address, "한식")
+            return cli.DetailData(
+                "/restaurant/111/home", "전혀 다른 곳", "서울 강남구 다른로 9", "한식"
+            )
+        return cli.DetailData(
+            "/restaurant/222/home", source.komsco_name, source.komsco_address, "한식"
+        )
+
     monkeypatch.setattr(cli, "load_detail_page", detail)
     matcher = type(
-        "Matcher", (), {
+        "Matcher",
+        (),
+        {
             "choose": lambda self, _reference, _values: type(
                 "Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"}
             )()
-        }
+        },
     )()
     result = cli.run_one(object(), source, "query", "KOMSCO", matcher)
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
@@ -327,23 +416,34 @@ def test_semantic_match_can_resolve_name_reordered_detail(monkeypatch) -> None:
         44, "부대찌개매니아 돈돌", "서울 강남구 선릉로129길 11", None, None, "논현동"
     )
     candidate = cli.CandidateDom(
-        cli.PlaceCandidate("돈돌 부대찌개 매니아 강남구청점", source.komsco_address, "한식", "", "444"),
-        object(), 0, ("444",)
+        cli.PlaceCandidate(
+            "돈돌 부대찌개 매니아 강남구청점", source.komsco_address, "한식", "", "444"
+        ),
+        object(),
+        0,
+        ("444",),
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
     monkeypatch.setattr(
-        cli, "load_detail_page",
+        cli,
+        "load_detail_page",
         lambda *_args, **_kwargs: cli.DetailData(
-            "/restaurant/444/home", candidate.candidate.name, source.komsco_address, "한식"
-            , address_status="SUCCESS"
+            "/restaurant/444/home",
+            candidate.candidate.name,
+            source.komsco_address,
+            "한식",
+            address_status="SUCCESS",
         ),
     )
+
     class SemanticMatcher:
         def choose(self, _reference, _candidates):
             return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
+
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "MATCH", "reason": "same shop"})()
+
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
     assert result.place_id == "444"
@@ -361,18 +461,25 @@ def test_semantic_rank_one_uncertain_continues_to_rank_two(monkeypatch) -> None:
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
     monkeypatch.setattr(
-        cli, "load_detail_page",
+        cli,
+        "load_detail_page",
         lambda _page, candidate, **_kwargs: cli.DetailData(
-            f"/restaurant/{candidate.place_id}/home", candidate.name, source.komsco_address, "한식"
-            , address_status="SUCCESS"
+            f"/restaurant/{candidate.place_id}/home",
+            candidate.name,
+            source.komsco_address,
+            "한식",
+            address_status="SUCCESS",
         ),
     )
+
     class SemanticMatcher:
         def validate(self, _reference, candidate):
             decision = "UNCERTAIN" if candidate.place_id == "501" else "MATCH"
             return type("Decision", (), {"decision": decision, "reason": decision})()
+
         def choose(self, _reference, _candidates):
             return type("Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"})()
+
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
     assert result.place_id == "502"
@@ -385,14 +492,21 @@ def test_semantic_all_failures_remain_ambiguous(monkeypatch) -> None:
         cli.PlaceCandidate("후보", source.komsco_address, "한식", "", "601"), object(), 0, ("601",)
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
-    monkeypatch.setattr(cli, "load_detail_page", lambda *_args, **_kwargs: cli.DetailData(
-        "/restaurant/601/home", "후보", source.komsco_address, "한식"
-    ))
+    monkeypatch.setattr(
+        cli,
+        "load_detail_page",
+        lambda *_args, **_kwargs: cli.DetailData(
+            "/restaurant/601/home", "후보", source.komsco_address, "한식"
+        ),
+    )
+
     class SemanticMatcher:
         def choose(self, _reference, _candidates):
             return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
+
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "NO_MATCH", "reason": "different"})()
+
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
     assert result.resolution.status is cli.ResolutionStatus.NOT_FOUND
     assert result.resolution.risk_flags == ("NO_MATCH",)
@@ -402,18 +516,30 @@ def test_semantic_match_does_not_require_detail_address_for_code_decision(monkey
     source = reference()
     candidate = cli.CandidateDom(
         cli.PlaceCandidate(source.komsco_name, source.komsco_address, "한식", "", "602"),
-        object(), 0, ("602",)
+        object(),
+        0,
+        ("602",),
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
-    monkeypatch.setattr(cli, "load_detail_page", lambda *_args, **_kwargs: cli.DetailData(
-        "/restaurant/602/home", source.komsco_name, "서울 강남구 논현로 1", "한식",
-        address_status="PARSE_FAILED"
-    ))
+    monkeypatch.setattr(
+        cli,
+        "load_detail_page",
+        lambda *_args, **_kwargs: cli.DetailData(
+            "/restaurant/602/home",
+            source.komsco_name,
+            "서울 강남구 논현로 1",
+            "한식",
+            address_status="PARSE_FAILED",
+        ),
+    )
+
     class SemanticMatcher:
         def choose(self, _reference, _candidates):
             return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
+
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "MATCH", "reason": "same"})()
+
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
     assert result.validation_attempts_detail[0].fatal_veto == ""
@@ -424,19 +550,31 @@ def test_qwen_match_is_not_reversed_by_location_or_category_code_rules(monkeypat
     source = reference()
     candidate = cli.CandidateDom(
         cli.PlaceCandidate("부산집", "서울 서초구 사평대로 2", "약국", "", "603"),
-        None, 0, ("603",),
+        None,
+        0,
+        ("603",),
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((candidate,), 1))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
-    monkeypatch.setattr(cli, "load_detail_page", lambda *_args, **_kwargs: cli.DetailData(
-        "/restaurant/603/home", candidate.candidate.name, candidate.candidate.address,
-        candidate.candidate.category, address_status="SUCCESS",
-    ))
+    monkeypatch.setattr(
+        cli,
+        "load_detail_page",
+        lambda *_args, **_kwargs: cli.DetailData(
+            "/restaurant/603/home",
+            candidate.candidate.name,
+            candidate.candidate.address,
+            candidate.candidate.category,
+            address_status="SUCCESS",
+        ),
+    )
+
     class SemanticMatcher:
         def choose(self, _reference, _candidates):
             return type("Decision", (), {"candidate_indices": (0,), "confidence": "HIGH"})()
+
         def validate(self, _reference, _candidate):
             return type("Decision", (), {"decision": "MATCH", "reason": "semantic evidence"})()
+
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
     assert result.validation_attempts_detail[0].fatal_veto == ""
@@ -546,11 +684,21 @@ def test_qwen_semantic_decision_is_structured_and_never_exposes_place_id() -> No
         '"coordinate_evidence":"unknown","conflicts":[],"reason":"same shop"}'
     )
     matcher = QwenCandidateMatcher(fake)
-    candidate = PlaceCandidate("돈돌 부대찌개 매니아 강남구청점", "서울 강남구 선릉로129길 11", "한식", "", "38648810")
+    candidate = PlaceCandidate(
+        "돈돌 부대찌개 매니아 강남구청점", "서울 강남구 선릉로129길 11", "한식", "", "38648810"
+    )
     decision = matcher.validate(reference(), candidate)
     assert decision == QwenSemanticDecision(
-        "MATCH", "UNKNOWN", "UNKNOWN", "ACCEPT",
-        "same brand", "same building", "food", "unknown", "same shop", ()
+        "MATCH",
+        "UNKNOWN",
+        "UNKNOWN",
+        "ACCEPT",
+        "same brand",
+        "same building",
+        "food",
+        "unknown",
+        "same shop",
+        (),
     )
     assert "38648810" not in fake.user
     assert "place_id" not in fake.user
@@ -593,27 +741,47 @@ def test_semantic_prompt_prioritizes_branch_address_over_name_similarity() -> No
 def test_reject_then_structured_error_preserves_both_candidate_attempts(monkeypatch) -> None:
     source = reference()
     first = cli.CandidateDom(
-        cli.PlaceCandidate("후보1", source.komsco_address, "여행사", "", "701"), object(), 0, ("701",)
+        cli.PlaceCandidate("후보1", source.komsco_address, "여행사", "", "701"),
+        object(),
+        0,
+        ("701",),
     )
     second = cli.CandidateDom(
         cli.PlaceCandidate("후보2", source.komsco_address, "한식", "", "702"), object(), 1, ("702",)
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
     monkeypatch.setattr(cli, "rank_candidates", lambda _reference, values: tuple(values))
-    monkeypatch.setattr(cli, "load_detail_page", lambda _page, candidate, **_kwargs: cli.DetailData(
-        f"/restaurant/{candidate.place_id}/home", candidate.name, source.komsco_address,
-        candidate.category, address_status="SUCCESS"
-    ))
+    monkeypatch.setattr(
+        cli,
+        "load_detail_page",
+        lambda _page, candidate, **_kwargs: cli.DetailData(
+            f"/restaurant/{candidate.place_id}/home",
+            candidate.name,
+            source.komsco_address,
+            candidate.category,
+            address_status="SUCCESS",
+        ),
+    )
+
     class SemanticMatcher:
         def choose(self, _reference, _candidates):
             return type("Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"})()
+
         def validate(self, _reference, candidate):
             if candidate.place_id == "701":
-                return type("Decision", (), {
-                    "entity_match": "MATCH", "business_type": "NON_FOOD",
-                    "location_scope": "IN_SCOPE", "final_decision": "REJECT", "reason": "여행사",
-                })()
+                return type(
+                    "Decision",
+                    (),
+                    {
+                        "entity_match": "MATCH",
+                        "business_type": "NON_FOOD",
+                        "location_scope": "IN_SCOPE",
+                        "final_decision": "REJECT",
+                        "reason": "여행사",
+                    },
+                )()
             raise ValueError("invalid structured output")
+
     result = cli.run_one(object(), source, "query", "KOMSCO", SemanticMatcher())
     assert result.resolution.status is ResolutionStatus.ERROR
     assert len(result.validation_attempts_detail) == 2
@@ -691,11 +859,15 @@ def test_qwen_retry_is_bounded_to_one_retry() -> None:
 
 def test_verified_checkpoint_round_trip(tmp_path) -> None:
     result = type(
-        "Result", (), {
+        "Result",
+        (),
+        {
             "resolution": type("Resolution", (), {"status": ResolutionStatus.RESOLVED})(),
             "place_id": "38648810",
             "reference": reference(),
-            "detail": type("Detail", (), {"name": "토브버거", "address": "서울 강남구 도산대로30길 46"})(),
+            "detail": type(
+                "Detail", (), {"name": "토브버거", "address": "서울 강남구 도산대로30길 46"}
+            )(),
             "candidate": None,
         },
     )()
@@ -704,6 +876,8 @@ def test_verified_checkpoint_round_trip(tmp_path) -> None:
     loaded = cli.load_verified_checkpoint(path)
     assert loaded[1]["place_id"] == "38648810"
     assert loaded[1]["verification_status"] == "RESOLVED"
+
+
 def test_resume_rejects_non_komsco_output(tmp_path) -> None:
     report = tmp_path / "legacy.csv"
     report.write_text("restaurant_id,final_status\n1,RESOLVED\n", encoding="utf-8")
@@ -748,7 +922,9 @@ def test_place_mapping_insert_and_update_are_idempotent_sql_paths(monkeypatch) -
         stdout = "1\n"
         stderr = ""
 
-    monkeypatch.setattr(cli.subprocess, "run", lambda command, **_kwargs: commands.append(command) or Completed())
+    monkeypatch.setattr(
+        cli.subprocess, "run", lambda command, **_kwargs: commands.append(command) or Completed()
+    )
     monkeypatch.setattr(cli, "_mysql_rows", lambda _root, _sql: [])
     assert cli._write_place_mapping(cli.Path("."), 1, "12345", external_name="식당") is True
     insert_sql = commands[-1][-1]
@@ -788,11 +964,17 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
         cli.PlaceCandidate("테스트 식당 1", "", "음식점", "", "111"), object(), 0, ("111",)
     )
     second = cli.CandidateDom(
-        cli.PlaceCandidate("테스트 식당 2", "서울 강남구 테스트로 1", "음식점", "", "222"), object(), 1, ("222",)
+        cli.PlaceCandidate("테스트 식당 2", "서울 강남구 테스트로 1", "음식점", "", "222"),
+        object(),
+        1,
+        ("222",),
     )
     monkeypatch.setattr(cli, "search_direct", lambda *_args, **_kwargs: ((first, second), 2))
     timeout = cli.PlaywrightTimeoutError("address locator timeout")
-    detail = cli.DetailData("/restaurant/222/home", "테스트 식당 2", "서울 강남구 테스트로 1", "음식점")
+    detail = cli.DetailData(
+        "/restaurant/222/home", "테스트 식당 2", "서울 강남구 테스트로 1", "음식점"
+    )
+
     def fake_load_detail(*_args, **_kwargs):
         candidate = _args[1]
         if candidate.place_id == "111":
@@ -808,7 +990,7 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
             ref,
             "query",
             candidates[0],
-                cli.ResolutionStatus.RESOLVED,
+            cli.ResolutionStatus.RESOLVED,
             "EXACT",
             "STRONG_MATCH",
             "UNKNOWN",
@@ -820,7 +1002,11 @@ def test_candidate_locator_timeout_is_recorded_and_top_k_continues(monkeypatch) 
     matcher = type(
         "Matcher",
         (),
-        {"choose": lambda self, _reference, _candidates: type("Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"})()},
+        {
+            "choose": lambda self, _reference, _candidates: type(
+                "Decision", (), {"candidate_indices": (0, 1), "confidence": "HIGH"}
+            )()
+        },
     )()
     result = cli.run_one(object(), reference, "query", "KOMSCO", matcher)
     assert result.resolution.status is cli.ResolutionStatus.RESOLVED
@@ -849,7 +1035,9 @@ def test_resume_write_db_is_apply_only_and_never_starts_resolver(tmp_path, monke
         "load_komsco_population",
         lambda _root, _limit: cli.KomscoPopulation((), 0),
     )
-    monkeypatch.setattr(cli, "apply_resolved_csv_to_db", lambda _path, _root: (applied.append(1) or (1, 0)))
+    monkeypatch.setattr(
+        cli, "apply_resolved_csv_to_db", lambda _path, _root: applied.append(1) or (1, 0)
+    )
 
     def fail_if_browser_starts():
         raise AssertionError("CSV apply mode must not start Playwright")
@@ -876,8 +1064,12 @@ def test_csv_only_mode_does_not_apply_db_or_start_for_empty_fixture(tmp_path, mo
         lambda _root, _limit: cli.KomscoPopulation((), 0),
     )
     monkeypatch.setattr(cli, "apply_resolved_csv_to_db", lambda *_args: applied.append(1))
-    monkeypatch.setattr(cli, "sync_playwright", lambda: (_ for _ in ()).throw(AssertionError("no resolver")))
-    monkeypatch.setattr(cli.sys, "argv", ["place_resolver_cli", "--output", str(report), "--dry-run"])
+    monkeypatch.setattr(
+        cli, "sync_playwright", lambda: (_ for _ in ()).throw(AssertionError("no resolver"))
+    )
+    monkeypatch.setattr(
+        cli.sys, "argv", ["place_resolver_cli", "--output", str(report), "--dry-run"]
+    )
 
     assert cli.main() == 0
     assert applied == []

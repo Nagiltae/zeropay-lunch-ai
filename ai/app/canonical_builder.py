@@ -1,10 +1,10 @@
 """Canonical restaurant data builder and persistence."""
 
 from dataclasses import dataclass
-from datetime import datetime
 
 from app.place_provider import PlaceSearchCandidate
 from app.place_resolver import RestaurantReference
+
 
 @dataclass
 class CanonicalRestaurant:
@@ -16,7 +16,10 @@ class CanonicalRestaurant:
     latitude: float | None
     longitude: float | None
 
-def build_canonical(reference: RestaurantReference, candidate: PlaceSearchCandidate) -> CanonicalRestaurant:
+
+def build_canonical(
+    reference: RestaurantReference, candidate: PlaceSearchCandidate
+) -> CanonicalRestaurant:
     """Merge KOMSCO reference and provider candidate deterministically."""
     name = candidate.name if candidate.name else reference.komsco_name
     category = candidate.category if candidate.category else ""
@@ -36,6 +39,7 @@ def build_canonical(reference: RestaurantReference, candidate: PlaceSearchCandid
         longitude=longitude,
     )
 
+
 def _sql_value(value: str | float | None) -> str:
     if value is None or value == "":
         return "NULL"
@@ -43,13 +47,36 @@ def _sql_value(value: str | float | None) -> str:
         return str(value)
     return "'" + str(value).replace("'", "''") + "'"
 
+
 def generate_mapping_sql(restaurant_id: int, candidate: PlaceSearchCandidate) -> str:
     """Generate SQL to save external place mapping for a specific provider."""
+    values = ", ".join(
+        (
+            str(restaurant_id),
+            _sql_value(candidate.provider),
+            _sql_value(candidate.external_place_id),
+            _sql_value(candidate.name),
+            _sql_value(candidate.category),
+            _sql_value(candidate.detail_url),
+            _sql_value(candidate.address),
+            _sql_value(candidate.road_address),
+            _sql_value(candidate.latitude),
+            _sql_value(candidate.longitude),
+            "'MATCHED'",
+            "100.00",
+            "'QWEN_ENTITY_RESOLUTION'",
+            "NOW()",
+            "NOW()",
+            "NOW()",
+            "NOW()",
+        )
+    )
     return f"""
         INSERT INTO restaurant_external_places
-        (restaurant_id, provider, external_place_id, external_name, category, link, address, road_address, latitude, longitude,
+        (restaurant_id, provider, external_place_id, external_name, category, link,
+         address, road_address, latitude, longitude,
          match_status, match_score, query_used, matched_at, last_synced_at, created_at, updated_at)
-        VALUES ({restaurant_id}, {_sql_value(candidate.provider)}, {_sql_value(candidate.external_place_id)}, {_sql_value(candidate.name)}, {_sql_value(candidate.category)}, {_sql_value(candidate.detail_url)}, {_sql_value(candidate.address)}, {_sql_value(candidate.road_address)}, {_sql_value(candidate.latitude)}, {_sql_value(candidate.longitude)}, 'MATCHED', 100.00, 'QWEN_ENTITY_RESOLUTION', NOW(), NOW(), NOW(), NOW())
+        VALUES ({values})
         ON DUPLICATE KEY UPDATE
         external_place_id = VALUES(external_place_id),
         external_name = VALUES(external_name),
@@ -67,12 +94,29 @@ def generate_mapping_sql(restaurant_id: int, candidate: PlaceSearchCandidate) ->
         updated_at = NOW();
     """
 
-def generate_canonical_sql(canonical: CanonicalRestaurant, candidates: list[PlaceSearchCandidate]) -> str:
+
+def generate_canonical_sql(
+    canonical: CanonicalRestaurant, candidates: list[PlaceSearchCandidate]
+) -> str:
     """Generate SQL to idempotently save canonical restaurant data and external place mappings."""
+    canonical_values = ", ".join(
+        (
+            str(canonical.restaurant_id),
+            _sql_value(canonical.name),
+            _sql_value(canonical.category),
+            _sql_value(canonical.address),
+            _sql_value(canonical.road_address),
+            _sql_value(canonical.latitude),
+            _sql_value(canonical.longitude),
+            "NOW()",
+            "NOW()",
+        )
+    )
     sql_canonical = f"""
         INSERT INTO canonical_restaurants
-        (restaurant_id, name, category, address, road_address, latitude, longitude, created_at, updated_at)
-        VALUES ({canonical.restaurant_id}, {_sql_value(canonical.name)}, {_sql_value(canonical.category)}, {_sql_value(canonical.address)}, {_sql_value(canonical.road_address)}, {_sql_value(canonical.latitude)}, {_sql_value(canonical.longitude)}, NOW(), NOW())
+        (restaurant_id, name, category, address, road_address, latitude, longitude,
+         created_at, updated_at)
+        VALUES ({canonical_values})
         ON DUPLICATE KEY UPDATE
         name = VALUES(name),
         category = VALUES(category),
@@ -85,4 +129,3 @@ def generate_canonical_sql(canonical: CanonicalRestaurant, candidates: list[Plac
 
     mapping_sqls = [generate_mapping_sql(canonical.restaurant_id, c) for c in candidates]
     return sql_canonical + "\n" + "\n".join(mapping_sqls)
-

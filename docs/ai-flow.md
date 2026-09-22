@@ -85,7 +85,7 @@ NAVER Map UI search
 
 ### Local Place Resolver Runbook
 
-1. `cd ai && poetry install && poetry run playwright install chromium`으로 환경을 준비하고, Ollama에서 `ollama pull qwen3:8b`를 실행합니다. CLI preflight가 Python, Chromium, Ollama, MySQL 네트워크와 출력 디렉터리를 확인합니다.
+1. `cd ai && poetry install && poetry run playwright install chromium`으로 환경을 준비하고, Ollama에서 `ollama pull qwen3.5:9b`를 실행합니다. CLI preflight가 Python, Chromium, Ollama, MySQL 네트워크와 출력 디렉터리를 확인합니다.
 2. 먼저 `cd ai && poetry run python -m app.place_resolver_cli --limit 5 --dry-run --output build/reports/naver-place-resolver/komsco-local-5.csv`으로 5건 CSV-only 검증을 수행합니다.
 3. 전체 CSV 수집은 `cd ai && poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-nonhyeon.csv`로 실행합니다. `--write-db`가 없으면 DB는 변경되지 않습니다.
 4. 터미널의 현재/전체, 상태별 누적 수, ETA를 확인합니다. Ctrl+C로 종료해도 결과는 건별 flush됩니다.
@@ -94,12 +94,13 @@ NAVER Map UI search
 
 과거 Local API 검증 CSV와 legacy 결과는 신규 KOMSCO-only 입력으로 재사용하지 않습니다. report-only CSV는 각 음식점 처리 직후 flush되며, `--resume`은 같은 KOMSCO-only 출력의 완료 항목을 건너뜁니다.
 
-### Official provider candidate retrieval (experimental)
+### Official provider candidate retrieval
 
 `app.provider_candidate_retrieval_cli`는 stable KOMSCO manifest를 기준으로 공식 Kakao
-Local keyword API와 NAVER Local Search API의 후보만 수집하는 report-only 경로입니다.
-DB read/write, Playwright/allSearch, Qwen은 사용하지 않습니다. `app.provider_input`이
-manifest를 직접 읽으므로 provider 경로에는 Playwright 간접 의존도 없습니다.
+Local keyword API와 NAVER Local Search API의 후보만 수집하는 report-only 수동 단계입니다.
+E2E에서는 같은 provider 구현을 `provider_entity_resolution_cli`가 직접 사용합니다.
+두 경로 모두 DB read/write, Playwright/allSearch를 사용하지 않고 `app.provider_input`이
+manifest를 직접 읽으므로 provider 단계에는 Playwright 간접 의존도가 없습니다.
 
 `app.provider_entity_resolution_cli`는 같은 manifest를 입력으로 두 provider 후보를 합친 뒤
 기존 Qwen3.5 ranking/semantic schema와 quality gate를 실행합니다. `ACCEPT`만 `ELIGIBLE`,

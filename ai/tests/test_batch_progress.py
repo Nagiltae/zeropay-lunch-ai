@@ -1,3 +1,7 @@
+import json
+
+import pytest
+
 from app.batch_progress import BatchProgress
 
 
@@ -54,3 +58,62 @@ def test_default_ten_item_summary_can_be_configured(monkeypatch):
     configured = BatchProgress("Detail", 30, {"success": "success"},
                                clock=lambda: 0.0, emit=output.append)
     assert configured.every == 25
+
+
+def test_block_report_keeps_last_success_and_enforces_cooldown(tmp_path, monkeypatch):
+    monkeypatch.setenv("NAVER_BLOCK_COOLDOWN_SECONDS", "1800")
+    progress = BatchProgress("Detail", 3, {"success": "success"}, report_dir=tmp_path,
+                             run_id="unit-test", emit=lambda _: None)
+    progress.current(101, "done")
+    progress.record("success", 101, success=1)
+    progress.current(102, "blocked")
+    progress.block(102, RuntimeError("BLOCKED: HTTP 429"))
+    report_path = progress.finish("BLOCKED", "BLOCKED: HTTP 429")
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    assert (report["processed"], report["success"], report["failed"]) == (2, 1, 1)
+    assert (report["http_429"], report["blocked"], report["retry"]) == (1, 1, 0)
+    assert report["last_success_restaurant_id"] == 101
+    assert report["last_failure_restaurant_id"] == 102
+    assert report["resume_not_before"]
+    with pytest.raises(RuntimeError, match="cooldown until"):
+        BatchProgress.enforce_cooldown(tmp_path, "Detail")
+
+
+def test_retry_count_and_interrupted_report(tmp_path):
+    progress = BatchProgress("Place ID", 2, {}, report_dir=tmp_path,
+                             run_id="interrupted", emit=lambda _: None)
+    progress.retry(201, 0.0, TimeoutError("temporary timeout"))
+    progress.current(201, "restaurant")
+    progress.record("failed", 201)
+    report = json.loads(progress.finish("INTERRUPTED", "KeyboardInterrupt").read_text())
+    assert report["retry"] == 1
+    assert report["status"] == "INTERRUPTED"
+    assert report["resume_not_before"] is None
+
+
+def test_runtime_report_records_playwright_lifecycle(tmp_path):
+    progress = BatchProgress("Detail", 1, {}, report_dir=tmp_path,
+                             run_id="playwright-lifecycle", emit=lambda _: None)
+    progress.record_browser_lifecycle(browser_starts=1, page_recreates=2)
+    progress.record_browser_lifecycle(browser_starts=1, browser_restarts=1)
+    report = json.loads(progress.finish().read_text())
+    assert report["browser_starts"] == 2
+    assert report["browser_restarts"] == 1
+    assert report["page_recreates"] == 2
+
+
+def test_runtime_report_records_qwen_and_candidate_metrics(tmp_path):
+    progress = BatchProgress("Entity Resolution", 1, {}, report_dir=tmp_path,
+                             run_id="qwen-metrics", emit=lambda _: None)
+    progress.record_qwen_call("choose", 1.0)
+    progress.record_qwen_call("validate", 2.0)
+    progress.record_qwen_candidates(4, 3, 1)
+    report = json.loads(progress.finish().read_text())
+    assert report["qwen_calls"] == 2
+    assert report["qwen_choose_calls"] == 1
+    assert report["qwen_validate_calls"] == 1
+    assert report["qwen_total_latency_seconds"] == 3.0
+    assert report["qwen_avg_latency_seconds"] == 1.5
+    assert report["candidate_count_before_dedup"] == 4
+    assert report["candidate_count_after_dedup"] == 3
+    assert report["duplicate_candidates_removed"] == 1

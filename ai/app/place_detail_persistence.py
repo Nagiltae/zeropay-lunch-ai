@@ -29,11 +29,16 @@ class PlaceDetailPersistence:
     def __init__(self, root: Path):
         self.root = root
 
-    def persist(self, restaurant_id: int, place_id: str, detail: PlaceDetail) -> None:
+    def persist(
+        self, restaurant_id: int, place_id: str, detail: PlaceDetail,
+        sections: dict[str, bool] | None = None,
+    ) -> None:
         if not place_id.isdigit():
             raise ValueError("invalid place id")
-        statements = [
-            f"""INSERT INTO restaurant_review_summaries
+        selected = sections or {"review": True, "menu": True, "business_hours": True}
+        statements = []
+        if selected["review"]:
+            statements.append(f"""INSERT INTO restaurant_review_summaries
                 (restaurant_id,provider,external_place_id,visitor_reviews_total,visitor_reviews_score,
                  visitor_text_review_total,cafe_blog_reviews_total)
                 VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(detail.visitor_reviews_total)},
@@ -42,9 +47,8 @@ class PlaceDetailPersistence:
                 ON DUPLICATE KEY UPDATE visitor_reviews_total=VALUES(visitor_reviews_total),
                 visitor_reviews_score=VALUES(visitor_reviews_score),
                 visitor_text_review_total=VALUES(visitor_text_review_total),
-                cafe_blog_reviews_total=VALUES(cafe_blog_reviews_total), crawled_at=CURRENT_TIMESTAMP(6)""",
-        ]
-        for menu in detail.menus:
+                cafe_blog_reviews_total=VALUES(cafe_blog_reviews_total), crawled_at=CURRENT_TIMESTAMP(6)""")
+        for menu in detail.menus if selected["menu"] else ():
             statements.append(
                 f"""INSERT INTO restaurant_menus
                 (restaurant_id,provider,external_place_id,external_menu_id,name,description,price_value,
@@ -54,10 +58,11 @@ class PlaceDetailPersistence:
                 {_sql(menu.price_type)},{_sql(menu.menu_type)},{_sql(menu.is_set_menu)},
                 {_sql(menu.thumbnail_url)},TRUE)
                 ON DUPLICATE KEY UPDATE name=VALUES(name),description=VALUES(description),
-                price_value=VALUES(price_value),price_text=VALUES(price_text),active=TRUE,
+                price_value=COALESCE(VALUES(price_value),price_value),
+                price_text=COALESCE(VALUES(price_text),price_text),active=TRUE,
                 crawled_at=CURRENT_TIMESTAMP(6)"""
             )
-        for hour in detail.business_hours:
+        for hour in detail.business_hours if selected["business_hours"] else ():
             statements.append(
                 f"""INSERT INTO restaurant_business_hours
                 (restaurant_id,provider,external_place_id,day_of_week,open_time,close_time,break_hours,last_order,
@@ -70,7 +75,10 @@ class PlaceDetailPersistence:
                 break_hours=VALUES(break_hours),last_order=VALUES(last_order),description=VALUES(description),
                 crawled_at=CURRENT_TIMESTAMP(6)"""
             )
-        for keyword in (*detail.review_keywords, *detail.review_menu_mentions, *detail.voted_keywords):
+        for keyword in (
+            (*detail.review_keywords, *detail.review_menu_mentions, *detail.voted_keywords)
+            if selected["review"] else ()
+        ):
             statements.append(
                 f"""INSERT INTO restaurant_review_keywords
                 (restaurant_id,provider,external_place_id,keyword_kind,keyword,mention_count)
@@ -78,7 +86,7 @@ class PlaceDetailPersistence:
                 {_sql(keyword.keyword)},{_sql(keyword.count)})
                 ON DUPLICATE KEY UPDATE mention_count=VALUES(mention_count),crawled_at=CURRENT_TIMESTAMP(6)"""
             )
-        for review in detail.representative_reviews:
+        for review in detail.representative_reviews if selected["review"] else ():
             statements.append(
                 f"""INSERT INTO restaurant_representative_reviews
                 (restaurant_id,provider,external_place_id,review_id,review_text,review_date,rating)
@@ -87,7 +95,8 @@ class PlaceDetailPersistence:
                 ON DUPLICATE KEY UPDATE review_text=VALUES(review_text),review_date=VALUES(review_date),
                 rating=VALUES(rating),crawled_at=CURRENT_TIMESTAMP(6)"""
             )
-        self._run("; ".join(statements) + ";")
+        if statements:
+            self._run("; ".join(statements) + ";")
 
     def persist_verification(
         self,
@@ -100,6 +109,7 @@ class PlaceDetailPersistence:
         source_fingerprint_value: str | None = None,
         eligibility: str | None = None,
     ) -> None:
+        # 검증 fingerprint와 detail section은 별도 계약이므로 한쪽 갱신이 다른 상태를 삭제하지 않는다.
         eligible = eligibility or ("ELIGIBLE" if status == "VERIFIED" else (
             "INELIGIBLE" if reason in {"NON_FOOD", "OUT_OF_SCOPE", "NO_MATCH"} else "UNKNOWN"
         ))

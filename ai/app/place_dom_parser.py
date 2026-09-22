@@ -1,4 +1,4 @@
-"""Conservative semantic-text parser used only for Apollo-vs-DOM experiments."""
+"""DOM 상세 수집에서 메뉴 가격 문자열을 보수적으로 해석하는 공통 parser."""
 
 # ruff: noqa: E501
 

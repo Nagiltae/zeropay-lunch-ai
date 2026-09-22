@@ -36,6 +36,7 @@ public class ChatStreamService {
     }
 
     public SseEmitter streamReply(UUID conversationId, UUID userId, String userMessage) {
+        // 교환을 먼저 PENDING으로 저장한 뒤 비동기 SSE에서 완료 또는 실패 상태로 닫는다.
         PendingExchange exchange = chatPersistenceService.startExchange(
                 conversationId,
                 userId,
@@ -65,9 +66,10 @@ public class ChatStreamService {
             pause();
 
             List<RecommendationItem> recommendations = recommendationService.recommend(
-                    exchange.userId(),
-                    userMessage
+                exchange.userId(),
+                userMessage
             );
+            // 추천 후보 확정은 Spring의 결정론적 서비스가 담당하고, 여기서는 결과만 스트리밍한다.
             String reply = createReply(recommendations);
             chatPersistenceService.completeExchange(
                     exchange.assistantMessageId(),

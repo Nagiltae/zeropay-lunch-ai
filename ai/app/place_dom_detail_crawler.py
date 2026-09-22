@@ -7,8 +7,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from app.place_dom_parser import _PRICE
 from app.place_detail_models import BusinessHour, MenuItem, PlaceDetail, ReviewItem, ReviewKeyword
+from app.place_dom_parser import _PRICE
 
 
 @dataclass(frozen=True)
@@ -48,9 +48,18 @@ class DomCollectedDetail:
 
     @property
     def review_status(self) -> str:
-        if self.review_keywords or self.review_menu_mentions or self.review_themes or self.representative_reviews:
+        if (
+            self.review_keywords
+            or self.review_menu_mentions
+            or self.review_themes
+            or self.representative_reviews
+        ):
             return "SUCCESS"
-        return "PARSE_FAILED" if self.review_page_success and self.review_total is not None else "NO_DATA"
+        return (
+            "PARSE_FAILED"
+            if self.review_page_success and self.review_total is not None
+            else "NO_DATA"
+        )
 
     @property
     def menu_complete(self) -> bool:
@@ -82,9 +91,7 @@ class DomCollectedDetail:
             if item.get("name")
         )
         hours = tuple(
-            BusinessHour(day=raw[:32], description=raw)
-            for raw in self.business_hours
-            if raw
+            BusinessHour(day=raw[:32], description=raw) for raw in self.business_hours if raw
         )
         keywords = tuple(
             ReviewKeyword(str(item.get("keyword") or ""), item.get("count"), "theme")
@@ -193,7 +200,10 @@ def _semantic_pairs(page, marker: str) -> tuple[dict[str, str | int], ...]:
 
 
 class PlaceDomDetailCrawler:
-    def collect(self, page, place_id: str, *, include_reviews: bool = True, before_navigation=None) -> DomCollectedDetail:
+    # NAVER 내부 상태가 아니라 사용자에게 렌더링된 DOM contract만 읽어 상세 데이터를 만든다.
+    def collect(
+        self, page, place_id: str, *, include_reviews: bool = True, before_navigation=None
+    ) -> DomCollectedDetail:
         warnings: list[str] = []
         home_url = f"https://pcmap.place.naver.com/restaurant/{place_id}/home"
         try:
@@ -217,15 +227,21 @@ class PlaceDomDetailCrawler:
         if not body:
             return self._failed("HOME_BLOCKED_OR_EMPTY")
         try:
-            name = page.locator('meta[property="og:title"]').get_attribute("content", timeout=1000) or _text(page.locator("h1").first)
-            category = page.locator('meta[property="og:description"]').get_attribute("content", timeout=1000) or _label_row(page, "카테고리")
+            name = page.locator('meta[property="og:title"]').get_attribute(
+                "content", timeout=1000
+            ) or _text(page.locator("h1").first)
+            category = page.locator('meta[property="og:description"]').get_attribute(
+                "content", timeout=1000
+            ) or _label_row(page, "카테고리")
         except Exception:
             name = _text(page.locator("h1").first)
             category = _label_row(page, "카테고리")
         address = _label_row(page, "주소")
         phone = _label_row(page, "전화번호")
         convenience_text = _label_row(page, "편의")
-        conveniences = tuple(item.strip() for item in re.split(r"[,·]", convenience_text) if item.strip())
+        conveniences = tuple(
+            item.strip() for item in re.split(r"[,·]", convenience_text) if item.strip()
+        )
         hours = self._hours(page)
         declared = self._declared_menu_count(body)
         try:
@@ -236,18 +252,51 @@ class PlaceDomDetailCrawler:
             warnings.append(str(error))
             menus, menu_success = (), False
         try:
-            review = self._reviews(page, place_id, before_navigation=before_navigation) if include_reviews else {
-            "success": False, "total": None, "blog": None, "keywords": (), "mentions": (), "themes": (), "representative": ()
-            }
+            review = (
+                self._reviews(page, place_id, before_navigation=before_navigation)
+                if include_reviews
+                else {
+                    "success": False,
+                    "total": None,
+                    "blog": None,
+                    "keywords": (),
+                    "mentions": (),
+                    "themes": (),
+                    "representative": (),
+                }
+            )
         except RuntimeError as error:
             if str(error).startswith("BLOCKED:"):
                 raise
             warnings.append(str(error))
-            review = {"success": False, "total": None, "blog": None, "keywords": (), "mentions": (), "themes": (), "representative": ()}
+            review = {
+                "success": False,
+                "total": None,
+                "blog": None,
+                "keywords": (),
+                "mentions": (),
+                "themes": (),
+                "representative": (),
+            }
         return DomCollectedDetail(
-            home_success, name or None, category or None, address or None, phone or None, conveniences,
-            hours, menu_success, declared, menus, review["success"], review["total"], review["blog"],
-            review["keywords"], review["mentions"], review["themes"], review["representative"], tuple(warnings),
+            home_success,
+            name or None,
+            category or None,
+            address or None,
+            phone or None,
+            conveniences,
+            hours,
+            menu_success,
+            declared,
+            menus,
+            review["success"],
+            review["total"],
+            review["blog"],
+            review["keywords"],
+            review["mentions"],
+            review["themes"],
+            review["representative"],
+            tuple(warnings),
         )
 
     def _hours(self, page) -> tuple[str, ...]:
@@ -257,7 +306,11 @@ class PlaceDomDetailCrawler:
         expanded = page.locator('a[data-nlog-area="plc_btp.bzhour"]')
         container = expanded.first.locator("xpath=..") if expanded.count() else page.locator("body")
         text = _text(container)
-        return tuple(line.strip() for line in text.split("  ") if re.search(r"(?:월|화|수|목|금|토|일|휴무|브레이크|라스트)", line))
+        return tuple(
+            line.strip()
+            for line in text.split("  ")
+            if re.search(r"(?:월|화|수|목|금|토|일|휴무|브레이크|라스트)", line)
+        )
 
     @staticmethod
     def _declared_menu_count(body: str) -> int | None:
@@ -265,7 +318,9 @@ class PlaceDomDetailCrawler:
         match = re.search(r"메뉴\s*(\d[\d,]*)", body)
         return int(match.group(1).replace(",", "")) if match else None
 
-    def _menus(self, page, place_id: str, *, before_navigation=None) -> tuple[tuple[dict[str, str | None], ...], bool]:
+    def _menus(
+        self, page, place_id: str, *, before_navigation=None
+    ) -> tuple[tuple[dict[str, str | None], ...], bool]:
         # The integrated pipeline uses the stable public menu URL directly.
         # Preview links can lead to booking/ordering pages for some places.
         if before_navigation:
@@ -279,7 +334,9 @@ class PlaceDomDetailCrawler:
         self._ensure_place(page, place_id)
         self._check_body_access(_text(page.locator("body"), 3000))
         try:
-            page.locator('a[data-nlog-area="plc_bmv.menu"]').first.wait_for(state="visible", timeout=5000)
+            page.locator('a[data-nlog-area="plc_bmv.menu"]').first.wait_for(
+                state="visible", timeout=5000
+            )
         except Exception:
             return (), False
         cards = page.locator('a[data-nlog-area="plc_bmv.menu"]')
@@ -302,7 +359,11 @@ class PlaceDomDetailCrawler:
         prices = _PRICE.findall(text)
         price = prices[-1] if prices else None
         non_price = [line for line in lines if not _PRICE.fullmatch(line)]
-        name = non_price[0] if non_price else (text.replace(price or "", "").strip() if price else text)
+        name = (
+            non_price[0]
+            if non_price
+            else (text.replace(price or "", "").strip() if price else text)
+        )
         description = " ".join(non_price[1:]) or None
         value = str(int(price.replace(",", "").replace("원", ""))) if price else None
         return {"name": name, "description": description, "price_text": price, "price_value": value}
@@ -323,7 +384,12 @@ class PlaceDomDetailCrawler:
             _click(visitor.first)
         body = _text(page.locator("body"), 3000)
         try:
-            meta_description = page.locator('meta[property="og:description"]').get_attribute("content", timeout=3000) or ""
+            meta_description = (
+                page.locator('meta[property="og:description"]').get_attribute(
+                    "content", timeout=3000
+                )
+                or ""
+            )
         except Exception:
             meta_description = ""
         total = self._number_after(meta_description or body, "방문자\\s*리뷰")
@@ -336,7 +402,15 @@ class PlaceDomDetailCrawler:
         themes = _pairs(page.locator('a[data-nlog-area="plc_rrv.filter"]'))
         cards = page.locator("#_review_list [data-pui-click-code=rvshowmore]")
         representative = tuple({"text": _text(cards.nth(i))} for i in range(min(cards.count(), 10)))
-        return {"success": bool(body), "total": total, "blog": blog, "keywords": keywords, "mentions": mentions, "themes": themes, "representative": representative}
+        return {
+            "success": bool(body),
+            "total": total,
+            "blog": blog,
+            "keywords": keywords,
+            "mentions": mentions,
+            "themes": themes,
+            "representative": representative,
+        }
 
     @staticmethod
     def _number_after(text: str, label: str) -> int | None:
@@ -345,7 +419,26 @@ class PlaceDomDetailCrawler:
 
     @staticmethod
     def _failed(reason: str) -> DomCollectedDetail:
-        return DomCollectedDetail(False, None, None, None, None, (), (), False, None, (), False, None, None, (), (), (), (), (reason,))
+        return DomCollectedDetail(
+            False,
+            None,
+            None,
+            None,
+            None,
+            (),
+            (),
+            False,
+            None,
+            (),
+            False,
+            None,
+            None,
+            (),
+            (),
+            (),
+            (),
+            (reason,),
+        )
 
     @staticmethod
     def _ensure_place(page, place_id: str) -> None:
