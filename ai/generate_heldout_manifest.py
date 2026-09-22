@@ -2,7 +2,7 @@ import csv
 import random
 from pathlib import Path
 
-from app.place_resolver_cli import load_komsco_population, load_local_env
+from app.naver.place_resolver_cli import load_komsco_population, load_local_env
 
 
 def main():

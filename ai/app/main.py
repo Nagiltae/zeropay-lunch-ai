@@ -1,3 +1,5 @@
+"""Spring 내부 경계에서 상태를 확인하는 최소 FastAPI 애플리케이션."""
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 

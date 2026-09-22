@@ -1,2 +1,0 @@
-restaurant_id,KOMSCO name,NAVER Local name,search query,candidate name,candidate address,candidate category,candidate URL,naverPlaceId,name evidence,address evidence,distance evidence,result status,risk flags
-4282,선02,집밥식당 선02,매봉역 선02,선라이프,,,https://pcmap.place.naver.com/restaurant/1793398137/home?from=map&fromPanelNum=2&timestamp=202609191541&locale=ko&svcName=map_pcv5&searchText=%EB%A7%A4%EB%B4%89%EC%97%AD%20%EC%84%A002,,DIFFERENT,UNKNOWN,UNKNOWN,NOT_FOUND,NAME_MISMATCH

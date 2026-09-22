@@ -1,3 +1,7 @@
+/**
+ * React 애플리케이션 진입점.
+ * React Query를 전역으로 제공하고 App이 인증·채팅·취향 화면을 조합하도록 연결한다.
+ */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

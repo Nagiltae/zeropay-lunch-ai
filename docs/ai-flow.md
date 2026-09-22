@@ -86,23 +86,23 @@ NAVER Map UI search
 ### Local Place Resolver Runbook
 
 1. `cd ai && poetry install && poetry run playwright install chromium`으로 환경을 준비하고, Ollama에서 `ollama pull qwen3.5:9b`를 실행합니다. CLI preflight가 Python, Chromium, Ollama, MySQL 네트워크와 출력 디렉터리를 확인합니다.
-2. 먼저 `cd ai && poetry run python -m app.place_resolver_cli --limit 5 --dry-run --output build/reports/naver-place-resolver/komsco-local-5.csv`으로 5건 CSV-only 검증을 수행합니다.
-3. 전체 CSV 수집은 `cd ai && poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-nonhyeon.csv`로 실행합니다. `--write-db`가 없으면 DB는 변경되지 않습니다.
+2. 먼저 `cd ai && poetry run python -m app.naver.place_resolver_cli --limit 5 --dry-run --output build/reports/naver-place-resolver/komsco-local-5.csv`으로 5건 CSV-only 검증을 수행합니다.
+3. 전체 CSV 수집은 `cd ai && poetry run python -m app.naver.place_resolver_cli --output build/reports/naver-place-resolver/komsco-nonhyeon.csv`로 실행합니다. `--write-db`가 없으면 DB는 변경되지 않습니다.
 4. 터미널의 현재/전체, 상태별 누적 수, ETA를 확인합니다. Ctrl+C로 종료해도 결과는 건별 flush됩니다.
 5. 중단 후에는 같은 KOMSCO-only CSV에 `--resume`을 붙여 이미 완료된 `restaurant_id`를 건너뛰고 재개합니다. 이전 NAVER Local 모집단 CSV는 재사용하지 않습니다.
-6. CSV를 검토한 뒤에만 `cd ai && poetry run python -m app.place_resolver_cli --output build/reports/naver-place-resolver/komsco-only.csv --resume --write-db`를 실행합니다. `RESOLVED` + detail validation `PASS` + numeric Place ID만 `external_place_id`/도메인 URL을 upsert하며, 다른 상태는 DB에 쓰지 않습니다. `--resume --write-db`는 CSV 반영 후 즉시 종료하며 추가 PCMap 수집을 실행하지 않습니다.
+6. CSV를 검토한 뒤에만 `cd ai && poetry run python -m app.naver.place_resolver_cli --output build/reports/naver-place-resolver/komsco-only.csv --resume --write-db`를 실행합니다. `RESOLVED` + detail validation `PASS` + numeric Place ID만 `external_place_id`/도메인 URL을 upsert하며, 다른 상태는 DB에 쓰지 않습니다. `--resume --write-db`는 CSV 반영 후 즉시 종료하며 추가 PCMap 수집을 실행하지 않습니다.
 
 과거 Local API 검증 CSV와 legacy 결과는 신규 KOMSCO-only 입력으로 재사용하지 않습니다. report-only CSV는 각 음식점 처리 직후 flush되며, `--resume`은 같은 KOMSCO-only 출력의 완료 항목을 건너뜁니다.
 
 ### Official provider candidate retrieval
 
-`app.provider_candidate_retrieval_cli`는 stable KOMSCO manifest를 기준으로 공식 Kakao
+`app.providers.provider_candidate_retrieval_cli`는 stable KOMSCO manifest를 기준으로 공식 Kakao
 Local keyword API와 NAVER Local Search API의 후보만 수집하는 report-only 수동 단계입니다.
 E2E에서는 같은 provider 구현을 `provider_entity_resolution_cli`가 직접 사용합니다.
-두 경로 모두 DB read/write, Playwright/allSearch를 사용하지 않고 `app.provider_input`이
+두 경로 모두 DB read/write, Playwright/allSearch를 사용하지 않고 `app.providers.provider_input`이
 manifest를 직접 읽으므로 provider 단계에는 Playwright 간접 의존도가 없습니다.
 
-`app.provider_entity_resolution_cli`는 같은 manifest를 입력으로 두 provider 후보를 합친 뒤
+`app.entity_resolution.provider_entity_resolution_cli`는 같은 manifest를 입력으로 두 provider 후보를 합친 뒤
 기존 Qwen3.5 ranking/semantic schema와 quality gate를 실행합니다. `ACCEPT`만 `ELIGIBLE`,
 semantic `REJECT`는 `INELIGIBLE`, provider/Qwen/structured output 오류와 후보 없음은
 `UNKNOWN`으로 report에 기록합니다. `--cache`로 이전 fusion report를 전달하면 동일
@@ -116,7 +116,7 @@ provider entity evidence 상태이며 numeric NAVER Place ID 보유 여부와 �
 공식 NAVER Local evidence에 numeric ID가 없으면 `NAVER_LOCAL/MATCHED/NULL`을 보존하고,
 Place ID linker가 이를 근거로 별도 `NAVER/MATCHED/<numeric id>` mapping을 생성합니다.
 
-전체 E2E 명령은 `cd ai && poetry run python -u -m app.e2e_pipeline_orchestrator --limit 513`입니다.
+전체 E2E 명령은 `cd ai && poetry run python -u -m app.batch.e2e_pipeline_orchestrator --limit 513`입니다.
 하위 Python도 unbuffered로 실행되고 stdout/stderr가 즉시 전달됩니다. 각 단계는 현재
 restaurant ID/이름을 표시하고 기본 10건마다 누적 상태·경과 시간·건당 평균·ETA를
 출력합니다. 요약 간격은 `BATCH_PROGRESS_EVERY=25`처럼 조정할 수 있습니다.

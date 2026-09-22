@@ -1,3 +1,7 @@
+/**
+ * 현재 대화의 복원, 메시지 전송, SSE 이벤트 반영을 한 곳에서 관리한다.
+ * 브라우저는 FastAPI가 아니라 Spring의 스트림 endpoint만 호출한다.
+ */
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {

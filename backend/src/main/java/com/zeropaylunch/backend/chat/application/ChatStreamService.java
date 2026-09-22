@@ -1,3 +1,7 @@
+/**
+ * 채팅 요청을 저장하고 추천 결과를 SSE 이벤트로 나누어 전달하는 Application Service.
+ * Spring이 웹 스트림과 추천 business rule을 조정하며 FastAPI를 직접 호출하지 않는다.
+ */
 package com.zeropaylunch.backend.chat.application;
 
 import com.zeropaylunch.backend.chat.application.ChatPersistenceService.PendingExchange;

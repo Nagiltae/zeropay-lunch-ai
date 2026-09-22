@@ -1,3 +1,7 @@
+/**
+ * 인증된 사용자의 대화 메시지 요청을 SSE 스트림 서비스로 전달하는 Controller.
+ * 대화·메시지 저장과 추천 생성의 세부 책임은 ChatStreamService가 가진다.
+ */
 package com.zeropaylunch.backend.chat.api;
 
 import com.zeropaylunch.backend.chat.application.ChatStreamService;

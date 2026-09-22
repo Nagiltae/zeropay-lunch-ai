@@ -73,7 +73,7 @@ React는 FastAPI를 직접 호출하지 않습니다. Spring Boot는 공개 애�
 
 현재 자연어 처리는 `AiIntentAnalyzer` 경계 뒤의 제한된 임시 키워드 규칙입니다. 사용자 인증, 취향과 식사 기록, 논현동 고정 추천 범위가 구현되었습니다. Spring Boot는 KOMSCO 모바일 가맹점 OpenAPI에서 논현동 단일 법정동·I0000002·KSIC 561·계속사업자 범위를 수집해 MySQL에 멱등 적재하며, 최신 행 선택·필터·저장 책임을 분리합니다. 주간 scheduler는 Asia/Seoul 일요일 03:00에 실행되고, 전체 fetch 성공 시 사라진 기존 행은 삭제하지 않고 stale inactive 처리합니다.
 
-KOMSCO 음식점의 Place ID와 상세 보강은 `ai/`의 KOMSCO-only Playwright PCMap pipeline이 소유합니다. 후보 DOM을 수집하고 deterministic safety/order, 필요 시 Ollama Qwen ranking, `data-nlog-params` Place ID 추출, `/home` semantic validation 후 HOME/MENU/REVIEW DOM을 수집합니다. NAVER Local API와 stored Local fallback은 신규 입력으로 사용하지 않습니다. `restaurant_naver_verifications`가 verification provenance를, `restaurant_external_places`가 성공한 외부 mapping을 보존합니다.
+KOMSCO 음식점의 외부 후보 검증과 상세 보강은 `ai/`의 별도 Python Batch가 소유합니다. Provider 단계에서 Kakao/NAVER Local 후보를 병합·중복 제거한 뒤 Qwen Entity Resolution과 quality gate를 거쳐 ACCEPT 결과만 Canonical로 저장합니다. 이후 NAVER Maps UI가 발생시킨 allSearch 응답을 Playwright로 캡처해 numeric Place ID를 연결하고, 검증된 장소의 HOME/MENU/REVIEW DOM을 수집합니다. `restaurant_naver_verifications`가 검증 provenance를, `restaurant_external_places`가 NAVER Local evidence와 성공한 numeric mapping을 보존합니다. FastAPI는 이 Batch의 호출 경로가 아니며 현재 Spring에서도 직접 호출하지 않습니다.
 
 추천 가능 상태는 KOMSCO 원본 운영 상태(`restaurants.active`), NAVER verification, `recommendation_eligibility`, `recommendation_ready`로 분리합니다. 명확한 VERIFIED 음식점·논현동 결과만 eligibility를 ELIGIBLE로 갱신하며 불일치는 INELIGIBLE, 불확실·기술 오류는 UNKNOWN입니다. 메뉴·가격·영업시간이 보강되지 않은 KOMSCO import 행은 `recommendation_ready=false`라 추천 조회에 들어가지 않습니다.
 

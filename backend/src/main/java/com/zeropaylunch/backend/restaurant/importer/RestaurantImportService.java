@@ -1,3 +1,7 @@
+/**
+ * KOMSCO 페이지를 중복 제거·업종/영업 상태 필터 후 restaurants 원천 상태로 동기화한다.
+ * 주간 scheduler와 수동 import 경로가 이 service를 공유한다.
+ */
 package com.zeropaylunch.backend.restaurant.importer;
 
 import com.zeropaylunch.backend.restaurant.domain.RestaurantSourceProvider;

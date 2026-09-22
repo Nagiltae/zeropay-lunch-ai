@@ -1,2 +1,0 @@
-restaurant_id,KOMSCO name,NAVER Local name,search query,candidate name,candidate address,candidate category,candidate URL,naverPlaceId,name evidence,address evidence,distance evidence,result status,risk flags
-4282,선02,집밥식당 선02,매봉역 선02,집밥식당 선02 플레이스 플러스 한식,서울 강남구 개포동,,,,CONTAINED,DIFFERENT,UNKNOWN,NOT_FOUND,ADDRESS_MISMATCH

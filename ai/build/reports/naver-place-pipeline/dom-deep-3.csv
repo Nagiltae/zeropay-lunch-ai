@@ -1,4 +1,0 @@
-restaurant_id,name,place_id,resolve_status,matcher_source,qwen_used,apollo_state,apollo_entities,apollo_place_entities,apollo_menu_entities,apollo_review_entities,apollo_hours_entities,apollo_base,apollo_menu,apollo_hours,apollo_review_stats,apollo_keywords,dom_base,dom_menu,dom_hours,dom_review_stats,dom_keywords,dom_reviews,dom_sections,apollo_ms,dom_ms,dom_status,dom_declared_menu_count,dom_menu_count,dom_hours_count,dom_keyword_count,dom_menu_mention_count,dom_theme_count,dom_representative_count,reason
-4282,선02,2063978135,AMBIGUOUS,QWEN,True,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
-4298,빨간모자피자,11580560,AMBIGUOUS,SINGLE_CANDIDATE,False,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TOP_K_DETAIL_VALIDATION_FAILED
-4278,오레노 카츠,1488199141,RESOLVED,QWEN,True,True,69,11,13,4,2,True,False,False,False,False,True,False,True,False,False,True,,43,7877,PARTIAL,,0,1,0,15,15,10,

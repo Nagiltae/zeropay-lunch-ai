@@ -1,3 +1,4 @@
+/** 로그인 사용자 조회와 로그인·가입·로그아웃 mutation을 React Query로 감싼다. */
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchCsrfToken, getCurrentUser, login, signup, logout } from '../api/auth'
 import type { LoginRequest, SignupRequest, User } from '../types/auth'
@@ -10,8 +11,8 @@ export function useCurrentUser() {
   } = useQuery<User | null, Error>({
     queryKey: ['currentUser'],
     queryFn: getCurrentUser,
-    retry: false, // Don't retry on 401
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    retry: false, // 401을 반복 요청하지 않는다.
+    staleTime: 1000 * 60 * 5, // 인증 상태는 5분 동안 재조회하지 않는다.
   })
 
   return {

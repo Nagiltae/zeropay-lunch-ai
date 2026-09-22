@@ -1,3 +1,7 @@
+/**
+ * 세션 기반 인증, CSRF 쿠키, 공개·인증 필요 endpoint 정책을 구성한다.
+ * React는 이 설정에 맞춰 세션 쿠키와 CSRF 헤더를 함께 사용한다.
+ */
 package com.zeropaylunch.backend.common.config;
 
 import org.springframework.context.annotation.Bean;

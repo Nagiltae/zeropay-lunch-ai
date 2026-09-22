@@ -5,12 +5,14 @@ ZeroPay Lunch AI는 자연어 요청, 사용자 취향, 예산, 최근 식사 �
 이 서비스는 모노레포 구조를 사용하며, Spring Boot를 애플리케이션의 단일 진입점으로 둡니다.
 
 ```text
-React -> Spring Boot -> FastAPI
+React -> Spring Boot -> MySQL
+
+별도 데이터 구축 Batch는 Python에서 Provider/Qwen/Playwright를 실행하고 MySQL에 직접 저장합니다. FastAPI는 현재 health 및 계약 경계만 제공합니다.
 ```
 
 ## 현재 상태
 
-현재 인증·대화·취향·식사 기록·논현동 고정 추천 기반과 KOMSCO→PCMap DOM 데이터 구축 pipeline이 구현되어 있습니다. FastAPI의 Spring 연동과 Qdrant/LangGraph 추천 검색은 아직 구현되지 않았습니다.
+현재 인증·대화·취향·식사 기록·논현동 고정 추천 기반과 KOMSCO→Provider/Qwen→Canonical→NAVER Maps→Detail 데이터 구축 pipeline이 구현되어 있습니다. FastAPI의 Spring 연동과 Qdrant/LangGraph 추천 검색은 아직 구현되지 않았습니다.
 
 | 영역 | 상태 |
 | --- | --- |
@@ -28,7 +30,7 @@ React -> Spring Boot -> FastAPI
 zeropay-lunch-ai/
 ├── frontend/    # React 애플리케이션
 ├── backend/     # Spring Boot 애플리케이션
-├── ai/          # FastAPI AI 서버
+├── ai/          # FastAPI health/계약 경계와 Python 데이터 구축 Batch
 ├── docs/        # 아키텍처 및 계약 문서
 ├── tasks/       # 비자명 작업의 실행 명세와 템플릿
 └── scripts/     # 로컬 검증 명령어

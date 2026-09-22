@@ -1,3 +1,4 @@
+/** 사용자의 채팅 입력을 검증하고 전송·중단 action을 화면에 연결한다. */
 import { FormEvent, useEffect, useRef, useState } from 'react'
 
 const maxMessageLength = 2000

@@ -1,6 +1,0 @@
-restaurant_id,reference_name,query,query_stage,original_candidate_count,filtered_candidate_count,matcher_source,qwen_ranking,selected_candidate_index,selected_candidate_name,qwen_used,qwen_confidence,candidate_url,place_id,place_id_source,resolved_rank,detail_validation,detail_name,detail_address,detail_category,name_evidence,address_evidence,final_status,reason,risk_flags,elapsed_ms,detail_validation_attempts
-4282,집밥식당 선02,매봉역 선02,station,9,5,QWEN,"0,1,2",0,집밥식당 선02,True,LOW,#,1793398137,DOM_DATA_NLOG,1,PASS,집밥식당 선02,서울 강남구 개포로25길 5 1층,,EXACT,PARTIAL,RESOLVED,,,4051,1
-4298,빨간모자피자 논현점,논현역 빨간모자피자,station,1,1,SINGLE_CANDIDATE,0,0,빨간모자피자 논현점피자,False,,#,11580560,DOM_DATA_NLOG,1,PASS,빨간모자피자 논현점피자,서울 강남구 학동로6길 30,,CONTAINED,PARTIAL,RESOLVED,,,1175,1
-4278,오레노카츠 대치점,한티역 오레노 카츠,station,2,2,QWEN,"0,1",0,오레노카츠 대치점,True,LOW,#,1488199141,DOM_DATA_NLOG,1,PASS,오레노카츠 대치점,서울 강남구 도곡로63길 28,,EXACT,PARTIAL,RESOLVED,,,2550,1
-4279,카츠오우 도곡점,매봉역 카츠오우 도곡점,station,1,1,SINGLE_CANDIDATE,0,0,카츠오우 도곡점돈가스,False,,#,1003690665,DOM_DATA_NLOG,1,PASS,카츠오우 도곡점돈가스,서울 강남구 논현로30길 42 1층,,CONTAINED,PARTIAL,RESOLVED,,,995,1
-4289,수궁갈비집,봉은사역 수궁갈비집,station,1,1,SINGLE_CANDIDATE,0,0,수궁갈비집한식,False,,#,13150128,DOM_DATA_NLOG,1,PASS,수궁갈비집한식,서울 강남구 봉은사로97길 4,,CONTAINED,PARTIAL,RESOLVED,,,985,1

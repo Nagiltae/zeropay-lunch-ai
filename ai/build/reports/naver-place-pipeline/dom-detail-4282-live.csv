@@ -1,2 +1,0 @@
-restaurant_id,place_id,resolved_name,home,hours,menu_page,menu_cards,menu_status,visitor_total,blog_total,keyword_count,menu_mention_count,theme_count,representative_count,review_status,detail_status,diagnostics,elapsed_ms
-4282,1793398137,선02,True,SUCCESS,True,21,SUCCESS,,,0,0,0,0,NO_DATA,PARTIAL,"{'url': 'https://pcmap.place.naver.com/restaurant/1793398137/review/visitor', 'body_length': 227, 'visitor_text': False, 'blog_text': False, 'keyword_heading': False, 'chartmore': 0, 'menufilter': 0, 'filter': 0, 'review_list': 0, 'rvshowmore': 0}",1538

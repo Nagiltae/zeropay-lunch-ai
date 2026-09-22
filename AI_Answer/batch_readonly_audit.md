@@ -22,7 +22,7 @@ Spring Boot는 현재 Kakao/NAVER/Qwen Batch를 호출하지 않는다. 웹 추�
 
 ## 2. E2E 실행 흐름
 
-`ai/app/e2e_pipeline_orchestrator.py`의 실제 순서는 다음과 같다.
+`ai/app/batch/e2e_pipeline_orchestrator.py`의 실제 순서는 다음과 같다.
 
 1. MySQL에서 KOMSCO 대상 조회
 2. verification 상태와 source fingerprint 비교
@@ -36,11 +36,11 @@ Spring Boot는 현재 Kakao/NAVER/Qwen Batch를 호출하지 않는다. 웹 추�
 주요 child command:
 
 ```bash
-poetry run python -u -m app.provider_entity_resolution_cli \
+poetry run python -u -m app.entity_resolution.provider_entity_resolution_cli \
   --manifest <manifest> --output <csv> \
   --db-reject-cache --preexisting-skipped <count>
 
-poetry run python -u -m app.canonical_persistence_cli --csv <csv>
+poetry run python -u -m app.canonical.canonical_persistence_cli --csv <csv>
 poetry run python -u -m app.place_id_linker_cli --limit <limit>
 poetry run python -u -m app.place_detail_enrichment_cli --limit <limit>
 ```
@@ -100,7 +100,7 @@ REJECT는 `_pending()`에서 다시 선택될 수 있지만, 동일 fingerprint�
 파일:
 
 ```text
-ai/app/place_provider.py
+ai/app/providers/place_provider.py
 ```
 
 클래스:
@@ -122,7 +122,7 @@ https://dapi.kakao.com/v2/local/search/keyword.json
 파일:
 
 ```text
-ai/app/place_provider.py
+ai/app/providers/place_provider.py
 ```
 
 클래스:
@@ -402,7 +402,7 @@ Python SQL과 Spring JPA가 같은 Flyway schema를 공유하므로 다음 결�
 전체 Batch 실행 형태:
 
 ```bash
-poetry run python -u -m app.e2e_pipeline_orchestrator --limit 513
+poetry run python -u -m app.batch.e2e_pipeline_orchestrator --limit 513
 ```
 
 필요 조건:
@@ -513,20 +513,20 @@ semantic UNKNOWN이 DB verification에서는 ERROR로 저장되어 운영자가 
 ## 24. 사용자 직접 리뷰 파일
 
 1. `AGENTS.md`
-2. `ai/app/e2e_pipeline_orchestrator.py`
-3. `ai/app/provider_entity_resolution_cli.py`
-4. `ai/app/place_provider.py`
-5. `ai/app/qwen_candidate_matcher.py`
-6. `ai/app/verification_quality_gate.py`
-7. `ai/app/canonical_builder.py`
-8. `ai/app/canonical_persistence_cli.py`
-9. `ai/app/place_id_linker_cli.py`
-10. `ai/app/place_resolver_cli.py`
-11. `ai/app/place_allsearch.py`
-12. `ai/app/playwright_lifecycle.py`
-13. `ai/app/place_detail_enrichment_cli.py`
-14. `ai/app/place_detail_persistence.py`
-15. `ai/app/batch_progress.py`
+2. `ai/app/batch/e2e_pipeline_orchestrator.py`
+3. `ai/app/entity_resolution/provider_entity_resolution_cli.py`
+4. `ai/app/providers/place_provider.py`
+5. `ai/app/entity_resolution/qwen_candidate_matcher.py`
+6. `ai/app/entity_resolution/verification_quality_gate.py`
+7. `ai/app/canonical/canonical_builder.py`
+8. `ai/app/canonical/canonical_persistence_cli.py`
+9. `ai/app/naver/place_id_linker_cli.py`
+10. `ai/app/naver/place_resolver_cli.py`
+11. `ai/app/naver/place_allsearch.py`
+12. `ai/app/naver/playwright_lifecycle.py`
+13. `ai/app/naver/place_detail_enrichment_cli.py`
+14. `ai/app/naver/place_detail_persistence.py`
+15. `ai/app/batch/batch_progress.py`
 
 ## 25. 최종 판단
 

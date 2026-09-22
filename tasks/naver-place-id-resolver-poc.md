@@ -6,9 +6,9 @@ MySQL의 KOMSCO 원천 음식점 중 기존 hard filter를 만족하는 대상�
 
 ## Scope
 
-- `ai/app/place_resolver.py`의 정규화·거리·결정론적 판정
-- `ai/app/place_resolver_cli.py`의 PCMap 직접 Playwright 실행과 CSV 출력
-- `ai/app/qwen_candidate_matcher.py`의 mock 가능한 Ollama/Qwen adapter
+- `ai/app/naver/place_resolver.py`의 정규화·거리·결정론적 판정
+- `ai/app/naver/place_resolver_cli.py`의 PCMap 직접 Playwright 실행과 CSV 출력
+- `ai/app/entity_resolution/qwen_candidate_matcher.py`의 mock 가능한 Ollama/Qwen adapter
 - AI 단위 테스트
 
 ## Out of scope

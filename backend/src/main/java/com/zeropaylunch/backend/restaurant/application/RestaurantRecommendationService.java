@@ -1,3 +1,7 @@
+/**
+ * 사용자 취향·ZeroPay·영업 상태를 적용해 추천 후보를 필터링하고 순위를 계산한다.
+ * 자연어 해석 fallback과 DB 후보 조회 이후 최종 business ranking을 소유한다.
+ */
 package com.zeropaylunch.backend.restaurant.application;
 
 import com.zeropaylunch.backend.recommendation.ai.AnalyzedIntent;

@@ -1,3 +1,5 @@
+"""FastAPI health endpoint의 최소 계약을 검증한다."""
+
 from fastapi.testclient import TestClient
 
 from app.main import app

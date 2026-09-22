@@ -1,3 +1,7 @@
+/**
+ * 로그인 상태에 따라 인증 화면 또는 채팅 중심의 서비스 화면을 선택한다.
+ * 실제 데이터 요청은 하위 hook과 Spring API client가 담당한다.
+ */
 import { useState } from 'react'
 import './App.css'
 import { ChatHeader } from './components/chat/ChatHeader'

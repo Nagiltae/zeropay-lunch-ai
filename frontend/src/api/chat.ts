@@ -1,3 +1,4 @@
+/** 대화 생성·복원과 Spring SSE 채팅 스트림을 호출하는 API 모듈. */
 import type { RestaurantRecommendation } from '../types/chat'
 import { fetchWithAuth } from './client'
 

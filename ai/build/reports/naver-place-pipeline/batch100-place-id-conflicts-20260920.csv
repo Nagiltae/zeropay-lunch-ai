@@ -1,2 +1,0 @@
-restaurant_id,existing_restaurant_id,place_id,restaurant_name,restaurant_address,existing_external_name,existing_address,existing_road_address,diagnosis
-7422,7316,36398774,화덕피자파숑,"서울시 강남구 개포로 82길 13-9 1층 14호",화덕피자파숑 개포점,"서울특별시 강남구 개포동 186-4","서울특별시 강남구 개포로82길 13-9",LIKELY_SAME_KOMSCO_DUPLICATE_REQUIRES_REVIEW
