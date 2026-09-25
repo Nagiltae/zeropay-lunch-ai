@@ -1,0 +1,94 @@
+{
+  "experiment": "naver-coverage-targeted-pilot",
+  "external_requests": {
+    "naver_local": 4,
+    "naver_maps_ui": 4,
+    "total": 8,
+    "limit": 12
+  },
+  "database_write": false,
+  "qwen_calls": 0,
+  "targets": [
+    {
+      "restaurant_id": 9619,
+      "group": "A",
+      "name": "우정양곱창",
+      "hypothesis": "NAVER_LOCAL mapping exists but numeric ID is missing; Local evidence may improve UI matching.",
+      "naver_local": {
+        "query": "논현동 우정양곱창",
+        "http_error": "HTTP_401",
+        "raw_candidate_count": 0,
+        "elapsed_seconds": 0.056
+      },
+      "naver_maps_ui": {
+        "query": "논현동 우정양곱창",
+        "status": "MATCHED",
+        "numeric_place_id": "1921750340",
+        "elapsed_seconds": null,
+        "same_place_basis": "Existing linker name/address EXACT or STRONG_MATCH contract; raw candidate detail was not persisted by the pre-observability run."
+      }
+    },
+    {
+      "restaurant_id": 9695,
+      "group": "A",
+      "name": "현대순대국",
+      "hypothesis": "NAVER_LOCAL mapping exists but numeric ID is missing; Local evidence may improve UI matching.",
+      "naver_local": {
+        "query": "논현동 현대순대국",
+        "http_error": "HTTP_401",
+        "raw_candidate_count": 0,
+        "elapsed_seconds": 0.010
+      },
+      "naver_maps_ui": {
+        "query": "논현동 현대순대국",
+        "status": "MATCHED",
+        "numeric_place_id": "19882368",
+        "elapsed_seconds": null,
+        "same_place_basis": "Existing linker name/address EXACT or STRONG_MATCH contract; raw candidate detail was not persisted by the pre-observability run."
+      }
+    },
+    {
+      "restaurant_id": 9604,
+      "group": "B",
+      "name": "지유가오카핫쵸메7호점",
+      "hypothesis": "No NAVER_LOCAL mapping; Canonical fallback may be insufficient for UI matching.",
+      "naver_local": {
+        "query": "논현동 지유가오카핫쵸메7호점",
+        "http_error": "HTTP_401",
+        "raw_candidate_count": 0,
+        "elapsed_seconds": 0.010
+      },
+      "naver_maps_ui": {
+        "query": "논현동 지유가오카핫쵸메 7호점",
+        "status": "UNRESOLVED",
+        "numeric_place_id": null,
+        "elapsed_seconds": null,
+        "same_place_basis": "No unique candidate passed existing numeric/name/address matching."
+      }
+    },
+    {
+      "restaurant_id": 9627,
+      "group": "B",
+      "name": "파니나로",
+      "hypothesis": "No NAVER_LOCAL mapping; Canonical fallback may be insufficient for UI matching.",
+      "naver_local": {
+        "query": "논현동 파니나로",
+        "http_error": "HTTP_401",
+        "raw_candidate_count": 0,
+        "elapsed_seconds": 0.010
+      },
+      "naver_maps_ui": {
+        "query": "논현동 파니나로",
+        "status": "UNRESOLVED",
+        "numeric_place_id": null,
+        "elapsed_seconds": null,
+        "same_place_basis": "No unique candidate passed existing numeric/name/address matching."
+      }
+    }
+  ],
+  "interpretation": {
+    "naver_local_comparison": "INCONCLUSIVE_AUTHENTICATION_FAILURE",
+    "maps_ui_result": "2_MATCHED_2_UNRESOLVED",
+    "db_persisted_numeric_ids": false
+  }
+}

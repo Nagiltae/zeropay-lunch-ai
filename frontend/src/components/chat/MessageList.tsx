@@ -105,7 +105,7 @@ export function MessageList({
                         <dd>{restaurant.zeroPayAvailable ? '가능' : '불가'}</dd>
                       </div>
                     </dl>
-                    <p>{restaurant.reason}</p>
+                    {restaurant.reason?.trim() && <p>{restaurant.reason}</p>}
                     <small>{restaurant.address}</small>
                     {message.serverMessageId && (
                       <button

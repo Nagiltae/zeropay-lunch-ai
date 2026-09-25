@@ -36,16 +36,25 @@ def _mapping_status_filter(force_retry: bool) -> str:
 
 
 def _execute_sql_read(sql: str) -> list[dict[str, str]]:
+    mysql_user = os.getenv("MYSQL_USER", "zeropay")
+    mysql_password = os.getenv("MYSQL_PASSWORD", "zeropay_local")
+    mysql_database = os.getenv("MYSQL_DATABASE", "zeropay_lunch")
     command = [
         "docker",
         "compose",
         "exec",
         "-T",
+        "-e",
+        f"MYSQL_USER={mysql_user}",
+        "-e",
+        f"MYSQL_PASSWORD={mysql_password}",
+        "-e",
+        f"MYSQL_DATABASE={mysql_database}",
         "mysql",
         "sh",
         "-c",
         f'MYSQL_PWD="zeropay_local" mysql --default-character-set=utf8mb4 '
-        f'--batch -u zeropay zeropay_lunch -e "{sql}"',
+        f'--batch -u "$MYSQL_USER" "$MYSQL_DATABASE" -e "{sql}"',
     ]
     process = subprocess.run(command, capture_output=True, text=True)
     if process.returncode != 0:
@@ -62,20 +71,53 @@ def _execute_sql_read(sql: str) -> list[dict[str, str]]:
 
 
 def _execute_sql_write(sql: str) -> None:
+    mysql_user = os.getenv("MYSQL_USER", "zeropay")
+    mysql_password = os.getenv("MYSQL_PASSWORD", "zeropay_local")
+    mysql_database = os.getenv("MYSQL_DATABASE", "zeropay_lunch")
     command = [
         "docker",
         "compose",
         "exec",
         "-T",
+        "-e",
+        f"MYSQL_USER={mysql_user}",
+        "-e",
+        f"MYSQL_PASSWORD={mysql_password}",
+        "-e",
+        f"MYSQL_DATABASE={mysql_database}",
         "mysql",
         "sh",
         "-c",
-        'MYSQL_PWD="zeropay_local" mysql --default-character-set=utf8mb4 --batch '
-        '--raw -u zeropay zeropay_lunch',
+        'MYSQL_PWD="$MYSQL_PASSWORD" mysql --default-character-set=utf8mb4 --batch '
+        '--raw -u "$MYSQL_USER" "$MYSQL_DATABASE"',
     ]
     process = subprocess.run(command, input=sql.encode("utf-8"), capture_output=True)
     if process.returncode != 0:
         raise RuntimeError(f"MySQL write failed: {process.stderr.decode('utf-8')}")
+
+
+def _external_place_id_conflict(place_id: str, restaurant_id: str) -> bool:
+    """같은 Provider ID가 다른 음식점에 있으면 현재 대상에 저장하지 않는다."""
+    rows = _execute_sql_read(
+        "SELECT restaurant_id FROM restaurant_external_places "
+        f"WHERE provider = 'NAVER' AND external_place_id = '{place_id}' "
+        f"AND restaurant_id <> {restaurant_id} LIMIT 1;"
+    )
+    return bool(rows)
+
+
+def _numeric_mapping_insert_sql(restaurant_id: str, provider: str, place_id: str, query: str) -> str:
+    """Build an atomic insert; duplicate keys must fail, never update another row."""
+    escaped_query = query.replace("'", "''")
+    return f"""
+    START TRANSACTION;
+    INSERT INTO restaurant_external_places
+        (restaurant_id, provider, external_place_id, match_status, match_score,
+         query_used, matched_at, updated_at, created_at)
+    VALUES ({restaurant_id}, '{provider}', '{place_id}', 'MATCHED', 100.00,
+            '{escaped_query}', NOW(), NOW(), NOW());
+    COMMIT;
+    """
 
 
 def is_exact_match(candidate, naver_external_name, naver_address, naver_road_address):
@@ -129,7 +171,7 @@ def main():
         id_filter = f"AND c.restaurant_id IN ({','.join(map(str, ids))})"
     status_filter = _mapping_status_filter(args.force_retry)
 
-    root = Path(__file__).resolve().parent.parent.parent
+    root = Path(__file__).resolve().parents[3]
     load_local_env(root)
 
     print(f"Fetching up to {args.limit} candidates for linking...")
@@ -138,6 +180,7 @@ def main():
         c.restaurant_id,
         c.name,
         c.address,
+        e.external_name AS local_external_name,
         COALESCE(e.external_name, c.name) as external_name,
         COALESCE(e.address, c.address) as ext_address,
         COALESCE(e.road_address, c.road_address) as ext_road_address,
@@ -182,6 +225,7 @@ def main():
         len(rows),
         {"matched": "MATCHED", "unresolved": "UNRESOLVED", "ambiguous": "AMBIGUOUS"},
         report_dir=report_dir,
+        run_id=os.environ.get("BATCH_RUN_ID"),
     )
     progress.skip_preexisting(already_complete)
     progress.record_reason("PLACE_ID_SKIPPED", already_complete)
@@ -233,6 +277,7 @@ def main():
 
                 status = "UNRESOLVED"
                 new_place_id = None
+                persist_match = True
                 for attempt in range(retry_policy.max_retries + 1):
                     try:
                         response, payload = _search_ui_response(
@@ -242,16 +287,33 @@ def main():
                         )
                         candidates = parse_allsearch_candidates(payload)
 
+                        numeric_candidates = [
+                            cand for cand in candidates
+                            if cand.place_id and cand.place_id.isdigit()
+                        ]
+
                         matches = []
-                        for cand in candidates:
-                            if not cand.place_id or not cand.place_id.isdigit():
-                                continue
+                        for cand in numeric_candidates:
                             if is_exact_match(cand, target_name, naver_addr, naver_road):
                                 matches.append(cand)
+                        progress.record_place_id_observation(
+                            local_evidence=bool(row.get("local_external_name")),
+                            raw_candidates=len(candidates),
+                            numeric_candidates=len(numeric_candidates),
+                            rejected_candidates=len(numeric_candidates) - len(matches),
+                        )
 
                         if len(matches) == 1:
                             new_place_id = matches[0].place_id
                             status = "MATCHED"
+                            if _external_place_id_conflict(new_place_id, restaurant_id):
+                                # 한 numeric ID를 두 음식점에 연결하면 기존 매핑을
+                                # ON DUPLICATE UPDATE로 덮을 수 있으므로 저장하지 않는다.
+                                new_place_id = None
+                                status = "AMBIGUOUS"
+                                persist_match = False
+                                progress.record_reason("PLACE_ID_EXTERNAL_ID_CONFLICT")
+                                progress.record_place_id_persistence("CONFLICT")
                         elif len(matches) > 1:
                             status = "AMBIGUOUS"
                         else:
@@ -273,36 +335,37 @@ def main():
 
                 print(f"[{restaurant_id}] Result: {new_place_id} (Status: {status})", flush=True)
 
-                if not args.dry_run:
+                if not args.dry_run and persist_match:
                     escaped_query = query.replace("'", "''")
                     if new_place_id:
-                        sql_write = f"""
-                    INSERT INTO restaurant_external_places
-                        (restaurant_id, provider, external_place_id, match_status, match_score,
-                         query_used, matched_at, updated_at, created_at)
-                    VALUES ({restaurant_id}, '{provider}', '{new_place_id}', 'MATCHED', 100.00,
-                            '{escaped_query}', NOW(), NOW(), NOW())
-                    ON DUPLICATE KEY UPDATE
-                        external_place_id = '{new_place_id}',
-                        match_status = 'MATCHED',
-                        match_score = 100.00,
-                        query_used = '{escaped_query}',
-                        matched_at = NOW(),
-                        updated_at = NOW();
-                    """
+                        sql_write = _numeric_mapping_insert_sql(
+                            restaurant_id, provider, new_place_id, query
+                        )
+                        try:
+                            _execute_sql_write(sql_write)
+                        except RuntimeError as error:
+                            if "1062" not in str(error) and "DUPLICATE" not in str(error).upper():
+                                progress.record_place_id_persistence("FAILED")
+                                raise
+                            status = "AMBIGUOUS"
+                            new_place_id = None
+                            progress.record_reason("PLACE_ID_EXTERNAL_ID_CONFLICT")
+                            progress.record_place_id_persistence("CONFLICT")
+                        else:
+                            progress.record_place_id_persistence("SAVED")
                     else:
                         sql_write = f"""
                     INSERT INTO restaurant_external_places
-                        (restaurant_id, provider, match_status, match_score, query_used,
+                        (restaurant_id, provider, external_place_id, match_status, match_score, query_used,
                          updated_at, created_at)
-                    VALUES ({restaurant_id}, '{provider}', '{status}', 0.00,
-                            '{escaped_query}', NOW(), NOW(), NOW())
+                    VALUES ({restaurant_id}, '{provider}', NULL, '{status}', 0.00,
+                            '{escaped_query}', NOW(), NOW())
                     ON DUPLICATE KEY UPDATE
                         match_status = '{status}',
                         query_used = '{escaped_query}',
                         updated_at = NOW();
                     """
-                    _execute_sql_write(sql_write)
+                        _execute_sql_write(sql_write)
 
                 progress.record(
                     "success" if status == "MATCHED" else "failed",

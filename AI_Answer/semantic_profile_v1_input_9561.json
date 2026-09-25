@@ -1,0 +1,512 @@
+{
+  "inputVersion": "semantic-profile-input-v1",
+  "restaurantId": 9561,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.085650"
+  },
+  "identity": {
+    "restaurantName": "다모아분식",
+    "restaurantAddress": "서울시 강남구 논현로150길41(논현동)",
+    "category": null,
+    "latitude": 37.5201555,
+    "longitude": 127.0319196,
+    "canonicalName": "다모아분식",
+    "canonicalAddress": "서울시 강남구 논현로150길41(논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 논현로150길 41",
+    "provider": "NAVER",
+    "numericPlaceId": "43229792",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "떡볶이",
+          "description": "1993년 부터 이어온 다모아 대표메뉴 Sbs생활의달인, kbs오날오밤, 각종 유튜브 출연",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "crawled_at": "2026-09-21 12:39:12.414552"
+        },
+        {
+          "name": "순대",
+          "description": "촉촉하고 쫄깃한 당면순대입니다. (내장 있습니다.)",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "crawled_at": "2026-09-21 12:39:12.415422"
+        },
+        {
+          "name": "튀김",
+          "description": "오징어1, 김말이1, 고구마1, 새우1, 만두1 (*오징어만 단품 주문시 3개입니다.)",
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "crawled_at": "2026-09-21 12:39:12.415543"
+        },
+        {
+          "name": "부산어묵 (1인분)",
+          "description": "부산에서 직접 택배 받는 real 부산어묵입니다. 1인분 3개입니다.",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "crawled_at": "2026-09-21 12:39:12.415624"
+        },
+        {
+          "name": "일반김밥",
+          "description": "신동진 쌀 + 방앗간 참기름 우엉, 시금치(부추), 계란, 햄, 당근, 단무지 엄마표김밥",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "crawled_at": "2026-09-21 12:39:12.415764"
+        },
+        {
+          "name": "치즈김밥",
+          "description": null,
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "crawled_at": "2026-09-21 12:39:12.415851"
+        },
+        {
+          "name": "참치김밥",
+          "description": null,
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "crawled_at": "2026-09-21 12:39:12.415919"
+        },
+        {
+          "name": "수제돈가스김밥",
+          "description": null,
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "crawled_at": "2026-09-21 12:39:12.415994"
+        },
+        {
+          "name": "라면",
+          "description": null,
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "crawled_at": "2026-09-21 12:39:12.416099"
+        },
+        {
+          "name": "짜파게티",
+          "description": null,
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "crawled_at": "2026-09-21 12:39:12.416199"
+        },
+        {
+          "name": "쫄면",
+          "description": "새콤달콤 과일이 듬뿍 들어 간 수제 쫄면장 ❤️",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "crawled_at": "2026-09-21 12:39:12.416272"
+        },
+        {
+          "name": "김치볶음밥",
+          "description": "고슬고슬 철판볶음밥 느낌 가득한 인기메뉴 계란후라이 2개는 보너스 ?🏼",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "crawled_at": "2026-09-21 12:39:12.416343"
+        },
+        {
+          "name": "새우볶음밥",
+          "description": "탱글탱글한 새우와 고소한 계란의 만남, 예상하는 바로 그 맛 ❤️",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "crawled_at": "2026-09-21 12:39:12.416431"
+        },
+        {
+          "name": "수제돈가스",
+          "description": "국내산 생등심을 하나하나 망치로 두드려 만들었어요! 소스도 수제, 다모아의 신메뉴!!",
+          "price_value": 12000,
+          "price_text": "12,000원",
+          "price_type": null,
+          "external_menu_id": "dom-14",
+          "crawled_at": "2026-09-21 12:39:12.416511"
+        },
+        {
+          "name": "짬뽕라면",
+          "description": null,
+          "price_value": 6500,
+          "price_text": "6,500원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "crawled_at": "2026-09-21 12:39:12.416858"
+        },
+        {
+          "name": "어묵라면",
+          "description": null,
+          "price_value": 6500,
+          "price_text": "6,500원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "crawled_at": "2026-09-21 12:39:12.416934"
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "영업 종료09:30에 영업 시작 9시 30분에 영업 시작 ",
+          "open_time": null,
+          "close_time": null,
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-21 12:39:12.417012"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "751",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "285",
+          "crawled_at": "2026-09-21 12:39:12.412644"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "mention_count": 267,
+          "crawled_at": "2026-09-21 12:39:12.417640"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "mention_count": 97,
+          "crawled_at": "2026-09-21 12:39:12.417800"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "mention_count": 87,
+          "crawled_at": "2026-09-21 12:39:12.417907"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "mention_count": 86,
+          "crawled_at": "2026-09-21 12:39:12.417994"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "mention_count": 48,
+          "crawled_at": "2026-09-21 12:39:12.418365"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "mention_count": 46,
+          "crawled_at": "2026-09-21 12:39:12.418461"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "mention_count": 42,
+          "crawled_at": "2026-09-21 12:39:12.418550"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "mention_count": 22,
+          "crawled_at": "2026-09-21 12:39:12.418637"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "mention_count": 14,
+          "crawled_at": "2026-09-21 12:39:12.418744"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "mention_count": 7,
+          "crawled_at": "2026-09-21 12:39:12.418874"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "떡볶이",
+          "mention_count": 105,
+          "crawled_at": "2026-09-21 12:39:12.418969"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "김밥",
+          "mention_count": 39,
+          "crawled_at": "2026-09-21 12:39:12.419049"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "튀김",
+          "mention_count": 34,
+          "crawled_at": "2026-09-21 12:39:12.419120"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "볶음밥",
+          "mention_count": 24,
+          "crawled_at": "2026-09-21 12:39:12.419194"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "순대",
+          "mention_count": 21,
+          "crawled_at": "2026-09-21 12:39:12.419286"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "김치볶음밥",
+          "mention_count": 20,
+          "crawled_at": "2026-09-21 12:39:12.419364"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "라면",
+          "mention_count": 11,
+          "crawled_at": "2026-09-21 12:39:12.419453"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "라볶이",
+          "mention_count": 9,
+          "crawled_at": "2026-09-21 12:39:12.419554"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "참치",
+          "mention_count": 8,
+          "crawled_at": "2026-09-21 12:39:12.419640"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "참치김밥",
+          "mention_count": 8,
+          "crawled_at": "2026-09-21 12:39:12.419714"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "어묵",
+          "mention_count": 6,
+          "crawled_at": "2026-09-21 12:39:12.419804"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "오징어",
+          "mention_count": 6,
+          "crawled_at": "2026-09-21 12:39:12.419877"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "짜파게티",
+          "mention_count": 6,
+          "crawled_at": "2026-09-21 12:39:12.419943"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "국물떡볶이",
+          "mention_count": 5,
+          "crawled_at": "2026-09-21 12:39:12.420015"
+        },
+        {
+          "keyword_kind": "menu",
+          "keyword": "오므라이스",
+          "mention_count": 5,
+          "crawled_at": "2026-09-21 12:39:12.420095"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "맛",
+          "mention_count": 201,
+          "crawled_at": "2026-09-21 12:39:12.420418"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "만족도",
+          "mention_count": 103,
+          "crawled_at": "2026-09-21 12:39:12.420492"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "서비스",
+          "mention_count": 25,
+          "crawled_at": "2026-09-21 12:39:12.420569"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "가격",
+          "mention_count": 10,
+          "crawled_at": "2026-09-21 12:39:12.420659"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "음식량",
+          "mention_count": 9,
+          "crawled_at": "2026-09-21 12:39:12.420756"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "청결도",
+          "mention_count": 7,
+          "crawled_at": "2026-09-21 12:39:12.420837"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "대기시간",
+          "mention_count": 7,
+          "crawled_at": "2026-09-21 12:39:12.420908"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "메뉴",
+          "mention_count": 6,
+          "crawled_at": "2026-09-21 12:39:12.420976"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "목적",
+          "mention_count": 5,
+          "crawled_at": "2026-09-21 12:39:12.421041"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "위치",
+          "mention_count": 4,
+          "crawled_at": "2026-09-21 12:39:12.421105"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "분위기",
+          "mention_count": 3,
+          "crawled_at": "2026-09-21 12:39:12.421173"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "배달",
+          "mention_count": 1,
+          "crawled_at": "2026-09-21 12:39:12.421234"
+        },
+        {
+          "keyword_kind": "theme",
+          "keyword": "주차",
+          "mention_count": 1,
+          "crawled_at": "2026-09-21 12:39:12.421291"
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-1",
+          "review_text": "- 떡볶이 & 김밥 - • 떡볶이 : 밀떡으로 부드러운 식감과 잘 배어 든 양념, 양파🧅의 단 맛과 살짝의 매콤함🌶까지 옛날 떡볶이의 모양새와 맛😋을 느낄 수 있음. • 김밥 : 속이 제법 알차게 들었고 맛도 괜찮은 편, 떡볶이 or 라면🍜과의 합이 좋고 요즘 물가에 돈 아깝지 않은 퀄. • 테이블 QR로 주문 가능하고 물, 단무지, 어묵국물은 셀프. 실내/외 청결부분, 수저🍽통등 기본 위생에서 아쉬움이 살짝 남는 편(이 점 역시 옛 정취를 느낄 수 있음😂). 친절면은 평범 정도.",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.421353"
+        },
+        {
+          "review_id": "dom-2",
+          "review_text": "더보기",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.422237"
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "다모아분식 한가인떡볶이로 유튜브 방송에서 보고 유명하길래 다녀왔어요.😄 🧡떡볶이 1인분(밀떡) + 모듬 튀김 5개(잘라서 나옴) + 새우볶음밥 1인분 + 사이다캔 = ₩22,000원🧡 떡볶이는 밀떡인데 떡이 부드럽고 말랑하지는 않았지만 달짝 지근한 소스와 잘 어울리고 오뎅이랑 파도 많이 들어가있었어요.😋👏🏻👏🏻✨ 모듬 튀김도 김말이, 만두, 새우, 오징어, 고구마 5가지 골고루 먹을 수 있고 담백하고 깔끔하게 잘 튀겨져나왔어요.🥰👍🏻👍🏻 새우볶음밥도 새우도 탱글탱글하고 볶은 계란과 잘 섞여져서 중식 느낌 볶음밥으로 잘 나와요.😍🩷💓 아침 겸 점심으로 먹었는데 배도 부르고 맛있게 잘 먹었어요.😄💕 편리한 점은 테이블마다 QR로 쿠팡 어플로 자동 주문, 결제라서 선결제예요.😉👏🏻👏🏻 배부르고 맛있게 잘 먹었습니다.😊💕",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.422566"
+        },
+        {
+          "review_id": "dom-4",
+          "review_text": "더보기",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.422661"
+        },
+        {
+          "review_id": "dom-5",
+          "review_text": "달인 떡볶이로 유명한 곳이라 궁금해서 방문해봤어요. 떡볶이는 자극적으로 맵지 않아 부담 없이 먹기 좋고, 쫄깃한 떡 식감이 매력적이네요. 튀김은 원하는 종류로 골라 담을 수 있어서 취향대로 즐기기 좋았습니다. 순대, 김밥 등 사이드 메뉴도 다양해서 여러 가지 함께 먹기 좋아요. 전체적으로 가성비도 괜찮고 간단하게 분식 생각날 때 추천하고 싶은 곳입니다.☺️",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.422731"
+        },
+        {
+          "review_id": "dom-6",
+          "review_text": "논현의 자랑 다모아분식! 저의 또또또간집입니다 요즘같은 고물가시대에 가격 저렴하구 양도 많아요. 게다가 맛까지 ㅠㅠ 주기적으로 먹어야하는 다모아분식 ㅎㅎ!! 한번씩 가보시길 추천합니다~ 추천메뉴(필수) 떡볶이,순대,튀김,김치볶음밥,쫄면",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.422787"
+        },
+        {
+          "review_id": "dom-7",
+          "review_text": "더보기",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.422847"
+        },
+        {
+          "review_id": "dom-8",
+          "review_text": "ㄱ다이어트인데. 맛있어서. 라면 까지 추가 해서 ~~ 다이어트 실패 ㅠㅠㅠ",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.423132"
+        },
+        {
+          "review_id": "dom-9",
+          "review_text": "어묵 ㅎㅎ 포장해서 ~ 1안) 따뚯하게 마시고. 2안) 얼음 넣어 마시고!! ㅎㅎ 국물이 끝내주는 ㅎㅎ 모아모아 다모아~ ㅎㅎㅎㅎ",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.423197"
+        },
+        {
+          "review_id": "dom-10",
+          "review_text": "너무 맛있어용 ㅎㅎ 떡볶이도 맛있고 튀김이 미쳤어용",
+          "review_date": null,
+          "rating": null,
+          "crawled_at": "2026-09-21 12:39:12.423277"
+        }
+      ]
+    },
+    "lifecycle": []
+  },
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": false,
+    "missingSections": [
+      "menu",
+      "business_hours",
+      "review"
+    ]
+  },
+  "inputHash": "8e01fba70abf4f2d393bc6407ba7132a7771cbc6f9fe0dcaf27814a62cfe0a6f"
+}

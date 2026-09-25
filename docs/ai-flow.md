@@ -34,7 +34,7 @@ LLM 출력이 프로그램 로직에 사용될 때는 반드시 검증된 구조
 
 ## 현재 구현 상태
 
-현재 FastAPI에는 상태 확인 엔드포인트만 있습니다. Spring Boot의 `RecommendationContextService`가 사용자 메시지, 강남구 위치, 취향과 최근 72시간 식사 기록을 `IntentAnalysisRequest`로 조립합니다. `AiIntentAnalyzer`는 실제 FastAPI 클라이언트가 없는 동안 `TemporaryIntentAnalyzer`를 사용하며, 향후 클라이언트 오류에도 정책이 허용하면 같은 분석기로 대체합니다.
+FastAPI는 health, intent-analysis, candidate-scoped semantic retrieval 및 recommendation-explanations endpoint를 제공합니다. Spring의 `RecommendationContextService`는 메시지, 사용자 설정과 최근 식사 기록으로 `IntentAnalysisRequest`를 구성합니다. 기본 OFF인 `AI_SEMANTIC_RUNTIME_ENABLED`가 켜지면 기존 `AnalyzedIntent` adapter가 FastAPI 의도를 사용하며, 설정된 장애 fallback에서는 `TemporaryIntentAnalyzer`가 처리합니다. 최종 후보의 reason은 Safe Fact 기반 결정론 설명을 기본으로 하며, Qwen 설명만 별도 기본 OFF인 `AI_LLM_EXPLANATION_ENABLED`로 제어합니다.
 
 현재 결정론적 추천은 다음을 강제합니다.
 

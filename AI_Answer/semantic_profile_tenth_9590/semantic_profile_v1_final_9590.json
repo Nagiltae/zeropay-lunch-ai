@@ -1,0 +1,102 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+  "restaurantId": 9590,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features premium ingredients such as Valrhona chocolate and organic matcha.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E017",
+        "E022",
+        "E034"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E017",
+          "sourceField": "sections.menu.items[14]",
+          "content": {
+            "name": "Valrhona메세지 판초콜릿",
+            "price": 4800
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E022",
+          "sourceField": "sections.menu.items[19]",
+          "content": {
+            "name": "제철과일생크림케이크",
+            "price": 8500
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E034",
+          "sourceField": "sections.menu.items[31]",
+          "content": {
+            "name": "valrhona둘세초콜릿마들렌",
+            "price": 4000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently praise the deliciousness of the bread, coffee, and desserts.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E104",
+        "E106",
+        "E110"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E104",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 91
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E106",
+          "sourceField": "sections.review.keywords[2]",
+          "content": {
+            "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 75
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E110",
+          "sourceField": "sections.review.keywords[6]",
+          "content": {
+            "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 31
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ]
+}

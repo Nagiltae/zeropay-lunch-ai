@@ -1,0 +1,412 @@
+{
+  "restaurantId": 9590,
+  "inputPath": "../AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_input_9590_compact.json",
+  "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 48149,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant offers a wide variety of macarons, cakes, cookies, and puddings.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E104",
+                "E114",
+                "E115"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features premium ingredients such as Valrhona chocolate and organic matcha.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E017",
+                "E022",
+                "E034"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently praise the deliciousness of the bread, coffee, and desserts.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E104",
+                "E106",
+                "E110"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for relaxing with pets and offers a warm, cozy atmosphere.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E137",
+                "E109"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The interior is decorated with Christmas ornaments and cute dolls, creating a clean environment.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E137",
+                "E109"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": true,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant offers a wide variety of macarons, cakes, cookies, and puddings.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E104",
+                "E114",
+                "E115"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "food type from review/keyword is not an official menu fact"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E104",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 91
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E114",
+                "sourceField": "sections.review.keywords[10]",
+                "content": {
+                  "keyword": "마카롱",
+                  "mentionCount": 77
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E115",
+                "sourceField": "sections.review.keywords[11]",
+                "content": {
+                  "keyword": "케이크",
+                  "mentionCount": 18
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features premium ingredients such as Valrhona chocolate and organic matcha.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E017",
+                "E022",
+                "E034"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E017",
+                "sourceField": "sections.menu.items[14]",
+                "content": {
+                  "name": "Valrhona메세지 판초콜릿",
+                  "price": 4800
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E022",
+                "sourceField": "sections.menu.items[19]",
+                "content": {
+                  "name": "제철과일생크림케이크",
+                  "price": 8500
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E034",
+                "sourceField": "sections.menu.items[31]",
+                "content": {
+                  "name": "valrhona둘세초콜릿마들렌",
+                  "price": 4000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Customers frequently praise the deliciousness of the bread, coffee, and desserts.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E104",
+                "E106",
+                "E110"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E104",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 91
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E106",
+                "sourceField": "sections.review.keywords[2]",
+                "content": {
+                  "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 75
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E110",
+                "sourceField": "sections.review.keywords[6]",
+                "content": {
+                  "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 31
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for relaxing with pets and offers a warm, cozy atmosphere.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E137",
+                "E109"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E137",
+                "sourceField": "sections.review.representativeReviews[0]",
+                "content": {
+                  "reviewId": "dom-4",
+                  "text": "🐶 반려견과 함께 카페 마츄피츄 다녀왔어요 아담한 공간이지만 마카롱, 빵, 케이크 등 디저트 종류는 꽤 다양했습니다 저는 키오스크로 바스크 제주 유기농 말차 치즈케이크와 페퍼민트 아메리카노를 주문했어요 카페 안은 크리스마스 소품과 귀여운 인형들로 꾸며져 있어 전체적으로 아늑하고 따뜻한 분위기였어요🎄 사장님이 반려견과 함께 와서 노른자 큐브 간식도 챙겨주셨는데 아이도 잘 먹어서 괜히 더 기분이 좋더라고요 🥰 말차치즈케이크는 무스는 부드럽고 위쪽 시트는 꾸덕했어요 🧀치즈와 말차 조합으로 많이 달지 않아 부담 없이 먹기 좋았습니다 페퍼민트 아메리카노는 커피에 페퍼민트 향이 은은하게 어우러져 상쾌하고 깔끔한 느낌이었어요 🌿 예쁘게 꾸며진 공간에서 반려견과 함께 조용히 쉬기 좋은, 따뜻한 카페였습니다 ✨"
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              },
+              {
+                "evidenceId": "E109",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 35
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The interior is decorated with Christmas ornaments and cute dolls, creating a clean environment.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E137",
+                "E109"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E137",
+                "sourceField": "sections.review.representativeReviews[0]",
+                "content": {
+                  "reviewId": "dom-4",
+                  "text": "🐶 반려견과 함께 카페 마츄피츄 다녀왔어요 아담한 공간이지만 마카롱, 빵, 케이크 등 디저트 종류는 꽤 다양했습니다 저는 키오스크로 바스크 제주 유기농 말차 치즈케이크와 페퍼민트 아메리카노를 주문했어요 카페 안은 크리스마스 소품과 귀여운 인형들로 꾸며져 있어 전체적으로 아늑하고 따뜻한 분위기였어요🎄 사장님이 반려견과 함께 와서 노른자 큐브 간식도 챙겨주셨는데 아이도 잘 먹어서 괜히 더 기분이 좋더라고요 🥰 말차치즈케이크는 무스는 부드럽고 위쪽 시트는 꾸덕했어요 🧀치즈와 말차 조합으로 많이 달지 않아 부담 없이 먹기 좋았습니다 페퍼민트 아메리카노는 커피에 페퍼민트 향이 은은하게 어우러져 상쾌하고 깔끔한 느낌이었어요 🌿 예쁘게 꾸며진 공간에서 반려견과 함께 조용히 쉬기 좋은, 따뜻한 카페였습니다 ✨"
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              },
+              {
+                "evidenceId": "E109",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 35
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "0d4116ac70cf1c0e949d3ba315f8e16a5140d0d99ba0d8df150ddad592fdd6b0",
+  "elapsedMs": 49007,
+  "catalogPath": "../AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+  "finalProfile": {
+    "profileVersion": "semantic-profile-output-v2-evidence",
+    "inputVersion": "semantic-profile-input-v1-compact-1",
+    "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+    "catalogVersion": "semantic-profile-evidence-catalog-v1",
+    "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+    "restaurantId": 9590,
+    "venueId": null,
+    "profileStatus": "READY",
+    "claims": [
+      {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu features premium ingredients such as Valrhona chocolate and organic matcha.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E017",
+          "E022",
+          "E034"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E017",
+            "sourceField": "sections.menu.items[14]",
+            "content": {
+              "name": "Valrhona메세지 판초콜릿",
+              "price": 4800
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          },
+          {
+            "evidenceId": "E022",
+            "sourceField": "sections.menu.items[19]",
+            "content": {
+              "name": "제철과일생크림케이크",
+              "price": 8500
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          },
+          {
+            "evidenceId": "E034",
+            "sourceField": "sections.menu.items[31]",
+            "content": {
+              "name": "valrhona둘세초콜릿마들렌",
+              "price": 4000
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          }
+        ]
+      },
+      {
+        "claimType": "TASTE",
+        "text": "Customers frequently praise the deliciousness of the bread, coffee, and desserts.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E104",
+          "E106",
+          "E110"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E104",
+            "sourceField": "sections.review.keywords[0]",
+            "content": {
+              "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 91
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E106",
+            "sourceField": "sections.review.keywords[2]",
+            "content": {
+              "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 75
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E110",
+            "sourceField": "sections.review.keywords[6]",
+            "content": {
+              "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 31
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          }
+        ]
+      }
+    ]
+  }
+}

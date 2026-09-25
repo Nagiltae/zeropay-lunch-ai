@@ -1,0 +1,10 @@
+{
+  "restaurantId": 9590,
+  "beforeSnapshot": "AI_Answer/detail_promotion_snapshot_9590_before.json",
+  "afterSnapshot": "AI_Answer/detail_promotion_snapshot_9590_after.json",
+  "lifecycle": {"menu": "SUCCESS", "business_hours": "SUCCESS", "review": "SUCCESS"},
+  "freshnessRerun": {"preexistingSkipped": 1, "browserStarts": 0, "navigation": 0},
+  "targetOutsideChanged": "not observed in target-scoped verification",
+  "placeIdOwnershipChanged": false,
+  "venueChanged": false
+}

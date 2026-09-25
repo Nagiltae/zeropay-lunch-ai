@@ -1,0 +1,3918 @@
+{
+  "version": "semantic-retrieval-hybrid-v2",
+  "results": [
+    {
+      "query": "스시 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.46368396,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46311644,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.43640924,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.46368396,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.46368396,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.46311644,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.46311644,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.43640924,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43640924,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 210.00038357577,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.38357577,
+          "exactMatch": false,
+          "synonymMatch": true,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 20.00054208577,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.54208577,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.00053479064,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.53479064,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "초밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.4962609,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "normalizedClaimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4930533,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.45831847,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 0.5316663,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5316663,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.4962609,
+          "matchedClaimId": "9617:FOOD_TYPE:dff03204365b",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4962609,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.4930533,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4930533,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 310.0005316493,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5316493,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.00060650533,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.60650533,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 20.00051328737,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.51328737,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "일식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9569,
+          "score": 0.50184965,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4646731,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.43651247,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.50184965,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.50184965,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.4646731,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4646731,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.43651247,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43651247,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 110.00037491432,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.37491432,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.00053320813,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.53320813,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0005256351,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5256351,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "우동 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9569,
+          "score": 0.43661606,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.41940898,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.4088235,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.43661606,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43661606,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.41940898,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.41940898,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.4088235,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4088235,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 310.00040622258,
+          "matchedClaimId": "9731:FOOD_MENTION:E016",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.40622258,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E016"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.0004978376,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4978376,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0004875662,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4875662,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "피자 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580,
+        9571
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9571,
+          "score": 0.5774626,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5764383,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.5169716,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.5774626,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5774626,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5764383,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5764383,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5169716,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5169716,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 320.0005773947,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5773947,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 310.00047545955,
+          "matchedClaimId": "9580:FOOD_MENTION:E067",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.47545955,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 10,
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0005168919,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5168919,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "피자 메뉴가 있는 곳",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9571,
+        9580
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9571,
+          "score": 0.62773335,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5991622,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5298785,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.62773335,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.62773335,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5991622,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5991622,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "finalRetrievalScore": 0.55464387,
+          "matchedClaimId": "9570:FOOD_MENTION:E026",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.55464387,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 6,
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 320.0006277034,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.6277034,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 310.0005493009,
+          "matchedClaimId": "9580:FOOD_MENTION:E067",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5493009,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 10,
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.0005298463,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5298463,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "떡볶이 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5354636,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.50613165,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.4799084,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5354636,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5354636,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.5113063,
+          "matchedClaimId": "9617:FOOD_MENTION:E033",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5113063,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 13,
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.50613165,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.50613165,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 320.0004789146,
+          "matchedClaimId": "9617:FOOD_TYPE:dff03204365b",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4789146,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0005353478,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5353478,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 20.00050602937,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.50602937,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "김밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5945421,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5551592,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5489608,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "normalizedClaimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5945421,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5945421,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.55643576,
+          "matchedClaimId": "9569:FOOD_MENTION:E026",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.55643576,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 12,
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.55643576,
+          "matchedClaimId": "9617:FOOD_MENTION:E034",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.55643576,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 9,
+          "evidenceIds": [
+            "E034"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 320.00055509055,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.55509055,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 320.0005490221,
+          "matchedClaimId": "9617:FOOD_TYPE:dff03204365b",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.5490221,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.00059442246,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.59442246,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "한식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567,
+        9568
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9569,
+          "score": 0.5128467,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.49971473,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.48513743,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.5128467,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.5128467,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.49971473,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.49971473,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.48513743,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.48513743,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 120.0004997533,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4997533,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 120.00048508382,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.48508382,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.0005362632,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5362632,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "한정식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.46161208,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.43883467,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.40468052,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.46161208,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.46161208,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.43883467,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43883467,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.40468052,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.40468052,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 120.0004616482,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4616482,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0004943879,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4943879,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.00049101084,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.49101084,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "갈비찜 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "UNKNOWN",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "DINING_CONTEXT",
+          "TASTE",
+          "VENUE_CHARACTERISTIC",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5681962,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.56312484,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5345197,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5681962,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5681962,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.56312484,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.56312484,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5345197,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5345197,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 320.00056315684,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.56315684,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0005681879,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5681879,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 20.00053454036,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.53454036,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "디저트 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9590
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "UNKNOWN",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "DINING_CONTEXT",
+          "TASTE",
+          "VENUE_CHARACTERISTIC",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5267863,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.5093644,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.5014911,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 0.5370358,
+          "matchedClaimId": "9590:FOOD_MENTION:E110",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5370358,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 31,
+          "evidenceIds": [
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5267863,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5267863,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5093644,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5093644,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 310.0005370183,
+          "matchedClaimId": "9590:FOOD_MENTION:E110",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5370183,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 31,
+          "evidenceIds": [
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 20.0005268317,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5268317,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.00050359213,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.50359213,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "카페에서 디저트 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9590
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "UNKNOWN",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "DINING_CONTEXT",
+          "TASTE",
+          "VENUE_CHARACTERISTIC",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9571,
+          "score": 0.47897258,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.47365195,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "score": 0.4730592,
+          "claimType": "TASTE",
+          "claimId": "9590:TASTE:76361fa3f7fe",
+          "normalizedClaimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 0.5717523,
+          "matchedClaimId": "9590:FOOD_MENTION:E110",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5717523,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 31,
+          "evidenceIds": [
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.47897258,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.47897258,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.47365195,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.47365195,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 310.0005716153,
+          "matchedClaimId": "9590:FOOD_MENTION:E110",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5716153,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 31,
+          "evidenceIds": [
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 20.00047888675,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.47888675,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 20.00041277146,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.41277146,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617,
+        9568
+      ],
+      "routeV2": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.58688027,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.57568246,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5092244,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.58688027,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.58688027,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.57568246,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.57568246,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.5092244,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5092244,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 10.0005868597,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5868597,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00057567674,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.57567674,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.0005092063,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5092063,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "빠르게 먹을 수 있는 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "routeV2": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.49183676,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.48881662,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46647626,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.49183676,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.49183676,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.48881662,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.48881662,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.46647626,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.46647626,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00049176344,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.49176344,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 10.00048866212,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.48866212,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.00046635318,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.46635318,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼자 점심 먹기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617,
+        9568
+      ],
+      "routeV2": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "UNKNOWN",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "DINING_CONTEXT",
+          "TASTE",
+          "VENUE_CHARACTERISTIC",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5581168,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4920644,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.4630445,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5581168,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5581168,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.4920644,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.4920644,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.4630445,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4630445,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 10.0005579314,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5579314,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00049187392,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.49187392,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.00044910288,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.44910288,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "맛있는 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617,
+        9731,
+        9569,
+        9580,
+        9571,
+        9574,
+        9590
+      ],
+      "routeV2": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.4820731,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "normalizedClaimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "score": 0.4820236,
+          "claimType": "TASTE",
+          "claimId": "9590:TASTE:76361fa3f7fe",
+          "normalizedClaimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.4806698,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 0.4820731,
+          "matchedClaimId": "9731:TASTE:f5bdbb7cd4cb",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4820731,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 1182,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 0.4820236,
+          "matchedClaimId": "9590:TASTE:76361fa3f7fe",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4820236,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 91,
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.4806698,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4806698,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 10.00048210904,
+          "matchedClaimId": "9731:TASTE:f5bdbb7cd4cb",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.48210904,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 1182,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 10.00048202914,
+          "matchedClaimId": "9590:TASTE:76361fa3f7fe",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.48202914,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 91,
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.00048070094,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.48070094,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "재료가 신선한 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731,
+        9569,
+        9574
+      ],
+      "routeV2": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9574,
+          "score": 0.5144424,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.48743427,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "normalizedClaimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.43238437,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 0.5144424,
+          "matchedClaimId": "9574:TASTE:41e54f412793",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.5144424,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        },
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 0.48743427,
+          "matchedClaimId": "9731:TASTE:f5bdbb7cd4cb",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.48743427,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 1182,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.43238437,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.43238437,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 10.00051435965,
+          "matchedClaimId": "9574:TASTE:41e54f412793",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.51435965,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        },
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 10.00048739016,
+          "matchedClaimId": "9731:TASTE:f5bdbb7cd4cb",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.48739016,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 1182,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.00043235534,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.43235534,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617,
+        9571
+      ],
+      "routeV2": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9571,
+          "score": 0.51055974,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4702583,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "normalizedClaimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "score": 0.44721976,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.51055974,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.51055974,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.4702583,
+          "matchedClaimId": "9617:TASTE:f28b8581f50f",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4702583,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 30,
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 0.44721976,
+          "matchedClaimId": "9574:TASTE:41e54f412793",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.44721976,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 10.0005105278,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.5105278,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00047022164,
+          "matchedClaimId": "9617:TASTE:f28b8581f50f",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.47022164,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 30,
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 10.0004471997,
+          "matchedClaimId": "9574:TASTE:41e54f412793",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4471997,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "맛있다는 평가가 많은 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617,
+        9731,
+        9569,
+        9580,
+        9571,
+        9574,
+        9590
+      ],
+      "routeV2": {
+        "intent": "TASTE_QUANTITATIVE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5495795,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.54810476,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.54750085,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5495795,
+          "matchedClaimId": "9580:TASTE:3aa7f8353082",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.5495795,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.54810476,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.54810476,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.54750085,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.54750085,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 10.99949328205,
+          "matchedClaimId": "9731:TASTE:f5bdbb7cd4cb",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.49328205,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 1182,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.1285472682,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.5472682,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 10.091545571,
+          "matchedClaimId": "9590:TASTE:76361fa3f7fe",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.545571,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 91,
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        }
+      ],
+      "quantitativeVariants": {
+        "similarityOnly": [
+          {
+            "restaurantId": 9580,
+            "finalRetrievalScore": 0.5494668,
+            "matchedClaimId": "9580:TASTE:3aa7f8353082",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.5494668,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 32,
+            "evidenceIds": [
+              "E057",
+              "E071"
+            ]
+          },
+          {
+            "restaurantId": 9571,
+            "finalRetrievalScore": 0.54790986,
+            "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.54790986,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 88,
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          },
+          {
+            "restaurantId": 9569,
+            "finalRetrievalScore": 0.5472682,
+            "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.5472682,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 128,
+            "evidenceIds": [
+              "E013",
+              "E014",
+              "E038"
+            ]
+          }
+        ],
+        "rawMentionCount": [
+          {
+            "restaurantId": 9731,
+            "score": 1182.49328205,
+            "mentionCount": 1182,
+            "claimId": "9731:TASTE:f5bdbb7cd4cb",
+            "evidenceIds": [
+              "E003",
+              "E004",
+              "E029"
+            ]
+          },
+          {
+            "restaurantId": 9569,
+            "score": 128.5472682,
+            "mentionCount": 128,
+            "claimId": "9569:TASTE:8a9b62a3677a",
+            "evidenceIds": [
+              "E013",
+              "E014",
+              "E038"
+            ]
+          },
+          {
+            "restaurantId": 9590,
+            "score": 91.545571,
+            "mentionCount": 91,
+            "claimId": "9590:TASTE:76361fa3f7fe",
+            "evidenceIds": [
+              "E104",
+              "E106",
+              "E110"
+            ]
+          }
+        ],
+        "log1pMentionCount": [
+          {
+            "restaurantId": 9731,
+            "score": 7.569090913978387,
+            "mentionCount": 1182,
+            "claimId": "9731:TASTE:f5bdbb7cd4cb",
+            "evidenceIds": [
+              "E003",
+              "E004",
+              "E029"
+            ]
+          },
+          {
+            "restaurantId": 9569,
+            "score": 5.407080604361672,
+            "mentionCount": 128,
+            "claimId": "9569:TASTE:8a9b62a3677a",
+            "evidenceIds": [
+              "E013",
+              "E014",
+              "E038"
+            ]
+          },
+          {
+            "restaurantId": 9590,
+            "score": 5.06735957704904,
+            "mentionCount": 91,
+            "claimId": "9590:TASTE:76361fa3f7fe",
+            "evidenceIds": [
+              "E104",
+              "E106",
+              "E110"
+            ]
+          }
+        ],
+        "ratio": "NOT_COMPUTED_NO_DENOMINATOR"
+      },
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 언급이 있는 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617,
+        9571
+      ],
+      "routeV2": {
+        "intent": "TASTE_QUANTITATIVE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.47259676,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "normalizedClaimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.4630808,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "score": 0.38525915,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.47259676,
+          "matchedClaimId": "9617:TASTE:f28b8581f50f",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.47259676,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 30,
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.4630808,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4630808,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 10.0884629035,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4629035,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.03047243392,
+          "matchedClaimId": "9617:TASTE:f28b8581f50f",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.47243392,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 30,
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        }
+      ],
+      "quantitativeVariants": {
+        "similarityOnly": [
+          {
+            "restaurantId": 9617,
+            "finalRetrievalScore": 0.47243392,
+            "matchedClaimId": "9617:TASTE:f28b8581f50f",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.47243392,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 30,
+            "evidenceIds": [
+              "E024",
+              "E027"
+            ]
+          },
+          {
+            "restaurantId": 9571,
+            "finalRetrievalScore": 0.4629035,
+            "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.4629035,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 88,
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          }
+        ],
+        "rawMentionCount": [
+          {
+            "restaurantId": 9571,
+            "score": 88.4629035,
+            "mentionCount": 88,
+            "claimId": "9571:TASTE:b322ec9b8dbc",
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          },
+          {
+            "restaurantId": 9617,
+            "score": 30.47243392,
+            "mentionCount": 30,
+            "claimId": "9617:TASTE:f28b8581f50f",
+            "evidenceIds": [
+              "E024",
+              "E027"
+            ]
+          }
+        ],
+        "log1pMentionCount": [
+          {
+            "restaurantId": 9571,
+            "score": 4.95153986973214,
+            "mentionCount": 88,
+            "claimId": "9571:TASTE:b322ec9b8dbc",
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          },
+          {
+            "restaurantId": 9617,
+            "score": 3.906421124485146,
+            "mentionCount": 30,
+            "claimId": "9617:TASTE:f28b8581f50f",
+            "evidenceIds": [
+              "E024",
+              "E027"
+            ]
+          }
+        ],
+        "ratio": "NOT_COMPUTED_NO_DENOMINATOR"
+      },
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "서비스가 친절한 곳",
+      "intent": "VENUE_CHARACTERISTIC",
+      "expectedRestaurantIds": [
+        9580,
+        9574
+      ],
+      "routeV2": {
+        "intent": "VENUE_CHARACTERISTIC",
+        "claimTypes": [
+          "VENUE_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "VENUE_CHARACTERISTIC",
+        "claimTypes": [
+          "VENUE_CHARACTERISTIC"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9574,
+          "score": 0.5718085,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5628809,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스",
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.49237105,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 0.5718085,
+          "matchedClaimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5718085,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5628809,
+          "matchedClaimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5628809,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 7,
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.49237105,
+          "matchedClaimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.49237105,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 8,
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 10.0005716064,
+          "matchedClaimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5716064,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 10.0005625906,
+          "matchedClaimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5625906,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 7,
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.0004922201,
+          "matchedClaimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.4922201,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 8,
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    }
+  ]
+}

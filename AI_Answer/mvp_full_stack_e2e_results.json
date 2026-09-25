@@ -1,0 +1,66 @@
+{
+  "environment": {
+    "database": "isolated-e2e",
+    "databaseName": "zeropay_lunch_mvp_e2e",
+    "semanticRuntime": true,
+    "llmExplanation": false
+  },
+  "queries": [
+    {
+      "query": "떡볶이 먹고 싶어",
+      "restaurantIds": [
+        9617
+      ],
+      "reason": "떡볶이 메뉴가 확인되어 추천했어요.",
+      "recommendationCount": 1,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "혼밥하면서 떡볶이 먹고 싶어",
+      "restaurantIds": [
+        9617
+      ],
+      "reason": "떡볶이 메뉴가 확인되고 혼밥하기 좋다는 고객 평가가 확인돼 추천했어요.",
+      "recommendationCount": 1,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "restaurantIds": [
+        9617
+      ],
+      "reason": "가성비가 좋다는 고객 평가가 확인돼 추천했어요.",
+      "recommendationCount": 1,
+      "sseEvent": "recommendations"
+    }
+  ],
+  "browserE2E": "PASS",
+  "semanticRequests": 3,
+  "intentRequests": 3,
+  "qdrantQueries": 6,
+  "embeddingCalls": 6,
+  "llmExplanationCalls": 0,
+  "devMysqlWrites": 0,
+  "e2eMysqlWrites": {
+    "fixtureRestaurants": 2,
+    "users": 1,
+    "conversations": 1,
+    "chatMessages": 6,
+    "recommendations": 3
+  },
+  "qdrantWrites": 0,
+  "qdrantPointCountBefore": 40,
+  "qdrantPointCountAfter": 40,
+  "qdrantScopeViolations": 0,
+  "candidateScopeCheck": {
+    "candidateRestaurantIds": [
+      9617
+    ],
+    "returnedRestaurantIds": [
+      9617
+    ],
+    "violations": 0
+  },
+  "cleanup": "E2E Compose project and dedicated volume removed by EXIT trap",
+  "assessment": "PASS"
+}

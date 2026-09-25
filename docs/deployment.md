@@ -48,12 +48,14 @@ FastAPI 연동 정책은 환경변수로 조정합니다.
 | 환경변수 | 기본값 | 용도 |
 | --- | --- | --- |
 | `AI_BASE_URL` | local `http://localhost:8001`, dev `http://ai:8001` | 내부 FastAPI 주소 |
+| `AI_SEMANTIC_RUNTIME_ENABLED` | `false` | 추천 흐름의 FastAPI intent/retrieval을 명시적으로 활성화 |
+| `AI_LLM_EXPLANATION_ENABLED` | `false` | semantic runtime이 켜진 경우에만 Qwen 자연어 설명을 실험적으로 활성화. false면 Safe Fact 결정론 설명 사용 |
 | `AI_CONNECT_TIMEOUT` | `2s` | 연결 제한 시간 |
 | `AI_RESPONSE_TIMEOUT` | `8s` | 응답 제한 시간 |
 | `AI_MAX_ATTEMPTS` | `1` | 최대 호출 횟수, 기본은 자동 재시도 없음 |
 | `AI_FALLBACK_ENABLED` | `true` | AI 호출 실패 시 임시 분석기 사용 여부 |
 
-현재 실제 FastAPI HTTP 클라이언트는 없으므로 timeout과 최대 시도 설정은 클라이언트 구현 시 적용됩니다. fallback 선택과 임시 분석기는 현재 추천 흐름에서 동작합니다.
+Semantic Runtime이 꺼져 있으면 기존 Spring 추천 경로를 유지합니다. 켜진 경우 설정된 connect/response timeout을 사용하고 자동 재시도하지 않습니다. `AI_LLM_EXPLANATION_ENABLED=false`에서도 Safe Fact 기반 이유는 생성하며, Qwen 호출은 하지 않습니다. intent 및 retrieval 장애는 `AI_FALLBACK_ENABLED=true`일 때 기존 추천 후보 경로를 유지합니다. local MVP 검증 조합은 `AI_SEMANTIC_RUNTIME_ENABLED=true`, `AI_LLM_EXPLANATION_ENABLED=false`입니다.
 
 KOMSCO 일회성 import 설정은 다음과 같습니다.
 
@@ -86,7 +88,7 @@ docker compose up --build -d
 docker compose ps
 ```
 
-React 정적 파일은 Nginx가 제공합니다. Nginx는 `/api/` 요청을 Spring Boot로 전달하며 FastAPI를 직접 노출하지 않습니다. Spring Boot는 Compose 내부 호스트명 `mysql`을 사용합니다. `AI_BASE_URL`과 `QDRANT_URL`은 향후 연동을 위해 준비되어 있지만 현재 Spring Boot는 FastAPI를 호출하지 않고 FastAPI도 Qdrant를 호출하지 않으므로 서로의 시작 조건이 아닙니다.
+React 정적 파일은 Nginx가 제공합니다. Nginx는 `/api/` 요청을 Spring Boot로 전달하며 FastAPI를 직접 노출하지 않습니다. Spring Boot는 Compose 내부 호스트명 `mysql`을 사용합니다. `AI_SEMANTIC_RUNTIME_ENABLED`가 기본 false이므로 compose service health 의존성은 바꾸지 않으며, opt-in 시에도 Spring→FastAPI timeout/fallback 계약이 적용됩니다. FastAPI retrieval은 설정된 Qdrant/Embedding dependency를 사용합니다.
 
 Compose는 Spring Boot에 `SPRING_PROFILES_ACTIVE=dev`를 설정합니다.
 

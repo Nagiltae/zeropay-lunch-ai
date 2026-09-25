@@ -1,0 +1,360 @@
+{
+  "restaurantId": 9568,
+  "inputPath": "../AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_input_9568_compact.json",
+  "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 32235,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: VENUE_CHARACTERISTIC/identity"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E012",
+                "E013"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E005",
+                "E006",
+                "E009",
+                "E018"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention that the food is delicious and fresh, with specific praise for the Cheonggukjang.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E025",
+                "E030",
+                "E059"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E029",
+                "E032",
+                "E033"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Gangnam-gu, Seoul, and maintains a clean environment with friendly service.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002",
+                "E026",
+                "E034"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": true,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E012",
+                "E013"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.menu.items[0]",
+                "content": {
+                  "name": "순대국",
+                  "price": 10000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E004",
+                "sourceField": "sections.menu.items[1]",
+                "content": {
+                  "name": "한우차돌박이",
+                  "price": 30000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E012",
+                "sourceField": "sections.menu.items[9]",
+                "content": {
+                  "name": "청국장+비빔밥",
+                  "price": 10000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E013",
+                "sourceField": "sections.menu.items[10]",
+                "content": {
+                  "name": "된장찌개+비빔밥",
+                  "price": 10000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E005",
+                "E006",
+                "E009",
+                "E018"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E005",
+                "sourceField": "sections.menu.items[2]",
+                "content": {
+                  "name": "서울밥상",
+                  "price": 15000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E006",
+                "sourceField": "sections.menu.items[3]",
+                "content": {
+                  "name": "시골밥상",
+                  "price": 11000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E009",
+                "sourceField": "sections.menu.items[6]",
+                "content": {
+                  "name": "떡만두국",
+                  "price": 8000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E018",
+                "sourceField": "sections.menu.items[15]",
+                "content": {
+                  "name": "천겹살",
+                  "price": 20000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention that the food is delicious and fresh, with specific praise for the Cheonggukjang.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E025",
+                "E030",
+                "E059"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E025",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 104
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E030",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 20
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E059",
+                "sourceField": "sections.review.representativeReviews[3]",
+                "content": {
+                  "reviewId": "dom-7",
+                  "text": "강남에서 노포분위기에 맛난청국장 짜지도않고 맛있네요"
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E029",
+                "E032",
+                "E033"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E029",
+                "sourceField": "sections.review.keywords[4]",
+                "content": {
+                  "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 21
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E032",
+                "sourceField": "sections.review.keywords[7]",
+                "content": {
+                  "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 10
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E033",
+                "sourceField": "sections.review.keywords[8]",
+                "content": {
+                  "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 9
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Gangnam-gu, Seoul, and maintains a clean environment with friendly service.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002",
+                "E026",
+                "E034"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence type not allowed: VENUE_CHARACTERISTIC/identity",
+              "evidence section is not SUCCESS"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E002",
+                "sourceField": "identity.restaurantAddress",
+                "content": "서울특별시 강남구 언주로 148길 14",
+                "section": "identity",
+                "status": null,
+                "evidenceType": "identity"
+              },
+              {
+                "evidenceId": "E026",
+                "sourceField": "sections.review.keywords[1]",
+                "content": {
+                  "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 42
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E034",
+                "sourceField": "sections.review.keywords[9]",
+                "content": {
+                  "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 5
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "232a72ed4e9cff2a44dd2e175fb350883487a190a01bc0930357c799299cab11",
+  "elapsedMs": 33047,
+  "catalogPath": "../AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json"
+}

@@ -1,0 +1,38 @@
+{
+  "status": "CONDITIONAL_GO",
+  "path": "POST /internal/v1/semantic-retrieval",
+  "runtime": "draft-only; not implemented",
+  "request": {
+    "query": "string",
+    "topK": "integer <= 20"
+  },
+  "response": {
+    "intent": {
+      "claimTypes": ["FOOD_TYPE", "FOOD_MENTION"],
+      "taxonomyVersion": "string"
+    },
+    "candidates": [
+      {
+        "restaurantId": "integer",
+        "semanticScore": "number",
+        "matchedClaims": [
+          {
+            "claimType": "string",
+            "claimId": "string",
+            "score": "number",
+            "evidenceIds": ["string"]
+          }
+        ]
+      }
+    ]
+  },
+  "responsibilityBoundary": {
+    "fastapi": ["query intent", "semantic candidate retrieval", "evidence trace"],
+    "spring": ["ZeroPay eligibility", "hours", "distance", "budget", "recent meal", "final ranking"]
+  },
+  "conditions": [
+    "Expand benchmark beyond four Restaurants",
+    "Resolve Japanese-food category and exact-food ranking failures",
+    "Define quantitative TASTE mention-count handling"
+  ]
+}

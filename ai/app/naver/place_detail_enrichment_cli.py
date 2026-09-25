@@ -16,7 +16,7 @@ from playwright.sync_api import sync_playwright
 from app.batch.batch_progress import BatchProgress
 from app.batch.place_request_limiter import NavigationRateLimiter, TransientRetryPolicy
 from app.naver.place_detail_models import PlaceDetail
-from app.naver.place_detail_persistence import PlaceDetailPersistence
+from app.naver.place_detail_persistence import MysqlWriteSession, PlaceDetailPersistence
 from app.naver.place_dom_detail_crawler import PlaceDomDetailCrawler
 from app.naver.playwright_lifecycle import PlaywrightLifecycle, is_playwright_lifecycle_error
 from app.providers.provider_input import load_local_env
@@ -59,6 +59,20 @@ def _missing_sections(
     review_missing = row["has_review"] == "0"
     menu_missing = row["has_menu"] == "0" or row["has_price"] == "0"
     hours_missing = row["has_hours"] == "0"
+
+    def state_requires_collection(section: str, fallback: bool) -> bool:
+        state = row.get(f"{section}_state", "")
+        if state == "FAILED":
+            return True
+        if state == "ABSENT_CONFIRMED":
+            return False
+        if state == "SUCCESS":
+            return fallback
+        return fallback
+
+    review_missing = state_requires_collection("review", review_missing)
+    menu_missing = state_requires_collection("menu", menu_missing)
+    hours_missing = state_requires_collection("hours", hours_missing)
     if force_refresh:
         return {"review": True, "menu": True, "business_hours": True}
     return {
@@ -66,7 +80,7 @@ def _missing_sections(
         or (
             not review_missing
             and _timestamp_is_stale(
-                row.get("review_crawled_at"),
+                row.get("review_checked_at") or row.get("review_crawled_at"),
                 stale_after_seconds,
                 now,
             )
@@ -75,7 +89,7 @@ def _missing_sections(
         or (
             not menu_missing
             and _timestamp_is_stale(
-                row.get("menu_crawled_at"),
+                row.get("menu_checked_at") or row.get("menu_crawled_at"),
                 stale_after_seconds,
                 now,
             )
@@ -84,7 +98,7 @@ def _missing_sections(
         or (
             not hours_missing
             and _timestamp_is_stale(
-                row.get("hours_crawled_at"),
+                row.get("hours_checked_at") or row.get("hours_crawled_at"),
                 stale_after_seconds,
                 now,
             )
@@ -94,6 +108,25 @@ def _missing_sections(
 
 def _sections_to_persist(missing: dict[str, bool], review_page_success: bool) -> dict[str, bool]:
     return {**missing, "review": missing["review"] and review_page_success}
+
+
+def _section_states(detail: PlaceDetail, missing: dict[str, bool]) -> dict[str, str]:
+    states = {}
+    if missing["menu"]:
+        states["menu"] = "SUCCESS" if detail.menu_page_success and detail.menus else (
+            "ABSENT_CONFIRMED" if detail.menu_page_success else "FAILED"
+        )
+    if missing["business_hours"]:
+        states["business_hours"] = (
+            "SUCCESS" if detail.hours_status == "SUCCESS" else
+            "ABSENT_CONFIRMED" if detail.hours_status == "ABSENT_CONFIRMED" else "FAILED"
+        )
+    if missing["review"]:
+        states["review"] = (
+            "SUCCESS" if detail.review_page_success and detail.review_status == "SUCCESS" else
+            "ABSENT_CONFIRMED" if detail.review_page_success else "FAILED"
+        )
+    return states
 
 
 def _pending_detail_rows(
@@ -134,6 +167,7 @@ def _collected_sections_complete(
     missing: dict[str, bool],
     detail: PlaceDetail | None,
     review_page_success: bool,
+    section_states: dict[str, str] | None = None,
 ) -> bool:
     if detail is None:
         return False
@@ -142,10 +176,15 @@ def _collected_sections_complete(
         or bool(item.price_text and item.price_text.strip())
         for item in detail.menus
     )
+    states = section_states or {}
     return (
         (not missing["review"] or review_page_success)
-        and (not missing["menu"] or priced_menu)
-        and (not missing["business_hours"] or bool(detail.business_hours))
+        and (not missing["menu"] or priced_menu or states.get("menu") == "ABSENT_CONFIRMED")
+        and (
+            not missing["business_hours"]
+            or bool(detail.business_hours)
+            or states.get("business_hours") == "ABSENT_CONFIRMED"
+        )
     )
 
 
@@ -201,7 +240,7 @@ def main():
             parser.error("--restaurant-ids requires 1..limit positive IDs")
         id_filter = f"AND c.restaurant_id IN ({','.join(map(str, ids))})"
 
-    root = Path(__file__).resolve().parent.parent.parent
+    root = Path(__file__).resolve().parents[3]
     load_local_env(root)
     stale_after_seconds = _detail_stale_after_seconds()
     now = datetime.now()
@@ -211,11 +250,14 @@ def main():
     SELECT c.restaurant_id, c.name, e.external_place_id, e.provider,
            IF(h.id IS NULL, 0, 1) AS has_review,
            h.crawled_at AS review_crawled_at,
+           rs.state AS review_state, rs.checked_at AS review_checked_at,
            IF(m.restaurant_id IS NULL, 0, 1) AS has_menu,
            COALESCE(m.has_price, 0) AS has_price,
            m.crawled_at AS menu_crawled_at,
+           ms.state AS menu_state, ms.checked_at AS menu_checked_at,
            IF(b.restaurant_id IS NULL, 0, 1) AS has_hours
-           ,b.crawled_at AS hours_crawled_at
+           ,b.crawled_at AS hours_crawled_at,
+           hs.state AS hours_state, hs.checked_at AS hours_checked_at
     FROM canonical_restaurants c
     JOIN restaurant_external_places e ON c.restaurant_id = e.restaurant_id
     JOIN restaurants r ON c.restaurant_id = r.id
@@ -233,10 +275,19 @@ def main():
     LEFT JOIN (
         SELECT restaurant_id, provider, external_place_id
                ,MAX(crawled_at) AS crawled_at
-        FROM restaurant_business_hours
+        FROM restaurant_business_hours WHERE active = 1
         GROUP BY restaurant_id, provider, external_place_id
     ) b ON b.restaurant_id = c.restaurant_id AND b.provider = e.provider
       AND b.external_place_id = e.external_place_id
+    LEFT JOIN restaurant_detail_section_states rs
+      ON rs.provider=e.provider AND rs.external_place_id=e.external_place_id
+      AND rs.section='review'
+    LEFT JOIN restaurant_detail_section_states ms
+      ON ms.provider=e.provider AND ms.external_place_id=e.external_place_id
+      AND ms.section='menu'
+    LEFT JOIN restaurant_detail_section_states hs
+      ON hs.provider=e.provider AND hs.external_place_id=e.external_place_id
+      AND hs.section='business_hours'
     WHERE e.provider = 'NAVER'
       AND e.match_status = 'MATCHED'
       AND e.external_place_id REGEXP '^[0-9]+$'
@@ -264,6 +315,7 @@ def main():
         len(rows),
         {"success": "success", "failure": "failure"},
         report_dir=report_dir,
+        run_id=os.environ.get("BATCH_RUN_ID"),
     )
     progress.skip_preexisting(already_complete)
     progress.record_reason("DETAIL_COMPLETE_SKIPPED", already_complete)
@@ -272,7 +324,14 @@ def main():
         return
 
     dom_crawler = PlaceDomDetailCrawler()
-    persistence = PlaceDetailPersistence(root) if not args.dry_run else None
+    write_session = None
+    if not args.dry_run:
+        write_session = MysqlWriteSession(root)
+        write_session.__enter__()
+    persistence = (
+        PlaceDetailPersistence(root, write_session=write_session)
+        if write_session else None
+    )
     limiter = NavigationRateLimiter(
         navigation_delay=float(os.environ.get("NAVER_NAVIGATION_DELAY_SECONDS", "2.5")),
         restaurant_delay=float(os.environ.get("NAVER_RESTAURANT_DELAY_SECONDS", "5.0")),
@@ -303,6 +362,12 @@ def main():
                     stale_after_seconds=stale_after_seconds,
                     now=now,
                     force_refresh=args.force_refresh,
+                )
+                progress.record_detail_sections(row, missing)
+                progress.record_detail_navigation(
+                    home=1,
+                    menu=int(missing["menu"]),
+                    review=int(missing["review"]),
                 )
                 has_any_detail = any(
                     row[key] == "1" for key in ("has_review", "has_menu", "has_hours")
@@ -335,7 +400,8 @@ def main():
                         dom_detail = dom_crawler.collect(
                             session.page,
                             place_id,
-                            include_reviews=True,
+                            include_menu=missing["menu"],
+                            include_reviews=missing["review"],
                             before_navigation=limiter.before_navigation,
                         )
                         break
@@ -352,6 +418,32 @@ def main():
                         if is_playwright_lifecycle_error(error):
                             session.recover_after(error)
                 if dom_detail is None:
+                    if persistence:
+                        try:
+                            persistence.persist_section_states(
+                                restaurant_id,
+                                place_id,
+                                {
+                                    section: "FAILED"
+                                    for section, needed in (
+                                        ("menu", missing["menu"]),
+                                        ("hours", missing["business_hours"]),
+                                        ("review", missing["review"]),
+                                    )
+                                    if needed
+                                },
+                            )
+                        except Exception as error:
+                            progress.error(
+                                restaurant_id, f"Failure state persistence failed: {error}"
+                            )
+                    for section, needed in (
+                        ("menu", missing["menu"]),
+                        ("hours", missing["business_hours"]),
+                        ("review", missing["review"]),
+                    ):
+                        if needed:
+                            progress.record_detail_section_result(section, "FAILED")
                     progress.record("failed", restaurant_id, failure=1)
                     if not session.is_usable():
                         session.recover_if_unusable()
@@ -364,7 +456,33 @@ def main():
                         f"[{restaurant_id}] Detail collection failed (home_success=False). "
                         f"Warnings: {warnings}. Skipping persistence to protect existing data."
                     )
+                    if persistence:
+                        try:
+                            persistence.persist_section_states(
+                                restaurant_id,
+                                place_id,
+                                {
+                                    section: "FAILED"
+                                    for section, needed in (
+                                        ("menu", missing["menu"]),
+                                        ("hours", missing["business_hours"]),
+                                        ("review", missing["review"]),
+                                    )
+                                    if needed
+                                },
+                            )
+                        except Exception as error:
+                            progress.error(
+                                restaurant_id, f"Failure state persistence failed: {error}"
+                            )
                     progress.record("failed", restaurant_id, failure=1)
+                    for section, needed in (
+                        ("menu", missing["menu"]),
+                        ("hours", missing["business_hours"]),
+                        ("review", missing["review"]),
+                    ):
+                        if needed:
+                            progress.record_detail_section_result(section, "FAILED")
                     if not session.is_usable():
                         session.recover_if_unusable()
                     limiter.after_restaurant()
@@ -385,11 +503,22 @@ def main():
                 place_detail = None
                 persisted = True
                 write_sections = _sections_to_persist(missing, dom_detail.review_page_success)
+                section_states = _section_states(dom_detail, missing)
+                for section, state in section_states.items():
+                    progress.record_detail_section_result(
+                        section,
+                        state,
+                        reconciled=state in {"SUCCESS", "ABSENT_CONFIRMED"},
+                    )
                 try:
                     place_detail = dom_detail.to_place_detail(place_id)
                     if persistence:
                         persistence.persist(
-                            restaurant_id, place_id, place_detail, sections=write_sections
+                            restaurant_id,
+                            place_id,
+                            place_detail,
+                            sections=write_sections,
+                            section_states=section_states,
                         )
                 except Exception as error:
                     persisted = False
@@ -400,6 +529,7 @@ def main():
                     missing,
                     place_detail,
                     dom_detail.review_page_success,
+                    section_states,
                 )
                 if persisted and not available:
                     progress.error(
@@ -432,6 +562,8 @@ def main():
             progress.last_failure_restaurant_id = current_id
         raise
     finally:
+        if write_session:
+            write_session.close()
         if "session" in locals():
             session.close()
         if progress.failed and status in {"COMPLETED", "DRY_RUN"}:

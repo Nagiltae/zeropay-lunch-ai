@@ -1,0 +1,510 @@
+{
+  "queries": [
+    {
+      "query": "맛있다는 평가가 많은 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617,
+        9731,
+        9569,
+        9580,
+        9571,
+        9574,
+        9590
+      ],
+      "routeV2": {
+        "intent": "TASTE_QUANTITATIVE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5495795,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.54810476,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.54750085,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5495795,
+          "matchedClaimId": "9580:TASTE:3aa7f8353082",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.5495795,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.54810476,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.54810476,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.54750085,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.54750085,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 10.99949328205,
+          "matchedClaimId": "9731:TASTE:f5bdbb7cd4cb",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.49328205,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 1182,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.1285472682,
+          "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.5472682,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 128,
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "finalRetrievalScore": 10.091545571,
+          "matchedClaimId": "9590:TASTE:76361fa3f7fe",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.545571,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 91,
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        }
+      ],
+      "quantitativeVariants": {
+        "similarityOnly": [
+          {
+            "restaurantId": 9580,
+            "finalRetrievalScore": 0.5494668,
+            "matchedClaimId": "9580:TASTE:3aa7f8353082",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.5494668,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 32,
+            "evidenceIds": [
+              "E057",
+              "E071"
+            ]
+          },
+          {
+            "restaurantId": 9571,
+            "finalRetrievalScore": 0.54790986,
+            "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.54790986,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 88,
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          },
+          {
+            "restaurantId": 9569,
+            "finalRetrievalScore": 0.5472682,
+            "matchedClaimId": "9569:TASTE:8a9b62a3677a",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.5472682,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 128,
+            "evidenceIds": [
+              "E013",
+              "E014",
+              "E038"
+            ]
+          }
+        ],
+        "rawMentionCount": [
+          {
+            "restaurantId": 9731,
+            "score": 1182.49328205,
+            "mentionCount": 1182,
+            "claimId": "9731:TASTE:f5bdbb7cd4cb",
+            "evidenceIds": [
+              "E003",
+              "E004",
+              "E029"
+            ]
+          },
+          {
+            "restaurantId": 9569,
+            "score": 128.5472682,
+            "mentionCount": 128,
+            "claimId": "9569:TASTE:8a9b62a3677a",
+            "evidenceIds": [
+              "E013",
+              "E014",
+              "E038"
+            ]
+          },
+          {
+            "restaurantId": 9590,
+            "score": 91.545571,
+            "mentionCount": 91,
+            "claimId": "9590:TASTE:76361fa3f7fe",
+            "evidenceIds": [
+              "E104",
+              "E106",
+              "E110"
+            ]
+          }
+        ],
+        "log1pMentionCount": [
+          {
+            "restaurantId": 9731,
+            "score": 7.569090913978387,
+            "mentionCount": 1182,
+            "claimId": "9731:TASTE:f5bdbb7cd4cb",
+            "evidenceIds": [
+              "E003",
+              "E004",
+              "E029"
+            ]
+          },
+          {
+            "restaurantId": 9569,
+            "score": 5.407080604361672,
+            "mentionCount": 128,
+            "claimId": "9569:TASTE:8a9b62a3677a",
+            "evidenceIds": [
+              "E013",
+              "E014",
+              "E038"
+            ]
+          },
+          {
+            "restaurantId": 9590,
+            "score": 5.06735957704904,
+            "mentionCount": 91,
+            "claimId": "9590:TASTE:76361fa3f7fe",
+            "evidenceIds": [
+              "E104",
+              "E106",
+              "E110"
+            ]
+          }
+        ],
+        "ratio": "NOT_COMPUTED_NO_DENOMINATOR"
+      },
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 언급이 있는 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617,
+        9571
+      ],
+      "routeV2": {
+        "intent": "TASTE_QUANTITATIVE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "TASTE",
+        "claimTypes": [
+          "TASTE"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.47259676,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "normalizedClaimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.4630808,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "score": 0.38525915,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.47259676,
+          "matchedClaimId": "9617:TASTE:f28b8581f50f",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.47259676,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 30,
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 0.4630808,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4630808,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 10.0884629035,
+          "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.4629035,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 88,
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.03047243392,
+          "matchedClaimId": "9617:TASTE:f28b8581f50f",
+          "matchedClaimType": "TASTE",
+          "semanticScore": 0.47243392,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 30,
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        }
+      ],
+      "quantitativeVariants": {
+        "similarityOnly": [
+          {
+            "restaurantId": 9617,
+            "finalRetrievalScore": 0.47243392,
+            "matchedClaimId": "9617:TASTE:f28b8581f50f",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.47243392,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 30,
+            "evidenceIds": [
+              "E024",
+              "E027"
+            ]
+          },
+          {
+            "restaurantId": 9571,
+            "finalRetrievalScore": 0.4629035,
+            "matchedClaimId": "9571:TASTE:b322ec9b8dbc",
+            "matchedClaimType": "TASTE",
+            "semanticScore": 0.4629035,
+            "exactMatch": false,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 88,
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          }
+        ],
+        "rawMentionCount": [
+          {
+            "restaurantId": 9571,
+            "score": 88.4629035,
+            "mentionCount": 88,
+            "claimId": "9571:TASTE:b322ec9b8dbc",
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          },
+          {
+            "restaurantId": 9617,
+            "score": 30.47243392,
+            "mentionCount": 30,
+            "claimId": "9617:TASTE:f28b8581f50f",
+            "evidenceIds": [
+              "E024",
+              "E027"
+            ]
+          }
+        ],
+        "log1pMentionCount": [
+          {
+            "restaurantId": 9571,
+            "score": 4.95153986973214,
+            "mentionCount": 88,
+            "claimId": "9571:TASTE:b322ec9b8dbc",
+            "evidenceIds": [
+              "E045",
+              "E046"
+            ]
+          },
+          {
+            "restaurantId": 9617,
+            "score": 3.906421124485146,
+            "mentionCount": 30,
+            "claimId": "9617:TASTE:f28b8581f50f",
+            "evidenceIds": [
+              "E024",
+              "E027"
+            ]
+          }
+        ],
+        "ratio": "NOT_COMPUTED_NO_DENOMINATOR"
+      },
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    }
+  ],
+  "rawCountComparison": "not independently rerun; hybrid uses only recorded mention metadata"
+}

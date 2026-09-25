@@ -1,0 +1,51 @@
+{
+  "targets": [
+    {
+      "restaurantId": 9654,
+      "numericPlaceId": "1696442585",
+      "activeMenuRows": 0,
+      "businessHourRows": 1,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 1,
+      "representativeReviewRows": 1,
+      "sectionLifecycle": {
+        "menu": "ABSENT_CONFIRMED",
+        "business_hours": "SUCCESS",
+        "review": "SUCCESS"
+      },
+      "note": "active business-hour row contains status text with NULL open/close times; not treated as structured recurring hours"
+    },
+    {
+      "restaurantId": 9731,
+      "numericPlaceId": "1271618346",
+      "activeMenuRows": 0,
+      "businessHourRows": 2,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 39,
+      "representativeReviewRows": 10,
+      "sectionLifecycle": {
+        "menu": "ABSENT_CONFIRMED",
+        "business_hours": "SUCCESS",
+        "review": "SUCCESS"
+      },
+      "note": "one active structured Thursday row plus one inactive status-text legacy row"
+    },
+    {
+      "restaurantId": 9750,
+      "numericPlaceId": "13511111",
+      "activeMenuRows": 0,
+      "businessHourRows": 2,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 10,
+      "representativeReviewRows": 10,
+      "sectionLifecycle": {
+        "menu": "ABSENT_CONFIRMED",
+        "business_hours": "SUCCESS",
+        "review": "SUCCESS"
+      },
+      "note": "one active structured Thursday row plus one inactive status-text legacy row"
+    }
+  ],
+  "placeIdOwnershipChanged": false,
+  "otherRestaurantWritesObserved": false
+}

@@ -1,0 +1,11 @@
+{
+  "candidateLimit": 3,
+  "candidates": [
+    {"restaurantId": 9865, "placeId": "1587528278", "detailDryRun": "SUCCESS", "menus": 141, "hoursRows": 1, "reviewVisitor": 3601, "reviewBlog": 773, "persistence": "NOT_RUN", "reason": "10th Restaurant reached with 9590"},
+    {"restaurantId": 9590, "placeId": "651782790", "detailDryRun": "SUCCESS", "menus": 102, "hoursRows": 1, "reviewVisitor": 426, "reviewBlog": 313, "persistence": "SUCCESS", "profileAutoApprovedClaims": 2, "freshnessRerun": "preexisting_skipped", "browserStarts": 0},
+    {"restaurantId": 9659, "placeId": "1849084277", "detailDryRun": "SUCCESS", "menus": 89, "hoursRows": 1, "reviewVisitor": 720, "reviewBlog": 81, "persistence": "NOT_RUN", "reason": "10th Restaurant reached with 9590"}
+  ],
+  "externalDetailRequests": 4,
+  "qwenProfileCalls": 1,
+  "qwenRetries": 0
+}

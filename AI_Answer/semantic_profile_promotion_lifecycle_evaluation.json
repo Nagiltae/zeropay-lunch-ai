@@ -1,0 +1,8 @@
+{
+  "targets": [9562, 9568, 9569, 9570, 9571, 9574],
+  "expectedSections": ["menu", "business_hours", "review"],
+  "observedState": "SUCCESS for all three sections on all six targets",
+  "freshnessRerun": "all six preexisting_skipped=1; browser start=0",
+  "sectionLifecycleInserted": true,
+  "parserFailureStoredAsAbsent": false
+}

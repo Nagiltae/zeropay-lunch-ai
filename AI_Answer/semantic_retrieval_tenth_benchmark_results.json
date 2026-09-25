@@ -1,0 +1,1281 @@
+{
+  "version": "semantic-retrieval-tenth-v1",
+  "collection": "zeropay_semantic_claim_pilot_v8",
+  "queries": [
+    {
+      "query": "스시 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9567,
+          "score": 0.46368396,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46311644,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.43640924,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "초밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9617,
+          "score": 0.4962609,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "normalizedClaimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4930533,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.45831847,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "일식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥",
+        "우동",
+        "후토마끼"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9569,
+          "score": 0.50184965,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4646731,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.43651247,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "우동 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "우동"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9569,
+          "score": 0.43661606,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.41940898,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.4088235,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "피자 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "피자"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9571,
+          "score": 0.5774626,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5764383,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.5169716,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "피자 메뉴가 있는 곳",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "피자"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9571,
+          "score": 0.62773335,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5991622,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5298785,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "떡볶이 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "떡볶이"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5354636,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.50613165,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.4799084,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "김밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "김밥"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5945421,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5551592,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5489608,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "normalizedClaimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "한식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "한식"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9569,
+          "score": 0.5128467,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.49971473,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.48513743,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "한정식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "한식",
+        "정식"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9567,
+          "score": 0.46161208,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.43883467,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.40468052,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "갈비찜 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "갈비찜"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "DINING_CONTEXT",
+        "TASTE",
+        "VENUE_CHARACTERISTIC",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5681962,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.56312484,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5345197,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "혼밥"
+      ],
+      "routedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9568,
+          "score": 0.58688027,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.57568246,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5092244,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "빠르게 먹을 수 있는 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "빠른 식사"
+      ],
+      "routedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9617,
+          "score": 0.49183676,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.48881662,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46647626,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼자 점심 먹기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "혼밥"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "DINING_CONTEXT",
+        "TASTE",
+        "VENUE_CHARACTERISTIC",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5581168,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4920644,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.4630445,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "맛있는 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731,
+        9580,
+        9617
+      ],
+      "expectedClaimTerms": [
+        "맛"
+      ],
+      "routedClaimTypes": [
+        "TASTE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9731,
+          "score": 0.4820731,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "normalizedClaimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "score": 0.4820236,
+          "claimType": "TASTE",
+          "claimId": "9590:TASTE:76361fa3f7fe",
+          "normalizedClaimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.4806698,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "재료가 신선한 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "신선"
+      ],
+      "routedClaimTypes": [
+        "TASTE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9574,
+          "score": 0.5144424,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.48743427,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "normalizedClaimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.43238437,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "가성비"
+      ],
+      "routedClaimTypes": [
+        "TASTE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9571,
+          "score": 0.51055974,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4702583,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "normalizedClaimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "score": 0.44721976,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "맛있다는 평가가 많은 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "맛"
+      ],
+      "routedClaimTypes": [
+        "TASTE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5495795,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.54810476,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.54750085,
+          "claimType": "TASTE",
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 언급이 있는 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "가성비"
+      ],
+      "routedClaimTypes": [
+        "TASTE"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9617,
+          "score": 0.47259676,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "normalizedClaimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.4630808,
+          "claimType": "TASTE",
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "score": 0.38525915,
+          "claimType": "TASTE",
+          "claimId": "9574:TASTE:41e54f412793",
+          "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "서비스가 친절한 곳",
+      "intent": "VENUE_CHARACTERISTIC",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "친절"
+      ],
+      "routedClaimTypes": [
+        "VENUE_CHARACTERISTIC"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9574,
+          "score": 0.5718085,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5628809,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스",
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.49237105,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "디저트 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9590
+      ],
+      "expectedClaimTerms": [
+        "디저트",
+        "마카롱",
+        "케이크"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "DINING_CONTEXT",
+        "TASTE",
+        "VENUE_CHARACTERISTIC",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5267863,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.5093644,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.5014911,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "카페에서 디저트 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9590
+      ],
+      "expectedClaimTerms": [
+        "디저트",
+        "케이크"
+      ],
+      "routedClaimTypes": [
+        "FOOD_TYPE",
+        "DINING_CONTEXT",
+        "TASTE",
+        "VENUE_CHARACTERISTIC",
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "restaurantTopK": [
+        {
+          "restaurantId": 9571,
+          "score": 0.47897258,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.47365195,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9590,
+          "score": 0.4730592,
+          "claimType": "TASTE",
+          "claimId": "9590:TASTE:76361fa3f7fe",
+          "normalizedClaimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ]
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    }
+  ]
+}

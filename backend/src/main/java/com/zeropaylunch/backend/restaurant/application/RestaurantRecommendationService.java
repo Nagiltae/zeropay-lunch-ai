@@ -6,18 +6,31 @@ package com.zeropaylunch.backend.restaurant.application;
 
 import com.zeropaylunch.backend.recommendation.ai.AnalyzedIntent;
 import com.zeropaylunch.backend.recommendation.ai.IntentAnalysisRequest;
+import com.zeropaylunch.backend.recommendation.ai.SemanticAiClient;
+import com.zeropaylunch.backend.recommendation.ai.SemanticCandidateEnricher;
+import com.zeropaylunch.backend.recommendation.ai.RecommendationExplanationEnricher;
 import com.zeropaylunch.backend.recommendation.application.RecommendationContextService;
 import com.zeropaylunch.backend.recommendation.application.RecommendationContextService.RecommendationContext;
 import com.zeropaylunch.backend.restaurant.domain.Restaurant;
+import com.zeropaylunch.backend.restaurant.domain.RestaurantVenueAssociation;
+import com.zeropaylunch.backend.restaurant.domain.RestaurantVenueAssociationStatus;
+import com.zeropaylunch.backend.restaurant.domain.VenueStatus;
 import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantJpaRepository;
+import com.zeropaylunch.backend.restaurant.infrastructure.RestaurantVenueAssociationJpaRepository;
 import java.time.Clock;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,14 +39,39 @@ import org.springframework.transaction.annotation.Transactional;
 public class RestaurantRecommendationService {
     private static final int MAX_RECOMMENDATIONS = 3;
     private final RestaurantJpaRepository restaurantRepository;
+    private final RestaurantVenueAssociationJpaRepository venueAssociationRepository;
     private final RecommendationContextService contextService;
     private final Clock clock;
+    private final ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider;
+    private final ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider;
 
+    @Autowired
     public RestaurantRecommendationService(RestaurantJpaRepository restaurantRepository,
-            RecommendationContextService contextService, Clock clock) {
+            RestaurantVenueAssociationJpaRepository venueAssociationRepository,
+            RecommendationContextService contextService, Clock clock,
+            ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider,
+            ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider) {
         this.restaurantRepository = restaurantRepository;
+        this.venueAssociationRepository = venueAssociationRepository;
         this.contextService = contextService;
         this.clock = clock;
+        this.semanticEnricherProvider = semanticEnricherProvider;
+        this.explanationEnricherProvider = explanationEnricherProvider;
+    }
+
+    /** Keeps direct construction in existing unit fixtures equivalent to the feature-flag OFF path. */
+    public RestaurantRecommendationService(RestaurantJpaRepository restaurantRepository,
+            RestaurantVenueAssociationJpaRepository venueAssociationRepository,
+            RecommendationContextService contextService, Clock clock) {
+        this(restaurantRepository, venueAssociationRepository, contextService, clock, null, null);
+    }
+
+    public RestaurantRecommendationService(RestaurantJpaRepository restaurantRepository,
+            RestaurantVenueAssociationJpaRepository venueAssociationRepository,
+            RecommendationContextService contextService, Clock clock,
+            ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider) {
+        this(restaurantRepository, venueAssociationRepository, contextService, clock,
+                semanticEnricherProvider, null);
     }
 
     @Transactional(readOnly = true)
@@ -42,16 +80,84 @@ public class RestaurantRecommendationService {
         AnalyzedIntent intent = context.intent();
         IntentAnalysisRequest request = context.request();
         Integer budget = intent.maximumPrice() != null ? intent.maximumPrice() : request.defaultBudget();
-        Set<Long> recent = request.recentMeals().stream()
+        Set<Long> recentRestaurantIds = request.recentMeals().stream()
                 .map(IntentAnalysisRequest.RecentMeal::restaurantId).collect(Collectors.toSet());
         ZonedDateTime now = ZonedDateTime.now(clock);
-        return restaurantRepository.findOpenRestaurants(now.getDayOfWeek().name(),
+        List<Restaurant> openRestaurants = restaurantRepository.findOpenRestaurants(
+                        now.getDayOfWeek().name(),
                         now.toLocalTime().truncatedTo(ChronoUnit.SECONDS)).stream()
-                .filter(r -> matches(r, intent, request, budget, recent))
+                .filter(r -> matches(r, intent, request, budget, recentRestaurantIds))
                 .sorted(Comparator.comparingInt((Restaurant r) -> score(r, intent, request, budget))
                         .reversed().thenComparingInt(Restaurant::getAveragePrice).thenComparing(Restaurant::getId))
+                .toList();
+        Set<Long> associationRestaurantIds = new LinkedHashSet<>(recentRestaurantIds);
+        associationRestaurantIds.addAll(openRestaurants.stream().map(Restaurant::getId).toList());
+        Map<Long, Long> confirmedVenueIds = confirmedVenueIds(associationRestaurantIds);
+        Set<Long> recentKeys = recentRestaurantIds.stream()
+                .map(id -> confirmedVenueIds.getOrDefault(id, id))
+                .collect(Collectors.toSet());
+        List<Restaurant> hardFiltered = openRestaurants.stream()
+                .filter(r -> !recentKeys.contains(confirmedVenueIds.getOrDefault(r.getId(), r.getId())))
+                .toList();
+
+        SemanticCandidateEnricher enricher = semanticEnricherProvider == null
+                ? null : semanticEnricherProvider.getIfAvailable();
+        Map<Long, SemanticAiClient.Candidate> semanticSignals = Map.of();
+        if (enricher != null && !hardFiltered.isEmpty()) {
+            List<Long> candidateIds = hardFiltered.stream().map(Restaurant::getId).toList();
+            semanticSignals = enricher.enrich(message, candidateIds).candidatesInSpringOrder().stream()
+                    .filter(item -> item.semanticSignal() != null)
+                    .collect(Collectors.toMap(
+                            SemanticCandidateEnricher.Item::restaurantId,
+                            SemanticCandidateEnricher.Item::semanticSignal));
+        }
+
+        Map<Long, SemanticAiClient.Candidate> rankingSignals = semanticSignals;
+        Set<Long> selectedVenueKeys = new HashSet<>();
+        List<Restaurant> finalRestaurants = hardFiltered.stream()
+                .sorted(Comparator.comparingInt((Restaurant r) -> score(r, intent, request, budget)).reversed()
+                        // Semantic cosine is bounded to [0,1] and only breaks existing deterministic score ties.
+                        .thenComparing(Comparator.comparingDouble((Restaurant r) ->
+                                semanticRelevance(rankingSignals.get(r.getId()))).reversed())
+                        .thenComparingInt(Restaurant::getAveragePrice)
+                        .thenComparing(Restaurant::getId))
+                .filter(r -> selectedVenueKeys.add(confirmedVenueIds.getOrDefault(r.getId(), r.getId())))
                 .limit(MAX_RECOMMENDATIONS)
+                .toList();
+        List<RecommendationItem> finalRecommendations = finalRestaurants.stream()
                 .map(r -> toRecommendation(r, request, budget)).toList();
+        RecommendationExplanationEnricher explanationEnricher = explanationEnricherProvider == null
+                ? null : explanationEnricherProvider.getIfAvailable();
+        if (explanationEnricher == null) return finalRecommendations;
+        Set<Long> finalIds = finalRecommendations.stream().map(RecommendationItem::restaurantId)
+                .collect(Collectors.toSet());
+        Map<Long, SemanticAiClient.Candidate> finalSignals = new HashMap<>();
+        semanticSignals.forEach((id, signal) -> {
+            if (finalIds.contains(id)) finalSignals.put(id, signal);
+        });
+        return explanationEnricher.explain(message, finalRecommendations, finalSignals, budget);
+    }
+
+    private double semanticRelevance(SemanticAiClient.Candidate candidate) {
+        if (candidate == null || !Double.isFinite(candidate.semanticSimilarity())) return 0.0;
+        return Math.max(0.0, Math.min(1.0, candidate.semanticSimilarity()));
+    }
+
+    private Map<Long, Long> confirmedVenueIds(Set<Long> restaurantIds) {
+        if (restaurantIds.isEmpty()) {
+            return Map.of();
+        }
+        return venueAssociationRepository.findAllByRestaurant_IdInAndStatusAndVenue_Status(
+                        restaurantIds,
+                        RestaurantVenueAssociationStatus.CONFIRMED,
+                        VenueStatus.ACTIVE)
+                .stream()
+                .collect(Collectors.toMap(
+                        RestaurantVenueAssociation::getRestaurantId,
+                        RestaurantVenueAssociation::getVenueId,
+                        (first, ignored) -> first,
+                        HashMap::new
+                ));
     }
 
     private boolean matches(Restaurant r, AnalyzedIntent intent, IntentAnalysisRequest request,

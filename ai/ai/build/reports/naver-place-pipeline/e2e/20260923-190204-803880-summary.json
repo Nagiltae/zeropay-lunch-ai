@@ -1,0 +1,9 @@
+{
+  "run_id": "20260923-190204-803880",
+  "started_at": "2026-09-23T10:02:04.804010+00:00",
+  "finished_at": "2026-09-23T10:02:05.180537+00:00",
+  "status": "FAILED",
+  "failed_stage": "Entity Resolution",
+  "interruption_reason": null,
+  "stage_reports": {}
+}

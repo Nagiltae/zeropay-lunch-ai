@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import csv
 import os
+import re
 import subprocess
 import time
 from collections import deque
@@ -47,6 +48,7 @@ FIELDS = (
     "komsco_name",
     "komsco_address",
     "source_fingerprint",
+    "search_policy_version",
     "decision",
     "recommendation_eligibility",
     "verification_reason",
@@ -70,9 +72,53 @@ FIELDS = (
     "error",
 )
 
+# 검색어 생성/Provider Round 정책을 바꾸면 이 값을 올린다. 기존 NULL 행은
+# 자동 대량 재처리하지 않고, 오케스트레이터의 명시적 재검증 옵션으로만 다룬다.
+SEARCH_POLICY_VERSION = "provider-search-v2"
+
 
 def _query_variants(reference) -> tuple[str, ...]:
     return tuple(dict.fromkeys((reference.komsco_name, f"논현동 {reference.komsco_name}")))
+
+
+def _provider_query_rounds(reference, provider_name: str) -> tuple[tuple[str, ...], ...]:
+    name = reference.komsco_name
+    local_name = f"논현동 {name}"
+    fallback_queries = _fallback_query_variants(name)
+    if provider_name == "NAVER_LOCAL":
+        return (
+            tuple(dict.fromkeys((local_name,))),
+            tuple(dict.fromkeys((name, *fallback_queries))),
+        )
+    return (
+        tuple(dict.fromkeys((name,))),
+        tuple(dict.fromkeys((local_name, *fallback_queries))),
+    )
+
+
+def _fallback_query_variants(name: str) -> tuple[str, ...]:
+    """Return only conservative name fallbacks; the KOMSCO reference is unchanged."""
+    text = re.sub(r"\s+", " ", name or "").strip()
+    if not text:
+        return ()
+    queries: list[str] = []
+    branch_match = re.search(r"\s+(본점|지점|\d+호점)$", text)
+    if branch_match:
+        branch_name = text[: branch_match.start()].strip()
+        if len(branch_name) >= 2:
+            queries.append(branch_name)
+            branch_tokens = branch_name.split()
+            if len(branch_tokens) >= 2:
+                # 지점 표기가 명확한 경우에만 앞쪽 법인/대표자 토큰을 포함하지 않은
+                # 마지막 상호 토큰도 보조 후보로 사용한다. 최종 동일성은 Qwen이 판단한다.
+                queries.append(branch_tokens[-1])
+    if re.match(r"^(?:\(주\)|㈜|주식회사|유한회사)\s*", text):
+        stripped = re.sub(r"^(?:\(주\)|㈜|주식회사|유한회사)\s*", "", text)
+        tokens = stripped.split()
+        if len(tokens) >= 3:
+            # 법인 표기가 명시된 경우에만 마지막 상호·지점 토큰을 보조 검색한다.
+            queries.append(f"{tokens[-1]} {tokens[-2]}")
+    return tuple(dict.fromkeys(queries))
 
 
 def _provider_concurrency() -> int:
@@ -84,10 +130,10 @@ def _prefetch_size() -> int:
 
 
 def _search_provider_variants(
-    provider, reference, *, include_coordinates: bool
+    provider, reference, *, include_coordinates: bool, queries: tuple[str, ...] | None = None
 ) -> tuple[ProviderSearchResult, ...]:
     results = []
-    for query in _query_variants(reference):
+    for query in queries or _query_variants(reference):
         if include_coordinates:
             result = provider.search(
                 query,
@@ -113,6 +159,7 @@ class ProviderBatchResult:
     provider_latency_seconds: float
     prefetch_wait_seconds: float
     prefetch_hit: bool
+    round_number: int = 1
 
 
 class ProviderPrefetch:
@@ -127,37 +174,82 @@ class ProviderPrefetch:
         self.naver = naver
         self._closed = False
 
-    def submit(self, reference) -> tuple[Future, Future, float]:
+    def submit(
+        self, reference, *, round_number: int | None = None
+    ) -> tuple[Future, Future, float, int]:
         submitted_at = time.monotonic()
+        if round_number is None:
+            # 단독 CLI/기존 호출자는 기존 전체 query variant 계약을 유지한다.
+            kakao_queries = _query_variants(reference)
+            naver_queries = _query_variants(reference)
+            stored_round = 1
+        else:
+            kakao_rounds = _provider_query_rounds(reference, "KAKAO")
+            naver_rounds = _provider_query_rounds(reference, "NAVER_LOCAL")
+            kakao_queries = (
+                kakao_rounds[round_number - 1] if round_number <= len(kakao_rounds) else ()
+            )
+            naver_queries = (
+                naver_rounds[round_number - 1] if round_number <= len(naver_rounds) else ()
+            )
+            stored_round = round_number
+        def timed_search(provider, queries, *, include_coordinates: bool):
+            started = time.monotonic()
+            print(
+                f"[Entity Resolution][PROVIDER_START] provider={provider.provider} "
+                f"round={stored_round} requests={len(queries)}",
+                flush=True,
+            )
+            result = _search_provider_variants(
+                provider,
+                reference,
+                include_coordinates=include_coordinates,
+                queries=queries,
+            )
+            print(
+                f"[Entity Resolution][PROVIDER_END] provider={provider.provider} "
+                f"round={stored_round} requests={len(result)} "
+                f"candidates={sum(len(item.candidates) for item in result)} "
+                f"errors={sum(bool(item.error) for item in result)} "
+                f"elapsed={time.monotonic() - started:.3f}s",
+                flush=True,
+            )
+            return result
+
         return (
             self.kakao_pool.submit(
-                _search_provider_variants,
-                self.kakao,
-                reference,
-                include_coordinates=True,
+                timed_search, self.kakao, kakao_queries, include_coordinates=True
             ),
             self.naver_pool.submit(
-                _search_provider_variants,
-                self.naver,
-                reference,
-                include_coordinates=False,
+                timed_search, self.naver, naver_queries, include_coordinates=False
             ),
             submitted_at,
+            stored_round,
         )
 
-    def result(self, pending: tuple[Future, Future, float]) -> ProviderBatchResult:
-        kakao_future, naver_future, submitted_at = pending
+    def result(self, pending: tuple[Future, Future, float, int]) -> ProviderBatchResult:
+        kakao_future, naver_future, submitted_at, round_number = pending
         ready = kakao_future.done() and naver_future.done()
         wait_started = time.monotonic()
+        print(
+            f"[Entity Resolution][PREFETCH_WAIT_START] round={round_number} ready={ready}",
+            flush=True,
+        )
         kakao = kakao_future.result()
         naver = naver_future.result()
         now = time.monotonic()
+        print(
+            f"[Entity Resolution][PREFETCH_WAIT_END] round={round_number} "
+            f"elapsed={now - wait_started:.3f}s",
+            flush=True,
+        )
         return ProviderBatchResult(
             kakao=kakao,
             naver=naver,
             provider_latency_seconds=max(0.0, now - submitted_at),
             prefetch_wait_seconds=max(0.0, now - wait_started),
             prefetch_hit=ready,
+            round_number=round_number,
         )
 
     def close(self) -> None:
@@ -224,6 +316,27 @@ def _merge(results: tuple[ProviderSearchResult, ...]) -> tuple[PlaceSearchCandid
     return _merge_with_stats(results)[0]
 
 
+def _should_expand_search(row: dict[str, str]) -> bool:
+    # Round 1 후보가 확정되지 않은 경우에만 검색을 넓혀 recall을 보완한다.
+    return (
+        row.get("qwen_calls_skipped") != "true"
+        and row.get("decision") in {"REJECT", "UNKNOWN"}
+    )
+
+
+def _combine_provider_results(
+    first: ProviderBatchResult, second: ProviderBatchResult
+) -> ProviderBatchResult:
+    return ProviderBatchResult(
+        kakao=first.kakao + second.kakao,
+        naver=first.naver + second.naver,
+        provider_latency_seconds=first.provider_latency_seconds + second.provider_latency_seconds,
+        prefetch_wait_seconds=first.prefetch_wait_seconds + second.prefetch_wait_seconds,
+        prefetch_hit=first.prefetch_hit,
+        round_number=second.round_number,
+    )
+
+
 def _source(reference) -> dict[str, object]:
     return {
         "external_merchant_id": reference.external_merchant_id,
@@ -238,7 +351,9 @@ def _source(reference) -> dict[str, object]:
     }
 
 
-def _cached_rejection(reference, cache: dict[str, dict[str, str]]) -> dict[str, str] | None:
+def _cached_rejection(
+    reference, cache: dict[str, dict[str, str]], policy_version: str = SEARCH_POLICY_VERSION
+) -> dict[str, str] | None:
     cached = cache.get(reference.external_merchant_id or "")
     if not cached or cached.get("decision") != "REJECT":
         return None
@@ -248,7 +363,13 @@ def _cached_rejection(reference, cache: dict[str, dict[str, str]]) -> dict[str, 
     )
     return (
         cached
-        if can_reuse_rejection(result, cached.get("source_fingerprint"), fingerprint)
+        if can_reuse_rejection(
+            result,
+            cached.get("source_fingerprint"),
+            fingerprint,
+            cached.get("search_policy_version"),
+            policy_version,
+        )
         else None
     )
 
@@ -263,7 +384,8 @@ def _cache_rows(path: Path | None) -> dict[str, dict[str, str]]:
 
 def _db_reject_cache(root: Path) -> dict[str, dict[str, str]]:
     query = """
-    SELECT r.external_merchant_id, v.source_fingerprint, v.verification_reason, v.model_name
+    SELECT r.external_merchant_id, v.source_fingerprint, v.search_policy_version,
+           v.verification_reason, v.model_name
     FROM restaurant_naver_verifications v
     JOIN restaurants r ON r.id = v.restaurant_id
     WHERE v.provider = 'NAVER' AND v.verification_status = 'REJECTED'
@@ -295,6 +417,7 @@ def _db_reject_cache(root: Path) -> dict[str, dict[str, str]]:
             cache[merchant_id] = {
                 "external_merchant_id": merchant_id,
                 "source_fingerprint": row.get("source_fingerprint", ""),
+                "search_policy_version": row.get("search_policy_version", ""),
                 "verification_reason": row.get("verification_reason", ""),
                 "qwen_model": row.get("model_name", ""),
                 "decision": "REJECT",
@@ -309,6 +432,7 @@ def _base(reference, fingerprint: str) -> dict[str, str]:
         "komsco_name": reference.komsco_name,
         "komsco_address": reference.komsco_address,
         "source_fingerprint": fingerprint,
+        "search_policy_version": SEARCH_POLICY_VERSION,
         "decision": "UNKNOWN",
         "recommendation_eligibility": "UNKNOWN",
         "verification_reason": "",
@@ -341,6 +465,8 @@ def evaluate_reference(
     cached=None,
     provider_results: ProviderBatchResult | None = None,
     on_candidates=None,
+    on_qwen_candidates=None,
+    on_validate_many=None,
 ) -> dict[str, str]:
     fingerprint = source_fingerprint(_source(reference))
     row = _base(reference, fingerprint)
@@ -353,6 +479,8 @@ def evaluate_reference(
         else None,
         cached.get("source_fingerprint"),
         fingerprint,
+        cached.get("search_policy_version"),
+        SEARCH_POLICY_VERSION,
     ):
         row.update({key: value for key, value in cached.items() if key in FIELDS})
         row["restaurant_id"] = str(reference.restaurant_id)
@@ -385,6 +513,8 @@ def evaluate_reference(
             len(candidates),
             duplicate_candidates_removed,
         )
+    if on_qwen_candidates:
+        on_qwen_candidates(len(candidates))
     row.update(
         {
             "kakao_candidate_count": str(sum(len(result.candidates) for result in kakao_results)),
@@ -406,22 +536,101 @@ def evaluate_reference(
         return row
 
     try:
-        ranking = matcher.choose(reference, candidates)
-        row["qwen_ranking"] = ",".join(str(index) for index in ranking.candidate_indices)
+        if len(candidates) == 1 and hasattr(matcher, "validate"):
+            # 후보 하나는 순위를 고를 필요가 없으므로 choose를 생략하고 바로 검증한다.
+            ranking_indices = (0,)
+        else:
+            print(
+                f"[Entity Resolution][QWEN_CHOOSE_START] candidates={len(candidates)}",
+                flush=True,
+            )
+            qwen_started = time.monotonic()
+            ranking = matcher.choose(reference, candidates)
+            print(
+                f"[Entity Resolution][QWEN_CHOOSE_END] selected={len(ranking.candidate_indices)} "
+                f"elapsed={time.monotonic() - qwen_started:.3f}s",
+                flush=True,
+            )
+            ranking_indices = ranking.candidate_indices
         decisions = []
         accepted_indices = {}
-        for index in ranking.candidate_indices:
-            candidate = candidates[index]
-            if candidate.provider in accepted_indices:
-                continue
+        checked_indices: set[int] = set()
+        while True:
+            row["qwen_ranking"] = ",".join(str(index) for index in ranking_indices)
+            ranked_indices = list(ranking_indices)
+            ranked_candidates = [candidates[index] for index in ranked_indices]
+            if len(ranked_candidates) > 1 and hasattr(matcher, "validate_many"):
+                try:
+                    print(
+                        "[Entity Resolution][QWEN_VALIDATE_MANY_START] "
+                        f"candidates={len(ranked_candidates)}",
+                        flush=True,
+                    )
+                    qwen_started = time.monotonic()
+                    ranked_decisions = matcher.validate_many(reference, ranked_candidates)
+                    print(
+                        f"[Entity Resolution][QWEN_VALIDATE_MANY_END] "
+                        f"elapsed={time.monotonic() - qwen_started:.3f}s",
+                        flush=True,
+                    )
+                    if on_validate_many:
+                        on_validate_many(success=True, fallback=False)
+                except ValueError:
+                    print(
+                        "[Entity Resolution][QWEN_VALIDATE_MANY_FALLBACK] single_validate=true",
+                        flush=True,
+                    )
+                    # 묶음 응답이 계약을 지키지 못하면 기존 단일 검증으로만 복구한다.
+                    if on_validate_many:
+                        on_validate_many(success=False, fallback=True)
+                    ranked_decisions = tuple(
+                        matcher.validate(reference, candidate) for candidate in ranked_candidates
+                    )
+            else:
+                print(
+                    f"[Entity Resolution][QWEN_VALIDATE_START] candidates={len(ranked_candidates)}",
+                    flush=True,
+                )
+                qwen_started = time.monotonic()
+                ranked_decisions = tuple(
+                    matcher.validate(reference, candidate) for candidate in ranked_candidates
+                )
+                print(
+                    f"[Entity Resolution][QWEN_VALIDATE_END] "
+                    f"elapsed={time.monotonic() - qwen_started:.3f}s",
+                    flush=True,
+                )
+            for index, decision in zip(ranked_indices, ranked_decisions, strict=True):
+                checked_indices.add(index)
+                candidate = candidates[index]
+                if candidate.provider in accepted_indices:
+                    continue
+                decisions.append(decision)
+                if decision.final_decision == "ACCEPT":
+                    accepted_indices[candidate.provider] = index
 
-            decision = matcher.validate(reference, candidate)
-            decisions.append(decision)
-            if decision.final_decision == "ACCEPT":
-                accepted_indices[candidate.provider] = index
+                if "KAKAO" in accepted_indices and (
+                    "NAVER" in accepted_indices or "NAVER_LOCAL" in accepted_indices
+                ):
+                    break
 
-            if "KAKAO" in accepted_indices and "NAVER" in accepted_indices:
+            all_checked_rejected = decisions and all(
+                item.final_decision == "REJECT" for item in decisions
+            )
+            remaining_indices = [
+                index for index in range(len(candidates)) if index not in checked_indices
+            ]
+            if not all_checked_rejected or not remaining_indices:
                 break
+            # top-N 전체가 REJECT일 때만 미검증 후보를 확장한다. 정상 easy case는 추가 호출이 없다.
+            remaining_candidates = [candidates[index] for index in remaining_indices]
+            if len(remaining_candidates) == 1:
+                ranking_indices = (remaining_indices[0],)
+            else:
+                remaining_ranking = matcher.choose(reference, remaining_candidates)
+                ranking_indices = tuple(
+                    remaining_indices[index] for index in remaining_ranking.candidate_indices
+                )
 
         accepted = next(
             (decision for decision in decisions if decision.final_decision == "ACCEPT"),
@@ -469,6 +678,10 @@ def evaluate_reference(
             }
         )
     except (ValueError, RuntimeError) as error:
+        if any(token in str(error).upper() for token in ("HTTP_403", "HTTP_429")):
+            # Qwen endpoint의 차단 응답도 일반 구조화 오류로 저장하지 않고
+            # 기존 BLOCKED cooldown 경로로 보내 조기 재호출을 막는다.
+            raise RuntimeError(f"BLOCKED: {error}") from error
         result = technical_unknown("STRUCTURED_OUTPUT_ERROR", configured_qwen_model())
         row["error"] = type(error).__name__
         row["verification_reason"] = result.reason
@@ -508,7 +721,7 @@ def main() -> int:
     args = parser.parse_args()
     if args.preexisting_skipped < 0:
         parser.error("--preexisting-skipped must be non-negative")
-    root = Path(__file__).resolve().parents[2]
+    root = Path(__file__).resolve().parents[3]
     load_local_env(root)
     references = list(load_provider_manifest(args.manifest))
     if args.limit is not None:
@@ -533,12 +746,14 @@ def main() -> int:
             "unknown": "UNKNOWN",
         },
         report_dir=report_dir,
+        run_id=os.environ.get("BATCH_RUN_ID"),
     )
     progress.skip_preexisting(args.preexisting_skipped)
     qwen_client = OllamaClient()
     matcher = QwenCandidateMatcher(
         qwen_client,
         on_call=lambda operation, latency: progress.record_qwen_call(operation, latency),
+        on_retry=progress.record_qwen_retry,
     )
     status = "COMPLETED"
     reason = None
@@ -555,7 +770,9 @@ def main() -> int:
             pending.append(
                 (
                     reference,
-                    None if _cached_rejection(reference, cache) else prefetch.submit(reference),
+                    None
+                    if _cached_rejection(reference, cache)
+                    else prefetch.submit(reference, round_number=1),
                 )
             )
             next_reference += 1
@@ -582,6 +799,7 @@ def main() -> int:
                             latency_seconds=provider_results.provider_latency_seconds,
                             prefetch_wait_seconds=provider_results.prefetch_wait_seconds,
                             prefetch_hit=provider_results.prefetch_hit,
+                            round_number=provider_results.round_number,
                         )
                     fill_prefetch_queue()
                     row = evaluate_reference(
@@ -592,7 +810,37 @@ def main() -> int:
                         cache.get(reference.external_merchant_id or ""),
                         provider_results=provider_results,
                         on_candidates=progress.record_qwen_candidates,
+                        on_qwen_candidates=progress.record_qwen_candidate_count,
+                        on_validate_many=progress.record_validate_many,
                     )
+                    if provider_results is not None and _should_expand_search(row):
+                        # Round 1의 후보가 확정되지 않은 어려운 경우에만 추가 검색을 실행한다.
+                        progress.record_round2_required()
+                        round2_future = prefetch.submit(reference, round_number=2)
+                        round2_results = prefetch.result(round2_future)
+                        progress.record_provider(
+                            kakao_requests=len(round2_results.kakao),
+                            naver_requests=len(round2_results.naver),
+                            latency_seconds=round2_results.provider_latency_seconds,
+                            prefetch_wait_seconds=round2_results.prefetch_wait_seconds,
+                            prefetch_hit=round2_results.prefetch_hit,
+                            round_number=round2_results.round_number,
+                        )
+                        row = evaluate_reference(
+                            reference,
+                            kakao,
+                            naver,
+                            matcher,
+                            cache.get(reference.external_merchant_id or ""),
+                            provider_results=_combine_provider_results(
+                                provider_results, round2_results
+                            ),
+                            on_candidates=progress.record_qwen_candidates,
+                            on_qwen_candidates=progress.record_qwen_candidate_count,
+                            on_validate_many=progress.record_validate_many,
+                        )
+                    elif provider_results is not None and row.get("decision") == "ACCEPT":
+                        progress.record_round1_resolved()
                 except Exception as error:
                     if "BLOCKED:" in str(error):
                         progress.block(reference.restaurant_id, error)
@@ -605,6 +853,11 @@ def main() -> int:
                     raise RuntimeError(f"BLOCKED: {blocked_error}")
                 writer.writerow(row)
                 stream.flush()
+                print(
+                    f"[Entity Resolution][CSV_FLUSH] restaurant_id={reference.restaurant_id} "
+                    f"decision={row['decision']}",
+                    flush=True,
+                )
                 if row.get("error") or row.get("kakao_error") or row.get("naver_error"):
                     errors = "; ".join(
                         filter(

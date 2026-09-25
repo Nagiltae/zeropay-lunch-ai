@@ -1,0 +1,46 @@
+{
+  "restaurantId": 9617,
+  "model": "qwen3.5:9b",
+  "modelInstalled": true,
+  "ollamaBaseUrl": "http://localhost:11434",
+  "originalInput": {
+    "path": "AI_Answer/semantic_profile_v1_input_9617.json",
+    "bytes": 19796,
+    "hash": "21e99218d0088822128b821f5dc7f77ac3cf95d9ebd22b14e32a75c9fadf07c9"
+  },
+  "compactInput": {
+    "path": "AI_Answer/semantic_profile_v1_input_9617_compact.json",
+    "bytes": 16888,
+    "estimatedPromptChars": 10093,
+    "version": "semantic-profile-input-v1-compact-1",
+    "hash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+    "menuItemsOriginal": 24,
+    "menuItemsCompact": 20,
+    "reviewItemsOriginal": 10,
+    "reviewItemsCompact": 3,
+    "keywordItems": 35
+  },
+  "hardware": {"memoryBytes": 34359738368},
+  "calls": [
+    {"kind": "light_probe", "status": "ok", "elapsedMs": 1780, "loadDurationNs": 4806583, "promptEvalCount": 29, "evalCount": 6},
+    {"kind": "compact_profile", "status": "json_truncated", "elapsedMs": 57886},
+    {"kind": "compact_profile", "status": "json_truncated", "elapsedMs": 49458},
+    {"kind": "compact_profile", "status": "json_returned", "elapsedMs": 42177}
+  ],
+  "callCount": 4,
+  "generatedOutput": "AI_Answer/semantic_profile_v1_generated_output_9617.json",
+  "validation": {
+    "schema": "PASS",
+    "sourceFields": "FAIL",
+    "versionAndHash": "FAIL",
+    "approved": false,
+    "reasons": [
+      "review.representativeReviews[0].review_text is not a concrete input path; expected sections.review.representativeReviews[...]",
+      "review.keywords is not a concrete input path; expected sections.review.keywords[...]",
+      "model returned promptVersion v1.0 instead of semantic-profile-prompt-v1",
+      "no profile persisted"
+    ]
+  },
+  "databaseWrite": false,
+  "embeddingOrQdrant": false
+}

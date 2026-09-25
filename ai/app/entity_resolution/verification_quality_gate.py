@@ -86,10 +86,15 @@ def recommendation_eligibility(result: VerificationResult) -> str:
 
 def can_reuse_rejection(
     cached: VerificationResult | None, cached_fingerprint: str | None,
-    current_fingerprint: str,
+    current_fingerprint: str, cached_policy_version: str | None = None,
+    current_policy_version: str | None = None,
 ) -> bool:
     return (
         cached is not None
         and cached.decision is VerificationDecision.REJECT
         and cached_fingerprint == current_fingerprint
+        and (
+            current_policy_version is None
+            or cached_policy_version == current_policy_version
+        )
     )

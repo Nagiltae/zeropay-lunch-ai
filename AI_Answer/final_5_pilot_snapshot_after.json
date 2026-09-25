@@ -1,0 +1,16 @@
+{
+  "restaurant_ids": [9576, 9599, 9604, 9610, 9627],
+  "results": [
+    {"restaurant_id": 9576, "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "numeric_status": "UNRESOLVED", "menus": 0, "lifecycle_rows": 0},
+    {"restaurant_id": 9599, "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "numeric_status": "UNRESOLVED", "menus": 0, "lifecycle_rows": 0},
+    {"restaurant_id": 9604, "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "numeric_status": "UNRESOLVED", "menus": 0, "lifecycle_rows": 0},
+    {"restaurant_id": 9610, "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "numeric_status": "AMBIGUOUS", "menus": 0, "lifecycle_rows": 0},
+    {"restaurant_id": 9627, "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "numeric_status": "UNRESOLVED", "menus": 0, "lifecycle_rows": 0}
+  ],
+  "provider_qwen_rerun": false,
+  "detail_persistence": false,
+  "notes": [
+    "UNRESOLVED/AMBIGUOUS targets were not sent to Detail.",
+    "9610 AMBIGUOUS was preserved by the default linker policy."
+  ]
+}

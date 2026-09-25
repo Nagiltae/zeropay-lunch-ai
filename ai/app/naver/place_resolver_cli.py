@@ -244,6 +244,9 @@ def _mysql_rows(root: Path, sql: str) -> list[dict[str, object]]:
 
 
 def _docker_mysql_command(sql: str) -> list[str]:
+    mysql_user = os.getenv("MYSQL_USER", "zeropay")
+    mysql_password = os.getenv("MYSQL_PASSWORD", "zeropay_local")
+    mysql_database = os.getenv("MYSQL_DATABASE", "zeropay_lunch")
     script = (
         'MYSQL_PWD="$MYSQL_PASSWORD" mysql --batch --skip-column-names --raw '
         "--default-character-set=utf8mb4 "
@@ -254,6 +257,12 @@ def _docker_mysql_command(sql: str) -> list[str]:
         "compose",
         "exec",
         "-T",
+        "-e",
+        f"MYSQL_USER={mysql_user}",
+        "-e",
+        f"MYSQL_PASSWORD={mysql_password}",
+        "-e",
+        f"MYSQL_DATABASE={mysql_database}",
         "mysql",
         "sh",
         "-c",
@@ -1251,13 +1260,16 @@ def _existing_pcmap_mapping(root: Path, place_id: str) -> int | None:
     return int(rows[0]["restaurant_id"])
 
 
-def _has_restaurant_mapping(root: Path, restaurant_id: int) -> bool:
+def _existing_restaurant_place_id(root: Path, restaurant_id: int) -> str | None:
     rows = _mysql_rows(
         root,
-        "SELECT JSON_OBJECT('id', id) FROM restaurant_external_places "
+        "SELECT JSON_OBJECT('external_place_id', external_place_id) "
+        "FROM restaurant_external_places "
         f"WHERE restaurant_id={int(restaurant_id)} AND provider='NAVER' LIMIT 1",
     )
-    return bool(rows)
+    if not rows:
+        return None
+    return str(rows[0].get("external_place_id") or "") or None
 
 
 def _write_place_mapping(
@@ -1278,38 +1290,28 @@ def _write_place_mapping(
             f"PCMap Place ID {place_id} is already mapped to restaurant "
             f"{existing_place_owner}; refusing remap"
         )
+    existing_restaurant_place_id = _existing_restaurant_place_id(root, restaurant_id)
+    if existing_restaurant_place_id:
+        if existing_restaurant_place_id == place_id:
+            return True
+        raise RuntimeError(
+            f"restaurant {restaurant_id} already owns PCMap Place ID "
+            f"{existing_restaurant_place_id}; refusing replacement with {place_id}"
+        )
     link = f"https://pcmap.place.naver.com/restaurant/{place_id}/home"
-    common = (
-        f"external_place_id={_sql_value(place_id)}, "
-        f"external_name={_sql_value(external_name)}, "
-        f"category={_sql_value(category)}, "
-        f"address={_sql_value(address)}, "
-        f"road_address={_sql_value(road_address)}, "
-        f"link={_sql_value(link)}, match_status='MATCHED', "
-        "query_used='PCMAP_PLACE_RESOLVER', matched_at=NOW(6), "
-        "last_synced_at=NOW(6), updated_at=NOW(6)"
+    sql = (
+        "INSERT INTO restaurant_external_places "
+        "(restaurant_id, provider, external_place_id, external_name, category, "
+        "address, road_address, link, match_status, match_score, name_score, "
+        "address_score, distance_score, category_score, query_used, matched_at, "
+        "last_synced_at, created_at, updated_at) VALUES ("
+        f"{int(restaurant_id)}, 'NAVER', {_sql_value(place_id)}, "
+        f"{_sql_value(external_name)}, {_sql_value(category)}, "
+        f"{_sql_value(address)}, {_sql_value(road_address)}, {_sql_value(link)}, "
+        "'MATCHED', 0.00, 0.00, 0.00, 0.00, 0.00, "
+        "'PCMAP_PLACE_RESOLVER', NOW(6), NOW(6), NOW(6), NOW(6)); "
+        "SELECT 1;"
     )
-    if _has_restaurant_mapping(root, restaurant_id):
-        sql = (
-            "UPDATE restaurant_external_places SET "
-            f"{common} "
-            f"WHERE restaurant_id={int(restaurant_id)} AND provider='NAVER'; "
-            "SELECT 1;"
-        )
-    else:
-        sql = (
-            "INSERT INTO restaurant_external_places "
-            "(restaurant_id, provider, external_place_id, external_name, category, "
-            "address, road_address, link, match_status, match_score, name_score, "
-            "address_score, distance_score, category_score, query_used, matched_at, "
-            "last_synced_at, created_at, updated_at) VALUES ("
-            f"{int(restaurant_id)}, 'NAVER', {_sql_value(place_id)}, "
-            f"{_sql_value(external_name)}, {_sql_value(category)}, "
-            f"{_sql_value(address)}, {_sql_value(road_address)}, {_sql_value(link)}, "
-            "'MATCHED', 0.00, 0.00, 0.00, 0.00, 0.00, "
-            "'PCMAP_PLACE_RESOLVER', NOW(6), NOW(6), NOW(6), NOW(6)); "
-            "SELECT 1;"
-        )
     command = _docker_mysql_command(sql)
     try:
         completed = subprocess.run(command, cwd=root, capture_output=True, text=True, timeout=15)

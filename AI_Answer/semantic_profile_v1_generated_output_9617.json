@@ -1,0 +1,50 @@
+{
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "OPERATING_HOURS",
+      "text": "The restaurant operates daily from 07:00 to 20:30.",
+      "confidence": "HIGH",
+      "sourceFields": ["sections.businessHours.items[0].open_time", "sections.businessHours.items[0].close_time"],
+      "evidence": "매일 07:00 ~ 20:30"
+    },
+    {
+      "claimType": "LOCATION",
+      "text": "The venue is located inside Nunoehyeon Station.",
+      "confidence": "HIGH",
+      "sourceFields": ["identity.restaurantAddress", "review.representativeReviews[0].review_text"],
+      "evidence": "서울특별시 강남구 학동로 지하 102 (논현동), 논현역 내부"
+    },
+    {
+      "claimType": "MENU_ITEMS",
+      "text": "The menu includes Tteokbokki, Kimbap, and various fried items.",
+      "confidence": "HIGH",
+      "sourceFields": ["sections.menu.items[8].name", "sections.menu.items[0].name", "review.keywords"],
+      "evidence": "마성떡볶이, 마성김밥, 튀김"
+    },
+    {
+      "claimType": "CUSTOMER_SENTIMENT",
+      "text": "Customers frequently mention good value for money and fast service.",
+      "confidence": "HIGH",
+      "sourceFields": ["review.keywords"],
+      "evidence": "가성비가 좋아요, 음식이 빨리 나와요"
+    },
+    {
+      "claimType": "PORTION_SIZE",
+      "text": "Reviews indicate that the food portions are large.",
+      "confidence": "MEDIUM",
+      "sourceFields": ["review.keywords"],
+      "evidence": "양이 많아요"
+    }
+  ],
+  "sectionEvidence": {
+    "businessHours": ["sections.businessHours.items[0].open_time", "sections.businessHours.items[0].close_time"],
+    "location": ["identity.restaurantAddress", "review.representativeReviews[0].review_text"],
+    "menuItems": ["sections.menu.items[8].name", "sections.menu.items[0].name", "review.keywords"],
+    "customerSentiment": ["review.keywords"],
+    "portionSize": ["review.keywords"]
+  },
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "promptVersion": "v1.0",
+  "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1"
+}

@@ -7,21 +7,21 @@ ZeroPay Lunch AI는 자연어 요청, 사용자 취향, 예산, 최근 식사 �
 ```text
 React -> Spring Boot -> MySQL
 
-별도 데이터 구축 Batch는 Python에서 Provider/Qwen/Playwright를 실행하고 MySQL에 직접 저장합니다. FastAPI는 현재 health 및 계약 경계만 제공합니다.
+별도 데이터 구축 Batch는 Python에서 Provider/Qwen/Playwright를 실행하고 MySQL에 직접 저장합니다. FastAPI는 내부 intent 및 candidate-scoped semantic retrieval을 제공합니다. Spring 추천 연결은 opt-in이며 기본 비활성화되어 있습니다.
 ```
 
 ## 현재 상태
 
-현재 인증·대화·취향·식사 기록·논현동 고정 추천 기반과 KOMSCO→Provider/Qwen→Canonical→NAVER Maps→Detail 데이터 구축 pipeline이 구현되어 있습니다. FastAPI의 Spring 연동과 Qdrant/LangGraph 추천 검색은 아직 구현되지 않았습니다.
+현재 인증·대화·취향·식사 기록·논현동 고정 추천과 KOMSCO 데이터 pipeline이 구현되어 있습니다. Semantic Runtime을 명시적으로 켜면 Spring이 FastAPI intent/retrieval을 호출하며, 결정론적 후보 필터·최종 ranking은 Spring에 유지됩니다. LangGraph와 LLM 설명은 미구현입니다.
 
 | 영역 | 상태 |
 | --- | --- |
 | 프런트엔드 | 세션 인증, React Query 대화·취향·최근 식사 상태, POST SSE, 추천 카드와 `먹었어요` 흐름 구현 완료 |
 | 메인 백엔드 | 인증·Spring Session JDBC, 대화·취향·식사 기록 영속화, 제로페이·영업시간·개인화 필터와 샘플 추천 SSE 구현 완료 |
-| AI 서버 | 최소 구성의 FastAPI 상태 확인 엔드포인트와 테스트 작성 완료 |
+| AI 서버 | FastAPI health, 내부 intent/scoped semantic retrieval API |
 | MySQL | Flyway V1~V15 스키마, local/dev 샘플 음식점 3개, KOMSCO 원본·PCMap detail·검증 provenance 저장 |
-| Qdrant | 로컬 Docker Compose 서비스만 정의, AI 검색 연동 대기 중 |
-| Spring→FastAPI | 내부 의도 분석 계약과 fallback 경계만 준비, 실제 HTTP 클라이언트는 미구현 |
+| Qdrant | 파생 semantic retrieval 저장소; pilot collection을 runtime에서 read-only 사용 |
+| Spring→FastAPI | opt-in Recommendation Runtime, candidate scope 및 장애 fallback 구현 |
 | API 계약 및 아키텍처 | 현재 구현과 계획 범위를 `docs/`에 구분해 기록 |
 
 ## 저장소 구조

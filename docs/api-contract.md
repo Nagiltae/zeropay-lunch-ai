@@ -1,5 +1,8 @@
 # API 계약
 
+FastAPI 내부 intent/scoped retrieval/recommendation-explanation 계약은 [semantic-runtime-contract.md](semantic-runtime-contract.md)를 참고한다. FastAPI 호출은 Spring recommendation runtime의 명시적 opt-in 설정에서만 활성화된다.
+Intent/scoped retrieval/recommendation-explanation API와 Spring 명시적 Client는 구현됐으며 `AI_SEMANTIC_RUNTIME_ENABLED` opt-in에서만 호출된다. Explanation endpoint는 기본 Safe Fact 결정론 설명을 반환하며, Qwen 호출은 별도 `AI_LLM_EXPLANATION_ENABLED`가 Spring 요청 및 FastAPI 설정 양쪽에서 켜진 경우에만 가능하다. 기본값은 모두 false다.
+
 ## When to read
 - API endpoint 추가/변경
 - Request/Response 스키마 변경
@@ -168,7 +171,9 @@ React는 진행 중인 assistant 말풍선에 `text`를 순서대로 이어 붙�
 }
 ```
 
-현재 Spring Boot는 `만원 이하`, `국물`, `샐러드`, `가볍게`, `한식`처럼 제한된 키워드만 임시로 해석합니다. 제로페이 가능 여부는 사용자 선택과 무관한 필수 조건입니다. 영업시간 조회, 취향·최근 식사 필터와 최종 순위는 Spring Boot와 MySQL이 처리합니다. FastAPI 자연어 분석은 아직 구현되지 않았습니다.
+기본 설정에서 Spring Boot는 제한된 deterministic intent analyzer를 사용합니다. `AI_SEMANTIC_RUNTIME_ENABLED=true`에서는 아래 내부 FastAPI intent 계약을 사용하며, ZeroPay eligibility, 운영시간, 논현동, budget hard filter, 최근 식사 및 final ranking은 Spring/MySQL 소유입니다.
+
+해당 설정이 켜져도 추천 이유 생성은 Spring이 최종 ranking, Venue dedup, 최대 3개 제한을 마친 뒤에만 시도합니다. FastAPI/LLM은 추천 항목과 순서를 바꾸지 않으며, 설명 실패 시 기존 reason을 유지합니다. `recommendations.items[].reason`의 API 모양은 변경되지 않습니다.
 
 ## 구현됨: 대화 생성
 
@@ -390,7 +395,7 @@ GET /api/meals/recent
 
 ## 계약 확정: Spring Boot → FastAPI 의도 분석
 
-FastAPI 구현 시 사용할 내부 경로는 `POST /internal/v1/intent-analysis`로 정의합니다. 현재는 HTTP 호출 없이 같은 필드의 Java 계약과 임시 결정론적 분석기를 사용합니다.
+내부 경로는 `POST /internal/v1/intent-analysis`입니다. Runtime opt-in 시 Spring은 `{query}`를 보내고 응답을 기존 `AnalyzedIntent`에 매핑합니다. 사용자 preference·allergy·meal history는 Spring request context에서 유지됩니다.
 
 요청:
 
@@ -428,6 +433,6 @@ FastAPI 구현 시 사용할 내부 경로는 `POST /internal/v1/intent-analysis
 
 FastAPI 응답은 Spring Boot에서 enum과 타입을 다시 검증합니다. FastAPI는 후보 음식점을 만들거나 제로페이·강남구·영업시간·최근 식사 조건과 최종 순위를 변경하지 않습니다.
 
-## 계획: AI 추천 구현
+## 현재 상태: AI 추천 내부 계약
 
-FastAPI는 위 내부 계약의 자연어 의도 분석부터 구현합니다. 이후 LLM 설명 생성과 Qdrant 의미 검색은 별도 계약으로 추가하며 영업시간 필터와 최종 순위는 계속 Spring Boot가 소유합니다.
+`POST /internal/v1/semantic-retrieval`에는 Spring hard-filter 후의 전체 후보 ID를 전달합니다. 검색 결과는 candidate-scoped이고, Spring은 semantic cosine을 deterministic score 동률 tie-breaker에만 사용한 뒤 Venue dedup 및 최대 3건 limit을 적용합니다. 기존 검색 계약의 상세 payload와 오류 처리는 [semantic-runtime-contract.md](semantic-runtime-contract.md)에 정의합니다. LLM 설명은 미구현입니다.

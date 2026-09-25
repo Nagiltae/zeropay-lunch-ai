@@ -1,0 +1,16 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+  "restaurantId": 9617,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {"claimType":"FOOD_TYPE","text":"음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다.","confidence":"HIGH","evidenceIds":["E003","E011"]},
+    {"claimType":"DINING_CONTEXT","text":"혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.","confidence":"HIGH","evidenceIds":["E023","E058"]},
+    {"claimType":"TASTE","text":"고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.","confidence":"HIGH","evidenceIds":["E024","E027"]}
+  ],
+  "semanticReview": "evidence-grounded review completed; human business-owner review not performed"
+}

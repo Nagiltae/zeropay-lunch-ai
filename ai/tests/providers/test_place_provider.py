@@ -1,12 +1,14 @@
 """Kakao/NAVER provider 응답 parsing과 HTTP client 재사용 계약을 mock으로 검증한다."""
 
 import http.client
+import os
 
 from app.providers.place_provider import (
     ProviderHttpClient,
     parse_kakao_candidates,
     parse_naver_candidates,
 )
+from app.providers.provider_input import load_local_env
 
 
 def test_kakao_candidate_mapping_preserves_structured_fields():
@@ -39,6 +41,17 @@ def test_optional_provider_fields_are_empty_or_none():
     naver = parse_naver_candidates({"items": [{"title": "x"}]})[0]
     assert kakao.road_address == "" and kakao.latitude is None
     assert naver.category == "" and naver.longitude is None
+
+
+def test_load_local_env_uses_repository_parent_for_ai_cli(tmp_path, monkeypatch):
+    ai_dir = tmp_path / "ai"
+    ai_dir.mkdir()
+    (tmp_path / ".env").write_text("NAVER_CLIENT_ID=parent-id\n", encoding="utf-8")
+    monkeypatch.delenv("NAVER_CLIENT_ID", raising=False)
+
+    load_local_env(ai_dir)
+
+    assert os.environ["NAVER_CLIENT_ID"] == "parent-id"
 
 
 def test_provider_http_client_reuses_thread_connection_and_closes(monkeypatch):

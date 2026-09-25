@@ -104,18 +104,72 @@ def test_runtime_report_records_playwright_lifecycle(tmp_path):
     assert report["page_recreates"] == 2
 
 
+def test_runtime_report_counts_business_hours_section_result(tmp_path):
+    progress = BatchProgress("Detail", 1, {}, report_dir=tmp_path,
+                             run_id="hours-metric", emit=lambda _: None)
+    progress.record_detail_section_result("business_hours", "SUCCESS", reconciled=True)
+    report = json.loads(progress.finish().read_text())
+    assert report["hours_collected"] == 1
+    assert report["section_reconciled"] == 1
+
+
 def test_runtime_report_records_qwen_and_candidate_metrics(tmp_path):
     progress = BatchProgress("Entity Resolution", 1, {}, report_dir=tmp_path,
                              run_id="qwen-metrics", emit=lambda _: None)
     progress.record_qwen_call("choose", 1.0)
     progress.record_qwen_call("validate", 2.0)
+    progress.record_qwen_call("validate_many", 3.0)
+    progress.record_qwen_retry("validate_many")
+    progress.record_validate_many(success=True, fallback=False)
+    progress.record_validate_many(success=False, fallback=True)
+    progress.record_qwen_candidate_count(1)
+    progress.record_provider(kakao_requests=1, naver_requests=1, latency_seconds=0.1)
+    progress.record_provider(
+        kakao_requests=1, naver_requests=1, latency_seconds=0.1, round_number=2
+    )
+    progress.record_round1_resolved()
+    progress.record_round2_required()
     progress.record_qwen_candidates(4, 3, 1)
     report = json.loads(progress.finish().read_text())
-    assert report["qwen_calls"] == 2
+    assert report["qwen_calls"] == 3
     assert report["qwen_choose_calls"] == 1
     assert report["qwen_validate_calls"] == 1
-    assert report["qwen_total_latency_seconds"] == 3.0
-    assert report["qwen_avg_latency_seconds"] == 1.5
+    assert report["qwen_validate_many_calls"] == 1
+    assert report["validate_many_success"] == 1
+    assert report["validate_many_fallback"] == 1
+    assert report["single_candidate_choose_skipped"] == 1
+    assert report["qwen_candidate_count_sent"] == 1
+    assert report["structured_output_retries"] == 1
+    assert report["semantic_contract_retries"] == 1
+    assert report["round1_requests"] == 2
+    assert report["round2_requests"] == 2
+    assert report["round1_resolved"] == 1
+    assert report["round2_required"] == 1
+    assert report["qwen_total_latency_seconds"] == 6.0
+    assert report["qwen_avg_latency_seconds"] == 2.0
     assert report["candidate_count_before_dedup"] == 4
     assert report["candidate_count_after_dedup"] == 3
     assert report["duplicate_candidates_removed"] == 1
+
+
+def test_runtime_report_records_place_id_evidence_metrics(tmp_path):
+    progress = BatchProgress("Place ID", 2, {"matched": "MATCHED"}, report_dir=tmp_path)
+    progress.record_place_id_observation(
+        local_evidence=True,
+        raw_candidates=3,
+        numeric_candidates=2,
+        rejected_candidates=1,
+    )
+    progress.record_place_id_observation(
+        local_evidence=False,
+        raw_candidates=1,
+        numeric_candidates=1,
+        rejected_candidates=1,
+    )
+    report = json.loads(progress.finish().read_text())
+    assert report["place_id_queries"] == 2
+    assert report["place_id_local_evidence"] == 1
+    assert report["place_id_canonical_fallback"] == 1
+    assert report["place_id_raw_candidates"] == 4
+    assert report["place_id_numeric_candidates"] == 3
+    assert report["place_id_rejected_candidates"] == 2

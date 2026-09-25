@@ -1,0 +1,2553 @@
+{
+  "version": "semantic-retrieval-benchmark-v1",
+  "results": [
+    {
+      "query": "스시 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.58245265,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.5605273,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.49585536,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9731,
+          "score": 0.4298054,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E017",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 후토마끼가 반복 언급된다.",
+          "evidenceIds": [
+            "E017"
+          ],
+          "mentionCount": 24
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.40584433,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.37790817,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9731,
+          "score": 0.4298054,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E017",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 후토마끼가 반복 언급된다.",
+          "evidenceIds": [
+            "E017"
+          ],
+          "mentionCount": 24
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.40584433,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.37790817,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "초밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.61070484,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.57251215,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.56917685,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9731,
+          "score": 0.5525207,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E013",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E013"
+          ],
+          "mentionCount": 87
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4853787,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4679147,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9731,
+          "score": 0.5525207,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E013",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E013"
+          ],
+          "mentionCount": 87
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4853787,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4679147,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "일식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥",
+        "우동",
+        "후토마끼"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.57906735,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.563864,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5107399,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9567,
+          "score": 0.426605,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.4087416,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E016",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "evidenceIds": [
+            "E016"
+          ],
+          "mentionCount": 32
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.39522964,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9567,
+          "score": 0.426605,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.4087416,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E016",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "evidenceIds": [
+            "E016"
+          ],
+          "mentionCount": 32
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.39522964,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "우동 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "우동"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.56341267,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.5063766,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.48680156,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9731,
+          "score": 0.46209037,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E016",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "evidenceIds": [
+            "E016"
+          ],
+          "mentionCount": 32
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.39268047,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.33720034,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9731,
+          "score": 0.46209037,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E016",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "evidenceIds": [
+            "E016"
+          ],
+          "mentionCount": 32
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.39268047,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.33720034,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "피자 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "피자"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.57127905,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.559156,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.52428544,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5016115,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "mentionCount": 10
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.42566717,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.3890068,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9580,
+          "score": 0.5016115,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "mentionCount": 10
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.42566717,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.3890068,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "피자 메뉴가 있는 곳",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "피자"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.62586856,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.56570977,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Customers frequently mention that the food is delicious. VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals.",
+          "evidenceIds": [
+            "E008",
+            "E010",
+            "E057",
+            "E060",
+            "E071",
+            "E073"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.4956924,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9580,
+          "score": 0.55439913,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "mentionCount": 10
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.47927874,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4494288,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9580,
+          "score": 0.55439913,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "mentionCount": 10
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.47927874,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4494288,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "떡볶이 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "떡볶이"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.5795392,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.56024057,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5550814,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.5310501,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+          "evidenceIds": [
+            "E033"
+          ],
+          "mentionCount": 13
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.44896394,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.43816662,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimText": "메뉴에서 슬림세트 R, 세트메뉴 R가 확인된다.",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.5310501,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+          "evidenceIds": [
+            "E033"
+          ],
+          "mentionCount": 13
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.44896394,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.43816662,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimText": "메뉴에서 슬림세트 R, 세트메뉴 R가 확인된다.",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "김밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "김밥"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.65446675,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.5952668,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.53028107,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.6036869,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E034"
+          ],
+          "mentionCount": 9
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.49865,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimText": "메뉴에서 슬림세트 R, 세트메뉴 R가 확인된다.",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4713054,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.6036869,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E034"
+          ],
+          "mentionCount": 9
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.49865,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimText": "메뉴에서 슬림세트 R, 세트메뉴 R가 확인된다.",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4713054,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "한식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "한식"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.6091163,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.58721393,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.5709957,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9567,
+          "score": 0.4816102,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4494127,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9567,
+          "score": 0.4816102,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4494127,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "한정식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "한식",
+        "정식"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.5165053,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4934663,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.49265748,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9567,
+          "score": 0.4673309,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.38203222,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9567,
+          "score": 0.4673309,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.38203222,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimText": "메뉴에서 확인되는 음식 종류: 마성김밥, 마성떡볶이.",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "갈비찜 먹고 싶다",
+      "intent": "UNKNOWN",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "갈비찜"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.59114325,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.5866248,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.534271,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9567,
+          "score": 0.5764304,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5026564,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimText": "메뉴에서 슬림세트 R, 세트메뉴 R가 확인된다.",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4970668,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9567,
+          "score": 0.5764304,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimText": "한식 정식 메뉴에서 갈비찜 정식, 오징어볶음, 매생이가 확인된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5026564,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimText": "메뉴에서 슬림세트 R, 세트메뉴 R가 확인된다.",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4970668,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "혼밥"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.60836065,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5869445,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.5705256,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.5700624,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.5700624,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "빠르게 먹을 수 있는 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "빠른 식사"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.5692424,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.52933866,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.50286436,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.5286797,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.5286797,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼자 점심 먹기 좋은 곳",
+      "intent": "UNKNOWN",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "혼밥"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.5115714,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.50551534,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.49787903,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.4948187,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.44405216,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "mentionCount": 10
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.4350059,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E013",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E013"
+          ],
+          "mentionCount": 87
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.4948187,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimText": "고객 평가에서 혼밥과 빠른 식사 이용 맥락이 언급된다.",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.44405216,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "mentionCount": 10
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.4350059,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9731:FOOD_MENTION:E013",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E013"
+          ],
+          "mentionCount": 87
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "맛있는 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731,
+        9580,
+        9617
+      ],
+      "expectedClaimTerms": [
+        "맛"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.646799,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.56450385,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5164699,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9731,
+          "score": 0.374405,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.36830926,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.36134112,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9731,
+          "score": 0.374405,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.36830926,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.36134112,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "재료가 신선한 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "신선"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.5945614,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4098185,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.3502215,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9731,
+          "score": 0.49300224,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.2796742,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.27081823,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9731,
+          "score": 0.49300224,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.2796742,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.27081823,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "가성비"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.5911671,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.48736915,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.480133,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.48941046,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.3652366,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.3344309,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.48941046,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.3652366,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.3344309,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "맛있다는 평가가 많은 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "맛"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.5858335,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.51684767,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Customers frequently mention that the food is delicious. VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals.",
+          "evidenceIds": [
+            "E008",
+            "E010",
+            "E057",
+            "E060",
+            "E071",
+            "E073"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5095199,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9580,
+          "score": 0.6278194,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5873323,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.5573515,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9580,
+          "score": 0.6278194,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5873323,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.5573515,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "가성비 언급이 있는 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "가성비"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.49351275,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4421509,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "evidenceIds": [
+            "E003",
+            "E011",
+            "E023",
+            "E024",
+            "E027",
+            "E058"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.41771185,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9617,
+          "score": 0.50880015,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.42901275,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.36363778,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9617,
+          "score": 0.50880015,
+          "claimType": "TASTE",
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimText": "고객 평가에서 맛있다, 가성비가 좋다는 언급된다.",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.42901275,
+          "claimType": "TASTE",
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimText": "고객 평가에서 맛있다는 언급된다.",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9731,
+          "score": 0.36363778,
+          "claimType": "TASTE",
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimText": "고객 평가에서 맛있다, 재료가 신선하다는 언급된다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "서비스가 친절한 곳",
+      "intent": "VENUE_CHARACTERISTIC",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "친절"
+      ],
+      "baselineA": [
+        {
+          "restaurantId": 9731,
+          "score": 0.52366483,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.48857993,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "mentionCount": null
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.46389878,
+          "claimType": null,
+          "claimId": null,
+          "claimText": "TASTE: Customers frequently mention that the food is delicious. VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals.",
+          "evidenceIds": [
+            "E008",
+            "E010",
+            "E057",
+            "E060",
+            "E071",
+            "E073"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "claimB": [
+        {
+          "restaurantId": 9580,
+          "score": 0.57962877,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "claimText": "고객 평가에서 서비스가 친절하다는 언급이 있다.",
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "candidateC": [
+        {
+          "restaurantId": 9580,
+          "score": 0.57962877,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "claimText": "고객 평가에서 서비스가 친절하다는 언급이 있다.",
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ],
+          "mentionCount": null
+        }
+      ],
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    }
+  ]
+}

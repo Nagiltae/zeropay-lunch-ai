@@ -1,0 +1,529 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9568,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.135007"
+  },
+  "identity": {
+    "restaurantName": "청기와",
+    "restaurantAddress": "서울특별시 강남구 언주로 148길 14",
+    "category": null,
+    "latitude": 37.5206335,
+    "longitude": 127.0361667,
+    "canonicalName": "청기와",
+    "canonicalAddress": "서울특별시 강남구 언주로 148길 14",
+    "canonicalRoadAddress": "서울특별시 강남구 언주로148길 14 청호불교문화원1층",
+    "provider": "NAVER",
+    "numericPlaceId": "18524027",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "순대국",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "한우차돌박이",
+          "price_value": 30000,
+          "price_text": "30,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "서울밥상",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "시골밥상",
+          "price_value": 11000,
+          "price_text": "11,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "꽁치/김치찌개",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "제육볶음",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "떡만두국",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "떡국",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "뚝배기불고기",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "청국장+비빔밥",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "된장찌개+비빔밥",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "김치전골/꽁치전골",
+          "price_value": 30000,
+          "price_text": "30,000원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        },
+        {
+          "name": "어리굴젖+된장찌개",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "sourceFields": [
+            "sections.menu.items[12].name",
+            "sections.menu.items[12].price_value",
+            "sections.menu.items[12].price_text"
+          ]
+        },
+        {
+          "name": "계란찜",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-14",
+          "sourceFields": [
+            "sections.menu.items[13].name",
+            "sections.menu.items[13].price_value",
+            "sections.menu.items[13].price_text"
+          ]
+        },
+        {
+          "name": "계란말이",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "천겹살",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "sourceFields": [
+            "sections.menu.items[15].name",
+            "sections.menu.items[15].price_value",
+            "sections.menu.items[15].price_text"
+          ]
+        },
+        {
+          "name": "삼겹살",
+          "price_value": 18000,
+          "price_text": "18,000원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "목살",
+          "price_value": 17000,
+          "price_text": "17,000원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "후식 된장찌개",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-19",
+          "sourceFields": [
+            "sections.menu.items[18].name",
+            "sections.menu.items[18].price_value",
+            "sections.menu.items[18].price_text"
+          ]
+        },
+        {
+          "name": "후식 누룽지",
+          "price_value": 4000,
+          "price_text": "4,000원",
+          "price_type": null,
+          "external_menu_id": "dom-20",
+          "sourceFields": [
+            "sections.menu.items[19].name",
+            "sections.menu.items[19].price_value",
+            "sections.menu.items[19].price_text"
+          ]
+        },
+        {
+          "name": "후식 물냉면",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "후식 비빔냉면",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-22",
+          "sourceFields": [
+            "sections.menu.items[21].name",
+            "sections.menu.items[21].price_value",
+            "sections.menu.items[21].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "목",
+          "open_time": "00:00",
+          "close_time": "24:00",
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-24 12:26:02.805833"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "268",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "27",
+          "crawled_at": "2026-09-24 12:26:02.793546"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 104
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 42
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 34
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 28
+        },
+        {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 21
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 20
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 10
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 10
+        },
+        {
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 9
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 5
+        },
+        {
+          "keyword": "제육",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "찌개",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "김치찌개",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "가정식백반",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "고기",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "된장찌개",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "비빔밥",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "제육볶음",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "청국장",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "백반",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "깍두기",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "두부",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "떡만두국",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "삼겹살",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "어리굴젓",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 37
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 33
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-8",
+          "review_text": "다시는 여기 갈 일 없을 것 같습니다. 주방담당분이 안 계신데도 영업을 해서 주문한 메뉴가 하나도제대로 나오지 않았고,누가 먹다 버린 것 같은 시키지도 않은 국과 밥이 나왔습니다. 청국장인데 건더기가 하나도 없는 파,양파 조금있는 된장 푼 물과 세트인 비빔밥말고 공기밥이 나와 이상하다 싶어 여쭤봤을때도 모른척 넘기려고 하신 태도에 무척 화가 났습니다.말씀드리고 나서 두부 3개 넣고 밥도 다른 남은 반찬을 넣어 비빔밥이라고 주셨는데 정말 너무하십니다.저한테는 그 저녁이 첫끼였습니다. 배가 너무 고팠는데 보고 입맛 떨어져 그냥 안 먹고 돈내고 나왔습니다. 돈은 제 값 다 받으실거면 적어도 먹을 수 있게는 주셔야죠.음식으로 장난치지마시고 양심을 버리지 않으셨으면 좋겠습니다.음식제공이 안되면 손님을 받지 마세요",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-2",
+          "review_text": "된장찌개+비빔밥 주문했는데 된장찌개가 상했다.이미 밥을 비빌때 넣고 비볐는데 찌개 한숟갈 맛보니 시큼함이 강했다.미리 만들어 넣고 쓰다가 변질된거 같다. 다시 만들어 준다고 해서 비빔밥만 먹고있었는데 이미 밥맛을 잃었다. 요즘 이 동네 왜 이러나",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-5",
+          "review_text": "너무 너무 맛있네용 ㅎㅎ 추석연휴 낮술 지대로 마셨네용",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-7",
+          "review_text": "강남에서 노포분위기에 맛난청국장 짜지도않고 맛있네요",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:02.810724",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:02.810553",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:02.810818",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "232a72ed4e9cff2a44dd2e175fb350883487a190a01bc0930357c799299cab11"
+  }
+}

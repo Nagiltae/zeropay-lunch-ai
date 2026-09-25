@@ -1,0 +1,9 @@
+{
+  "existingApprovedRestaurantIds": [9617, 9731, 9567, 9580],
+  "postPersistenceApprovedRestaurantIds": [9568, 9569, 9570, 9571, 9574],
+  "postPersistenceRejectedForBenchmark": [9562],
+  "totalApprovedRestaurantCount": 9,
+  "minimumForExpandedBenchmark": 10,
+  "benchmarkEligible": false,
+  "claimVectorCreated": false
+}

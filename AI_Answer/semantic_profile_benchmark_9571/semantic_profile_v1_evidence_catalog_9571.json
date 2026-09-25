@@ -1,0 +1,866 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "피자스쿨 강남논현점",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울시 강남구 강남대로122길 41",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "비프타코피자",
+        "price": 15900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "치킨타코피자",
+        "price": 15900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "할라피뇨",
+        "price": 500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "콘치즈피자",
+        "price": 10900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "프리미엄스테이크피자",
+        "price": 15900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "크림치즈꽈배기",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "스리라차마요소스",
+        "price": 500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "치즈피자",
+        "price": 8900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "페퍼로니피자",
+        "price": 9900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "콤비네이션피자",
+        "price": 10900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "고구마피자",
+        "price": 10900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "핫치킨피자",
+        "price": 10900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "불고기피자",
+        "price": 11900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "포테이토피자",
+        "price": 11900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "나폴리피자",
+        "price": 12900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "고르곤졸라피자",
+        "price": 12900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "까르보네피자",
+        "price": 12900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "아이리쉬포테이토피자",
+        "price": 12900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "불닭고구마피자",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "트러플머쉬룸피자",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "트러플포테이토피자",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "야채퀘사디아피자",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "치킨퀘사디아",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "비프퀘사디아",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "더블갈릭바베큐피자",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "직화파인애플피자",
+        "price": 13900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "깐쇼새우피자",
+        "price": 14900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "닭안심살피자",
+        "price": 14900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.menu.items[28]",
+      "content": {
+        "name": "직화홀릭바이트피자",
+        "price": 14900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.menu.items[29]",
+      "content": {
+        "name": "도이치바이트피자",
+        "price": 14900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.menu.items[30]",
+      "content": {
+        "name": "멕시칸바이트피자",
+        "price": 14900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.menu.items[31]",
+      "content": {
+        "name": "오지치즈포테이토피자",
+        "price": 14900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.menu.items[32]",
+      "content": {
+        "name": "미트러버피자",
+        "price": 15900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.menu.items[33]",
+      "content": {
+        "name": "크림스파게티",
+        "price": 6900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.menu.items[34]",
+      "content": {
+        "name": "오지치즈그라탕",
+        "price": 6900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.menu.items[35]",
+      "content": {
+        "name": "치즈오븐스파게티",
+        "price": 6900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.menu.items[36]",
+      "content": {
+        "name": "치킨스틱&윙",
+        "price": 6900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.menu.items[37]",
+      "content": {
+        "name": "치킨텐더",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.menu.items[38]",
+      "content": {
+        "name": "새우링",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.menu.items[39]",
+      "content": {
+        "name": "트러플포테이토스틱",
+        "price": 4900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.menu.items[40]",
+      "content": {
+        "name": "갈릭포테이토",
+        "price": 4900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.menu.items[41]",
+      "content": {
+        "name": "크림치즈볼",
+        "price": 4900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 88
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 46
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 16
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 15
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 10
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 5
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"메뉴 구성이 알차요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "피자",
+        "mentionCount": 18
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "치즈",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "고구마피자",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "불닭",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "페퍼로니",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "까르보나라",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "불고기",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "불고기피자",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "치즈피자",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "치킨",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "콜라",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "하와이안피자",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 28
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 17
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 9
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 5
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "배달",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-1",
+        "text": "여러 피자스쿨을 가보았지만 여기는 제가 가본 피자스쿨 중 제일 불친절하고, 지금 까지 가본 식당 중 탑오브 탑 무례하세요.젊은 남자직원인데 마치 빨리 받고 꺼지라는 식으로 응대하더라구요. 피자도 얇고 작은지 구겨져서 있더라고요, 이지점은 다시는 이용 안할 것 같습니다. 프랜차이즈인데 브랜드 이름에 너무 해를 끼치는게 아닌지 싶어요."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-7",
+        "text": "피자가 잘못 나와서 다시 방문하니 잘못나간 피자를 가져오는게 당연한거 아니냐고 사장이 되려 화를 내는 몰상식한 곳 추운 날씨에 매장까지 오가는 건 전혀 생각하지를 않는듯 잘못나간 피자도 다식었는데 재사용할 목적이었던 듯 최악"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E076",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-3",
+        "text": "피자스쿨 거의 10년만에 먹어보는듯하네요 아는 동생이 인터넷에서 유명한 메뉴라고 추천해준대로 주문해서 먹어봤는데 제 입에는 그저그런,,, ㅠㅠㅠ"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E077",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-9",
+        "text": "이 지점에서 처음 사먹었는데 젊은 남자 직원분 너무 무례하셔서 깜짝 놀랐네요 ㅎㅎ.. 중년 남자직원분은 예의바르고 친절하십니다."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E078",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "매일",
+        "open_time": "11:00",
+        "close_time": "21:30",
+        "break_hours": null,
+        "last_order": null,
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-24 12:26:45.506294"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545"
+}

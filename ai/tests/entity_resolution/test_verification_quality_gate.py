@@ -13,7 +13,10 @@ from app.entity_resolution.verification_quality_gate import (
 
 
 def test_provider_fusion_reuses_only_unchanged_reject_without_calls():
-    from app.entity_resolution.provider_entity_resolution_cli import evaluate_reference
+    from app.entity_resolution.provider_entity_resolution_cli import (
+        SEARCH_POLICY_VERSION,
+        evaluate_reference,
+    )
     from app.naver.place_resolver import RestaurantReference
 
     class FailingProvider:
@@ -39,6 +42,7 @@ def test_provider_fusion_reuses_only_unchanged_reject_without_calls():
         "decision": "REJECT",
         "verification_reason": "NON_FOOD",
         "source_fingerprint": source_fingerprint(_source(reference)),
+        "search_policy_version": SEARCH_POLICY_VERSION,
         "candidates_json": "[]",
     }
     row = evaluate_reference(
@@ -99,6 +103,18 @@ def test_rejection_cache_requires_unchanged_source_fingerprint():
                                    location_scope="IN_SCOPE")
     assert can_reuse_rejection(rejected, same, same)
     assert not can_reuse_rejection(rejected, same, changed)
+
+
+def test_rejection_cache_requires_matching_search_policy_when_versioned():
+    source = {"external_merchant_id": "m1", "name": "가게", "address": "논현동 1"}
+    fingerprint = source_fingerprint(source)
+    rejected = map_semantic_result(
+        final_decision="REJECT", business_type="FOOD", location_scope="OUT_OF_SCOPE"
+    )
+    assert can_reuse_rejection(rejected, fingerprint, fingerprint, "v1", "v1")
+    assert not can_reuse_rejection(rejected, fingerprint, fingerprint, "v1", "v2")
+    # 정책 버전이 없는 legacy cache는 versioned 현재 정책의 cache로 재사용하지 않는다.
+    assert not can_reuse_rejection(rejected, fingerprint, fingerprint, None, "v1")
 
 
 def test_no_candidate_and_provider_errors_are_unknown():

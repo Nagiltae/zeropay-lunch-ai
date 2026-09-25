@@ -1,0 +1,47 @@
+{
+  "version": "semantic-retrieval-tenth-v1",
+  "restaurantCount": 10,
+  "queryCount": 22,
+  "pointCount": 24,
+  "thresholds": {
+    "precisionAt1": 0.8,
+    "hitAt3": 0.9,
+    "foodPrecisionAt1": 0.8,
+    "tastePrecisionAt1": 0.8
+  },
+  "precisionAt1": 0.18181818181818182,
+  "hitAt3": 0.6818181818181818,
+  "byIntent": {
+    "DINING_CONTEXT": {
+      "count": 3,
+      "precisionAt1": 0.3333333333333333,
+      "hitAt3": 1.0
+    },
+    "FOOD": {
+      "count": 13,
+      "precisionAt1": 0.07692307692307693,
+      "hitAt3": 0.5384615384615384
+    },
+    "TASTE": {
+      "count": 3,
+      "precisionAt1": 0.3333333333333333,
+      "hitAt3": 1.0
+    },
+    "TASTE_QUANTITATIVE": {
+      "count": 2,
+      "precisionAt1": 0.5,
+      "hitAt3": 0.5
+    },
+    "VENUE_CHARACTERISTIC": {
+      "count": 1,
+      "precisionAt1": 0.0,
+      "hitAt3": 1.0
+    }
+  },
+  "safety": {
+    "evidenceTraceRate": 1.0,
+    "reviewRequiredLeakage": 0,
+    "rejectedLeakage": 0,
+    "deterministicFieldLeakage": 0
+  }
+}

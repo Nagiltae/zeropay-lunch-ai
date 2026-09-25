@@ -8,11 +8,13 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import subprocess
 from pathlib import Path
 
 from app.batch.batch_progress import BatchProgress
 from app.canonical.canonical_builder import build_canonical
+from app.entity_resolution.provider_entity_resolution_cli import SEARCH_POLICY_VERSION
 from app.entity_resolution.qwen_candidate_matcher import configured_qwen_model
 from app.naver.place_detail_persistence import PlaceDetailPersistence
 from app.naver.place_resolver import RestaurantReference
@@ -82,6 +84,8 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
             "Canonical Prepare",
             len(verification_rows),
             {"accept": "ACCEPT", "skipped": "REJECT/UNKNOWN"},
+            report_dir=root / "ai/build/reports/naver-place-pipeline/e2e",
+            run_id=os.environ.get("BATCH_RUN_ID"),
         )
         for row in verification_rows:
             decision = row.get("decision", "")
@@ -171,6 +175,7 @@ def process_csv(path: Path, root: Path, dry_run: bool = False) -> tuple[int, int
                 place_id=None,
                 model_name=model_name,
                 source_fingerprint_value=row.get("source_fingerprint") or None,
+                search_policy_version=row.get("search_policy_version") or SEARCH_POLICY_VERSION,
                 eligibility=row.get("recommendation_eligibility") or None,
             )
 
@@ -194,7 +199,7 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    root = Path(__file__).resolve().parents[2]
+    root = Path(__file__).resolve().parents[3]
     load_local_env(root)
 
     created, skipped = process_csv(args.csv, root, dry_run=args.dry_run)

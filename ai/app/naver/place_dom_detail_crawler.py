@@ -17,6 +17,12 @@ from app.naver.place_detail_models import (
 from app.naver.place_dom_parser import _PRICE
 
 
+_HOUR_RANGE = re.compile(
+    r"(?P<day>매일|평일|주말|월|화|수|목|금|토|일)"
+    r"[^\d]{0,80}(?P<open>\d{1,2}:\d{2})\s*[-~]\s*(?P<close>\d{1,2}:\d{2})"
+)
+
+
 @dataclass(frozen=True)
 class DomCollectedDetail:
     home_success: bool
@@ -37,6 +43,9 @@ class DomCollectedDetail:
     review_themes: tuple[dict[str, str | int], ...]
     representative_reviews: tuple[dict[str, str], ...]
     warnings: tuple[str, ...] = ()
+    menu_requested: bool = True
+    review_requested: bool = True
+    hours_collection_success: bool = True
 
     @property
     def home_status(self) -> str:
@@ -44,28 +53,32 @@ class DomCollectedDetail:
 
     @property
     def hours_status(self) -> str:
-        return "SUCCESS" if self.business_hours else "NO_DATA"
+        if not self.hours_collection_success:
+            return "FAILED"
+        return "SUCCESS" if self.business_hours else "ABSENT_CONFIRMED"
 
     @property
     def menu_status(self) -> str:
+        if not self.menu_requested:
+            return "SKIPPED"
         if self.menus:
             return "SUCCESS"
-        return "PARSE_FAILED" if self.menu_page_success else "NO_DATA"
+        return "ABSENT_CONFIRMED" if self.menu_page_success else "FAILED"
 
     @property
     def review_status(self) -> str:
+        if not self.review_requested:
+            return "SKIPPED"
         if (
-            self.review_keywords
+            self.review_total is not None
+            or self.blog_review_total is not None
+            or self.review_keywords
             or self.review_menu_mentions
             or self.review_themes
             or self.representative_reviews
         ):
             return "SUCCESS"
-        return (
-            "PARSE_FAILED"
-            if self.review_page_success and self.review_total is not None
-            else "NO_DATA"
-        )
+        return "ABSENT_CONFIRMED" if self.review_page_success else "FAILED"
 
     @property
     def menu_complete(self) -> bool:
@@ -96,8 +109,11 @@ class DomCollectedDetail:
             for index, item in enumerate(self.menus, 1)
             if item.get("name")
         )
+        # DOM 원문을 그대로 day에 넣으면 정상 시간도 open/close가 NULL로 저장된다.
+        # 시간 범위가 실제로 보일 때만 구조화하고, 상태 문구만 있는 경우에는
+        # 임의의 반복 영업시간을 추론하지 않도록 원문을 description으로 보존한다.
         hours = tuple(
-            BusinessHour(day=raw[:32], description=raw) for raw in self.business_hours if raw
+            self._parse_business_hour(raw) for raw in self.business_hours if raw
         )
         keywords = tuple(
             ReviewKeyword(str(item.get("keyword") or ""), item.get("count"), "theme")
@@ -137,6 +153,18 @@ class DomCollectedDetail:
             representative_reviews=reviews,
             raw_source="PLAYWRIGHT_DOM",
             warnings=self.warnings,
+        )
+
+    @staticmethod
+    def _parse_business_hour(raw: str) -> BusinessHour:
+        match = _HOUR_RANGE.search(raw)
+        if not match:
+            return BusinessHour(day=raw[:32], description=raw)
+        return BusinessHour(
+            day=match.group("day"),
+            open_time=match.group("open"),
+            close_time=match.group("close"),
+            description=raw,
         )
 
 
@@ -208,7 +236,13 @@ def _semantic_pairs(page, marker: str) -> tuple[dict[str, str | int], ...]:
 class PlaceDomDetailCrawler:
     # NAVER 내부 상태가 아니라 사용자에게 렌더링된 DOM contract만 읽어 상세 데이터를 만든다.
     def collect(
-        self, page, place_id: str, *, include_reviews: bool = True, before_navigation=None
+        self,
+        page,
+        place_id: str,
+        *,
+        include_menu: bool = True,
+        include_reviews: bool = True,
+        before_navigation=None,
     ) -> DomCollectedDetail:
         warnings: list[str] = []
         home_url = f"https://pcmap.place.naver.com/restaurant/{place_id}/home"
@@ -248,20 +282,32 @@ class PlaceDomDetailCrawler:
         conveniences = tuple(
             item.strip() for item in re.split(r"[,·]", convenience_text) if item.strip()
         )
-        hours = self._hours(page)
+        try:
+            hours = self._hours(page)
+            hours_collection_success = True
+        except Exception as error:
+            warnings.append(f"HOURS:{type(error).__name__}")
+            hours = ()
+            hours_collection_success = False
         declared = self._declared_menu_count(body)
-        try:
-            menus, menu_success = self._menus(page, place_id, before_navigation=before_navigation)
-        except RuntimeError as error:
-            if str(error).startswith("BLOCKED:"):
-                raise
-            warnings.append(str(error))
-            menus, menu_success = (), False
-        try:
-            review = (
-                self._reviews(page, place_id, before_navigation=before_navigation)
-                if include_reviews
-                else {
+        if include_menu:
+            try:
+                menus, menu_success = self._menus(page, place_id, before_navigation=before_navigation)
+            except RuntimeError as error:
+                if str(error).startswith("BLOCKED:"):
+                    raise
+                warnings.append(str(error))
+                menus, menu_success = (), False
+        else:
+            menus, menu_success = (), True
+        if include_reviews:
+            try:
+                review = self._reviews(page, place_id, before_navigation=before_navigation)
+            except RuntimeError as error:
+                if str(error).startswith("BLOCKED:"):
+                    raise
+                warnings.append(str(error))
+                review = {
                     "success": False,
                     "total": None,
                     "blog": None,
@@ -269,14 +315,10 @@ class PlaceDomDetailCrawler:
                     "mentions": (),
                     "themes": (),
                     "representative": (),
-                }
-            )
-        except RuntimeError as error:
-            if str(error).startswith("BLOCKED:"):
-                raise
-            warnings.append(str(error))
+            }
+        else:
             review = {
-                "success": False,
+                "success": True,
                 "total": None,
                 "blog": None,
                 "keywords": (),
@@ -303,10 +345,16 @@ class PlaceDomDetailCrawler:
             review["themes"],
             review["representative"],
             tuple(warnings),
+            include_menu,
+            include_reviews,
+            hours_collection_success,
         )
 
     def _hours(self, page) -> tuple[str, ...]:
         button = page.locator('a[data-nlog-area="plc_btp.bzhour"]')
+        body = _text(page.locator("body"), 3000)
+        if not button.count() and "영업시간" not in body:
+            raise RuntimeError("HOURS_PARSE_FAILED")
         if button.count() and button.first.get_attribute("aria-expanded") != "true":
             _click(button.first)
         expanded = page.locator('a[data-nlog-area="plc_btp.bzhour"]')
@@ -344,7 +392,10 @@ class PlaceDomDetailCrawler:
                 state="visible", timeout=5000
             )
         except Exception:
-            return (), False
+            # 메뉴 탭/섹션 자체가 확인되지 않으면 DOM 변경 또는 파싱 실패로 본다.
+            # 화면에 메뉴 안내가 명시된 경우에만 정상적인 빈 메뉴 snapshot으로 인정한다.
+            body = _text(page.locator("body"), 3000)
+            return (), bool(re.search(r"(?:메뉴|메뉴판)", body))
         cards = page.locator('a[data-nlog-area="plc_bmv.menu"]')
         menus = []
         for index in range(cards.count()):
@@ -389,6 +440,16 @@ class PlaceDomDetailCrawler:
         if visitor.count() and visitor.first.get_attribute("aria-selected") != "true":
             _click(visitor.first)
         body = _text(page.locator("body"), 3000)
+        if not visitor.count() and not re.search(r"(?:방문자\s*리뷰|블로그\s*리뷰)", body):
+            return {
+                "success": False,
+                "total": None,
+                "blog": None,
+                "keywords": (),
+                "mentions": (),
+                "themes": (),
+                "representative": (),
+            }
         try:
             meta_description = (
                 page.locator('meta[property="og:description"]').get_attribute(

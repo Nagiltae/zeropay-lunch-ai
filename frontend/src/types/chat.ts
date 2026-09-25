@@ -19,7 +19,7 @@ export type RestaurantRecommendation = {
   address: string
   zeroPayAvailable: boolean
   sampleData: boolean
-  reason: string
+  reason?: string
 }
 
 export type GangnamLocation = {

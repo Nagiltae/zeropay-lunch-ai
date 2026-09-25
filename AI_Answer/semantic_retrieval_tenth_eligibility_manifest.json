@@ -1,0 +1,128 @@
+{
+  "version": "semantic-retrieval-tenth-v1",
+  "profiles": [
+    {
+      "restaurantId": 9617,
+      "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "profileStatus": "READY",
+      "strictProfileReady": true,
+      "profileValidation": true,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "existing approved Profile claims",
+      "benchmarkEligibleClaims": 3
+    },
+    {
+      "restaurantId": 9731,
+      "inputHash": "c55de08844f020226ed8a28ff0d23cb136dde0c3d10e6edf11fc1ac0cdc1d652",
+      "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+      "profileStatus": "READY",
+      "strictProfileReady": false,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 1
+    },
+    {
+      "restaurantId": 9567,
+      "inputHash": "17b5577a7b0b9797cb8a05bea5cd45ba3e51e35597640c7a6eb87b53b9d52a1e",
+      "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+      "profileStatus": "READY",
+      "strictProfileReady": false,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 1
+    },
+    {
+      "restaurantId": 9580,
+      "inputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+      "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+      "profileStatus": "READY",
+      "strictProfileReady": false,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 3
+    },
+    {
+      "restaurantId": 9568,
+      "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+      "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+      "profileStatus": "READY",
+      "strictProfileReady": true,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 3
+    },
+    {
+      "restaurantId": 9569,
+      "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+      "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+      "profileStatus": "READY",
+      "strictProfileReady": false,
+      "profileValidation": true,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 5
+    },
+    {
+      "restaurantId": 9570,
+      "inputHash": "bc954823d4e5a84683b4d6b9af819bc5e2d04ddd6ae1277c1d198ffc7c64fcb9",
+      "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+      "profileStatus": "READY",
+      "strictProfileReady": false,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 2
+    },
+    {
+      "restaurantId": 9571,
+      "inputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+      "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+      "profileStatus": "READY",
+      "strictProfileReady": true,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 2
+    },
+    {
+      "restaurantId": 9574,
+      "inputHash": "e9fb9db48fe7762bce23c6f57affa8d4fc1daa2a8b0d9d7b174e01fdb2995b24",
+      "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+      "profileStatus": "READY",
+      "strictProfileReady": true,
+      "profileValidation": false,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 2
+    },
+    {
+      "restaurantId": 9590,
+      "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+      "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+      "profileStatus": "READY",
+      "strictProfileReady": true,
+      "profileValidation": true,
+      "claimValidation": "PASS",
+      "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded",
+      "benchmarkEligibleClaims": 2
+    }
+  ],
+  "restaurantIds": [
+    9617,
+    9731,
+    9567,
+    9580,
+    9568,
+    9569,
+    9570,
+    9571,
+    9574,
+    9590
+  ],
+  "restaurantCount": 10
+}

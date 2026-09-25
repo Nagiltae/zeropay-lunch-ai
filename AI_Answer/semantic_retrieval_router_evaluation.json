@@ -1,0 +1,185 @@
+{
+  "version": "semantic-retrieval-hybrid-v2",
+  "routes": [
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "스시 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "초밥 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "일식 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "우동 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "피자 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "피자 메뉴가 있는 곳"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "떡볶이 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "김밥 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "한식 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "한정식 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "갈비찜 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "디저트 먹고 싶다"
+    },
+    {
+      "intent": "FOOD",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "FOOD_MENTION",
+        "MENU_CHARACTERISTIC"
+      ],
+      "query": "카페에서 디저트 먹고 싶다"
+    },
+    {
+      "intent": "DINING_CONTEXT",
+      "claimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "query": "혼밥하기 좋은 곳"
+    },
+    {
+      "intent": "DINING_CONTEXT",
+      "claimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "query": "빠르게 먹을 수 있는 곳"
+    },
+    {
+      "intent": "DINING_CONTEXT",
+      "claimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "query": "혼자 점심 먹기 좋은 곳"
+    },
+    {
+      "intent": "TASTE",
+      "claimTypes": [
+        "TASTE"
+      ],
+      "query": "맛있는 곳"
+    },
+    {
+      "intent": "TASTE",
+      "claimTypes": [
+        "TASTE"
+      ],
+      "query": "재료가 신선한 곳"
+    },
+    {
+      "intent": "TASTE",
+      "claimTypes": [
+        "TASTE"
+      ],
+      "query": "가성비 좋은 곳"
+    },
+    {
+      "intent": "TASTE_QUANTITATIVE",
+      "claimTypes": [
+        "TASTE"
+      ],
+      "query": "맛있다는 평가가 많은 곳"
+    },
+    {
+      "intent": "TASTE_QUANTITATIVE",
+      "claimTypes": [
+        "TASTE"
+      ],
+      "query": "가성비 언급이 있는 곳"
+    },
+    {
+      "intent": "VENUE_CHARACTERISTIC",
+      "claimTypes": [
+        "VENUE_CHARACTERISTIC"
+      ],
+      "query": "서비스가 친절한 곳"
+    }
+  ]
+}

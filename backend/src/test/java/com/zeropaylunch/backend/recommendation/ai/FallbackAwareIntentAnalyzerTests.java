@@ -58,8 +58,10 @@ class FallbackAwareIntentAnalyzerTests {
                 URI.create("http://localhost:8001"),
                 Duration.ofSeconds(2),
                 Duration.ofSeconds(8),
+                Duration.ofSeconds(27),
                 1,
-                fallbackEnabled
+                fallbackEnabled,
+                false
         );
     }
 }

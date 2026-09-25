@@ -1,0 +1,18 @@
+{
+  "restaurantId": 9617,
+  "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+  "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+  "reviewMode": "evidence_and_semantic_review",
+  "humanBusinessOwnerReview": "NOT_PERFORMED",
+  "claims": [
+    {"claimType":"FOOD_TYPE","status":"APPROVED","evidenceIds":["E003","E011"],"reason":"메뉴명 마성김밥·마성떡볶이가 직접 근거한다."},
+    {"claimType":"DINING_CONTEXT","status":"APPROVED","evidenceIds":["E023","E058"],"reason":"혼밥 keyword 33회와 1인 테이블·빠른 식사 맥락의 대표 리뷰가 일치한다."},
+    {"claimType":"TASTE","status":"APPROVED","evidenceIds":["E024","E027"],"reason":"맛있어요 30회 및 가성비 12회 keyword에 근거하며 보편적 사실이 아니라 고객 언급으로 표현한다."},
+    {"claimType":"VENUE_CHARACTERISTIC","status":"REJECTED","evidenceIds":["E028","E057"],"reason":"E028은 넓은 매장을 지지하지만 E057은 대기시간이라 역 위치를 지지하지 않는다. 위치 claim 제거."},
+    {"claimType":"MENU_CHARACTERISTIC","status":"REJECTED","evidenceIds":["E008","E014"],"reason":"떡순범벅·부산어묵은 확인되지만 두 evidence만으로 다양한 튀김이라는 표현을 확정할 수 없다."}
+  ],
+  "approvedCount": 3,
+  "rejectedCount": 2,
+  "automaticEvidenceValidation": "PASS",
+  "semanticEvidenceReview": "3 approved / 2 rejected"
+}

@@ -1,0 +1,524 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9617,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.299797"
+  },
+  "identity": {
+    "restaurantName": "(주)에스지푸드 논현역 마성떡볶이",
+    "restaurantAddress": "서울특별시 강남구 학동로 지하 102 (논현동)",
+    "category": null,
+    "latitude": null,
+    "longitude": null,
+    "canonicalName": "마성떡볶이 논현역점",
+    "canonicalAddress": "서울특별시 강남구 학동로 지하 102 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 학동로 102 논현역 지하 1층 732-102호",
+    "provider": "NAVER",
+    "numericPlaceId": "1987855627",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "마성김밥",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text",
+            "sections.menu.items[13]"
+          ]
+        },
+        {
+          "name": "치즈김밥",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text",
+            "sections.menu.items[15]"
+          ]
+        },
+        {
+          "name": "카야토스트",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text",
+            "sections.menu.items[18]"
+          ]
+        },
+        {
+          "name": "햄치즈토스트",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text",
+            "sections.menu.items[19]"
+          ]
+        },
+        {
+          "name": "마성세트((1.5인))",
+          "price_value": 19500,
+          "price_text": "19,500원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "떡순범벅",
+          "price_value": 7000,
+          "price_text": "7,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "어떡범벅",
+          "price_value": 7000,
+          "price_text": "7,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "튀떡범벅",
+          "price_value": 7000,
+          "price_text": "7,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "마성떡볶이",
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "눈꽃치즈떡볶이",
+          "price_value": 7000,
+          "price_text": "7,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "찰순대",
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "부산어묵(1인분 (2꼬치))",
+          "price_value": 3400,
+          "price_text": "3,400원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        },
+        {
+          "name": "매운어묵",
+          "price_value": 3500,
+          "price_text": "3,500원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "sourceFields": [
+            "sections.menu.items[12].name",
+            "sections.menu.items[12].price_value",
+            "sections.menu.items[12].price_text"
+          ]
+        },
+        {
+          "name": "참치김밥",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "볼케이노 치킨덮밥",
+          "price_value": 9500,
+          "price_text": "9,500원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "스팸김치참치 덮밥",
+          "price_value": 9500,
+          "price_text": "9,500원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "콜라(245ml)",
+          "price_value": 2000,
+          "price_text": "2,000원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "사이다(245ml)",
+          "price_value": 2000,
+          "price_text": "2,000원",
+          "price_type": null,
+          "external_menu_id": "dom-22",
+          "sourceFields": [
+            "sections.menu.items[21].name",
+            "sections.menu.items[21].price_value",
+            "sections.menu.items[21].price_text"
+          ]
+        },
+        {
+          "name": "아메리카노(HOT)",
+          "price_value": 2200,
+          "price_text": "2,200원",
+          "price_type": null,
+          "external_menu_id": "dom-23",
+          "sourceFields": [
+            "sections.menu.items[22].name",
+            "sections.menu.items[22].price_value",
+            "sections.menu.items[22].price_text"
+          ]
+        },
+        {
+          "name": "아메리카노(ICE)",
+          "price_value": 2500,
+          "price_text": "2,500원",
+          "price_type": null,
+          "external_menu_id": "dom-24",
+          "sourceFields": [
+            "sections.menu.items[23].name",
+            "sections.menu.items[23].price_value",
+            "sections.menu.items[23].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "매일",
+          "open_time": "07:00",
+          "close_time": "20:30",
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-23 17:29:02.742764"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "50",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "12",
+          "crawled_at": "2026-09-23 17:29:02.730701"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 33
+        },
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 30
+        },
+        {
+          "keyword": "\"음식이 빨리 나와요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 13
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 13
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 12
+        },
+        {
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 11
+        },
+        {
+          "keyword": "\"메뉴 구성이 알차요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 9
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 5
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 5
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "떡볶이",
+          "keyword_kind": "menu",
+          "mention_count": 13
+        },
+        {
+          "keyword": "김밥",
+          "keyword_kind": "menu",
+          "mention_count": 9
+        },
+        {
+          "keyword": "튀김",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "순대",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "참치",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "참치김밥",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "어묵",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "치즈",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "고추튀김",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "국수",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "라면",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "비빔국수",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "빨간오뎅",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "쌀떡볶이",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "치즈라면",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 19
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 14
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "위치",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "배달",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "예약",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "대기시간",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-1",
+          "review_text": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-9",
+          "review_text": "갔는데 음식이 다 식어서 차갑게 나오고 치즈는 녹지도 않아서 떡볶이 차가워서 다시해달라고했더니 포장 먼저나가야한다고 한참기다리게 하시고 말투도 서비스 마인드가 전혀 없이 인상팍팍쓰면서 응대하시더라고요? 차가운 떡볶이 먹는것도 별로인데 응대도 거지같더라고요 불친절의 끝을 보고왔습니다. 다시 갈일도 없겠지만 장사 그런식으로 하지마세요 밥먹고 가려다가 불쾌함만 가득 안고 갑니다. 사장님인지 알바인지 모르겠지만 정신 차리세요ㅠ 표정 진짜 볼만 했습니다. 언성 높아질까봐 그냥 참고 나온겁니다 다시나온 떡볶이도 차갑고 최악이였어요",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-8",
+          "review_text": "양도 엄청 많고 맛있어요!! 순대는 너무 많아서 포장해서 갔는데 사장님이 친절하셔서 좋았어요:) 간단식사로 추천!!",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 17:29:02.749793",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 17:29:02.749524",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 17:29:02.749921",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "21e99218d0088822128b821f5dc7f77ac3cf95d9ebd22b14e32a75c9fadf07c9"
+  }
+}

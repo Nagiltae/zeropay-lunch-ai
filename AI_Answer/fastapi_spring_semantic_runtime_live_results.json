@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-09-24T17:39:55.892064+00:00",
+  "transport": "local FastAPI HTTP + Ollama + Qdrant read-only",
+  "intent": {
+    "intent": "RESTAURANT_RECOMMENDATION",
+    "foodTerms": [
+      "떡볶이"
+    ],
+    "diningContexts": [
+      "SOLO_DINING"
+    ],
+    "tasteTraits": [],
+    "maxBudget": 12000,
+    "quantitativeTaste": false,
+    "primaryIntent": "FOOD",
+    "claimTypes": [
+      "FOOD_TYPE",
+      "FOOD_MENTION",
+      "MENU_CHARACTERISTIC"
+    ]
+  },
+  "retrieval": {
+    "candidates": [
+      {
+        "restaurantId": 9617,
+        "retrievalScore": 320.00047266698,
+        "semanticSimilarity": 0.47266698,
+        "matchedClaims": [
+          {
+            "claimId": "9617:FOOD_TYPE:dff03204365b",
+            "claimType": "FOOD_TYPE",
+            "semanticSimilarity": 0.47266698,
+            "matchType": "EXACT",
+            "exactMatch": true,
+            "synonymMatch": false,
+            "categoryMatch": false,
+            "traitMatch": true,
+            "mentionCount": 0,
+            "evidenceIds": [
+              "E003",
+              "E011"
+            ]
+          }
+        ]
+      }
+    ],
+    "policyVersion": "hybrid-v2-capped-count"
+  },
+  "elapsedSeconds": 0.072,
+  "qdrantBefore": {
+    "points": 40,
+    "sha256": "c992b83f3f6df0327a29cd4dd7af298cf730e20d72672882dddf1cce84da5648"
+  },
+  "qdrantAfter": {
+    "points": 40,
+    "sha256": "c992b83f3f6df0327a29cd4dd7af298cf730e20d72672882dddf1cce84da5648"
+  },
+  "unchanged": true
+}

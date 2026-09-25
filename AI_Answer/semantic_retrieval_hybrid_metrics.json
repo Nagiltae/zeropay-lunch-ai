@@ -1,0 +1,90 @@
+{
+  "version": "semantic-retrieval-hybrid-v2",
+  "restaurantCount": 10,
+  "queryCount": 22,
+  "pointCount": 40,
+  "baselineA": {
+    "precisionAt1": 0.5454545454545454,
+    "hitAt3": 0.7272727272727273,
+    "byIntent": {
+      "DINING_CONTEXT": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "FOOD": {
+        "precisionAt1": 0.23076923076923078,
+        "hitAt3": 0.5384615384615384
+      },
+      "TASTE": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "TASTE_QUANTITATIVE": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "VENUE_CHARACTERISTIC": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      }
+    }
+  },
+  "routerB": {
+    "precisionAt1": 0.6818181818181818,
+    "hitAt3": 0.8636363636363636,
+    "byIntent": {
+      "DINING_CONTEXT": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "FOOD": {
+        "precisionAt1": 0.46153846153846156,
+        "hitAt3": 0.7692307692307693
+      },
+      "TASTE": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "TASTE_QUANTITATIVE": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "VENUE_CHARACTERISTIC": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      }
+    }
+  },
+  "hybridC": {
+    "precisionAt1": 0.9545454545454546,
+    "hitAt3": 1.0,
+    "byIntent": {
+      "DINING_CONTEXT": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "FOOD": {
+        "precisionAt1": 0.9230769230769231,
+        "hitAt3": 1.0
+      },
+      "TASTE": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "TASTE_QUANTITATIVE": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "VENUE_CHARACTERISTIC": {
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      }
+    }
+  },
+  "safety": {
+    "evidenceTraceRate": 1.0,
+    "reviewRequiredLeakage": 0,
+    "rejectedLeakage": 0,
+    "deterministicFieldLeakage": 0
+  }
+}

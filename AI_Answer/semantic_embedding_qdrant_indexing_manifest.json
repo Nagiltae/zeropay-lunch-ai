@@ -1,0 +1,97 @@
+{
+  "collection": "zeropay_semantic_profile_pilot_v1",
+  "embeddingModel": "qwen3-embedding:0.6b",
+  "embeddingVersion": "semantic-profile-embedding-v1",
+  "dimension": 1024,
+  "distance": "Cosine",
+  "restaurantIds": [
+    9617,
+    9731,
+    9567,
+    9580
+  ],
+  "documents": [
+    {
+      "restaurantId": 9617,
+      "venueId": null,
+      "profileVersion": "semantic-profile-output-v2-evidence",
+      "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "claimTypes": [
+        "FOOD_TYPE",
+        "DINING_CONTEXT",
+        "TASTE"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E011",
+        "E023",
+        "E024",
+        "E027",
+        "E058"
+      ],
+      "embeddingText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-profile-embedding-v1"
+    },
+    {
+      "restaurantId": 9731,
+      "venueId": null,
+      "profileVersion": "semantic-profile-output-v2-evidence",
+      "inputHash": "c55de08844f020226ed8a28ff0d23cb136dde0c3d10e6edf11fc1ac0cdc1d652",
+      "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+      "claimTypes": [
+        "TASTE"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E029"
+      ],
+      "embeddingText": "TASTE: Delicious, Fresh Ingredients, Savory",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-profile-embedding-v1"
+    },
+    {
+      "restaurantId": 9567,
+      "venueId": null,
+      "profileVersion": "semantic-profile-output-v2-evidence",
+      "inputHash": "17b5577a7b0b9797cb8a05bea5cd45ba3e51e35597640c7a6eb87b53b9d52a1e",
+      "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+      "claimTypes": [
+        "FOOD_TYPE"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E010"
+      ],
+      "embeddingText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-profile-embedding-v1"
+    },
+    {
+      "restaurantId": 9580,
+      "venueId": null,
+      "profileVersion": "semantic-profile-output-v2-evidence",
+      "inputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+      "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+      "claimTypes": [
+        "TASTE",
+        "VENUE_CHARACTERISTIC",
+        "MENU_CHARACTERISTIC"
+      ],
+      "evidenceIds": [
+        "E008",
+        "E010",
+        "E057",
+        "E060",
+        "E071",
+        "E073"
+      ],
+      "embeddingText": "TASTE: Customers frequently mention that the food is delicious. VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals.",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-profile-embedding-v1"
+    }
+  ]
+}

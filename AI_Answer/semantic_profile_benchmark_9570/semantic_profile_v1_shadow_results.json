@@ -1,0 +1,313 @@
+{
+  "restaurantId": 9570,
+  "inputPath": "../AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_input_9570_compact.json",
+  "inputHash": "bc954823d4e5a84683b4d6b9af819bc5e2d04ddd6ae1277c1d198ffc7c64fcb9",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 26211,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves a variety of meats including lamb, beef, and duck.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E008",
+                "E027",
+                "E006",
+                "E033"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a contemporary course and wine pairing options.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E020"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Diners praise the freshness of ingredients and the balance of flavors.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E014",
+                "E047"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for special occasions and group gatherings.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E015",
+                "E016"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "Customers frequently mention the stylish interior design.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E011",
+                "E037"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": false,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves a variety of meats including lamb, beef, and duck.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E008",
+                "E027",
+                "E006",
+                "E033"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "food type from review/keyword is not an official menu fact"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E008",
+                "sourceField": "sections.menu.items[5]",
+                "content": {
+                  "name": "어린양갈비 스테이크",
+                  "price": 60000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E027",
+                "sourceField": "sections.review.keywords[17]",
+                "content": {
+                  "keyword": "양고기",
+                  "mentionCount": 5
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E006",
+                "sourceField": "sections.menu.items[3]",
+                "content": {
+                  "name": "농어 스테이크",
+                  "price": 40000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E033",
+                "sourceField": "sections.review.keywords[23]",
+                "content": {
+                  "keyword": "오리",
+                  "mentionCount": 4
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a contemporary course and wine pairing options.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E020"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+              "menu characteristic lacks direct menu evidence"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.menu.items[0]",
+                "content": {
+                  "name": "컨템포러리 코스",
+                  "price": 85000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E004",
+                "sourceField": "sections.menu.items[1]",
+                "content": {
+                  "name": "코스 페어링",
+                  "price": 90000
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E020",
+                "sourceField": "sections.review.keywords[10]",
+                "content": {
+                  "keyword": "와인",
+                  "mentionCount": 92
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Diners praise the freshness of ingredients and the balance of flavors.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E014",
+                "E047"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E014",
+                "sourceField": "sections.review.keywords[4]",
+                "content": {
+                  "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 36
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E047",
+                "sourceField": "sections.review.representativeReviews[1]",
+                "content": {
+                  "reviewId": "dom-9",
+                  "text": "안녕하세요 사장님 진짜 숨겨진 보석을 발견한 기분입니다 바라고 했는데 완성도 높은 디쉬에 깜짝 놀랐습니다 진짜 이 가격에 이 구성이 나온다는 것에 깜짝 놀랐습니다 맛있었던 파스타 농어구이 양고기까지 진짜 한끗차이로 맛있네요 맛있다는 딱 한끗 차이로 되는데 페어링부터 섬세한 디쉬에 감동했습니다 간이 세지 않고 적절하고 밸런스가 좋습니다 아는 사람 소개로 몇몇만 오는 매장 같습니다 개인적으로 완성도 높은 매장이라 저는 재방문 의사 있습니다!!"
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for special occasions and group gatherings.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E015",
+                "E016"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E015",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 20
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E016",
+                "sourceField": "sections.review.keywords[6]",
+                "content": {
+                  "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 18
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "Customers frequently mention the stylish interior design.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E011",
+                "E037"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E011",
+                "sourceField": "sections.review.keywords[1]",
+                "content": {
+                  "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 85
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E037",
+                "sourceField": "sections.review.keywords[27]",
+                "content": {
+                  "keyword": "분위기",
+                  "mentionCount": 55
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "49ca7d782a96340b8453cd537d89f520dc03200b454bc6ff345600a11fde06bc",
+  "elapsedMs": 26921,
+  "catalogPath": "../AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json"
+}

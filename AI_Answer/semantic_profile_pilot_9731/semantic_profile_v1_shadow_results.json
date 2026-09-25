@@ -1,0 +1,400 @@
+{
+  "restaurantId": 9731,
+  "inputPath": "../AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_input_9731_compact.json",
+  "inputHash": "c55de08844f020226ed8a28ff0d23cb136dde0c3d10e6edf11fc1ac0cdc1d652",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 25615,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "strict quality gate is not PROFILE_READY"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "Sushi, Udon, Futomaki, Ice Cream",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E013",
+                "E016",
+                "E017",
+                "E014"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Delicious, Fresh Ingredients, Savory",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E029",
+                "E004",
+                "E003"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "Suitable for Special Occasions, Lunch Omakase, Solo Dining",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E008",
+                "E041",
+                "E012"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "Clean Interior, Cozy Atmosphere, Turtle Theme Decor",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E007",
+                "E031",
+                "E043"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "Generous Portions, Good Value for Money",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E009",
+                "E006"
+              ]
+            }
+          ]
+        },
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "Sushi, Udon, Futomaki, Ice Cream",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E013",
+                "E016",
+                "E017",
+                "E014"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "food type from review/keyword is not an official menu fact"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E013",
+                "sourceField": "sections.review.keywords[10]",
+                "content": {
+                  "keyword": "초밥",
+                  "mentionCount": 87
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E016",
+                "sourceField": "sections.review.keywords[13]",
+                "content": {
+                  "keyword": "우동",
+                  "mentionCount": 32
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E017",
+                "sourceField": "sections.review.keywords[14]",
+                "content": {
+                  "keyword": "후토마끼",
+                  "mentionCount": 24
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E014",
+                "sourceField": "sections.review.keywords[11]",
+                "content": {
+                  "keyword": "아이스크림",
+                  "mentionCount": 84
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Delicious, Fresh Ingredients, Savory",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E029",
+                "E004",
+                "E003"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E029",
+                "sourceField": "sections.review.keywords[26]",
+                "content": {
+                  "keyword": "맛",
+                  "mentionCount": 1182
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E004",
+                "sourceField": "sections.review.keywords[1]",
+                "content": {
+                  "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 500
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 739
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "Suitable for Special Occasions, Lunch Omakase, Solo Dining",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E008",
+                "E041",
+                "E012"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E008",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 215
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E041",
+                "sourceField": "sections.review.keywords[38]",
+                "content": {
+                  "keyword": "방역",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E012",
+                "sourceField": "sections.review.keywords[9]",
+                "content": {
+                  "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 79
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "Clean Interior, Cozy Atmosphere, Turtle Theme Decor",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E007",
+                "E031",
+                "E043"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E007",
+                "sourceField": "sections.review.keywords[4]",
+                "content": {
+                  "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 278
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E031",
+                "sourceField": "sections.review.keywords[28]",
+                "content": {
+                  "keyword": "분위기",
+                  "mentionCount": 158
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E043",
+                "sourceField": "sections.review.representativeReviews[1]",
+                "content": {
+                  "reviewId": "dom-1",
+                  "text": "거북이처럼 우직하게 자리를 지켜온 곳이려나요 🐢 카메스시, 이름부터가 어떤 자세를 말해주는 듯 하죠 참 넓고 따숩고 푸근한 공간을 가진 카메스시 답답하지 않고 넉넉하고 여유져서 더 편안한 시간 장식장부터 기물들까지... 요기조기 귀요운 녀석들이 숨어있었는데요 '카메(亀・かめ / カメ), 거북이 - 스시로서의 쌓여온 시간이 느껴지는 흔적들이라 참 따숩고 좋더라고요 온갖 거부기들이 아기자기하게 자리를 찾아 앉아 있는 사이에서 대장거부기 고동중 오너셰프님의 두터운 손으로 내어지는 세심하고 맛난 코스들. 홀로 오신 손님들도 친구들과 함께한 분들도 모두모두 편안하게 즐거웁게 시간 보내시는게 보이더라고요 하나하나 퀄리티도 넘나 좋고 맛나게, 참 즐거운 시간보냈어요"
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "Generous Portions, Good Value for Money",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E009",
+                "E006"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+              "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+              "menu characteristic lacks direct menu evidence"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E009",
+                "sourceField": "sections.review.keywords[6]",
+                "content": {
+                  "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 164
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E006",
+                "sourceField": "sections.review.keywords[3]",
+                "content": {
+                  "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 410
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "6a03723baafe89fe46e08d69e08b5f9cc191223a53190671b8ea8c97a09fd0dc",
+  "elapsedMs": 26285,
+  "catalogPath": "../AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+  "finalProfile": {
+    "profileVersion": "semantic-profile-output-v2-evidence",
+    "inputVersion": "semantic-profile-input-v1-compact-1",
+    "inputHash": "c55de08844f020226ed8a28ff0d23cb136dde0c3d10e6edf11fc1ac0cdc1d652",
+    "catalogVersion": "semantic-profile-evidence-catalog-v1",
+    "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+    "restaurantId": 9731,
+    "venueId": null,
+    "profileStatus": "READY",
+    "claims": [
+      {
+        "claimType": "TASTE",
+        "text": "Delicious, Fresh Ingredients, Savory",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E029",
+          "E004",
+          "E003"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E029",
+            "sourceField": "sections.review.keywords[26]",
+            "content": {
+              "keyword": "맛",
+              "mentionCount": 1182
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E004",
+            "sourceField": "sections.review.keywords[1]",
+            "content": {
+              "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 500
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E003",
+            "sourceField": "sections.review.keywords[0]",
+            "content": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 739
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "restaurantId": 9560,
+  "name": "송가네",
+  "address": "서울특별시 강남구 봉은사로25길 12 (논현동)",
+  "recommendationEligibility": "ELIGIBLE",
+  "externalPlace": {
+    "provider": "NAVER",
+    "externalPlaceId": "196686446",
+    "matchStatus": "MATCHED",
+    "queryUsed": "논현동 송가네"
+  },
+  "detail": {
+    "activeMenuRows": 10,
+    "nullOrTextlessPriceRows": 0,
+    "businessHourRows": 1,
+    "reviewSummaryRows": 1,
+    "reviewKeywordRows": 31,
+    "representativeReviewRows": 10,
+    "latestMenuCrawledAt": "2026-09-21 13:17:01.426224",
+    "latestHoursCrawledAt": "2026-09-21 13:17:01.426322",
+    "latestReviewCrawledAt": "2026-09-21 13:17:01.423485"
+  },
+  "sectionLifecycleRows": []
+}

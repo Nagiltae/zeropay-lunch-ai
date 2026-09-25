@@ -1,0 +1,39 @@
+{
+  "task": "naver-local-auth-placeid-recovery",
+  "external_request_counts": {
+    "naver_local_part_a": 2,
+    "naver_maps_ui_existing_id_recheck": 2,
+    "naver_local_part_c": 2,
+    "naver_maps_ui_part_c": 0,
+    "total_naver_local": 4,
+    "total_naver_maps_ui": 2
+  },
+  "auth_recovery": {
+    "before": "HTTP_401 because standalone provider CLI loaded ai/.env only",
+    "after": "OK",
+    "fix": "provider_input.load_local_env loads repository parent .env when root is ai"
+  },
+  "provider_results": [
+    {"restaurant_id": 9619, "query": "논현동 우정양곱창", "status": "OK", "candidate_count": 1, "elapsed_seconds": 0.178},
+    {"restaurant_id": 9695, "query": "논현동 현대순대국", "status": "OK", "candidate_count": 3, "elapsed_seconds": 0.080},
+    {"restaurant_id": 9604, "query": "논현동 지유가오카핫쵸메7호점", "status": "OK", "candidate_count": 0, "elapsed_seconds": 0.110},
+    {"restaurant_id": 9627, "query": "논현동 파니나로", "status": "OK", "candidate_count": 0, "elapsed_seconds": 0.073}
+  ],
+  "place_id_results": [
+    {"restaurant_id": 9619, "numeric_place_id": "1921750340", "status": "MATCHED", "local_evidence": true, "canonical_fallback": false, "raw_candidates": 1, "numeric_candidates": 1, "rejected_candidates": 0},
+    {"restaurant_id": 9695, "numeric_place_id": "19882368", "status": "MATCHED", "local_evidence": true, "canonical_fallback": false, "raw_candidates": 3, "numeric_candidates": 3, "rejected_candidates": 2},
+    {"restaurant_id": 9604, "numeric_place_id": null, "status": "UNRESOLVED", "local_evidence": false, "canonical_fallback": true, "raw_candidates": 0},
+    {"restaurant_id": 9627, "numeric_place_id": null, "status": "UNRESOLVED", "local_evidence": false, "canonical_fallback": true, "raw_candidates": 0}
+  ],
+  "persistence": {
+    "selected_target": 9619,
+    "numeric_id_persisted": false,
+    "detail_persisted": false,
+    "reason": "numeric ID conflict with existing restaurant_id 9582"
+  },
+  "tests": {"targeted": "18 passed", "ai_harness": "164 passed, 1 warning", "git_diff_check": "PASS"},
+  "db_write": {
+    "intended_target_9619": false,
+    "unintended_existing_row_timestamp_refresh": "restaurant_id 9582 only; ID/status/query unchanged"
+  }
+}

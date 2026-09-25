@@ -1,0 +1,14 @@
+{
+  "databaseWrites": 6,
+  "targets": [
+    {"restaurantId": 9562, "write": "SUCCESS", "sections": ["menu", "business_hours", "review"], "freshness": "SKIPPED_PREEXISTING", "browserStartsOnFresh": 0},
+    {"restaurantId": 9568, "write": "SUCCESS", "sections": ["menu", "business_hours", "review"], "freshness": "SKIPPED_PREEXISTING", "browserStartsOnFresh": 0},
+    {"restaurantId": 9569, "write": "SUCCESS", "sections": ["menu", "business_hours", "review"], "freshness": "SKIPPED_PREEXISTING", "browserStartsOnFresh": 0},
+    {"restaurantId": 9570, "write": "SUCCESS", "sections": ["menu", "business_hours", "review"], "freshness": "SKIPPED_PREEXISTING", "browserStartsOnFresh": 0},
+    {"restaurantId": 9571, "write": "SUCCESS", "sections": ["menu", "business_hours", "review"], "freshness": "SKIPPED_PREEXISTING", "browserStartsOnFresh": 0},
+    {"restaurantId": 9574, "write": "SUCCESS", "sections": ["menu", "business_hours", "review"], "freshness": "SKIPPED_PREEXISTING", "browserStartsOnFresh": 0}
+  ],
+  "failedTarget": null,
+  "externalPlaceOwnershipChanged": false,
+  "providerOrEntityResolutionExecuted": false
+}

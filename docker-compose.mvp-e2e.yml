@@ -1,0 +1,60 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: zeropay_lunch_mvp_e2e
+      MYSQL_USER: mvp_e2e_user
+      MYSQL_PASSWORD: mvp_e2e_only_password
+      MYSQL_ROOT_PASSWORD: mvp_e2e_root_only_password
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - e2e-mysql:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      SPRING_PROFILES_ACTIVE: e2e
+      AI_SEMANTIC_RUNTIME_ENABLED: "true"
+      AI_LLM_EXPLANATION_ENABLED: "false"
+      AI_CONNECT_TIMEOUT: 2s
+      AI_RESPONSE_TIMEOUT: 8s
+      AI_EXPLANATION_RESPONSE_TIMEOUT: 8s
+      AI_MAX_ATTEMPTS: "1"
+      AI_FALLBACK_ENABLED: "true"
+      KOMSCO_IMPORT_ENABLED: "false"
+      KOMSCO_SCHEDULER_ENABLED: "false"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      ai:
+        condition: service_healthy
+
+  ai:
+    build:
+      context: ./ai
+    environment:
+      QDRANT_URL: http://host.docker.internal:6335
+      QDRANT_SEMANTIC_COLLECTION: zeropay_semantic_claim_pilot_v12
+      OLLAMA_BASE_URL: http://host.docker.internal:11435
+      AI_LLM_EXPLANATION_ENABLED: "false"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "127.0.0.1:3017:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  e2e-mysql:

@@ -55,19 +55,19 @@ MySQL 대화 흐름은 현재 구현되어 있습니다.
 - 대화 비활성화 후 `active=false` 확인
 - 영업시간과 휴무시간 native query를 H2와 실제 MySQL 흐름에서 검증
 
-FastAPI가 Qdrant 컬렉션을 생성하거나 검색하는 검사는 아직 구현되지 않았습니다.
+FastAPI는 pilot collection을 read-only 검색하며 collection 생성/수정은 하지 않습니다.
 
 단순히 컨테이너 포트가 열렸다는 검사로 이 단계를 통과했다고 판단하지 않습니다.
 
 ### Level 3 — service-to-service
 
-Spring Boot가 실제 FastAPI 내부 API를 호출하는 기능이 생길 때 다음을 검증합니다.
+Spring Boot의 opt-in Recommendation Runtime은 FastAPI 내부 API를 호출합니다. 다음을 검증합니다.
 
 - Spring Boot 요청이 FastAPI 계약에 맞게 전달됨
 - FastAPI 오류와 잘못된 응답을 Spring Boot가 검증하고 변환함
 - 타임아웃 또는 연결 실패 처리
 
-현재 `AI_BASE_URL` 환경변수만 있고 실제 호출 코드는 없으므로 이 단계의 검사는 만들지 않습니다.
+기본 Harness는 Mock HTTP contract와 feature flag OFF 경로를 검증합니다. 별도 opt-in live test는 실제 FastAPI/Qdrant 호출을 검증하며 MySQL write는 하지 않습니다.
 
 ### Level 4 — user flow
 

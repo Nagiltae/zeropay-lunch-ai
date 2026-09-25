@@ -1,0 +1,1488 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9590,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.210314"
+  },
+  "identity": {
+    "restaurantName": "마츄피츄",
+    "restaurantAddress": "서울특별시 강남구 선릉로121길 15 (논현동)",
+    "category": null,
+    "latitude": 37.5137116,
+    "longitude": 127.0410284,
+    "canonicalName": "마츄피츄",
+    "canonicalAddress": "서울특별시 강남구 선릉로121길 15 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 선릉로121길 15 1층 마츄피츄",
+    "provider": "NAVER",
+    "numericPlaceId": "651782790",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "바나나쿠키푸딩",
+          "price_value": 5800,
+          "price_text": "5,800원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "시나몬로투스멜로쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "호두크림치즈마카롱(무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "마카롱10+판초콜릿4(보냉+선물세트)",
+          "price_value": 54000,
+          "price_text": "54,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "15구마카롱선물세트(선물+보냉)",
+          "price_value": 49000,
+          "price_text": "49,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "마카롱6구선물세트",
+          "price_value": 22000,
+          "price_text": "22,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "쿠키6개동물박스",
+          "price_value": 28000,
+          "price_text": "28,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "호두크림치즈마카롱(무색소갈색)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "샤인머스켓생크림케이크 2호",
+          "price_value": 60000,
+          "price_text": "60,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "체리생크림케이크2호",
+          "price_value": 60000,
+          "price_text": "60,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "딸기티라미수마카롱(분홍)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "바닐라빈에그타르트",
+          "price_value": 3500,
+          "price_text": "3,500원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        },
+        {
+          "name": "시나몬바나나브레드",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "sourceFields": [
+            "sections.menu.items[12].name",
+            "sections.menu.items[12].price_value",
+            "sections.menu.items[12].price_text"
+          ]
+        },
+        {
+          "name": "자몽허니블랙티ICE",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-14",
+          "sourceFields": [
+            "sections.menu.items[13].name",
+            "sections.menu.items[13].price_value",
+            "sections.menu.items[13].price_text"
+          ]
+        },
+        {
+          "name": "Valrhona메세지 판초콜릿",
+          "price_value": 4800,
+          "price_text": "4,800원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "valrhona치즈초콜릿꼬끄",
+          "price_value": 8500,
+          "price_text": "8,500원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "sourceFields": [
+            "sections.menu.items[15].name",
+            "sections.menu.items[15].price_value",
+            "sections.menu.items[15].price_text"
+          ]
+        },
+        {
+          "name": "바다라떼ICE",
+          "price_value": 4800,
+          "price_text": "4,800원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "수제마카롱",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "빠뜨드프뤼(브아롱과일퓨레젤리)",
+          "price_value": 24000,
+          "price_text": "24,000원",
+          "price_type": null,
+          "external_menu_id": "dom-19",
+          "sourceFields": [
+            "sections.menu.items[18].name",
+            "sections.menu.items[18].price_value",
+            "sections.menu.items[18].price_text"
+          ]
+        },
+        {
+          "name": "제철과일생크림케이크",
+          "price_value": 8500,
+          "price_text": "8,500원",
+          "price_type": null,
+          "external_menu_id": "dom-20",
+          "sourceFields": [
+            "sections.menu.items[19].name",
+            "sections.menu.items[19].price_value",
+            "sections.menu.items[19].price_text"
+          ]
+        },
+        {
+          "name": "라즈베리딸기생크림케이크",
+          "price_value": 8500,
+          "price_text": "8,500원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "조각모둠케이크",
+          "price_value": null,
+          "price_text": null,
+          "price_type": null,
+          "external_menu_id": "dom-22",
+          "sourceFields": [
+            "sections.menu.items[21].name",
+            "sections.menu.items[21].price_value",
+            "sections.menu.items[21].price_text"
+          ]
+        },
+        {
+          "name": "딸기생크림케이크",
+          "price_value": 60000,
+          "price_text": "60,000원",
+          "price_type": null,
+          "external_menu_id": "dom-23",
+          "sourceFields": [
+            "sections.menu.items[22].name",
+            "sections.menu.items[22].price_value",
+            "sections.menu.items[22].price_text",
+            "sections.menu.items[25]"
+          ]
+        },
+        {
+          "name": "샤인머스켓생크림케이크",
+          "price_value": 60000,
+          "price_text": "60,000원",
+          "price_type": null,
+          "external_menu_id": "dom-24",
+          "sourceFields": [
+            "sections.menu.items[23].name",
+            "sections.menu.items[23].price_value",
+            "sections.menu.items[23].price_text"
+          ]
+        },
+        {
+          "name": "딸기&샤인머스캣생크림케이크 1조각",
+          "price_value": 8500,
+          "price_text": "8,500원",
+          "price_type": null,
+          "external_menu_id": "dom-25",
+          "sourceFields": [
+            "sections.menu.items[24].name",
+            "sections.menu.items[24].price_value",
+            "sections.menu.items[24].price_text"
+          ]
+        },
+        {
+          "name": "바스크치즈케이크",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-27",
+          "sourceFields": [
+            "sections.menu.items[26].name",
+            "sections.menu.items[26].price_value",
+            "sections.menu.items[26].price_text"
+          ]
+        },
+        {
+          "name": "흑임자바스크치즈케이크",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-28",
+          "sourceFields": [
+            "sections.menu.items[27].name",
+            "sections.menu.items[27].price_value",
+            "sections.menu.items[27].price_text"
+          ]
+        },
+        {
+          "name": "제주유기농말차바스크치즈케이크",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-29",
+          "sourceFields": [
+            "sections.menu.items[28].name",
+            "sections.menu.items[28].price_value",
+            "sections.menu.items[28].price_text"
+          ]
+        },
+        {
+          "name": "메이플달고나크럼블",
+          "price_value": 1000,
+          "price_text": "1,000원",
+          "price_type": null,
+          "external_menu_id": "dom-30",
+          "sourceFields": [
+            "sections.menu.items[29].name",
+            "sections.menu.items[29].price_value",
+            "sections.menu.items[29].price_text"
+          ]
+        },
+        {
+          "name": "소금캬라멜마카롱(무색소갈색)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-31",
+          "sourceFields": [
+            "sections.menu.items[30].name",
+            "sections.menu.items[30].price_value",
+            "sections.menu.items[30].price_text"
+          ]
+        },
+        {
+          "name": "바나나쿠키푸딩",
+          "price_value": 6500,
+          "price_text": "6,500원",
+          "price_type": null,
+          "external_menu_id": "dom-32",
+          "sourceFields": [
+            "sections.menu.items[31].name",
+            "sections.menu.items[31].price_value",
+            "sections.menu.items[31].price_text"
+          ]
+        },
+        {
+          "name": "valrhona둘세초콜릿마들렌",
+          "price_value": 4000,
+          "price_text": "4,000원",
+          "price_type": null,
+          "external_menu_id": "dom-33",
+          "sourceFields": [
+            "sections.menu.items[32].name",
+            "sections.menu.items[32].price_value",
+            "sections.menu.items[32].price_text"
+          ]
+        },
+        {
+          "name": "코코넛글레이즈마들렌",
+          "price_value": 3800,
+          "price_text": "3,800원",
+          "price_type": null,
+          "external_menu_id": "dom-34",
+          "sourceFields": [
+            "sections.menu.items[33].name",
+            "sections.menu.items[33].price_value",
+            "sections.menu.items[33].price_text"
+          ]
+        },
+        {
+          "name": "유자마카롱 (노랑)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-35",
+          "sourceFields": [
+            "sections.menu.items[34].name",
+            "sections.menu.items[34].price_value",
+            "sections.menu.items[34].price_text"
+          ]
+        },
+        {
+          "name": "마다가스카르바닐라마카롱 (하늘)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-36",
+          "sourceFields": [
+            "sections.menu.items[35].name",
+            "sections.menu.items[35].price_value",
+            "sections.menu.items[35].price_text"
+          ]
+        },
+        {
+          "name": "무화과쇼콜라마카롱 (갈색)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-37",
+          "sourceFields": [
+            "sections.menu.items[36].name",
+            "sections.menu.items[36].price_value",
+            "sections.menu.items[36].price_text"
+          ]
+        },
+        {
+          "name": "바닐라자몽마카롱 (노랑)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-38",
+          "sourceFields": [
+            "sections.menu.items[37].name",
+            "sections.menu.items[37].price_value",
+            "sections.menu.items[37].price_text"
+          ]
+        },
+        {
+          "name": "고르곤졸라꿀마카롱 (노랑)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-39",
+          "sourceFields": [
+            "sections.menu.items[38].name",
+            "sections.menu.items[38].price_value",
+            "sections.menu.items[38].price_text"
+          ]
+        },
+        {
+          "name": "갈레트부르통(네그리타럼&바닐라빈)",
+          "price_value": 3500,
+          "price_text": "3,500원",
+          "price_type": null,
+          "external_menu_id": "dom-40",
+          "sourceFields": [
+            "sections.menu.items[39].name",
+            "sections.menu.items[39].price_value",
+            "sections.menu.items[39].price_text"
+          ]
+        },
+        {
+          "name": "Valrhona오렐리스초콜릿쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-41",
+          "sourceFields": [
+            "sections.menu.items[40].name",
+            "sections.menu.items[40].price_value",
+            "sections.menu.items[40].price_text"
+          ]
+        },
+        {
+          "name": "곰돌이파티쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-42",
+          "sourceFields": [
+            "sections.menu.items[41].name",
+            "sections.menu.items[41].price_value",
+            "sections.menu.items[41].price_text"
+          ]
+        },
+        {
+          "name": "몬스터초코쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-43",
+          "sourceFields": [
+            "sections.menu.items[42].name",
+            "sections.menu.items[42].price_value",
+            "sections.menu.items[42].price_text"
+          ]
+        },
+        {
+          "name": "valrhon둘세초콜릿쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-44",
+          "sourceFields": [
+            "sections.menu.items[43].name",
+            "sections.menu.items[43].price_value",
+            "sections.menu.items[43].price_text"
+          ]
+        },
+        {
+          "name": "valrhona이보아르유기농말차쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-45",
+          "sourceFields": [
+            "sections.menu.items[44].name",
+            "sections.menu.items[44].price_value",
+            "sections.menu.items[44].price_text"
+          ]
+        },
+        {
+          "name": "valrhona과나하70%초콜릿쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-46",
+          "sourceFields": [
+            "sections.menu.items[45].name",
+            "sections.menu.items[45].price_value",
+            "sections.menu.items[45].price_text"
+          ]
+        },
+        {
+          "name": "수박주스lCE",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-47",
+          "sourceFields": [
+            "sections.menu.items[46].name",
+            "sections.menu.items[46].price_value",
+            "sections.menu.items[46].price_text"
+          ]
+        },
+        {
+          "name": "귀리라떼 (hot/ice)",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-48",
+          "sourceFields": [
+            "sections.menu.items[47].name",
+            "sections.menu.items[47].price_value",
+            "sections.menu.items[47].price_text"
+          ]
+        },
+        {
+          "name": "메이플달고나라떼(only ice)",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-49",
+          "sourceFields": [
+            "sections.menu.items[48].name",
+            "sections.menu.items[48].price_value",
+            "sections.menu.items[48].price_text"
+          ]
+        },
+        {
+          "name": "요거트스무디(플레인/딸기/블루베리)",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-50",
+          "sourceFields": [
+            "sections.menu.items[49].name",
+            "sections.menu.items[49].price_value",
+            "sections.menu.items[49].price_text"
+          ]
+        },
+        {
+          "name": "오곡듬뿍라떼(당도0/보통/연유많이)",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-51",
+          "sourceFields": [
+            "sections.menu.items[50].name",
+            "sections.menu.items[50].price_value",
+            "sections.menu.items[50].price_text"
+          ]
+        },
+        {
+          "name": "아카시아천연벌꿀물(hot/ice)",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-52",
+          "sourceFields": [
+            "sections.menu.items[51].name",
+            "sections.menu.items[51].price_value",
+            "sections.menu.items[51].price_text"
+          ]
+        },
+        {
+          "name": "ice자몽에이드",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-53",
+          "sourceFields": [
+            "sections.menu.items[52].name",
+            "sections.menu.items[52].price_value",
+            "sections.menu.items[52].price_text"
+          ]
+        },
+        {
+          "name": "ice상큼유자슬러쉬",
+          "price_value": 5500,
+          "price_text": "5,500원",
+          "price_type": null,
+          "external_menu_id": "dom-54",
+          "sourceFields": [
+            "sections.menu.items[53].name",
+            "sections.menu.items[53].price_value",
+            "sections.menu.items[53].price_text"
+          ]
+        },
+        {
+          "name": "ice레드빈크러쉬(플레인/팥추가)",
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-55",
+          "sourceFields": [
+            "sections.menu.items[54].name",
+            "sections.menu.items[54].price_value",
+            "sections.menu.items[54].price_text"
+          ]
+        },
+        {
+          "name": "말차크러쉬(플레인/팥추가)",
+          "price_value": 6000,
+          "price_text": "6,000원",
+          "price_type": null,
+          "external_menu_id": "dom-56",
+          "sourceFields": [
+            "sections.menu.items[55].name",
+            "sections.menu.items[55].price_value",
+            "sections.menu.items[55].price_text"
+          ]
+        },
+        {
+          "name": "딸기라떼(ICE)",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-57",
+          "sourceFields": [
+            "sections.menu.items[56].name",
+            "sections.menu.items[56].price_value",
+            "sections.menu.items[56].price_text"
+          ]
+        },
+        {
+          "name": "발로나로쉐초콜릿",
+          "price_value": null,
+          "price_text": null,
+          "price_type": null,
+          "external_menu_id": "dom-58",
+          "sourceFields": [
+            "sections.menu.items[57].name",
+            "sections.menu.items[57].price_value",
+            "sections.menu.items[57].price_text"
+          ]
+        },
+        {
+          "name": "프레첼머랭쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-59",
+          "sourceFields": [
+            "sections.menu.items[58].name",
+            "sections.menu.items[58].price_value",
+            "sections.menu.items[58].price_text"
+          ]
+        },
+        {
+          "name": "오레오쇼콜라마카롱 (갈색)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-60",
+          "sourceFields": [
+            "sections.menu.items[59].name",
+            "sections.menu.items[59].price_value",
+            "sections.menu.items[59].price_text"
+          ]
+        },
+        {
+          "name": "스노우볼(화이트/치즈/콩고물)",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-61",
+          "sourceFields": [
+            "sections.menu.items[60].name",
+            "sections.menu.items[60].price_value",
+            "sections.menu.items[60].price_text"
+          ]
+        },
+        {
+          "name": "휘낭시에",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-62",
+          "sourceFields": [
+            "sections.menu.items[61].name",
+            "sections.menu.items[61].price_value",
+            "sections.menu.items[61].price_text"
+          ]
+        },
+        {
+          "name": "발로나초코릿마들렌",
+          "price_value": 4000,
+          "price_text": "4,000원",
+          "price_type": null,
+          "external_menu_id": "dom-63",
+          "sourceFields": [
+            "sections.menu.items[62].name",
+            "sections.menu.items[62].price_value",
+            "sections.menu.items[62].price_text"
+          ]
+        },
+        {
+          "name": "유자라즈베리 (노랑빨강)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-64",
+          "sourceFields": [
+            "sections.menu.items[63].name",
+            "sections.menu.items[63].price_value",
+            "sections.menu.items[63].price_text"
+          ]
+        },
+        {
+          "name": "바닐라크림치즈마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-65",
+          "sourceFields": [
+            "sections.menu.items[64].name",
+            "sections.menu.items[64].price_value",
+            "sections.menu.items[64].price_text"
+          ]
+        },
+        {
+          "name": "레몬마카롱 (노랑)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-66",
+          "sourceFields": [
+            "sections.menu.items[65].name",
+            "sections.menu.items[65].price_value",
+            "sections.menu.items[65].price_text"
+          ]
+        },
+        {
+          "name": "카카오쇼콜라마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-67",
+          "sourceFields": [
+            "sections.menu.items[66].name",
+            "sections.menu.items[66].price_value",
+            "sections.menu.items[66].price_text"
+          ]
+        },
+        {
+          "name": "팥인절미마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-68",
+          "sourceFields": [
+            "sections.menu.items[67].name",
+            "sections.menu.items[67].price_value",
+            "sections.menu.items[67].price_text"
+          ]
+        },
+        {
+          "name": "황치즈마카롱 (주황)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-69",
+          "sourceFields": [
+            "sections.menu.items[68].name",
+            "sections.menu.items[68].price_value",
+            "sections.menu.items[68].price_text"
+          ]
+        },
+        {
+          "name": "흑임자/흑임자크림치즈/달달흑임자",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-70",
+          "sourceFields": [
+            "sections.menu.items[69].name",
+            "sections.menu.items[69].price_value",
+            "sections.menu.items[69].price_text"
+          ]
+        },
+        {
+          "name": "무화과마카롱 (분홍)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-71",
+          "sourceFields": [
+            "sections.menu.items[70].name",
+            "sections.menu.items[70].price_value",
+            "sections.menu.items[70].price_text"
+          ]
+        },
+        {
+          "name": "오레오크림치즈마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-72",
+          "sourceFields": [
+            "sections.menu.items[71].name",
+            "sections.menu.items[71].price_value",
+            "sections.menu.items[71].price_text"
+          ]
+        },
+        {
+          "name": "티라미수마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-73",
+          "sourceFields": [
+            "sections.menu.items[72].name",
+            "sections.menu.items[72].price_value",
+            "sections.menu.items[72].price_text"
+          ]
+        },
+        {
+          "name": "소금캐라멜마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-74",
+          "sourceFields": [
+            "sections.menu.items[73].name",
+            "sections.menu.items[73].price_value",
+            "sections.menu.items[73].price_text"
+          ]
+        },
+        {
+          "name": "바나나우유마카롱 (노랑)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-75",
+          "sourceFields": [
+            "sections.menu.items[74].name",
+            "sections.menu.items[74].price_value",
+            "sections.menu.items[74].price_text"
+          ]
+        },
+        {
+          "name": "인절미마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-76",
+          "sourceFields": [
+            "sections.menu.items[75].name",
+            "sections.menu.items[75].price_value",
+            "sections.menu.items[75].price_text"
+          ]
+        },
+        {
+          "name": "피스타치오마카롱 (연두색)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-77",
+          "sourceFields": [
+            "sections.menu.items[76].name",
+            "sections.menu.items[76].price_value",
+            "sections.menu.items[76].price_text"
+          ]
+        },
+        {
+          "name": "자몽유자마카롱(노랑주황)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-78",
+          "sourceFields": [
+            "sections.menu.items[77].name",
+            "sections.menu.items[77].price_value",
+            "sections.menu.items[77].price_text"
+          ]
+        },
+        {
+          "name": "바닐라빈우유푸딩",
+          "price_value": 4800,
+          "price_text": "4,800원",
+          "price_type": null,
+          "external_menu_id": "dom-79",
+          "sourceFields": [
+            "sections.menu.items[78].name",
+            "sections.menu.items[78].price_value",
+            "sections.menu.items[78].price_text"
+          ]
+        },
+        {
+          "name": "딸기티라미수마카롱 (분홍)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-80",
+          "sourceFields": [
+            "sections.menu.items[79].name",
+            "sections.menu.items[79].price_value",
+            "sections.menu.items[79].price_text"
+          ]
+        },
+        {
+          "name": "다크말차마카롱 (초록)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-81",
+          "sourceFields": [
+            "sections.menu.items[80].name",
+            "sections.menu.items[80].price_value",
+            "sections.menu.items[80].price_text"
+          ]
+        },
+        {
+          "name": "얼그레이마카롱 (보라)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-82",
+          "sourceFields": [
+            "sections.menu.items[81].name",
+            "sections.menu.items[81].price_value",
+            "sections.menu.items[81].price_text"
+          ]
+        },
+        {
+          "name": "호두과자마카롱 (팥O)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-83",
+          "sourceFields": [
+            "sections.menu.items[82].name",
+            "sections.menu.items[82].price_value",
+            "sections.menu.items[82].price_text"
+          ]
+        },
+        {
+          "name": "얼그레이크림치즈마카롱 (보라)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-84",
+          "sourceFields": [
+            "sections.menu.items[83].name",
+            "sections.menu.items[83].price_value",
+            "sections.menu.items[83].price_text"
+          ]
+        },
+        {
+          "name": "화이트쿠크다스마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-85",
+          "sourceFields": [
+            "sections.menu.items[84].name",
+            "sections.menu.items[84].price_value",
+            "sections.menu.items[84].price_text"
+          ]
+        },
+        {
+          "name": "타히티바닐라마카롱 (노랑)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-86",
+          "sourceFields": [
+            "sections.menu.items[85].name",
+            "sections.menu.items[85].price_value",
+            "sections.menu.items[85].price_text"
+          ]
+        },
+        {
+          "name": "초코칩말차마카롱",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-87",
+          "sourceFields": [
+            "sections.menu.items[86].name",
+            "sections.menu.items[86].price_value",
+            "sections.menu.items[86].price_text"
+          ]
+        },
+        {
+          "name": "트러플크림치즈/트러플화이트 마카롱",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-88",
+          "sourceFields": [
+            "sections.menu.items[87].name",
+            "sections.menu.items[87].price_value",
+            "sections.menu.items[87].price_text"
+          ]
+        },
+        {
+          "name": "바삭한꼬끄(기본/콩고물/치즈/초코)",
+          "price_value": 8500,
+          "price_text": "8,500원",
+          "price_type": null,
+          "external_menu_id": "dom-89",
+          "sourceFields": [
+            "sections.menu.items[88].name",
+            "sections.menu.items[88].price_value",
+            "sections.menu.items[88].price_text"
+          ]
+        },
+        {
+          "name": "맛밤마카롱 (초록)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-90",
+          "sourceFields": [
+            "sections.menu.items[89].name",
+            "sections.menu.items[89].price_value",
+            "sections.menu.items[89].price_text"
+          ]
+        },
+        {
+          "name": "라바짜에스프레소마카롱 (무색소)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-91",
+          "sourceFields": [
+            "sections.menu.items[90].name",
+            "sections.menu.items[90].price_value",
+            "sections.menu.items[90].price_text"
+          ]
+        },
+        {
+          "name": "딸기쿠크다스마카롱 (분홍)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-92",
+          "sourceFields": [
+            "sections.menu.items[91].name",
+            "sections.menu.items[91].price_value",
+            "sections.menu.items[91].price_text"
+          ]
+        },
+        {
+          "name": "바삭초코쿠키",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-93",
+          "sourceFields": [
+            "sections.menu.items[92].name",
+            "sections.menu.items[92].price_value",
+            "sections.menu.items[92].price_text"
+          ]
+        },
+        {
+          "name": "발로나다크초코마카롱(갈색)",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-94",
+          "sourceFields": [
+            "sections.menu.items[93].name",
+            "sections.menu.items[93].price_value",
+            "sections.menu.items[93].price_text"
+          ]
+        },
+        {
+          "name": "말차쿠크다스",
+          "price_value": 3000,
+          "price_text": "3,000원",
+          "price_type": null,
+          "external_menu_id": "dom-95",
+          "sourceFields": [
+            "sections.menu.items[94].name",
+            "sections.menu.items[94].price_value",
+            "sections.menu.items[94].price_text"
+          ]
+        },
+        {
+          "name": "구운노른자(강아지간식)",
+          "price_value": 1000,
+          "price_text": "1,000원",
+          "price_type": null,
+          "external_menu_id": "dom-96",
+          "sourceFields": [
+            "sections.menu.items[95].name",
+            "sections.menu.items[95].price_value",
+            "sections.menu.items[95].price_text"
+          ]
+        },
+        {
+          "name": "아메리카노",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-97",
+          "sourceFields": [
+            "sections.menu.items[96].name",
+            "sections.menu.items[96].price_value",
+            "sections.menu.items[96].price_text"
+          ]
+        },
+        {
+          "name": "white헤이즐넛아메리카노",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-98",
+          "sourceFields": [
+            "sections.menu.items[97].name",
+            "sections.menu.items[97].price_value",
+            "sections.menu.items[97].price_text"
+          ]
+        },
+        {
+          "name": "얼그레이아메리카노",
+          "price_value": 4500,
+          "price_text": "4,500원",
+          "price_type": null,
+          "external_menu_id": "dom-99",
+          "sourceFields": [
+            "sections.menu.items[98].name",
+            "sections.menu.items[98].price_value",
+            "sections.menu.items[98].price_text"
+          ]
+        },
+        {
+          "name": "카페라떼/두유라떼(HOT/ICE)",
+          "price_value": 4600,
+          "price_text": "4,600원",
+          "price_type": null,
+          "external_menu_id": "dom-100",
+          "sourceFields": [
+            "sections.menu.items[99].name",
+            "sections.menu.items[99].price_value",
+            "sections.menu.items[99].price_text"
+          ]
+        },
+        {
+          "name": "바닐라라떼(hot/ice)",
+          "price_value": 4800,
+          "price_text": "4,800원",
+          "price_type": null,
+          "external_menu_id": "dom-101",
+          "sourceFields": [
+            "sections.menu.items[100].name",
+            "sections.menu.items[100].price_value",
+            "sections.menu.items[100].price_text"
+          ]
+        },
+        {
+          "name": "마카롱16개 케이크상자포장",
+          "price_value": 53500,
+          "price_text": "53,500원",
+          "price_type": null,
+          "external_menu_id": "dom-102",
+          "sourceFields": [
+            "sections.menu.items[101].name",
+            "sections.menu.items[101].price_value",
+            "sections.menu.items[101].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "토",
+          "open_time": "10:00",
+          "close_time": "19:00",
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-24 15:20:53.363788"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "426",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "313",
+          "crawled_at": "2026-09-24 15:20:53.344079"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 91
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 88
+        },
+        {
+          "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 75
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 70
+        },
+        {
+          "keyword": "\"음료가 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 57
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 35
+        },
+        {
+          "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 31
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 27
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 23
+        },
+        {
+          "keyword": "\"대화하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 23
+        },
+        {
+          "keyword": "마카롱",
+          "keyword_kind": "menu",
+          "mention_count": 77
+        },
+        {
+          "keyword": "케이크",
+          "keyword_kind": "menu",
+          "mention_count": 18
+        },
+        {
+          "keyword": "커피",
+          "keyword_kind": "menu",
+          "mention_count": 17
+        },
+        {
+          "keyword": "치즈",
+          "keyword_kind": "menu",
+          "mention_count": 13
+        },
+        {
+          "keyword": "치즈케이크",
+          "keyword_kind": "menu",
+          "mention_count": 12
+        },
+        {
+          "keyword": "휘낭시에",
+          "keyword_kind": "menu",
+          "mention_count": 10
+        },
+        {
+          "keyword": "바스크치즈케이크",
+          "keyword_kind": "menu",
+          "mention_count": 9
+        },
+        {
+          "keyword": "라떼",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "쿠키",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "푸딩",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "마들렌",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "구움과자",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "아메리카노",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "얼그레이",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "머랭쿠키",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 108
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 76
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 21
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-4",
+          "review_text": "🐶 반려견과 함께 카페 마츄피츄 다녀왔어요 아담한 공간이지만 마카롱, 빵, 케이크 등 디저트 종류는 꽤 다양했습니다 저는 키오스크로 바스크 제주 유기농 말차 치즈케이크와 페퍼민트 아메리카노를 주문했어요 카페 안은 크리스마스 소품과 귀여운 인형들로 꾸며져 있어 전체적으로 아늑하고 따뜻한 분위기였어요🎄 사장님이 반려견과 함께 와서 노른자 큐브 간식도 챙겨주셨는데 아이도 잘 먹어서 괜히 더 기분이 좋더라고요 🥰 말차치즈케이크는 무스는 부드럽고 위쪽 시트는 꾸덕했어요 🧀치즈와 말차 조합으로 많이 달지 않아 부담 없이 먹기 좋았습니다 페퍼민트 아메리카노는 커피에 페퍼민트 향이 은은하게 어우러져 상쾌하고 깔끔한 느낌이었어요 🌿 예쁘게 꾸며진 공간에서 반려견과 함께 조용히 쉬기 좋은, 따뜻한 카페였습니다 ✨",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-6",
+          "review_text": "진지하게 휘낭시에 여기보다 맛있는곳 못봤어요!! 버터향 찐하고 계란비린맛..향 하나도없이 고소하고 빠쟉하고 진짜 맛있어요 ✨✨ 집에서 먹어도 집에 커피머신있어도 꼭!! 아아도 사야해요 커피 진짜 존맛 휘낭시에 푸딩 마들렌 다 진짜 너무 맛있으니깐 스위트파크??❌여기가 진짜 찐으로 수준이 너무 높으니깐 꼭 드셔보세용 바스크치즈케이크도 진짜 맛있으니깐 꼭 먹어보세용🥺💓",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-1",
+          "review_text": "서울 가면 꼭 들러요. 예전에 회사 옆이라 자주 갔었는데 지방으로 이사오고 나서 못 가서 속상해요. 여기만큼 맛있는 마카롱을 먹어 본 적이 없어요. 강아지 노른자도 우리 코코(흰색)도 2층 쿠(검정색)도 엄청 좋아하고 서로 경쟁적으로 잘 먹네요. 2개 샀는데 4개나 주셨어요. 고맙습니다. 담에 서울 가면 또 갈게요~~",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "꼬끄 포장하러 왔다가 또 이것저것 먹고가네요~~ 휘낭시에가 겉바속촉이어서 너무너무 맛있네요 말차바스크치즈케잌은 너무 맛있는데 한입 먹고 바로 음료를 마시면 향이 더 강해져서 더더 맛있어요~~ 마카롱은 언제나 맛있어요~~~",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 15:20:53.371916",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 15:20:53.371702",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 15:20:53.372013",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "0d4116ac70cf1c0e949d3ba315f8e16a5140d0d99ba0d8df150ddad592fdd6b0"
+  }
+}

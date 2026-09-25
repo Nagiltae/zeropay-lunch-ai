@@ -1,0 +1,225 @@
+{
+  "restaurantId": 9567,
+  "inputHash": "17b5577a7b0b9797cb8a05bea5cd45ba3e51e35597640c7a6eb87b53b9d52a1e",
+  "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "claims": [
+    {
+      "claim": {
+        "claimType": "FOOD_TYPE",
+        "text": "The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E004",
+          "E003",
+          "E010"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E004",
+          "sourceField": "sections.menu.items[1]",
+          "content": {
+            "name": "갈비찜 정식",
+            "price": 20000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E003",
+          "sourceField": "sections.menu.items[0]",
+          "content": {
+            "name": "오징어볶음",
+            "price": 9000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E010",
+          "sourceField": "sections.menu.items[7]",
+          "content": {
+            "name": "매생이",
+            "price": 11000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu features a wide variety of side dishes (banchan) and set meals suitable for groups.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E073",
+          "E045"
+        ]
+      },
+      "status": "REJECTED",
+      "reasons": [
+        "evidence type not allowed: MENU_CHARACTERISTIC/review",
+        "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+        "menu characteristic lacks direct menu evidence",
+        "representative review requires semantic review"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E073",
+          "sourceField": "sections.review.representativeReviews[2]",
+          "content": {
+            "reviewId": "dom-3",
+            "text": "[주문 메뉴] 매운갈비찜 [평가] 개인적으로 좋았던 점은 아무리 여러개를 주문해도 1인 1 메뉴가 나온다는 점이에요. 개인적으로 먹을 수 있어서 좋았습니다. 반찬의 가짓수도 많은게 장점이라고 할 수 있습니다. 매운갈비찜은 맵기보다는 칼칼한 느낌이엿고 독특하게 떡이랑 계란이 들어간게 특징이에요. 국물에 밥을 비벼먹어도 좋습니다. 반찬이랑 메인이랑 밥한공기 뚝딱 가능합니다."
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "review"
+        },
+        {
+          "evidenceId": "E045",
+          "sourceField": "sections.review.keywords[7]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 14
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "TASTE",
+        "text": "Customers describe the food as delicious, with spicy galbi being sweet and spicy rather than extremely hot.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E038",
+          "E072"
+        ]
+      },
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "representative review requires semantic review"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E038",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 149
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E072",
+          "sourceField": "sections.review.representativeReviews[1]",
+          "content": {
+            "reviewId": "dom-1",
+            "text": "🏡 오래된 밥집의 편안한 한상 🍖 매운갈비 : 이름에서 느껴지는 강렬한 매운맛보다는 달달하고 친근한 매콤함이에요. 뚝배기 진득한 국물에 삶은달걀이 하나, 부드러운 고기와 떡볶이떡과 크게 썬 대파가 들어가요. 밥반찬하기 적당했어요 🥢 집반찬 느낌으로 편안하고 소박한 차림새 ✍️ 20년 넘은 동네 노포 🪑 공간이 나뉘어있어 여럿이 찾기좋아요 👟 신발벗게 생겼지만 신고 입장 👀 주변 직장인들에게 인기가 많아보여요 👥 사람많고 와글와글해요 💸 매운갈비10.0"
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "review"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "DINING_CONTEXT",
+        "text": "The venue is suitable for alumni gatherings, group meetings, and casual dining.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E045",
+          "E071"
+        ]
+      },
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "representative review requires semantic review"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E045",
+          "sourceField": "sections.review.keywords[7]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 14
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E071",
+          "sourceField": "sections.review.representativeReviews[0]",
+          "content": {
+            "reviewId": "dom-5",
+            "text": "가성비 좋은 한정식 \"애덕\" 동창모임이용후기 이제는 술보다 우정의 대화가 더 필요할때라 선택한 논현역 가성비 좋은 한정식집 \"애덕\" 갈비찜정식9인분,추가 오징어전 3개+삼겹수육2개+소주맥주10병+콜라1캔 합계 40만7천원 동창 9명이 간만에 한자리에 모였다. 다들 예전처럼 부어라 마셔라 보다는 토킹어바웃에 가벼운 건배. 화려하고 고급진 한정식집은 아니었지만 불에 굽거나 찌는 번거로움이 없는 갈비찜 정식의 집밥 메뉴와 반찬. 추가로 오징어전 3개와 수육2개를 시켰는데 생각보다 양이 많아 오징어전이 남아 포장해갔다. 오징어전은 둥글둥글하게 동그랑땡보다 큰 크기로 여러개 나오는데 정말 맛있었다. 수육은 쏘쏘. 담엔 홍어수육삼합을 먹어봐야겠다. 잡채등기본반찬도 맛있다. 사진은 온전한 음식없이 폭탄 맞은사진 투척."
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "review"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "VENUE_CHARACTERISTIC",
+        "text": "The restaurant is located in Gangnam-gu, Seoul, and has a spacious interior.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E002",
+          "E043"
+        ]
+      },
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "evidence type not allowed: VENUE_CHARACTERISTIC/identity",
+        "evidence section is not SUCCESS"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E002",
+          "sourceField": "identity.restaurantAddress",
+          "content": "서울특별시 강남구 학동로1길 14 (논현동)",
+          "section": "identity",
+          "status": null,
+          "evidenceType": "identity"
+        },
+        {
+          "evidenceId": "E043",
+          "sourceField": "sections.review.keywords[5]",
+          "content": {
+            "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 21
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "AUTO_APPROVED": 1,
+    "REVIEW_REQUIRED": 3,
+    "REJECTED": 1
+  },
+  "qwenCalls": 1,
+  "latencyMs": 29787
+}

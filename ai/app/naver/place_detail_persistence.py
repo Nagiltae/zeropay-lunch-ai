@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import subprocess
+import uuid
 from pathlib import Path
 
 from app.entity_resolution.verification_quality_gate import source_fingerprint
@@ -25,19 +26,83 @@ def _bounded(value: object | None, max_length: int) -> str | None:
     return str(value)[:max_length]
 
 
-class PlaceDetailPersistence:
+class MysqlWriteSession:
+    """기존 mysql CLI를 batch 동안 유지하되 transaction은 호출별로 분리한다."""
+
     def __init__(self, root: Path):
         self.root = root
+        self.process = None
+
+    def _start(self):
+        command = [
+            "docker", "compose", "exec", "-T", "mysql", "sh", "-c",
+            'MYSQL_PWD="$MYSQL_PASSWORD" mysql --batch --skip-column-names --raw '
+            '--unbuffered --default-character-set=utf8mb4 -u "$MYSQL_USER" "$MYSQL_DATABASE"',
+        ]
+        self.process = subprocess.Popen(
+            command,
+            cwd=self.root,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            bufsize=1,
+        )
+
+    def __enter__(self):
+        self._start()
+        return self
+
+    def execute(self, sql: str) -> None:
+        if self.process is None:
+            self._start()
+        if self.process.stdin is None or self.process.stdout is None:
+            raise RuntimeError("MySQL write session is not open")
+        marker = f"__ZERO_PAY_BATCH_{uuid.uuid4().hex}__"
+        self.process.stdin.write(f"{sql.rstrip(';')}; SELECT '{marker}';\n")
+        self.process.stdin.flush()
+        for line in self.process.stdout:
+            if line.strip() == marker:
+                return
+        stderr = self.process.stderr.read() if self.process.stderr else ""
+        raise RuntimeError(f"MySQL persistent session failed: {stderr.strip()}")
+
+    def close(self) -> None:
+        if self.process is None:
+            return
+        try:
+            if self.process.stdin:
+                self.process.stdin.close()
+            self.process.wait(timeout=15)
+        except Exception:
+            self.process.kill()
+            self.process.wait()
+        finally:
+            self.process = None
+
+    def __exit__(self, exc_type, exc, traceback):
+        self.close()
+
+
+class PlaceDetailPersistence:
+    def __init__(self, root: Path, write_session: MysqlWriteSession | None = None):
+        self.root = root
+        self.write_session = write_session
 
     def persist(
         self, restaurant_id: int, place_id: str, detail: PlaceDetail,
         sections: dict[str, bool] | None = None,
+        section_states: dict[str, str] | None = None,
     ) -> None:
         if not place_id.isdigit():
             raise ValueError("invalid place id")
         selected = sections or {"review": True, "menu": True, "business_hours": True}
         statements = []
-        if selected["review"]:
+        # 리뷰 페이지에 정상 접근했지만 실제 리뷰 요약이 없는 ABSENT_CONFIRMED에서는
+        # 새 NULL 값으로 기존 summary를 덮어쓰지 않는다. 페이지 접근 실패(FAILED)는
+        # 애초에 review section을 쓰지 않으므로 기존 데이터가 유지된다.
+        review_snapshot_success = not section_states or section_states.get("review") == "SUCCESS"
+        if selected["review"] and review_snapshot_success:
             statements.append(f"""INSERT INTO restaurant_review_summaries
                 (restaurant_id,provider,external_place_id,visitor_reviews_total,visitor_reviews_score,
                  visitor_text_review_total,cafe_blog_reviews_total)
@@ -66,14 +131,14 @@ class PlaceDetailPersistence:
             statements.append(
                 f"""INSERT INTO restaurant_business_hours
                 (restaurant_id,provider,external_place_id,day_of_week,open_time,close_time,break_hours,last_order,
-                 description,regular_closed_day,irregular_closed_day,business_status)
+                 description,regular_closed_day,irregular_closed_day,business_status,active)
                 VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(hour.day)},{_sql(hour.open_time)},
                 {_sql(hour.close_time)},{_sql(hour.break_hours)},{_sql(hour.last_order)},
                 {_sql(hour.description)},{_sql(hour.regular_closed_day)},{_sql(hour.irregular_closed_day)},
-                {_sql(hour.business_status)})
+                {_sql(hour.business_status)},TRUE)
                 ON DUPLICATE KEY UPDATE open_time=VALUES(open_time),close_time=VALUES(close_time),
                 break_hours=VALUES(break_hours),last_order=VALUES(last_order),description=VALUES(description),
-                crawled_at=CURRENT_TIMESTAMP(6)"""
+                business_status=VALUES(business_status),active=TRUE,crawled_at=CURRENT_TIMESTAMP(6)"""
             )
         for keyword in (
             (*detail.review_keywords, *detail.review_menu_mentions, *detail.voted_keywords)
@@ -81,22 +146,97 @@ class PlaceDetailPersistence:
         ):
             statements.append(
                 f"""INSERT INTO restaurant_review_keywords
-                (restaurant_id,provider,external_place_id,keyword_kind,keyword,mention_count)
+                (restaurant_id,provider,external_place_id,keyword_kind,keyword,mention_count,active)
                 VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(keyword.kind)},
-                {_sql(keyword.keyword)},{_sql(keyword.count)})
-                ON DUPLICATE KEY UPDATE mention_count=VALUES(mention_count),crawled_at=CURRENT_TIMESTAMP(6)"""
+                {_sql(keyword.keyword)},{_sql(keyword.count)},TRUE)
+                ON DUPLICATE KEY UPDATE mention_count=VALUES(mention_count),active=TRUE,
+                crawled_at=CURRENT_TIMESTAMP(6)"""
             )
         for review in detail.representative_reviews if selected["review"] else ():
             statements.append(
                 f"""INSERT INTO restaurant_representative_reviews
-                (restaurant_id,provider,external_place_id,review_id,review_text,review_date,rating)
+                (restaurant_id,provider,external_place_id,review_id,review_text,review_date,rating,active)
                 VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(review.review_id)},
-                {_sql(review.review_text)},{_sql(review.review_date)},{_sql(review.rating)})
+                {_sql(review.review_text)},{_sql(review.review_date)},{_sql(review.rating)},TRUE)
                 ON DUPLICATE KEY UPDATE review_text=VALUES(review_text),review_date=VALUES(review_date),
-                rating=VALUES(rating),crawled_at=CURRENT_TIMESTAMP(6)"""
+                rating=VALUES(rating),active=TRUE,crawled_at=CURRENT_TIMESTAMP(6)"""
+            )
+        if section_states:
+            statements.extend(
+                self._section_state_statements(
+                    restaurant_id, place_id, detail, selected, section_states
+                )
             )
         if statements:
             self._run("; ".join(statements) + ";")
+
+    def _section_state_statements(
+        self,
+        restaurant_id: int,
+        place_id: str,
+        detail: PlaceDetail,
+        selected: dict[str, bool],
+        section_states: dict[str, str],
+    ) -> list[str]:
+        statements = []
+        for section, state in section_states.items():
+            statements.append(self._section_state_upsert(restaurant_id, place_id, section, state))
+        if section_states.get("menu") in {"SUCCESS", "ABSENT_CONFIRMED"} and selected.get("menu"):
+            ids = tuple(menu.external_menu_id for menu in detail.menus)
+            statements.append(self._deactivate_missing("restaurant_menus", "external_menu_id", ids, place_id))
+        if section_states.get("business_hours") in {"SUCCESS", "ABSENT_CONFIRMED"} and selected.get("business_hours"):
+            days = tuple(hour.day for hour in detail.business_hours)
+            statements.append(self._deactivate_missing("restaurant_business_hours", "day_of_week", days, place_id))
+        if section_states.get("review") in {"SUCCESS", "ABSENT_CONFIRMED"} and selected.get("review"):
+            keywords = tuple(
+                (keyword.kind, keyword.keyword)
+                for keyword in (*detail.review_keywords, *detail.review_menu_mentions, *detail.voted_keywords)
+            )
+            keyword_condition = " OR ".join(
+                f"(keyword_kind={_sql(kind)} AND keyword={_sql(keyword)})"
+                for kind, keyword in keywords
+            ) or "FALSE"
+            statements.append(
+                f"UPDATE restaurant_review_keywords SET active=FALSE WHERE provider='NAVER' "
+                f"AND external_place_id={_sql(place_id)} AND active=TRUE AND NOT ({keyword_condition})"
+            )
+            review_ids = tuple(review.review_id for review in detail.representative_reviews)
+            statements.append(self._deactivate_missing("restaurant_representative_reviews", "review_id", review_ids, place_id))
+        return statements
+
+    def persist_section_states(
+        self, restaurant_id: int, place_id: str, section_states: dict[str, str]
+    ) -> None:
+        if not place_id.isdigit():
+            raise ValueError("invalid place id")
+        if section_states:
+            self._run(
+                "; ".join(
+                    self._section_state_upsert(restaurant_id, place_id, section, state)
+                    for section, state in section_states.items()
+                )
+                + ";"
+            )
+
+    @staticmethod
+    def _section_state_upsert(
+        restaurant_id: int, place_id: str, section: str, state: str
+    ) -> str:
+        if state not in {"SUCCESS", "ABSENT_CONFIRMED", "FAILED"}:
+            raise ValueError(f"invalid detail section state: {state}")
+        return f"""INSERT INTO restaurant_detail_section_states
+            (restaurant_id,provider,external_place_id,section,state,error_code)
+            VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(section)},{_sql(state)},NULL)
+            ON DUPLICATE KEY UPDATE restaurant_id=VALUES(restaurant_id),state=VALUES(state),
+            checked_at=CURRENT_TIMESTAMP(6),error_code=VALUES(error_code)"""
+
+    @staticmethod
+    def _deactivate_missing(table: str, key: str, values: tuple[str, ...], place_id: str) -> str:
+        condition = "FALSE" if not values else f"{key} NOT IN ({','.join(_sql(value) for value in values)})"
+        return (
+            f"UPDATE {table} SET active=FALSE WHERE provider='NAVER' "
+            f"AND external_place_id={_sql(place_id)} AND active=TRUE AND {condition}"
+        )
 
     def verification_sql(
         self,
@@ -107,6 +247,7 @@ class PlaceDetailPersistence:
         model_name: str | None,
         source: dict[str, object] | None = None,
         source_fingerprint_value: str | None = None,
+        search_policy_version: str | None = None,
         eligibility: str | None = None,
     ) -> str:
         # 검증 fingerprint와 detail section은 별도 계약이므로 한쪽 갱신이 다른 상태를 삭제하지 않는다.
@@ -119,13 +260,15 @@ class PlaceDetailPersistence:
         sql = f"""
             INSERT INTO restaurant_naver_verifications
               (restaurant_id,provider,verification_status,verification_reason,
-               source_fingerprint,external_place_id,model_name,verified_at,last_attempt_at)
+               source_fingerprint,search_policy_version,external_place_id,model_name,verified_at,last_attempt_at)
             VALUES ({restaurant_id},'NAVER',{_sql(status)},{_sql(reason)},
                     {_sql(source_fingerprint_value or (source_fingerprint(source) if source else None))},
+                    {_sql(search_policy_version)},
                     {_sql(place_id)},{_sql(model_name)},{verified_at},CURRENT_TIMESTAMP(6))
             ON DUPLICATE KEY UPDATE verification_status=VALUES(verification_status),
               verification_reason=VALUES(verification_reason),
               source_fingerprint=VALUES(source_fingerprint),
+              search_policy_version=VALUES(search_policy_version),
               external_place_id=VALUES(external_place_id), model_name=VALUES(model_name),
               verified_at=VALUES(verified_at), last_attempt_at=VALUES(last_attempt_at);
             UPDATE restaurants SET recommendation_eligibility={_sql(eligible)}
@@ -142,6 +285,7 @@ class PlaceDetailPersistence:
         model_name: str | None,
         source: dict[str, object] | None = None,
         source_fingerprint_value: str | None = None,
+        search_policy_version: str | None = None,
         eligibility: str | None = None,
     ) -> None:
         self._run(self.verification_sql(
@@ -152,6 +296,7 @@ class PlaceDetailPersistence:
             model_name=model_name,
             source=source,
             source_fingerprint_value=source_fingerprint_value,
+            search_policy_version=search_policy_version,
             eligibility=eligibility,
         ))
 
@@ -175,6 +320,14 @@ class PlaceDetailPersistence:
 
     def _run(self, sql: str) -> None:
         transactional_sql = f"START TRANSACTION; {sql} COMMIT;"
+        if self.write_session is not None:
+            try:
+                self.write_session.execute(transactional_sql)
+            except Exception:
+                # 실패한 client는 열린 transaction과 함께 폐기하고 다음 row에서 재연결한다.
+                self.write_session.close()
+                raise
+            return
         try:
             result = subprocess.run(
                 _docker_mysql_command(transactional_sql),

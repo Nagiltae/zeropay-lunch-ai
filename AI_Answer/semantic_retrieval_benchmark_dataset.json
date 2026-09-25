@@ -1,0 +1,288 @@
+{
+  "version": "semantic-retrieval-benchmark-v1",
+  "restaurantIds": [
+    9617,
+    9731,
+    9567,
+    9580
+  ],
+  "queries": [
+    {
+      "query": "스시 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥"
+      ],
+      "evidenceIds": [
+        "E013"
+      ]
+    },
+    {
+      "query": "초밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥"
+      ],
+      "evidenceIds": [
+        "E013"
+      ]
+    },
+    {
+      "query": "일식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "초밥",
+        "우동",
+        "후토마끼"
+      ],
+      "evidenceIds": [
+        "E013",
+        "E016",
+        "E017"
+      ]
+    },
+    {
+      "query": "우동 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "우동"
+      ],
+      "evidenceIds": [
+        "E016"
+      ]
+    },
+    {
+      "query": "피자 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "피자"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E067"
+      ]
+    },
+    {
+      "query": "피자 메뉴가 있는 곳",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "피자"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E067"
+      ]
+    },
+    {
+      "query": "떡볶이 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "떡볶이"
+      ],
+      "evidenceIds": [
+        "E011"
+      ]
+    },
+    {
+      "query": "김밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "김밥"
+      ],
+      "evidenceIds": [
+        "E003"
+      ]
+    },
+    {
+      "query": "한식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "한식"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E010"
+      ]
+    },
+    {
+      "query": "한정식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "한식",
+        "정식"
+      ],
+      "evidenceIds": [
+        "E004"
+      ]
+    },
+    {
+      "query": "갈비찜 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTerms": [
+        "갈비찜"
+      ],
+      "evidenceIds": [
+        "E004"
+      ]
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "혼밥"
+      ],
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ]
+    },
+    {
+      "query": "빠르게 먹을 수 있는 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "빠른 식사"
+      ],
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ]
+    },
+    {
+      "query": "혼자 점심 먹기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "혼밥"
+      ],
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ]
+    },
+    {
+      "query": "맛있는 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731,
+        9580,
+        9617
+      ],
+      "expectedClaimTerms": [
+        "맛"
+      ],
+      "evidenceIds": [
+        "E003",
+        "E024",
+        "E057"
+      ]
+    },
+    {
+      "query": "재료가 신선한 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "신선"
+      ],
+      "evidenceIds": [
+        "E004"
+      ]
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "가성비"
+      ],
+      "evidenceIds": [
+        "E027"
+      ]
+    },
+    {
+      "query": "맛있다는 평가가 많은 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTerms": [
+        "맛"
+      ],
+      "evidenceIds": [
+        "E003"
+      ]
+    },
+    {
+      "query": "가성비 언급이 있는 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTerms": [
+        "가성비"
+      ],
+      "evidenceIds": [
+        "E027"
+      ]
+    },
+    {
+      "query": "서비스가 친절한 곳",
+      "intent": "VENUE_CHARACTERISTIC",
+      "expectedRestaurantIds": [
+        9580
+      ],
+      "expectedClaimTerms": [
+        "친절"
+      ],
+      "evidenceIds": [
+        "E060",
+        "E073"
+      ]
+    }
+  ]
+}

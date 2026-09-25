@@ -1,0 +1,67 @@
+{
+  "experiment": "semantic-profile-v1-shadow",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "outputVersion": "semantic-profile-output-v1",
+  "databaseWrite": false,
+  "embeddingOrQdrant": false,
+  "cases": [
+    {
+      "restaurantId": 9617,
+      "input": "AI_Answer/semantic_profile_v1_input_9617.json",
+      "strictProfileReady": true,
+      "venueId": null,
+      "menuItems": 24,
+      "structuredHoursRows": 1,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 35,
+      "representativeReviewRows": 10,
+      "lifecycleSections": 3,
+      "automaticInputValidation": "PASS",
+      "qwenShadowOutput": "NOT_AVAILABLE_TIMEOUT"
+    },
+    {
+      "restaurantId": 9731,
+      "input": "AI_Answer/semantic_profile_v1_input_9731.json",
+      "strictProfileReady": false,
+      "reason": "menu is ABSENT_CONFIRMED; review evidence may be inspected but strict profile generation is blocked",
+      "menuItems": 0,
+      "reviewKeywordRows": 39,
+      "representativeReviewRows": 10,
+      "lifecycleSections": 3,
+      "automaticInputValidation": "PASS",
+      "profileGeneration": "BLOCKED_BY_QUALITY_GATE"
+    },
+    {
+      "restaurantId": 9561,
+      "input": "AI_Answer/semantic_profile_v1_input_9561.json",
+      "strictProfileReady": false,
+      "reason": "legacy detail rows exist but all lifecycle sections are absent",
+      "lifecycleSections": 0,
+      "automaticInputValidation": "PASS",
+      "profileGeneration": "BLOCKED_BY_LEGACY_GATE"
+    }
+  ],
+  "qwen": {
+    "configuredModel": "qwen3.5:9b",
+    "modelInstalled": true,
+    "calls": 2,
+    "maxAllowed": 4,
+    "successfulStructuredOutputs": 0,
+    "timeouts": 2,
+    "latencyMs": [30004, 30003],
+    "result": "NO_PROFILE_OUTPUT"
+  },
+  "automatedValidation": [
+    "input Pydantic contract",
+    "normalized SHA-256 input hash",
+    "strict quality gate",
+    "concrete sourceFields existence check",
+    "output version/hash consistency check"
+  ],
+  "manualReviewRequired": [
+    "claim meaning versus cited menu/review evidence",
+    "whether repeated review wording supports a recommendation claim",
+    "whether confidence is calibrated"
+  ]
+}

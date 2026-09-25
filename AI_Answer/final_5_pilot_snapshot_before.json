@@ -1,0 +1,11 @@
+{
+  "selection": [
+    {"restaurant_id": 9576, "name": "호별관", "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "detail_complete": false},
+    {"restaurant_id": 9599, "name": "(주)육덕패밀리", "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "detail_complete": false},
+    {"restaurant_id": 9604, "name": "지유가오카핫쵸메7호점", "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "detail_complete": false},
+    {"restaurant_id": 9610, "name": "삼미", "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "naver_local_mapping": "MATCHED", "detail_complete": false},
+    {"restaurant_id": 9627, "name": "파니나로", "verification": "VERIFIED/MATCHED", "eligibility": "ELIGIBLE", "numeric_place_id": null, "detail_complete": false}
+  ],
+  "selection_basis": "KOMSCO active population; existing VERIFIED/ELIGIBLE rows with no numeric NAVER mapping and no completed Detail data",
+  "provider_qwen_rerun": false
+}

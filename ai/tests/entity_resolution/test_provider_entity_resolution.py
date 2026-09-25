@@ -3,10 +3,15 @@
 import pytest
 
 from app.entity_resolution.provider_entity_resolution_cli import (
+    ProviderBatchResult,
     ProviderPrefetch,
+    _fallback_query_variants,
     _merge_with_stats,
+    _provider_query_rounds,
+    _should_expand_search,
     evaluate_reference,
 )
+from app.entity_resolution.qwen_candidate_matcher import QwenDecision, QwenSemanticDecision
 from app.naver.place_resolver import RestaurantReference
 from app.providers.place_provider import PlaceSearchCandidate, ProviderSearchResult
 
@@ -34,7 +39,7 @@ def _reference():
 
 
 def test_unchanged_reject_skips_provider_and_qwen():
-    from app.entity_resolution.provider_entity_resolution_cli import _source
+    from app.entity_resolution.provider_entity_resolution_cli import SEARCH_POLICY_VERSION, _source
     from app.entity_resolution.verification_quality_gate import source_fingerprint
 
     fingerprint = source_fingerprint(_source(_reference()))
@@ -47,6 +52,7 @@ def test_unchanged_reject_skips_provider_and_qwen():
             "decision": "REJECT",
             "verification_reason": "OUT_OF_SCOPE",
             "source_fingerprint": fingerprint,
+            "search_policy_version": SEARCH_POLICY_VERSION,
         },
     )
     assert row["decision"] == "REJECT"
@@ -82,6 +88,22 @@ def test_provider_429_stops_before_other_provider_or_qwen():
 
     with pytest.raises(RuntimeError, match="BLOCKED: kakao_error: HTTP_429"):
         evaluate_reference(_reference(), _BlockedProvider(), _FailingProvider(), _FailingMatcher())
+
+
+def test_qwen_http_429_uses_blocked_cooldown_instead_of_unknown_ttl():
+    class _Provider:
+        def search(self, *args, **kwargs):
+            return ProviderSearchResult("KAKAO", "테스트 식당", (PlaceSearchCandidate(
+                "KAKAO", "1", "테스트 식당", "한식", "서울 강남구 논현동 1",
+                "", 127.0, 37.5, "", "", "", {},
+            ),), "")
+
+    class _BlockedMatcher:
+        def choose(self, *args, **kwargs):
+            raise RuntimeError("HTTP_429")
+
+    with pytest.raises(RuntimeError, match="BLOCKED: HTTP_429"):
+        evaluate_reference(_reference(), _Provider(), _Provider(), _BlockedMatcher())
 
 
 def test_provider_merge_deduplicates_only_identical_same_provider_candidates():
@@ -161,6 +183,102 @@ def test_provider_prefetch_keeps_two_variant_order_and_is_bounded():
     assert naver.queries == ["테스트 식당", "논현동 테스트 식당"]
     assert isinstance(result.prefetch_hit, bool)
     assert kakao.closed and naver.closed
+
+
+def test_provider_prefetch_round_one_uses_provider_specific_query():
+    class _Provider:
+        def __init__(self, provider):
+            self.provider = provider
+            self.queries = []
+
+        def search(self, query, **kwargs):
+            self.queries.append(query)
+            return ProviderSearchResult(self.provider, query, ())
+
+        def close(self):
+            pass
+
+    kakao = _Provider("KAKAO")
+    naver = _Provider("NAVER_LOCAL")
+    prefetch = ProviderPrefetch(kakao, naver, queue_size=1)
+    pending = prefetch.submit(_reference(), round_number=1)
+    prefetch.result(pending)
+    prefetch.close()
+    assert kakao.queries == ["테스트 식당"]
+    assert naver.queries == ["논현동 테스트 식당"]
+
+
+def test_adaptive_provider_rounds_start_with_provider_specific_query():
+    rounds = _provider_query_rounds(_reference(), "KAKAO")
+    naver_rounds = _provider_query_rounds(_reference(), "NAVER_LOCAL")
+    assert rounds == (("테스트 식당",), ("논현동 테스트 식당",))
+    assert naver_rounds == (("논현동 테스트 식당",), ("테스트 식당",))
+
+
+def test_fallback_keeps_branch_name_and_only_strips_explicit_corporate_prefix():
+    assert _fallback_query_variants("임명 진오돌뼈 본점") == ("임명 진오돌뼈", "진오돌뼈")
+    assert _fallback_query_variants("(주)에스지푸드 논현역 마성떡볶이") == (
+        "마성떡볶이 논현역",
+    )
+
+
+def test_round_two_only_expands_unresolved_round_one_result():
+    assert _should_expand_search({"decision": "UNKNOWN", "qwen_calls_skipped": "false"})
+    assert _should_expand_search({"decision": "REJECT", "qwen_calls_skipped": "false"})
+    assert not _should_expand_search({"decision": "ACCEPT", "qwen_calls_skipped": "false"})
+    assert not _should_expand_search({"decision": "REJECT", "qwen_calls_skipped": "true"})
+
+
+def test_rejected_choose_top_n_expands_to_unchecked_candidates():
+    candidates = tuple(
+        PlaceSearchCandidate(
+            "KAKAO", str(index), f"후보 {index}", "한식", f"서울 논현동 {index}",
+            "", None, None, "", "", "", {},
+        )
+        for index in range(6)
+    )
+    provider_results = ProviderBatchResult(
+        kakao=(ProviderSearchResult("KAKAO", "테스트 식당", candidates),),
+        naver=(),
+        provider_latency_seconds=0.0,
+        prefetch_wait_seconds=0.0,
+        prefetch_hit=True,
+    )
+
+    class Matcher:
+        def __init__(self):
+            self.choose_calls = 0
+            self.validated_sizes = []
+
+        def choose(self, reference, values):
+            self.choose_calls += 1
+            return QwenDecision(tuple(range(min(5, len(values)))), "HIGH")
+
+        def validate_many(self, reference, values):
+            self.validated_sizes.append(len(values))
+            accepted = len(values) == 1
+            return tuple(
+                QwenSemanticDecision(
+                    "MATCH" if accepted else "NO_MATCH",
+                    "FOOD",
+                    "IN_SCOPE" if accepted else "OUT_OF_SCOPE",
+                    "ACCEPT" if accepted else "REJECT",
+                    "", "", "", "", "same" if accepted else "branch",
+                )
+                for _ in values
+            )
+
+        def validate(self, reference, value):
+            return self.validate_many(reference, (value,))[0]
+
+    matcher = Matcher()
+    row = evaluate_reference(
+        _reference(), object(), object(), matcher, provider_results=provider_results
+    )
+    assert row["decision"] == "ACCEPT"
+    assert row["kakao_selected_index"] == "5"
+    assert matcher.choose_calls == 1
+    assert matcher.validated_sizes == [5, 1]
 
 
 def test_provider_cli_prints_live_progress_without_external_calls(monkeypatch, tmp_path, capsys):

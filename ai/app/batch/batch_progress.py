@@ -64,14 +64,38 @@ class BatchProgress:
         self.preexisting_skipped = 0
         self.retries = self.blocked_count = self.http_429 = 0
         self.provider_requests = self.kakao_requests = self.naver_requests = 0
+        self.round1_requests = self.round2_requests = 0
+        self.round1_resolved = self.round2_required = 0
         self.provider_latency_seconds = self.prefetch_wait_seconds = 0.0
         self.prefetch_hits = self.prefetch_waits = 0
         self.qwen_calls = self.qwen_choose_calls = self.qwen_validate_calls = 0
+        self.qwen_validate_many_calls = 0
+        self.validate_many_success = 0
+        self.validate_many_fallback = 0
+        self.single_candidate_choose_skipped = 0
+        self.qwen_candidate_count_sent = 0
+        self.structured_output_retries = self.semantic_contract_retries = 0
         self.qwen_total_latency_seconds = 0.0
         self.candidate_count_before_dedup = self.candidate_count_after_dedup = 0
         self.duplicate_candidates_removed = 0
         self.reason_counts: dict[str, int] = {}
         self.browser_starts = self.browser_restarts = self.page_recreates = 0
+        self.home_navigation_count = self.menu_navigation_count = 0
+        self.review_navigation_count = 0
+        self.menu_fresh_skipped = self.hours_fresh_skipped = self.review_fresh_skipped = 0
+        self.menu_absent_skipped = self.hours_absent_skipped = self.review_absent_skipped = 0
+        self.menu_collected = self.hours_collected = self.review_collected = 0
+        self.section_failed = self.section_reconciled = 0
+        self.place_id_queries = 0
+        self.place_id_local_evidence = 0
+        self.place_id_canonical_fallback = 0
+        self.place_id_raw_candidates = 0
+        self.place_id_numeric_candidates = 0
+        self.place_id_rejected_candidates = 0
+        self.place_id_persisted = 0
+        self.place_id_reused = 0
+        self.place_id_conflicts = 0
+        self.place_id_persist_failures = 0
         self.last_success_restaurant_id: str | int | None = None
         self.last_failure_restaurant_id: str | int | None = None
         self._current_restaurant_id: str | int | None = None
@@ -126,6 +150,7 @@ class BatchProgress:
     def record_provider(
         self, *, kakao_requests: int, naver_requests: int, latency_seconds: float,
         prefetch_wait_seconds: float = 0.0, prefetch_hit: bool = False,
+        round_number: int = 1,
     ) -> None:
         self.kakao_requests += kakao_requests
         self.naver_requests += naver_requests
@@ -134,6 +159,18 @@ class BatchProgress:
         self.prefetch_wait_seconds += prefetch_wait_seconds
         self.prefetch_hits += int(prefetch_hit)
         self.prefetch_waits += int(not prefetch_hit)
+        if round_number == 1:
+            self.round1_requests += kakao_requests + naver_requests
+        elif round_number == 2:
+            self.round2_requests += kakao_requests + naver_requests
+        else:
+            raise ValueError(f"invalid provider round: {round_number}")
+
+    def record_round1_resolved(self) -> None:
+        self.round1_resolved += 1
+
+    def record_round2_required(self) -> None:
+        self.round2_required += 1
 
     def record_browser_lifecycle(
         self, *, browser_starts: int = 0, browser_restarts: int = 0, page_recreates: int = 0,
@@ -142,15 +179,95 @@ class BatchProgress:
         self.browser_restarts += browser_restarts
         self.page_recreates += page_recreates
 
+    def record_detail_navigation(self, *, home: int = 0, menu: int = 0, review: int = 0) -> None:
+        self.home_navigation_count += home
+        self.menu_navigation_count += menu
+        self.review_navigation_count += review
+
+    def record_detail_sections(self, row: dict[str, str], missing: dict[str, bool]) -> None:
+        for section, fresh_key, absent_key in (
+            ("menu", "menu_fresh_skipped", "menu_absent_skipped"),
+            ("hours", "hours_fresh_skipped", "hours_absent_skipped"),
+            ("review", "review_fresh_skipped", "review_absent_skipped"),
+        ):
+            if missing["business_hours" if section == "hours" else section]:
+                continue
+            if row.get(f"{section}_state") == "ABSENT_CONFIRMED":
+                setattr(self, absent_key, getattr(self, absent_key) + 1)
+            else:
+                setattr(self, fresh_key, getattr(self, fresh_key) + 1)
+
+    def record_detail_section_result(
+        self, section: str, state: str, *, reconciled: bool = False
+    ) -> None:
+        if state in {"SUCCESS", "ABSENT_CONFIRMED"}:
+            if section == "menu":
+                self.menu_collected += 1
+            elif section in {"hours", "business_hours"}:
+                self.hours_collected += 1
+            elif section == "review":
+                self.review_collected += 1
+        elif state == "FAILED":
+            self.section_failed += 1
+        if reconciled:
+            self.section_reconciled += 1
+
+    def record_place_id_observation(
+        self,
+        *,
+        local_evidence: bool,
+        raw_candidates: int,
+        numeric_candidates: int,
+        rejected_candidates: int,
+    ) -> None:
+        """Record Place ID evidence without changing the matching decision."""
+        for value in (raw_candidates, numeric_candidates, rejected_candidates):
+            if value < 0:
+                raise ValueError("Place ID candidate counts must be non-negative")
+        self.place_id_queries += 1
+        self.place_id_local_evidence += int(local_evidence)
+        self.place_id_canonical_fallback += int(not local_evidence)
+        self.place_id_raw_candidates += raw_candidates
+        self.place_id_numeric_candidates += numeric_candidates
+        self.place_id_rejected_candidates += rejected_candidates
+
+    def record_place_id_persistence(self, outcome: str) -> None:
+        if outcome == "SAVED":
+            self.place_id_persisted += 1
+        elif outcome == "REUSED":
+            self.place_id_reused += 1
+        elif outcome == "CONFLICT":
+            self.place_id_conflicts += 1
+        elif outcome == "FAILED":
+            self.place_id_persist_failures += 1
+        else:
+            raise ValueError(f"unknown Place ID persistence outcome: {outcome}")
+
     def record_qwen_call(self, operation: str, latency_seconds: float) -> None:
         self.qwen_calls += 1
         if operation == "choose":
             self.qwen_choose_calls += 1
         elif operation == "validate":
             self.qwen_validate_calls += 1
+        elif operation == "validate_many":
+            self.qwen_validate_many_calls += 1
         else:
             raise ValueError(f"unknown Qwen operation: {operation}")
         self.qwen_total_latency_seconds += max(0.0, latency_seconds)
+
+    def record_qwen_retry(self, operation: str) -> None:
+        self.structured_output_retries += 1
+        if operation in {"validate", "validate_many"}:
+            self.semantic_contract_retries += 1
+
+    def record_validate_many(self, *, success: bool, fallback: bool) -> None:
+        self.validate_many_success += int(success)
+        self.validate_many_fallback += int(fallback)
+
+    def record_qwen_candidate_count(self, count: int) -> None:
+        self.qwen_candidate_count_sent += count
+        if count == 1:
+            self.single_candidate_choose_skipped += 1
 
     def record_qwen_candidates(self, before: int, after: int, duplicates_removed: int) -> None:
         self.candidate_count_before_dedup += before
@@ -191,6 +308,10 @@ class BatchProgress:
             "provider_requests": self.provider_requests,
             "kakao_requests": self.kakao_requests,
             "naver_requests": self.naver_requests,
+            "round1_requests": self.round1_requests,
+            "round2_requests": self.round2_requests,
+            "round1_resolved": self.round1_resolved,
+            "round2_required": self.round2_required,
             "provider_avg_latency_seconds": round(
                 self.provider_latency_seconds / self.provider_requests, 3
             ) if self.provider_requests else None,
@@ -200,6 +321,13 @@ class BatchProgress:
             "qwen_calls": self.qwen_calls,
             "qwen_choose_calls": self.qwen_choose_calls,
             "qwen_validate_calls": self.qwen_validate_calls,
+            "qwen_validate_many_calls": self.qwen_validate_many_calls,
+            "validate_many_success": self.validate_many_success,
+            "validate_many_fallback": self.validate_many_fallback,
+            "single_candidate_choose_skipped": self.single_candidate_choose_skipped,
+            "qwen_candidate_count_sent": self.qwen_candidate_count_sent,
+            "structured_output_retries": self.structured_output_retries,
+            "semantic_contract_retries": self.semantic_contract_retries,
             "qwen_total_latency_seconds": round(self.qwen_total_latency_seconds, 3),
             "qwen_avg_latency_seconds": round(
                 self.qwen_total_latency_seconds / self.qwen_calls, 3
@@ -211,6 +339,31 @@ class BatchProgress:
             "browser_starts": self.browser_starts,
             "browser_restarts": self.browser_restarts,
             "page_recreates": self.page_recreates,
+            "detail_targets": self.total,
+            "home_navigation_count": self.home_navigation_count,
+            "menu_navigation_count": self.menu_navigation_count,
+            "review_navigation_count": self.review_navigation_count,
+            "menu_fresh_skipped": self.menu_fresh_skipped,
+            "hours_fresh_skipped": self.hours_fresh_skipped,
+            "review_fresh_skipped": self.review_fresh_skipped,
+            "menu_absent_skipped": self.menu_absent_skipped,
+            "hours_absent_skipped": self.hours_absent_skipped,
+            "review_absent_skipped": self.review_absent_skipped,
+            "menu_collected": self.menu_collected,
+            "hours_collected": self.hours_collected,
+            "review_collected": self.review_collected,
+            "section_failed": self.section_failed,
+            "section_reconciled": self.section_reconciled,
+            "place_id_queries": self.place_id_queries,
+            "place_id_local_evidence": self.place_id_local_evidence,
+            "place_id_canonical_fallback": self.place_id_canonical_fallback,
+            "place_id_raw_candidates": self.place_id_raw_candidates,
+            "place_id_numeric_candidates": self.place_id_numeric_candidates,
+            "place_id_rejected_candidates": self.place_id_rejected_candidates,
+            "place_id_persisted": self.place_id_persisted,
+            "place_id_reused": self.place_id_reused,
+            "place_id_conflicts": self.place_id_conflicts,
+            "place_id_persist_failures": self.place_id_persist_failures,
             "elapsed_seconds": round(elapsed, 3),
             "avg_seconds_per_item": round(elapsed / self.processed, 3) if self.processed else None,
             "eta_seconds": round(elapsed / self.processed * max(0, self.total - self.processed), 3)

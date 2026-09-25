@@ -1,0 +1,110 @@
+{
+  "version": "semantic-retrieval-benchmark-v1",
+  "queryCount": 20,
+  "restaurantCount": 4,
+  "thresholds": {
+    "precisionAt1": 0.8,
+    "hitAt3": 0.9,
+    "wrongClaimTypeRate": 0.0,
+    "evidenceTrace": 1.0
+  },
+  "baselineA": {
+    "precisionAt1": 0.4,
+    "hitAt3": 0.95,
+    "byCategory": {
+      "DINING_CONTEXT": {
+        "count": 2,
+        "precisionAt1": 0.0,
+        "hitAt3": 1.0
+      },
+      "FOOD": {
+        "count": 10,
+        "precisionAt1": 0.5,
+        "hitAt3": 0.9
+      },
+      "TASTE": {
+        "count": 5,
+        "precisionAt1": 0.6,
+        "hitAt3": 1.0
+      },
+      "UNKNOWN": {
+        "count": 2,
+        "precisionAt1": 0.0,
+        "hitAt3": 1.0
+      },
+      "VENUE_CHARACTERISTIC": {
+        "count": 1,
+        "precisionAt1": 0.0,
+        "hitAt3": 1.0
+      }
+    }
+  },
+  "claimB": {
+    "precisionAt1": 0.9,
+    "hitAt3": 1.0,
+    "byCategory": {
+      "DINING_CONTEXT": {
+        "count": 2,
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "FOOD": {
+        "count": 10,
+        "precisionAt1": 0.9,
+        "hitAt3": 1.0
+      },
+      "TASTE": {
+        "count": 5,
+        "precisionAt1": 0.8,
+        "hitAt3": 1.0
+      },
+      "UNKNOWN": {
+        "count": 2,
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "VENUE_CHARACTERISTIC": {
+        "count": 1,
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      }
+    }
+  },
+  "candidateC": {
+    "precisionAt1": 0.9,
+    "hitAt3": 1.0,
+    "byCategory": {
+      "DINING_CONTEXT": {
+        "count": 2,
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "FOOD": {
+        "count": 10,
+        "precisionAt1": 0.9,
+        "hitAt3": 1.0
+      },
+      "TASTE": {
+        "count": 5,
+        "precisionAt1": 0.8,
+        "hitAt3": 1.0
+      },
+      "UNKNOWN": {
+        "count": 2,
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      },
+      "VENUE_CHARACTERISTIC": {
+        "count": 1,
+        "precisionAt1": 1.0,
+        "hitAt3": 1.0
+      }
+    }
+  },
+  "safety": {
+    "evidenceTraceRate": 1.0,
+    "reviewRequiredLeakage": 0,
+    "rejectedLeakage": 0,
+    "deterministicFieldLeakage": 0
+  }
+}

@@ -1,0 +1,833 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "17b5577a7b0b9797cb8a05bea5cd45ba3e51e35597640c7a6eb87b53b9d52a1e",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "한정식애덕",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 학동로1길 14 (논현동)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "오징어볶음",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "갈비찜 정식",
+        "price": 20000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "마음상",
+        "price": 15000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "사랑상",
+        "price": 27000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "덕상(2만원상+매생이국,전복구이)",
+        "price": 37000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "보쌈정식",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "매운갈비찜",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "매생이",
+        "price": 11000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "고등어구이",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "고등어조림(식사)",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "쭈꾸미제육볶음",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "불고기비빔밥",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "제육쌈",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "고등어쌈",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "우렁쌈",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "된장찌개",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "뚝배기불고기",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "미역국",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "계란찜",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "비빔밥",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "우렁된장",
+        "price": 7000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "차돌된장",
+        "price": 9000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "우렁무침",
+        "price": 20000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "불낙전골",
+        "price": 35000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "낙지초무침(냉)",
+        "price": 35000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "낙지초무침(산)",
+        "price": 40000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "낙지볶음(냉)",
+        "price": 35000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "낙지볶음(산)",
+        "price": 40000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.menu.items[28]",
+      "content": {
+        "name": "전복구이",
+        "price": 40000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.menu.items[29]",
+      "content": {
+        "name": "홍어삼합",
+        "price": 35000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.menu.items[30]",
+      "content": {
+        "name": "삼겹수육",
+        "price": 35000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.menu.items[31]",
+      "content": {
+        "name": "낙지전",
+        "price": 35000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.menu.items[32]",
+      "content": {
+        "name": "고등어조림(안주)",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.menu.items[33]",
+      "content": {
+        "name": "굴전",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.menu.items[34]",
+      "content": {
+        "name": "생굴",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 149
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 51
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 41
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 32
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 25
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 21
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 16
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 14
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 12
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "제육",
+        "mentionCount": 10
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "쌈밥",
+        "mentionCount": 5
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "갈비",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "가정식백반",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "된장찌개",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "오징어",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "찌개",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "갈비찜",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "고기",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "고등어",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "매운갈비",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "오징어볶음",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "우렁쌈밥",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "제육볶음",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "차돌된장찌개",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 67
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 50
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 12
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.review.keywords[29]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.review.keywords[30]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.review.keywords[31]",
+      "content": {
+        "keyword": "청결도",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.review.keywords[32]",
+      "content": {
+        "keyword": "위치",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-5",
+        "text": "가성비 좋은 한정식 \"애덕\" 동창모임이용후기 이제는 술보다 우정의 대화가 더 필요할때라 선택한 논현역 가성비 좋은 한정식집 \"애덕\" 갈비찜정식9인분,추가 오징어전 3개+삼겹수육2개+소주맥주10병+콜라1캔 합계 40만7천원 동창 9명이 간만에 한자리에 모였다. 다들 예전처럼 부어라 마셔라 보다는 토킹어바웃에 가벼운 건배. 화려하고 고급진 한정식집은 아니었지만 불에 굽거나 찌는 번거로움이 없는 갈비찜 정식의 집밥 메뉴와 반찬. 추가로 오징어전 3개와 수육2개를 시켰는데 생각보다 양이 많아 오징어전이 남아 포장해갔다. 오징어전은 둥글둥글하게 동그랑땡보다 큰 크기로 여러개 나오는데 정말 맛있었다. 수육은 쏘쏘. 담엔 홍어수육삼합을 먹어봐야겠다. 잡채등기본반찬도 맛있다. 사진은 온전한 음식없이 폭탄 맞은사진 투척."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-1",
+        "text": "🏡 오래된 밥집의 편안한 한상 🍖 매운갈비 : 이름에서 느껴지는 강렬한 매운맛보다는 달달하고 친근한 매콤함이에요. 뚝배기 진득한 국물에 삶은달걀이 하나, 부드러운 고기와 떡볶이떡과 크게 썬 대파가 들어가요. 밥반찬하기 적당했어요 🥢 집반찬 느낌으로 편안하고 소박한 차림새 ✍️ 20년 넘은 동네 노포 🪑 공간이 나뉘어있어 여럿이 찾기좋아요 👟 신발벗게 생겼지만 신고 입장 👀 주변 직장인들에게 인기가 많아보여요 👥 사람많고 와글와글해요 💸 매운갈비10.0"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-3",
+        "text": "[주문 메뉴] 매운갈비찜 [평가] 개인적으로 좋았던 점은 아무리 여러개를 주문해도 1인 1 메뉴가 나온다는 점이에요. 개인적으로 먹을 수 있어서 좋았습니다. 반찬의 가짓수도 많은게 장점이라고 할 수 있습니다. 매운갈비찜은 맵기보다는 칼칼한 느낌이엿고 독특하게 떡이랑 계란이 들어간게 특징이에요. 국물에 밥을 비벼먹어도 좋습니다. 반찬이랑 메인이랑 밥한공기 뚝딱 가능합니다."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-8",
+        "text": "메뉴도 다양하고 맛있는 한끼 식사로 딱 좋았어요!"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "이전 페이지 한정식애덕 저장 페이지 닫기 한정식애덕 한식리",
+        "open_time": null,
+        "close_time": null,
+        "break_hours": null,
+        "last_order": null,
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-24 11:04:06.415875"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56"
+}

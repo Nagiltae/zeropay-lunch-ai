@@ -1,0 +1,10 @@
+{
+  "queries": ["스시 먹고 싶다", "초밥 먹고 싶다", "일식 먹고 싶다", "우동 먹고 싶다"],
+  "policy": {"synonym": "스시↔초밥", "category": "일식→초밥·우동·후토마끼", "priority": "exact > synonym > category"},
+  "observed": {
+    "스시 먹고 싶다": {"top1": 9567, "expected": 9731, "status": "FAIL"},
+    "초밥 먹고 싶다": {"top1": 9617, "expected": 9731, "status": "FAIL"},
+    "일식 먹고 싶다": {"top1": 9569, "expected": 9731, "status": "FAIL"},
+    "우동 먹고 싶다": {"top1": 9569, "expected": 9731, "status": "FAIL"}
+  }
+}

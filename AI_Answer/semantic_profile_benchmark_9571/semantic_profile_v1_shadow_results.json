@@ -1,0 +1,284 @@
+{
+  "restaurantId": 9571,
+  "inputPath": "../AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_input_9571_compact.json",
+  "inputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 28574,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: VENUE_CHARACTERISTIC/identity"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant specializes in pizza and quesadilla dishes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E055",
+                "E024",
+                "E025"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a wide variety of toppings including beef, chicken, and vegetables.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E015",
+                "E024"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention that the food is delicious and has good value.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E045",
+                "E046"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining and offers a convenient parking area.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E050",
+                "E054"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Gangnam-gu, Seoul.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": true,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant specializes in pizza and quesadilla dishes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E055",
+                "E024",
+                "E025"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "food type from review/keyword is not an official menu fact"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E055",
+                "sourceField": "sections.review.keywords[10]",
+                "content": {
+                  "keyword": "피자",
+                  "mentionCount": 18
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E024",
+                "sourceField": "sections.menu.items[21]",
+                "content": {
+                  "name": "야채퀘사디아피자",
+                  "price": 13900
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E025",
+                "sourceField": "sections.menu.items[22]",
+                "content": {
+                  "name": "치킨퀘사디아",
+                  "price": 13900
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a wide variety of toppings including beef, chicken, and vegetables.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E015",
+                "E024"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.menu.items[0]",
+                "content": {
+                  "name": "비프타코피자",
+                  "price": 15900
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E015",
+                "sourceField": "sections.menu.items[12]",
+                "content": {
+                  "name": "불고기피자",
+                  "price": 11900
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E024",
+                "sourceField": "sections.menu.items[21]",
+                "content": {
+                  "name": "야채퀘사디아피자",
+                  "price": 13900
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention that the food is delicious and has good value.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E045",
+                "E046"
+              ]
+            },
+            "status": "AUTO_APPROVED",
+            "reasons": [],
+            "evidence": [
+              {
+                "evidenceId": "E045",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 88
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E046",
+                "sourceField": "sections.review.keywords[1]",
+                "content": {
+                  "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 46
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining and offers a convenient parking area.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E050",
+                "E054"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E050",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 5
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E054",
+                "sourceField": "sections.review.keywords[9]",
+                "content": {
+                  "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Gangnam-gu, Seoul.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence type not allowed: VENUE_CHARACTERISTIC/identity",
+              "evidence section is not SUCCESS"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E002",
+                "sourceField": "identity.restaurantAddress",
+                "content": "서울시 강남구 강남대로122길 41",
+                "section": "identity",
+                "status": null,
+                "evidenceType": "identity"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "73be65a3677465dd3037bb8e94368ba7db0711e08a9655a62bbeb3670dfa6b9f",
+  "elapsedMs": 29227,
+  "catalogPath": "../AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json"
+}

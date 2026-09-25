@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: e2e
+  datasource:
+    url: jdbc:mysql://mysql:3306/zeropay_lunch_mvp_e2e
+    username: mvp_e2e_user
+    password: mvp_e2e_only_password
+  flyway:
+    locations: classpath:db/migration,classpath:db/migration-mysql
+
+app:
+  ai:
+    base-url: http://ai:8001
+  komsco:
+    import-enabled: false
+    scheduler-enabled: false

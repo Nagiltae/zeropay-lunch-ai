@@ -25,8 +25,11 @@ spring:
 app:
   time-zone: Asia/Seoul
   ai:
+    semantic-runtime-enabled: ${AI_SEMANTIC_RUNTIME_ENABLED:false}
+    llm-explanation-enabled: ${AI_LLM_EXPLANATION_ENABLED:false}
     connect-timeout: ${AI_CONNECT_TIMEOUT:2s}
     response-timeout: ${AI_RESPONSE_TIMEOUT:8s}
+    explanation-timeout: ${AI_EXPLANATION_RESPONSE_TIMEOUT:27s}
     max-attempts: ${AI_MAX_ATTEMPTS:1}
     fallback-enabled: ${AI_FALLBACK_ENABLED:true}
   komsco:

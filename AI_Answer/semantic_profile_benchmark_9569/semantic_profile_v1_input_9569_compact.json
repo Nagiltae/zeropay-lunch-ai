@@ -1,0 +1,395 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9569,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.138445"
+  },
+  "identity": {
+    "restaurantName": "산곰장어",
+    "restaurantAddress": "서울특별시 강남구 언주로 605 (논현동)",
+    "category": null,
+    "latitude": 37.5093886,
+    "longitude": 127.0372816,
+    "canonicalName": "짱이네 산곰장어",
+    "canonicalAddress": "서울특별시 강남구 언주로 605 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 언주로 605 1층 3,4호",
+    "provider": "NAVER",
+    "numericPlaceId": "12942852",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "산곰장어",
+          "price_value": 24000,
+          "price_text": "24,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "김치찌개",
+          "price_value": 19000,
+          "price_text": "19,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "해산물모듬",
+          "price_value": 80000,
+          "price_text": "80,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "돌멍게",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "낙지",
+          "price_value": 30000,
+          "price_text": "30,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "해삼",
+          "price_value": 30000,
+          "price_text": "30,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "멍게",
+          "price_value": 30000,
+          "price_text": "30,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "탕탕이",
+          "price_value": null,
+          "price_text": null,
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "전복",
+          "price_value": null,
+          "price_text": null,
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "김밥추가",
+          "price_value": 4000,
+          "price_text": "4,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "영업 중다음 날 02:00에 라스트오더 다음 날 2시 0분",
+          "open_time": null,
+          "close_time": null,
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-21 14:51:59.820532"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "235",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "281",
+          "crawled_at": "2026-09-21 14:51:59.818536"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 127
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 76
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 45
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 38
+        },
+        {
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 14
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 13
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 8
+        },
+        {
+          "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 8
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 7
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 7
+        },
+        {
+          "keyword": "꼼장어",
+          "keyword_kind": "menu",
+          "mention_count": 46
+        },
+        {
+          "keyword": "김치찌개",
+          "keyword_kind": "menu",
+          "mention_count": 31
+        },
+        {
+          "keyword": "찌개",
+          "keyword_kind": "menu",
+          "mention_count": 28
+        },
+        {
+          "keyword": "김밥",
+          "keyword_kind": "menu",
+          "mention_count": 12
+        },
+        {
+          "keyword": "꽁치김치찌개",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "충무김밥",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "김말이",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "꼬마김밥",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "낙지",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "낙지탕탕이",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "맥주",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "멍게",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "산낙지",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "소금구이",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "와인",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 74
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 55
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 15
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 7
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "주차",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "위치",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-10",
+          "review_text": "꼼장어 너무너무 사랑하는 사람으로 짱이네 정말 맛있어요 돌멍개도 넘 싱싱하고 쫄깃쫄깃 맛있어요 또 먹고 싶네요 양념 꼼장어도 먹었는데 사진 찍는거 잊어버리고.. ㅠㅠ 다 맛있지만 순정꼼장어가 더 맛있어요~ 마늘을 삶아서 나온걸 굽는거라 매운맛 하나 없고 너무 맛있어요 또 갈게요~~~",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-7",
+          "review_text": "집근처라 지나다닐때마다 꼭가봐야지 하다가 드디어 친구랑 방문했어요! 평일엔 늘붐비고 토요일에도 저녁되니까 사람많았지만 매장이 넓어서 편하게 식사가능! 초벌해나오고 자리에서도 먹기좋게 구워주셔서 맛나게 먹고왔어요ㅎㅎ 반찬도 야채도 다맛있어요~ 무엇보다 산꼼장어 최고!ㅎ",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-4",
+          "review_text": "꼼장어 처음 먹어보는데, 이렇게 맛있는걸 먹어버려서 제 꼼장어 기준은 하늘을 찌르게 되었네요. 잘 구워주시고 가게도 노포느낌인데 내부는 깔끔합니다. 김치찌개 그냥 소주 폭격기입니다. 진짜 미친 맛도리 음식점",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-6",
+          "review_text": "소금구이 꼼장어집중 최고입니다. 꼼장어도 초벌로 어느정도 익혀 나와서 좋았어요. 바로 조금만 더 익혀 먹을 수 있어서 편했습니다. 꽁치김치찌개도 존맛ㅋㅋㅋㅋㅋㅋㅋ충무김밥도 다 메뉴가 알차요",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": []
+  },
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": false,
+    "missingSections": [
+      "menu",
+      "business_hours",
+      "review"
+    ]
+  },
+  "inputHash": "164f84ee0404ce4cb7b54e2e282f8c55d1a1b22d752a3e923312c0028af0d786",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "48bc34f0d296a096a66bbd0e9d45254e8b89154a35f27c1f964a33918c7b5fb5"
+  }
+}

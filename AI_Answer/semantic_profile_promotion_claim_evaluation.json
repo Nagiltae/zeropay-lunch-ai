@@ -1,0 +1,16 @@
+{
+  "qwenCalls": 6,
+  "qwenRetries": 0,
+  "targets": [
+    {"restaurantId": 9562, "strictProfileReady": false, "autoApproved": 0, "reviewRequired": 3, "rejected": 2, "reason": "pre-persistence attempt had no lifecycle; no second Qwen call allowed"},
+    {"restaurantId": 9568, "strictProfileReady": false, "autoApproved": 0, "reviewRequired": 4, "rejected": 1, "reason": "pre-persistence attempt had no lifecycle; no second Qwen call allowed"},
+    {"restaurantId": 9569, "strictProfileReady": false, "autoApproved": 0, "reviewRequired": 5, "rejected": 0, "reason": "pre-persistence attempt had no lifecycle; no second Qwen call allowed"},
+    {"restaurantId": 9570, "strictProfileReady": false, "autoApproved": 2, "reviewRequired": 1, "rejected": 2, "reason": "claim evidence validation rejected one menu evidence type"},
+    {"restaurantId": 9571, "strictProfileReady": true, "autoApproved": 2, "reviewRequired": 2, "rejected": 1, "reason": "approved claims retained; non-approved claims excluded"},
+    {"restaurantId": 9574, "strictProfileReady": true, "autoApproved": 2, "reviewRequired": 1, "rejected": 2, "reason": "approved claims retained; non-approved claims excluded"}
+  ],
+  "newApprovedRestaurantCount": 3,
+  "totalApprovedRestaurantCountIncludingExistingFour": 7,
+  "claimVectorCreated": false,
+  "expandedBenchmarkExecuted": false
+}

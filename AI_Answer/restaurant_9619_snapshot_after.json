@@ -1,0 +1,31 @@
+{
+  "restaurant_id": 9619,
+  "captured_at": "2026-09-23T18:10:00Z",
+  "purpose": "post-validation snapshot",
+  "restaurant": {"id": 9619, "name": "우정양곱창", "recommendation_eligibility": "ELIGIBLE"},
+  "numeric_naver": {
+    "observed_in_ui": "1921750340",
+    "persisted_for_9619": false,
+    "reason": "same numeric ID already belongs to restaurant_id 9582"
+  },
+  "existing_conflict": {
+    "restaurant_id": 9582,
+    "provider": "NAVER",
+    "external_place_id": "1921750340",
+    "match_status": "MATCHED"
+  },
+  "detail": {
+    "section_states": [],
+    "menus": [],
+    "business_hours": [],
+    "review_summaries": [],
+    "review_keywords": [],
+    "representative_reviews": []
+  },
+  "data_protection": {
+    "9619_detail_write": false,
+    "9619_numeric_mapping_write": false,
+    "target_eligibility_changed": false
+  },
+  "note": "The pre-existing 9582 mapping's matched_at/updated_at were refreshed by the legacy write path during the attempted 9619 write; its ID/status/query remained unchanged. The new conflict guard prevents recurrence."
+}

@@ -1,0 +1,12 @@
+{
+  "qwenCalls": 3,
+  "retries": 0,
+  "targets": [
+    {"restaurantId": 9562, "inputHash": "3588352874e6c5ca2c42f3b6c7b7baa236eac2e09e3c373dc016785309cbad2d", "catalogHash": "b7f703f9723886c6111f61166b51d9085bb15eff89d85e23bf7b07b7c443b2cf", "strictProfileReady": false, "autoApproved": 0, "reviewRequired": 3, "rejected": 2},
+    {"restaurantId": 9568, "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b", "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93", "strictProfileReady": true, "autoApproved": 3, "reviewRequired": 2, "rejected": 0},
+    {"restaurantId": 9569, "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0", "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6", "strictProfileReady": false, "autoApproved": 5, "reviewRequired": 0, "rejected": 0}
+  ],
+  "newApprovedRestaurantCount": 2,
+  "totalApprovedRestaurantCount": 9,
+  "expandedBenchmarkExecuted": false
+}

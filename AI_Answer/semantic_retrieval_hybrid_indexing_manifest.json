@@ -1,0 +1,758 @@
+{
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "model": "qwen3-embedding:0.6b",
+  "dimension": 1024,
+  "distance": "Cosine",
+  "pointCount": 40,
+  "foodMentionPointCount": 16,
+  "points": [
+    {
+      "pointId": "b4d24906-a120-5510-9550-3485b22345c2",
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_TYPE:dff03204365b",
+      "claimType": "FOOD_TYPE",
+      "originalClaimText": "음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다.",
+      "normalizedClaimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E011"
+      ],
+      "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이"
+    },
+    {
+      "pointId": "c046bc07-8f8b-5ce7-bbe3-746eac03565e",
+      "restaurantId": 9617,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "claimType": "DINING_CONTEXT",
+      "originalClaimText": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+      "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ],
+      "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 33,
+      "embeddingText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "e5d6372b-c430-5083-8308-107b675f377f",
+      "restaurantId": 9617,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "claimType": "TASTE",
+      "originalClaimText": "고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+      "normalizedClaimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E024",
+        "E027"
+      ],
+      "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 30,
+      "embeddingText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "6d29b2eb-bcac-5e0f-ae01-84acc0f1d228",
+      "restaurantId": 9731,
+      "claimId": "9731:TASTE:f5bdbb7cd4cb",
+      "claimType": "TASTE",
+      "originalClaimText": "Delicious, Fresh Ingredients, Savory",
+      "normalizedClaimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E029"
+      ],
+      "inputHash": "c55de08844f020226ed8a28ff0d23cb136dde0c3d10e6edf11fc1ac0cdc1d652",
+      "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 1182,
+      "embeddingText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "cf4fbd08-f44c-5697-924c-4381d57813b3",
+      "restaurantId": 9567,
+      "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+      "claimType": "FOOD_TYPE",
+      "originalClaimText": "The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+      "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E010"
+      ],
+      "inputHash": "17b5577a7b0b9797cb8a05bea5cd45ba3e51e35597640c7a6eb87b53b9d52a1e",
+      "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이"
+    },
+    {
+      "pointId": "150f78d8-6dbc-59d0-aa80-146ddbf07320",
+      "restaurantId": 9580,
+      "claimId": "9580:TASTE:3aa7f8353082",
+      "claimType": "TASTE",
+      "originalClaimText": "Customers frequently mention that the food is delicious.",
+      "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E057",
+        "E071"
+      ],
+      "inputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+      "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 32,
+      "embeddingText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛"
+    },
+    {
+      "pointId": "3cd73798-ced2-5a2a-a0f1-30969e298da0",
+      "restaurantId": 9580,
+      "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "originalClaimText": "Customers appreciate the friendly service provided by the staff.",
+      "normalizedClaimText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E060",
+        "E073"
+      ],
+      "inputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+      "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 7,
+      "embeddingText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스"
+    },
+    {
+      "pointId": "33e3a25f-5764-52a6-9bf4-ca38e65560ea",
+      "restaurantId": 9580,
+      "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+      "claimType": "MENU_CHARACTERISTIC",
+      "originalClaimText": "The menu includes a variety of pizza sizes and set meals.",
+      "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E008",
+        "E010"
+      ],
+      "inputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+      "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R"
+    },
+    {
+      "pointId": "e1e8a1e3-08c6-5fa6-874c-60a2f5262cd1",
+      "restaurantId": 9568,
+      "claimId": "9568:FOOD_TYPE:a95992a932ea",
+      "claimType": "FOOD_TYPE",
+      "originalClaimText": "The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae.",
+      "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E012",
+        "E013"
+      ],
+      "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+      "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥"
+    },
+    {
+      "pointId": "44efa4b7-0641-504c-9cfc-b0a85c6042ae",
+      "restaurantId": 9568,
+      "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+      "claimType": "MENU_CHARACTERISTIC",
+      "originalClaimText": "The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts.",
+      "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E005",
+        "E006",
+        "E009",
+        "E018"
+      ],
+      "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+      "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살"
+    },
+    {
+      "pointId": "79942993-9b8c-5493-841d-69255a9f77d2",
+      "restaurantId": 9568,
+      "claimId": "9568:DINING_CONTEXT:82defca705c2",
+      "claimType": "DINING_CONTEXT",
+      "originalClaimText": "The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout.",
+      "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+      "confidence": "MEDIUM",
+      "evidenceIds": [
+        "E029",
+        "E032",
+        "E033"
+      ],
+      "inputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+      "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 21,
+      "embeddingText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "3978ca83-1e12-5a98-b8b5-93614e977f08",
+      "restaurantId": 9569,
+      "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+      "claimType": "FOOD_TYPE",
+      "originalClaimText": "The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge).",
+      "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E006"
+      ],
+      "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+      "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게"
+    },
+    {
+      "pointId": "78dfbe84-9955-5bfc-b161-b33bbc9cb2f7",
+      "restaurantId": 9569,
+      "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+      "claimType": "MENU_CHARACTERISTIC",
+      "originalClaimText": "The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls.",
+      "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E007",
+        "E008",
+        "E012"
+      ],
+      "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+      "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가"
+    },
+    {
+      "pointId": "16ccd0db-a36d-5bff-9423-1e702ee81eda",
+      "restaurantId": 9569,
+      "claimId": "9569:TASTE:8a9b62a3677a",
+      "claimType": "TASTE",
+      "originalClaimText": "Customers frequently describe the food as delicious, fresh, and satisfying.",
+      "normalizedClaimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E013",
+        "E014",
+        "E038"
+      ],
+      "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+      "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 128,
+      "embeddingText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛"
+    },
+    {
+      "pointId": "9210e01f-7630-5b05-856e-00d9b8c676c6",
+      "restaurantId": 9569,
+      "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+      "claimType": "DINING_CONTEXT",
+      "originalClaimText": "The venue is suitable for group gatherings and offers a spacious interior.",
+      "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E017",
+        "E018"
+      ],
+      "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+      "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 14,
+      "embeddingText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "5aa5af00-e4c7-5334-8675-7b60c0d98f0b",
+      "restaurantId": 9569,
+      "claimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "originalClaimText": "The restaurant maintains high standards of cleanliness and provides convenient parking.",
+      "normalizedClaimText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E020",
+        "E022"
+      ],
+      "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+      "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 8,
+      "embeddingText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "c9894096-a314-53ef-bfcc-1b8a89ffd404",
+      "restaurantId": 9570,
+      "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+      "claimType": "DINING_CONTEXT",
+      "originalClaimText": "The venue is suitable for special occasions and group gatherings.",
+      "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for special occasions and group gatherings. 근거: \"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E015",
+        "E016"
+      ],
+      "inputHash": "bc954823d4e5a84683b4d6b9af819bc5e2d04ddd6ae1277c1d198ffc7c64fcb9",
+      "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 20,
+      "embeddingText": "DINING_CONTEXT: The venue is suitable for special occasions and group gatherings. 근거: \"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "68210fa5-a9c4-50d2-af68-9b478ddf6a1f",
+      "restaurantId": 9570,
+      "claimId": "9570:VENUE_CHARACTERISTIC:daed4352bb52",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "originalClaimText": "Customers frequently mention the stylish interior design.",
+      "normalizedClaimText": "VENUE_CHARACTERISTIC: Customers frequently mention the stylish interior design. 근거: \"인테리어가 멋져요\" 이 키워드를 선택한 인원, 분위기",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E011",
+        "E037"
+      ],
+      "inputHash": "bc954823d4e5a84683b4d6b9af819bc5e2d04ddd6ae1277c1d198ffc7c64fcb9",
+      "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 85,
+      "embeddingText": "VENUE_CHARACTERISTIC: Customers frequently mention the stylish interior design. 근거: \"인테리어가 멋져요\" 이 키워드를 선택한 인원, 분위기"
+    },
+    {
+      "pointId": "e9c9a8d1-9b73-5ebf-892c-137111c8f1b5",
+      "restaurantId": 9571,
+      "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+      "claimType": "MENU_CHARACTERISTIC",
+      "originalClaimText": "The menu features a wide variety of toppings including beef, chicken, and vegetables.",
+      "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E015",
+        "E024"
+      ],
+      "inputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+      "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자"
+    },
+    {
+      "pointId": "f6904c12-6de0-5ac7-aa32-405788fc2e2d",
+      "restaurantId": 9571,
+      "claimId": "9571:TASTE:b322ec9b8dbc",
+      "claimType": "TASTE",
+      "originalClaimText": "Customers frequently mention that the food is delicious and has good value.",
+      "normalizedClaimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E045",
+        "E046"
+      ],
+      "inputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+      "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 88,
+      "embeddingText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "46452717-384d-5ac7-9804-47e0b8e91344",
+      "restaurantId": 9574,
+      "claimId": "9574:TASTE:41e54f412793",
+      "claimType": "TASTE",
+      "originalClaimText": "Customers frequently praise the freshness of ingredients and the delicious taste of the food.",
+      "normalizedClaimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E017",
+        "E040"
+      ],
+      "inputHash": "e9fb9db48fe7762bce23c6f57affa8d4fc1daa2a8b0d9d7b174e01fdb2995b24",
+      "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 32,
+      "embeddingText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛"
+    },
+    {
+      "pointId": "7c008636-a0b2-5f41-877d-31701efe22b1",
+      "restaurantId": 9574,
+      "claimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "originalClaimText": "The establishment is noted for its cleanliness and friendly service.",
+      "normalizedClaimText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E016",
+        "E020"
+      ],
+      "inputHash": "e9fb9db48fe7762bce23c6f57affa8d4fc1daa2a8b0d9d7b174e01fdb2995b24",
+      "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 14,
+      "embeddingText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "pointId": "4de23200-a0ad-5975-806b-583730e12f8d",
+      "restaurantId": 9590,
+      "claimId": "9590:MENU_CHARACTERISTIC:82df8c199990",
+      "claimType": "MENU_CHARACTERISTIC",
+      "originalClaimText": "The menu features premium ingredients such as Valrhona chocolate and organic matcha.",
+      "normalizedClaimText": "MENU_CHARACTERISTIC: The menu features premium ingredients such as Valrhona chocolate and organic matcha. 근거: Valrhona메세지 판초콜릿, 제철과일생크림케이크, valrhona둘세초콜릿마들렌",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E017",
+        "E022",
+        "E034"
+      ],
+      "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+      "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 0,
+      "embeddingText": "MENU_CHARACTERISTIC: The menu features premium ingredients such as Valrhona chocolate and organic matcha. 근거: Valrhona메세지 판초콜릿, 제철과일생크림케이크, valrhona둘세초콜릿마들렌"
+    },
+    {
+      "pointId": "11e747e4-06f1-5da3-b939-7e06775f4e93",
+      "restaurantId": 9590,
+      "claimId": "9590:TASTE:76361fa3f7fe",
+      "claimType": "TASTE",
+      "originalClaimText": "Customers frequently praise the deliciousness of the bread, coffee, and desserts.",
+      "normalizedClaimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E104",
+        "E106",
+        "E110"
+      ],
+      "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+      "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+      "embeddingModel": "qwen3-embedding:0.6b",
+      "embeddingVersion": "semantic-claim-embedding-v1",
+      "normalizationVersion": "ko-claim-normalization-v1",
+      "mentionCount": 91,
+      "embeddingText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원"
+    },
+    {
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 떡볶이이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+      "mentionTerm": "떡볶이",
+      "mentionCount": 13,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E033"
+      ],
+      "pointId": "7fbf6ac6-2866-591c-95ff-56f847d20a9f",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E034",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 김밥이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "mentionTerm": "김밥",
+      "mentionCount": 9,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E034"
+      ],
+      "pointId": "5cc05bcf-0ce9-52d3-9ff5-b312017056f6",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E038",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 김밥이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "mentionTerm": "김밥",
+      "mentionCount": 4,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E038"
+      ],
+      "pointId": "a08a505b-1802-51ff-aa7f-3d2834928b76",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 초밥이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+      "mentionTerm": "초밥",
+      "mentionCount": 87,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E013"
+      ],
+      "pointId": "4f9620a7-e071-525b-941e-a13f0b844185",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 우동이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+      "mentionTerm": "우동",
+      "mentionCount": 32,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E016"
+      ],
+      "pointId": "58a25b99-a569-55a0-8e8b-14df8c98b39f",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E017",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 후토마끼이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 후토마끼가 반복 언급된다.",
+      "mentionTerm": "후토마끼",
+      "mentionCount": 24,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E017"
+      ],
+      "pointId": "999de954-675e-5623-badf-4531f6931b0b",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 후토마끼가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9580,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 피자이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "mentionTerm": "피자",
+      "mentionCount": 10,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E067"
+      ],
+      "pointId": "ca71c630-66b4-5ba4-b8d3-d15e869c754d",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9580,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 피자이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "mentionTerm": "피자",
+      "mentionCount": 3,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E068"
+      ],
+      "pointId": "7bc65391-d5e7-5a4f-bd9e-7399007117ae",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9569,
+      "claimId": "9569:FOOD_MENTION:E026",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 김밥이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "mentionTerm": "김밥",
+      "mentionCount": 12,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E026"
+      ],
+      "pointId": "34c4bcd2-0202-5a2a-b745-d281c4f91be0",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9570,
+      "claimId": "9570:FOOD_MENTION:E026",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 파스타이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 파스타가 반복 언급된다.",
+      "mentionTerm": "파스타",
+      "mentionCount": 6,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E026"
+      ],
+      "pointId": "6feba09e-6f0a-5fe1-b514-bdfee6be3f92",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 파스타가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9571,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 피자이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "mentionTerm": "피자",
+      "mentionCount": 18,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E055"
+      ],
+      "pointId": "2a6a8e59-9a3b-5543-adcd-31d57ee1aa60",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E110",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 디저트이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 디저트가 반복 언급된다.",
+      "mentionTerm": "디저트",
+      "mentionCount": 31,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E110"
+      ],
+      "pointId": "bfd0bd40-9640-5410-93a5-c514b7a79bb7",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 디저트가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 마카롱이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+      "mentionTerm": "마카롱",
+      "mentionCount": 77,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E114"
+      ],
+      "pointId": "1003e559-a220-5316-9e82-1b115570fee4",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 케이크이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "mentionTerm": "케이크",
+      "mentionCount": 18,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E115"
+      ],
+      "pointId": "6fd6f414-e5f1-5e1d-9215-76e0cbdeea5d",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 케이크이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "mentionTerm": "케이크",
+      "mentionCount": 12,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E118"
+      ],
+      "pointId": "08675a1a-1752-5fdd-b9cc-112e0713f550",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "claimType": "FOOD_MENTION",
+      "originalClaimText": "리뷰 keyword에 케이크이(가) 반복 언급됨",
+      "normalizedClaimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "mentionTerm": "케이크",
+      "mentionCount": 9,
+      "sourceKind": "review_keyword_only",
+      "evidenceIds": [
+        "E120"
+      ],
+      "pointId": "9388d2ca-b7ba-51fe-a61f-bb1acc90ac47",
+      "embeddingText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "embeddingModel": "qwen3-embedding:0.6b"
+    }
+  ]
+}

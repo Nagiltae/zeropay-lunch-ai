@@ -1,0 +1,688 @@
+{
+  "queries": [
+    {
+      "query": "스시 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9567,
+          "score": 0.46368396,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46311644,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.43640924,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.46368396,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.46368396,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.46311644,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.46311644,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.43640924,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43640924,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 210.00038357577,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.38357577,
+          "exactMatch": false,
+          "synonymMatch": true,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 20.00054208577,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.54208577,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.00053479064,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.53479064,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "초밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.4962609,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "normalizedClaimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4930533,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.45831847,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 0.5316663,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5316663,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.4962609,
+          "matchedClaimId": "9617:FOOD_TYPE:dff03204365b",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4962609,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.4930533,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4930533,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 310.0005316493,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.5316493,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.00060650533,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.60650533,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "finalRetrievalScore": 20.00051328737,
+          "matchedClaimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.51328737,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "일식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9569,
+          "score": 0.50184965,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.4646731,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.43651247,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.50184965,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.50184965,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.4646731,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4646731,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.43651247,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43651247,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 110.00037491432,
+          "matchedClaimId": "9731:FOOD_MENTION:E013",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.37491432,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": true,
+          "traitMatch": true,
+          "mentionCount": 87,
+          "evidenceIds": [
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.00053320813,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.53320813,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0005256351,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.5256351,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "우동 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "routeV2": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION",
+          "MENU_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "FOOD",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9569,
+          "score": 0.43661606,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "score": 0.41940898,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.4088235,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "normalizedClaimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.43661606,
+          "matchedClaimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.43661606,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9567,
+          "finalRetrievalScore": 0.41940898,
+          "matchedClaimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.41940898,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.4088235,
+          "matchedClaimId": "9568:FOOD_TYPE:a95992a932ea",
+          "matchedClaimType": "FOOD_TYPE",
+          "semanticScore": 0.4088235,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9731,
+          "finalRetrievalScore": 310.00040622258,
+          "matchedClaimId": "9731:FOOD_MENTION:E016",
+          "matchedClaimType": "FOOD_MENTION",
+          "semanticScore": 0.40622258,
+          "exactMatch": true,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 32,
+          "evidenceIds": [
+            "E016"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 20.0004978376,
+          "matchedClaimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4978376,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 20.0004875662,
+          "matchedClaimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4875662,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    }
+  ]
+}

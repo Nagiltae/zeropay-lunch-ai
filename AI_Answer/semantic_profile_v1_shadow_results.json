@@ -1,0 +1,254 @@
+{
+  "restaurantId": 9617,
+  "inputPath": "/Users/nagiltae/IdeaProjects/zeropay-lunch-ai/AI_Answer/semantic_profile_v1_input_9617_compact.json",
+  "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 27300,
+      "validation": {
+        "valid": true,
+        "errors": [],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves rice rolls (gimbap) and tteokbokki.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E011"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining and quick meals.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E023",
+                "E058"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention the food is delicious and has good value for money.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E024",
+                "E027"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant features a spacious interior and is located inside Nohneon Station.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E028",
+                "E057"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu includes various fried items such as tteok (rice cakes) and fish cakes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E008",
+                "E014"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "21e99218d0088822128b821f5dc7f77ac3cf95d9ebd22b14e32a75c9fadf07c9",
+  "elapsedMs": 28090,
+  "catalogPath": "/Users/nagiltae/IdeaProjects/zeropay-lunch-ai/AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+  "finalProfile": {
+    "profileVersion": "semantic-profile-output-v2-evidence",
+    "inputVersion": "semantic-profile-input-v1-compact-1",
+    "inputHash": "8ef69a4076176276a8dc029083f0c29dee9a6c1170615c7398064efeaab6d1a1",
+    "catalogVersion": "semantic-profile-evidence-catalog-v1",
+    "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+    "restaurantId": 9617,
+    "venueId": null,
+    "profileStatus": "READY",
+    "claims": [
+      {
+        "claimType": "FOOD_TYPE",
+        "text": "The restaurant serves rice rolls (gimbap) and tteokbokki.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E003",
+          "E011"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E003",
+            "sourceField": "sections.menu.items[0]",
+            "content": {
+              "name": "마성김밥",
+              "price": 4500
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          },
+          {
+            "evidenceId": "E011",
+            "sourceField": "sections.menu.items[8]",
+            "content": {
+              "name": "마성떡볶이",
+              "price": 6000
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          }
+        ]
+      },
+      {
+        "claimType": "DINING_CONTEXT",
+        "text": "The venue is suitable for solo dining and quick meals.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E023",
+          "E058"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E023",
+            "sourceField": "sections.review.keywords[0]",
+            "content": {
+              "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 33
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E058",
+            "sourceField": "sections.review.representativeReviews[0]",
+            "content": {
+              "reviewId": "dom-1",
+              "text": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요."
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "review"
+          }
+        ]
+      },
+      {
+        "claimType": "TASTE",
+        "text": "Customers frequently mention the food is delicious and has good value for money.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E024",
+          "E027"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E024",
+            "sourceField": "sections.review.keywords[1]",
+            "content": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 30
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E027",
+            "sourceField": "sections.review.keywords[4]",
+            "content": {
+              "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 12
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          }
+        ]
+      },
+      {
+        "claimType": "VENUE_CHARACTERISTIC",
+        "text": "The restaurant features a spacious interior and is located inside Nohneon Station.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E028",
+          "E057"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E028",
+            "sourceField": "sections.review.keywords[5]",
+            "content": {
+              "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 11
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          },
+          {
+            "evidenceId": "E057",
+            "sourceField": "sections.review.keywords[34]",
+            "content": {
+              "keyword": "대기시간",
+              "mentionCount": 1
+            },
+            "section": "review",
+            "status": "SUCCESS",
+            "evidenceType": "keyword"
+          }
+        ]
+      },
+      {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu includes various fried items such as tteok (rice cakes) and fish cakes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E008",
+          "E014"
+        ],
+        "evidence": [
+          {
+            "evidenceId": "E008",
+            "sourceField": "sections.menu.items[5]",
+            "content": {
+              "name": "떡순범벅",
+              "price": 7000
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          },
+          {
+            "evidenceId": "E014",
+            "sourceField": "sections.menu.items[11]",
+            "content": {
+              "name": "부산어묵(1인분 (2꼬치))",
+              "price": 3400
+            },
+            "section": "menu",
+            "status": "SUCCESS",
+            "evidenceType": "menu"
+          }
+        ]
+      }
+    ]
+  }
+}

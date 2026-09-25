@@ -33,13 +33,13 @@ class ChatControllerTests {
 
     private ExecutorService executorService;
     private MockMvc mockMvc;
+    private RestaurantRecommendationService recommendationService;
 
     @BeforeEach
     void setUp() {
         executorService = Executors.newVirtualThreadPerTaskExecutor();
         ChatPersistenceService persistenceService = mock(ChatPersistenceService.class);
-        RestaurantRecommendationService recommendationService =
-                mock(RestaurantRecommendationService.class);
+        recommendationService = mock(RestaurantRecommendationService.class);
         when(persistenceService.startExchange(any(UUID.class), any(UUID.class), anyString()))
                 .thenAnswer(invocation -> {
                     UUID conversationId = invocation.getArgument(0);
@@ -60,7 +60,7 @@ class ChatControllerTests {
                         "서울특별시 강남구 강남대로 샘플 101",
                         true,
                         true,
-                        "선택한 강남역 기준 위치와 일치해요."
+                        "제육볶음 메뉴가 확인되어 추천했어요."
                 )));
         ChatStreamService chatStreamService = new ChatStreamService(
                 executorService,
@@ -107,6 +107,27 @@ class ChatControllerTests {
                 .contains("event:assistant_delta")
                 .contains("event:completed")
                 .contains("강남 샘플 한식당")
+                .contains("\"reason\":\"제육볶음 메뉴가 확인되어 추천했어요.\"")
                 .contains("샘플 데이터");
+    }
+
+    @Test
+    void streamsEmptyRecommendationAsNormalAssistantReply() throws Exception {
+        when(recommendationService.recommend(any(UUID.class), anyString())).thenReturn(java.util.List.of());
+        UUID conversationId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        MvcResult pendingResult = mockMvc.perform(post(
+                        "/api/conversations/{conversationId}/messages", conversationId)
+                        .principal(new UsernamePasswordAuthenticationToken(userId, null))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.TEXT_EVENT_STREAM)
+                        .content("{\"message\":\"점심 추천해줘\"}"))
+                .andExpect(request().asyncStarted())
+                .andReturn();
+        String body = mockMvc.perform(asyncDispatch(pendingResult))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+        assertThat(body).contains("event:recommendations").contains("\"items\":[]")
+                .contains("음식점을 찾지 못했어요");
     }
 }

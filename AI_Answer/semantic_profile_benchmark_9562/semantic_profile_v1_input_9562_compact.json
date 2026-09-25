@@ -1,0 +1,228 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9562,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.095035"
+  },
+  "identity": {
+    "restaurantName": "한마리소",
+    "restaurantAddress": "서울특별시 강남구 선릉로129길 5 (논현동)",
+    "category": null,
+    "latitude": 37.5162527,
+    "longitude": 127.0410698,
+    "canonicalName": "한마리소 강남구청역점",
+    "canonicalAddress": "서울특별시 강남구 선릉로129길 5 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 선릉로129길 5",
+    "provider": "NAVER",
+    "numericPlaceId": "18509103",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "안창살",
+          "price_value": 20500,
+          "price_text": "20,500원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "갈비살",
+          "price_value": 20500,
+          "price_text": "20,500원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "갈매기살",
+          "price_value": 15500,
+          "price_text": "15,500원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "된장찌개",
+          "price_value": 3500,
+          "price_text": "3,500원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "이전 페이지 한마리소 강남구청역점 저장 페이지 닫기 한마리",
+          "open_time": null,
+          "close_time": null,
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-21 13:17:04.026247"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "35",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "14",
+          "crawled_at": "2026-09-21 13:17:04.025033"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 17
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 9
+        },
+        {
+          "keyword": "\"고기 질이 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "\"차분한 분위기예요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "\"잡내가 적어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "고기",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "된장찌개",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "한우",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "안창살",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-2",
+          "review_text": "메뉴는 된장찌게 포함하여 4가지 밖에 없지만 집중해서 판매하는 메뉴 같았어요. 한우를 강남에서 저렴한 가격으로 좋은 품질의 고기를 먹을 수 있어요.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-5",
+          "review_text": "드디어 가봤어요 ㅎㅎ된찌 집에서 먹는 맛이었어요 ㅋㅋ고기도 넘 맛있고 다음엔 안창살먹으러 가려구요 ㅋㅋ",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-1",
+          "review_text": "강남구청역 부근에서 가성비대비 짱입니다. 사장님께서도 친절하고 좋아요",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-6",
+          "review_text": "고기가 솔직히 너무 얼어있어서 별로였어요",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": []
+  },
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": false,
+    "missingSections": [
+      "menu",
+      "business_hours",
+      "review"
+    ]
+  },
+  "inputHash": "2edf7f3de60cf2fea6b81920e2be57ef38ab6bac8f5d44895c287b34e1d7367e",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "9888488cf8249c65cf0666fc5f5751a35c55653190f2c9324d3af2fca3bd81ee"
+  }
+}

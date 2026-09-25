@@ -1,0 +1,336 @@
+{
+  "restaurantId": 9568,
+  "inputPath": "../AI_Answer/semantic_profile_benchmark_9568/semantic_profile_v1_input_9568_compact.json",
+  "inputHash": "15352adc53049a4fc9eeb354eedcd504f0f4ecf11cd283b0f5904feb95cf33b6",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 27840,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence section not SUCCESS: E003",
+          "evidence section not SUCCESS: E004",
+          "evidence section not SUCCESS: E015",
+          "evidence section not SUCCESS: E025",
+          "evidence section not SUCCESS: E030",
+          "evidence section not SUCCESS: E058",
+          "evidence section not SUCCESS: E029",
+          "evidence section not SUCCESS: E032",
+          "evidence section not SUCCESS: E033",
+          "evidence section not SUCCESS: E034",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence section not SUCCESS: E014"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E015"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently describe the food as delicious and note that ingredients are fresh.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E025",
+                "E030",
+                "E058"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining, group gatherings, and casual meals.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E029",
+                "E032"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The establishment is noted for having a spacious interior and maintaining cleanliness.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E033",
+                "E034"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features affordable set meals with generous portions and includes items like Jeon-guk.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E027",
+                "E028",
+                "E014"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": false,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E015"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.menu.items[0]",
+                "content": {
+                  "name": "순대국",
+                  "price": 10000
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E004",
+                "sourceField": "sections.menu.items[1]",
+                "content": {
+                  "name": "한우차돌박이",
+                  "price": 30000
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E015",
+                "sourceField": "sections.menu.items[12]",
+                "content": {
+                  "name": "어리굴젖+된장찌개",
+                  "price": 10000
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Customers frequently describe the food as delicious and note that ingredients are fresh.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E025",
+                "E030",
+                "E058"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS",
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E025",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 104
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E030",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 20
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E058",
+                "sourceField": "sections.review.representativeReviews[2]",
+                "content": {
+                  "reviewId": "dom-5",
+                  "text": "너무 너무 맛있네용 ㅎㅎ 추석연휴 낮술 지대로 마셨네용"
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "review"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining, group gatherings, and casual meals.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E029",
+                "E032"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E029",
+                "sourceField": "sections.review.keywords[4]",
+                "content": {
+                  "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 21
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E032",
+                "sourceField": "sections.review.keywords[7]",
+                "content": {
+                  "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 10
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The establishment is noted for having a spacious interior and maintaining cleanliness.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E033",
+                "E034"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E033",
+                "sourceField": "sections.review.keywords[8]",
+                "content": {
+                  "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 9
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E034",
+                "sourceField": "sections.review.keywords[9]",
+                "content": {
+                  "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 5
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features affordable set meals with generous portions and includes items like Jeon-guk.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E027",
+                "E028",
+                "E014"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+              "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+              "menu characteristic lacks direct menu evidence",
+              "evidence section is not SUCCESS"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E027",
+                "sourceField": "sections.review.keywords[2]",
+                "content": {
+                  "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 34
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E028",
+                "sourceField": "sections.review.keywords[3]",
+                "content": {
+                  "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 28
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E014",
+                "sourceField": "sections.menu.items[11]",
+                "content": {
+                  "name": "김치전골/꽁치전골",
+                  "price": 30000
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": false,
+    "missingSections": [
+      "menu",
+      "business_hours",
+      "review"
+    ]
+  },
+  "originalInputHash": "7ec9c08da451abba68869eaa369a1899528deffd8c5f817be16316d123e9e22f",
+  "elapsedMs": 28520,
+  "catalogPath": "../AI_Answer/semantic_profile_benchmark_9568/semantic_profile_v1_evidence_catalog_9568.json"
+}

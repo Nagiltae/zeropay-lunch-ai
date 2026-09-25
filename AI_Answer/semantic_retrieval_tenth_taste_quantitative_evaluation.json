@@ -1,0 +1,11 @@
+{
+  "queries": ["맛있는 곳", "맛있다는 평가가 많은 곳", "가성비 좋은 곳", "가성비 언급이 있는 곳"],
+  "comparison": ["similarity_only", "similarity_plus_raw_count", "similarity_plus_log1p_count", "ratio_when_denominator_exists"],
+  "result": "Only similarity_only was executed in this bounded benchmark; raw/log/ratio reranking was not implemented or claimed.",
+  "observed": {
+    "맛있는 곳": {"top1": 9731, "status": "PASS"},
+    "맛있다는 평가가 많은 곳": {"top1": 9580, "expected": 9731, "status": "FAIL"},
+    "가성비 좋은 곳": {"top1": 9571, "expected": 9617, "status": "FAIL"},
+    "가성비 언급이 있는 곳": {"top1": 9617, "status": "PASS"}
+  }
+}

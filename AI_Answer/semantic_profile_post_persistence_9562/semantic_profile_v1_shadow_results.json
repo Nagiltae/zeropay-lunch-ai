@@ -1,0 +1,332 @@
+{
+  "restaurantId": 9562,
+  "inputPath": "../AI_Answer/semantic_profile_post_persistence_9562/semantic_profile_v1_input_9562_compact.json",
+  "inputHash": "3588352874e6c5ca2c42f3b6c7b7baa236eac2e09e3c373dc016785309cbad2d",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 24412,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: MENU_CHARACTERISTIC/review",
+          "evidence type not allowed: VENUE_CHARACTERISTIC/identity"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves beef dishes such as Anchang-sal and Galbi-sal.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E017",
+                "E019"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a limited selection of four main items including Doenjang-jjigae.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E006",
+                "E024"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently praise the delicious taste and high quality of the meat.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E007",
+                "E009",
+                "E023"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is described as having a calm atmosphere and spacious interior.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E011",
+                "E012",
+                "E014"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Gangnam-gu, Seoul, near Gangnam-gu Station.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002",
+                "E026"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": false,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves beef dishes such as Anchang-sal and Galbi-sal.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E017",
+                "E019"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "food type from review/keyword is not an official menu fact",
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.menu.items[0]",
+                "content": {
+                  "name": "안창살",
+                  "price": 20500
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E004",
+                "sourceField": "sections.menu.items[1]",
+                "content": {
+                  "name": "갈비살",
+                  "price": 20500
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E017",
+                "sourceField": "sections.review.keywords[10]",
+                "content": {
+                  "keyword": "고기",
+                  "mentionCount": 3
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E019",
+                "sourceField": "sections.review.keywords[12]",
+                "content": {
+                  "keyword": "한우",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features a limited selection of four main items including Doenjang-jjigae.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E006",
+                "E024"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "evidence type not allowed: MENU_CHARACTERISTIC/review",
+              "menu characteristic lacks direct menu evidence",
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E006",
+                "sourceField": "sections.menu.items[3]",
+                "content": {
+                  "name": "된장찌개",
+                  "price": 3500
+                },
+                "section": "menu",
+                "status": "SUCCESS",
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E024",
+                "sourceField": "sections.review.representativeReviews[0]",
+                "content": {
+                  "reviewId": "dom-2",
+                  "text": "메뉴는 된장찌게 포함하여 4가지 밖에 없지만 집중해서 판매하는 메뉴 같았어요. 한우를 강남에서 저렴한 가격으로 좋은 품질의 고기를 먹을 수 있어요."
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Customers frequently praise the delicious taste and high quality of the meat.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E007",
+                "E009",
+                "E023"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E007",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 17
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E009",
+                "sourceField": "sections.review.keywords[2]",
+                "content": {
+                  "keyword": "\"고기 질이 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 3
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E023",
+                "sourceField": "sections.review.keywords[16]",
+                "content": {
+                  "keyword": "맛",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is described as having a calm atmosphere and spacious interior.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E011",
+                "E012",
+                "E014"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E011",
+                "sourceField": "sections.review.keywords[4]",
+                "content": {
+                  "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 2
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E012",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"차분한 분위기예요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E014",
+                "sourceField": "sections.review.keywords[7]",
+                "content": {
+                  "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Gangnam-gu, Seoul, near Gangnam-gu Station.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002",
+                "E026"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence type not allowed: VENUE_CHARACTERISTIC/identity",
+              "evidence section is not SUCCESS",
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E002",
+                "sourceField": "identity.restaurantAddress",
+                "content": "서울특별시 강남구 선릉로129길 5 (논현동)",
+                "section": "identity",
+                "status": null,
+                "evidenceType": "identity"
+              },
+              {
+                "evidenceId": "E026",
+                "sourceField": "sections.review.representativeReviews[2]",
+                "content": {
+                  "reviewId": "dom-1",
+                  "text": "강남구청역 부근에서 가성비대비 짱입니다. 사장님께서도 친절하고 좋아요"
+                },
+                "section": "review",
+                "status": "SUCCESS",
+                "evidenceType": "review"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "originalInputHash": "d6f4b2cc6ef4afdc51b0549b48e70f5431e28fa7577eaeca1c11e0c4d0ef9244",
+  "elapsedMs": 25153,
+  "catalogPath": "../AI_Answer/semantic_profile_post_persistence_9562/semantic_profile_v1_evidence_catalog_9562.json"
+}

@@ -2,15 +2,15 @@
 
 ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록을 바탕으로 음식점을 추천하는 모노레포다. 현재 서비스 모집단은 KOMSCO 공공데이터의 서울 강남구 논현동(`legal_dong_code=11680108`, `providerInstitutionCode=I0000002`, `industryCode=561`, `businessStatusName=계속사업자`) 음식점이다.
 
-핵심 흐름은 `React → Spring Boot → MySQL`이며, FastAPI는 AI 내부 경계의 health/계약 기반만 구현되어 있고 Spring에서 실제 호출하지 않는다. 별도의 `ai/` Python CLI는 KOMSCO→공식 Provider/Qwen→Canonical→PCMap Place ID·상세 수집을 담당한다.
+핵심 흐름은 `React → Spring Boot → MySQL`이다. 추천 Runtime은 feature flag가 켜진 경우 `Spring → FastAPI Intent → Spring Hard Filter → candidate-scoped Retrieval → Spring Ranking/Venue dedup/max3`를 사용한다. 기본값은 OFF이며, 별도의 `ai/` Python CLI는 KOMSCO→공식 Provider/Qwen→Canonical→PCMap Place ID·상세 수집을 담당한다.
 
 # Architecture
 
 - React: 인증된 채팅, 취향·식사 기록 UI, Spring API/SSE 호출. FastAPI를 직접 호출하지 않는다.
 - Spring Boot: 공개 API, 인증/세션, 대화·취향·식사 영속화, KOMSCO import/scheduler, 추천 business rule과 MySQL persistence.
-- FastAPI: 현재 `/health` 중심의 AI 서비스. LangGraph/Qdrant/실제 Spring→FastAPI 호출은 아직 미구현이다.
+- FastAPI: `/health`, 내부 intent/scoped retrieval API. Spring 추천 경로는 opt-in이며 FastAPI는 후보 검색·근거 trace만 소유한다.
 - `ai/`: Provider 후보 조회, Qwen Entity Resolution, Canonical persistence, PCMap Place ID/detail CLI. 운영 추천 요청 경로와 별개다.
-- MySQL/Flyway: 원본·검증·추천 데이터의 기준 저장소. Qdrant는 현재 파생 검색 저장소로만 계획되어 있다.
+- MySQL/Flyway: 원본·검증·추천 데이터의 기준 저장소. Qdrant는 파생 검색 Shadow Pilot 저장소이며 최종 추천 권한은 Spring에 있다.
 
 자세한 책임 경계는 [docs/architecture.md](docs/architecture.md), API는 `docs/api-contract.md`, 스키마는 `docs/database.md`를 canonical 문서로 본다.
 
@@ -32,6 +32,8 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## Completed
 
+- Spring Recommendation에 FastAPI intent 및 semantic retrieval을 opt-in 연결했다. Intent 오류는 기존 deterministic analyzer로, retrieval 오류는 설정된 fallback 정책으로 처리한다. hard-filter 후보 전체를 Venue dedup/max3 전에 검색하고 bounded cosine은 deterministic score 동률에서만 tie-breaker로 사용한다.
+
 - 논현동·I0000002 KOMSCO importer와 주간 일요일 03:00(Asia/Seoul) 동기화/명시적 cleanup 경로.
 - React와 Spring의 역/반경 선택 runtime 계약 제거; 좌표 metadata와 historical schema는 보존.
 - 공식 Kakao/NAVER 후보 fusion과 Qwen3.5 Entity Resolution: candidate dedup, bounded prefetch, fingerprint 기반 incremental 처리와 REJECT cache.
@@ -40,6 +42,13 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 - `restaurant_naver_verifications` V14 provenance/status/reason 구조와 V15 source fingerprint. `restaurants.active`, `recommendation_eligibility`, 외부 Place mapping과 분리된다.
 - Official Kakao/NAVER provider fusion과 Qwen3.5 Entity Resolution 경로. stable manifest 입력으로 실행하며 동일 source fingerprint의 확정 REJECT만 재사용한다.
 - parser, semantic prompt, out-of-scope/non-food safety, source-change 재검증 회귀 테스트.
+- V21 Venue 1차 모델(`venues`, `restaurant_venue_associations`)과 `CONFIRMED` association 기반 Spring 추천 중복 제거를 추가했다. 기존 Restaurant/Place ID/Detail 소유권과 API 계약은 유지하며 전체 데이터 이전은 하지 않았다.
+- Venue 연결 검토/승인 API를 추가했다. 후보는 읽기 전용으로 찾고, 관리자가 `PENDING`을 명시적으로 `CONFIRMED` 또는 `REJECTED`로 결정한다. 실제 운영 association은 아직 0건이다.
+- `CONFIRMED + ACTIVE` Venue를 최근 식사 해석에도 적용하되 원본 meal의 `restaurant_id`는 보존한다. 격리 MySQL 검증과 기존 Numeric Place ID 기반 9560 Detail 저장/freshness 재실행을 완료했다.
+- `AI_SEMANTIC_RUNTIME_ENABLED` 기본 OFF의 Spring Recommendation wiring을 완료했다. opt-in 시 FastAPI intent → 기존 hard filters → full candidate-scoped retrieval → bounded semantic tie-break → Venue dedup/max3 순서이며 local live service flow와 AI/Backend Harness를 통과했다. 상세 결과는 `AI_Answer/recommendation_runtime_wiring_review.md`에 기록했다.
+- 최종 Spring 후보의 `reason`에만 붙는 Grounded Recommendation Explanation API/Client를 연결했다. 설명 단계에서 최종 Restaurant ID scope 안의 intent 보조 Evidence를 읽고 Safe Fact로 제한한다. 실제 3-query Qwen 재검증에서 grounded 3/3은 미달했으므로 Runtime 기본 OFF를 유지한다. `AI_Answer/recommendation_explanation_revalidation_review.md` 참조.
+- `AI_SEMANTIC_RUNTIME_ENABLED`와 `AI_LLM_EXPLANATION_ENABLED`를 분리했다. 둘 다 기본 OFF이며, Semantic ON/LLM OFF에서는 최종 추천 후보의 Safe Fact 기반 deterministic reason을 반환하고 Ollama client도 생성하지 않는다. React 채팅 카드와 기존 SSE `recommendations.items[].reason` 연결을 테스트로 확인했다. 관련 결과는 `AI_Answer/mvp_recommendation_ui_e2e_review.md` 참조.
+- disposable MySQL을 사용하는 별도 Spring `e2e` profile 및 Playwright full-stack harness를 추가했다. React Browser → Spring Chat/SSE → FastAPI → query-only Qdrant v12/embedding-only Ollama → deterministic reason 흐름을 세 Query로 검증했다. LLM generation 0회, Qdrant point count 불변, E2E 전용 DB/volume cleanup을 확인했다. 상세 결과는 `AI_Answer/mvp_full_stack_e2e_review.md` 참조.
 
 ## In Progress
 
@@ -51,13 +60,18 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## Next
 
-- preflight DB 정합성·harness·Git push를 마친 뒤 513건 전체 배치를 별도 실행.
-- 전체 배치 중 403/429/CAPTCHA 발생 시 즉시 중단하고 DB 기반으로 재개.
-- 실제 Spring → FastAPI AI 연동 구현.
+- 513건 전체 배치는 별도 작업으로 남아 있으며 이번 Runtime wiring에서 실행하지 않았다.
+- 전체 Batch가 별도 승인되어 실행될 경우 403/429/CAPTCHA에서 즉시 중단하고 DB 기반으로 재개한다.
+- Semantic Runtime은 기본 OFF로 유지한다. 이를 켜는 배포 전 설정·관측성·장애 대응 검토를 별도 수행한다.
+- 실제 LLM Explanation은 3/3 GROUNDED가 확인될 때까지 기본 OFF로 유지한다. Safe Fact deterministic reason은 semantic runtime opt-in에서 기본 경로다.
+- 반복 가능한 Browser full-stack E2E는 `./scripts/check-mvp-e2e.sh`로 실행한다. 고유 Compose project와 disposable `zeropay_lunch_mvp_e2e` DB를 사용하고, dev DB 및 기존 Qdrant collection은 변경하지 않는다.
+- Venue association 운영 데이터 생성, Restaurant/Detail의 Venue 소유권 전환, 전체 Batch는 별도 검증 후 진행한다.
+- 승인된 Venue association을 실제 데이터에 적용하기 전 사업자 관계·동일 장소 근거와 사용자 승인을 확인한다. Venue 단위 Detail/최근 식사 이전은 별도 계약으로 남긴다.
+- 전체 Detail 수집과 Semantic Profile/Embedding/Qdrant 적재는 품질 기준과 표본 검토 후 별도 진행한다.
 
 ## Deferred
 
-- 514건 전체 crawl, 실제 Spring→FastAPI AI 연동, LangGraph/Qdrant 검색, 사용자 GPS/거리 추천은 아직 실행·구현하지 않았다.
+- 514건 전체 crawl, LangGraph, 사용자 GPS/거리 추천은 미실행이다. Semantic Runtime 및 Deterministic Explanation UI는 opt-in 경로이며, LLM Explanation은 품질 gate 미통과로 기본 OFF다. Semantic Runtime은 기존 Qdrant pilot collection을 읽기 전용으로 사용한다.
 
 # Important Design Decisions
 

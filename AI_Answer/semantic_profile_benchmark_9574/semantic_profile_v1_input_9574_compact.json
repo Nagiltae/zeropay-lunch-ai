@@ -1,0 +1,419 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9574,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.160078"
+  },
+  "identity": {
+    "restaurantName": "청담머구리",
+    "restaurantAddress": "서울특별시 강남구 언주로150길 45 (논현동)",
+    "category": null,
+    "latitude": 37.522039,
+    "longitude": 127.0379905,
+    "canonicalName": "청담머구리",
+    "canonicalAddress": "서울특별시 강남구 언주로150길 45 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 언주로150길 45 1층 청담머구리",
+    "provider": "NAVER",
+    "numericPlaceId": "1995435214",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "디너코스",
+          "price_value": 60000,
+          "price_text": "60,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "스페셜코스",
+          "price_value": 80000,
+          "price_text": "80,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "스페셜오마카세",
+          "price_value": 150000,
+          "price_text": "150000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "누룽지보리굴비",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "생대구탕",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "꼬막비빔밥",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "홍게비빔밥",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "멍게비빔밥",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "명란비빔밥",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "사시미비빔밥",
+          "price_value": 10000,
+          "price_text": "10,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "물회 (면,밥)",
+          "price_value": 18000,
+          "price_text": "18,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "생선조림",
+          "price_value": null,
+          "price_text": null,
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "목",
+          "open_time": "10:00",
+          "close_time": "23:50",
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-24 12:26:59.151384"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "108",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "18",
+          "crawled_at": "2026-09-24 12:26:59.144734"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 36
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 14
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 13
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 10
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 5
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "\"차분한 분위기예요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "비빔밥",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "명란",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "굴비",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "꼬막",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "꼬막비빔밥",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "전복",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "전복죽",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "가정식백반",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "김치찌개",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "누룽지",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "대구탕",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "매운탕",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "보리굴비",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "찌개",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "홍게",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 32
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 14
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "대기시간",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-1",
+          "review_text": "지인분이 청담에서 회나 해산물 먹고 싶을 때마다 생각나는 곳이라고 추천해주셔서 방문했어요. 왜 사람들이 재방문하는지 알겠더라고요. 스페셜 코스로 주문했는데 그냥 양만 많은 구성이 아닌 나오는 음식들이 전부 신선했고, 각각의 메뉴에 신경 쓴 느낌이고, 음식 나오는 속도도 적당해서 급하게 먹는 느낌 없이 술 한잔하면서 즐기기 좋네요 사시미도 두툼하고 비린 맛은 전혀 없고 식감이 정말 좋았어요. 평소 회를 자주 먹는 편인데도 전체적으로 퀄리티가 좋다는 게 느껴졌습니다. 청담이라 가격이 부담스러울 줄 알았는데 코스 구성이나 음식 퀄리티를 생각하면 오히려 만족도가 높았습니다. 다음에는 다른 계절 메뉴도 꼭 먹어보고 싶네요. 계절음식으로 구성된다고 하니 다음 방문이 너무 기대되요 다음에 또 올게요!",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "우연히 방문해서 중간 코스요리 주문했어요 :) 여기 숨은맛집인가요? 진짜 맛있어요… 말로 설명 할수없움 !!! 사장님이 하나하나 친절하게 설명해주십니다",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-9",
+          "review_text": "청담머구리 너무 좋아여 ㅠㅠ 반찬도 일단 하나하나 다 맛있게 잘 나오구요 메뉴도 하나하나 다 신선하고 정성 가득이에여... 정갈함의 끝!!!",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-5",
+          "review_text": "우연히 방문한 집 진짜 왜 안가세요???!! 남자친구랑 코스요리먹었어요 양이너무많아요 근데 보통 코스요리보다 퀄도좋고 맛도 미침",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:59.163727",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:59.163621",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:59.163813",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "e9fb9db48fe7762bce23c6f57affa8d4fc1daa2a8b0d9d7b174e01fdb2995b24",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "d013c45be7eb2ea08f29aceaa8ed3be2a87a0350d005fa5c8015647f87c76e8b"
+  }
+}

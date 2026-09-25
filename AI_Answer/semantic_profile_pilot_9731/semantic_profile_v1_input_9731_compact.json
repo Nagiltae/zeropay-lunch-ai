@@ -1,0 +1,304 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9731,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.631300"
+  },
+  "identity": {
+    "restaurantName": "카메스시",
+    "restaurantAddress": "서울특별시 강남구 선릉로121길 7 (논현동)",
+    "category": null,
+    "latitude": 37.5138751,
+    "longitude": 127.0417797,
+    "canonicalName": "카메스시",
+    "canonicalAddress": "서울특별시 강남구 선릉로121길 7 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 선릉로121길 7",
+    "provider": "NAVER",
+    "numericPlaceId": "1271618346",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": []
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "목",
+          "open_time": "12:00",
+          "close_time": "21:00",
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-23 20:20:29.215729"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "2305",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "784",
+          "crawled_at": "2026-09-23 20:20:29.215412"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 739
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 500
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 448
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 410
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 278
+        },
+        {
+          "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 215
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 164
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 163
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 156
+        },
+        {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 79
+        },
+        {
+          "keyword": "초밥",
+          "keyword_kind": "menu",
+          "mention_count": 87
+        },
+        {
+          "keyword": "아이스크림",
+          "keyword_kind": "menu",
+          "mention_count": 84
+        },
+        {
+          "keyword": "생선",
+          "keyword_kind": "menu",
+          "mention_count": 33
+        },
+        {
+          "keyword": "우동",
+          "keyword_kind": "menu",
+          "mention_count": 32
+        },
+        {
+          "keyword": "후토마끼",
+          "keyword_kind": "menu",
+          "mention_count": 24
+        },
+        {
+          "keyword": "참치",
+          "keyword_kind": "menu",
+          "mention_count": 21
+        },
+        {
+          "keyword": "장어",
+          "keyword_kind": "menu",
+          "mention_count": 18
+        },
+        {
+          "keyword": "고등어",
+          "keyword_kind": "menu",
+          "mention_count": 16
+        },
+        {
+          "keyword": "아나고",
+          "keyword_kind": "menu",
+          "mention_count": 16
+        },
+        {
+          "keyword": "참돔",
+          "keyword_kind": "menu",
+          "mention_count": 10
+        },
+        {
+          "keyword": "바질",
+          "keyword_kind": "menu",
+          "mention_count": 9
+        },
+        {
+          "keyword": "튀김",
+          "keyword_kind": "menu",
+          "mention_count": 9
+        },
+        {
+          "keyword": "사케",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "방어",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "삼치구이",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 1335
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 1182
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 502
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 158
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 150
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 98
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 70
+        },
+        {
+          "keyword": "예약",
+          "keyword_kind": "theme",
+          "mention_count": 40
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 8
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "위치",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "주차",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "대기시간",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "방역",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-6",
+          "review_text": "카메스시 런치 오마카세로 방문했어요 내부는 깔끔한 느낌에 다찌석이었고 따뜻한 호지차부터 나와 분위기는 차분했습니다 먼저 녹색 계란찜이 나왔는데 버섯 향이 강해 죽처럼 부드러운 느낌이었어요 광어, 참돔, 전갱이 등 스시가 순서대로 나왔고 샤리는 잘 뭉쳐 있었고 식감은 전반적으로 쫄깃했습니다 칼집이 달라 보는 재미는 있었지만 특별히 기억에 남는 한 피스가 있진 않았어요 우동은 표고 향이 좋았고 한 입에 넣기 좋은 크기의 후토마끼는 사과가 들어가 상큼했고 교쿠는 푹신한 카스테라 같은 식감이었어요 후식으로 나온 들기름 바닐라 아이스크림은 달고 고소하게 마무리됐습니다 스시 크기와 밥 양은 작은 편이라 양은 살짝 아쉬웠지만, 강남 런치 오마카세로는 여러 종류의 스시들을 가격 대비 무난하게 즐기기 좋았어요",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-1",
+          "review_text": "거북이처럼 우직하게 자리를 지켜온 곳이려나요 🐢 카메스시, 이름부터가 어떤 자세를 말해주는 듯 하죠 참 넓고 따숩고 푸근한 공간을 가진 카메스시 답답하지 않고 넉넉하고 여유져서 더 편안한 시간 장식장부터 기물들까지... 요기조기 귀요운 녀석들이 숨어있었는데요 '카메(亀・かめ / カメ), 거북이 - 스시로서의 쌓여온 시간이 느껴지는 흔적들이라 참 따숩고 좋더라고요 온갖 거부기들이 아기자기하게 자리를 찾아 앉아 있는 사이에서 대장거부기 고동중 오너셰프님의 두터운 손으로 내어지는 세심하고 맛난 코스들. 홀로 오신 손님들도 친구들과 함께한 분들도 모두모두 편안하게 즐거웁게 시간 보내시는게 보이더라고요 하나하나 퀄리티도 넘나 좋고 맛나게, 참 즐거운 시간보냈어요",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-9",
+          "review_text": "생일을 맞아 미리 예약하고 다녀왔어요. 코스구성 알차고 스시 하나하나 넘 맛있어요 무엇보다 밥알이 살아있는 스시! 신선한 재료들 우동면발이 탱글탱글해서 일본 여행 중 먹었던 우동같았어요. 기대이상이었어요! 생일이라하니 후토마끼에 초를 꽂아주셨어요 감동 또 방문할게요",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-8",
+          "review_text": "이만한곳이 또 있을까 싶네요. 함께 모신 가족분들이 정말 너무 좋아하셨습니다. 방문할때마다 너무 맛있고 행복합니다. 모든 구성을 다 찍어보고 싶었는데 이번에도 다 못찍고 실패했네요 ㅎㅎㅎ 런치 디너 모두 만족스럽습니다.",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 20:20:29.222874",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "ABSENT_CONFIRMED",
+        "checked_at": "2026-09-23 20:20:29.222805",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 20:20:29.222934",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "c55de08844f020226ed8a28ff0d23cb136dde0c3d10e6edf11fc1ac0cdc1d652",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "6a03723baafe89fe46e08d69e08b5f9cc191223a53190671b8ea8c97a09fd0dc"
+  }
+}

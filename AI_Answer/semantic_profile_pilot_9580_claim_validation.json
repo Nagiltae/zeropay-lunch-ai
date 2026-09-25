@@ -1,0 +1,196 @@
+{
+  "restaurantId": 9580,
+  "inputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+  "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "claims": [
+    {
+      "claim": {
+        "claimType": "FOOD_TYPE",
+        "text": "The restaurant serves pizza and pasta dishes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E067",
+          "E037"
+        ]
+      },
+      "status": "REJECTED",
+      "reasons": [
+        "food type from review/keyword is not an official menu fact"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E067",
+          "sourceField": "sections.review.keywords[10]",
+          "content": {
+            "keyword": "피자",
+            "mentionCount": 10
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E037",
+          "sourceField": "sections.menu.items[34]",
+          "content": {
+            "name": "로제파스타",
+            "price": 9900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "TASTE",
+        "text": "Customers frequently mention that the food is delicious.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E057",
+          "E071"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E057",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 32
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E071",
+          "sourceField": "sections.review.keywords[14]",
+          "content": {
+            "keyword": "맛",
+            "mentionCount": 16
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "DINING_CONTEXT",
+        "text": "The venue is suitable for solo dining.",
+        "confidence": "MEDIUM",
+        "evidenceIds": [
+          "E063"
+        ]
+      },
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "low keyword mention count"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E063",
+          "sourceField": "sections.review.keywords[6]",
+          "content": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 2
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "VENUE_CHARACTERISTIC",
+        "text": "Customers appreciate the friendly service provided by the staff.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E060",
+          "E073"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E060",
+          "sourceField": "sections.review.keywords[3]",
+          "content": {
+            "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 7
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E073",
+          "sourceField": "sections.review.keywords[16]",
+          "content": {
+            "keyword": "서비스",
+            "mentionCount": 3
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu includes a variety of pizza sizes and set meals.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E008",
+          "E010"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E008",
+          "sourceField": "sections.menu.items[5]",
+          "content": {
+            "name": "슬림세트 R",
+            "price": 19200
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E010",
+          "sourceField": "sections.menu.items[7]",
+          "content": {
+            "name": "세트메뉴 R",
+            "price": 32900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "AUTO_APPROVED": 3,
+    "REVIEW_REQUIRED": 1,
+    "REJECTED": 1
+  },
+  "qwenCalls": 1,
+  "latencyMs": 26786
+}

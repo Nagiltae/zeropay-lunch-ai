@@ -1,0 +1,67 @@
+{
+  "date": "2026-09-25",
+  "mode": "local FastAPI + Ollama + read-only Qdrant; no Spring public Chat/SSE or DB access",
+  "model": "qwen3.5:9b",
+  "collection": {
+    "name": "zeropay_semantic_claim_pilot_v12",
+    "pointsObserved": 40,
+    "dimension": 1024,
+    "distance": "Cosine",
+    "writePerformed": false
+  },
+  "llmCalls": 3,
+  "retryCount": 0,
+  "overallAssessment": "UNSUPPORTED",
+  "results": [
+    {
+      "query": "떡볶이 먹고 싶어",
+      "intent": {"primaryIntent": "FOOD", "claimTypes": ["FOOD_TYPE", "FOOD_MENTION", "MENU_CHARACTERISTIC"]},
+      "candidateRestaurantIds": [9617],
+      "matchedClaims": [
+        {"claimType": "FOOD_TYPE", "text": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이", "matchType": "EXACT", "evidenceIds": ["E003", "E011"]}
+      ],
+      "generatedExplanation": "마성김밥 논현역점은 김밥과 떡볶이가 메뉴에 포함되어 있어 요청 조건을 충족하며, 무상 결제가 가능합니다.",
+      "source": "LLM",
+      "latencySeconds": 7.84,
+      "assessment": "UNSUPPORTED",
+      "issue": "‘무상 결제’는 ZeroPay 사용 가능을 무료 결제로 잘못 표현함."
+    },
+    {
+      "query": "혼밥하면서 떡볶이 먹고 싶어",
+      "intent": {"primaryIntent": "FOOD", "foodTerms": ["떡볶이"], "diningContexts": ["SOLO_DINING"], "claimTypes": ["FOOD_TYPE", "FOOD_MENTION", "MENU_CHARACTERISTIC"]},
+      "candidateRestaurantIds": [9617],
+      "matchedClaims": [
+        {"claimType": "FOOD_TYPE", "text": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이", "matchType": "EXACT", "evidenceIds": ["E003", "E011"]}
+      ],
+      "generatedExplanation": "마성김밥 논현역점은 김밥과 떡볶이가 메뉴에 포함되어 있으며, 무비자 결제가 가능합니다.",
+      "source": "LLM",
+      "latencySeconds": 3.57,
+      "assessment": "UNSUPPORTED",
+      "issues": ["‘무비자 결제’는 ZeroPay를 잘못 표현함.", "retrieval 전달 Claim에 DINING_CONTEXT가 없어 혼밥 근거를 설명하지 못함."],
+      "assessmentNote": "혼밥을 주장하지 않은 것은 안전했지만, 복합 요청 설명으로는 부분적이었음. 전체 평가는 ZeroPay 오표현 때문에 UNSUPPORTED."
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": {"primaryIntent": "TASTE", "tasteTraits": ["GOOD_VALUE"], "claimTypes": ["TASTE"]},
+      "candidateRestaurantIds": [9617],
+      "matchedClaims": [
+        {"claimType": "TASTE", "text": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원", "matchType": "TRAIT", "evidenceIds": ["E024", "E027"]}
+      ],
+      "generatedExplanation": "음식이 맛있고 가성비가 좋다는 평가가 반복되며, 무비자 결제도 가능한 마성김밥 논현역점입니다.",
+      "source": "LLM",
+      "latencySeconds": 3.716,
+      "assessment": "UNSUPPORTED",
+      "issue": "‘무비자 결제’는 ZeroPay를 잘못 표현함. 나머지 취향 문구는 TASTE Claim에 대응함."
+    }
+  ],
+  "afterPilotCorrection": {
+    "changes": [
+      "LLM prompt payload에서 restaurant name과 deterministicFacts(ZeroPay/budget)를 제외하고 approved Claims만 제공",
+      "무상/무료/공짜/무비자 및 근접·인기·평점·가격 등 근거 없는 표현을 fallback 처리",
+      "System prompt에서 운영 필드에 대한 언급 금지 명시"
+    ],
+    "postCorrectionLiveCalls": 0,
+    "reason": "세 번 호출 예산을 소진했으므로 수정 후 호출하지 않음"
+  },
+  "sideEffects": {"mysqlWrites": 0, "qdrantWrites": 0, "profileWrites": 0}
+}

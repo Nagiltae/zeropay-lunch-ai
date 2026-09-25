@@ -1,0 +1,201 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "99c4f864f7e2f6f9d7f651d319f1e021ecea69b30feeca0b07cdd63364d708e0",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+  "restaurantId": 9569,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "FOOD_TYPE",
+      "text": "The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge).",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E006"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E003",
+          "sourceField": "sections.menu.items[0]",
+          "content": {
+            "name": "산곰장어",
+            "price": 24000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E006",
+          "sourceField": "sections.menu.items[3]",
+          "content": {
+            "name": "돌멍게",
+            "price": 40000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E007",
+        "E008",
+        "E012"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E007",
+          "sourceField": "sections.menu.items[4]",
+          "content": {
+            "name": "낙지",
+            "price": 30000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E008",
+          "sourceField": "sections.menu.items[5]",
+          "content": {
+            "name": "해삼",
+            "price": 30000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E012",
+          "sourceField": "sections.menu.items[9]",
+          "content": {
+            "name": "김밥추가",
+            "price": 4000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently describe the food as delicious, fresh, and satisfying.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E013",
+        "E014",
+        "E038"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E013",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 128
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E014",
+          "sourceField": "sections.review.keywords[1]",
+          "content": {
+            "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 76
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E038",
+          "sourceField": "sections.review.keywords[25]",
+          "content": {
+            "keyword": "맛",
+            "mentionCount": 74
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claimType": "DINING_CONTEXT",
+      "text": "The venue is suitable for group gatherings and offers a spacious interior.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E017",
+        "E018"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E017",
+          "sourceField": "sections.review.keywords[4]",
+          "content": {
+            "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 14
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E018",
+          "sourceField": "sections.review.keywords[5]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 13
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "The restaurant maintains high standards of cleanliness and provides convenient parking.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E022",
+        "E020"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E022",
+          "sourceField": "sections.review.keywords[9]",
+          "content": {
+            "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 7
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E020",
+          "sourceField": "sections.review.keywords[7]",
+          "content": {
+            "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 8
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ]
+}

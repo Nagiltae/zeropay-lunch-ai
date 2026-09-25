@@ -1,0 +1,354 @@
+{
+  "restaurantId": 9562,
+  "inputPath": "../AI_Answer/semantic_profile_benchmark_9562/semantic_profile_v1_input_9562_compact.json",
+  "inputHash": "2edf7f3de60cf2fea6b81920e2be57ef38ab6bac8f5d44895c287b34e1d7367e",
+  "inputVersion": "semantic-profile-input-v1",
+  "promptVersion": "semantic-profile-prompt-v1",
+  "modelConfigured": "qwen3.5:9b",
+  "calls": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "latencyMs": 22550,
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence section not SUCCESS: E003",
+          "evidence section not SUCCESS: E004",
+          "evidence section not SUCCESS: E017",
+          "evidence section not SUCCESS: E019",
+          "evidence section not SUCCESS: E006",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence section not SUCCESS: E007",
+          "evidence section not SUCCESS: E009",
+          "evidence section not SUCCESS: E023",
+          "evidence section not SUCCESS: E011",
+          "evidence section not SUCCESS: E012",
+          "evidence section not SUCCESS: E014",
+          "evidence section not SUCCESS: E010",
+          "evidence section not SUCCESS: E026"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves beef dishes such as Anchang-sal and Galbi-sal.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E017",
+                "E019"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu includes a side dish of Doenjang-jjigae.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E006",
+                "E018"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention that the food is delicious and has good meat quality.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E007",
+                "E009",
+                "E023"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is described as having a calm atmosphere and spacious interior.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E011",
+                "E012",
+                "E014"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is noted for offering good value for money.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E010",
+                "E026"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": false,
+        "claimClassifications": [
+          {
+            "claim": {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant serves beef dishes such as Anchang-sal and Galbi-sal.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E017",
+                "E019"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "food type from review/keyword is not an official menu fact",
+              "evidence section is not SUCCESS",
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E003",
+                "sourceField": "sections.menu.items[0]",
+                "content": {
+                  "name": "안창살",
+                  "price": 20500
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E004",
+                "sourceField": "sections.menu.items[1]",
+                "content": {
+                  "name": "갈비살",
+                  "price": 20500
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E017",
+                "sourceField": "sections.review.keywords[10]",
+                "content": {
+                  "keyword": "고기",
+                  "mentionCount": 3
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E019",
+                "sourceField": "sections.review.keywords[12]",
+                "content": {
+                  "keyword": "한우",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu includes a side dish of Doenjang-jjigae.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E006",
+                "E018"
+              ]
+            },
+            "status": "REJECTED",
+            "reasons": [
+              "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+              "menu characteristic lacks direct menu evidence",
+              "evidence section is not SUCCESS",
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E006",
+                "sourceField": "sections.menu.items[3]",
+                "content": {
+                  "name": "된장찌개",
+                  "price": 3500
+                },
+                "section": "menu",
+                "status": null,
+                "evidenceType": "menu"
+              },
+              {
+                "evidenceId": "E018",
+                "sourceField": "sections.review.keywords[11]",
+                "content": {
+                  "keyword": "된장찌개",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "TASTE",
+              "text": "Customers frequently mention that the food is delicious and has good meat quality.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E007",
+                "E009",
+                "E023"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS",
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E007",
+                "sourceField": "sections.review.keywords[0]",
+                "content": {
+                  "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 17
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E009",
+                "sourceField": "sections.review.keywords[2]",
+                "content": {
+                  "keyword": "\"고기 질이 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 3
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E023",
+                "sourceField": "sections.review.keywords[16]",
+                "content": {
+                  "keyword": "맛",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is described as having a calm atmosphere and spacious interior.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E011",
+                "E012",
+                "E014"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS",
+              "low keyword mention count"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E011",
+                "sourceField": "sections.review.keywords[4]",
+                "content": {
+                  "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 2
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E012",
+                "sourceField": "sections.review.keywords[5]",
+                "content": {
+                  "keyword": "\"차분한 분위기예요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E014",
+                "sourceField": "sections.review.keywords[7]",
+                "content": {
+                  "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 1
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              }
+            ]
+          },
+          {
+            "claim": {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is noted for offering good value for money.",
+              "confidence": "MEDIUM",
+              "evidenceIds": [
+                "E010",
+                "E026"
+              ]
+            },
+            "status": "REVIEW_REQUIRED",
+            "reasons": [
+              "evidence section is not SUCCESS",
+              "representative review requires semantic review"
+            ],
+            "evidence": [
+              {
+                "evidenceId": "E010",
+                "sourceField": "sections.review.keywords[3]",
+                "content": {
+                  "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 3
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "keyword"
+              },
+              {
+                "evidenceId": "E026",
+                "sourceField": "sections.review.representativeReviews[2]",
+                "content": {
+                  "reviewId": "dom-1",
+                  "text": "강남구청역 부근에서 가성비대비 짱입니다. 사장님께서도 친절하고 좋아요"
+                },
+                "section": "review",
+                "status": null,
+                "evidenceType": "review"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": false,
+    "missingSections": [
+      "menu",
+      "business_hours",
+      "review"
+    ]
+  },
+  "originalInputHash": "9888488cf8249c65cf0666fc5f5751a35c55653190f2c9324d3af2fca3bd81ee",
+  "elapsedMs": 23246,
+  "catalogPath": "../AI_Answer/semantic_profile_benchmark_9562/semantic_profile_v1_evidence_catalog_9562.json"
+}

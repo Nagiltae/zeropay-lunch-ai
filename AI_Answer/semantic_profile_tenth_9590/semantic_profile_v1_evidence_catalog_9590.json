@@ -1,0 +1,1559 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "70a8a50f859c1e39290b31801da1d9e27b0f02c1e82ae3b706dd60a03d5c08c6",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "마츄피츄",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 선릉로121길 15 (논현동)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "바나나쿠키푸딩",
+        "price": 5800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "시나몬로투스멜로쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "호두크림치즈마카롱(무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "마카롱10+판초콜릿4(보냉+선물세트)",
+        "price": 54000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "15구마카롱선물세트(선물+보냉)",
+        "price": 49000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "마카롱6구선물세트",
+        "price": 22000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "쿠키6개동물박스",
+        "price": 28000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "호두크림치즈마카롱(무색소갈색)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "샤인머스켓생크림케이크 2호",
+        "price": 60000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "체리생크림케이크2호",
+        "price": 60000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "딸기티라미수마카롱(분홍)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "바닐라빈에그타르트",
+        "price": 3500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "시나몬바나나브레드",
+        "price": 5500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "자몽허니블랙티ICE",
+        "price": 5500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "Valrhona메세지 판초콜릿",
+        "price": 4800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "valrhona치즈초콜릿꼬끄",
+        "price": 8500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "바다라떼ICE",
+        "price": 4800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "수제마카롱",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "빠뜨드프뤼(브아롱과일퓨레젤리)",
+        "price": 24000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "제철과일생크림케이크",
+        "price": 8500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "라즈베리딸기생크림케이크",
+        "price": 8500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "조각모둠케이크",
+        "price": null
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "딸기생크림케이크",
+        "price": 60000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "샤인머스켓생크림케이크",
+        "price": 60000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "딸기&샤인머스캣생크림케이크 1조각",
+        "price": 8500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "바스크치즈케이크",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "흑임자바스크치즈케이크",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "제주유기농말차바스크치즈케이크",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.menu.items[28]",
+      "content": {
+        "name": "메이플달고나크럼블",
+        "price": 1000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.menu.items[29]",
+      "content": {
+        "name": "소금캬라멜마카롱(무색소갈색)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.menu.items[30]",
+      "content": {
+        "name": "바나나쿠키푸딩",
+        "price": 6500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.menu.items[31]",
+      "content": {
+        "name": "valrhona둘세초콜릿마들렌",
+        "price": 4000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.menu.items[32]",
+      "content": {
+        "name": "코코넛글레이즈마들렌",
+        "price": 3800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.menu.items[33]",
+      "content": {
+        "name": "유자마카롱 (노랑)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.menu.items[34]",
+      "content": {
+        "name": "마다가스카르바닐라마카롱 (하늘)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.menu.items[35]",
+      "content": {
+        "name": "무화과쇼콜라마카롱 (갈색)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.menu.items[36]",
+      "content": {
+        "name": "바닐라자몽마카롱 (노랑)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.menu.items[37]",
+      "content": {
+        "name": "고르곤졸라꿀마카롱 (노랑)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.menu.items[38]",
+      "content": {
+        "name": "갈레트부르통(네그리타럼&바닐라빈)",
+        "price": 3500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.menu.items[39]",
+      "content": {
+        "name": "Valrhona오렐리스초콜릿쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.menu.items[40]",
+      "content": {
+        "name": "곰돌이파티쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.menu.items[41]",
+      "content": {
+        "name": "몬스터초코쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.menu.items[42]",
+      "content": {
+        "name": "valrhon둘세초콜릿쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.menu.items[43]",
+      "content": {
+        "name": "valrhona이보아르유기농말차쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.menu.items[44]",
+      "content": {
+        "name": "valrhona과나하70%초콜릿쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.menu.items[45]",
+      "content": {
+        "name": "수박주스lCE",
+        "price": 5500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.menu.items[46]",
+      "content": {
+        "name": "귀리라떼 (hot/ice)",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.menu.items[47]",
+      "content": {
+        "name": "메이플달고나라떼(only ice)",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.menu.items[48]",
+      "content": {
+        "name": "요거트스무디(플레인/딸기/블루베리)",
+        "price": 5500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.menu.items[49]",
+      "content": {
+        "name": "오곡듬뿍라떼(당도0/보통/연유많이)",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.menu.items[50]",
+      "content": {
+        "name": "아카시아천연벌꿀물(hot/ice)",
+        "price": 5500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.menu.items[51]",
+      "content": {
+        "name": "ice자몽에이드",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.menu.items[52]",
+      "content": {
+        "name": "ice상큼유자슬러쉬",
+        "price": 5500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.menu.items[53]",
+      "content": {
+        "name": "ice레드빈크러쉬(플레인/팥추가)",
+        "price": 6000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.menu.items[54]",
+      "content": {
+        "name": "말차크러쉬(플레인/팥추가)",
+        "price": 6000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.menu.items[55]",
+      "content": {
+        "name": "딸기라떼(ICE)",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.menu.items[56]",
+      "content": {
+        "name": "발로나로쉐초콜릿",
+        "price": null
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.menu.items[57]",
+      "content": {
+        "name": "프레첼머랭쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.menu.items[58]",
+      "content": {
+        "name": "오레오쇼콜라마카롱 (갈색)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.menu.items[59]",
+      "content": {
+        "name": "스노우볼(화이트/치즈/콩고물)",
+        "price": 8000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.menu.items[60]",
+      "content": {
+        "name": "휘낭시에",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.menu.items[61]",
+      "content": {
+        "name": "발로나초코릿마들렌",
+        "price": 4000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.menu.items[62]",
+      "content": {
+        "name": "유자라즈베리 (노랑빨강)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.menu.items[63]",
+      "content": {
+        "name": "바닐라크림치즈마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.menu.items[64]",
+      "content": {
+        "name": "레몬마카롱 (노랑)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.menu.items[65]",
+      "content": {
+        "name": "카카오쇼콜라마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.menu.items[66]",
+      "content": {
+        "name": "팥인절미마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.menu.items[67]",
+      "content": {
+        "name": "황치즈마카롱 (주황)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.menu.items[68]",
+      "content": {
+        "name": "흑임자/흑임자크림치즈/달달흑임자",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.menu.items[69]",
+      "content": {
+        "name": "무화과마카롱 (분홍)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.menu.items[70]",
+      "content": {
+        "name": "오레오크림치즈마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.menu.items[71]",
+      "content": {
+        "name": "티라미수마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.menu.items[72]",
+      "content": {
+        "name": "소금캐라멜마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E076",
+      "sourceField": "sections.menu.items[73]",
+      "content": {
+        "name": "바나나우유마카롱 (노랑)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E077",
+      "sourceField": "sections.menu.items[74]",
+      "content": {
+        "name": "인절미마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E078",
+      "sourceField": "sections.menu.items[75]",
+      "content": {
+        "name": "피스타치오마카롱 (연두색)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E079",
+      "sourceField": "sections.menu.items[76]",
+      "content": {
+        "name": "자몽유자마카롱(노랑주황)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E080",
+      "sourceField": "sections.menu.items[77]",
+      "content": {
+        "name": "바닐라빈우유푸딩",
+        "price": 4800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E081",
+      "sourceField": "sections.menu.items[78]",
+      "content": {
+        "name": "딸기티라미수마카롱 (분홍)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E082",
+      "sourceField": "sections.menu.items[79]",
+      "content": {
+        "name": "다크말차마카롱 (초록)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E083",
+      "sourceField": "sections.menu.items[80]",
+      "content": {
+        "name": "얼그레이마카롱 (보라)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E084",
+      "sourceField": "sections.menu.items[81]",
+      "content": {
+        "name": "호두과자마카롱 (팥O)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E085",
+      "sourceField": "sections.menu.items[82]",
+      "content": {
+        "name": "얼그레이크림치즈마카롱 (보라)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E086",
+      "sourceField": "sections.menu.items[83]",
+      "content": {
+        "name": "화이트쿠크다스마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E087",
+      "sourceField": "sections.menu.items[84]",
+      "content": {
+        "name": "타히티바닐라마카롱 (노랑)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E088",
+      "sourceField": "sections.menu.items[85]",
+      "content": {
+        "name": "초코칩말차마카롱",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E089",
+      "sourceField": "sections.menu.items[86]",
+      "content": {
+        "name": "트러플크림치즈/트러플화이트 마카롱",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E090",
+      "sourceField": "sections.menu.items[87]",
+      "content": {
+        "name": "바삭한꼬끄(기본/콩고물/치즈/초코)",
+        "price": 8500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E091",
+      "sourceField": "sections.menu.items[88]",
+      "content": {
+        "name": "맛밤마카롱 (초록)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E092",
+      "sourceField": "sections.menu.items[89]",
+      "content": {
+        "name": "라바짜에스프레소마카롱 (무색소)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E093",
+      "sourceField": "sections.menu.items[90]",
+      "content": {
+        "name": "딸기쿠크다스마카롱 (분홍)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E094",
+      "sourceField": "sections.menu.items[91]",
+      "content": {
+        "name": "바삭초코쿠키",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E095",
+      "sourceField": "sections.menu.items[92]",
+      "content": {
+        "name": "발로나다크초코마카롱(갈색)",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E096",
+      "sourceField": "sections.menu.items[93]",
+      "content": {
+        "name": "말차쿠크다스",
+        "price": 3000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E097",
+      "sourceField": "sections.menu.items[94]",
+      "content": {
+        "name": "구운노른자(강아지간식)",
+        "price": 1000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E098",
+      "sourceField": "sections.menu.items[95]",
+      "content": {
+        "name": "아메리카노",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E099",
+      "sourceField": "sections.menu.items[96]",
+      "content": {
+        "name": "white헤이즐넛아메리카노",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E100",
+      "sourceField": "sections.menu.items[97]",
+      "content": {
+        "name": "얼그레이아메리카노",
+        "price": 4500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E101",
+      "sourceField": "sections.menu.items[98]",
+      "content": {
+        "name": "카페라떼/두유라떼(HOT/ICE)",
+        "price": 4600
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E102",
+      "sourceField": "sections.menu.items[99]",
+      "content": {
+        "name": "바닐라라떼(hot/ice)",
+        "price": 4800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E103",
+      "sourceField": "sections.menu.items[100]",
+      "content": {
+        "name": "마카롱16개 케이크상자포장",
+        "price": 53500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E104",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 91
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E105",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 88
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E106",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 75
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E107",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 70
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E108",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"음료가 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 57
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E109",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 35
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E110",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 31
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E111",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 27
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E112",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+        "mentionCount": 23
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E113",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"대화하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 23
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E114",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "마카롱",
+        "mentionCount": 77
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E115",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "케이크",
+        "mentionCount": 18
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E116",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "커피",
+        "mentionCount": 17
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E117",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "치즈",
+        "mentionCount": 13
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E118",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "치즈케이크",
+        "mentionCount": 12
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E119",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "휘낭시에",
+        "mentionCount": 10
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E120",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "바스크치즈케이크",
+        "mentionCount": 9
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E121",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "라떼",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E122",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "쿠키",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E123",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "푸딩",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E124",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "마들렌",
+        "mentionCount": 5
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E125",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "구움과자",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E126",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "아메리카노",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E127",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "얼그레이",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E128",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "머랭쿠키",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E129",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 108
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E130",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 76
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E131",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 21
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E132",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "목적",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E133",
+      "sourceField": "sections.review.keywords[29]",
+      "content": {
+        "keyword": "분위기",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E134",
+      "sourceField": "sections.review.keywords[30]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E135",
+      "sourceField": "sections.review.keywords[31]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E136",
+      "sourceField": "sections.review.keywords[32]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E137",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-4",
+        "text": "🐶 반려견과 함께 카페 마츄피츄 다녀왔어요 아담한 공간이지만 마카롱, 빵, 케이크 등 디저트 종류는 꽤 다양했습니다 저는 키오스크로 바스크 제주 유기농 말차 치즈케이크와 페퍼민트 아메리카노를 주문했어요 카페 안은 크리스마스 소품과 귀여운 인형들로 꾸며져 있어 전체적으로 아늑하고 따뜻한 분위기였어요🎄 사장님이 반려견과 함께 와서 노른자 큐브 간식도 챙겨주셨는데 아이도 잘 먹어서 괜히 더 기분이 좋더라고요 🥰 말차치즈케이크는 무스는 부드럽고 위쪽 시트는 꾸덕했어요 🧀치즈와 말차 조합으로 많이 달지 않아 부담 없이 먹기 좋았습니다 페퍼민트 아메리카노는 커피에 페퍼민트 향이 은은하게 어우러져 상쾌하고 깔끔한 느낌이었어요 🌿 예쁘게 꾸며진 공간에서 반려견과 함께 조용히 쉬기 좋은, 따뜻한 카페였습니다 ✨"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E138",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-6",
+        "text": "진지하게 휘낭시에 여기보다 맛있는곳 못봤어요!! 버터향 찐하고 계란비린맛..향 하나도없이 고소하고 빠쟉하고 진짜 맛있어요 ✨✨ 집에서 먹어도 집에 커피머신있어도 꼭!! 아아도 사야해요 커피 진짜 존맛 휘낭시에 푸딩 마들렌 다 진짜 너무 맛있으니깐 스위트파크??❌여기가 진짜 찐으로 수준이 너무 높으니깐 꼭 드셔보세용 바스크치즈케이크도 진짜 맛있으니깐 꼭 먹어보세용🥺💓"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E139",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-1",
+        "text": "서울 가면 꼭 들러요. 예전에 회사 옆이라 자주 갔었는데 지방으로 이사오고 나서 못 가서 속상해요. 여기만큼 맛있는 마카롱을 먹어 본 적이 없어요. 강아지 노른자도 우리 코코(흰색)도 2층 쿠(검정색)도 엄청 좋아하고 서로 경쟁적으로 잘 먹네요. 2개 샀는데 4개나 주셨어요. 고맙습니다. 담에 서울 가면 또 갈게요~~"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E140",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-3",
+        "text": "꼬끄 포장하러 왔다가 또 이것저것 먹고가네요~~ 휘낭시에가 겉바속촉이어서 너무너무 맛있네요 말차바스크치즈케잌은 너무 맛있는데 한입 먹고 바로 음료를 마시면 향이 더 강해져서 더더 맛있어요~~ 마카롱은 언제나 맛있어요~~~"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E141",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "토",
+        "open_time": "10:00",
+        "close_time": "19:00",
+        "break_hours": null,
+        "last_order": null,
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-24 15:20:53.363788"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb"
+}

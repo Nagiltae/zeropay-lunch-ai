@@ -6,6 +6,7 @@ from app.naver.place_detail_enrichment_cli import (
     _collected_sections_complete,
     _missing_sections,
     _pending_detail_rows,
+    _section_states,
     _sections_to_persist,
 )
 from app.naver.place_detail_models import BusinessHour, MenuItem, PlaceDetail
@@ -163,4 +164,54 @@ def test_force_refresh_marks_complete_sections_for_persistence():
         "review": True,
         "menu": True,
         "business_hours": True,
+    }
+
+
+def test_fresh_absent_sections_are_skipped_and_stale_absent_is_rechecked():
+    checked = datetime.now().isoformat(sep=" ")
+    row = {
+        "has_review": "0",
+        "has_menu": "0",
+        "has_price": "0",
+        "has_hours": "0",
+        "review_state": "ABSENT_CONFIRMED",
+        "menu_state": "ABSENT_CONFIRMED",
+        "hours_state": "ABSENT_CONFIRMED",
+        "review_checked_at": checked,
+        "menu_checked_at": checked,
+        "hours_checked_at": checked,
+    }
+    assert _missing_sections(row, stale_after_seconds=3600, now=datetime.now()) == {
+        "review": False,
+        "menu": False,
+        "business_hours": False,
+    }
+    old = (datetime.now() - timedelta(days=2)).isoformat(sep=" ")
+    stale = {**row, "menu_checked_at": old}
+    assert _missing_sections(stale, stale_after_seconds=3600, now=datetime.now())["menu"]
+
+
+def test_failed_state_remains_pending_without_treating_it_as_absent():
+    row = {
+        "has_review": "0",
+        "has_menu": "0",
+        "has_price": "0",
+        "has_hours": "0",
+        "menu_state": "FAILED",
+    }
+    assert _missing_sections(row)["menu"]
+
+
+def test_section_state_mapping_distinguishes_absent_and_success():
+    from app.naver.place_dom_detail_crawler import DomCollectedDetail
+
+    absent = DomCollectedDetail(
+        True, "식당", "한식", "주소", None, (), (), True, None, (), True, None, None,
+        (), (), (), (), (), True, True, True,
+    )
+    states = _section_states(absent, {"menu": True, "business_hours": True, "review": True})
+    assert states == {
+        "menu": "ABSENT_CONFIRMED",
+        "business_hours": "ABSENT_CONFIRMED",
+        "review": "ABSENT_CONFIRMED",
     }

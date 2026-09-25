@@ -1,0 +1,44 @@
+{
+  "restaurant_id": 9619,
+  "captured_at": "2026-09-23T18:00:00Z",
+  "purpose": "pre-write snapshot",
+  "restaurant": {
+    "id": 9619,
+    "name": "우정양곱창",
+    "address": "서울시 강남구 도산대로30길 23",
+    "detail_address": "1층",
+    "latitude": 37.5184384,
+    "longitude": 127.0301249,
+    "recommendation_eligibility": "ELIGIBLE"
+  },
+  "canonical": {
+    "name": "우정양곱창",
+    "address": "서울시 강남구 도산대로30길 23",
+    "road_address": "서울특별시 강남구 도산대로30길 23 1층 우정양곱창"
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "reason": "MATCHED",
+    "search_policy_version": null
+  },
+  "external_places": [
+    {
+      "provider": "NAVER_LOCAL",
+      "external_place_id": null,
+      "external_name": "우정양곱창",
+      "address": "서울특별시 강남구 논현동 67-11 1층 우정양곱창",
+      "road_address": "서울특별시 강남구 도산대로30길 23 1층 우정양곱창",
+      "match_status": "MATCHED"
+    }
+  ],
+  "numeric_naver": null,
+  "detail": {
+    "section_states": [],
+    "menus": [],
+    "business_hours": [],
+    "review_summaries": [],
+    "review_keywords": [],
+    "representative_reviews": []
+  },
+  "note": "No detail rows existed before this task; no existing detail data was overwritten."
+}

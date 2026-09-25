@@ -40,7 +40,7 @@ describe('chat API', () => {
         )
         controller.enqueue(
           encoder.encode(
-            '"name":"강남 샘플 한식당"}]}\n\nevent:completed\ndata:{"assistantMessageId":"assistant-id"}\n\n',
+            '"name":"강남 샘플 한식당","reason":"메뉴 근거가 확인되어 추천했어요."}]}\n\nevent:completed\ndata:{"assistantMessageId":"assistant-id"}\n\n',
           ),
         )
         controller.close()
@@ -55,15 +55,18 @@ describe('chat API', () => {
         }),
       ),
     )
-    const receivedEvents: string[] = []
+    const receivedEvents: Array<{ event: string; data: unknown }> = []
 
     await streamChatMessage(
       'conversation-id',
       '점심 추천해줘',
-      (event) => receivedEvents.push(event.event),
+      (event) => receivedEvents.push(event),
       new AbortController().signal,
     )
 
-    expect(receivedEvents).toEqual(['recommendations', 'completed'])
+    expect(receivedEvents.map((event) => event.event)).toEqual(['recommendations', 'completed'])
+    expect(receivedEvents[0]?.data).toMatchObject({
+      items: [{ restaurantId: 1001, reason: '메뉴 근거가 확인되어 추천했어요.' }],
+    })
   })
 })

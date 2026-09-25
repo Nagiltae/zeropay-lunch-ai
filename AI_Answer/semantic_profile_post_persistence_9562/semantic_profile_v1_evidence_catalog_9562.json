@@ -1,0 +1,316 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "3588352874e6c5ca2c42f3b6c7b7baa236eac2e09e3c373dc016785309cbad2d",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "한마리소",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 선릉로129길 5 (논현동)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "안창살",
+        "price": 20500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "갈비살",
+        "price": 20500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "갈매기살",
+        "price": 15500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "된장찌개",
+        "price": 3500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 17
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 9
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"고기 질이 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"차분한 분위기예요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"잡내가 적어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "고기",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "된장찌개",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "한우",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "안창살",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-2",
+        "text": "메뉴는 된장찌게 포함하여 4가지 밖에 없지만 집중해서 판매하는 메뉴 같았어요. 한우를 강남에서 저렴한 가격으로 좋은 품질의 고기를 먹을 수 있어요."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-5",
+        "text": "드디어 가봤어요 ㅎㅎ된찌 집에서 먹는 맛이었어요 ㅋㅋ고기도 넘 맛있고 다음엔 안창살먹으러 가려구요 ㅋㅋ"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-1",
+        "text": "강남구청역 부근에서 가성비대비 짱입니다. 사장님께서도 친절하고 좋아요"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-6",
+        "text": "고기가 솔직히 너무 얼어있어서 별로였어요"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "이전 페이지 한마리소 강남구청역점 저장 페이지 닫기 한마리",
+        "open_time": null,
+        "close_time": null,
+        "break_hours": null,
+        "last_order": null,
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-24 12:25:32.602004"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "b7f703f9723886c6111f61166b51d9085bb15eff89d85e23bf7b07b7c443b2cf"
+}

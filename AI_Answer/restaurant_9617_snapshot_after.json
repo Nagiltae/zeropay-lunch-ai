@@ -1,0 +1,33 @@
+{
+  "restaurant_id": 9617,
+  "numeric_naver_place": {
+    "provider": "NAVER",
+    "external_place_id": "1987855627",
+    "match_status": "MATCHED",
+    "query_used": "논현동 마성떡볶이 논현역점"
+  },
+  "detail_counts": {
+    "menus": 24,
+    "active_menus": 24,
+    "menus_with_null_price": 0,
+    "business_hours": 1,
+    "active_business_hours": 1,
+    "review_summaries": 1,
+    "review_keywords": 35,
+    "active_review_keywords": 35,
+    "representative_reviews": 10,
+    "active_representative_reviews": 10
+  },
+  "section_states": [
+    {"section": "menu", "state": "SUCCESS", "error_code": null},
+    {"section": "business_hours", "state": "SUCCESS", "error_code": null},
+    {"section": "review", "state": "SUCCESS", "error_code": null}
+  ],
+  "verification_preserved": {
+    "status": "VERIFIED",
+    "reason": "MATCHED",
+    "recommendation_eligibility": "ELIGIBLE",
+    "search_policy_version": "provider-search-v2"
+  },
+  "source": "detail-write-9617-20260923"
+}

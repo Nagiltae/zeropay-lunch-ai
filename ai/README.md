@@ -82,6 +82,12 @@ Timeout/ConnectionError에만 적용됩니다. 공식 provider 또는 PCMap의
 경로에서는 가능한 범위까지 runtime report를 남기며, 강제 종료(SIGKILL)는 보장하지 않습니다.
 Runtime JSON/CSV/manifest는 운영 산출물이므로 Git에 포함하지 않습니다.
 
+같은 fingerprint의 UNKNOWN/ERROR는 reason별 TTL을 적용합니다.
+`BATCH_UNKNOWN_TECHNICAL_RETRY_TTL_SECONDS` 기본 300초,
+`BATCH_UNKNOWN_NO_CANDIDATE_RETRY_TTL_SECONDS` 기본 3,600초,
+`BATCH_UNKNOWN_SEMANTIC_RETRY_TTL_SECONDS` 기본 86,400초입니다.
+source fingerprint가 바뀌면 TTL과 무관하게 즉시 재검증합니다.
+
 Provider 단계는 `PROVIDER_CONCURRENCY` 기본 1(최대 2)로 provider별 worker 수를 제한하고,
 `PROVIDER_PREFETCH_SIZE` 기본 2(최대 4)만큼 다음 음식점의 Provider 결과를 준비합니다.
 Kakao와 NAVER의 두 query variant는 각 provider worker 내부에서 기존 순서대로 실행되며,

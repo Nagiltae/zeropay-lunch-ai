@@ -1,0 +1,468 @@
+{
+  "version": "semantic-retrieval-hybrid-v2",
+  "restaurantIds": [
+    9617,
+    9731,
+    9567,
+    9580,
+    9568,
+    9569,
+    9570,
+    9571,
+    9574,
+    9590
+  ],
+  "queries": [
+    {
+      "query": "스시 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTypes": [
+        "FOOD_MENTION"
+      ],
+      "expectedTerms": [
+        "초밥"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E013"
+      ],
+      "groundTruthReason": "9731 review SUCCESS keyword repeats 초밥; not an official menu fact."
+    },
+    {
+      "query": "초밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTypes": [
+        "FOOD_MENTION"
+      ],
+      "expectedTerms": [
+        "초밥"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E013"
+      ],
+      "groundTruthReason": "Exact review keyword evidence."
+    },
+    {
+      "query": "일식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTypes": [
+        "FOOD_MENTION"
+      ],
+      "expectedTerms": [
+        "초밥",
+        "우동",
+        "후토마끼"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E013",
+        "E016",
+        "E017"
+      ],
+      "groundTruthReason": "Japanese category is represented by three repeated review keywords."
+    },
+    {
+      "query": "우동 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9731
+      ],
+      "expectedClaimTypes": [
+        "FOOD_MENTION"
+      ],
+      "expectedTerms": [
+        "우동"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E016"
+      ],
+      "groundTruthReason": "Exact review keyword evidence."
+    },
+    {
+      "query": "피자 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9580,
+        9571
+      ],
+      "expectedClaimTypes": [
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "expectedTerms": [
+        "피자"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E008",
+        "E010",
+        "E067"
+      ],
+      "groundTruthReason": "9580 review keyword and 9571 menu evidence both support pizza."
+    },
+    {
+      "query": "피자 메뉴가 있는 곳",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9571,
+        9580
+      ],
+      "expectedClaimTypes": [
+        "MENU_CHARACTERISTIC",
+        "FOOD_MENTION"
+      ],
+      "expectedTerms": [
+        "피자"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E003",
+        "E008",
+        "E010",
+        "E067"
+      ],
+      "groundTruthReason": "Menu-specific evidence is preferred; review mention remains acceptable."
+    },
+    {
+      "query": "떡볶이 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "expectedTerms": [
+        "떡볶이"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E011"
+      ],
+      "groundTruthReason": "Official menu evidence."
+    },
+    {
+      "query": "김밥 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "expectedTerms": [
+        "김밥"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E003"
+      ],
+      "groundTruthReason": "Official menu evidence."
+    },
+    {
+      "query": "한식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567,
+        9568
+      ],
+      "expectedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "expectedTerms": [
+        "한식",
+        "순대국",
+        "된장찌개"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E012",
+        "E013"
+      ],
+      "groundTruthReason": "Two approved official-menu Korean food claims."
+    },
+    {
+      "query": "한정식 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "expectedTerms": [
+        "정식",
+        "갈비찜"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E003",
+        "E004"
+      ],
+      "groundTruthReason": "9567 explicitly has Korean set-meal evidence."
+    },
+    {
+      "query": "갈비찜 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9567
+      ],
+      "expectedClaimTypes": [
+        "FOOD_TYPE"
+      ],
+      "expectedTerms": [
+        "갈비찜"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E003"
+      ],
+      "groundTruthReason": "Exact official menu evidence."
+    },
+    {
+      "query": "디저트 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9590
+      ],
+      "expectedClaimTypes": [
+        "MENU_CHARACTERISTIC",
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "디저트",
+        "케이크",
+        "마카롱"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E017",
+        "E022",
+        "E034",
+        "E110"
+      ],
+      "groundTruthReason": "9590 menu and SUCCESS review keyword evidence."
+    },
+    {
+      "query": "카페에서 디저트 먹고 싶다",
+      "intent": "FOOD",
+      "expectedRestaurantIds": [
+        9590
+      ],
+      "expectedClaimTypes": [
+        "MENU_CHARACTERISTIC",
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "디저트",
+        "케이크"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E017",
+        "E022",
+        "E034",
+        "E110"
+      ],
+      "groundTruthReason": "Explicit food request takes FOOD precedence; evidence is 9590 menu/review."
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617,
+        9568
+      ],
+      "expectedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "expectedTerms": [
+        "혼밥"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E023",
+        "E029"
+      ],
+      "groundTruthReason": "Approved direct solo-dining keyword evidence."
+    },
+    {
+      "query": "빠르게 먹을 수 있는 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "expectedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "expectedTerms": [
+        "빠른 식사"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E023"
+      ],
+      "groundTruthReason": "Approved 9617 dining-context claim."
+    },
+    {
+      "query": "혼자 점심 먹기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617,
+        9568
+      ],
+      "expectedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "expectedTerms": [
+        "혼밥"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E023",
+        "E029"
+      ],
+      "groundTruthReason": "Solo-dining synonym of 혼밥."
+    },
+    {
+      "query": "맛있는 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617,
+        9731,
+        9569,
+        9580,
+        9571,
+        9574,
+        9590
+      ],
+      "expectedClaimTypes": [
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "맛"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [],
+      "groundTruthReason": "All listed restaurants have approved direct deliciousness evidence; multi-label by evidence."
+    },
+    {
+      "query": "재료가 신선한 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9731,
+        9569,
+        9574
+      ],
+      "expectedClaimTypes": [
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "신선"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E004",
+        "E014",
+        "E017"
+      ],
+      "groundTruthReason": "Approved direct freshness keyword evidence."
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": "TASTE",
+      "expectedRestaurantIds": [
+        9617,
+        9571
+      ],
+      "expectedClaimTypes": [
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "가성비"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E027",
+        "E046"
+      ],
+      "groundTruthReason": "Approved direct value keyword evidence."
+    },
+    {
+      "query": "맛있다는 평가가 많은 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617,
+        9731,
+        9569,
+        9580,
+        9571,
+        9574,
+        9590
+      ],
+      "expectedClaimTypes": [
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "맛"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [],
+      "groundTruthReason": "Same approved deliciousness cohort; ranking must use mention metadata, not invent a denominator."
+    },
+    {
+      "query": "가성비 언급이 있는 곳",
+      "intent": "TASTE_QUANTITATIVE",
+      "expectedRestaurantIds": [
+        9617,
+        9571
+      ],
+      "expectedClaimTypes": [
+        "TASTE"
+      ],
+      "expectedTerms": [
+        "가성비"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E027",
+        "E046"
+      ],
+      "groundTruthReason": "Approved value keyword cohort."
+    },
+    {
+      "query": "서비스가 친절한 곳",
+      "intent": "VENUE_CHARACTERISTIC",
+      "expectedRestaurantIds": [
+        9580,
+        9574
+      ],
+      "expectedClaimTypes": [
+        "VENUE_CHARACTERISTIC"
+      ],
+      "expectedTerms": [
+        "친절"
+      ],
+      "acceptableTerms": [],
+      "evidenceIds": [
+        "E060",
+        "E073",
+        "E020"
+      ],
+      "groundTruthReason": "Approved friendly-service evidence."
+    }
+  ]
+}

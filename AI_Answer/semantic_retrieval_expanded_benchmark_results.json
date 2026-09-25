@@ -1,0 +1,29 @@
+{
+  "status": "BLOCKED_BEFORE_EXPANDED_RETRIEVAL",
+  "databaseReadOnlyAudit": {
+    "restaurants": 517,
+    "naverNumericMatched": 360,
+    "safeLifecycleEligibleSampleBeforeExclusions": 8,
+    "safeProfileArtifactsAvailableBeforeExpansion": 4,
+    "excludedExistingTargets": [9559, 9560, 9561, 9654, 9750, 9582, 9619, 9661, 9695, 9610]
+  },
+  "dryRuns": [
+    {"restaurantId": 9562, "status": "SUCCESS", "menus": 4, "businessHours": 1, "reviews": "35 visitor, 14 blog", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9562-detail.json"},
+    {"restaurantId": 9564, "status": "FAILED_INCOMPLETE_REVIEW", "menus": 10, "businessHours": 1, "reviews": "none visitor, none blog", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9564-detail.json"},
+    {"restaurantId": 9568, "status": "SUCCESS", "menus": 22, "businessHours": 1, "reviews": "268 visitor, 27 blog", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9568-detail.json"},
+    {"restaurantId": 9569, "status": "SUCCESS", "menus": "observed", "businessHours": 1, "reviews": "observed", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9569-detail.json"},
+    {"restaurantId": 9570, "status": "SUCCESS", "menus": "observed", "businessHours": 1, "reviews": "observed", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9570-detail.json"},
+    {"restaurantId": 9571, "status": "SUCCESS", "menus": "observed", "businessHours": 1, "reviews": "observed", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9571-detail.json"},
+    {"restaurantId": 9574, "status": "SUCCESS", "menus": 12, "businessHours": 1, "reviews": "108 visitor, 18 blog", "lifecycleBefore": 0, "report": "ai/build/reports/naver-place-pipeline/e2e/semantic-benchmark-dryrun-9574-detail.json"}
+  ],
+  "profileShadowAttempts": [
+    {"restaurantId": 9562, "calls": 1, "strictProfileReady": false, "reason": "Lifecycle absent; evidence sections not SUCCESS"},
+    {"restaurantId": 9568, "calls": 1, "strictProfileReady": false, "reason": "Lifecycle absent; evidence sections not SUCCESS"},
+    {"restaurantId": 9569, "calls": 1, "strictProfileReady": false, "reason": "Lifecycle absent; evidence sections not SUCCESS"}
+  ],
+  "qwenCalls": 3,
+  "qwenRetries": 0,
+  "newClaimPoints": 0,
+  "databaseWrites": 0,
+  "reasonForStop": "New candidates were legacy/unverified and failed the existing quality gate; no REVIEW_REQUIRED or REJECTED claim was promoted."
+}

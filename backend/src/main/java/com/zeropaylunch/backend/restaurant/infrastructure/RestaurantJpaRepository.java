@@ -13,6 +13,36 @@ import org.springframework.data.repository.query.Param;
 
 public interface RestaurantJpaRepository extends JpaRepository<Restaurant, Long> {
 
+    @Query(value = """
+            SELECT
+                first_r.id AS firstRestaurantId,
+                first_r.name AS firstRestaurantName,
+                first_r.address AS firstAddress,
+                first_r.latitude AS firstLatitude,
+                first_r.longitude AS firstLongitude,
+                second_r.id AS secondRestaurantId,
+                second_r.name AS secondRestaurantName,
+                second_r.address AS secondAddress,
+                second_r.latitude AS secondLatitude,
+                second_r.longitude AS secondLongitude
+            FROM restaurants first_r
+            JOIN restaurants second_r
+              ON first_r.id < second_r.id
+             AND second_r.active = TRUE
+             AND (
+                 first_r.address = second_r.address
+                 OR (
+                     first_r.latitude IS NOT NULL
+                     AND first_r.longitude IS NOT NULL
+                     AND first_r.latitude = second_r.latitude
+                     AND first_r.longitude = second_r.longitude
+                 )
+             )
+            WHERE first_r.active = TRUE
+            ORDER BY first_r.id, second_r.id
+            """, nativeQuery = true)
+    List<PotentialVenueAssociationProjection> findPotentialVenueAssociations();
+
     Optional<Restaurant> findBySourceProviderAndExternalMerchantId(
             RestaurantSourceProvider sourceProvider, String externalMerchantId);
 

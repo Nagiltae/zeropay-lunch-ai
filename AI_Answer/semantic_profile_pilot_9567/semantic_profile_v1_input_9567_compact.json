@@ -1,0 +1,695 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9567,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.130261"
+  },
+  "identity": {
+    "restaurantName": "한정식애덕",
+    "restaurantAddress": "서울특별시 강남구 학동로1길 14 (논현동)",
+    "category": null,
+    "latitude": 37.512358,
+    "longitude": 127.021815,
+    "canonicalName": "한정식애덕",
+    "canonicalAddress": "서울특별시 강남구 학동로1길 14 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 학동로1길 14",
+    "provider": "NAVER",
+    "numericPlaceId": "32260788",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "오징어볶음",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "갈비찜 정식",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "마음상",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "사랑상",
+          "price_value": 27000,
+          "price_text": "27,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "덕상(2만원상+매생이국,전복구이)",
+          "price_value": 37000,
+          "price_text": "37,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "보쌈정식",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "매운갈비찜",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "매생이",
+          "price_value": 11000,
+          "price_text": "11,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "고등어구이",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "고등어조림(식사)",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "쭈꾸미제육볶음",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "불고기비빔밥",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        },
+        {
+          "name": "제육쌈",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "sourceFields": [
+            "sections.menu.items[12].name",
+            "sections.menu.items[12].price_value",
+            "sections.menu.items[12].price_text"
+          ]
+        },
+        {
+          "name": "고등어쌈",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-14",
+          "sourceFields": [
+            "sections.menu.items[13].name",
+            "sections.menu.items[13].price_value",
+            "sections.menu.items[13].price_text"
+          ]
+        },
+        {
+          "name": "우렁쌈",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "된장찌개",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "sourceFields": [
+            "sections.menu.items[15].name",
+            "sections.menu.items[15].price_value",
+            "sections.menu.items[15].price_text"
+          ]
+        },
+        {
+          "name": "뚝배기불고기",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "미역국",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "계란찜",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-19",
+          "sourceFields": [
+            "sections.menu.items[18].name",
+            "sections.menu.items[18].price_value",
+            "sections.menu.items[18].price_text"
+          ]
+        },
+        {
+          "name": "비빔밥",
+          "price_value": 8000,
+          "price_text": "8,000원",
+          "price_type": null,
+          "external_menu_id": "dom-20",
+          "sourceFields": [
+            "sections.menu.items[19].name",
+            "sections.menu.items[19].price_value",
+            "sections.menu.items[19].price_text"
+          ]
+        },
+        {
+          "name": "우렁된장",
+          "price_value": 7000,
+          "price_text": "7,000원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "차돌된장",
+          "price_value": 9000,
+          "price_text": "9,000원",
+          "price_type": null,
+          "external_menu_id": "dom-22",
+          "sourceFields": [
+            "sections.menu.items[21].name",
+            "sections.menu.items[21].price_value",
+            "sections.menu.items[21].price_text"
+          ]
+        },
+        {
+          "name": "우렁무침",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-23",
+          "sourceFields": [
+            "sections.menu.items[22].name",
+            "sections.menu.items[22].price_value",
+            "sections.menu.items[22].price_text"
+          ]
+        },
+        {
+          "name": "불낙전골",
+          "price_value": 35000,
+          "price_text": "35,000원",
+          "price_type": null,
+          "external_menu_id": "dom-24",
+          "sourceFields": [
+            "sections.menu.items[23].name",
+            "sections.menu.items[23].price_value",
+            "sections.menu.items[23].price_text"
+          ]
+        },
+        {
+          "name": "낙지초무침(냉)",
+          "price_value": 35000,
+          "price_text": "35,000원",
+          "price_type": null,
+          "external_menu_id": "dom-25",
+          "sourceFields": [
+            "sections.menu.items[24].name",
+            "sections.menu.items[24].price_value",
+            "sections.menu.items[24].price_text"
+          ]
+        },
+        {
+          "name": "낙지초무침(산)",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-26",
+          "sourceFields": [
+            "sections.menu.items[25].name",
+            "sections.menu.items[25].price_value",
+            "sections.menu.items[25].price_text"
+          ]
+        },
+        {
+          "name": "낙지볶음(냉)",
+          "price_value": 35000,
+          "price_text": "35,000원",
+          "price_type": null,
+          "external_menu_id": "dom-27",
+          "sourceFields": [
+            "sections.menu.items[26].name",
+            "sections.menu.items[26].price_value",
+            "sections.menu.items[26].price_text"
+          ]
+        },
+        {
+          "name": "낙지볶음(산)",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-28",
+          "sourceFields": [
+            "sections.menu.items[27].name",
+            "sections.menu.items[27].price_value",
+            "sections.menu.items[27].price_text"
+          ]
+        },
+        {
+          "name": "전복구이",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-29",
+          "sourceFields": [
+            "sections.menu.items[28].name",
+            "sections.menu.items[28].price_value",
+            "sections.menu.items[28].price_text"
+          ]
+        },
+        {
+          "name": "홍어삼합",
+          "price_value": 35000,
+          "price_text": "35,000원",
+          "price_type": null,
+          "external_menu_id": "dom-30",
+          "sourceFields": [
+            "sections.menu.items[29].name",
+            "sections.menu.items[29].price_value",
+            "sections.menu.items[29].price_text"
+          ]
+        },
+        {
+          "name": "삼겹수육",
+          "price_value": 35000,
+          "price_text": "35,000원",
+          "price_type": null,
+          "external_menu_id": "dom-31",
+          "sourceFields": [
+            "sections.menu.items[30].name",
+            "sections.menu.items[30].price_value",
+            "sections.menu.items[30].price_text"
+          ]
+        },
+        {
+          "name": "낙지전",
+          "price_value": 35000,
+          "price_text": "35,000원",
+          "price_type": null,
+          "external_menu_id": "dom-32",
+          "sourceFields": [
+            "sections.menu.items[31].name",
+            "sections.menu.items[31].price_value",
+            "sections.menu.items[31].price_text"
+          ]
+        },
+        {
+          "name": "고등어조림(안주)",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-33",
+          "sourceFields": [
+            "sections.menu.items[32].name",
+            "sections.menu.items[32].price_value",
+            "sections.menu.items[32].price_text"
+          ]
+        },
+        {
+          "name": "굴전",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-34",
+          "sourceFields": [
+            "sections.menu.items[33].name",
+            "sections.menu.items[33].price_value",
+            "sections.menu.items[33].price_text"
+          ]
+        },
+        {
+          "name": "생굴",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-35",
+          "sourceFields": [
+            "sections.menu.items[34].name",
+            "sections.menu.items[34].price_value",
+            "sections.menu.items[34].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "이전 페이지 한정식애덕 저장 페이지 닫기 한정식애덕 한식리",
+          "open_time": null,
+          "close_time": null,
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-24 11:04:06.415875"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "418",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "62",
+          "crawled_at": "2026-09-24 11:04:06.406306"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 149
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 51
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 41
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 32
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 25
+        },
+        {
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 21
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 16
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 14
+        },
+        {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 12
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 7
+        },
+        {
+          "keyword": "제육",
+          "keyword_kind": "menu",
+          "mention_count": 10
+        },
+        {
+          "keyword": "쌈밥",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "갈비",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "가정식백반",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "된장찌개",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "오징어",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "찌개",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "갈비찜",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "고기",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "고등어",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "매운갈비",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "오징어볶음",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "우렁쌈밥",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "제육볶음",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "차돌된장찌개",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 67
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 50
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 12
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "위치",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-5",
+          "review_text": "가성비 좋은 한정식 \"애덕\" 동창모임이용후기 이제는 술보다 우정의 대화가 더 필요할때라 선택한 논현역 가성비 좋은 한정식집 \"애덕\" 갈비찜정식9인분,추가 오징어전 3개+삼겹수육2개+소주맥주10병+콜라1캔 합계 40만7천원 동창 9명이 간만에 한자리에 모였다. 다들 예전처럼 부어라 마셔라 보다는 토킹어바웃에 가벼운 건배. 화려하고 고급진 한정식집은 아니었지만 불에 굽거나 찌는 번거로움이 없는 갈비찜 정식의 집밥 메뉴와 반찬. 추가로 오징어전 3개와 수육2개를 시켰는데 생각보다 양이 많아 오징어전이 남아 포장해갔다. 오징어전은 둥글둥글하게 동그랑땡보다 큰 크기로 여러개 나오는데 정말 맛있었다. 수육은 쏘쏘. 담엔 홍어수육삼합을 먹어봐야겠다. 잡채등기본반찬도 맛있다. 사진은 온전한 음식없이 폭탄 맞은사진 투척.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-1",
+          "review_text": "🏡 오래된 밥집의 편안한 한상 🍖 매운갈비 : 이름에서 느껴지는 강렬한 매운맛보다는 달달하고 친근한 매콤함이에요. 뚝배기 진득한 국물에 삶은달걀이 하나, 부드러운 고기와 떡볶이떡과 크게 썬 대파가 들어가요. 밥반찬하기 적당했어요 🥢 집반찬 느낌으로 편안하고 소박한 차림새 ✍️ 20년 넘은 동네 노포 🪑 공간이 나뉘어있어 여럿이 찾기좋아요 👟 신발벗게 생겼지만 신고 입장 👀 주변 직장인들에게 인기가 많아보여요 👥 사람많고 와글와글해요 💸 매운갈비10.0",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "[주문 메뉴] 매운갈비찜 [평가] 개인적으로 좋았던 점은 아무리 여러개를 주문해도 1인 1 메뉴가 나온다는 점이에요. 개인적으로 먹을 수 있어서 좋았습니다. 반찬의 가짓수도 많은게 장점이라고 할 수 있습니다. 매운갈비찜은 맵기보다는 칼칼한 느낌이엿고 독특하게 떡이랑 계란이 들어간게 특징이에요. 국물에 밥을 비벼먹어도 좋습니다. 반찬이랑 메인이랑 밥한공기 뚝딱 가능합니다.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-8",
+          "review_text": "메뉴도 다양하고 맛있는 한끼 식사로 딱 좋았어요!",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 11:04:06.426320",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 11:04:06.426120",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 11:04:06.426393",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "17b5577a7b0b9797cb8a05bea5cd45ba3e51e35597640c7a6eb87b53b9d52a1e",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "114bcd25a3de584c6cdf8e6d5b316ec26ba0b301cb4e312353922843cf37aa60"
+  }
+}

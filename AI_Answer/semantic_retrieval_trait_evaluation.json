@@ -1,0 +1,665 @@
+{
+  "queries": [
+    {
+      "query": "혼밥하기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617,
+        9568
+      ],
+      "routeV2": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.58688027,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.57568246,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5092244,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.58688027,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.58688027,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.57568246,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.57568246,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.5092244,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5092244,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 10.0005868597,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5868597,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00057567674,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.57567674,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.0005092063,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5092063,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "빠르게 먹을 수 있는 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617
+      ],
+      "routeV2": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9617,
+          "score": 0.49183676,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.48881662,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46647626,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.49183676,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.49183676,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.48881662,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.48881662,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.46647626,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.46647626,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00049176344,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.49176344,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 10.00048866212,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.48866212,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.00046635318,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.46635318,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "혼자 점심 먹기 좋은 곳",
+      "intent": "DINING_CONTEXT",
+      "expectedRestaurantIds": [
+        9617,
+        9568
+      ],
+      "routeV2": {
+        "intent": "DINING_CONTEXT",
+        "claimTypes": [
+          "DINING_CONTEXT"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "UNKNOWN",
+        "claimTypes": [
+          "FOOD_TYPE",
+          "DINING_CONTEXT",
+          "TASTE",
+          "VENUE_CHARACTERISTIC",
+          "MENU_CHARACTERISTIC",
+          "FOOD_MENTION"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5581168,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "normalizedClaimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4920644,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "normalizedClaimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.4630445,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "normalizedClaimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 0.5581168,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5581168,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 0.4920644,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.4920644,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.4630445,
+          "matchedClaimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "matchedClaimType": "MENU_CHARACTERISTIC",
+          "semanticScore": 0.4630445,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 0,
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9568,
+          "finalRetrievalScore": 10.0005579314,
+          "matchedClaimId": "9568:DINING_CONTEXT:82defca705c2",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.5579314,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 21,
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "finalRetrievalScore": 10.00049187392,
+          "matchedClaimId": "9617:DINING_CONTEXT:61f22f079494",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.49187392,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 33,
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.00044910288,
+          "matchedClaimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "matchedClaimType": "DINING_CONTEXT",
+          "semanticScore": 0.44910288,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    },
+    {
+      "query": "서비스가 친절한 곳",
+      "intent": "VENUE_CHARACTERISTIC",
+      "expectedRestaurantIds": [
+        9580,
+        9574
+      ],
+      "routeV2": {
+        "intent": "VENUE_CHARACTERISTIC",
+        "claimTypes": [
+          "VENUE_CHARACTERISTIC"
+        ]
+      },
+      "routerBRoute": {
+        "intent": "VENUE_CHARACTERISTIC",
+        "claimTypes": [
+          "VENUE_CHARACTERISTIC"
+        ]
+      },
+      "baselineA": [
+        {
+          "restaurantId": 9574,
+          "score": 0.5718085,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5628809,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스",
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.49237105,
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "normalizedClaimText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "routerB": [
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 0.5718085,
+          "matchedClaimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5718085,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 0.5628809,
+          "matchedClaimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5628809,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 7,
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 0.49237105,
+          "matchedClaimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.49237105,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 8,
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "hybridC": [
+        {
+          "restaurantId": 9574,
+          "finalRetrievalScore": 10.0005716064,
+          "matchedClaimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5716064,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 14,
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "finalRetrievalScore": 10.0005625906,
+          "matchedClaimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.5625906,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": true,
+          "mentionCount": 7,
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "finalRetrievalScore": 10.0004922201,
+          "matchedClaimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "matchedClaimType": "VENUE_CHARACTERISTIC",
+          "semanticScore": 0.4922201,
+          "exactMatch": false,
+          "synonymMatch": false,
+          "categoryMatch": false,
+          "traitMatch": false,
+          "mentionCount": 8,
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ]
+        }
+      ],
+      "quantitativeVariants": {},
+      "evidenceTrace": true,
+      "leakage": {
+        "reviewRequired": 0,
+        "rejected": 0,
+        "deterministic": 0
+      }
+    }
+  ]
+}

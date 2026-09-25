@@ -9,7 +9,9 @@ public record AiIntegrationProperties(
         URI baseUrl,
         Duration connectTimeout,
         Duration responseTimeout,
+        Duration explanationTimeout,
         int maxAttempts,
-        boolean fallbackEnabled
+        boolean fallbackEnabled,
+        boolean llmExplanationEnabled
 ) {
 }

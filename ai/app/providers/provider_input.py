@@ -11,15 +11,19 @@ from app.naver.place_resolver import RestaurantReference
 
 def load_local_env(root: Path) -> None:
     """Playwright resolver를 import하지 않고 로컬 환경값만 읽는다."""
-    env_path = root / ".env"
-    if not env_path.exists():
-        return
-    for line in env_path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
+    env_paths = [root / ".env"]
+    if root.name == "ai":
+        # standalone AI CLI도 저장소 루트의 개발 설정을 공유해야 한다.
+        env_paths.append(root.parent / ".env")
+    for env_path in env_paths:
+        if not env_path.exists():
             continue
-        key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 def _float(value: str | None) -> float | None:

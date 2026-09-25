@@ -1,0 +1,374 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9570,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.142561"
+  },
+  "identity": {
+    "restaurantName": "블러프",
+    "restaurantAddress": "서울특별시 강남구 도산대로54길 17 (논현동)",
+    "category": null,
+    "latitude": 37.5216157,
+    "longitude": 127.0388245,
+    "canonicalName": "블러프 bluff Dine & Bar",
+    "canonicalAddress": "서울특별시 강남구 도산대로54길 17 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 도산대로54길 17 삼원빌딩 지하1층",
+    "provider": "NAVER",
+    "numericPlaceId": "536587384",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "컨템포러리 코스",
+          "price_value": 85000,
+          "price_text": "85,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "코스 페어링",
+          "price_value": 90000,
+          "price_text": "90,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "라비올로(Laviolo)",
+          "price_value": 28000,
+          "price_text": "28,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "농어 스테이크",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "오리다리 꽁피",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "어린양갈비 스테이크",
+          "price_value": 60000,
+          "price_text": "60,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "미니 갈비버거 3pcs",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "오늘 휴무추석 연휴 휴무 추석 연휴 휴무 목(9/24) 추",
+          "open_time": null,
+          "close_time": null,
+          "break_hours": null,
+          "last_order": null,
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-24 12:26:31.233567"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "141",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "316",
+          "crawled_at": "2026-09-24 12:26:31.230175"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 115
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 85
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 78
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 59
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 36
+        },
+        {
+          "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 20
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 18
+        },
+        {
+          "keyword": "\"술이 다양해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 17
+        },
+        {
+          "keyword": "\"메뉴 구성이 알차요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 16
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 16
+        },
+        {
+          "keyword": "와인",
+          "keyword_kind": "menu",
+          "mention_count": 92
+        },
+        {
+          "keyword": "갈비",
+          "keyword_kind": "menu",
+          "mention_count": 11
+        },
+        {
+          "keyword": "양갈비",
+          "keyword_kind": "menu",
+          "mention_count": 10
+        },
+        {
+          "keyword": "스테이크",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "고기",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "하이볼",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "파스타",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "양고기",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "위스키",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "농어",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "맥주",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "새우",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "안심",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "오리",
+          "keyword_kind": "menu",
+          "mention_count": 4
+        },
+        {
+          "keyword": "낙지",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 113
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 66
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 55
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 42
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 19
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 12
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "예약",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "주차",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-1",
+          "review_text": "첫 방문입니다. 최근 와인에 관심이 많아져서 페어링 하는 곳을 찾던 중에 추천을 받아 방문했는데 소믈리에님의 친절하고 자세한 설명과, 와인을 세심하게 컨트롤하는 도구들, 그리고 음식과의 매칭이 섬세해서 식사 내내 즐겁고 유익했습니다. 비가 오던 날 방문했는데 그래서 그런가 유독 와인 리스트들이 차분했거든요? 튀는 리스트가 없어 음식과 매칭이 더 좋았고, 향부터 식욕을 이끄는 디쉬들이 아름답고 정돈되어 있어서 더더욱 각기 매력을 즐기기 좋았던 것 같습니다. 와인 좋아하는 친구와 또 한 번 가고싶어요!",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-9",
+          "review_text": "안녕하세요 사장님 진짜 숨겨진 보석을 발견한 기분입니다 바라고 했는데 완성도 높은 디쉬에 깜짝 놀랐습니다 진짜 이 가격에 이 구성이 나온다는 것에 깜짝 놀랐습니다 맛있었던 파스타 농어구이 양고기까지 진짜 한끗차이로 맛있네요 맛있다는 딱 한끗 차이로 되는데 페어링부터 섬세한 디쉬에 감동했습니다 간이 세지 않고 적절하고 밸런스가 좋습니다 아는 사람 소개로 몇몇만 오는 매장 같습니다 개인적으로 완성도 높은 매장이라 저는 재방문 의사 있습니다!!",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-5",
+          "review_text": "친구랑 저번부터 와인바 가자고 말만 하다가 큰맘 먹고 예약해서 다녀왔는데, 둘 다 정말 만족했어요. 전문 소믈리에가 음식에 맞춰 샴페인과 와인을 하나하나 페어링해 주시고, 각각의 와인에 대한 설명까지 곁들여 주셔서 음식의 맛과 완성도가 한층 더 깊게 느껴졌습니다. 재료 하나하나 신선함이 그대로 전해졌고, 마지막 디저트까지 완벽했던 곳. 특별한 날은 물론, 좋은 사람과 여유롭게 식사하고 싶은 날 다시 찾고 싶은 와인바였어요.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "모든 코스요리가 완벽했습니다. 스타트부터 너무 제스타일이었고 메인으로 나온 양고기는 다른 곳에서 경험해 보지 못한 튀김 듯이 구워서 맛있었던거 같애요. 그리고 고기 퀄리티가 너무 좋아서 양고기 냄새가 전혀 안났어요. 와인 페어링 코스와 함께 즐겼는데 후회없는 선택이었습니다. 처음에 먹었던 샴페인부터 너무 맛있었습니다. 다음에 또 방문할 예정입니다.",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:31.245020",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:31.244875",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-24 12:26:31.245119",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": false,
+    "lifecyclePresent": true,
+    "missingSections": []
+  },
+  "inputHash": "bc954823d4e5a84683b4d6b9af819bc5e2d04ddd6ae1277c1d198ffc7c64fcb9",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "49ca7d782a96340b8453cd537d89f520dc03200b454bc6ff345600a11fde06bc"
+  }
+}

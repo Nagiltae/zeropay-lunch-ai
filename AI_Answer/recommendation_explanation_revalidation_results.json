@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-25",
+  "model": "qwen3.5:9b",
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "callLimit": 3,
+  "qwenCallAttempts": 3,
+  "retryCount": 0,
+  "scope": {"restaurantIds": [9617], "mysqlWrites": 0, "qdrantWrites": 0},
+  "previousPilot": {"qwenCalls": 3, "grounded": 0, "unsupported": 3},
+  "revalidation": {
+    "finalOutputsGrounded": 1,
+    "partial": 2,
+    "unsupported": 0,
+    "llmAccepted": 2,
+    "deterministicFallback": 1,
+    "restaurantIdErrors": 0,
+    "evidenceIdErrors": 0,
+    "unsupportedDeterministicAssertionsInReturnedOutput": 0,
+    "rankingOrOrderChanges": 0,
+    "runtimeApproval": "NO-GO; keep AI_SEMANTIC_RUNTIME_ENABLED=false"
+  },
+  "results": [
+    {
+      "query": "떡볶이 먹고 싶어",
+      "finalRestaurantIds": [9617],
+      "safeFacts": [
+        {"factType": "FOOD", "fact": "떡볶이 메뉴가 확인됨", "evidenceIds": ["E003", "E011"]}
+      ],
+      "returnedExplanation": "떡볶이 메뉴가 확인되어 추천했어요.",
+      "source": "DETERMINISTIC_FALLBACK",
+      "qwenCallAttempted": true,
+      "flowLatencySeconds": 8.313,
+      "assessment": "GROUNDED",
+      "fallbackDiagnostic": "The API returned deterministic fallback. The generation/validation failure subtype is not exposed; no more specific cause is inferred."
+    },
+    {
+      "query": "혼밥하면서 떡볶이 먹고 싶어",
+      "intent": {"foodTerms": ["떡볶이"], "diningContexts": ["SOLO_DINING"]},
+      "finalRestaurantIds": [9617],
+      "primaryRetrievalClaimTypes": ["FOOD_TYPE"],
+      "supplementalLookup": {"scopeRestaurantIds": [9617], "requestedClaimTypes": ["FOOD_TYPE", "FOOD_MENTION", "MENU_CHARACTERISTIC", "DINING_CONTEXT"]},
+      "safeFacts": [
+        {"factType": "FOOD", "fact": "떡볶이 메뉴가 확인됨", "evidenceIds": ["E003", "E011"]},
+        {"factType": "DINING_CONTEXT", "fact": "혼밥하기 좋다는 고객 평가가 확인됨", "evidenceIds": ["E023", "E058"]}
+      ],
+      "returnedExplanation": "떡볶이 메뉴가 확인된 식당에서 혼밥하기 좋다는 고객 평가가 확인됨",
+      "source": "LLM",
+      "qwenCallAttempted": true,
+      "flowLatencySeconds": 5.531,
+      "assessment": "PARTIAL",
+      "assessmentReason": "Both facts and citations are supported, but the result is awkward/incomplete prose rather than the desired concise recommendation sentence."
+    },
+    {
+      "query": "가성비 좋은 곳",
+      "intent": {"primaryIntent": "TASTE", "tasteTraits": ["GOOD_VALUE"]},
+      "finalRestaurantIds": [9617],
+      "safeFacts": [
+        {"factType": "TASTE", "fact": "가성비가 좋다는 고객 평가가 확인됨", "evidenceIds": ["E024", "E027"]}
+      ],
+      "returnedExplanation": "가성비가 좋다는 고객 평가가 확인됨",
+      "source": "LLM",
+      "qwenCallAttempted": true,
+      "flowLatencySeconds": 3.868,
+      "assessment": "PARTIAL",
+      "assessmentReason": "The claim and citation are grounded, but the output is a sentence fragment and does not satisfy the expected natural recommendation phrasing."
+    }
+  ],
+  "implementation": {
+    "safeFactConversion": true,
+    "secondaryIntentEvidenceLookup": "One Qdrant query scoped to final Restaurant IDs and query-implied Claim Types; does not change ranking.",
+    "llmReceives": ["query", "opaque restaurantId", "SafeFact(factType,fact,evidenceIds)"],
+    "llmDoesNotReceive": ["restaurant name", "raw claim text", "ZeroPay", "budget", "operating facts", "scores", "hashes"],
+    "validator": ["schema", "ID/order", "Evidence subset", "length", "unsupported operational phrases", "semantic markers absent from Safe Facts"],
+    "featureFlagDefault": false
+  },
+  "postPilotContractCorrection": {
+    "responseIncludesAvailableEvidenceIds": true,
+    "springValidatesUsedEvidenceIdsAgainstAvailableEvidenceIds": true,
+    "reason": "Spring's original retrieval payload does not include secondary-intent evidence; scoped FastAPI Safe Fact Evidence IDs must be declared for Spring to validate the citation subset.",
+    "additionalQwenCalls": 0
+  },
+  "testResults": {"targetedAi": "41 passed", "aiHarness": "225 passed, 1 skipped", "backendHarness": "BUILD SUCCESSFUL", "diffCheck": "PASS"}
+}

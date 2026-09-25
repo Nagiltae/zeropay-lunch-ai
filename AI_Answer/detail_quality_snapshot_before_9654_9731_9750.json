@@ -1,0 +1,37 @@
+{
+  "targets": [
+    {
+      "restaurantId": 9654,
+      "name": "지리산",
+      "numericPlaceId": "1696442585",
+      "activeMenuRows": 0,
+      "businessHourRows": 1,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 1,
+      "representativeReviewRows": 1,
+      "sectionLifecycleRows": []
+    },
+    {
+      "restaurantId": 9731,
+      "name": "카메스시",
+      "numericPlaceId": "1271618346",
+      "activeMenuRows": 0,
+      "businessHourRows": 1,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 39,
+      "representativeReviewRows": 10,
+      "sectionLifecycleRows": []
+    },
+    {
+      "restaurantId": 9750,
+      "name": "종로떡폐백",
+      "numericPlaceId": "13511111",
+      "activeMenuRows": 0,
+      "businessHourRows": 1,
+      "reviewSummaryRows": 1,
+      "reviewKeywordRows": 10,
+      "representativeReviewRows": 10,
+      "sectionLifecycleRows": []
+    }
+  ]
+}

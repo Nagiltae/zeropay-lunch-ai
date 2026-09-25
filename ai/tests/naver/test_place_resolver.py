@@ -1,5 +1,7 @@
 """PCMap 후보 정규화·주소 evidence·Qwen semantic parsing을 fixture로 검증한다."""
 
+import pytest
+
 from app.entity_resolution.qwen_candidate_matcher import (
     QwenCandidateMatcher,
     QwenDecision,
@@ -916,7 +918,7 @@ def test_db_apply_uses_only_resolved_numeric_place_ids(tmp_path, monkeypatch) ->
     assert calls == [(1, "12345")]
 
 
-def test_place_mapping_insert_and_update_are_idempotent_sql_paths(monkeypatch) -> None:
+def test_place_mapping_insert_is_idempotent_and_does_not_update_existing_rows(monkeypatch) -> None:
     commands = []
 
     class Completed:
@@ -934,13 +936,36 @@ def test_place_mapping_insert_and_update_are_idempotent_sql_paths(monkeypatch) -
     assert "external_place_id" in insert_sql
 
     def existing_rows(_root, sql):
-        if "external_place_id" in sql:
+        if "external_place_id='12345'" in sql:
             return [{"restaurant_id": 1}]
-        return [{"id": 7}]
+        return [{"external_place_id": "12345"}]
 
     monkeypatch.setattr(cli, "_mysql_rows", existing_rows)
     assert cli._write_place_mapping(cli.Path("."), 1, "12345") is True
-    assert "UPDATE restaurant_external_places SET" in commands[-1][-1]
+    assert len(commands) == 1
+
+
+def test_place_mapping_rejects_replacing_an_existing_restaurant_place_id(monkeypatch) -> None:
+    def rows(_root, sql):
+        if "external_place_id='12345'" in sql:
+            return []
+        return [{"external_place_id": "old-id"}]
+
+    monkeypatch.setattr(cli, "_mysql_rows", rows)
+    with pytest.raises(RuntimeError, match="already owns"):
+        cli._write_place_mapping(cli.Path("."), 1, "12345")
+
+
+def test_existing_restaurant_place_id_uses_structured_mysql_row(monkeypatch) -> None:
+    queries = []
+
+    def rows(_root, sql):
+        queries.append(sql)
+        return [{"external_place_id": "12345"}]
+
+    monkeypatch.setattr(cli, "_mysql_rows", rows)
+    assert cli._existing_restaurant_place_id(cli.Path("."), 1) == "12345"
+    assert "JSON_OBJECT('external_place_id', external_place_id)" in queries[0]
 
 
 def test_place_mapping_rejects_place_id_owned_by_another_restaurant(monkeypatch) -> None:
