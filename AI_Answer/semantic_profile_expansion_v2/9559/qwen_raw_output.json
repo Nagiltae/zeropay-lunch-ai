@@ -1,0 +1,49 @@
+{
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "FOOD_TYPE",
+      "text": "The restaurant specializes in Korean beef (Hanwoo) dishes.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E042"
+      ]
+    },
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features signature sets including special cuts and business-style assortments.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E035",
+        "E044"
+      ]
+    },
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently praise the rich juiciness and tenderness of the meat.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E032",
+        "E056"
+      ]
+    },
+    {
+      "claimType": "DINING_CONTEXT",
+      "text": "The venue is suitable for business meetings, family gatherings, and corporate receptions.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E036",
+        "E041"
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "The interior is described as stylish and the atmosphere is comfortable.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E039",
+        "E059"
+      ]
+    }
+  ]
+}

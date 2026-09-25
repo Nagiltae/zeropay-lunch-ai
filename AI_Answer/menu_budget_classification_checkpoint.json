@@ -1,0 +1,521 @@
+{
+  "policyVersion": "menu-budget-role-v1",
+  "model": "qwen3.5:9b",
+  "calls": 5,
+  "restaurants": {
+    "9617": {
+      "restaurantId": 9617,
+      "menuCount": 24,
+      "pricedMenuCount": 24,
+      "menuIds": [
+        8727,
+        8728,
+        8729,
+        8730,
+        8731,
+        8732,
+        8733,
+        8734,
+        8735,
+        8736,
+        8737,
+        8738,
+        8739,
+        8740,
+        8741,
+        8742,
+        8743,
+        8744,
+        8745,
+        8746,
+        8747,
+        8748,
+        8749,
+        8750
+      ],
+      "inputBytes": 2752,
+      "inputHash": "ac8a694af9778c11f9b5181e1f13bc5371c5d60d69591f75adaa118c13180d6f",
+      "status": "SUCCESS",
+      "qwenCalls": 1,
+      "latencySeconds": 48.579,
+      "rawOutput": "{\"classifications\": [{\"menuId\": 8727, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Kimbap is a standard single-person meal.\"}, {\"menuId\": 8728, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Cheese Kimbap is a standard single-person meal.\"}, {\"menuId\": 8729, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Toast is a standard single-person meal.\"}, {\"menuId\": 8730, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Ham Cheese Toast is a standard single-person meal.\"}, {\"menuId\": 8731, \"budgetRole\": \"MULTI_PERSON\", \"reason\": \"Name explicitly states '1.5 person' and description lists multiple components (Tteokbokki + Sundae + Fish cakes + Fries).\"}, {\"menuId\": 8732, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Combination of Tteokbokki and Sundae constitutes a single meal portion.\"}, {\"menuId\": 8733, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Combination of Tteokbokki and Fish cake constitutes a single meal portion.\"}, {\"menuId\": 8734, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Combination of Tteokbokki and Fried items constitutes a single meal portion.\"}, {\"menuId\": 8735, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Tteokbokki is a standard single-person meal.\"}, {\"menuId\": 8736, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Cheese Tteokbokki is a standard single-person meal.\"}, {\"menuId\": 8737, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Sundae (stuffed sausage) is a standard single-person meal.\"}, {\"menuId\": 8738, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Description explicitly states '1 person portion'.\"}, {\"menuId\": 8739, \"budgetRole\": \"SIDE\", \"reason\": \"Spicy fish cake is typically a side dish or snack rather than a full main meal.\"}, {\"menuId\": 8740, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Kimbap is a standard single-person meal.\"}, {\"menuId\": 8741, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Tuna Kimbap is a standard single-person meal.\"}, {\"menuId\": 8742, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Cheese Kimbap is a standard single-person meal.\"}, {\"menuId\": 8743, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Chicken covered rice bowl is a standard single-person meal.\"}, {\"menuId\": 8744, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Spam Kimchi Tuna covered rice bowl is a standard single-person meal.\"}, {\"menuId\": 8745, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Toast is a standard single-person meal.\"}, {\"menuId\": 8746, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Ham Cheese Toast is a standard single-person meal.\"}, {\"menuId\": 8747, \"budgetRole\": \"DRINK\", \"reason\": \"Cola is a beverage.\"}, {\"menuId\": 8748, \"budgetRole\": \"DRINK\", \"reason\": \"Soda is a beverage.\"}, {\"menuId\": 8749, \"budgetRole\": \"DRINK\", \"reason\": \"Americano is a beverage.\"}, {\"menuId\": 8750, \"budgetRole\": \"DRINK\", \"reason\": \"Ice Americano is a beverage.\"}]}",
+      "classifications": [
+        {
+          "menuId": 8727,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Kimbap is a standard single-person meal."
+        },
+        {
+          "menuId": 8728,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Cheese Kimbap is a standard single-person meal."
+        },
+        {
+          "menuId": 8729,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Toast is a standard single-person meal."
+        },
+        {
+          "menuId": 8730,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Ham Cheese Toast is a standard single-person meal."
+        },
+        {
+          "menuId": 8731,
+          "budgetRole": "MULTI_PERSON",
+          "reason": "Name explicitly states '1.5 person' and description lists multiple components (Tteokbokki + Sundae + Fish cakes + Fries)."
+        },
+        {
+          "menuId": 8732,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Combination of Tteokbokki and Sundae constitutes a single meal portion."
+        },
+        {
+          "menuId": 8733,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Combination of Tteokbokki and Fish cake constitutes a single meal portion."
+        },
+        {
+          "menuId": 8734,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Combination of Tteokbokki and Fried items constitutes a single meal portion."
+        },
+        {
+          "menuId": 8735,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Tteokbokki is a standard single-person meal."
+        },
+        {
+          "menuId": 8736,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Cheese Tteokbokki is a standard single-person meal."
+        },
+        {
+          "menuId": 8737,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Sundae (stuffed sausage) is a standard single-person meal."
+        },
+        {
+          "menuId": 8738,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Description explicitly states '1 person portion'."
+        },
+        {
+          "menuId": 8739,
+          "budgetRole": "SIDE",
+          "reason": "Spicy fish cake is typically a side dish or snack rather than a full main meal."
+        },
+        {
+          "menuId": 8740,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Kimbap is a standard single-person meal."
+        },
+        {
+          "menuId": 8741,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Tuna Kimbap is a standard single-person meal."
+        },
+        {
+          "menuId": 8742,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Cheese Kimbap is a standard single-person meal."
+        },
+        {
+          "menuId": 8743,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Chicken covered rice bowl is a standard single-person meal."
+        },
+        {
+          "menuId": 8744,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Spam Kimchi Tuna covered rice bowl is a standard single-person meal."
+        },
+        {
+          "menuId": 8745,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Toast is a standard single-person meal."
+        },
+        {
+          "menuId": 8746,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Ham Cheese Toast is a standard single-person meal."
+        },
+        {
+          "menuId": 8747,
+          "budgetRole": "DRINK",
+          "reason": "Cola is a beverage."
+        },
+        {
+          "menuId": 8748,
+          "budgetRole": "DRINK",
+          "reason": "Soda is a beverage."
+        },
+        {
+          "menuId": 8749,
+          "budgetRole": "DRINK",
+          "reason": "Americano is a beverage."
+        },
+        {
+          "menuId": 8750,
+          "budgetRole": "DRINK",
+          "reason": "Ice Americano is a beverage."
+        }
+      ]
+    },
+    "9571": {
+      "restaurantId": 9571,
+      "menuCount": 42,
+      "pricedMenuCount": 42,
+      "menuIds": [
+        2753,
+        2754,
+        2755,
+        2756,
+        2757,
+        2758,
+        2759,
+        2760,
+        2761,
+        2762,
+        2763,
+        2764,
+        2765,
+        2766,
+        2767,
+        2768,
+        2769,
+        2770,
+        2771,
+        2772,
+        2773,
+        2774,
+        2775,
+        2776,
+        2777,
+        2778,
+        2779,
+        2780,
+        2781,
+        2782,
+        2783,
+        2784,
+        2785,
+        2786,
+        2787,
+        2788,
+        2789,
+        2790,
+        2791,
+        2792,
+        2793,
+        2794
+      ],
+      "inputBytes": 7062,
+      "inputHash": "bc4c9b6b5734f41859cd67aec0ce15266bcb490bb24635320c210d3b3bd99d68",
+      "status": "FAILED",
+      "qwenCalls": 1,
+      "error": "LlmUnavailable: timed out"
+    },
+    "9568": {
+      "restaurantId": 9568,
+      "menuCount": 22,
+      "pricedMenuCount": 22,
+      "menuIds": [
+        2686,
+        2687,
+        2688,
+        2689,
+        2690,
+        2691,
+        2692,
+        2693,
+        2694,
+        2695,
+        2696,
+        2697,
+        2698,
+        2699,
+        2700,
+        2701,
+        2702,
+        2703,
+        2704,
+        2705,
+        2706,
+        2707
+      ],
+      "inputBytes": 2189,
+      "inputHash": "5d410aefa8729ab6f35f0ab54c5b23c5ced47cd4fcafa9fe8b6b9592c01ca8b6",
+      "status": "FAILED",
+      "qwenCalls": 1,
+      "error": "LlmUnavailable: timed out"
+    },
+    "10042": {
+      "restaurantId": 10042,
+      "menuCount": 72,
+      "pricedMenuCount": 72,
+      "menuIds": [
+        8328,
+        8329,
+        8330,
+        8331,
+        8332,
+        8333,
+        8334,
+        8335,
+        8336,
+        8337,
+        8338,
+        8339,
+        8340,
+        8341,
+        8342,
+        8343,
+        8344,
+        8345,
+        8346,
+        8347,
+        8348,
+        8349,
+        8350,
+        8351,
+        8352,
+        8353,
+        8354,
+        8355,
+        8356,
+        8357,
+        8358,
+        8359,
+        8360,
+        8361,
+        8362,
+        8363,
+        8364,
+        8365,
+        8366,
+        8367,
+        8368,
+        8369,
+        8370,
+        8371,
+        8372,
+        8373,
+        8374,
+        8375,
+        8376,
+        8377,
+        8378,
+        8379,
+        8380,
+        8381,
+        8382,
+        8383,
+        8384,
+        8385,
+        8386,
+        8387,
+        8388,
+        8389,
+        8390,
+        8391,
+        8392,
+        8393,
+        8394,
+        8395,
+        8396,
+        8397,
+        8398,
+        8399
+      ],
+      "inputBytes": 8022,
+      "inputHash": "11599249134e425492e2292b5bd6434edc0ebb83c4fb85bdcfb36e49d5c61e40",
+      "status": "FAILED",
+      "qwenCalls": 1,
+      "error": "LlmUnavailable: timed out"
+    },
+    "9559": {
+      "restaurantId": 9559,
+      "menuCount": 28,
+      "pricedMenuCount": 28,
+      "menuIds": [
+        2718,
+        2719,
+        2720,
+        2721,
+        2722,
+        2723,
+        2724,
+        2725,
+        2726,
+        2727,
+        2728,
+        2729,
+        2730,
+        2731,
+        2732,
+        2733,
+        2734,
+        2735,
+        2736,
+        2737,
+        2738,
+        2739,
+        2740,
+        2741,
+        2742,
+        2743,
+        2744,
+        2745
+      ],
+      "inputBytes": 5093,
+      "inputHash": "2901a2933b47e024032f21e8d60215069bce259d4251fe9724e559cba1db8b30",
+      "status": "SUCCESS",
+      "qwenCalls": 1,
+      "latencySeconds": 50.365,
+      "rawOutput": "{\"classifications\": [{\"menuId\": 2718, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Single steak portion (100g+), price fits lunch budget.\"}, {\"menuId\": 2719, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Single steak portion (100g+), price fits lunch budget.\"}, {\"menuId\": 2720, \"budgetRole\": \"MULTI_PERSON\", \"reason\": \"Description explicitly states '3~4 servings'.\"}, {\"menuId\": 2721, \"budgetRole\": \"MULTI_PERSON\", \"reason\": \"Description explicitly states '2~3 servings'.\"}, {\"menuId\": 2722, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Single steak portion (500~800g), price fits lunch budget.\"}, {\"menuId\": 2723, \"budgetRole\": \"MULTI_PERSON\", \"reason\": \"Description explicitly states '4 servings'.\"}, {\"menuId\": 2724, \"budgetRole\": \"MULTI_PERSON\", \"reason\": \"Description explicitly states '2 servings'.\"}, {\"menuId\": 2725, \"budgetRole\": \"MEAL_CANDIDATE\", \"reason\": \"Sashimi portion, price fits lunch budget.\"}, {\"menuId\": 2726, \"budgetRole\": \"SIDE\", \"reason\": \"Side dish (mukim), not a main meal portion.\"}, {\"menuId\": 2727, \"budgetRole\": \"DRINK\", \"reason\": \"Alcoholic beverage (soju).\"}, {\"menuId\": 2728, \"budgetRole\": \"DRINK\", \"reason\": \"Alcoholic beverage (soju).\"}, {\"menuId\": 2729, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Premium soju bottle.\"}, {\"menuId\": 2730, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Soju bottle.\"}, {\"menuId\": 2731, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Soju bottle.\"}, {\"menuId\": 2732, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Soju bottle.\"}, {\"menuId\": 2733, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Champagne bottle.\"}, {\"menuId\": 2734, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Champagne bottle.\"}, {\"menuId\": 2735, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Champagne bottle.\"}, {\"menuId\": 2736, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Champagne bottle.\"}, {\"menuId\": 2737, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2738, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2739, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2740, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2741, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2742, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2743, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2744, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}, {\"menuId\": 2745, \"budgetRole\": \"ALCOHOL\", \"reason\": \"Wine bottle.\"}]}",
+      "classifications": [
+        {
+          "menuId": 2718,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Single steak portion (100g+), price fits lunch budget."
+        },
+        {
+          "menuId": 2719,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Single steak portion (100g+), price fits lunch budget."
+        },
+        {
+          "menuId": 2720,
+          "budgetRole": "MULTI_PERSON",
+          "reason": "Description explicitly states '3~4 servings'."
+        },
+        {
+          "menuId": 2721,
+          "budgetRole": "MULTI_PERSON",
+          "reason": "Description explicitly states '2~3 servings'."
+        },
+        {
+          "menuId": 2722,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Single steak portion (500~800g), price fits lunch budget."
+        },
+        {
+          "menuId": 2723,
+          "budgetRole": "MULTI_PERSON",
+          "reason": "Description explicitly states '4 servings'."
+        },
+        {
+          "menuId": 2724,
+          "budgetRole": "MULTI_PERSON",
+          "reason": "Description explicitly states '2 servings'."
+        },
+        {
+          "menuId": 2725,
+          "budgetRole": "MEAL_CANDIDATE",
+          "reason": "Sashimi portion, price fits lunch budget."
+        },
+        {
+          "menuId": 2726,
+          "budgetRole": "SIDE",
+          "reason": "Side dish (mukim), not a main meal portion."
+        },
+        {
+          "menuId": 2727,
+          "budgetRole": "DRINK",
+          "reason": "Alcoholic beverage (soju)."
+        },
+        {
+          "menuId": 2728,
+          "budgetRole": "DRINK",
+          "reason": "Alcoholic beverage (soju)."
+        },
+        {
+          "menuId": 2729,
+          "budgetRole": "ALCOHOL",
+          "reason": "Premium soju bottle."
+        },
+        {
+          "menuId": 2730,
+          "budgetRole": "ALCOHOL",
+          "reason": "Soju bottle."
+        },
+        {
+          "menuId": 2731,
+          "budgetRole": "ALCOHOL",
+          "reason": "Soju bottle."
+        },
+        {
+          "menuId": 2732,
+          "budgetRole": "ALCOHOL",
+          "reason": "Soju bottle."
+        },
+        {
+          "menuId": 2733,
+          "budgetRole": "ALCOHOL",
+          "reason": "Champagne bottle."
+        },
+        {
+          "menuId": 2734,
+          "budgetRole": "ALCOHOL",
+          "reason": "Champagne bottle."
+        },
+        {
+          "menuId": 2735,
+          "budgetRole": "ALCOHOL",
+          "reason": "Champagne bottle."
+        },
+        {
+          "menuId": 2736,
+          "budgetRole": "ALCOHOL",
+          "reason": "Champagne bottle."
+        },
+        {
+          "menuId": 2737,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2738,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2739,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2740,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2741,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2742,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2743,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2744,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        },
+        {
+          "menuId": 2745,
+          "budgetRole": "ALCOHOL",
+          "reason": "Wine bottle."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "valid": false,
+  "errors": [
+    "evidence type not allowed: VENUE_CHARACTERISTIC/identity"
+  ],
+  "classifications": [
+    {
+      "claim": {
+        "claimType": "FOOD_TYPE",
+        "text": "The restaurant specializes in Juk (porridge) and Bibimbap dishes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E007",
+          "E013",
+          "E024",
+          "E046"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E007",
+          "sourceField": "sections.menu.items[4]",
+          "content": {
+            "name": "쇠고기듬뿍야채죽(소고기1.5배)",
+            "price": 16000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E013",
+          "sourceField": "sections.menu.items[10]",
+          "content": {
+            "name": "낙지김치비빔밥",
+            "price": 14000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E024",
+          "sourceField": "sections.menu.items[21]",
+          "content": {
+            "name": "전복죽 (보양)",
+            "price": 14500
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E046",
+          "sourceField": "sections.menu.items[43]",
+          "content": {
+            "name": "본메추리알장조림(400g)",
+            "price": 5900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu features seasonal and signature items such as Octopus Kimchi Juk and Beef Stew Bibimbap.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E004",
+          "E006",
+          "E024",
+          "E014"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E004",
+          "sourceField": "sections.menu.items[1]",
+          "content": {
+            "name": "[시즌한정] 열무칼비빔면",
+            "price": 12500
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E006",
+          "sourceField": "sections.menu.items[3]",
+          "content": {
+            "name": "[시그니처] 장조림버터비빔밥",
+            "price": 14000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E024",
+          "sourceField": "sections.menu.items[21]",
+          "content": {
+            "name": "전복죽 (보양)",
+            "price": 14500
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E014",
+          "sourceField": "sections.menu.items[11]",
+          "content": {
+            "name": "불고기낙지비빔밥 (불낙)",
+            "price": 15000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "TASTE",
+        "text": "Customers frequently describe the food as delicious and fresh.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E061",
+          "E064"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E061",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 209
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E064",
+          "sourceField": "sections.review.keywords[3]",
+          "content": {
+            "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 69
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "DINING_CONTEXT",
+        "text": "The venue is suitable for solo dining and offers a clean environment.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E063",
+          "E066"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E063",
+          "sourceField": "sections.review.keywords[2]",
+          "content": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 71
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E066",
+          "sourceField": "sections.review.keywords[5]",
+          "content": {
+            "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 45
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "VENUE_CHARACTERISTIC",
+        "text": "The restaurant is located in Nonhyeon-dong, Gangnam-gu, Seoul.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E002"
+        ]
+      },
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "evidence type not allowed: VENUE_CHARACTERISTIC/identity",
+        "evidence section is not SUCCESS"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E002",
+          "sourceField": "identity.restaurantAddress",
+          "content": "서울특별시 강남구 학동로4길 15(논현동)",
+          "section": "identity",
+          "status": null,
+          "evidenceType": "identity"
+        }
+      ]
+    }
+  ],
+  "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded"
+}

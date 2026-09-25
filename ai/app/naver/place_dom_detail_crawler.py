@@ -16,10 +16,10 @@ from app.naver.place_detail_models import (
 )
 from app.naver.place_dom_parser import _PRICE
 
-
 _HOUR_RANGE = re.compile(
     r"(?P<day>매일|평일|주말|월|화|수|목|금|토|일)"
-    r"[^\d]{0,80}(?P<open>\d{1,2}:\d{2})\s*[-~]\s*(?P<close>\d{1,2}:\d{2})"
+    r"(?:\([^)]*\))?\s+(?P<open>\d{1,2}:\d{2})\s*[-~]\s*"
+    r"(?:다음\s*날\s*)?(?P<close>\d{1,2}:\d{2})"
 )
 
 
@@ -109,11 +109,13 @@ class DomCollectedDetail:
             for index, item in enumerate(self.menus, 1)
             if item.get("name")
         )
-        # DOM 원문을 그대로 day에 넣으면 정상 시간도 open/close가 NULL로 저장된다.
-        # 시간 범위가 실제로 보일 때만 구조화하고, 상태 문구만 있는 경우에는
-        # 임의의 반복 영업시간을 추론하지 않도록 원문을 description으로 보존한다.
+        # 요일과 시간은 같은 명시적 토큰에서만 짝짓는다. 페이지 전체 텍스트에서
+        # 다음 요일의 시간까지 건너뛰어 연결하지 않으며, 파싱 불가 원문은 비구조화 상태로 보존한다.
         hours = tuple(
-            self._parse_business_hour(raw) for raw in self.business_hours if raw
+            hour
+            for raw in self.business_hours
+            if raw
+            for hour in self._parse_business_hours(raw)
         )
         keywords = tuple(
             ReviewKeyword(str(item.get("keyword") or ""), item.get("count"), "theme")
@@ -156,15 +158,18 @@ class DomCollectedDetail:
         )
 
     @staticmethod
-    def _parse_business_hour(raw: str) -> BusinessHour:
-        match = _HOUR_RANGE.search(raw)
-        if not match:
-            return BusinessHour(day=raw[:32], description=raw)
-        return BusinessHour(
-            day=match.group("day"),
-            open_time=match.group("open"),
-            close_time=match.group("close"),
-            description=raw,
+    def _parse_business_hours(raw: str) -> tuple[BusinessHour, ...]:
+        matches = tuple(_HOUR_RANGE.finditer(raw))
+        if not matches:
+            return (BusinessHour(day=raw[:32], description=raw),)
+        return tuple(
+            BusinessHour(
+                day=match.group("day"),
+                open_time=match.group("open"),
+                close_time=match.group("close"),
+                description=raw,
+            )
+            for match in matches
         )
 
 
@@ -284,7 +289,9 @@ class PlaceDomDetailCrawler:
         )
         try:
             hours = self._hours(page)
-            hours_collection_success = True
+            hours_collection_success = bool(hours)
+            if not hours:
+                warnings.append("HOURS_EMPTY_UNVERIFIED")
         except Exception as error:
             warnings.append(f"HOURS:{type(error).__name__}")
             hours = ()
@@ -292,7 +299,9 @@ class PlaceDomDetailCrawler:
         declared = self._declared_menu_count(body)
         if include_menu:
             try:
-                menus, menu_success = self._menus(page, place_id, before_navigation=before_navigation)
+                menus, menu_success = self._menus(
+                    page, place_id, before_navigation=before_navigation
+                )
             except RuntimeError as error:
                 if str(error).startswith("BLOCKED:"):
                     raise
@@ -315,7 +324,7 @@ class PlaceDomDetailCrawler:
                     "mentions": (),
                     "themes": (),
                     "representative": (),
-            }
+                }
         else:
             review = {
                 "success": True,

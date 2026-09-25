@@ -163,7 +163,8 @@ public class ChatPersistenceService {
             throw new IllegalStateException("추천 음식점 정보를 찾을 수 없습니다.");
         }
         return new RecommendationItem(
-                restaurant.getId(), restaurant.getName(), restaurant.getCategory().label(),
+                restaurant.getId(), restaurant.getName(),
+                restaurant.getCategory() == null ? null : restaurant.getCategory().label(),
                 restaurant.getRepresentativeMenu(), restaurant.getAveragePrice(),
                 restaurant.getAddress(),
                 restaurant.isZeroPayAvailable(), restaurant.isSampleData(), saved.getReason()

@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "outcomes": {
+    "9559": {
+      "restaurantId": 9559,
+      "inputHash": "dcf9ac4ec099c86b29a9923fcb906b127359e5e7ce20cad80abfef8c03b7f430",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "terminal": true,
+      "qwenCalls": 1,
+      "status": "FAILED_VALIDATION",
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant specializes in Korean beef (Hanwoo) dishes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E042"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features signature sets including special cuts and business-style assortments.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E035",
+                "E044"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently praise the rich juiciness and tenderness of the meat.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E032",
+                "E056"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for business meetings, family gatherings, and corporate receptions.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E036",
+                "E041"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The interior is described as stylish and the atmosphere is comfortable.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E039",
+                "E059"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": true
+      },
+      "claimCounts": {
+        "REJECTED": 2,
+        "AUTO_APPROVED": 3
+      },
+      "approvedClaimCount": 3,
+      "elapsedMs": 32451,
+      "profilePath": null
+    },
+    "9603": {
+      "restaurantId": 9603,
+      "inputHash": "0fbdd8ff2d335c1224824879b1b0670c2c29b8f49858dc50724625e23c2322b5",
+      "catalogHash": "4edf8d3b78c5a3375e15b8a15b86611f23cdb3923a14c8142f1570c0b72e33ab",
+      "terminal": true,
+      "qwenCalls": 1,
+      "status": "FAILED_VALIDATION",
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: VENUE_CHARACTERISTIC/identity"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant specializes in Juk (porridge) and Bibimbap dishes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E007",
+                "E013",
+                "E024",
+                "E046"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features seasonal and signature items such as Octopus Kimchi Juk and Beef Stew Bibimbap.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E004",
+                "E006",
+                "E024",
+                "E014"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Customers frequently describe the food as delicious and fresh.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E061",
+                "E064"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for solo dining and offers a clean environment.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E063",
+                "E066"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "The restaurant is located in Nonhyeon-dong, Gangnam-gu, Seoul.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E002"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": true
+      },
+      "claimCounts": {
+        "AUTO_APPROVED": 4,
+        "REVIEW_REQUIRED": 1
+      },
+      "approvedClaimCount": 4,
+      "elapsedMs": 35813,
+      "profilePath": null
+    },
+    "9639": {
+      "restaurantId": 9639,
+      "inputHash": "38d328ce3881ab93eab6f1c55d0d7fdbdb74e2d5eb88b15c7983bebd7e3641db",
+      "catalogHash": "70ac81bcceaac49eb84223b048870108fb9424a37db273bc48d5a54babf132f1",
+      "terminal": true,
+      "qwenCalls": 1,
+      "status": "FAILED_VALIDATION",
+      "validation": {
+        "valid": false,
+        "errors": [
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+          "evidence type not allowed: MENU_CHARACTERISTIC/keyword"
+        ],
+        "parsed": {
+          "profileStatus": "READY",
+          "claims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "text": "The restaurant offers a wide variety of sushi, sashimi, and grilled seafood dishes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E010",
+                "E032",
+                "E057"
+              ]
+            },
+            {
+              "claimType": "DINING_CONTEXT",
+              "text": "The venue is suitable for group gatherings and casual conversation due to its spacious layout.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E068",
+                "E070"
+              ]
+            },
+            {
+              "claimType": "VENUE_CHARACTERISTIC",
+              "text": "Customers frequently praise the cleanliness of the interior and the venue.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E073",
+                "E100"
+              ]
+            },
+            {
+              "claimType": "TASTE",
+              "text": "Reviews consistently highlight that the food is delicious and well-prepared.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E067",
+                "E093"
+              ]
+            },
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "text": "The menu features diverse appetizers including skewers, fried items, and various noodle dishes.",
+              "confidence": "HIGH",
+              "evidenceIds": [
+                "E077",
+                "E081",
+                "E089"
+              ]
+            }
+          ]
+        },
+        "strictProfileReady": true
+      },
+      "claimCounts": {
+        "AUTO_APPROVED": 4,
+        "REJECTED": 1
+      },
+      "approvedClaimCount": 4,
+      "elapsedMs": 35460,
+      "profilePath": null
+    }
+  },
+  "updatedAt": "2026-09-25T10:26:19.399062+00:00",
+  "qualityStop": true,
+  "pendingRestaurantIds": [
+    9659,
+    9715,
+    9759,
+    9791,
+    9801,
+    9826,
+    9839,
+    9853,
+    9865,
+    9904,
+    9954,
+    9973,
+    9996,
+    10021,
+    10042,
+    10053
+  ]
+}

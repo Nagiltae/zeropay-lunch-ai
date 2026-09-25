@@ -103,4 +103,20 @@ describe('MessageList recommendations', () => {
     expect(screen.getByText('조건에 맞는 음식점을 찾지 못했어요.')).toBeTruthy()
     expect(screen.queryByLabelText('추천 음식점')).toBeNull()
   })
+
+  it('renders source menu examples without presenting them as representative menus or prices', () => {
+    render(<MessageList messages={[{
+      id: 'assistant', role: 'assistant', text: '추천 결과예요.', status: 'complete',
+      recommendations: [{
+        restaurantId: 77, name: '검증 식당', category: null, representativeMenu: null,
+        averagePrice: null, address: '논현동', zeroPayAvailable: true, sampleData: false,
+        menuExamples: [{ name: '짜장면', price: 9000 }], reason: '요청과 맞아요.',
+      }],
+    }]} progress={null} onPromptSelect={vi.fn()} onRetry={vi.fn()} />)
+
+    expect(screen.getByText('메뉴 예시')).toBeTruthy()
+    expect(screen.getByText('짜장면 · 9,000원')).toBeTruthy()
+    expect(screen.queryByText('대표 메뉴')).toBeNull()
+    expect(screen.queryByText('예상 가격')).toBeNull()
+  })
 })

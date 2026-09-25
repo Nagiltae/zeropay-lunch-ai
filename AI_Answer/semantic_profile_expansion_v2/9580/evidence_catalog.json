@@ -1,0 +1,940 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "ad16423d13e8d4bbb06e5f01e345e2bd63fe90c375e6ac820de0ef5bd99630a6",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "빨간모자피자",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 학동로6길 30 1층",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "원조 고구마 피자(R)",
+        "price": 21900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "슈퍼 콤비네이션 피자(R)",
+        "price": 20900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "마르게리따 피자(R)",
+        "price": 21900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "콰트로리치(R)",
+        "price": 27900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "4LUV 피자(R)",
+        "price": 27900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "슬림세트 R",
+        "price": 19200
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "슬림세트 L",
+        "price": 24300
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "세트메뉴 R",
+        "price": 32900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "세트메뉴 L",
+        "price": 36900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "로만 골드 세트메뉴(L)",
+        "price": 41800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "어니언치즈베이컨 R",
+        "price": 19900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "어니언치즈베이컨 L",
+        "price": 24900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "파마산 불꽃피자(R)",
+        "price": 24900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "파마산 불꽃피자(L)",
+        "price": 29900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "리코타 바질비프(R)",
+        "price": 27900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "리코타 씨푸드 피자(L)",
+        "price": 32900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "리코타 씨푸드 피자(R)",
+        "price": 27900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "마르게리따 피자(L)",
+        "price": 26900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "디아볼라 피자(L)",
+        "price": 26900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "로만트리플(L)",
+        "price": 29900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "로만 비프 피자(로만 도우 L)",
+        "price": 33900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "로만 씨푸드 피자(로만 도우 L)",
+        "price": 33900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "로만 골드 피자(로만 도우 L)",
+        "price": 31900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "로만 콤비 피자(로만 도우 L)",
+        "price": 29900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "하프 & 하프 피자(이탈리안 도우 L)",
+        "price": 20900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "하프 & 하프 피자(씬 도우 L)",
+        "price": 20900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "하프 & 하프 피자(치즈 인 엣지 L)",
+        "price": 25900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "하프 & 하프 피자(더블 씬 치즈 L)",
+        "price": 25900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.menu.items[28]",
+      "content": {
+        "name": "하프 & 하프 피자(갈릭브레드엣지 L)",
+        "price": 22900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.menu.items[29]",
+      "content": {
+        "name": "치즈매니아를 위한 1인용 치즈피자p",
+        "price": 7900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.menu.items[30]",
+      "content": {
+        "name": "페페로니피자p",
+        "price": 8900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.menu.items[31]",
+      "content": {
+        "name": "포테이토피자p",
+        "price": 9800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.menu.items[32]",
+      "content": {
+        "name": "콤비피자p",
+        "price": 9800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.menu.items[33]",
+      "content": {
+        "name": "고르곤졸라p",
+        "price": 10800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.menu.items[34]",
+      "content": {
+        "name": "로제파스타",
+        "price": 9900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.menu.items[35]",
+      "content": {
+        "name": "크림 스파게티",
+        "price": 9900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.menu.items[36]",
+      "content": {
+        "name": "씨푸드 스파게티",
+        "price": 9900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.menu.items[37]",
+      "content": {
+        "name": "리코타 미트볼 스파게티",
+        "price": 9900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.menu.items[38]",
+      "content": {
+        "name": "치즈 볼로네제 스파게티",
+        "price": 8900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.menu.items[39]",
+      "content": {
+        "name": "치킨샘플러(9조각)",
+        "price": 8900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.menu.items[40]",
+      "content": {
+        "name": "치킨텐더(6조각)",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.menu.items[41]",
+      "content": {
+        "name": "치킨캡(6조각)",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.menu.items[42]",
+      "content": {
+        "name": "치킨캡(10조각)",
+        "price": 8900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.menu.items[43]",
+      "content": {
+        "name": "스파이시윙(6조각)",
+        "price": 6900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.menu.items[44]",
+      "content": {
+        "name": "고구마치즈볼(6조각)",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.menu.items[45]",
+      "content": {
+        "name": "국물떡볶이",
+        "price": 3900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.menu.items[46]",
+      "content": {
+        "name": "갈릭스틱",
+        "price": 6900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.menu.items[47]",
+      "content": {
+        "name": "양념반달감자",
+        "price": 3900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.menu.items[48]",
+      "content": {
+        "name": "수제 코울슬로",
+        "price": 2100
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.menu.items[49]",
+      "content": {
+        "name": "코카콜라(1.25L)",
+        "price": 2300
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.menu.items[50]",
+      "content": {
+        "name": "코카콜라(500ml)",
+        "price": 1700
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.menu.items[51]",
+      "content": {
+        "name": "코카콜라 제로(1.25L)",
+        "price": 2300
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.menu.items[52]",
+      "content": {
+        "name": "스프라이트(1.5L)",
+        "price": 2300
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.menu.items[53]",
+      "content": {
+        "name": "스프라이트(500ml)",
+        "price": 1700
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 32
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 9
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "피자",
+        "mentionCount": 10
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "고구마피자",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "치즈",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "콤비네이션피자",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 16
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 9
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-1",
+        "text": "치즈스파게티 사장님께 소스 넉넉히해달라고 요청드렷는데 맛나게해주셔서 친구가 아주 맛나다고 담엔 스파게티 두개시키자고했어요ㅎㅎ 전화로 주문했는데 사장님도 엄청 친절하세요 얼마전 기프티콘으루 배달시켜먹은 피자헛보다 맛나다고 친구가 대만족해서...저도그렇구ㅎㅎ또 시키려구용 사장님 요청들어주시고 친절히 응대해주셔서 감사합니다^^"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-4",
+        "text": "바로 교회앞에 있어서 자주 주문해서 먹어모 맛나요"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E076",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "토",
+        "open_time": "11:00",
+        "close_time": "02:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토 11:00 - 다음 날 02:00 일 11:00 - 다음 날 02:00 월 11:00 - 다음 날 02:00 화 11:00 - 다음 날 02:00 수 11:00 - 다음 날 02:00 목 11:00 - 다음 날 02:00 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.019559"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E077",
+      "sourceField": "sections.businessHours.items[1]",
+      "content": {
+        "day_of_week": "일",
+        "open_time": "11:00",
+        "close_time": "02:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토 11:00 - 다음 날 02:00 일 11:00 - 다음 날 02:00 월 11:00 - 다음 날 02:00 화 11:00 - 다음 날 02:00 수 11:00 - 다음 날 02:00 목 11:00 - 다음 날 02:00 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.019632"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E078",
+      "sourceField": "sections.businessHours.items[2]",
+      "content": {
+        "day_of_week": "월",
+        "open_time": "11:00",
+        "close_time": "02:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토 11:00 - 다음 날 02:00 일 11:00 - 다음 날 02:00 월 11:00 - 다음 날 02:00 화 11:00 - 다음 날 02:00 수 11:00 - 다음 날 02:00 목 11:00 - 다음 날 02:00 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.019687"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E079",
+      "sourceField": "sections.businessHours.items[3]",
+      "content": {
+        "day_of_week": "화",
+        "open_time": "11:00",
+        "close_time": "02:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토 11:00 - 다음 날 02:00 일 11:00 - 다음 날 02:00 월 11:00 - 다음 날 02:00 화 11:00 - 다음 날 02:00 수 11:00 - 다음 날 02:00 목 11:00 - 다음 날 02:00 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.019738"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E080",
+      "sourceField": "sections.businessHours.items[4]",
+      "content": {
+        "day_of_week": "수",
+        "open_time": "11:00",
+        "close_time": "02:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토 11:00 - 다음 날 02:00 일 11:00 - 다음 날 02:00 월 11:00 - 다음 날 02:00 화 11:00 - 다음 날 02:00 수 11:00 - 다음 날 02:00 목 11:00 - 다음 날 02:00 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.019790"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E081",
+      "sourceField": "sections.businessHours.items[5]",
+      "content": {
+        "day_of_week": "목",
+        "open_time": "11:00",
+        "close_time": "02:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토 11:00 - 다음 날 02:00 일 11:00 - 다음 날 02:00 월 11:00 - 다음 날 02:00 화 11:00 - 다음 날 02:00 수 11:00 - 다음 날 02:00 목 11:00 - 다음 날 02:00 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.019840"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "9c6b9ab70612abdeb1fc6424f0ad6d8e1d827b1bf63314b65afa79b9aadb01b9"
+}

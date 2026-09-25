@@ -1,0 +1,29 @@
+{
+  "createdAt": "2026-09-25T09:00:12.477370+00:00",
+  "strictReadyBefore": 5,
+  "restaurantIds": [
+    9568,
+    9571,
+    9574,
+    9590,
+    9617
+  ],
+  "summary": {
+    "population": 360,
+    "strictReady": 5,
+    "strictReadyRestaurantIds": [
+      9568,
+      9571,
+      9574,
+      9590,
+      9617
+    ],
+    "notReadyReasonCounts": {
+      "NO_BUSINESS_HOURS_SUCCESS": 345,
+      "NO_MENU_SUCCESS": 348,
+      "NO_PRICED_MENU": 40,
+      "NO_REVIEW_SUCCESS": 345,
+      "NO_STRUCTURED_HOURS": 353
+    }
+  }
+}

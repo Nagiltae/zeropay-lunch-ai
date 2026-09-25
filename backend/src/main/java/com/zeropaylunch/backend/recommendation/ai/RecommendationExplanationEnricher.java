@@ -48,7 +48,8 @@ public final class RecommendationExplanationEnricher {
                         .map(claim -> new SemanticAiClient.ExplanationClaim(
                                 claim.claimType(), claim.claimText(), claim.matchType(), claim.evidenceIds()))
                         .toList();
-        Boolean budgetMatched = budget == null ? null : item.averagePrice() <= budget;
+        Boolean budgetMatched = budget == null || item.averagePrice() == null
+                ? null : item.averagePrice() <= budget;
         return new SemanticAiClient.ExplanationRestaurant(
                 item.restaurantId(), item.name(), claims,
                 new SemanticAiClient.DeterministicFacts(item.zeroPayAvailable(), budgetMatched));
@@ -57,6 +58,6 @@ public final class RecommendationExplanationEnricher {
     private RecommendationItem withReason(RecommendationItem item, String reason) {
         return new RecommendationItem(item.restaurantId(), item.name(), item.category(),
                 item.representativeMenu(), item.averagePrice(), item.address(), item.zeroPayAvailable(),
-                item.sampleData(), reason);
+                item.sampleData(), reason, item.menuExamples());
     }
 }

@@ -1,0 +1,142 @@
+{
+  "auditDate": "2026-09-25",
+  "auditMode": "PHASE_A_READ_ONLY",
+  "databaseWrites": 0,
+  "sourceOfTruth": {
+    "code": [
+      "backend/src/main/java/com/zeropaylunch/backend/restaurant/domain/Restaurant.java",
+      "backend/src/main/java/com/zeropaylunch/backend/restaurant/importer/RestaurantImportWriter.java",
+      "backend/src/main/java/com/zeropaylunch/backend/restaurant/infrastructure/RestaurantJpaRepository.java",
+      "backend/src/main/java/com/zeropaylunch/backend/restaurant/application/RestaurantRecommendationService.java",
+      "backend/src/main/resources/db/migration/V4__add_komsco_restaurant_source_fields.sql",
+      "backend/src/main/resources/db/migration/V7__add_restaurant_recommendation_eligibility.sql",
+      "backend/src/main/resources/db/migration-mysql/V17__add_korean_schema_comments.sql",
+      "ai/app/profile_readiness.py",
+      "ai/app/profile_readiness_audit.py"
+    ],
+    "database": "development MySQL; SELECT-only via existing project read helper",
+    "artifacts": [
+      "AI_Answer/detail_quality_backfill_manifest.json",
+      "AI_Answer/detail_quality_backfill_coverage_after.json",
+      "AI_Answer/detail_quality_backfill_review.md"
+    ]
+  },
+  "population": {
+    "restaurantTotal": 517,
+    "active": 517,
+    "activeEligible": 405,
+    "activeEligibleNonhyeon": 402,
+    "activeEligibleNonhyeonRecommendationReady": 1,
+    "activeEligibleNonhyeonRecommendationReadyAndZeroPay": 1,
+    "recommendationReadyAllRestaurants": 4,
+    "activeEligibleNonhyeonKomscoRows": 401,
+    "detailDataDistinctRestaurants": {
+      "naverMenus": 325,
+      "reviewKeywords": 344,
+      "naverBusinessHours": 360,
+      "sectionLifecycle": 35
+    },
+    "strictProfileReady": 26,
+    "strictProfileReadyRecommendationReady": 0,
+    "strictReadyRowsWithSpringSchedules": 0,
+    "strictReadyRowsWithCategoryRepresentativeMenuAndAveragePrice": 0,
+    "sourceNote": "Population and detail counts are current SELECT results. Profile readiness was recalculated by the shared ProfileReadinessPolicy over 360 matched numeric NAVER records."
+  },
+  "recommendationReadyDefinition": {
+    "column": "restaurants.recommendation_ready BOOLEAN NOT NULL",
+    "migrationDefault": true,
+    "migration": "V4 adds the column with DEFAULT TRUE; V17 preserves DEFAULT TRUE and documents it as recommendation data construction complete.",
+    "newKomscoEntity": "Restaurant.fromExternalSource explicitly initializes recommendationReady=false.",
+    "subsequentKomscoUpdates": "synchronizeExternalSource/applyExternalSource do not change recommendationReady.",
+    "detailPersistenceUpdatesFlag": false,
+    "recalculationOrAdminWriterFound": false,
+    "runtimeMeaning": "An additional serving gate required by the candidate SQL; it is not ProfileReadiness and no current code derives it from Detail/Lifecycle data.",
+    "ownershipAssessment": "Legacy/manual serving-data-complete gate with a migration default that initializes older/sample rows true; KOMSCO ingestion explicitly opts out. There is no production promotion owner."
+  },
+  "recommendationReadyTrueRestaurants": [
+    {"id": 1001, "name": "강남 샘플 한식당", "sampleData": true, "active": true, "eligibility": "ELIGIBLE", "legalDongCode": null, "zeroPay": true, "category": "KOREAN", "representativeMenu": "제육볶음", "averagePrice": 9000, "scheduleCount": 1, "naverDetailRows": 0, "classification": "SAMPLE_FIXTURE_OUT_OF_SCOPE"},
+    {"id": 1002, "name": "역삼 샘플 국밥집", "sampleData": true, "active": true, "eligibility": "ELIGIBLE", "legalDongCode": null, "zeroPay": true, "category": "KOREAN_SOUP", "representativeMenu": "돼지국밥", "averagePrice": 10000, "scheduleCount": 1, "naverDetailRows": 0, "classification": "SAMPLE_FIXTURE_OUT_OF_SCOPE"},
+    {"id": 1003, "name": "선릉 샘플 샐러드", "sampleData": true, "active": true, "eligibility": "ELIGIBLE", "legalDongCode": null, "zeroPay": false, "category": "SALAD", "representativeMenu": "닭가슴살 샐러드", "averagePrice": 11000, "scheduleCount": 1, "naverDetailRows": 0, "classification": "SAMPLE_FIXTURE_OUT_OF_SCOPE"},
+    {"id": 1004, "name": "논현 통합검사 국밥집", "sampleData": true, "active": true, "eligibility": "ELIGIBLE", "legalDongCode": "11680108", "zeroPay": true, "category": "KOREAN_SOUP", "representativeMenu": "돼지국밥", "averagePrice": 10000, "scheduleCount": 1, "naverDetailRows": 0, "classification": "INTEGRATION_FIXTURE_NOT_KOMSCO"}
+  ],
+  "strictReadyComparison": {
+    "ids": [9559, 9568, 9569, 9570, 9571, 9574, 9580, 9603, 9617, 9639, 9659, 9715, 9759, 9791, 9801, 9826, 9839, 9853, 9865, 9904, 9954, 9973, 9996, 10021, 10042, 10053],
+    "allHave": {
+      "profileReady": true,
+      "recommendationReady": false,
+      "active": true,
+      "eligible": true,
+      "legalDongCode": "11680108",
+      "zeroPay": true,
+      "numericNaverPlaceIdMatchedAndVerified": true,
+      "menuLifecycleSuccess": true,
+      "reviewLifecycleSuccess": true,
+      "businessHoursLifecycleSuccess": true,
+      "atLeastOnePricedNaverMenu": true,
+      "atLeastOneSourceGroundedStructuredHour": true,
+      "springCategory": null,
+      "springRepresentativeMenu": null,
+      "springAveragePrice": null,
+      "springRestaurantScheduleCount": 0
+    },
+    "assessmentSource": "Current DB audit_rows() with ProfileReadinessPolicy; serving fields/schedule independently selected from MySQL.",
+    "perRestaurant": [
+      {"id":9559,"name":"모우리","menu":28,"pricedMenu":28,"structuredHours":4},
+      {"id":9568,"name":"청기와","menu":22,"pricedMenu":22,"structuredHours":1},
+      {"id":9569,"name":"산곰장어","menu":10,"pricedMenu":8,"structuredHours":4},
+      {"id":9570,"name":"블러프","menu":7,"pricedMenu":7,"structuredHours":4},
+      {"id":9571,"name":"피자스쿨 강남논현점","menu":42,"pricedMenu":42,"structuredHours":1},
+      {"id":9574,"name":"청담머구리","menu":12,"pricedMenu":11,"structuredHours":1},
+      {"id":9580,"name":"빨간모자피자","menu":55,"pricedMenu":55,"structuredHours":6},
+      {"id":9603,"name":"본죽&비빔밥 논현점","menu":63,"pricedMenu":63,"structuredHours":4},
+      {"id":9617,"name":"(주)에스지푸드 논현역 마성떡볶이","menu":24,"pricedMenu":24,"structuredHours":1},
+      {"id":9639,"name":"이자카야나무(논현)","menu":64,"pricedMenu":64,"structuredHours":1},
+      {"id":9659,"name":"만석","menu":89,"pricedMenu":89,"structuredHours":1},
+      {"id":9715,"name":"교촌치킨 논현1호점","menu":81,"pricedMenu":81,"structuredHours":1},
+      {"id":9759,"name":"특별한 오복수산 가로수길점","menu":56,"pricedMenu":56,"structuredHours":5},
+      {"id":9791,"name":"비비큐 논현중앙점","menu":72,"pricedMenu":72,"structuredHours":1},
+      {"id":9801,"name":"공리","menu":59,"pricedMenu":59,"structuredHours":5},
+      {"id":9826,"name":"삼호짱뚱이","menu":54,"pricedMenu":53,"structuredHours":6},
+      {"id":9839,"name":"상무초밥 강남역","menu":51,"pricedMenu":51,"structuredHours":7},
+      {"id":9853,"name":"팔당닭발","menu":52,"pricedMenu":51,"structuredHours":6},
+      {"id":9865,"name":"구월의 소철","menu":141,"pricedMenu":141,"structuredHours":4},
+      {"id":9904,"name":"생생돈까스논현","menu":69,"pricedMenu":69,"structuredHours":1},
+      {"id":9954,"name":"딸바요","menu":62,"pricedMenu":62,"structuredHours":1},
+      {"id":9973,"name":"주식회사 써브웨이학동역점","menu":52,"pricedMenu":52,"structuredHours":1},
+      {"id":9996,"name":"파리바게뜨 강남구청센터점","menu":77,"pricedMenu":77,"structuredHours":5},
+      {"id":10021,"name":"싸다김밥 강남구청역점","menu":83,"pricedMenu":83,"structuredHours":5},
+      {"id":10042,"name":"주래등","menu":72,"pricedMenu":72,"structuredHours":1},
+      {"id":10053,"name":"파리바게뜨 신논현교보타워","menu":48,"pricedMenu":48,"structuredHours":1}
+    ]
+  },
+  "detailBackfill": {
+    "planned": 27,
+    "attempted": 27,
+    "success": 27,
+    "failed": 0,
+    "detailOnlyWrites": true,
+    "restaurantMasterChanged": false,
+    "recommendationReadyChanged": false,
+    "semanticProfileGenerations": 0,
+    "qdrantWrites": 0,
+    "source": "AI_Answer/detail_quality_backfill_manifest.json and review"
+  },
+  "caseClassification": {
+    "overall": "MIXED_CASE2_AND_CASE3",
+    "case2LegacyOrUnownedGate": "Confirmed: no writer/derivation path exists; KOMSCO rows remain false until an absent serving-data promotion workflow runs.",
+    "case3RealDataGap": "Confirmed: all 401 KOMSCO rows in the 402-row active/eligible/Nonhyeon serving scope lack master category, representative_menu, average_price and Spring restaurant_schedules; the 26 Profile-READY rows share this gap.",
+    "case1StaleFlag": "Not supported as a complete diagnosis: setting the flag alone would not supply the missing serving data or schedule."
+  },
+  "phaseB": {
+    "decision": "STOP_AFTER_AUDIT",
+    "reason": "No validated, reproducible mapping/promotion rule currently maps verified Detail evidence to Spring category, representative_menu, average_price and weekly schedule/closure rows. A boolean-only update would not make these restaurants queryable and could falsely assert serving readiness.",
+    "codeChanges": 0,
+    "databaseWrites": 0,
+    "snapshots": "NOT_CREATED; no writes were attempted",
+    "tests": "NOT_RUN; no code changed, and backend/integration harnesses may mutate fixtures or database state"
+  },
+  "discrepancies": [
+    "The pre-backfill semantic_expansion_coverage_audit.json records the earlier five-profile cohort; the post-backfill coverage artifact and current DB policy audit report 26 strict-ready restaurants.",
+    "Migration V4 defaults recommendation_ready to TRUE, while new KOMSCO entities explicitly set it FALSE. The column default is therefore not the operational KOMSCO promotion rule."
+  ]
+}

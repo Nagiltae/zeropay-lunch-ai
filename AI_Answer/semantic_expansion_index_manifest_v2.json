@@ -1,0 +1,15 @@
+{
+  "manifestVersion": "semantic-expansion-index-v2",
+  "status": "BLOCKED_PROFILE_QUALITY_GATE",
+  "collection": "zeropay_semantic_claim_expanded_v1",
+  "created": false,
+  "collectionExistsBeforeRun": false,
+  "pointCount": 0,
+  "restaurantCount": 0,
+  "claimTypeCounts": {},
+  "embeddingModel": "qwen3-embedding:0.6b",
+  "dimension": 1024,
+  "distance": "Cosine",
+  "embeddingCalls": 0,
+  "reason": "Three consecutive new profile outputs failed strict Evidence validation and sample review found unsupported claim semantics. Stop condition prohibits embedding/indexing."
+}

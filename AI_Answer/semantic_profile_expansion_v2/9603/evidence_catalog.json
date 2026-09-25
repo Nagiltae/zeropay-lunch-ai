@@ -1,0 +1,1144 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "0fbdd8ff2d335c1224824879b1b0670c2c29b8f49858dc50724625e23c2322b5",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "본죽&비빔밥 논현점",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 학동로4길 15(논현동)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "[NEW] 팥칼국수",
+        "price": 11500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "[시즌한정] 열무칼비빔면",
+        "price": 12500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "[시즌한정] 열무돈불백비빔밥",
+        "price": 13500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "[시그니처] 장조림버터비빔밥",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "쇠고기듬뿍야채죽(소고기1.5배)",
+        "price": 16000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "[아침추천] 쇠고기야채죽",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "[아침추천] 전복죽",
+        "price": 14500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "[아침추천] 낙지김치죽",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "[아침추천] 단호박죽",
+        "price": 12000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "[아침추천] 흰죽",
+        "price": 7500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "낙지김치비빔밥",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "불고기낙지비빔밥 (불낙)",
+        "price": 15000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "신짬뽕비빔밥",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "전복내장해물비빔밥",
+        "price": 17000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "해물된장뚝배기",
+        "price": 13000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "콩비지뚝배기",
+        "price": 13000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "소불고기버섯뚝배기",
+        "price": 13500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "쇠고기야채죽",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "쇠고기듬뿍버섯죽(소고기1.5배)",
+        "price": 15000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "쇠고기버섯죽",
+        "price": 13000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "새우죽",
+        "price": 12000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "전복죽 (보양)",
+        "price": 14500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "진전복죽 (전복2배)",
+        "price": 18500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "특전복죽 (전복3배)",
+        "price": 22500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "전복내장죽",
+        "price": 16500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "진전복내장죽 (전복2배)",
+        "price": 20500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "추어죽 (보양)",
+        "price": 16500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "자연송이쇠고기죽 (보양)",
+        "price": 18000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.menu.items[28]",
+      "content": {
+        "name": "특자연송이쇠고기죽 (송이2배)",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.menu.items[29]",
+      "content": {
+        "name": "삼계죽 (보양)",
+        "price": 15000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.menu.items[30]",
+      "content": {
+        "name": "불고기낙지죽 (불낙죽)",
+        "price": 14500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.menu.items[31]",
+      "content": {
+        "name": "홍게품은죽",
+        "price": 17000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.menu.items[32]",
+      "content": {
+        "name": "진홍게품은죽 (홍게다리살2배)",
+        "price": 22000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.menu.items[33]",
+      "content": {
+        "name": "특홍게품은죽 (홍게다리살3배)",
+        "price": 27000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.menu.items[34]",
+      "content": {
+        "name": "낙지김치죽 (해장)",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.menu.items[35]",
+      "content": {
+        "name": "(배달앱 전용) 치즈 낙지김치죽",
+        "price": 16000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.menu.items[36]",
+      "content": {
+        "name": "단호박죽",
+        "price": 12000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.menu.items[37]",
+      "content": {
+        "name": "동지팥죽(담백한 밥알팥죽)",
+        "price": 11500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.menu.items[38]",
+      "content": {
+        "name": "단팥죽(달달한 새알팥죽)",
+        "price": 12000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.menu.items[39]",
+      "content": {
+        "name": "녹두죽",
+        "price": 11500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.menu.items[40]",
+      "content": {
+        "name": "명품잣죽",
+        "price": 17000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.menu.items[41]",
+      "content": {
+        "name": "푸팟퐁커리게살쮺 (카레)",
+        "price": 18500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.menu.items[42]",
+      "content": {
+        "name": "참깨계란새우쮺(반반죽)",
+        "price": 14000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.menu.items[43]",
+      "content": {
+        "name": "본메추리알장조림(400g)",
+        "price": 5900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.menu.items[44]",
+      "content": {
+        "name": "든든한끼 본쇠고기장조림(80g)",
+        "price": 5300
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.menu.items[45]",
+      "content": {
+        "name": "든든한끼 본오징어초무침(80g)",
+        "price": 3900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.menu.items[46]",
+      "content": {
+        "name": "키즈장조림(80g)",
+        "price": 5000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.menu.items[47]",
+      "content": {
+        "name": "본쇠고기장조림(300g)",
+        "price": 16400
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.menu.items[48]",
+      "content": {
+        "name": "단호박식혜 238ml (건강음료)",
+        "price": 2000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.menu.items[49]",
+      "content": {
+        "name": "우리 땅 청매실 100ml (건강음료)",
+        "price": 1800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.menu.items[50]",
+      "content": {
+        "name": "양배추사과즙 100ml (건강음료)",
+        "price": 1800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.menu.items[51]",
+      "content": {
+        "name": "진짜배즙 100ml (건강음료)",
+        "price": 1800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.menu.items[52]",
+      "content": {
+        "name": "본매실골드 500ml (건강음료)",
+        "price": 4800
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.menu.items[53]",
+      "content": {
+        "name": "[보들보들] 영양 계란찜",
+        "price": 3500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.menu.items[54]",
+      "content": {
+        "name": "철판소불고기",
+        "price": 8500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.menu.items[55]",
+      "content": {
+        "name": "단호박고추장(25g)",
+        "price": 300
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.menu.items[56]",
+      "content": {
+        "name": "시그니처 통단팥죽 270g (간편식)",
+        "price": 4900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.menu.items[57]",
+      "content": {
+        "name": "시그니처 단호박죽 270g (간편식)",
+        "price": 4900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 209
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 87
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 71
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 69
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 63
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 45
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 26
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 22
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"건강한 맛이에요\" 이 키워드를 선택한 인원",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "비빔밥",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "낙지",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "낙지김치죽",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "육개장",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "제육",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E076",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "짬뽕",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E077",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "고기",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E078",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "곤드레나물밥",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E079",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "꼬막",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E080",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "꼬막비빔밥",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E081",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "꿀떡",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E082",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "단팥죽",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E083",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "단호박죽",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E084",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "동치미",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E085",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "새우",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E086",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 79
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E087",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 50
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E088",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 19
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E089",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E090",
+      "sourceField": "sections.review.keywords[29]",
+      "content": {
+        "keyword": "배달",
+        "mentionCount": 4
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E091",
+      "sourceField": "sections.review.keywords[30]",
+      "content": {
+        "keyword": "청결도",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E092",
+      "sourceField": "sections.review.keywords[31]",
+      "content": {
+        "keyword": "분위기",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E093",
+      "sourceField": "sections.review.keywords[32]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E094",
+      "sourceField": "sections.review.keywords[33]",
+      "content": {
+        "keyword": "대기시간",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E095",
+      "sourceField": "sections.review.keywords[34]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E096",
+      "sourceField": "sections.review.keywords[35]",
+      "content": {
+        "keyword": "목적",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E097",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-7",
+        "text": "딸냄이 속이 불편해 함께 죽 먹기 위해"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E098",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "월",
+        "open_time": "09:00",
+        "close_time": "20:20",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.046710"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E099",
+      "sourceField": "sections.businessHours.items[1]",
+      "content": {
+        "day_of_week": "화",
+        "open_time": "09:00",
+        "close_time": "20:20",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.047072"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E100",
+      "sourceField": "sections.businessHours.items[2]",
+      "content": {
+        "day_of_week": "수",
+        "open_time": "09:00",
+        "close_time": "20:20",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.047138"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E101",
+      "sourceField": "sections.businessHours.items[3]",
+      "content": {
+        "day_of_week": "목",
+        "open_time": "09:00",
+        "close_time": "20:20",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.047202"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "4edf8d3b78c5a3375e15b8a15b86611f23cdb3923a14c8142f1570c0b72e33ab"
+}

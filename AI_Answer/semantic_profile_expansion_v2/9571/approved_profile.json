@@ -1,0 +1,94 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "98b6a409a3e5d449c590636a78d57584b83fd05037c67d3be48040f2675669e3",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "8b8ef3c5730297f1d879ffeb24d0975c27c9ba3e377eaef9d9e53f2d3efe4181",
+  "restaurantId": 9571,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features a wide variety of toppings including beef, chicken, and vegetables.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E015",
+        "E024"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E003",
+          "sourceField": "sections.menu.items[0]",
+          "content": {
+            "name": "비프타코피자",
+            "price": 15900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E015",
+          "sourceField": "sections.menu.items[12]",
+          "content": {
+            "name": "불고기피자",
+            "price": 11900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E024",
+          "sourceField": "sections.menu.items[21]",
+          "content": {
+            "name": "야채퀘사디아피자",
+            "price": 13900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently mention that the food is delicious and has good value.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E045",
+        "E046"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E045",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 88
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E046",
+          "sourceField": "sections.review.keywords[1]",
+          "content": {
+            "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 46
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "reusedFrom": "semantic_profile_benchmark_9571/semantic_profile_v1_shadow_results.json",
+  "sourceInputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+  "sourceCatalogHash": null,
+  "revalidatedAgainstCurrentInput": true
+}

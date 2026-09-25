@@ -1,0 +1,115 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "ad16423d13e8d4bbb06e5f01e345e2bd63fe90c375e6ac820de0ef5bd99630a6",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "9c6b9ab70612abdeb1fc6424f0ad6d8e1d827b1bf63314b65afa79b9aadb01b9",
+  "restaurantId": 9580,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently mention that the food is delicious.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E057",
+        "E071"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E057",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 32
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E071",
+          "sourceField": "sections.review.keywords[14]",
+          "content": {
+            "keyword": "맛",
+            "mentionCount": 16
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "Customers appreciate the friendly service provided by the staff.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E060",
+        "E073"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E060",
+          "sourceField": "sections.review.keywords[3]",
+          "content": {
+            "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 7
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E073",
+          "sourceField": "sections.review.keywords[16]",
+          "content": {
+            "keyword": "서비스",
+            "mentionCount": 3
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu includes a variety of pizza sizes and set meals.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E008",
+        "E010"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E008",
+          "sourceField": "sections.menu.items[5]",
+          "content": {
+            "name": "슬림세트 R",
+            "price": 19200
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E010",
+          "sourceField": "sections.menu.items[7]",
+          "content": {
+            "name": "세트메뉴 R",
+            "price": 32900
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    }
+  ],
+  "reusedFrom": "semantic_profile_pilot_9580/semantic_profile_v1_shadow_results.json",
+  "sourceInputHash": "2abebcfdb7e8e24d23c72587c0dc87358b06c08c44fdf99ccb6b9d49c8d3c9ff",
+  "sourceCatalogHash": null,
+  "revalidatedAgainstCurrentInput": true
+}

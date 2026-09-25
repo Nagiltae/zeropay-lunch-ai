@@ -46,8 +46,24 @@ def test_dom_detail_section_statuses_keep_place_and_sections_separate():
 
 def test_empty_successful_sections_are_absent_not_failed():
     detail = DomCollectedDetail(
-        True, "테스트", "한식", "주소", None, (), (), True, None, (), True, None, None,
-        (), (), (), (), (),
+        True,
+        "테스트",
+        "한식",
+        "주소",
+        None,
+        (),
+        (),
+        True,
+        None,
+        (),
+        True,
+        None,
+        None,
+        (),
+        (),
+        (),
+        (),
+        (),
     )
     assert detail.menu_status == "ABSENT_CONFIRMED"
     assert detail.hours_status == "ABSENT_CONFIRMED"
@@ -82,12 +98,20 @@ def test_section_flags_skip_menu_and_review_navigation(monkeypatch):
             return Locator()
 
     crawler = PlaceDomDetailCrawler()
-    monkeypatch.setattr(crawler, "_menus", lambda *args, **kwargs: (_ for _ in ()).throw(
-        AssertionError("fresh MENU must not navigate")
-    ))
-    monkeypatch.setattr(crawler, "_reviews", lambda *args, **kwargs: (_ for _ in ()).throw(
-        AssertionError("fresh REVIEW must not navigate")
-    ))
+    monkeypatch.setattr(
+        crawler,
+        "_menus",
+        lambda *args, **kwargs: (_ for _ in ()).throw(
+            AssertionError("fresh MENU must not navigate")
+        ),
+    )
+    monkeypatch.setattr(
+        crawler,
+        "_reviews",
+        lambda *args, **kwargs: (_ for _ in ()).throw(
+            AssertionError("fresh REVIEW must not navigate")
+        ),
+    )
     detail = crawler.collect(Page(), "123", include_menu=False, include_reviews=False)
     assert detail.menu_status == "SKIPPED"
     assert detail.review_status == "SKIPPED"
@@ -101,6 +125,33 @@ def test_review_count_parser_accepts_rendered_spacing():
 def test_declared_menu_count_ignores_label_without_numeric_count():
     assert PlaceDomDetailCrawler._declared_menu_count("메뉴, 찾아가는길") is None
     assert PlaceDomDetailCrawler._declared_menu_count("메뉴 12") == 12
+
+
+def test_hours_parser_pairs_each_weekday_only_with_its_adjacent_time_range():
+    raw = (
+        "일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 "
+        "화 14:00 - 23:00 수(9/24) 휴무 목 14:00 - 23:00"
+    )
+    hours = DomCollectedDetail._parse_business_hours(raw)
+    assert [(hour.day, hour.open_time, hour.close_time) for hour in hours] == [
+        ("월", "14:00", "23:00"),
+        ("화", "14:00", "23:00"),
+        ("목", "14:00", "23:00"),
+    ]
+
+
+def test_hours_parser_keeps_status_only_text_unstructured():
+    hours = DomCollectedDetail._parse_business_hours("오늘 휴무 다음 날 02:00 라스트오더")
+    assert len(hours) == 1
+    assert hours[0].open_time is None
+    assert hours[0].close_time is None
+
+
+def test_hours_parser_reads_daily_and_overnight_schedule():
+    hours = DomCollectedDetail._parse_business_hours("매일 16:30 - 다음 날 03:00")
+    assert [(hour.day, hour.open_time, hour.close_time) for hour in hours] == [
+        ("매일", "16:30", "03:00")
+    ]
 
 
 def test_business_hour_dom_text_is_structured_without_inventing_schedule():
@@ -160,8 +211,24 @@ def test_business_status_without_time_is_not_converted_to_schedule():
 
 def test_parser_failure_is_not_absent_confirmation():
     detail = DomCollectedDetail(
-        True, "식당", "한식", "주소", None, (), (), False, None, (),
-        False, None, None, (), (), (), (), ("MENU_PARSE_FAILED",),
+        True,
+        "식당",
+        "한식",
+        "주소",
+        None,
+        (),
+        (),
+        False,
+        None,
+        (),
+        False,
+        None,
+        None,
+        (),
+        (),
+        (),
+        (),
+        ("MENU_PARSE_FAILED",),
     )
     assert detail.menu_status == "FAILED"
     assert detail.review_status == "FAILED"
@@ -179,6 +246,40 @@ def test_hours_without_section_marker_is_parser_failure():
 
     with pytest.raises(RuntimeError, match="HOURS_PARSE_FAILED"):
         PlaceDomDetailCrawler()._hours(Page())
+
+
+def test_empty_hours_dom_is_not_confirmed_absence():
+    class Locator:
+        def count(self):
+            return 1
+
+        @property
+        def first(self):
+            return self
+
+        def get_attribute(self, *args, **kwargs):
+            return "true"
+
+        def locator(self, *args, **kwargs):
+            return self
+
+        def filter(self, **kwargs):
+            return self
+
+        def inner_text(self, timeout=None):
+            return "영업시간"
+
+    class Page:
+        url = "https://pcmap.place.naver.com/restaurant/123/home"
+
+        def locator(self, selector):
+            return Locator()
+
+    crawler = PlaceDomDetailCrawler()
+    # Exercise the real status conversion after an empty but reachable hours DOM.
+    detail = crawler.collect(Page(), "123", include_menu=False, include_reviews=False)
+    assert detail.hours_status == "FAILED"
+    assert "HOURS_EMPTY_UNVERIFIED" in detail.warnings
 
 
 def test_persistence_wraps_all_detail_writes_in_transaction(monkeypatch, tmp_path):

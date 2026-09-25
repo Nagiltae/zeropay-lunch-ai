@@ -18,6 +18,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from app.entity_resolution.qwen_candidate_matcher import OllamaClient, configured_qwen_model
+from app.profile_readiness import assess_profile_readiness
 
 INPUT_VERSION = "semantic-profile-input-v1"
 PROMPT_VERSION = "semantic-profile-prompt-v1"
@@ -125,11 +126,21 @@ def build_input(restaurant_id: int) -> dict[str, Any]:
     base = _rows(
         """
         SELECT r.id, r.name, r.address, r.category, r.latitude, r.longitude,
+               r.active, r.recommendation_eligibility, r.legal_dong_code,
                r.source_provider, r.last_synced_at,
                c.name AS canonical_name, c.address AS canonical_address,
                c.road_address AS canonical_road_address,
                e.external_place_id, e.provider AS external_provider,
-               e.match_status, e.last_synced_at AS external_synced_at
+               e.match_status, e.last_synced_at AS external_synced_at,
+               (SELECT COUNT(*) FROM restaurant_external_places owner
+                 WHERE owner.provider='NAVER' AND owner.match_status='MATCHED'
+                   AND owner.external_place_id=e.external_place_id) AS place_owner_count,
+               (SELECT v.verification_status FROM restaurant_naver_verifications v
+                 WHERE v.restaurant_id=r.id AND v.provider='NAVER'
+                 ORDER BY v.last_attempt_at DESC LIMIT 1) AS verification_status,
+               (SELECT v.external_place_id FROM restaurant_naver_verifications v
+                 WHERE v.restaurant_id=r.id AND v.provider='NAVER'
+                 ORDER BY v.last_attempt_at DESC LIMIT 1) AS verification_place_id
         FROM restaurants r
         LEFT JOIN canonical_restaurants c ON c.restaurant_id=r.id
         LEFT JOIN restaurant_external_places e ON e.restaurant_id=r.id
@@ -162,7 +173,7 @@ def build_input(restaurant_id: int) -> dict[str, Any]:
     )
     hours = _rows(
         """
-        SELECT day_of_week, open_time, close_time, break_hours, last_order,
+        SELECT day_of_week, open_time, close_time, break_hours, last_order, description,
                regular_closed_day, irregular_closed_day, business_status,
                crawled_at
         FROM restaurant_business_hours
@@ -218,17 +229,27 @@ def build_input(restaurant_id: int) -> dict[str, Any]:
 
     lifecycle = clean(states)
     lifecycle_map = {item["section"]: item for item in lifecycle}
-    strict_ready = (
-        all(
-            lifecycle_map.get(section, {}).get("state") == "SUCCESS"
-            for section in ("menu", "business_hours", "review")
-        )
-        and any(
-            item.get("price_value") is not None or str(item.get("price_text") or "").strip()
-            for item in menu
-        )
-        and any(item.get("open_time") and item.get("close_time") for item in hours)
+    readiness = assess_profile_readiness(
+        {
+            "active": row.get("active"),
+            "eligibility": row.get("recommendation_eligibility"),
+            "lifecycle": [
+                {
+                    "section": item["section"],
+                    "state": item["state"],
+                    "checkedAt": item["checked_at"],
+                }
+                for item in lifecycle
+            ],
+            "menus": clean(menu),
+            "businessHours": clean(hours),
+            "numericPlaceId": row.get("external_place_id"),
+            "ownerCount": row.get("place_owner_count"),
+            "verificationStatus": row.get("verification_status"),
+            "verificationPlaceId": row.get("verification_place_id"),
+        }
     )
+    strict_ready = readiness["ready"]
     payload: dict[str, Any] = {
         "inputVersion": INPUT_VERSION,
         "restaurantId": restaurant_id,
@@ -250,6 +271,12 @@ def build_input(restaurant_id: int) -> dict[str, Any]:
             "numericPlaceId": row.get("external_place_id"),
             "matchStatus": row.get("match_status"),
             "mappingSyncedAt": row.get("external_synced_at"),
+            "active": row.get("active"),
+            "recommendationEligibility": row.get("recommendation_eligibility"),
+            "legalDongCode": row.get("legal_dong_code"),
+            "verificationStatus": row.get("verification_status"),
+            "verificationPlaceId": row.get("verification_place_id"),
+            "placeIdOwnerCount": _as_number(row.get("place_owner_count")),
         },
         "sections": {
             "menu": {"items": clean(menu)},
@@ -264,6 +291,8 @@ def build_input(restaurant_id: int) -> dict[str, Any]:
         "quality": {
             "strictProfileReady": strict_ready,
             "lifecyclePresent": bool(lifecycle),
+            "readinessStatus": readiness["status"],
+            "readinessReasons": readiness["reasons"],
             "missingSections": [
                 s for s in ("menu", "business_hours", "review") if s not in lifecycle_map
             ],
@@ -284,9 +313,7 @@ def validate_output(raw: dict[str, Any], profile_input: dict[str, Any]) -> dict[
     errors = []
     for claim in output.claims:
         errors.extend(
-            f"unknown sourceField: {path}"
-            for path in claim.sourceFields
-            if path not in paths
+            f"unknown sourceField: {path}" for path in claim.sourceFields if path not in paths
         )
         if (
             any(path.startswith("sections.menu") for path in claim.sourceFields)
@@ -487,9 +514,7 @@ def classify_claims(
         ]
         reasons: list[str] = []
         missing = [
-            evidence_id
-            for evidence_id in claim.get("evidenceIds", [])
-            if evidence_id not in by_id
+            evidence_id for evidence_id in claim.get("evidenceIds", []) if evidence_id not in by_id
         ]
         if missing:
             reasons.append(f"unknown evidenceId: {','.join(missing)}")
@@ -522,8 +547,7 @@ def classify_claims(
         if any(item["evidenceType"] == "review" for item in evidence):
             reasons.append("representative review requires semantic review")
         if any(
-            item["evidenceType"] == "keyword"
-            and (item["content"].get("mentionCount") or 0) < 3
+            item["evidenceType"] == "keyword" and (item["content"].get("mentionCount") or 0) < 3
             for item in evidence
         ):
             reasons.append("low keyword mention count")
@@ -531,8 +555,7 @@ def classify_claims(
             status = (
                 "REJECTED"
                 if any(
-                    "lacks direct" in reason or "not an official" in reason
-                    for reason in reasons
+                    "lacks direct" in reason or "not an official" in reason for reason in reasons
                 )
                 else "REVIEW_REQUIRED"
             )
@@ -602,8 +625,7 @@ def _evidence_prompt(profile_input: dict[str, Any], catalog: dict[str, Any]) -> 
         "or metadata. "
         "Use only these claim types: FOOD_TYPE, MENU_CHARACTERISTIC, TASTE, DINING_CONTEXT, "
         "VENUE_CHARACTERISTIC. Do not generalize one review into a universal fact. "
-        "At most 5 concise claims.\nCATALOG:\n"
-        + json.dumps(catalog, ensure_ascii=False)
+        "At most 5 concise claims.\nCATALOG:\n" + json.dumps(catalog, ensure_ascii=False)
     )
 
 
@@ -649,9 +671,7 @@ def main() -> None:
             call_started = time.perf_counter()
             try:
                 prompt = (
-                    _evidence_prompt(profile_input, catalog)
-                    if catalog
-                    else _prompt(profile_input)
+                    _evidence_prompt(profile_input, catalog) if catalog else _prompt(profile_input)
                 )
                 response_schema = _evidence_schema() if catalog else _schema()
                 raw_text = client.complete(_profile_system_prompt(), prompt, response_schema)

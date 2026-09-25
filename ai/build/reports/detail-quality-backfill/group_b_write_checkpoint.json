@@ -1,0 +1,52 @@
+{
+  "restaurantIds": [
+    9865,
+    9659,
+    10021,
+    9904,
+    9715,
+    9996,
+    9662,
+    9976,
+    9791,
+    10042,
+    9639,
+    9954,
+    9801,
+    9603,
+    9759,
+    9826,
+    9973,
+    9839,
+    9853,
+    10053
+  ],
+  "sections": [
+    "menu",
+    "business_hours",
+    "review"
+  ],
+  "mode": "WRITE",
+  "completed": {
+    "9603": "SUCCESS",
+    "9639": "SUCCESS",
+    "9659": "SUCCESS",
+    "9662": "SUCCESS",
+    "9715": "SUCCESS",
+    "9759": "SUCCESS",
+    "9791": "SUCCESS",
+    "9801": "SUCCESS",
+    "9826": "SUCCESS",
+    "9839": "SUCCESS",
+    "9853": "SUCCESS",
+    "9865": "SUCCESS",
+    "9904": "SUCCESS",
+    "9954": "SUCCESS",
+    "9973": "SUCCESS",
+    "9976": "SUCCESS",
+    "9996": "SUCCESS",
+    "10021": "SUCCESS",
+    "10042": "SUCCESS",
+    "10053": "SUCCESS"
+  }
+}

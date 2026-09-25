@@ -1,0 +1,24 @@
+{
+  "restaurantIds": [
+    9559,
+    9560,
+    9562,
+    9567,
+    9569,
+    9570,
+    9580
+  ],
+  "sections": [
+    "business_hours"
+  ],
+  "mode": "WRITE",
+  "completed": {
+    "9559": "SUCCESS",
+    "9560": "SUCCESS",
+    "9562": "SUCCESS",
+    "9567": "SUCCESS",
+    "9569": "SUCCESS",
+    "9570": "SUCCESS",
+    "9580": "SUCCESS"
+  }
+}

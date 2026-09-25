@@ -1,0 +1,676 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9559,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.041727"
+  },
+  "identity": {
+    "restaurantName": "모우리",
+    "restaurantAddress": "서울특별시 강남구 학동로2길 20 (논현동)",
+    "category": null,
+    "latitude": 37.5100543,
+    "longitude": 127.0226261,
+    "canonicalName": "모우리 한우",
+    "canonicalAddress": "서울특별시 강남구 학동로2길 20 (논현동)",
+    "canonicalRoadAddress": "서울특별시 강남구 학동로2길 20 2층",
+    "provider": "NAVER",
+    "numericPlaceId": "269479759",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null,
+    "active": "1",
+    "recommendationEligibility": "ELIGIBLE",
+    "legalDongCode": "11680108",
+    "verificationStatus": "VERIFIED",
+    "verificationPlaceId": null,
+    "placeIdOwnerCount": 1
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "한우 꽃등심토마호크100g<시그니처>",
+          "price_value": 26000,
+          "price_text": "26,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "한우 통살치토마호크100g<시그니처>",
+          "price_value": 29000,
+          "price_text": "29,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "비즈니스모듬 600g <인기메뉴>",
+          "price_value": 156000,
+          "price_text": "156,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "스페셜모듬(특수부위) 450g<한정>",
+          "price_value": 157500,
+          "price_text": "157,500원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "한우 포터하우스&티본100g",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "회식모듬800g<6명이상방문예약주문>",
+          "price_value": 180000,
+          "price_text": "180,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "특제 양념로스 400g",
+          "price_value": 104000,
+          "price_text": "104,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "암소사시미&우니",
+          "price_value": 40000,
+          "price_text": "40,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "횡성 장인 더덕무침",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "명품 레몬 생 특주",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "고창 명품 복분자주",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "화요 엑스프리미엄",
+          "price_value": 140000,
+          "price_text": "140,000원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        },
+        {
+          "name": "화요 53도",
+          "price_value": 100000,
+          "price_text": "100,000원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "sourceFields": [
+            "sections.menu.items[12].name",
+            "sections.menu.items[12].price_value",
+            "sections.menu.items[12].price_text"
+          ]
+        },
+        {
+          "name": "명품 화요41",
+          "price_value": 53000,
+          "price_text": "53,000원",
+          "price_type": null,
+          "external_menu_id": "dom-14",
+          "sourceFields": [
+            "sections.menu.items[13].name",
+            "sections.menu.items[13].price_value",
+            "sections.menu.items[13].price_text"
+          ]
+        },
+        {
+          "name": "화요25 프리미엄",
+          "price_value": 33000,
+          "price_text": "33,000원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "프리미엄 돔페리뇽",
+          "price_value": 430000,
+          "price_text": "430,000원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "sourceFields": [
+            "sections.menu.items[15].name",
+            "sections.menu.items[15].price_value",
+            "sections.menu.items[15].price_text"
+          ]
+        },
+        {
+          "name": "뵈브클리코 옐로우 라벨 샴페인",
+          "price_value": 135000,
+          "price_text": "135,000원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "모엣 샹동 임페리얼 샴페인",
+          "price_value": 105000,
+          "price_text": "105,000원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "라 피라미드 프리미엄 브륏",
+          "price_value": 50000,
+          "price_text": "50,000원",
+          "price_type": null,
+          "external_menu_id": "dom-19",
+          "sourceFields": [
+            "sections.menu.items[18].name",
+            "sections.menu.items[18].price_value",
+            "sections.menu.items[18].price_text"
+          ]
+        },
+        {
+          "name": "명품 테누타 산 귀도 사씨카이야",
+          "price_value": 450000,
+          "price_text": "450,000원",
+          "price_type": null,
+          "external_menu_id": "dom-20",
+          "sourceFields": [
+            "sections.menu.items[19].name",
+            "sections.menu.items[19].price_value",
+            "sections.menu.items[19].price_text"
+          ]
+        },
+        {
+          "name": "프로두또리 델 바르바레스코",
+          "price_value": 115000,
+          "price_text": "115,000원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "정통 이스까이",
+          "price_value": 145000,
+          "price_text": "145,000원",
+          "price_type": null,
+          "external_menu_id": "dom-22",
+          "sourceFields": [
+            "sections.menu.items[21].name",
+            "sections.menu.items[21].price_value",
+            "sections.menu.items[21].price_text"
+          ]
+        },
+        {
+          "name": "명품 토마시 아마로네 델라 발폴리첼라",
+          "price_value": 140000,
+          "price_text": "140,000원",
+          "price_type": null,
+          "external_menu_id": "dom-23",
+          "sourceFields": [
+            "sections.menu.items[22].name",
+            "sections.menu.items[22].price_value",
+            "sections.menu.items[22].price_text"
+          ]
+        },
+        {
+          "name": "펜폴즈 빈 138",
+          "price_value": 135000,
+          "price_text": "135,000원",
+          "price_type": null,
+          "external_menu_id": "dom-24",
+          "sourceFields": [
+            "sections.menu.items[23].name",
+            "sections.menu.items[23].price_value",
+            "sections.menu.items[23].price_text"
+          ]
+        },
+        {
+          "name": "로베르토 보에르지오 돌체토 프리비아노",
+          "price_value": 75000,
+          "price_text": "75,000원",
+          "price_type": null,
+          "external_menu_id": "dom-25",
+          "sourceFields": [
+            "sections.menu.items[24].name",
+            "sections.menu.items[24].price_value",
+            "sections.menu.items[24].price_text"
+          ]
+        },
+        {
+          "name": "테누타 산 귀도 레 디페제",
+          "price_value": 75000,
+          "price_text": "75,000원",
+          "price_type": null,
+          "external_menu_id": "dom-26",
+          "sourceFields": [
+            "sections.menu.items[25].name",
+            "sections.menu.items[25].price_value",
+            "sections.menu.items[25].price_text"
+          ]
+        },
+        {
+          "name": "프리시전 네비게이터 까베르네쇼비뇽",
+          "price_value": 55000,
+          "price_text": "55,000원",
+          "price_type": null,
+          "external_menu_id": "dom-27",
+          "sourceFields": [
+            "sections.menu.items[26].name",
+            "sections.menu.items[26].price_value",
+            "sections.menu.items[26].price_text"
+          ]
+        },
+        {
+          "name": "샤토 크뤼 고다르",
+          "price_value": 55000,
+          "price_text": "55,000원",
+          "price_type": null,
+          "external_menu_id": "dom-28",
+          "sourceFields": [
+            "sections.menu.items[27].name",
+            "sections.menu.items[27].price_value",
+            "sections.menu.items[27].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "월",
+          "open_time": "14:00",
+          "close_time": "23:00",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.001148"
+        },
+        {
+          "day_of_week": "화",
+          "open_time": "14:00",
+          "close_time": "23:00",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.004540"
+        },
+        {
+          "day_of_week": "수",
+          "open_time": "14:00",
+          "close_time": "23:00",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.004642"
+        },
+        {
+          "day_of_week": "목",
+          "open_time": "14:00",
+          "close_time": "23:00",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.004727"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "658",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "1484",
+          "crawled_at": "2026-09-23 11:28:59.600064"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"고기 질이 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 384
+        },
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 337
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 189
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 162
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 142
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 137
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 123
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 90
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 84
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 71
+        },
+        {
+          "keyword": "고기",
+          "keyword_kind": "menu",
+          "mention_count": 243
+        },
+        {
+          "keyword": "한우",
+          "keyword_kind": "menu",
+          "mention_count": 218
+        },
+        {
+          "keyword": "소고기",
+          "keyword_kind": "menu",
+          "mention_count": 111
+        },
+        {
+          "keyword": "특수부위",
+          "keyword_kind": "menu",
+          "mention_count": 70
+        },
+        {
+          "keyword": "찌개",
+          "keyword_kind": "menu",
+          "mention_count": 21
+        },
+        {
+          "keyword": "된장찌개",
+          "keyword_kind": "menu",
+          "mention_count": 18
+        },
+        {
+          "keyword": "와인",
+          "keyword_kind": "menu",
+          "mention_count": 14
+        },
+        {
+          "keyword": "육회",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "하이볼",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "한우모듬",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "국수",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "등심",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "복분자",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "부채살",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "살치살",
+          "keyword_kind": "menu",
+          "mention_count": 3
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 407
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 367
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 142
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 60
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 55
+        },
+        {
+          "keyword": "예약",
+          "keyword_kind": "theme",
+          "mention_count": 16
+        },
+        {
+          "keyword": "위치",
+          "keyword_kind": "theme",
+          "mention_count": 14
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 12
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 11
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 8
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "방역",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-6",
+          "review_text": "가족들이랑 식사할 곳을 찾다가 방문했는데 처음부터 끝까지 만족스러운 식사였어요ㅎㅎ 메뉴 고민하다가 모듬으로 주문했는데 부위마다 매력이 달라 끝까지 질리지 않고 계속 먹은거 같아요🤤 그리고 무엇보다 직원분들이 친절하게 응대를 해주신 덕분에 머무는 동안 불편함 없이 식사를 마무리 할수있어 소고기 먹고싶을때는 항상 이곳으로 방문하자고 가족들끼리 말했어요😍",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-10",
+          "review_text": "오랜만에 지인들과 저녁 약속이 있어서 논현역 한우 맛집을 찾아 방문했는데 만족도가 정말 높았어요. 한우 토마호크는 육즙이 풍부하고, 모듬과 특수부위도 부위별로 맛과 식감이 달라 끝까지 맛있게 즐겼습니다. 논현동 소고기 맛집답게 고기 퀄리티가 좋아 회식이나 접대, 동창회 같은 모임 장소로도 추천하고 싶은 곳이에요.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-9",
+          "review_text": "부모님 모시고 논현동 한우 맛집에 다녀왔는데 모두 만족하셨어요. 한우 토마호크는 부드럽고 풍미가 깊었고, 모듬과 특수부위도 신선해서 어떤 부위를 먹어도 맛있었습니다. 논현역 소고기 맛집 중에서도 분위기가 편안해 가족모임은 물론 접대나 청첩장모임으로도 잘 어울리는 곳이라 다음에도 다시 방문하고 싶어요.",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "논현역 한우 맛집 알아보다가 모우리 한우 다녀왔는데 분위기도 너무 고급스럽고 고기 퀄리티가 진짜 최고네요 한우 토마호크 시켜서 먹었는데 육즙이 팡팡 터지고 부드러워서 입안에서 사르르 녹아내립니다 프라이빗하고 깔끔해서 회식이나 청첩장모임 하기에도 완전 딱일 것 같아요 만족스러운 식사였습니다 추천해요",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:27:10.004790",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 11:28:59.630432",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-23 11:28:59.631035",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "readinessStatus": "READY",
+    "readinessReasons": [],
+    "missingSections": []
+  },
+  "inputHash": "dcf9ac4ec099c86b29a9923fcb906b127359e5e7ce20cad80abfef8c03b7f430",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "a72e3c596234398cb2133daf79bc8c993cc6eac5d8a896dbf10469dab2bae760"
+  }
+}

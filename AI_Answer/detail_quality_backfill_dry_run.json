@@ -1,0 +1,39 @@
+{
+  "status": "DRY_RUN_COMPLETE",
+  "createdAt": "2026-09-25T09:05:06.833821+00:00",
+  "dryRunOnly": true,
+  "externalRequestTargets": 27,
+  "outcomes": {
+    "GROUP_A": {
+      "9559": "DRY_RUN_SUCCESS",
+      "9560": "DRY_RUN_SUCCESS",
+      "9562": "DRY_RUN_SUCCESS",
+      "9567": "DRY_RUN_SUCCESS",
+      "9569": "DRY_RUN_SUCCESS",
+      "9570": "DRY_RUN_SUCCESS",
+      "9580": "DRY_RUN_SUCCESS"
+    },
+    "GROUP_B": {
+      "9603": "DRY_RUN_SUCCESS",
+      "9639": "DRY_RUN_SUCCESS",
+      "9659": "DRY_RUN_SUCCESS",
+      "9662": "DRY_RUN_SUCCESS",
+      "9715": "DRY_RUN_SUCCESS",
+      "9759": "DRY_RUN_SUCCESS",
+      "9791": "DRY_RUN_SUCCESS",
+      "9801": "DRY_RUN_SUCCESS",
+      "9826": "DRY_RUN_SUCCESS",
+      "9839": "DRY_RUN_SUCCESS",
+      "9853": "DRY_RUN_SUCCESS",
+      "9865": "DRY_RUN_SUCCESS",
+      "9904": "DRY_RUN_SUCCESS",
+      "9954": "DRY_RUN_SUCCESS",
+      "9973": "DRY_RUN_SUCCESS",
+      "9976": "DRY_RUN_SUCCESS",
+      "9996": "DRY_RUN_SUCCESS",
+      "10021": "DRY_RUN_SUCCESS",
+      "10042": "DRY_RUN_SUCCESS",
+      "10053": "DRY_RUN_SUCCESS"
+    }
+  }
+}

@@ -1,0 +1,1082 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9639,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.367125"
+  },
+  "identity": {
+    "restaurantName": "이자카야나무(논현)",
+    "restaurantAddress": "서울특별시 강남구 봉은사로 1길 40",
+    "category": null,
+    "latitude": 37.5073595,
+    "longitude": 127.0241855,
+    "canonicalName": "이자카야나무 논현점",
+    "canonicalAddress": "서울특별시 강남구 봉은사로 1길 40",
+    "canonicalRoadAddress": "서울특별시 강남구 봉은사로1길 40 이자카야나무 논현점",
+    "provider": "NAVER",
+    "numericPlaceId": "1417514733",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null,
+    "active": "1",
+    "recommendationEligibility": "ELIGIBLE",
+    "legalDongCode": "11680108",
+    "verificationStatus": "VERIFIED",
+    "verificationPlaceId": null,
+    "placeIdOwnerCount": 1
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "대하 버터갈릭구이",
+          "price_value": 29000,
+          "price_text": "29,000원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text"
+          ]
+        },
+        {
+          "name": "전어세꼬시",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text"
+          ]
+        },
+        {
+          "name": "전어구이",
+          "price_value": 19000,
+          "price_text": "19,000원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text"
+          ]
+        },
+        {
+          "name": "커플세트",
+          "price_value": 59900,
+          "price_text": "59,900원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text"
+          ]
+        },
+        {
+          "name": "나무세트",
+          "price_value": 89900,
+          "price_text": "89,900원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text"
+          ]
+        },
+        {
+          "name": "나무한상",
+          "price_value": 169900,
+          "price_text": "169,900원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "시보리다테 세트",
+          "price_value": 99000,
+          "price_text": "99,000원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "오마카세 초밥 15pcs",
+          "price_value": 29500,
+          "price_text": "29,500원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "오마카세 초밥 12pcs",
+          "price_value": 25500,
+          "price_text": "25,500원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "오늘의초밥 10pcs",
+          "price_value": 15500,
+          "price_text": "15,500원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "모둠초밥 12pcs",
+          "price_value": 19000,
+          "price_text": "19,000원",
+          "price_type": null,
+          "external_menu_id": "dom-11",
+          "sourceFields": [
+            "sections.menu.items[10].name",
+            "sections.menu.items[10].price_value",
+            "sections.menu.items[10].price_text"
+          ]
+        },
+        {
+          "name": "특모둠초밥 15pcs",
+          "price_value": 26500,
+          "price_text": "26,500원",
+          "price_type": null,
+          "external_menu_id": "dom-12",
+          "sourceFields": [
+            "sections.menu.items[11].name",
+            "sections.menu.items[11].price_value",
+            "sections.menu.items[11].price_text"
+          ]
+        },
+        {
+          "name": "스페셜모둠초밥 20pcs",
+          "price_value": 35500,
+          "price_text": "35,500원",
+          "price_type": null,
+          "external_menu_id": "dom-13",
+          "sourceFields": [
+            "sections.menu.items[12].name",
+            "sections.menu.items[12].price_value",
+            "sections.menu.items[12].price_text"
+          ]
+        },
+        {
+          "name": "혼마구로아까미초밥 10pcs",
+          "price_value": 23500,
+          "price_text": "23,500원",
+          "price_type": null,
+          "external_menu_id": "dom-14",
+          "sourceFields": [
+            "sections.menu.items[13].name",
+            "sections.menu.items[13].price_value",
+            "sections.menu.items[13].price_text"
+          ]
+        },
+        {
+          "name": "꽃등심초밥 10pcs",
+          "price_value": 22500,
+          "price_text": "22,500원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "광어+꽃등심초밥 10pcs",
+          "price_value": 23000,
+          "price_text": "23,000원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "sourceFields": [
+            "sections.menu.items[15].name",
+            "sections.menu.items[15].price_value",
+            "sections.menu.items[15].price_text"
+          ]
+        },
+        {
+          "name": "꽃등심+연어초밥 10pcs",
+          "price_value": 21500,
+          "price_text": "21,500원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "광어초밥 10pcs",
+          "price_value": 22500,
+          "price_text": "22,500원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "연어초밥 10pcs",
+          "price_value": 19500,
+          "price_text": "19,500원",
+          "price_type": null,
+          "external_menu_id": "dom-19",
+          "sourceFields": [
+            "sections.menu.items[18].name",
+            "sections.menu.items[18].price_value",
+            "sections.menu.items[18].price_text"
+          ]
+        },
+        {
+          "name": "광어+연어초밥 10pcs",
+          "price_value": 21500,
+          "price_text": "21,500원",
+          "price_type": null,
+          "external_menu_id": "dom-20",
+          "sourceFields": [
+            "sections.menu.items[19].name",
+            "sections.menu.items[19].price_value",
+            "sections.menu.items[19].price_text"
+          ]
+        },
+        {
+          "name": "초새우초밥 10pcs",
+          "price_value": 17000,
+          "price_text": "17,000원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "폭탄회덮밥",
+          "price_value": 20000,
+          "price_text": "20,000원",
+          "price_type": null,
+          "external_menu_id": "dom-22",
+          "sourceFields": [
+            "sections.menu.items[21].name",
+            "sections.menu.items[21].price_value",
+            "sections.menu.items[21].price_text"
+          ]
+        },
+        {
+          "name": "생연어 사케동",
+          "price_value": 19000,
+          "price_text": "19,000원",
+          "price_type": null,
+          "external_menu_id": "dom-23",
+          "sourceFields": [
+            "sections.menu.items[22].name",
+            "sections.menu.items[22].price_value",
+            "sections.menu.items[22].price_text"
+          ]
+        },
+        {
+          "name": "완도바다 찐전복 덮밥",
+          "price_value": 18000,
+          "price_text": "18,000원",
+          "price_type": null,
+          "external_menu_id": "dom-24",
+          "sourceFields": [
+            "sections.menu.items[23].name",
+            "sections.menu.items[23].price_value",
+            "sections.menu.items[23].price_text"
+          ]
+        },
+        {
+          "name": "스바라시 스테이크 덮밥",
+          "price_value": 21000,
+          "price_text": "21,000원",
+          "price_type": null,
+          "external_menu_id": "dom-25",
+          "sourceFields": [
+            "sections.menu.items[24].name",
+            "sections.menu.items[24].price_value",
+            "sections.menu.items[24].price_text"
+          ]
+        },
+        {
+          "name": "도톤보리 텐동",
+          "price_value": 16000,
+          "price_text": "16,000원",
+          "price_type": null,
+          "external_menu_id": "dom-26",
+          "sourceFields": [
+            "sections.menu.items[25].name",
+            "sections.menu.items[25].price_value",
+            "sections.menu.items[25].price_text"
+          ]
+        },
+        {
+          "name": "에비덴뿌라우동",
+          "price_value": 12000,
+          "price_text": "12,000원",
+          "price_type": null,
+          "external_menu_id": "dom-27",
+          "sourceFields": [
+            "sections.menu.items[26].name",
+            "sections.menu.items[26].price_value",
+            "sections.menu.items[26].price_text"
+          ]
+        },
+        {
+          "name": "살얼음동동 냉소바",
+          "price_value": 11000,
+          "price_text": "11,000원",
+          "price_type": null,
+          "external_menu_id": "dom-28",
+          "sourceFields": [
+            "sections.menu.items[27].name",
+            "sections.menu.items[27].price_value",
+            "sections.menu.items[27].price_text"
+          ]
+        },
+        {
+          "name": "특선사시미모리아와세",
+          "price_value": 98000,
+          "price_text": "98,000원",
+          "price_type": null,
+          "external_menu_id": "dom-29",
+          "sourceFields": [
+            "sections.menu.items[28].name",
+            "sections.menu.items[28].price_value",
+            "sections.menu.items[28].price_text"
+          ]
+        },
+        {
+          "name": "오늘의사시미",
+          "price_value": 52000,
+          "price_text": "52,000원",
+          "price_type": null,
+          "external_menu_id": "dom-30",
+          "sourceFields": [
+            "sections.menu.items[29].name",
+            "sections.menu.items[29].price_value",
+            "sections.menu.items[29].price_text"
+          ]
+        },
+        {
+          "name": "광어+연어 두가지사시미",
+          "price_value": 41000,
+          "price_text": "41,000원",
+          "price_type": null,
+          "external_menu_id": "dom-31",
+          "sourceFields": [
+            "sections.menu.items[30].name",
+            "sections.menu.items[30].price_value",
+            "sections.menu.items[30].price_text"
+          ]
+        },
+        {
+          "name": "도미사시미",
+          "price_value": 39000,
+          "price_text": "39,000원",
+          "price_type": null,
+          "external_menu_id": "dom-32",
+          "sourceFields": [
+            "sections.menu.items[31].name",
+            "sections.menu.items[31].price_value",
+            "sections.menu.items[31].price_text"
+          ]
+        },
+        {
+          "name": "광어사시미",
+          "price_value": 37000,
+          "price_text": "37,000원",
+          "price_type": null,
+          "external_menu_id": "dom-33",
+          "sourceFields": [
+            "sections.menu.items[32].name",
+            "sections.menu.items[32].price_value",
+            "sections.menu.items[32].price_text"
+          ]
+        },
+        {
+          "name": "연어사시미",
+          "price_value": 32000,
+          "price_text": "32,000원",
+          "price_type": null,
+          "external_menu_id": "dom-34",
+          "sourceFields": [
+            "sections.menu.items[33].name",
+            "sections.menu.items[33].price_value",
+            "sections.menu.items[33].price_text"
+          ]
+        },
+        {
+          "name": "트리플 치즈 샐러드",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-35",
+          "sourceFields": [
+            "sections.menu.items[34].name",
+            "sections.menu.items[34].price_value",
+            "sections.menu.items[34].price_text"
+          ]
+        },
+        {
+          "name": "이탈리안 생연어 샐러드",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-36",
+          "sourceFields": [
+            "sections.menu.items[35].name",
+            "sections.menu.items[35].price_value",
+            "sections.menu.items[35].price_text"
+          ]
+        },
+        {
+          "name": "투뿔 한우 타다끼",
+          "price_value": 28000,
+          "price_text": "28,000원",
+          "price_type": null,
+          "external_menu_id": "dom-37",
+          "sourceFields": [
+            "sections.menu.items[36].name",
+            "sections.menu.items[36].price_value",
+            "sections.menu.items[36].price_text"
+          ]
+        },
+        {
+          "name": "흑초만난 탕수육",
+          "price_value": 27000,
+          "price_text": "27,000원",
+          "price_type": null,
+          "external_menu_id": "dom-38",
+          "sourceFields": [
+            "sections.menu.items[37].name",
+            "sections.menu.items[37].price_value",
+            "sections.menu.items[37].price_text"
+          ]
+        },
+        {
+          "name": "매콤 해물 떡볶이",
+          "price_value": 26500,
+          "price_text": "26,500원",
+          "price_type": null,
+          "external_menu_id": "dom-39",
+          "sourceFields": [
+            "sections.menu.items[38].name",
+            "sections.menu.items[38].price_value",
+            "sections.menu.items[38].price_text"
+          ]
+        },
+        {
+          "name": "명란크림우동",
+          "price_value": 26500,
+          "price_text": "26,500원",
+          "price_type": null,
+          "external_menu_id": "dom-40",
+          "sourceFields": [
+            "sections.menu.items[39].name",
+            "sections.menu.items[39].price_value",
+            "sections.menu.items[39].price_text"
+          ]
+        },
+        {
+          "name": "불닭소스 맞은 깐풍기",
+          "price_value": 26000,
+          "price_text": "26,000원",
+          "price_type": null,
+          "external_menu_id": "dom-41",
+          "sourceFields": [
+            "sections.menu.items[40].name",
+            "sections.menu.items[40].price_value",
+            "sections.menu.items[40].price_text"
+          ]
+        },
+        {
+          "name": "볼케이노 오돌뼈",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-42",
+          "sourceFields": [
+            "sections.menu.items[41].name",
+            "sections.menu.items[41].price_value",
+            "sections.menu.items[41].price_text"
+          ]
+        },
+        {
+          "name": "관자,새우 갈릭버터 야끼",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-43",
+          "sourceFields": [
+            "sections.menu.items[42].name",
+            "sections.menu.items[42].price_value",
+            "sections.menu.items[42].price_text"
+          ]
+        },
+        {
+          "name": "크림치즈 오꼬노미야끼",
+          "price_value": 24500,
+          "price_text": "24,500원",
+          "price_type": null,
+          "external_menu_id": "dom-44",
+          "sourceFields": [
+            "sections.menu.items[43].name",
+            "sections.menu.items[43].price_value",
+            "sections.menu.items[43].price_text"
+          ]
+        },
+        {
+          "name": "차돌숙주볶음",
+          "price_value": 24500,
+          "price_text": "24,500원",
+          "price_type": null,
+          "external_menu_id": "dom-45",
+          "sourceFields": [
+            "sections.menu.items[44].name",
+            "sections.menu.items[44].price_value",
+            "sections.menu.items[44].price_text"
+          ]
+        },
+        {
+          "name": "오사카풍 오꼬노미야끼",
+          "price_value": 24500,
+          "price_text": "24,500원",
+          "price_type": null,
+          "external_menu_id": "dom-46",
+          "sourceFields": [
+            "sections.menu.items[45].name",
+            "sections.menu.items[45].price_value",
+            "sections.menu.items[45].price_text"
+          ]
+        },
+        {
+          "name": "가리비관자 파스타",
+          "price_value": 21000,
+          "price_text": "21,000원",
+          "price_type": null,
+          "external_menu_id": "dom-47",
+          "sourceFields": [
+            "sections.menu.items[46].name",
+            "sections.menu.items[46].price_value",
+            "sections.menu.items[46].price_text"
+          ]
+        },
+        {
+          "name": "눈꽃 명란계란말이",
+          "price_value": 21000,
+          "price_text": "21,000원",
+          "price_type": null,
+          "external_menu_id": "dom-48",
+          "sourceFields": [
+            "sections.menu.items[47].name",
+            "sections.menu.items[47].price_value",
+            "sections.menu.items[47].price_text"
+          ]
+        },
+        {
+          "name": "타코와사비",
+          "price_value": 13000,
+          "price_text": "13,000원",
+          "price_type": null,
+          "external_menu_id": "dom-49",
+          "sourceFields": [
+            "sections.menu.items[48].name",
+            "sections.menu.items[48].price_value",
+            "sections.menu.items[48].price_text"
+          ]
+        },
+        {
+          "name": "모찌리도후",
+          "price_value": 13000,
+          "price_text": "13,000원",
+          "price_type": null,
+          "external_menu_id": "dom-50",
+          "sourceFields": [
+            "sections.menu.items[49].name",
+            "sections.menu.items[49].price_value",
+            "sections.menu.items[49].price_text"
+          ]
+        },
+        {
+          "name": "허니 고구마스틱",
+          "price_value": 13000,
+          "price_text": "13,000원",
+          "price_type": null,
+          "external_menu_id": "dom-51",
+          "sourceFields": [
+            "sections.menu.items[50].name",
+            "sections.menu.items[50].price_value",
+            "sections.menu.items[50].price_text"
+          ]
+        },
+        {
+          "name": "에비덴뿌라",
+          "price_value": 28500,
+          "price_text": "28,500원",
+          "price_type": null,
+          "external_menu_id": "dom-52",
+          "sourceFields": [
+            "sections.menu.items[51].name",
+            "sections.menu.items[51].price_value",
+            "sections.menu.items[51].price_text"
+          ]
+        },
+        {
+          "name": "문어튀김",
+          "price_value": 26500,
+          "price_text": "26,500원",
+          "price_type": null,
+          "external_menu_id": "dom-53",
+          "sourceFields": [
+            "sections.menu.items[52].name",
+            "sections.menu.items[52].price_value",
+            "sections.menu.items[52].price_text"
+          ]
+        },
+        {
+          "name": "도리가라아게",
+          "price_value": 22500,
+          "price_text": "22,500원",
+          "price_type": null,
+          "external_menu_id": "dom-54",
+          "sourceFields": [
+            "sections.menu.items[53].name",
+            "sections.menu.items[53].price_value",
+            "sections.menu.items[53].price_text"
+          ]
+        },
+        {
+          "name": "숯불꼬치 7종 구이",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-55",
+          "sourceFields": [
+            "sections.menu.items[54].name",
+            "sections.menu.items[54].price_value",
+            "sections.menu.items[54].price_text"
+          ]
+        },
+        {
+          "name": "숯불꼬치 10종 구이",
+          "price_value": 37000,
+          "price_text": "37,000원",
+          "price_type": null,
+          "external_menu_id": "dom-56",
+          "sourceFields": [
+            "sections.menu.items[55].name",
+            "sections.menu.items[55].price_value",
+            "sections.menu.items[55].price_text"
+          ]
+        },
+        {
+          "name": "메로소금구이",
+          "price_value": 29500,
+          "price_text": "29,500원",
+          "price_type": null,
+          "external_menu_id": "dom-57",
+          "sourceFields": [
+            "sections.menu.items[56].name",
+            "sections.menu.items[56].price_value",
+            "sections.menu.items[56].price_text"
+          ]
+        },
+        {
+          "name": "촉촉 오징어한마리",
+          "price_value": 17000,
+          "price_text": "17,000원",
+          "price_type": null,
+          "external_menu_id": "dom-58",
+          "sourceFields": [
+            "sections.menu.items[57].name",
+            "sections.menu.items[57].price_value",
+            "sections.menu.items[57].price_text"
+          ]
+        },
+        {
+          "name": "밀푀유나베",
+          "price_value": 28500,
+          "price_text": "28,500원",
+          "price_type": null,
+          "external_menu_id": "dom-59",
+          "sourceFields": [
+            "sections.menu.items[58].name",
+            "sections.menu.items[58].price_value",
+            "sections.menu.items[58].price_text"
+          ]
+        },
+        {
+          "name": "차돌탄탄나베",
+          "price_value": 28500,
+          "price_text": "28,500원",
+          "price_type": null,
+          "external_menu_id": "dom-60",
+          "sourceFields": [
+            "sections.menu.items[59].name",
+            "sections.menu.items[59].price_value",
+            "sections.menu.items[59].price_text"
+          ]
+        },
+        {
+          "name": "전통나가사끼 해물짬뽕나베",
+          "price_value": 28000,
+          "price_text": "28,000원",
+          "price_type": null,
+          "external_menu_id": "dom-61",
+          "sourceFields": [
+            "sections.menu.items[60].name",
+            "sections.menu.items[60].price_value",
+            "sections.menu.items[60].price_text"
+          ]
+        },
+        {
+          "name": "얼큰수제비 해물짬뽕나베",
+          "price_value": 28000,
+          "price_text": "28,000원",
+          "price_type": null,
+          "external_menu_id": "dom-62",
+          "sourceFields": [
+            "sections.menu.items[61].name",
+            "sections.menu.items[61].price_value",
+            "sections.menu.items[61].price_text"
+          ]
+        },
+        {
+          "name": "봉골레 생 백합나베",
+          "price_value": 27000,
+          "price_text": "27,000원",
+          "price_type": null,
+          "external_menu_id": "dom-63",
+          "sourceFields": [
+            "sections.menu.items[62].name",
+            "sections.menu.items[62].price_value",
+            "sections.menu.items[62].price_text"
+          ]
+        },
+        {
+          "name": "간사이풍 오뎅나베",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-64",
+          "sourceFields": [
+            "sections.menu.items[63].name",
+            "sections.menu.items[63].price_value",
+            "sections.menu.items[63].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "매일",
+          "open_time": "15:30",
+          "close_time": "05:00",
+          "break_hours": null,
+          "last_order": null,
+          "description": "영업 중다음 날 04:30에 라스트오더 다음 날 4시 30분에 라스트오더 매일 15:30 - 다음 날 05:00 04:30 라스트오더 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.041086"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "1353",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "248",
+          "crawled_at": "2026-09-25 09:07:13.849744"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 608
+        },
+        {
+          "keyword": "\"대화하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 429
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 269
+        },
+        {
+          "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 245
+        },
+        {
+          "keyword": "\"기본 안주가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 188
+        },
+        {
+          "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 169
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 154
+        },
+        {
+          "keyword": "\"술이 다양해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 151
+        },
+        {
+          "keyword": "\"오래 머무르기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 142
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 125
+        },
+        {
+          "keyword": "꼬치",
+          "keyword_kind": "menu",
+          "mention_count": 22
+        },
+        {
+          "keyword": "맥주",
+          "keyword_kind": "menu",
+          "mention_count": 19
+        },
+        {
+          "keyword": "짬뽕",
+          "keyword_kind": "menu",
+          "mention_count": 19
+        },
+        {
+          "keyword": "초밥",
+          "keyword_kind": "menu",
+          "mention_count": 14
+        },
+        {
+          "keyword": "튀김",
+          "keyword_kind": "menu",
+          "mention_count": 13
+        },
+        {
+          "keyword": "모찌리도후",
+          "keyword_kind": "menu",
+          "mention_count": 10
+        },
+        {
+          "keyword": "수제비",
+          "keyword_kind": "menu",
+          "mention_count": 9
+        },
+        {
+          "keyword": "계란말이",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "사케",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "하이볼",
+          "keyword_kind": "menu",
+          "mention_count": 7
+        },
+        {
+          "keyword": "명란",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "밀푀유나베",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "우동",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "해물짬뽕",
+          "keyword_kind": "menu",
+          "mention_count": 6
+        },
+        {
+          "keyword": "고구마튀김",
+          "keyword_kind": "menu",
+          "mention_count": 5
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 605
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 470
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 203
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 133
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 51
+        },
+        {
+          "keyword": "예약",
+          "keyword_kind": "theme",
+          "mention_count": 36
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 30
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 19
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 16
+        },
+        {
+          "keyword": "대기시간",
+          "keyword_kind": "theme",
+          "mention_count": 13
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 12
+        },
+        {
+          "keyword": "위치",
+          "keyword_kind": "theme",
+          "mention_count": 8
+        },
+        {
+          "keyword": "방역",
+          "keyword_kind": "theme",
+          "mention_count": 2
+        },
+        {
+          "keyword": "전망",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-7",
+          "review_text": "분위기도 좋고 음식도 전체적으로 맛있었어요. 안주 종류가 다양해서 이것저것 골라 먹기 좋았습니다. 특히 음식이 깔끔하게 나오고 술이랑 잘 어울렸어요. 직원분들도 친절하고 매장 분위기도 편안했습니다. 다음에 근처 오면 또 방문하고 싶은 이자카야예요! 굿굿",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-1",
+          "review_text": "공간이 되게 넓고 자리마다 칸막이로 분리되어 있어서 대화하기 좋은 곳이에요! 화장실도 깔끔하고 안주 종류도 너무많고 맛있는 하이볼도 있습니다, 수다떨기도 참 좋아요! 자주옵니당 ㅎㅎ 조명이 어두워서 소개팅하기 좋아요 어색한분들 여기로 오세요~~~",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-3",
+          "review_text": "지나가다가 문득 들린곳이에요! 강남점은 많이 가봣는데 여기 논현점은 처음 왔어요 너무 더웠는데 여기는 시원하고 장소도 쾌적하니 좋았어요 ㅎㅎ 룸식으로 되어 있어서 우리끼리 얘기하기도 좋고 너무 좋네요 음식도 맛있고 친절하니 너무 감사드립니다 ㅎㅎ",
+          "review_date": null
+        },
+        {
+          "review_id": "dom-5",
+          "review_text": "꼬지 종류가 다양하네요~!!! 테이블도 넓고 깨끗해요^^ 화장실도 매우 깨끗하고 가글도 있어서 좋아요ㅋㅋ 맛도 있고 직원들도 친절해요~!! 다음에 친구들이랑 또 오고싶은 맛집이에요~!!!",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:27:10.041167",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:07:13.870755",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:07:13.870933",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "readinessStatus": "READY",
+    "readinessReasons": [],
+    "missingSections": []
+  },
+  "inputHash": "38d328ce3881ab93eab6f1c55d0d7fdbdb74e2d5eb88b15c7983bebd7e3641db",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "a22810b2835f0410e2c979d07439d0a701bbd14d1008d84e87f7b7b9ba4b91f5"
+  }
+}

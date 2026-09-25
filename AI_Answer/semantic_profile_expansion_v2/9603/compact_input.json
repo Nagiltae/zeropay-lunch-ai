@@ -1,0 +1,1021 @@
+{
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "restaurantId": 9603,
+  "venueId": null,
+  "source": {
+    "provider": "KOMSCO",
+    "lastSyncedAt": "2026-09-20 17:18:38.252967"
+  },
+  "identity": {
+    "restaurantName": "본죽&비빔밥 논현점",
+    "restaurantAddress": "서울특별시 강남구 학동로4길 15(논현동)",
+    "category": null,
+    "latitude": 37.5105207,
+    "longitude": 127.0235534,
+    "canonicalName": "본죽&비빔밥cafe 논현점",
+    "canonicalAddress": "서울특별시 강남구 학동로4길 15(논현동)",
+    "canonicalRoadAddress": "서울 강남구 학동로4길 15",
+    "provider": "NAVER",
+    "numericPlaceId": "1140039464",
+    "matchStatus": "MATCHED",
+    "mappingSyncedAt": null,
+    "active": "1",
+    "recommendationEligibility": "ELIGIBLE",
+    "legalDongCode": "11680108",
+    "verificationStatus": "VERIFIED",
+    "verificationPlaceId": null,
+    "placeIdOwnerCount": 1
+  },
+  "sections": {
+    "menu": {
+      "items": [
+        {
+          "name": "[NEW] 팥칼국수",
+          "price_value": 11500,
+          "price_text": "11,500원",
+          "price_type": null,
+          "external_menu_id": "dom-1",
+          "sourceFields": [
+            "sections.menu.items[0].name",
+            "sections.menu.items[0].price_value",
+            "sections.menu.items[0].price_text",
+            "sections.menu.items[10]"
+          ]
+        },
+        {
+          "name": "[시즌한정] 열무칼비빔면",
+          "price_value": 12500,
+          "price_text": "12,500원",
+          "price_type": null,
+          "external_menu_id": "dom-2",
+          "sourceFields": [
+            "sections.menu.items[1].name",
+            "sections.menu.items[1].price_value",
+            "sections.menu.items[1].price_text",
+            "sections.menu.items[11]"
+          ]
+        },
+        {
+          "name": "[시즌한정] 열무돈불백비빔밥",
+          "price_value": 13500,
+          "price_text": "13,500원",
+          "price_type": null,
+          "external_menu_id": "dom-3",
+          "sourceFields": [
+            "sections.menu.items[2].name",
+            "sections.menu.items[2].price_value",
+            "sections.menu.items[2].price_text",
+            "sections.menu.items[12]"
+          ]
+        },
+        {
+          "name": "[시그니처] 장조림버터비빔밥",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-4",
+          "sourceFields": [
+            "sections.menu.items[3].name",
+            "sections.menu.items[3].price_value",
+            "sections.menu.items[3].price_text",
+            "sections.menu.items[13]"
+          ]
+        },
+        {
+          "name": "쇠고기듬뿍야채죽(소고기1.5배)",
+          "price_value": 16000,
+          "price_text": "16,000원",
+          "price_type": null,
+          "external_menu_id": "dom-5",
+          "sourceFields": [
+            "sections.menu.items[4].name",
+            "sections.menu.items[4].price_value",
+            "sections.menu.items[4].price_text",
+            "sections.menu.items[21]"
+          ]
+        },
+        {
+          "name": "[아침추천] 쇠고기야채죽",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-6",
+          "sourceFields": [
+            "sections.menu.items[5].name",
+            "sections.menu.items[5].price_value",
+            "sections.menu.items[5].price_text"
+          ]
+        },
+        {
+          "name": "[아침추천] 전복죽",
+          "price_value": 14500,
+          "price_text": "14,500원",
+          "price_type": null,
+          "external_menu_id": "dom-7",
+          "sourceFields": [
+            "sections.menu.items[6].name",
+            "sections.menu.items[6].price_value",
+            "sections.menu.items[6].price_text"
+          ]
+        },
+        {
+          "name": "[아침추천] 낙지김치죽",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-8",
+          "sourceFields": [
+            "sections.menu.items[7].name",
+            "sections.menu.items[7].price_value",
+            "sections.menu.items[7].price_text"
+          ]
+        },
+        {
+          "name": "[아침추천] 단호박죽",
+          "price_value": 12000,
+          "price_text": "12,000원",
+          "price_type": null,
+          "external_menu_id": "dom-9",
+          "sourceFields": [
+            "sections.menu.items[8].name",
+            "sections.menu.items[8].price_value",
+            "sections.menu.items[8].price_text"
+          ]
+        },
+        {
+          "name": "[아침추천] 흰죽",
+          "price_value": 7500,
+          "price_text": "7,500원",
+          "price_type": null,
+          "external_menu_id": "dom-10",
+          "sourceFields": [
+            "sections.menu.items[9].name",
+            "sections.menu.items[9].price_value",
+            "sections.menu.items[9].price_text"
+          ]
+        },
+        {
+          "name": "낙지김치비빔밥",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-15",
+          "sourceFields": [
+            "sections.menu.items[14].name",
+            "sections.menu.items[14].price_value",
+            "sections.menu.items[14].price_text"
+          ]
+        },
+        {
+          "name": "불고기낙지비빔밥 (불낙)",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-16",
+          "sourceFields": [
+            "sections.menu.items[15].name",
+            "sections.menu.items[15].price_value",
+            "sections.menu.items[15].price_text"
+          ]
+        },
+        {
+          "name": "신짬뽕비빔밥",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-17",
+          "sourceFields": [
+            "sections.menu.items[16].name",
+            "sections.menu.items[16].price_value",
+            "sections.menu.items[16].price_text"
+          ]
+        },
+        {
+          "name": "전복내장해물비빔밥",
+          "price_value": 17000,
+          "price_text": "17,000원",
+          "price_type": null,
+          "external_menu_id": "dom-18",
+          "sourceFields": [
+            "sections.menu.items[17].name",
+            "sections.menu.items[17].price_value",
+            "sections.menu.items[17].price_text"
+          ]
+        },
+        {
+          "name": "해물된장뚝배기",
+          "price_value": 13000,
+          "price_text": "13,000원",
+          "price_type": null,
+          "external_menu_id": "dom-19",
+          "sourceFields": [
+            "sections.menu.items[18].name",
+            "sections.menu.items[18].price_value",
+            "sections.menu.items[18].price_text"
+          ]
+        },
+        {
+          "name": "콩비지뚝배기",
+          "price_value": 13000,
+          "price_text": "13,000원",
+          "price_type": null,
+          "external_menu_id": "dom-20",
+          "sourceFields": [
+            "sections.menu.items[19].name",
+            "sections.menu.items[19].price_value",
+            "sections.menu.items[19].price_text"
+          ]
+        },
+        {
+          "name": "소불고기버섯뚝배기",
+          "price_value": 13500,
+          "price_text": "13,500원",
+          "price_type": null,
+          "external_menu_id": "dom-21",
+          "sourceFields": [
+            "sections.menu.items[20].name",
+            "sections.menu.items[20].price_value",
+            "sections.menu.items[20].price_text"
+          ]
+        },
+        {
+          "name": "쇠고기야채죽",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-23",
+          "sourceFields": [
+            "sections.menu.items[22].name",
+            "sections.menu.items[22].price_value",
+            "sections.menu.items[22].price_text"
+          ]
+        },
+        {
+          "name": "쇠고기듬뿍버섯죽(소고기1.5배)",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-24",
+          "sourceFields": [
+            "sections.menu.items[23].name",
+            "sections.menu.items[23].price_value",
+            "sections.menu.items[23].price_text"
+          ]
+        },
+        {
+          "name": "쇠고기버섯죽",
+          "price_value": 13000,
+          "price_text": "13,000원",
+          "price_type": null,
+          "external_menu_id": "dom-25",
+          "sourceFields": [
+            "sections.menu.items[24].name",
+            "sections.menu.items[24].price_value",
+            "sections.menu.items[24].price_text"
+          ]
+        },
+        {
+          "name": "새우죽",
+          "price_value": 12000,
+          "price_text": "12,000원",
+          "price_type": null,
+          "external_menu_id": "dom-26",
+          "sourceFields": [
+            "sections.menu.items[25].name",
+            "sections.menu.items[25].price_value",
+            "sections.menu.items[25].price_text"
+          ]
+        },
+        {
+          "name": "전복죽 (보양)",
+          "price_value": 14500,
+          "price_text": "14,500원",
+          "price_type": null,
+          "external_menu_id": "dom-27",
+          "sourceFields": [
+            "sections.menu.items[26].name",
+            "sections.menu.items[26].price_value",
+            "sections.menu.items[26].price_text"
+          ]
+        },
+        {
+          "name": "진전복죽 (전복2배)",
+          "price_value": 18500,
+          "price_text": "18,500원",
+          "price_type": null,
+          "external_menu_id": "dom-28",
+          "sourceFields": [
+            "sections.menu.items[27].name",
+            "sections.menu.items[27].price_value",
+            "sections.menu.items[27].price_text"
+          ]
+        },
+        {
+          "name": "특전복죽 (전복3배)",
+          "price_value": 22500,
+          "price_text": "22,500원",
+          "price_type": null,
+          "external_menu_id": "dom-29",
+          "sourceFields": [
+            "sections.menu.items[28].name",
+            "sections.menu.items[28].price_value",
+            "sections.menu.items[28].price_text"
+          ]
+        },
+        {
+          "name": "전복내장죽",
+          "price_value": 16500,
+          "price_text": "16,500원",
+          "price_type": null,
+          "external_menu_id": "dom-30",
+          "sourceFields": [
+            "sections.menu.items[29].name",
+            "sections.menu.items[29].price_value",
+            "sections.menu.items[29].price_text"
+          ]
+        },
+        {
+          "name": "진전복내장죽 (전복2배)",
+          "price_value": 20500,
+          "price_text": "20,500원",
+          "price_type": null,
+          "external_menu_id": "dom-31",
+          "sourceFields": [
+            "sections.menu.items[30].name",
+            "sections.menu.items[30].price_value",
+            "sections.menu.items[30].price_text"
+          ]
+        },
+        {
+          "name": "추어죽 (보양)",
+          "price_value": 16500,
+          "price_text": "16,500원",
+          "price_type": null,
+          "external_menu_id": "dom-32",
+          "sourceFields": [
+            "sections.menu.items[31].name",
+            "sections.menu.items[31].price_value",
+            "sections.menu.items[31].price_text"
+          ]
+        },
+        {
+          "name": "자연송이쇠고기죽 (보양)",
+          "price_value": 18000,
+          "price_text": "18,000원",
+          "price_type": null,
+          "external_menu_id": "dom-33",
+          "sourceFields": [
+            "sections.menu.items[32].name",
+            "sections.menu.items[32].price_value",
+            "sections.menu.items[32].price_text"
+          ]
+        },
+        {
+          "name": "특자연송이쇠고기죽 (송이2배)",
+          "price_value": 25000,
+          "price_text": "25,000원",
+          "price_type": null,
+          "external_menu_id": "dom-34",
+          "sourceFields": [
+            "sections.menu.items[33].name",
+            "sections.menu.items[33].price_value",
+            "sections.menu.items[33].price_text"
+          ]
+        },
+        {
+          "name": "삼계죽 (보양)",
+          "price_value": 15000,
+          "price_text": "15,000원",
+          "price_type": null,
+          "external_menu_id": "dom-35",
+          "sourceFields": [
+            "sections.menu.items[34].name",
+            "sections.menu.items[34].price_value",
+            "sections.menu.items[34].price_text"
+          ]
+        },
+        {
+          "name": "불고기낙지죽 (불낙죽)",
+          "price_value": 14500,
+          "price_text": "14,500원",
+          "price_type": null,
+          "external_menu_id": "dom-36",
+          "sourceFields": [
+            "sections.menu.items[35].name",
+            "sections.menu.items[35].price_value",
+            "sections.menu.items[35].price_text"
+          ]
+        },
+        {
+          "name": "홍게품은죽",
+          "price_value": 17000,
+          "price_text": "17,000원",
+          "price_type": null,
+          "external_menu_id": "dom-37",
+          "sourceFields": [
+            "sections.menu.items[36].name",
+            "sections.menu.items[36].price_value",
+            "sections.menu.items[36].price_text"
+          ]
+        },
+        {
+          "name": "진홍게품은죽 (홍게다리살2배)",
+          "price_value": 22000,
+          "price_text": "22,000원",
+          "price_type": null,
+          "external_menu_id": "dom-38",
+          "sourceFields": [
+            "sections.menu.items[37].name",
+            "sections.menu.items[37].price_value",
+            "sections.menu.items[37].price_text"
+          ]
+        },
+        {
+          "name": "특홍게품은죽 (홍게다리살3배)",
+          "price_value": 27000,
+          "price_text": "27,000원",
+          "price_type": null,
+          "external_menu_id": "dom-39",
+          "sourceFields": [
+            "sections.menu.items[38].name",
+            "sections.menu.items[38].price_value",
+            "sections.menu.items[38].price_text"
+          ]
+        },
+        {
+          "name": "낙지김치죽 (해장)",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-40",
+          "sourceFields": [
+            "sections.menu.items[39].name",
+            "sections.menu.items[39].price_value",
+            "sections.menu.items[39].price_text"
+          ]
+        },
+        {
+          "name": "(배달앱 전용) 치즈 낙지김치죽",
+          "price_value": 16000,
+          "price_text": "16,000원",
+          "price_type": null,
+          "external_menu_id": "dom-41",
+          "sourceFields": [
+            "sections.menu.items[40].name",
+            "sections.menu.items[40].price_value",
+            "sections.menu.items[40].price_text"
+          ]
+        },
+        {
+          "name": "단호박죽",
+          "price_value": 12000,
+          "price_text": "12,000원",
+          "price_type": null,
+          "external_menu_id": "dom-42",
+          "sourceFields": [
+            "sections.menu.items[41].name",
+            "sections.menu.items[41].price_value",
+            "sections.menu.items[41].price_text"
+          ]
+        },
+        {
+          "name": "동지팥죽(담백한 밥알팥죽)",
+          "price_value": 11500,
+          "price_text": "11,500원",
+          "price_type": null,
+          "external_menu_id": "dom-43",
+          "sourceFields": [
+            "sections.menu.items[42].name",
+            "sections.menu.items[42].price_value",
+            "sections.menu.items[42].price_text"
+          ]
+        },
+        {
+          "name": "단팥죽(달달한 새알팥죽)",
+          "price_value": 12000,
+          "price_text": "12,000원",
+          "price_type": null,
+          "external_menu_id": "dom-44",
+          "sourceFields": [
+            "sections.menu.items[43].name",
+            "sections.menu.items[43].price_value",
+            "sections.menu.items[43].price_text"
+          ]
+        },
+        {
+          "name": "녹두죽",
+          "price_value": 11500,
+          "price_text": "11,500원",
+          "price_type": null,
+          "external_menu_id": "dom-45",
+          "sourceFields": [
+            "sections.menu.items[44].name",
+            "sections.menu.items[44].price_value",
+            "sections.menu.items[44].price_text"
+          ]
+        },
+        {
+          "name": "명품잣죽",
+          "price_value": 17000,
+          "price_text": "17,000원",
+          "price_type": null,
+          "external_menu_id": "dom-46",
+          "sourceFields": [
+            "sections.menu.items[45].name",
+            "sections.menu.items[45].price_value",
+            "sections.menu.items[45].price_text"
+          ]
+        },
+        {
+          "name": "푸팟퐁커리게살쮺 (카레)",
+          "price_value": 18500,
+          "price_text": "18,500원",
+          "price_type": null,
+          "external_menu_id": "dom-47",
+          "sourceFields": [
+            "sections.menu.items[46].name",
+            "sections.menu.items[46].price_value",
+            "sections.menu.items[46].price_text"
+          ]
+        },
+        {
+          "name": "참깨계란새우쮺(반반죽)",
+          "price_value": 14000,
+          "price_text": "14,000원",
+          "price_type": null,
+          "external_menu_id": "dom-48",
+          "sourceFields": [
+            "sections.menu.items[47].name",
+            "sections.menu.items[47].price_value",
+            "sections.menu.items[47].price_text"
+          ]
+        },
+        {
+          "name": "본메추리알장조림(400g)",
+          "price_value": 5900,
+          "price_text": "5,900원",
+          "price_type": null,
+          "external_menu_id": "dom-49",
+          "sourceFields": [
+            "sections.menu.items[48].name",
+            "sections.menu.items[48].price_value",
+            "sections.menu.items[48].price_text"
+          ]
+        },
+        {
+          "name": "든든한끼 본쇠고기장조림(80g)",
+          "price_value": 5300,
+          "price_text": "5,300원",
+          "price_type": null,
+          "external_menu_id": "dom-50",
+          "sourceFields": [
+            "sections.menu.items[49].name",
+            "sections.menu.items[49].price_value",
+            "sections.menu.items[49].price_text"
+          ]
+        },
+        {
+          "name": "든든한끼 본오징어초무침(80g)",
+          "price_value": 3900,
+          "price_text": "3,900원",
+          "price_type": null,
+          "external_menu_id": "dom-51",
+          "sourceFields": [
+            "sections.menu.items[50].name",
+            "sections.menu.items[50].price_value",
+            "sections.menu.items[50].price_text"
+          ]
+        },
+        {
+          "name": "키즈장조림(80g)",
+          "price_value": 5000,
+          "price_text": "5,000원",
+          "price_type": null,
+          "external_menu_id": "dom-52",
+          "sourceFields": [
+            "sections.menu.items[51].name",
+            "sections.menu.items[51].price_value",
+            "sections.menu.items[51].price_text"
+          ]
+        },
+        {
+          "name": "본쇠고기장조림(300g)",
+          "price_value": 16400,
+          "price_text": "16,400원",
+          "price_type": null,
+          "external_menu_id": "dom-53",
+          "sourceFields": [
+            "sections.menu.items[52].name",
+            "sections.menu.items[52].price_value",
+            "sections.menu.items[52].price_text"
+          ]
+        },
+        {
+          "name": "단호박식혜 238ml (건강음료)",
+          "price_value": 2000,
+          "price_text": "2,000원",
+          "price_type": null,
+          "external_menu_id": "dom-54",
+          "sourceFields": [
+            "sections.menu.items[53].name",
+            "sections.menu.items[53].price_value",
+            "sections.menu.items[53].price_text"
+          ]
+        },
+        {
+          "name": "우리 땅 청매실 100ml (건강음료)",
+          "price_value": 1800,
+          "price_text": "1,800원",
+          "price_type": null,
+          "external_menu_id": "dom-55",
+          "sourceFields": [
+            "sections.menu.items[54].name",
+            "sections.menu.items[54].price_value",
+            "sections.menu.items[54].price_text"
+          ]
+        },
+        {
+          "name": "양배추사과즙 100ml (건강음료)",
+          "price_value": 1800,
+          "price_text": "1,800원",
+          "price_type": null,
+          "external_menu_id": "dom-56",
+          "sourceFields": [
+            "sections.menu.items[55].name",
+            "sections.menu.items[55].price_value",
+            "sections.menu.items[55].price_text"
+          ]
+        },
+        {
+          "name": "진짜배즙 100ml (건강음료)",
+          "price_value": 1800,
+          "price_text": "1,800원",
+          "price_type": null,
+          "external_menu_id": "dom-57",
+          "sourceFields": [
+            "sections.menu.items[56].name",
+            "sections.menu.items[56].price_value",
+            "sections.menu.items[56].price_text"
+          ]
+        },
+        {
+          "name": "본매실골드 500ml (건강음료)",
+          "price_value": 4800,
+          "price_text": "4,800원",
+          "price_type": null,
+          "external_menu_id": "dom-58",
+          "sourceFields": [
+            "sections.menu.items[57].name",
+            "sections.menu.items[57].price_value",
+            "sections.menu.items[57].price_text"
+          ]
+        },
+        {
+          "name": "[보들보들] 영양 계란찜",
+          "price_value": 3500,
+          "price_text": "3,500원",
+          "price_type": null,
+          "external_menu_id": "dom-59",
+          "sourceFields": [
+            "sections.menu.items[58].name",
+            "sections.menu.items[58].price_value",
+            "sections.menu.items[58].price_text"
+          ]
+        },
+        {
+          "name": "철판소불고기",
+          "price_value": 8500,
+          "price_text": "8,500원",
+          "price_type": null,
+          "external_menu_id": "dom-60",
+          "sourceFields": [
+            "sections.menu.items[59].name",
+            "sections.menu.items[59].price_value",
+            "sections.menu.items[59].price_text"
+          ]
+        },
+        {
+          "name": "단호박고추장(25g)",
+          "price_value": 300,
+          "price_text": "300원",
+          "price_type": null,
+          "external_menu_id": "dom-61",
+          "sourceFields": [
+            "sections.menu.items[60].name",
+            "sections.menu.items[60].price_value",
+            "sections.menu.items[60].price_text"
+          ]
+        },
+        {
+          "name": "시그니처 통단팥죽 270g (간편식)",
+          "price_value": 4900,
+          "price_text": "4,900원",
+          "price_type": null,
+          "external_menu_id": "dom-62",
+          "sourceFields": [
+            "sections.menu.items[61].name",
+            "sections.menu.items[61].price_value",
+            "sections.menu.items[61].price_text"
+          ]
+        },
+        {
+          "name": "시그니처 단호박죽 270g (간편식)",
+          "price_value": 4900,
+          "price_text": "4,900원",
+          "price_type": null,
+          "external_menu_id": "dom-63",
+          "sourceFields": [
+            "sections.menu.items[62].name",
+            "sections.menu.items[62].price_value",
+            "sections.menu.items[62].price_text"
+          ]
+        }
+      ]
+    },
+    "businessHours": {
+      "items": [
+        {
+          "day_of_week": "월",
+          "open_time": "09:00",
+          "close_time": "20:20",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.046710"
+        },
+        {
+          "day_of_week": "화",
+          "open_time": "09:00",
+          "close_time": "20:20",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.047072"
+        },
+        {
+          "day_of_week": "수",
+          "open_time": "09:00",
+          "close_time": "20:20",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.047138"
+        },
+        {
+          "day_of_week": "목",
+          "open_time": "09:00",
+          "close_time": "20:20",
+          "break_hours": null,
+          "last_order": null,
+          "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 09:00 - 20:20 15:00 - 16:30 브레이크타임 화 09:00 - 20:20 15:00 - 16:30 브레이크타임 수 09:00 - 20:20 15:00 - 16:30 브레이크타임 목 09:00 - 20:20 15:00 - 16:30 브레이크타임 접기 영업시간 수정 제안하기",
+          "regular_closed_day": null,
+          "irregular_closed_day": null,
+          "business_status": null,
+          "crawled_at": "2026-09-25 09:27:10.047202"
+        }
+      ]
+    },
+    "review": {
+      "summary": [
+        {
+          "visitor_reviews_total": "475",
+          "visitor_reviews_score": null,
+          "visitor_text_review_total": null,
+          "cafe_blog_reviews_total": "29",
+          "crawled_at": "2026-09-25 09:07:02.464733"
+        }
+      ],
+      "keywords": [
+        {
+          "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 209
+        },
+        {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 87
+        },
+        {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 71
+        },
+        {
+          "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 69
+        },
+        {
+          "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 63
+        },
+        {
+          "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 45
+        },
+        {
+          "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 26
+        },
+        {
+          "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 22
+        },
+        {
+          "keyword": "\"건강한 맛이에요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 6
+        },
+        {
+          "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "비빔밥",
+          "keyword_kind": "menu",
+          "mention_count": 8
+        },
+        {
+          "keyword": "낙지",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "낙지김치죽",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "육개장",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "제육",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "짬뽕",
+          "keyword_kind": "menu",
+          "mention_count": 2
+        },
+        {
+          "keyword": "고기",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "곤드레나물밥",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "꼬막",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "꼬막비빔밥",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "꿀떡",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "단팥죽",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "단호박죽",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "동치미",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "새우",
+          "keyword_kind": "menu",
+          "mention_count": 1
+        },
+        {
+          "keyword": "맛",
+          "keyword_kind": "theme",
+          "mention_count": 79
+        },
+        {
+          "keyword": "만족도",
+          "keyword_kind": "theme",
+          "mention_count": 50
+        },
+        {
+          "keyword": "서비스",
+          "keyword_kind": "theme",
+          "mention_count": 19
+        },
+        {
+          "keyword": "음식량",
+          "keyword_kind": "theme",
+          "mention_count": 7
+        },
+        {
+          "keyword": "배달",
+          "keyword_kind": "theme",
+          "mention_count": 4
+        },
+        {
+          "keyword": "청결도",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "분위기",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "가격",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "대기시간",
+          "keyword_kind": "theme",
+          "mention_count": 3
+        },
+        {
+          "keyword": "메뉴",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        },
+        {
+          "keyword": "목적",
+          "keyword_kind": "theme",
+          "mention_count": 1
+        }
+      ],
+      "representativeReviews": [
+        {
+          "review_id": "dom-7",
+          "review_text": "딸냄이 속이 불편해 함께 죽 먹기 위해",
+          "review_date": null
+        }
+      ]
+    },
+    "lifecycle": [
+      {
+        "section": "business_hours",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:27:10.047246",
+        "error_code": null
+      },
+      {
+        "section": "menu",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:07:02.489051",
+        "error_code": null
+      },
+      {
+        "section": "review",
+        "state": "SUCCESS",
+        "checked_at": "2026-09-25 09:07:02.489265",
+        "error_code": null
+      }
+    ]
+  },
+  "quality": {
+    "strictProfileReady": true,
+    "lifecyclePresent": true,
+    "readinessStatus": "READY",
+    "readinessReasons": [],
+    "missingSections": []
+  },
+  "inputHash": "0fbdd8ff2d335c1224824879b1b0670c2c29b8f49858dc50724625e23c2322b5",
+  "sourceTrace": {
+    "menuDeduplicated": true,
+    "reviewSelection": "informative_max_6",
+    "originalInputHash": "77f4f9cf8fafb0a2c99a25345c6ac2aec694405b2631306c086d04201d5846ff"
+  }
+}

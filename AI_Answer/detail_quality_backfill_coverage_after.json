@@ -1,0 +1,3923 @@
+{
+  "createdAt": "2026-09-25T09:27:31.002783+00:00",
+  "readinessPolicyVersion": "profile-readiness-source-grounded-hours-v2",
+  "strictReadyBefore": 4,
+  "historicalAuditStrictReadyBefore": 5,
+  "strictReadyBeforeRestaurantIds": [
+    9568,
+    9571,
+    9574,
+    9617
+  ],
+  "strictReadyAfter": 26,
+  "newStrictReady": 22,
+  "newStrictReadyRestaurantIds": [
+    9559,
+    9569,
+    9570,
+    9580,
+    9603,
+    9639,
+    9659,
+    9715,
+    9759,
+    9791,
+    9801,
+    9826,
+    9839,
+    9853,
+    9865,
+    9904,
+    9954,
+    9973,
+    9996,
+    10021,
+    10042,
+    10053
+  ],
+  "summary": {
+    "population": 360,
+    "strictReady": 26,
+    "strictReadyRestaurantIds": [
+      9559,
+      9568,
+      9569,
+      9570,
+      9571,
+      9574,
+      9580,
+      9603,
+      9617,
+      9639,
+      9659,
+      9715,
+      9759,
+      9791,
+      9801,
+      9826,
+      9839,
+      9853,
+      9865,
+      9904,
+      9954,
+      9973,
+      9996,
+      10021,
+      10042,
+      10053
+    ],
+    "notReadyReasonCounts": {
+      "NO_BUSINESS_HOURS_SUCCESS": 325,
+      "NO_MENU_SUCCESS": 328,
+      "NO_PRICED_MENU": 40,
+      "NO_REVIEW_SUCCESS": 325,
+      "NO_STRUCTURED_HOURS": 332
+    }
+  },
+  "restaurantReadiness": [
+    {
+      "restaurantId": 9559,
+      "name": "모우리",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9560,
+      "name": "송가네",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9561,
+      "name": "다모아분식",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9562,
+      "name": "한마리소",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9564,
+      "name": "신천할매떡볶이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9567,
+      "name": "한정식애덕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9568,
+      "name": "청기와",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9569,
+      "name": "산곰장어",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9570,
+      "name": "블러프",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9571,
+      "name": "피자스쿨 강남논현점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9574,
+      "name": "청담머구리",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9575,
+      "name": "베이직",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9578,
+      "name": "왕십리 벌통곱창",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9579,
+      "name": "땅코참숯구이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9580,
+      "name": "빨간모자피자",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9581,
+      "name": "깐부치킨언주역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9582,
+      "name": "우정 양곱창",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9583,
+      "name": "파파존스 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9586,
+      "name": "아리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9587,
+      "name": "느엘스플라워케이크",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9588,
+      "name": "장수 설렁탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9589,
+      "name": "22FEB",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9590,
+      "name": "마츄피츄",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9591,
+      "name": "완도1957별관",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9592,
+      "name": "담미온 학동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9594,
+      "name": "돼지가엔푸드",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9597,
+      "name": "날날리 신선육회 연어",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9600,
+      "name": "카페 엘리에나(CAFE EliENA)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9601,
+      "name": "섬마을이야기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9602,
+      "name": "대포집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9603,
+      "name": "본죽&비빔밥 논현점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9605,
+      "name": "막뚱이치킨",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9606,
+      "name": "제이콥스플래닝앤디자인",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9607,
+      "name": "가츠몽 논현 아크로힐스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9608,
+      "name": "유정식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9609,
+      "name": "두레식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9611,
+      "name": "랑데뷰",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9612,
+      "name": "효도치킨 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9613,
+      "name": "오가고",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9614,
+      "name": "벨라꼬모",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9615,
+      "name": "청평숯불갈비",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9616,
+      "name": "토가라시",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9617,
+      "name": "(주)에스지푸드 논현역 마성떡볶이",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9618,
+      "name": "원조소금구이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9620,
+      "name": "논골집 영동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9621,
+      "name": "엘에이양분식",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9622,
+      "name": "(주)다이닝디자인",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9624,
+      "name": "피자나라치킨공주 강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9625,
+      "name": "논현손국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9626,
+      "name": "꼼터",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9628,
+      "name": "호루몬규상",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9631,
+      "name": "오늘, 와인한잔",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9633,
+      "name": "포인비에트",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9634,
+      "name": "최전방부대찌개",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9636,
+      "name": "진전복삼계탕 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9638,
+      "name": "논현집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9639,
+      "name": "이자카야나무(논현)",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9641,
+      "name": "논현194",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9642,
+      "name": "두찜 강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9643,
+      "name": "반포식스선정릉역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9644,
+      "name": "해랑",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9645,
+      "name": "우담",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9646,
+      "name": "왕창칼국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9647,
+      "name": "두지엠아라크렘",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9651,
+      "name": "서울왕돈까스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9652,
+      "name": "미미",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9653,
+      "name": "디히랑",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9654,
+      "name": "지리산",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9657,
+      "name": "별미식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9658,
+      "name": "묵호일식",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9659,
+      "name": "만석",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9660,
+      "name": "페리카나",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9661,
+      "name": "현대순대국",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9662,
+      "name": "진시황",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9663,
+      "name": "소나무",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9664,
+      "name": "현정숯불바베큐",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9665,
+      "name": "꽃뱅이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9666,
+      "name": "봉추찜닭 강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9667,
+      "name": "희(Hee)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9668,
+      "name": "진배족발",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9669,
+      "name": "박성희가 요리하는 집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9670,
+      "name": "허밍(Humming)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9671,
+      "name": "알로하포케 학동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9674,
+      "name": "남다른감자탕 학동사거리점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9675,
+      "name": "옛날농장",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9676,
+      "name": "구구족 강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9677,
+      "name": "엠케이카써비스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9679,
+      "name": "한양김밥국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9681,
+      "name": "현경이네",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9683,
+      "name": "청사포산꼼장어",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9684,
+      "name": "에스트레인",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9685,
+      "name": "가리비야",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9686,
+      "name": "부엉이식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9687,
+      "name": "백미우",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9688,
+      "name": "명동칼국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9689,
+      "name": "Heya",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9690,
+      "name": "단스시",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9691,
+      "name": "영동곰탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9692,
+      "name": "울트라멘",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9693,
+      "name": "미야기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9694,
+      "name": "주식회사 원강",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9698,
+      "name": "이태리부대찌개 신사점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9699,
+      "name": "그때그집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9703,
+      "name": "영동소금구이논현본점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9704,
+      "name": "알라프리마",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9705,
+      "name": "레몬그라스 타이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9706,
+      "name": "경몽루",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9709,
+      "name": "마케집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9710,
+      "name": "이모네",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9711,
+      "name": "유장원보쌈",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9712,
+      "name": "거복",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9714,
+      "name": "엄마손한식뷔페",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9715,
+      "name": "교촌치킨 논현1호점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9716,
+      "name": "강남설렁탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9717,
+      "name": "언니네집밥 1호점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9718,
+      "name": "창우수산활새우직판장",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9720,
+      "name": "신사정육식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9721,
+      "name": "라운지，많",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9723,
+      "name": "시오(SIIO)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9724,
+      "name": "압구정변강쇠떡볶이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9725,
+      "name": "우제홍참치",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9728,
+      "name": "스피드박스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9729,
+      "name": "스시안",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9730,
+      "name": "보승회관 강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9731,
+      "name": "카메스시",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_PRICED_MENU"
+      ]
+    },
+    {
+      "restaurantId": 9734,
+      "name": "보틀그린",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9735,
+      "name": "압구정김밥",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9736,
+      "name": "와사이진",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9737,
+      "name": "신사뻘낙지",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9738,
+      "name": "오수양푼이동태탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9739,
+      "name": "난랑",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9741,
+      "name": "반포등심",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9745,
+      "name": "무쇠막 김치찌게",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9746,
+      "name": "두어마리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9747,
+      "name": "좋은친구",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9748,
+      "name": "미우가",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9750,
+      "name": "종로떡폐백",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_PRICED_MENU"
+      ]
+    },
+    {
+      "restaurantId": 9751,
+      "name": "장어의전설",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9752,
+      "name": "라쿵푸 강남구청점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9753,
+      "name": "송탄부대찌게",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9755,
+      "name": "아쭈",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9756,
+      "name": "대삼식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9757,
+      "name": "동천홍 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9758,
+      "name": "예삐네집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9759,
+      "name": "특별한 오복수산 가로수길점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9761,
+      "name": "도리토리본점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9762,
+      "name": "투뿔 코리안 스테이크하우스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9765,
+      "name": "포몬스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9766,
+      "name": "고향집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9768,
+      "name": "아낙본점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9771,
+      "name": "잭슨피자(청담점)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9772,
+      "name": "핫브레드 논현역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9773,
+      "name": "세광양대창 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9774,
+      "name": "씨벨커피(cbellcoffee)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9775,
+      "name": "일언족발",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9777,
+      "name": "엔237 카페 앤 베이커리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9778,
+      "name": "광개토정육식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9779,
+      "name": "왕고모",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9780,
+      "name": "청계산갈비살",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9781,
+      "name": "사운드웨이브커피",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9783,
+      "name": "용삼계탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9784,
+      "name": "달콤한이야기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9785,
+      "name": "스시 나미키",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9786,
+      "name": "논현양꼬치",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9788,
+      "name": "원할머니 국수 보쌈 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9790,
+      "name": "바다등푸른생선구이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9791,
+      "name": "비비큐 논현중앙점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9792,
+      "name": "이층고깃집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9794,
+      "name": "논현빈대떡",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9795,
+      "name": "OPNNG(오프닝)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9797,
+      "name": "피헨(PEAHEN)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9798,
+      "name": "서울호떡 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9799,
+      "name": "술이 그린 밤",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9800,
+      "name": "마켓 정 정육식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9801,
+      "name": "공리",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9803,
+      "name": "왕소금구이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9804,
+      "name": "강남한우 마장동박현규",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9805,
+      "name": "홀릭 홀릭（holic holic）",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9808,
+      "name": "강남주먹고기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9809,
+      "name": "고향식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9810,
+      "name": "외계인방앗간",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9811,
+      "name": "콩뿌리콩나물국밥 강남구청점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9812,
+      "name": "테이블105",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9813,
+      "name": "새돌집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9814,
+      "name": "정우 찌개 보쌈",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9815,
+      "name": "리나스파파",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9816,
+      "name": "루나바인",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9817,
+      "name": "언양불고기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9820,
+      "name": "js garden  BLACK",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9823,
+      "name": "방일해장국",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9824,
+      "name": "사랑방",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9826,
+      "name": "삼호짱뚱이",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9828,
+      "name": "코지",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9829,
+      "name": "그림나베 학동역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9831,
+      "name": "비노비스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9832,
+      "name": "김밥천국 강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9833,
+      "name": "한남동24시뼈다귀감자탕 분점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9835,
+      "name": "보전식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9837,
+      "name": "미가한우.치킨처럼",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9839,
+      "name": "상무초밥 강남역",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9840,
+      "name": "진대감",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9842,
+      "name": "진미",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9844,
+      "name": "빙츄르",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9845,
+      "name": "몬스터포",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9848,
+      "name": "목포자매집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9849,
+      "name": "어리숙회",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9850,
+      "name": "영동옛날통닭",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9851,
+      "name": "강남쪽갈비",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9852,
+      "name": "연탄구이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9853,
+      "name": "팔당닭발",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9854,
+      "name": "강남곱창이야기 본점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9855,
+      "name": "이장군카레와",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9856,
+      "name": "김가네 학동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9858,
+      "name": "한우리외식산업(주)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9860,
+      "name": "셀렉커피랩 강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9861,
+      "name": "쪼가리포차",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9862,
+      "name": "사랑채",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9863,
+      "name": "더 바른 정육식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9864,
+      "name": "장생건강원",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9865,
+      "name": "구월의 소철",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9866,
+      "name": "신전떡볶이강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9867,
+      "name": "청양칼국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9871,
+      "name": "나주곰탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9874,
+      "name": "저스트카츠",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9875,
+      "name": "맘스 맘",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9877,
+      "name": "낭만식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9879,
+      "name": "우삼식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9880,
+      "name": "그린벨",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9881,
+      "name": "토브",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9882,
+      "name": "학동부대",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9883,
+      "name": "논현담설렁탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9884,
+      "name": "롯데리아 학동역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9885,
+      "name": "토라레스토랑",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9886,
+      "name": "낙원떡집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9888,
+      "name": "논현삼겹",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9889,
+      "name": "두성전주콩나물국밥 강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9890,
+      "name": "한우리 한정식",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9891,
+      "name": "슬로우캘리 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9892,
+      "name": "명동칼국수 샤브샤브 학동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9893,
+      "name": "루이스카페",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9894,
+      "name": "반포식스 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9896,
+      "name": "(주)정육공방",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9898,
+      "name": "담소소사골순대강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9899,
+      "name": "부잣집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9900,
+      "name": "스텔라떡볶이 강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9902,
+      "name": "김가네",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9903,
+      "name": "토담골",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9904,
+      "name": "생생돈까스논현",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9905,
+      "name": "502세컨즈카페",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9907,
+      "name": "화로상회 강남논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9908,
+      "name": "부대찌개매니아돈돌",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9910,
+      "name": "60년 전통 신촌 황소곱창",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9911,
+      "name": "동천홍 학동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9912,
+      "name": "동막촌",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9918,
+      "name": "하남돼지집 학동역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9919,
+      "name": "향방",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9920,
+      "name": "깐부",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9921,
+      "name": "은주네분식",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9922,
+      "name": "영동다방",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9923,
+      "name": "안방",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9924,
+      "name": "영동죽집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9925,
+      "name": "본가마순대국",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9927,
+      "name": "고흥집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9930,
+      "name": "텐트리키친",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9931,
+      "name": "백암순대국.뼈해장국",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9933,
+      "name": "토말",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9934,
+      "name": "춘하추동밀면 논현직영점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9935,
+      "name": "보물섬",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9936,
+      "name": "코스모왕양꼬치",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9937,
+      "name": "잼잼스크린골프",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9938,
+      "name": "우리동네 횟집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9939,
+      "name": "옛날돈가스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9941,
+      "name": "본죽본죽&비빔밥 강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9942,
+      "name": "우리단골집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9947,
+      "name": "무아국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9949,
+      "name": "봉산평양 냉면",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9950,
+      "name": "고추장불고기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9951,
+      "name": "청석골식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9952,
+      "name": "영동원삼겹살",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9953,
+      "name": "빨간떡볶이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9954,
+      "name": "딸바요",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9957,
+      "name": "참프루",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9958,
+      "name": "원갈비",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9959,
+      "name": "파리바게트 강남영동점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9960,
+      "name": "늘봄식품",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9961,
+      "name": "학동나주곰탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9963,
+      "name": "투다리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9964,
+      "name": "붕가",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9966,
+      "name": "(주)스포라이브리테일",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9967,
+      "name": "프로간장새우 1호점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9968,
+      "name": "메리가든",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9970,
+      "name": "천상애장어가",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9971,
+      "name": "기세기",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9972,
+      "name": "아오타",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9973,
+      "name": "주식회사 써브웨이학동역점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9974,
+      "name": "허당맛선생",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9975,
+      "name": "소풍",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9976,
+      "name": "다옴",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9977,
+      "name": "돌곰네",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9980,
+      "name": "계열사 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9981,
+      "name": "논현닭한마리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9982,
+      "name": "치킨뱅이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9983,
+      "name": "영인성",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9985,
+      "name": "버텍스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9986,
+      "name": "부산집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9988,
+      "name": "태권브이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9990,
+      "name": "돼지코코",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9992,
+      "name": "트리블리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9993,
+      "name": "더 와인(The wine)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9994,
+      "name": "이태리부대찌개 선정릉점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 9996,
+      "name": "파리바게뜨 강남구청센터점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 9998,
+      "name": "명인만두강남구청점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10001,
+      "name": "짐승고깃간",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10003,
+      "name": "한양인테리어",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10004,
+      "name": "이모가있는집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10005,
+      "name": "김록훈베이커리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10008,
+      "name": "개성집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10009,
+      "name": "문",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10012,
+      "name": "나향반점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10013,
+      "name": "에이엠포차",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10015,
+      "name": "동현김밥",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10016,
+      "name": "정가네손칼국수",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10017,
+      "name": "심기동김밥",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10019,
+      "name": "비노마노",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10020,
+      "name": "다다돈까스",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10021,
+      "name": "싸다김밥 강남구청역점",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 10024,
+      "name": "논현감자탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10025,
+      "name": "퓨처스타즈(주)",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10026,
+      "name": "양양불떡볶이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10030,
+      "name": "도도짝갈비",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10032,
+      "name": "에스티세무회계",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10033,
+      "name": "이층집닭도리탕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10034,
+      "name": "행복밥상",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10035,
+      "name": "페리카나치킨",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10036,
+      "name": "금홍 짬뽕",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10037,
+      "name": "신논현고기집 룸 화연",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10038,
+      "name": "머털이네",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10039,
+      "name": "히까리 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10040,
+      "name": "돈까스의 집",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10041,
+      "name": "와슈 다이닝",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10042,
+      "name": "주래등",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 10043,
+      "name": "초심한우 정육식당",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10044,
+      "name": "파티풀",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10046,
+      "name": "한사바리해장국",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10051,
+      "name": "반피차이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10052,
+      "name": "팔꾸이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10053,
+      "name": "파리바게뜨 신논현교보타워",
+      "status": "READY",
+      "reasons": []
+    },
+    {
+      "restaurantId": 10054,
+      "name": "맛짱떡볶이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10055,
+      "name": "마르케",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10058,
+      "name": "생선물은고양이",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10059,
+      "name": "메이크 어 딜리버리",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_PRICED_MENU",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10060,
+      "name": "쁘띠팔레",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10061,
+      "name": "지랄닭발 논현점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10066,
+      "name": "파리바게뜨 강남구청역점",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10067,
+      "name": "누리 초밥 참치",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10068,
+      "name": "그린레시피",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10069,
+      "name": "크래버 대게나라",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10070,
+      "name": "계작살",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10071,
+      "name": "보다",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    },
+    {
+      "restaurantId": 10072,
+      "name": "찌개마을 시골촌",
+      "status": "NOT_READY",
+      "reasons": [
+        "NO_MENU_SUCCESS",
+        "NO_BUSINESS_HOURS_SUCCESS",
+        "NO_REVIEW_SUCCESS",
+        "NO_STRUCTURED_HOURS"
+      ]
+    }
+  ]
+}

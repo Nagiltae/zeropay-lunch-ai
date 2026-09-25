@@ -1,0 +1,108 @@
+{
+  "reviewVersion": "semantic-profile-expansion-human-sample-v1",
+  "reviewedAt": "2026-09-25",
+  "sampleRestaurantIds": [9559, 9568, 9569, 9570, 9571, 9574, 9580, 9603, 9617, 9639],
+  "method": "Claim text compared manually with every cited current SUCCESS Evidence item; decisions do not change source profile artifacts or promote claims.",
+  "restaurants": [
+    {
+      "restaurantId": 9559,
+      "source": "new Qwen output; strict profile validation failed",
+      "claims": [
+        {"claimType": "FOOD_TYPE", "decision": "REJECTED", "reason": "한우 keyword only; no menu evidence, so it cannot establish official food type."},
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "REJECTED", "reason": "Review keywords were presented as menu/set facts."},
+        {"claimType": "TASTE", "decision": "REJECTED", "reason": "Generic 맛있어요 keyword does not support rich juiciness or tenderness."},
+        {"claimType": "DINING_CONTEXT", "decision": "REJECTED", "reason": "Group gathering keyword does not establish business meetings, family receptions, or corporate events."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "REJECTED", "reason": "Interior keyword does not establish a comfortable atmosphere."}
+      ]
+    },
+    {
+      "restaurantId": 9568,
+      "source": "reused artifact; claims revalidated against current catalog",
+      "claims": [
+        {"claimType": "FOOD_TYPE", "decision": "AUTO_APPROVED", "reason": "Cited menu names directly include sundae-guk, Hanwoo chadol and doenjang stew."},
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "REVIEW_REQUIRED", "reason": "Cited menu names support items, but affordability/value and broad variety framing are not established by the cited text alone."},
+        {"claimType": "DINING_CONTEXT", "decision": "REVIEW_REQUIRED", "reason": "Solo/group keywords support those contexts; spacious/casual rationale is not directly established."}
+      ]
+    },
+    {
+      "restaurantId": 9569,
+      "source": "reused artifact; claims revalidated against current catalog",
+      "claims": [
+        {"claimType": "FOOD_TYPE", "decision": "REVIEW_REQUIRED", "reason": "Menu names show eel and sea squirt, but 'specializes' is stronger than listing those menu items."},
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "AUTO_APPROVED", "reason": "Cited menu directly lists octopus, sea cucumber and kimbap add-on."},
+        {"claimType": "TASTE", "decision": "REVIEW_REQUIRED", "reason": "Delicious/fresh are direct keywords; satisfying is not supported by cited evidence."},
+        {"claimType": "DINING_CONTEXT", "decision": "AUTO_APPROVED", "reason": "Group and spacious keywords directly support the stated contexts/trait."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "AUTO_APPROVED", "reason": "Cleanliness and convenient parking are direct keywords."}
+      ]
+    },
+    {
+      "restaurantId": 9570,
+      "source": "reused artifact; claims revalidated against current catalog",
+      "claims": [
+        {"claimType": "DINING_CONTEXT", "decision": "AUTO_APPROVED", "reason": "Special-occasion and group keywords directly support the claim."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "AUTO_APPROVED", "reason": "Interior keyword directly supports stylish interior wording."}
+      ]
+    },
+    {
+      "restaurantId": 9571,
+      "source": "reused artifact; claims revalidated against current catalog",
+      "claims": [
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "REJECTED", "reason": "Cited pizza names show beef/taco and vegetable items but do not support chicken topping."},
+        {"claimType": "TASTE", "decision": "AUTO_APPROVED", "reason": "Deliciousness and good-value keywords are direct evidence."}
+      ]
+    },
+    {
+      "restaurantId": 9574,
+      "source": "reused artifact; claims revalidated against current catalog",
+      "claims": [
+        {"claimType": "TASTE", "decision": "AUTO_APPROVED", "reason": "Freshness and taste keywords directly support the stated feedback."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "AUTO_APPROVED", "reason": "Clean and friendly keywords directly support the stated traits."}
+      ]
+    },
+    {
+      "restaurantId": 9580,
+      "source": "reused artifact; claims revalidated against current catalog",
+      "claims": [
+        {"claimType": "TASTE", "decision": "AUTO_APPROVED", "reason": "Deliciousness keyword directly supports the claim."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "AUTO_APPROVED", "reason": "Friendly-service keywords directly support the claim."},
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "REJECTED", "reason": "Two set-menu names do not support a range of pizza sizes."}
+      ]
+    },
+    {
+      "restaurantId": 9603,
+      "source": "new Qwen output; strict profile validation failed",
+      "claims": [
+        {"claimType": "FOOD_TYPE", "decision": "REVIEW_REQUIRED", "reason": "Menu items include juk and bibimbap; 'specializes' is an unsupported strength."},
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "REJECTED", "reason": "The claim invents octopus-kimchi juk/beef-stew bibimbap not present in the cited menu names."},
+        {"claimType": "TASTE", "decision": "AUTO_APPROVED", "reason": "Delicious and fresh review keywords directly support these two attributes."},
+        {"claimType": "DINING_CONTEXT", "decision": "REVIEW_REQUIRED", "reason": "Solo-dining is supported, but cleanliness is a separate venue trait, not dining context."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "REJECTED", "reason": "Location identity was incorrectly emitted as a venue characteristic and failed allowed Evidence validation."}
+      ]
+    },
+    {
+      "restaurantId": 9617,
+      "source": "existing approved artifact; revalidated against current catalog",
+      "claims": [
+        {"claimType": "FOOD_TYPE", "decision": "AUTO_APPROVED", "reason": "Cited official menu items directly list gimbap and tteokbokki."},
+        {"claimType": "TASTE", "decision": "AUTO_APPROVED", "reason": "Taste/value review keywords directly support both attributes."}
+      ]
+    },
+    {
+      "restaurantId": 9639,
+      "source": "new Qwen output; strict profile validation failed",
+      "claims": [
+        {"claimType": "FOOD_TYPE", "decision": "AUTO_APPROVED", "reason": "Menu names directly show sushi, sashimi and grilled skewers."},
+        {"claimType": "DINING_CONTEXT", "decision": "REVIEW_REQUIRED", "reason": "Conversation/group keywords support those contexts, but spacious layout is not cited."},
+        {"claimType": "VENUE_CHARACTERISTIC", "decision": "AUTO_APPROVED", "reason": "Cleanliness keyword directly supports the claim."},
+        {"claimType": "TASTE", "decision": "REVIEW_REQUIRED", "reason": "Deliciousness keyword supports tasty feedback; 'well-prepared' is unsupported."},
+        {"claimType": "MENU_CHARACTERISTIC", "decision": "REJECTED", "reason": "Review keywords were used as menu evidence; validator correctly rejected this claim."}
+      ]
+    }
+  ],
+  "summary": {
+    "restaurantsSampled": 10,
+    "newGeneratedProfilesStrictValidationPassed": 0,
+    "unsafeOrReviewRequiredExamplesFound": true,
+    "indexingApproved": false
+  }
+}

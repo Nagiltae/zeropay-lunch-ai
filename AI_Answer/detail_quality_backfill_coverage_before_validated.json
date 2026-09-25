@@ -1,0 +1,13 @@
+{
+  "createdAt": "2026-09-25T09:00:12.477370+00:00",
+  "readinessPolicyVersion": "profile-readiness-source-grounded-hours-v2",
+  "population": 360,
+  "historicalAuditStrictReady": 5,
+  "validatedStrictReady": 4,
+  "validatedStrictReadyRestaurantIds": [9568, 9571, 9574, 9617],
+  "revalidationFinding": {
+    "restaurantId": 9590,
+    "result": "NOT_READY",
+    "reason": "stored Saturday hours are not supported by the source description, which marks Saturday closed"
+  }
+}

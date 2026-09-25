@@ -1,0 +1,52 @@
+{
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "FOOD_TYPE",
+      "text": "The restaurant offers a wide variety of sushi, sashimi, and grilled seafood dishes.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E010",
+        "E032",
+        "E057"
+      ]
+    },
+    {
+      "claimType": "DINING_CONTEXT",
+      "text": "The venue is suitable for group gatherings and casual conversation due to its spacious layout.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E068",
+        "E070"
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "Customers frequently praise the cleanliness of the interior and the venue.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E073",
+        "E100"
+      ]
+    },
+    {
+      "claimType": "TASTE",
+      "text": "Reviews consistently highlight that the food is delicious and well-prepared.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E067",
+        "E093"
+      ]
+    },
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features diverse appetizers including skewers, fried items, and various noodle dishes.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E077",
+        "E081",
+        "E089"
+      ]
+    }
+  ]
+}

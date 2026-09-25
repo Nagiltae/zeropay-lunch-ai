@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "strictProfileReady": true,
+  "reused": true,
+  "sourceArtifact": {
+    "found": true,
+    "source": "semantic_profile_benchmark_9571/semantic_profile_v1_shadow_results.json",
+    "sourceInputHash": "faddb8fa48656a438448c586095d969fd16fca20fad2acb5b642db56a78fa6e7",
+    "currentInputHash": "98b6a409a3e5d449c590636a78d57584b83fd05037c67d3be48040f2675669e3",
+    "sourceCatalogHash": null,
+    "currentCatalogHash": "8b8ef3c5730297f1d879ffeb24d0975c27c9ba3e377eaef9d9e53f2d3efe4181",
+    "revalidatedAutoApprovedClaims": 2,
+    "incompatibleCitedEvidenceClaims": 0,
+    "claimValidationErrorsAreLocal": true,
+    "eligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded"
+  },
+  "approvedClaimCount": 2
+}

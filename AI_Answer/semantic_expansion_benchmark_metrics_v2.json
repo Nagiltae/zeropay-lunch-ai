@@ -1,0 +1,15 @@
+{
+  "benchmarkVersion": "semantic-expansion-benchmark-v2",
+  "status": "NOT_RUN_PROFILE_QUALITY_GATE",
+  "restaurantCount": null,
+  "queryCount": 0,
+  "precisionAt1": null,
+  "hitAt3": null,
+  "byIntent": {},
+  "safety": {
+    "evidenceTraceRate": null,
+    "candidateScopeLeakage": null,
+    "unsupportedClaimLeakage": null
+  },
+  "reason": "No index or frozen expanded Ground Truth was produced; metrics are intentionally not reported as zero or PASS."
+}

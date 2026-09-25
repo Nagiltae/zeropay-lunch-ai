@@ -1,0 +1,189 @@
+{
+  "valid": false,
+  "errors": [
+    "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+    "evidence type not allowed: MENU_CHARACTERISTIC/keyword"
+  ],
+  "classifications": [
+    {
+      "claim": {
+        "claimType": "FOOD_TYPE",
+        "text": "The restaurant specializes in Korean beef (Hanwoo) dishes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E042"
+        ]
+      },
+      "status": "REJECTED",
+      "reasons": [
+        "food type from review/keyword is not an official menu fact"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E042",
+          "sourceField": "sections.review.keywords[11]",
+          "content": {
+            "keyword": "한우",
+            "mentionCount": 218
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu features signature sets including special cuts and business-style assortments.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E035",
+          "E044"
+        ]
+      },
+      "status": "REJECTED",
+      "reasons": [
+        "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+        "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+        "menu characteristic lacks direct menu evidence"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E035",
+          "sourceField": "sections.review.keywords[4]",
+          "content": {
+            "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 142
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E044",
+          "sourceField": "sections.review.keywords[13]",
+          "content": {
+            "keyword": "특수부위",
+            "mentionCount": 70
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "TASTE",
+        "text": "Customers frequently praise the rich juiciness and tenderness of the meat.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E032",
+          "E056"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E032",
+          "sourceField": "sections.review.keywords[1]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 337
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E056",
+          "sourceField": "sections.review.keywords[25]",
+          "content": {
+            "keyword": "맛",
+            "mentionCount": 407
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "DINING_CONTEXT",
+        "text": "The venue is suitable for business meetings, family gatherings, and corporate receptions.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E036",
+          "E041"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E036",
+          "sourceField": "sections.review.keywords[5]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 137
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E041",
+          "sourceField": "sections.review.keywords[10]",
+          "content": {
+            "keyword": "고기",
+            "mentionCount": 243
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "VENUE_CHARACTERISTIC",
+        "text": "The interior is described as stylish and the atmosphere is comfortable.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E039",
+          "E059"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E039",
+          "sourceField": "sections.review.keywords[8]",
+          "content": {
+            "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+            "mentionCount": 84
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E059",
+          "sourceField": "sections.review.keywords[28]",
+          "content": {
+            "keyword": "분위기",
+            "mentionCount": 60
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded"
+}

@@ -1,0 +1,17 @@
+{
+  "benchmarkVersion": "semantic-expansion-benchmark-v1",
+  "status": "NOT_RUN_COVERAGE_BLOCKED",
+  "groundTruthVersion": "v3",
+  "queryCount": 0,
+  "restaurantCount": 0,
+  "searchExecuted": false,
+  "baselineV12Reference": {
+    "restaurantCount": 10,
+    "queryCount": 22,
+    "precisionAt1": 0.9545,
+    "hitAt3": 1,
+    "evidenceTraceRate": 1,
+    "leakage": 0
+  },
+  "reason": "Expanded benchmark not run because no new strict-ready Profile candidates were available."
+}

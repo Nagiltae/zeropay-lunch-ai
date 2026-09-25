@@ -1,0 +1,53 @@
+{
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "FOOD_TYPE",
+      "text": "The restaurant specializes in Juk (porridge) and Bibimbap dishes.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E007",
+        "E013",
+        "E024",
+        "E046"
+      ]
+    },
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features seasonal and signature items such as Octopus Kimchi Juk and Beef Stew Bibimbap.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E004",
+        "E006",
+        "E024",
+        "E014"
+      ]
+    },
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently describe the food as delicious and fresh.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E061",
+        "E064"
+      ]
+    },
+    {
+      "claimType": "DINING_CONTEXT",
+      "text": "The venue is suitable for solo dining and offers a clean environment.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E063",
+        "E066"
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "The restaurant is located in Nonhyeon-dong, Gangnam-gu, Seoul.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E002"
+      ]
+    }
+  ]
+}

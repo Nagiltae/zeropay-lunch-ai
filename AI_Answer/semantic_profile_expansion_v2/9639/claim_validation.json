@@ -1,0 +1,225 @@
+{
+  "valid": false,
+  "errors": [
+    "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+    "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+    "evidence type not allowed: MENU_CHARACTERISTIC/keyword"
+  ],
+  "classifications": [
+    {
+      "claim": {
+        "claimType": "FOOD_TYPE",
+        "text": "The restaurant offers a wide variety of sushi, sashimi, and grilled seafood dishes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E010",
+          "E032",
+          "E057"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E010",
+          "sourceField": "sections.menu.items[7]",
+          "content": {
+            "name": "오마카세 초밥 15pcs",
+            "price": 29500
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E032",
+          "sourceField": "sections.menu.items[29]",
+          "content": {
+            "name": "오늘의사시미",
+            "price": 52000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E057",
+          "sourceField": "sections.menu.items[54]",
+          "content": {
+            "name": "숯불꼬치 7종 구이",
+            "price": 25000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "DINING_CONTEXT",
+        "text": "The venue is suitable for group gatherings and casual conversation due to its spacious layout.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E068",
+          "E070"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E068",
+          "sourceField": "sections.review.keywords[1]",
+          "content": {
+            "keyword": "\"대화하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 429
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E070",
+          "sourceField": "sections.review.keywords[3]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 245
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "VENUE_CHARACTERISTIC",
+        "text": "Customers frequently praise the cleanliness of the interior and the venue.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E073",
+          "E100"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E073",
+          "sourceField": "sections.review.keywords[6]",
+          "content": {
+            "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 154
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E100",
+          "sourceField": "sections.review.keywords[33]",
+          "content": {
+            "keyword": "청결도",
+            "mentionCount": 16
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "TASTE",
+        "text": "Reviews consistently highlight that the food is delicious and well-prepared.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E067",
+          "E093"
+        ]
+      },
+      "status": "AUTO_APPROVED",
+      "reasons": [],
+      "evidence": [
+        {
+          "evidenceId": "E067",
+          "sourceField": "sections.review.keywords[0]",
+          "content": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 608
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E093",
+          "sourceField": "sections.review.keywords[26]",
+          "content": {
+            "keyword": "맛",
+            "mentionCount": 470
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "claimType": "MENU_CHARACTERISTIC",
+        "text": "The menu features diverse appetizers including skewers, fried items, and various noodle dishes.",
+        "confidence": "HIGH",
+        "evidenceIds": [
+          "E077",
+          "E081",
+          "E089"
+        ]
+      },
+      "status": "REJECTED",
+      "reasons": [
+        "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+        "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+        "evidence type not allowed: MENU_CHARACTERISTIC/keyword",
+        "menu characteristic lacks direct menu evidence"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E077",
+          "sourceField": "sections.review.keywords[10]",
+          "content": {
+            "keyword": "꼬치",
+            "mentionCount": 22
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E081",
+          "sourceField": "sections.review.keywords[14]",
+          "content": {
+            "keyword": "튀김",
+            "mentionCount": 13
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E089",
+          "sourceField": "sections.review.keywords[22]",
+          "content": {
+            "keyword": "우동",
+            "mentionCount": 6
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "benchmarkEligibilityReason": "AUTO_APPROVED with SUCCESS evidence; unrelated local claim errors excluded"
+}

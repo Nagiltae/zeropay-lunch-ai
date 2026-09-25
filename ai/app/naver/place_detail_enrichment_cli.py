@@ -5,6 +5,7 @@ section별 완료 상태를 독립적으로 확인하며 403/429/CAPTCHA/BLOCKED
 """
 
 import argparse
+import json
 import os
 import subprocess
 import time
@@ -20,6 +21,30 @@ from app.naver.place_detail_persistence import MysqlWriteSession, PlaceDetailPer
 from app.naver.place_dom_detail_crawler import PlaceDomDetailCrawler
 from app.naver.playwright_lifecycle import PlaywrightLifecycle, is_playwright_lifecycle_error
 from app.providers.provider_input import load_local_env
+
+
+def _checkpoint_payload(
+    path: Path, restaurant_ids: list[int], sections: tuple[str, ...], mode: str
+) -> dict:
+    identity = {"restaurantIds": restaurant_ids, "sections": list(sections), "mode": mode}
+    if path.exists():
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if any(payload.get(key) != value for key, value in identity.items()):
+            raise ValueError("checkpoint does not match target IDs, section scope, and run mode")
+        return payload
+    return {**identity, "completed": {}}
+
+
+def _save_checkpoint(
+    path: Path | None, payload: dict | None, restaurant_id: int, status: str
+) -> None:
+    if path is None or payload is None:
+        return
+    payload["completed"][str(restaurant_id)] = status
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(path)
 
 
 def _is_blocked_error(error: Exception) -> bool:
@@ -113,18 +138,26 @@ def _sections_to_persist(missing: dict[str, bool], review_page_success: bool) ->
 def _section_states(detail: PlaceDetail, missing: dict[str, bool]) -> dict[str, str]:
     states = {}
     if missing["menu"]:
-        states["menu"] = "SUCCESS" if detail.menu_page_success and detail.menus else (
-            "ABSENT_CONFIRMED" if detail.menu_page_success else "FAILED"
+        states["menu"] = (
+            "SUCCESS"
+            if detail.menu_page_success and detail.menus
+            else ("ABSENT_CONFIRMED" if detail.menu_page_success else "FAILED")
         )
     if missing["business_hours"]:
         states["business_hours"] = (
-            "SUCCESS" if detail.hours_status == "SUCCESS" else
-            "ABSENT_CONFIRMED" if detail.hours_status == "ABSENT_CONFIRMED" else "FAILED"
+            "SUCCESS"
+            if detail.hours_status == "SUCCESS"
+            else "ABSENT_CONFIRMED"
+            if detail.hours_status == "ABSENT_CONFIRMED"
+            else "FAILED"
         )
     if missing["review"]:
         states["review"] = (
-            "SUCCESS" if detail.review_page_success and detail.review_status == "SUCCESS" else
-            "ABSENT_CONFIRMED" if detail.review_page_success else "FAILED"
+            "SUCCESS"
+            if detail.review_page_success and detail.review_status == "SUCCESS"
+            else "ABSENT_CONFIRMED"
+            if detail.review_page_success
+            else "FAILED"
         )
     return states
 
@@ -223,6 +256,13 @@ def main():
     )
     parser.add_argument("--dry-run", action="store_true", help="Do not write to DB")
     parser.add_argument(
+        "--sections",
+        help="Force a bounded section set: menu,business_hours,review or all",
+    )
+    parser.add_argument(
+        "--checkpoint", help="Atomic JSON progress checkpoint for this exact target set"
+    )
+    parser.add_argument(
         "--force-refresh",
         action="store_true",
         help="Refresh all eligible detail sections, including fresh complete rows",
@@ -236,9 +276,49 @@ def main():
             ids = [int(value) for value in args.restaurant_ids.split(",")]
         except ValueError:
             parser.error("--restaurant-ids must contain only integers")
-        if not ids or any(value < 1 for value in ids) or len(ids) > args.limit:
+        if (
+            not ids
+            or any(value < 1 for value in ids)
+            or len(ids) > args.limit
+            or len(ids) != len(set(ids))
+        ):
             parser.error("--restaurant-ids requires 1..limit positive IDs")
         id_filter = f"AND c.restaurant_id IN ({','.join(map(str, ids))})"
+    else:
+        ids = []
+    section_aliases = {
+        "menu": "menu",
+        "business_hours": "business_hours",
+        "hours": "business_hours",
+        "review": "review",
+    }
+    if args.sections:
+        if not ids:
+            parser.error("--sections requires an explicit --restaurant-ids allowlist")
+        if args.sections.strip().lower() == "all":
+            selected_sections = ("menu", "business_hours", "review")
+        else:
+            requested = [part.strip().lower() for part in args.sections.split(",") if part.strip()]
+            if not requested or any(part not in section_aliases for part in requested):
+                parser.error(
+                    "--sections must be all or comma-separated menu, business_hours, review"
+                )
+            selected_sections = tuple(dict.fromkeys(section_aliases[part] for part in requested))
+    else:
+        selected_sections = ()
+    checkpoint_path = Path(args.checkpoint).resolve() if args.checkpoint else None
+    checkpoint = (
+        _checkpoint_payload(
+            checkpoint_path,
+            ids,
+            selected_sections or ("automatic",),
+            "DRY_RUN" if args.dry_run else "WRITE",
+        )
+        if checkpoint_path and ids
+        else None
+    )
+    if checkpoint_path and not ids:
+        parser.error("--checkpoint requires an explicit --restaurant-ids allowlist")
 
     root = Path(__file__).resolve().parents[3]
     load_local_env(root)
@@ -255,7 +335,8 @@ def main():
            COALESCE(m.has_price, 0) AS has_price,
            m.crawled_at AS menu_crawled_at,
            ms.state AS menu_state, ms.checked_at AS menu_checked_at,
-           IF(b.restaurant_id IS NULL, 0, 1) AS has_hours
+           IF(COALESCE(b.has_structured_hours, 0)=1, 1, 0) AS has_hours,
+           IF(b.restaurant_id IS NULL, 0, 1) AS has_any_hours
            ,b.crawled_at AS hours_crawled_at,
            hs.state AS hours_state, hs.checked_at AS hours_checked_at
     FROM canonical_restaurants c
@@ -273,7 +354,8 @@ def main():
     ) m ON m.restaurant_id = c.restaurant_id AND m.provider = e.provider
       AND m.external_place_id = e.external_place_id
     LEFT JOIN (
-        SELECT restaurant_id, provider, external_place_id
+        SELECT restaurant_id, provider, external_place_id,
+               MAX(open_time IS NOT NULL AND close_time IS NOT NULL) AS has_structured_hours
                ,MAX(crawled_at) AS crawled_at
         FROM restaurant_business_hours WHERE active = 1
         GROUP BY restaurant_id, provider, external_place_id
@@ -297,13 +379,29 @@ def main():
     """
 
     eligible_rows = _execute_sql_read(sql)
-    rows, already_complete = _pending_detail_rows(
-        eligible_rows,
-        args.limit,
-        stale_after_seconds=stale_after_seconds,
-        now=now,
-        force_refresh=args.force_refresh,
-    )
+    if selected_sections:
+        rows, already_complete = eligible_rows, 0
+    else:
+        rows, already_complete = _pending_detail_rows(
+            eligible_rows,
+            args.limit,
+            stale_after_seconds=stale_after_seconds,
+            now=now,
+            force_refresh=args.force_refresh,
+        )
+    checkpoint_done = checkpoint.get("completed", {}) if checkpoint else {}
+    checkpoint_skipped = [
+        rid
+        for rid in ids
+        if checkpoint_done.get(str(rid))
+        in {"SUCCESS", "FAILED", "SKIPPED", "DRY_RUN_SUCCESS", "DRY_RUN_FAILED"}
+    ]
+    if checkpoint and any(checkpoint_done.get(str(rid)) == "BLOCKED" for rid in ids):
+        raise RuntimeError(
+            "checkpoint contains a BLOCKED target; honor provider cooldown before any resume"
+        )
+    rows = [row for row in rows if int(row["restaurant_id"]) not in checkpoint_skipped]
+    already_complete += len(checkpoint_skipped)
     print(
         f"Found {len(rows)} candidates; complete/fresh skipped: {already_complete}; "
         f"stale_after_seconds={stale_after_seconds or 'off'}; force_refresh={args.force_refresh}."
@@ -329,8 +427,7 @@ def main():
         write_session = MysqlWriteSession(root)
         write_session.__enter__()
     persistence = (
-        PlaceDetailPersistence(root, write_session=write_session)
-        if write_session else None
+        PlaceDetailPersistence(root, write_session=write_session) if write_session else None
     )
     limiter = NavigationRateLimiter(
         navigation_delay=float(os.environ.get("NAVER_NAVIGATION_DELAY_SECONDS", "2.5")),
@@ -363,6 +460,12 @@ def main():
                     now=now,
                     force_refresh=args.force_refresh,
                 )
+                if selected_sections:
+                    missing = {
+                        "menu": "menu" in selected_sections,
+                        "business_hours": "business_hours" in selected_sections,
+                        "review": "review" in selected_sections,
+                    }
                 progress.record_detail_sections(row, missing)
                 progress.record_detail_navigation(
                     home=1,
@@ -445,6 +548,12 @@ def main():
                         if needed:
                             progress.record_detail_section_result(section, "FAILED")
                     progress.record("failed", restaurant_id, failure=1)
+                    _save_checkpoint(
+                        checkpoint_path,
+                        checkpoint,
+                        restaurant_id,
+                        "DRY_RUN_FAILED" if args.dry_run else "FAILED",
+                    )
                     if not session.is_usable():
                         session.recover_if_unusable()
                     limiter.after_restaurant()
@@ -476,6 +585,12 @@ def main():
                                 restaurant_id, f"Failure state persistence failed: {error}"
                             )
                     progress.record("failed", restaurant_id, failure=1)
+                    _save_checkpoint(
+                        checkpoint_path,
+                        checkpoint,
+                        restaurant_id,
+                        "DRY_RUN_FAILED" if args.dry_run else "FAILED",
+                    )
                     for section, needed in (
                         ("menu", missing["menu"]),
                         ("hours", missing["business_hours"]),
@@ -545,6 +660,14 @@ def main():
                     success=int(succeeded),
                     failure=int(not succeeded),
                 )
+                _save_checkpoint(
+                    checkpoint_path,
+                    checkpoint,
+                    restaurant_id,
+                    ("DRY_RUN_SUCCESS" if succeeded else "DRY_RUN_FAILED")
+                    if args.dry_run
+                    else ("SUCCESS" if succeeded else "FAILED"),
+                )
                 limiter.after_restaurant()
 
             session.close()
@@ -555,6 +678,8 @@ def main():
             else ("INTERRUPTED" if isinstance(error, KeyboardInterrupt) else "FAILED")
         )
         reason = str(error) or type(error).__name__
+        if current_id is not None and _is_blocked_error(error):
+            _save_checkpoint(checkpoint_path, checkpoint, current_id, "BLOCKED")
         if current_id is not None and current_id not in (
             progress.last_success_restaurant_id,
             progress.last_failure_restaurant_id,

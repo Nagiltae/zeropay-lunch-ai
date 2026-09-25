@@ -1,0 +1,8 @@
+{
+  "benchmarkVersion": "semantic-expansion-benchmark-v2",
+  "status": "NOT_RUN_PROFILE_QUALITY_GATE",
+  "groundTruth": "NOT_CREATED_OR_FROZEN",
+  "queryCount": 0,
+  "queries": [],
+  "reason": "Profile quality stop occurred before index creation; no retrieval results were generated."
+}

@@ -1,0 +1,858 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "dcf9ac4ec099c86b29a9923fcb906b127359e5e7ce20cad80abfef8c03b7f430",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "모우리",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 학동로2길 20 (논현동)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "한우 꽃등심토마호크100g<시그니처>",
+        "price": 26000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "한우 통살치토마호크100g<시그니처>",
+        "price": 29000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "비즈니스모듬 600g <인기메뉴>",
+        "price": 156000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "스페셜모듬(특수부위) 450g<한정>",
+        "price": 157500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "한우 포터하우스&티본100g",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "회식모듬800g<6명이상방문예약주문>",
+        "price": 180000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "특제 양념로스 400g",
+        "price": 104000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "암소사시미&우니",
+        "price": 40000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "횡성 장인 더덕무침",
+        "price": 20000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "명품 레몬 생 특주",
+        "price": 20000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "고창 명품 복분자주",
+        "price": 20000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "화요 엑스프리미엄",
+        "price": 140000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "화요 53도",
+        "price": 100000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "명품 화요41",
+        "price": 53000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "화요25 프리미엄",
+        "price": 33000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "프리미엄 돔페리뇽",
+        "price": 430000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "뵈브클리코 옐로우 라벨 샴페인",
+        "price": 135000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "모엣 샹동 임페리얼 샴페인",
+        "price": 105000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "라 피라미드 프리미엄 브륏",
+        "price": 50000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "명품 테누타 산 귀도 사씨카이야",
+        "price": 450000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "프로두또리 델 바르바레스코",
+        "price": 115000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "정통 이스까이",
+        "price": 145000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "명품 토마시 아마로네 델라 발폴리첼라",
+        "price": 140000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "펜폴즈 빈 138",
+        "price": 135000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "로베르토 보에르지오 돌체토 프리비아노",
+        "price": 75000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "테누타 산 귀도 레 디페제",
+        "price": 75000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "프리시전 네비게이터 까베르네쇼비뇽",
+        "price": 55000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "샤토 크뤼 고다르",
+        "price": 55000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"고기 질이 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 384
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 337
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 189
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 162
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 142
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 137
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 123
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 90
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+        "mentionCount": 84
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 71
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "고기",
+        "mentionCount": 243
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "한우",
+        "mentionCount": 218
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "소고기",
+        "mentionCount": 111
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "특수부위",
+        "mentionCount": 70
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "찌개",
+        "mentionCount": 21
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "된장찌개",
+        "mentionCount": 18
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "와인",
+        "mentionCount": 14
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "육회",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "하이볼",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "한우모듬",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "국수",
+        "mentionCount": 5
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "등심",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "복분자",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "부채살",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "살치살",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 407
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 367
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 142
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "분위기",
+        "mentionCount": 60
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.review.keywords[29]",
+      "content": {
+        "keyword": "목적",
+        "mentionCount": 55
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.review.keywords[30]",
+      "content": {
+        "keyword": "예약",
+        "mentionCount": 16
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.review.keywords[31]",
+      "content": {
+        "keyword": "위치",
+        "mentionCount": 14
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.review.keywords[32]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 12
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.review.keywords[33]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 11
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.review.keywords[34]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.review.keywords[35]",
+      "content": {
+        "keyword": "청결도",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.review.keywords[36]",
+      "content": {
+        "keyword": "방역",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-6",
+        "text": "가족들이랑 식사할 곳을 찾다가 방문했는데 처음부터 끝까지 만족스러운 식사였어요ㅎㅎ 메뉴 고민하다가 모듬으로 주문했는데 부위마다 매력이 달라 끝까지 질리지 않고 계속 먹은거 같아요🤤 그리고 무엇보다 직원분들이 친절하게 응대를 해주신 덕분에 머무는 동안 불편함 없이 식사를 마무리 할수있어 소고기 먹고싶을때는 항상 이곳으로 방문하자고 가족들끼리 말했어요😍"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-10",
+        "text": "오랜만에 지인들과 저녁 약속이 있어서 논현역 한우 맛집을 찾아 방문했는데 만족도가 정말 높았어요. 한우 토마호크는 육즙이 풍부하고, 모듬과 특수부위도 부위별로 맛과 식감이 달라 끝까지 맛있게 즐겼습니다. 논현동 소고기 맛집답게 고기 퀄리티가 좋아 회식이나 접대, 동창회 같은 모임 장소로도 추천하고 싶은 곳이에요."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-9",
+        "text": "부모님 모시고 논현동 한우 맛집에 다녀왔는데 모두 만족하셨어요. 한우 토마호크는 부드럽고 풍미가 깊었고, 모듬과 특수부위도 신선해서 어떤 부위를 먹어도 맛있었습니다. 논현역 소고기 맛집 중에서도 분위기가 편안해 가족모임은 물론 접대나 청첩장모임으로도 잘 어울리는 곳이라 다음에도 다시 방문하고 싶어요."
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-3",
+        "text": "논현역 한우 맛집 알아보다가 모우리 한우 다녀왔는데 분위기도 너무 고급스럽고 고기 퀄리티가 진짜 최고네요 한우 토마호크 시켜서 먹었는데 육즙이 팡팡 터지고 부드러워서 입안에서 사르르 녹아내립니다 프라이빗하고 깔끔해서 회식이나 청첩장모임 하기에도 완전 딱일 것 같아요 만족스러운 식사였습니다 추천해요"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "월",
+        "open_time": "14:00",
+        "close_time": "23:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.001148"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.businessHours.items[1]",
+      "content": {
+        "day_of_week": "화",
+        "open_time": "14:00",
+        "close_time": "23:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.004540"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.businessHours.items[2]",
+      "content": {
+        "day_of_week": "수",
+        "open_time": "14:00",
+        "close_time": "23:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.004642"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.businessHours.items[3]",
+      "content": {
+        "day_of_week": "목",
+        "open_time": "14:00",
+        "close_time": "23:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 14:00 - 23:00 22:10 라스트오더 화 14:00 - 23:00 22:10 라스트오더 수 14:00 - 23:00 22:10 라스트오더 목 14:00 - 23:00 22:10 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.004727"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a"
+}

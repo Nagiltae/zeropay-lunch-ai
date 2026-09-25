@@ -1,0 +1,8 @@
+{
+  "version": "semantic-retrieval-ground-truth-v3",
+  "status": "BLOCKED_NOT_GENERATED",
+  "frozenBeforeSearch": false,
+  "sourceRestaurantIds": [],
+  "queries": [],
+  "reason": "Coverage gate stopped expansion before a new cohort existed. No v3 ground truth/search was produced; v2 remains unchanged."
+}

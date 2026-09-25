@@ -44,19 +44,44 @@ public class RestaurantRecommendationService {
     private final Clock clock;
     private final ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider;
     private final ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider;
+    private final ObjectProvider<RestaurantMenuExampleService> menuExampleServiceProvider;
+    private final ObjectProvider<VerifiedNaverServingCandidateService> verifiedCandidateServiceProvider;
 
     @Autowired
     public RestaurantRecommendationService(RestaurantJpaRepository restaurantRepository,
             RestaurantVenueAssociationJpaRepository venueAssociationRepository,
             RecommendationContextService contextService, Clock clock,
             ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider,
-            ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider) {
+            ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider,
+            ObjectProvider<RestaurantMenuExampleService> menuExampleServiceProvider,
+            ObjectProvider<VerifiedNaverServingCandidateService> verifiedCandidateServiceProvider) {
         this.restaurantRepository = restaurantRepository;
         this.venueAssociationRepository = venueAssociationRepository;
         this.contextService = contextService;
         this.clock = clock;
         this.semanticEnricherProvider = semanticEnricherProvider;
         this.explanationEnricherProvider = explanationEnricherProvider;
+        this.menuExampleServiceProvider = menuExampleServiceProvider;
+        this.verifiedCandidateServiceProvider = verifiedCandidateServiceProvider;
+    }
+
+    public RestaurantRecommendationService(RestaurantJpaRepository restaurantRepository,
+            RestaurantVenueAssociationJpaRepository venueAssociationRepository,
+            RecommendationContextService contextService, Clock clock,
+            ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider,
+            ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider) {
+        this(restaurantRepository, venueAssociationRepository, contextService, clock,
+                semanticEnricherProvider, explanationEnricherProvider, null, null);
+    }
+
+    public RestaurantRecommendationService(RestaurantJpaRepository restaurantRepository,
+            RestaurantVenueAssociationJpaRepository venueAssociationRepository,
+            RecommendationContextService contextService, Clock clock,
+            ObjectProvider<SemanticCandidateEnricher> semanticEnricherProvider,
+            ObjectProvider<RecommendationExplanationEnricher> explanationEnricherProvider,
+            ObjectProvider<RestaurantMenuExampleService> menuExampleServiceProvider) {
+        this(restaurantRepository, venueAssociationRepository, contextService, clock,
+                semanticEnricherProvider, explanationEnricherProvider, menuExampleServiceProvider, null);
     }
 
     /** Keeps direct construction in existing unit fixtures equivalent to the feature-flag OFF path. */
@@ -83,13 +108,27 @@ public class RestaurantRecommendationService {
         Set<Long> recentRestaurantIds = request.recentMeals().stream()
                 .map(IntentAnalysisRequest.RecentMeal::restaurantId).collect(Collectors.toSet());
         ZonedDateTime now = ZonedDateTime.now(clock);
-        List<Restaurant> openRestaurants = restaurantRepository.findOpenRestaurants(
+        List<Restaurant> legacyOpenRestaurants = restaurantRepository.findOpenRestaurants(
                         now.getDayOfWeek().name(),
                         now.toLocalTime().truncatedTo(ChronoUnit.SECONDS)).stream()
                 .filter(r -> matches(r, intent, request, budget, recentRestaurantIds))
                 .sorted(Comparator.comparingInt((Restaurant r) -> score(r, intent, request, budget))
-                        .reversed().thenComparingInt(Restaurant::getAveragePrice).thenComparing(Restaurant::getId))
+                        .reversed().thenComparingInt(this::priceTieBreak).thenComparing(Restaurant::getId))
                 .toList();
+        List<Restaurant> openRestaurants = new ArrayList<>(legacyOpenRestaurants);
+        if (verifiedCandidateServiceProvider != null) {
+            VerifiedNaverServingCandidateService servingCandidates = verifiedCandidateServiceProvider.getIfAvailable();
+            if (servingCandidates != null) {
+                List<Long> verifiedIds = servingCandidates.findOpenCandidateIds(
+                        now.toLocalDate(), now.toLocalTime().truncatedTo(ChronoUnit.SECONDS), budget);
+                Set<Long> alreadyIncluded = openRestaurants.stream().map(Restaurant::getId)
+                        .collect(Collectors.toSet());
+                restaurantRepository.findAllById(verifiedIds).stream()
+                        .filter(r -> !alreadyIncluded.contains(r.getId()))
+                        .filter(r -> matches(r, intent, request, budget, recentRestaurantIds))
+                        .forEach(openRestaurants::add);
+            }
+        }
         Set<Long> associationRestaurantIds = new LinkedHashSet<>(recentRestaurantIds);
         associationRestaurantIds.addAll(openRestaurants.stream().map(Restaurant::getId).toList());
         Map<Long, Long> confirmedVenueIds = confirmedVenueIds(associationRestaurantIds);
@@ -119,7 +158,7 @@ public class RestaurantRecommendationService {
                         // Semantic cosine is bounded to [0,1] and only breaks existing deterministic score ties.
                         .thenComparing(Comparator.comparingDouble((Restaurant r) ->
                                 semanticRelevance(rankingSignals.get(r.getId()))).reversed())
-                        .thenComparingInt(Restaurant::getAveragePrice)
+                        .thenComparingInt(this::priceTieBreak)
                         .thenComparing(Restaurant::getId))
                 .filter(r -> selectedVenueKeys.add(confirmedVenueIds.getOrDefault(r.getId(), r.getId())))
                 .limit(MAX_RECOMMENDATIONS)
@@ -163,28 +202,44 @@ public class RestaurantRecommendationService {
     private boolean matches(Restaurant r, AnalyzedIntent intent, IntentAnalysisRequest request,
             Integer budget, Set<Long> recent) {
         if (!r.isZeroPayAvailable()) return false;
-        if (budget != null && r.getAveragePrice() > budget) return false;
-        if (intent.category().isPresent() && r.getCategory() != intent.category().get()) return false;
-        if (request.dislikedCategories().contains(r.getCategory())) return false;
+        // Unknown price basis never becomes an implicit budget pass.
+        if (budget != null && (r.getAveragePrice() == null || r.getAveragePrice() > budget)) return false;
+        // Unknown provider taxonomy is not a reason to suppress an otherwise verified KOMSCO row.
+        if (r.getCategory() != null && intent.category().isPresent()
+                && r.getCategory() != intent.category().get()) return false;
+        if (r.getCategory() != null && request.dislikedCategories().contains(r.getCategory())) return false;
         return !recent.contains(r.getId());
     }
 
     private int score(Restaurant r, AnalyzedIntent intent, IntentAnalysisRequest request, Integer budget) {
         int score = 10;
-        if (budget == null || r.getAveragePrice() <= budget) score += 20;
-        if (intent.category().isEmpty() || r.getCategory() == intent.category().get()) score += 20;
-        if (request.preferredCategories().contains(r.getCategory())) score += 15;
+        if (budget == null || (r.getAveragePrice() != null && r.getAveragePrice() <= budget)) score += 20;
+        if (r.getCategory() == null || intent.category().isEmpty()
+                || r.getCategory() == intent.category().get()) score += 20;
+        if (r.getCategory() != null && request.preferredCategories().contains(r.getCategory())) score += 15;
         return score;
+    }
+
+    private int priceTieBreak(Restaurant restaurant) {
+        return restaurant.getAveragePrice() == null ? Integer.MAX_VALUE : restaurant.getAveragePrice();
     }
 
     private RecommendationItem toRecommendation(Restaurant r, IntentAnalysisRequest request, Integer budget) {
         List<String> reasons = new ArrayList<>();
         reasons.add("강남구 논현동 서비스 범위 음식점이에요");
         if (budget != null) reasons.add("설정하거나 요청한 예산 안이에요");
-        if (request.preferredCategories().contains(r.getCategory())) reasons.add("선호하는 음식 종류예요");
+        if (r.getCategory() != null && request.preferredCategories().contains(r.getCategory())) {
+            reasons.add("선호하는 음식 종류예요");
+        }
         reasons.add("제로페이를 사용할 수 있어요");
-        return new RecommendationItem(r.getId(), r.getName(), r.getCategory().label(),
+        List<RecommendationItem.MenuExample> menuExamples = List.of();
+        if (!r.isSampleData() && menuExampleServiceProvider != null) {
+            RestaurantMenuExampleService menuService = menuExampleServiceProvider.getIfAvailable();
+            if (menuService != null) menuExamples = menuService.findExamples(r.getId());
+        }
+        return new RecommendationItem(r.getId(), r.getName(),
+                r.getCategory() == null ? null : r.getCategory().label(),
                 r.getRepresentativeMenu(), r.getAveragePrice(), r.getAddress(),
-                r.isZeroPayAvailable(), r.isSampleData(), String.join(". ", reasons) + ".");
+                r.isZeroPayAvailable(), r.isSampleData(), String.join(". ", reasons) + ".", menuExamples);
     }
 }

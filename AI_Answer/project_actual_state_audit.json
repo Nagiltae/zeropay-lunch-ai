@@ -1,0 +1,202 @@
+{
+  "auditDate": "2026-09-25",
+  "timezone": "Asia/Seoul",
+  "scope": {
+    "type": "read-only actual-state audit",
+    "codeChanges": 0,
+    "mysqlWrites": 0,
+    "qdrantWrites": 0,
+    "providerRequests": 0,
+    "qwenGenerationCalls": 0,
+    "embeddingCalls": 0,
+    "testsRerun": false,
+    "browserE2ERerun": false
+  },
+  "current": {
+    "restaurants": {
+      "total": 517,
+      "active": 517,
+      "eligible": 405,
+      "legalDong11680108": 514,
+      "activeEligible": 405,
+      "activeEligibleNonhyeon": 402,
+      "recommendationReady": 4,
+      "recommendationReadyActiveEligibleNonhyeonZeroPay": 1,
+      "source": "current MySQL SELECT"
+    },
+    "detail": {
+      "lifecycleDistinctRestaurants": 35,
+      "menuSuccessLifecycleRows": 32,
+      "businessHoursSuccessLifecycleRows": 35,
+      "reviewSuccessLifecycleRows": 35,
+      "naverMenuRestaurants": 325,
+      "naverReviewKeywordRestaurants": 344,
+      "naverBusinessHoursRestaurants": 360,
+      "source": "current MySQL SELECT; row presence is not equivalent to fresh SUCCESS"
+    },
+    "profileReadiness": {
+      "population": 360,
+      "strictReady": 26,
+      "strictReadyRestaurantIds": [9559, 9568, 9569, 9570, 9571, 9574, 9580, 9603, 9617, 9639, 9659, 9715, 9759, 9791, 9801, 9826, 9839, 9853, 9865, 9904, 9954, 9973, 9996, 10021, 10042, 10053],
+      "notReady": 334,
+      "multiReasonCounts": {
+        "NO_MENU_SUCCESS": 328,
+        "NO_BUSINESS_HOURS_SUCCESS": 325,
+        "NO_REVIEW_SUCCESS": 325,
+        "NO_PRICED_MENU": 40,
+        "NO_STRUCTURED_HOURS": 332
+      },
+      "policy": "ai/app/profile_readiness.py::assess_profile_readiness",
+      "source": "current MySQL SELECT + current policy"
+    },
+    "venue": {
+      "venues": 0,
+      "confirmedActiveAssociations": 0,
+      "source": "current MySQL SELECT"
+    },
+    "dataPipeline": {
+      "komscoImporter": "Spring KomscoMerchantHttpClient/KomscoMerchantClient/RestaurantImportService",
+      "populationFilter": {
+        "institutionCode": "I0000002",
+        "industryCode": "561",
+        "businessStatusName": "계속사업자",
+        "legalDongCode": "11680108"
+      },
+      "providerSearch": {
+        "kakao": "Official Kakao Local keyword API; default size 15",
+        "naver": "Official NCP NAVER Local Search; display default 5; no center-coordinate search"
+      },
+      "providerEntityResolution": "Qwen3.5:9b evaluates merged Kakao/NAVER Local candidates against KOMSCO reference",
+      "numericNaverPlaceId": "Separate PCMap visible Maps UI allSearch + deterministic exact name/address; no Qwen in current linker",
+      "detail": ["HOME", "MENU", "BUSINESS_HOURS", "REVIEW"],
+      "detailStatuses": ["SUCCESS", "ABSENT_CONFIRMED", "FAILED"]
+    },
+    "semantic": {
+      "profilePlan": {
+        "ready": 26,
+        "existingArtifactsRevalidated": 7,
+        "newProfilesPlanned": 19,
+        "qwenCalls": 3,
+        "successfulProfiles": 0,
+        "failedProfiles": 3,
+        "pending": 16,
+        "embeddingCalls": 0,
+        "status": "PAUSED_QUALITY_FAILURE"
+      },
+      "claimTypes": ["FOOD_TYPE", "MENU_CHARACTERISTIC", "TASTE", "DINING_CONTEXT", "VENUE_CHARACTERISTIC", "FOOD_MENTION"],
+      "foodMention": "Derived separately from repeated review keywords; not official menu evidence",
+      "runtime": "Implemented and Spring-wired behind AI_SEMANTIC_RUNTIME_ENABLED; default OFF"
+    },
+    "runtime": {
+      "publicRequest": "React -> authenticated Spring Chat/SSE -> Spring recommendation service",
+      "fastApiEndpoints": ["GET /health", "POST /internal/v1/intent-analysis", "POST /internal/v1/semantic-retrieval", "POST /internal/v1/recommendation-explanations"],
+      "intent": "Deterministic Python regex/taxonomy, no LLM",
+      "candidateScope": "Spring hard-filtered Restaurant IDs applied as Qdrant restaurantId payload filter before topK",
+      "finalRankingOwner": "Spring; deterministic score first, bounded semanticSimilarity only tie-breaks",
+      "venueDedup": "CONFIRMED association + ACTIVE Venue, but current DB has 0 Venue rows",
+      "maxRecommendations": 3,
+      "currentComposeFlags": {
+        "springProfile": "dev",
+        "semanticFlag": "absent; application.yml default false",
+        "llmExplanationFlag": "absent/default false"
+      },
+      "distanceFilter500m": false
+    },
+    "models": {
+      "qwenText": {
+        "model": "qwen3.5:9b",
+        "uses": ["provider Entity Resolution", "historical/alternate resolver path", "Semantic Profile generation experiment", "opt-in recommendation explanation"],
+        "runtimeExplanationDefault": "OFF"
+      },
+      "embedding": {
+        "model": "qwen3-embedding:0.6b",
+        "dimension": 1024,
+        "distance": "Cosine",
+        "transport": "Ollama /api/embed",
+        "indexAndQuerySameModel": true
+      },
+      "gemini": "NOT_IMPLEMENTED; no runtime calls",
+      "langgraph": "NOT_USED"
+    },
+    "qdrant": {
+      "runtimeCollectionConfigured": "zeropay_semantic_claim_pilot_v12",
+      "collectionExists": true,
+      "pointCount": 40,
+      "restaurantCount": 10,
+      "restaurantIds": [9567, 9568, 9569, 9570, 9571, 9574, 9580, 9590, 9617, 9731],
+      "claimTypeCounts": {
+        "FOOD_MENTION": 16,
+        "TASTE": 7,
+        "MENU_CHARACTERISTIC": 5,
+        "FOOD_TYPE": 4,
+        "DINING_CONTEXT": 4,
+        "VENUE_CHARACTERISTIC": 4
+      },
+      "dimension": 1024,
+      "distance": "Cosine",
+      "expandedShadowCollectionExists": false,
+      "source": "Qdrant read-only metadata and payload scroll"
+    },
+    "gemini": {
+      "status": "NOT_IMPLEMENTED",
+      "runtimeCalls": 0,
+      "geminiMdIsApiIntegration": false
+    },
+    "langgraph": {
+      "status": "NOT_USED",
+      "dependencyOrRuntimeGraph": false
+    },
+    "frontend": {
+      "framework": "React + Vite",
+      "callsFastApiDirectly": false,
+      "features": ["authentication", "chat/SSE", "conversation history", "recommendation cards", "preferences", "meal history"],
+      "recommendationEvent": "recommendations",
+      "reasonRendered": true
+    },
+    "harness": {
+      "checkScripts": ["check-format.sh", "check-lint.sh", "check-frontend.sh", "check-backend.sh", "check-ai.sh", "check-integration.sh", "check-all.sh", "check-mvp-e2e.sh"],
+      "githubActionsWorkflow": false,
+      "currentComposeServices": ["mysql", "qdrant", "ai/FastAPI", "backend/Spring", "frontend/nginx"],
+      "ollamaInCompose": false,
+      "pastBrowserE2E": {
+        "status": "PAST VERIFIED",
+        "semanticRuntime": true,
+        "llmExplanation": false,
+        "queries": 3,
+        "recommendations": [9617],
+        "semanticRequests": 3,
+        "qdrantQueries": 6,
+        "llmExplanationCalls": 0,
+        "devMysqlWrites": 0,
+        "qdrantWrites": 0
+      },
+      "thisAuditTests": "NOT_RUN"
+    }
+  },
+  "discrepancies": [
+    {"item": "Root AGENTS architecture summary", "document": "FastAPI health/contract 중심이며 Spring→FastAPI runtime 미구현이라고 요약", "code": "Intent/retrieval/explanation endpoints, Spring opt-in client/wiring 및 past browser E2E 존재", "status": "STALE_SUMMARY_DEFAULT_FLAG_OFF"},
+    {"item": "AI README", "document": "FastAPI health only; vector search not implemented", "code": "Intent, scoped retrieval, explanation endpoints and Qdrant/Ollama code exist", "status": "STALE_DOCUMENTATION"},
+    {"item": "AI flow document", "document": "Later text still says retrieval/Qdrant/LLM provider planned", "code": "Those services are implemented, runtime opt-in", "status": "INTERNAL_DOCUMENT_CONTRADICTION"},
+    {"item": "Architecture/README", "document": "LLM explanation summarized as not implemented", "code": "Explanation path exists but Qwen mode is opt-in and quality approval failed", "status": "IMPLEMENTED_BUT_DEFAULT_OFF"},
+    {"item": "Testing summary", "document": "Some sections say FastAPI/Qdrant not connected", "code": "Past live contract and isolated browser E2E artifacts exist", "status": "STALE_SUMMARY"},
+    {"item": "Expansion plan", "document": "26 ready; next semantic expansion", "code": "19 planned, 3 failed, 16 pending; profile quality stop, no embedding/index", "status": "ACTUAL_RUN_BLOCKED"},
+    {"item": "NAVER Qwen", "document": "Resolver narrative may imply all NAVER linking is Qwen", "code": "Provider Local candidate ER uses Qwen; numeric Place ID linker is deterministic", "status": "DISTINCT_PIPELINES"}
+  ],
+  "blockers": [
+    {"priority": "P0", "area": "Semantic Profile quality", "status": "3 new profile attempts failed; semantic overclaims remain despite structural validation"},
+    {"priority": "P0", "area": "Serving coverage", "status": "recommendation_ready count 4; strict-ready 26 does not imply serving candidates"},
+    {"priority": "P1", "area": "Semantic index", "status": "v12 remains 10 Restaurant/40 points; expanded collection absent"},
+    {"priority": "P1", "area": "LLM explanation", "status": "past 1/3 GROUNDED; keep default OFF"},
+    {"priority": "P2", "area": "CI/deployment/observability", "status": "no GitHub workflow or verified AWS deployment found"},
+    {"priority": "P2", "area": "Documentation", "status": "AI README/flow/architecture/testing contain stale statements"}
+  ],
+  "recommendedNextSteps": [
+    "Investigate why only four Restaurant rows are recommendation_ready; keep distinct from semantic readiness.",
+    "Strengthen semantic Claim direct-support validation and turn observed 9559/9603/9639 failures into regression fixtures before resuming generation.",
+    "Separate current-source compatibility from semantic quality approval for the seven existing Profile artifacts.",
+    "Synchronize stale AI/runtime documentation and establish CI for existing local Harness scripts.",
+    "Only after claim approval, build a new shadow index and freeze evidence-derived Ground Truth before expanded benchmark; do not switch runtime collection yet.",
+    "Introduce Gemini at a bounded provider interface only after task, cost, timeout, fallback and data policies are explicit; consider LangGraph only when branching/retry/clarification is genuinely required.",
+    "Add dependency/fallback observability, then plan Docker/AWS deployment."
+  ]
+}

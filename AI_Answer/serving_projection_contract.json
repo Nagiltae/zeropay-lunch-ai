@@ -1,0 +1,87 @@
+{
+  "contractVersion": "serving-projection-design-v1",
+  "asOf": "2026-09-25",
+  "status": "DESIGN_ONLY_NOT_PERSISTED",
+  "target": "NAVER Detail to Spring Recommendation serving projection",
+  "sourceOfTruth": [
+    "backend/src/main/java/com/zeropaylunch/backend/restaurant/domain/Restaurant.java",
+    "backend/src/main/java/com/zeropaylunch/backend/restaurant/domain/RestaurantCategory.java",
+    "backend/src/main/java/com/zeropaylunch/backend/restaurant/infrastructure/RestaurantJpaRepository.java",
+    "backend/src/main/java/com/zeropaylunch/backend/restaurant/application/RestaurantRecommendationService.java",
+    "backend/src/main/resources/db/migration/V1__create_core_tables.sql",
+    "backend/src/main/resources/db/migration/V4__add_komsco_restaurant_source_fields.sql",
+    "backend/src/main/resources/db/migration/V13__create_restaurant_detail_data.sql",
+    "ai/app/naver/place_dom_detail_crawler.py",
+    "ai/app/naver/place_detail_persistence.py"
+  ],
+  "projectionLayers": {
+    "detail": "Verified provider-source rows; not itself Spring serving readiness",
+    "servingProjection": "Typed values consumed by Spring candidate filter/rank/response",
+    "semanticProfile": "Evidence-backed AI retrieval features; separate from serving projection"
+  },
+  "fields": {
+    "category": {
+      "database": "restaurants.category VARCHAR(40), nullable after V4",
+      "java": "nullable RestaurantCategory enum: KOREAN, KOREAN_SOUP, SALAD",
+      "usage": ["category hard filter", "preferred/disliked category", "rank score", "response label"],
+      "sourceCandidates": ["provider external-place categories", "NAVER HOME crawler category (currently captured but not persisted)", "menu evidence as non-authoritative suggestion"],
+      "projection": "UNRESOLVED; no validated provider-to-enum crosswalk; raw provider category is not enum-safe",
+      "recommendedDirection": "Versioned category catalog/crosswalk with UNKNOWN/REVIEW state, not an expanding enum or restaurant-ID rules"
+    },
+    "representativeMenu": {
+      "database": "restaurants.representative_menu VARCHAR(120), nullable after V4",
+      "java": "String; included in RecommendationItem response",
+      "rankingUsage": false,
+      "source": "active MENU SUCCESS NAVER rows; current crawler persists names/descriptions/prices but no separate representative marker field",
+      "projection": "UNRESOLVED unless a unique explicit provider representative/signature marker identifies one eligible item",
+      "recommendedDirection": "Prefer source-labelled list of menu highlights; scalar only for a unique verified marker"
+    },
+    "price": {
+      "database": "restaurants.average_price INT, nullable after V4",
+      "java": "Integer field; RecommendationItem primitive int",
+      "usage": ["budget hard exclusion", "score", "ascending-price tie-break", "response"],
+      "source": "active NAVER menu price_value/price_text",
+      "projection": "UNRESOLVED for hard lunch budget; heterogeneous all-menu mean/median is not single-person meal price",
+      "recommendedDirection": "Structured eligible meal-price candidates/range with explicit basis and serving-size evidence; budget policy must use only classified meal items"
+    },
+    "schedule": {
+      "source": "MENU-independent BUSINESS_HOURS SUCCESS, source-grounded active hour records",
+      "targetTables": ["restaurant_schedules", "restaurant_operating_days", "restaurant_operating_hours"],
+      "closures": ["restaurant_closed_days", "restaurant_closed_hours"],
+      "supports": ["weekday groups", "multiple same-day intervals as rows", "recurring weekday closure", "recurring closed interval"],
+      "doesNotFaithfullySupport": ["direct overnight interval (opens_at < closes_at constraint)", "24:00 with Java LocalTime", "date-specific irregular closure"],
+      "projection": "UNRESOLVED pending interval/day grouping, break parsing, overnight/24h and exception-date policy"
+    },
+    "recommendationReady": {
+      "meaning": "all required, current Spring serving projection data passed its validation policy",
+      "predicateProposal": ["identity current and verified", "category resolved", "budget price basis resolved", "required menu display fact resolved", "weekly hours and closures faithfully normalized", "source freshness valid", "projection validation passed"],
+      "owner": "Spring ServingProjectionService/batch; Python collector remains source ingestion and preview producer",
+      "notEquivalentTo": "Semantic ProfileReadiness"
+    }
+  },
+  "observedTargetCoverage": {
+    "restaurants": 26,
+    "providerCategoryCandidates": 26,
+    "categoryResolvedUnderExistingPolicy": 0,
+    "singleRepresentativeMenuResolved": 0,
+    "hasAtLeastOnePricedNaverMenu": 26,
+    "priceResolvedForSinglePersonHardBudget": 0,
+    "scheduleLosslesslyResolvedUnderExistingPolicy": 0,
+    "fullyServingReady": 0
+  },
+  "options": {
+    "categoryDirectProvider": "Do not copy raw hierarchy directly into the Java enum; incompatible vocabularies and mismatched provider categories.",
+    "categoryLLM": "Suggestion-only future option with controlled schema, evidence and review; no model calls in this task.",
+    "categoryModel": "Recommended long-term: taxonomy IDs/catalog/crosswalk, stable API/preferences, unknown/review workflow.",
+    "promotionOwner": "Spring is authoritative for its MySQL serving data and recommendation semantics; Python may emit a read-only projection preview.",
+    "gemini": "PLANNED_GEMINI_CANDIDATE for constrained broad-category suggestion only; not implemented/called here."
+  },
+  "persistence": {
+    "performed": false,
+    "migration": false,
+    "sourceCalls": 0,
+    "llmCalls": 0,
+    "embeddingCalls": 0,
+    "qdrantWrites": 0
+  }
+}

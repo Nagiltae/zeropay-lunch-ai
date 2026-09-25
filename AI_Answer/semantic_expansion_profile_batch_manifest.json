@@ -1,0 +1,44 @@
+{
+  "manifestVersion": "semantic-expansion-profile-batch-v1",
+  "status": "BLOCKED_BY_COVERAGE_GATE",
+  "plannedBatchLimit": 25,
+  "eligibleNewRestaurants": [],
+  "reusedExistingStrictReadyProfiles": [
+    9568,
+    9571,
+    9574,
+    9590,
+    9617
+  ],
+  "preservedExistingProfileCohort": [
+    9617,
+    9731,
+    9567,
+    9580,
+    9568,
+    9569,
+    9570,
+    9571,
+    9574,
+    9590
+  ],
+  "outcomes": {
+    "SUCCESS": 0,
+    "FAILED": 0,
+    "SKIPPED_EXISTING": 5,
+    "BLOCKED_QUALITY": 355
+  },
+  "generation": {
+    "profileLlmCalls": 0,
+    "successfulProfiles": 0,
+    "failedProfiles": 0,
+    "reusedProfiles": 5,
+    "embeddingCalls": 0
+  },
+  "checkpointResume": {
+    "implementationAvailable": false,
+    "resumeTest": "NOT_RUN",
+    "note": "semantic_profile_shadow CLI is single-restaurant; no resumable profile batch runner found. No batch was started."
+  },
+  "reason": "Coverage gate stopped work before Profile generation."
+}

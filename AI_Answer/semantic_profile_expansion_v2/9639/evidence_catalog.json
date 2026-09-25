@@ -1,0 +1,1219 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "38d328ce3881ab93eab6f1c55d0d7fdbdb74e2d5eb88b15c7983bebd7e3641db",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "이자카야나무(논현)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 봉은사로 1길 40",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "대하 버터갈릭구이",
+        "price": 29000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "전어세꼬시",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "전어구이",
+        "price": 19000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "커플세트",
+        "price": 59900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "나무세트",
+        "price": 89900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "나무한상",
+        "price": 169900
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "시보리다테 세트",
+        "price": 99000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "오마카세 초밥 15pcs",
+        "price": 29500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "오마카세 초밥 12pcs",
+        "price": 25500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "오늘의초밥 10pcs",
+        "price": 15500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.menu.items[10]",
+      "content": {
+        "name": "모둠초밥 12pcs",
+        "price": 19000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.menu.items[11]",
+      "content": {
+        "name": "특모둠초밥 15pcs",
+        "price": 26500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.menu.items[12]",
+      "content": {
+        "name": "스페셜모둠초밥 20pcs",
+        "price": 35500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.menu.items[13]",
+      "content": {
+        "name": "혼마구로아까미초밥 10pcs",
+        "price": 23500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.menu.items[14]",
+      "content": {
+        "name": "꽃등심초밥 10pcs",
+        "price": 22500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.menu.items[15]",
+      "content": {
+        "name": "광어+꽃등심초밥 10pcs",
+        "price": 23000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.menu.items[16]",
+      "content": {
+        "name": "꽃등심+연어초밥 10pcs",
+        "price": 21500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.menu.items[17]",
+      "content": {
+        "name": "광어초밥 10pcs",
+        "price": 22500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.menu.items[18]",
+      "content": {
+        "name": "연어초밥 10pcs",
+        "price": 19500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.menu.items[19]",
+      "content": {
+        "name": "광어+연어초밥 10pcs",
+        "price": 21500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.menu.items[20]",
+      "content": {
+        "name": "초새우초밥 10pcs",
+        "price": 17000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.menu.items[21]",
+      "content": {
+        "name": "폭탄회덮밥",
+        "price": 20000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.menu.items[22]",
+      "content": {
+        "name": "생연어 사케동",
+        "price": 19000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.menu.items[23]",
+      "content": {
+        "name": "완도바다 찐전복 덮밥",
+        "price": 18000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.menu.items[24]",
+      "content": {
+        "name": "스바라시 스테이크 덮밥",
+        "price": 21000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.menu.items[25]",
+      "content": {
+        "name": "도톤보리 텐동",
+        "price": 16000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.menu.items[26]",
+      "content": {
+        "name": "에비덴뿌라우동",
+        "price": 12000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.menu.items[27]",
+      "content": {
+        "name": "살얼음동동 냉소바",
+        "price": 11000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.menu.items[28]",
+      "content": {
+        "name": "특선사시미모리아와세",
+        "price": 98000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.menu.items[29]",
+      "content": {
+        "name": "오늘의사시미",
+        "price": 52000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.menu.items[30]",
+      "content": {
+        "name": "광어+연어 두가지사시미",
+        "price": 41000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.menu.items[31]",
+      "content": {
+        "name": "도미사시미",
+        "price": 39000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.menu.items[32]",
+      "content": {
+        "name": "광어사시미",
+        "price": 37000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.menu.items[33]",
+      "content": {
+        "name": "연어사시미",
+        "price": 32000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.menu.items[34]",
+      "content": {
+        "name": "트리플 치즈 샐러드",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.menu.items[35]",
+      "content": {
+        "name": "이탈리안 생연어 샐러드",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.menu.items[36]",
+      "content": {
+        "name": "투뿔 한우 타다끼",
+        "price": 28000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.menu.items[37]",
+      "content": {
+        "name": "흑초만난 탕수육",
+        "price": 27000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.menu.items[38]",
+      "content": {
+        "name": "매콤 해물 떡볶이",
+        "price": 26500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.menu.items[39]",
+      "content": {
+        "name": "명란크림우동",
+        "price": 26500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.menu.items[40]",
+      "content": {
+        "name": "불닭소스 맞은 깐풍기",
+        "price": 26000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.menu.items[41]",
+      "content": {
+        "name": "볼케이노 오돌뼈",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.menu.items[42]",
+      "content": {
+        "name": "관자,새우 갈릭버터 야끼",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.menu.items[43]",
+      "content": {
+        "name": "크림치즈 오꼬노미야끼",
+        "price": 24500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.menu.items[44]",
+      "content": {
+        "name": "차돌숙주볶음",
+        "price": 24500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.menu.items[45]",
+      "content": {
+        "name": "오사카풍 오꼬노미야끼",
+        "price": 24500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.menu.items[46]",
+      "content": {
+        "name": "가리비관자 파스타",
+        "price": 21000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.menu.items[47]",
+      "content": {
+        "name": "눈꽃 명란계란말이",
+        "price": 21000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.menu.items[48]",
+      "content": {
+        "name": "타코와사비",
+        "price": 13000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.menu.items[49]",
+      "content": {
+        "name": "모찌리도후",
+        "price": 13000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.menu.items[50]",
+      "content": {
+        "name": "허니 고구마스틱",
+        "price": 13000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.menu.items[51]",
+      "content": {
+        "name": "에비덴뿌라",
+        "price": 28500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.menu.items[52]",
+      "content": {
+        "name": "문어튀김",
+        "price": 26500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.menu.items[53]",
+      "content": {
+        "name": "도리가라아게",
+        "price": 22500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E057",
+      "sourceField": "sections.menu.items[54]",
+      "content": {
+        "name": "숯불꼬치 7종 구이",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E058",
+      "sourceField": "sections.menu.items[55]",
+      "content": {
+        "name": "숯불꼬치 10종 구이",
+        "price": 37000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E059",
+      "sourceField": "sections.menu.items[56]",
+      "content": {
+        "name": "메로소금구이",
+        "price": 29500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E060",
+      "sourceField": "sections.menu.items[57]",
+      "content": {
+        "name": "촉촉 오징어한마리",
+        "price": 17000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E061",
+      "sourceField": "sections.menu.items[58]",
+      "content": {
+        "name": "밀푀유나베",
+        "price": 28500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E062",
+      "sourceField": "sections.menu.items[59]",
+      "content": {
+        "name": "차돌탄탄나베",
+        "price": 28500
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E063",
+      "sourceField": "sections.menu.items[60]",
+      "content": {
+        "name": "전통나가사끼 해물짬뽕나베",
+        "price": 28000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E064",
+      "sourceField": "sections.menu.items[61]",
+      "content": {
+        "name": "얼큰수제비 해물짬뽕나베",
+        "price": 28000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E065",
+      "sourceField": "sections.menu.items[62]",
+      "content": {
+        "name": "봉골레 생 백합나베",
+        "price": 27000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E066",
+      "sourceField": "sections.menu.items[63]",
+      "content": {
+        "name": "간사이풍 오뎅나베",
+        "price": 25000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E067",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 608
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E068",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"대화하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 429
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E069",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 269
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E070",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 245
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E071",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"기본 안주가 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 188
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E072",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+        "mentionCount": 169
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E073",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 154
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E074",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"술이 다양해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 151
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E075",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"오래 머무르기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 142
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E076",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 125
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E077",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "꼬치",
+        "mentionCount": 22
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E078",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "맥주",
+        "mentionCount": 19
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E079",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "짬뽕",
+        "mentionCount": 19
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E080",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "초밥",
+        "mentionCount": 14
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E081",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "튀김",
+        "mentionCount": 13
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E082",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "모찌리도후",
+        "mentionCount": 10
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E083",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "수제비",
+        "mentionCount": 9
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E084",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "계란말이",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E085",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "사케",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E086",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "하이볼",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E087",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "명란",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E088",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "밀푀유나베",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E089",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "우동",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E090",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "해물짬뽕",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E091",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "고구마튀김",
+        "mentionCount": 5
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E092",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 605
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E093",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 470
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E094",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 203
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E095",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "분위기",
+        "mentionCount": 133
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E096",
+      "sourceField": "sections.review.keywords[29]",
+      "content": {
+        "keyword": "목적",
+        "mentionCount": 51
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E097",
+      "sourceField": "sections.review.keywords[30]",
+      "content": {
+        "keyword": "예약",
+        "mentionCount": 36
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E098",
+      "sourceField": "sections.review.keywords[31]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 30
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E099",
+      "sourceField": "sections.review.keywords[32]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 19
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E100",
+      "sourceField": "sections.review.keywords[33]",
+      "content": {
+        "keyword": "청결도",
+        "mentionCount": 16
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E101",
+      "sourceField": "sections.review.keywords[34]",
+      "content": {
+        "keyword": "대기시간",
+        "mentionCount": 13
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E102",
+      "sourceField": "sections.review.keywords[35]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 12
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E103",
+      "sourceField": "sections.review.keywords[36]",
+      "content": {
+        "keyword": "위치",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E104",
+      "sourceField": "sections.review.keywords[37]",
+      "content": {
+        "keyword": "방역",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E105",
+      "sourceField": "sections.review.keywords[38]",
+      "content": {
+        "keyword": "전망",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E106",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-7",
+        "text": "분위기도 좋고 음식도 전체적으로 맛있었어요. 안주 종류가 다양해서 이것저것 골라 먹기 좋았습니다. 특히 음식이 깔끔하게 나오고 술이랑 잘 어울렸어요. 직원분들도 친절하고 매장 분위기도 편안했습니다. 다음에 근처 오면 또 방문하고 싶은 이자카야예요! 굿굿"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E107",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-1",
+        "text": "공간이 되게 넓고 자리마다 칸막이로 분리되어 있어서 대화하기 좋은 곳이에요! 화장실도 깔끔하고 안주 종류도 너무많고 맛있는 하이볼도 있습니다, 수다떨기도 참 좋아요! 자주옵니당 ㅎㅎ 조명이 어두워서 소개팅하기 좋아요 어색한분들 여기로 오세요~~~"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E108",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-3",
+        "text": "지나가다가 문득 들린곳이에요! 강남점은 많이 가봣는데 여기 논현점은 처음 왔어요 너무 더웠는데 여기는 시원하고 장소도 쾌적하니 좋았어요 ㅎㅎ 룸식으로 되어 있어서 우리끼리 얘기하기도 좋고 너무 좋네요 음식도 맛있고 친절하니 너무 감사드립니다 ㅎㅎ"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E109",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-5",
+        "text": "꼬지 종류가 다양하네요~!!! 테이블도 넓고 깨끗해요^^ 화장실도 매우 깨끗하고 가글도 있어서 좋아요ㅋㅋ 맛도 있고 직원들도 친절해요~!! 다음에 친구들이랑 또 오고싶은 맛집이에요~!!!"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E110",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "매일",
+        "open_time": "15:30",
+        "close_time": "05:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "영업 중다음 날 04:30에 라스트오더 다음 날 4시 30분에 라스트오더 매일 15:30 - 다음 날 05:00 04:30 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.041086"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "70ac81bcceaac49eb84223b048870108fb9424a37db273bc48d5a54babf132f1"
+}

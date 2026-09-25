@@ -86,20 +86,33 @@ export function MessageList({
                       <div>
                         <strong>{restaurant.name}</strong>
                         <span>
-                          {restaurant.category} · 강남구 논현동
+                          {restaurant.category ? `${restaurant.category} · ` : ''}강남구 논현동
                         </span>
                       </div>
                       {restaurant.sampleData && <em>샘플 데이터</em>}
                     </div>
                     <dl>
-                      <div>
-                        <dt>대표 메뉴</dt>
-                        <dd>{restaurant.representativeMenu}</dd>
-                      </div>
-                      <div>
-                        <dt>예상 가격</dt>
-                        <dd>{restaurant.averagePrice.toLocaleString()}원</dd>
-                      </div>
+                      {restaurant.menuExamples && restaurant.menuExamples.length > 0 ? (
+                        <div>
+                          <dt>메뉴 예시</dt>
+                          <dd>{restaurant.menuExamples.map((menu) => (
+                            <span key={`${menu.name}-${menu.price ?? 'unknown'}`}>
+                              {menu.name}{menu.price != null ? ` · ${menu.price.toLocaleString()}원` : ''}
+                            </span>
+                          ))}</dd>
+                        </div>
+                      ) : restaurant.representativeMenu ? (
+                        <div>
+                          <dt>대표 메뉴</dt>
+                          <dd>{restaurant.representativeMenu}</dd>
+                        </div>
+                      ) : null}
+                      {restaurant.averagePrice != null && (
+                        <div>
+                          <dt>예상 가격</dt>
+                          <dd>{restaurant.averagePrice.toLocaleString()}원</dd>
+                        </div>
+                      )}
                       <div>
                         <dt>제로페이</dt>
                         <dd>{restaurant.zeroPayAvailable ? '가능' : '불가'}</dd>

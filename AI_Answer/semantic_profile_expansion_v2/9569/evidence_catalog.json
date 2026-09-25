@@ -1,0 +1,649 @@
+{
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+  "items": [
+    {
+      "evidenceId": "E001",
+      "sourceField": "identity.restaurantName",
+      "content": "산곰장어",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E002",
+      "sourceField": "identity.restaurantAddress",
+      "content": "서울특별시 강남구 언주로 605 (논현동)",
+      "section": "identity",
+      "status": null,
+      "evidenceType": "identity"
+    },
+    {
+      "evidenceId": "E003",
+      "sourceField": "sections.menu.items[0]",
+      "content": {
+        "name": "산곰장어",
+        "price": 24000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E004",
+      "sourceField": "sections.menu.items[1]",
+      "content": {
+        "name": "김치찌개",
+        "price": 19000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E005",
+      "sourceField": "sections.menu.items[2]",
+      "content": {
+        "name": "해산물모듬",
+        "price": 80000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E006",
+      "sourceField": "sections.menu.items[3]",
+      "content": {
+        "name": "돌멍게",
+        "price": 40000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E007",
+      "sourceField": "sections.menu.items[4]",
+      "content": {
+        "name": "낙지",
+        "price": 30000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E008",
+      "sourceField": "sections.menu.items[5]",
+      "content": {
+        "name": "해삼",
+        "price": 30000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E009",
+      "sourceField": "sections.menu.items[6]",
+      "content": {
+        "name": "멍게",
+        "price": 30000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E010",
+      "sourceField": "sections.menu.items[7]",
+      "content": {
+        "name": "탕탕이",
+        "price": null
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E011",
+      "sourceField": "sections.menu.items[8]",
+      "content": {
+        "name": "전복",
+        "price": null
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E012",
+      "sourceField": "sections.menu.items[9]",
+      "content": {
+        "name": "김밥추가",
+        "price": 4000
+      },
+      "section": "menu",
+      "status": "SUCCESS",
+      "evidenceType": "menu"
+    },
+    {
+      "evidenceId": "E013",
+      "sourceField": "sections.review.keywords[0]",
+      "content": {
+        "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 128
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E014",
+      "sourceField": "sections.review.keywords[1]",
+      "content": {
+        "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 76
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E015",
+      "sourceField": "sections.review.keywords[2]",
+      "content": {
+        "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 45
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E016",
+      "sourceField": "sections.review.keywords[3]",
+      "content": {
+        "keyword": "\"특별한 메뉴가 있어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 38
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E017",
+      "sourceField": "sections.review.keywords[4]",
+      "content": {
+        "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+        "mentionCount": 14
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E018",
+      "sourceField": "sections.review.keywords[5]",
+      "content": {
+        "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 13
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E019",
+      "sourceField": "sections.review.keywords[6]",
+      "content": {
+        "keyword": "\"양이 많아요\" 이 키워드를 선택한 인원",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E020",
+      "sourceField": "sections.review.keywords[7]",
+      "content": {
+        "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E021",
+      "sourceField": "sections.review.keywords[8]",
+      "content": {
+        "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E022",
+      "sourceField": "sections.review.keywords[9]",
+      "content": {
+        "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E023",
+      "sourceField": "sections.review.keywords[10]",
+      "content": {
+        "keyword": "꼼장어",
+        "mentionCount": 46
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E024",
+      "sourceField": "sections.review.keywords[11]",
+      "content": {
+        "keyword": "김치찌개",
+        "mentionCount": 31
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E025",
+      "sourceField": "sections.review.keywords[12]",
+      "content": {
+        "keyword": "찌개",
+        "mentionCount": 28
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E026",
+      "sourceField": "sections.review.keywords[13]",
+      "content": {
+        "keyword": "김밥",
+        "mentionCount": 12
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E027",
+      "sourceField": "sections.review.keywords[14]",
+      "content": {
+        "keyword": "꽁치김치찌개",
+        "mentionCount": 8
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E028",
+      "sourceField": "sections.review.keywords[15]",
+      "content": {
+        "keyword": "충무김밥",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E029",
+      "sourceField": "sections.review.keywords[16]",
+      "content": {
+        "keyword": "김말이",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E030",
+      "sourceField": "sections.review.keywords[17]",
+      "content": {
+        "keyword": "꼬마김밥",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E031",
+      "sourceField": "sections.review.keywords[18]",
+      "content": {
+        "keyword": "낙지",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E032",
+      "sourceField": "sections.review.keywords[19]",
+      "content": {
+        "keyword": "낙지탕탕이",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E033",
+      "sourceField": "sections.review.keywords[20]",
+      "content": {
+        "keyword": "맥주",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E034",
+      "sourceField": "sections.review.keywords[21]",
+      "content": {
+        "keyword": "멍게",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E035",
+      "sourceField": "sections.review.keywords[22]",
+      "content": {
+        "keyword": "산낙지",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E036",
+      "sourceField": "sections.review.keywords[23]",
+      "content": {
+        "keyword": "소금구이",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E037",
+      "sourceField": "sections.review.keywords[24]",
+      "content": {
+        "keyword": "와인",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E038",
+      "sourceField": "sections.review.keywords[25]",
+      "content": {
+        "keyword": "맛",
+        "mentionCount": 74
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E039",
+      "sourceField": "sections.review.keywords[26]",
+      "content": {
+        "keyword": "만족도",
+        "mentionCount": 55
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E040",
+      "sourceField": "sections.review.keywords[27]",
+      "content": {
+        "keyword": "서비스",
+        "mentionCount": 15
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E041",
+      "sourceField": "sections.review.keywords[28]",
+      "content": {
+        "keyword": "음식량",
+        "mentionCount": 7
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E042",
+      "sourceField": "sections.review.keywords[29]",
+      "content": {
+        "keyword": "가격",
+        "mentionCount": 6
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E043",
+      "sourceField": "sections.review.keywords[30]",
+      "content": {
+        "keyword": "주차",
+        "mentionCount": 3
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E044",
+      "sourceField": "sections.review.keywords[31]",
+      "content": {
+        "keyword": "청결도",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E045",
+      "sourceField": "sections.review.keywords[32]",
+      "content": {
+        "keyword": "위치",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E046",
+      "sourceField": "sections.review.keywords[33]",
+      "content": {
+        "keyword": "분위기",
+        "mentionCount": 2
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E047",
+      "sourceField": "sections.review.keywords[34]",
+      "content": {
+        "keyword": "메뉴",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E048",
+      "sourceField": "sections.review.keywords[35]",
+      "content": {
+        "keyword": "목적",
+        "mentionCount": 1
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "keyword"
+    },
+    {
+      "evidenceId": "E049",
+      "sourceField": "sections.review.representativeReviews[0]",
+      "content": {
+        "reviewId": "dom-10",
+        "text": "꼼장어 너무너무 사랑하는 사람으로 짱이네 정말 맛있어요 돌멍개도 넘 싱싱하고 쫄깃쫄깃 맛있어요 또 먹고 싶네요 양념 꼼장어도 먹었는데 사진 찍는거 잊어버리고.. ㅠㅠ 다 맛있지만 순정꼼장어가 더 맛있어요~ 마늘을 삶아서 나온걸 굽는거라 매운맛 하나 없고 너무 맛있어요 또 갈게요~~~"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E050",
+      "sourceField": "sections.review.representativeReviews[1]",
+      "content": {
+        "reviewId": "dom-7",
+        "text": "집근처라 지나다닐때마다 꼭가봐야지 하다가 드디어 친구랑 방문했어요! 평일엔 늘붐비고 토요일에도 저녁되니까 사람많았지만 매장이 넓어서 편하게 식사가능! 초벌해나오고 자리에서도 먹기좋게 구워주셔서 맛나게 먹고왔어요ㅎㅎ 반찬도 야채도 다맛있어요~ 무엇보다 산꼼장어 최고!ㅎ"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E051",
+      "sourceField": "sections.review.representativeReviews[2]",
+      "content": {
+        "reviewId": "dom-4",
+        "text": "꼼장어 처음 먹어보는데, 이렇게 맛있는걸 먹어버려서 제 꼼장어 기준은 하늘을 찌르게 되었네요. 잘 구워주시고 가게도 노포느낌인데 내부는 깔끔합니다. 김치찌개 그냥 소주 폭격기입니다. 진짜 미친 맛도리 음식점"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E052",
+      "sourceField": "sections.review.representativeReviews[3]",
+      "content": {
+        "reviewId": "dom-6",
+        "text": "소금구이 꼼장어집중 최고입니다. 꼼장어도 초벌로 어느정도 익혀 나와서 좋았어요. 바로 조금만 더 익혀 먹을 수 있어서 편했습니다. 꽁치김치찌개도 존맛ㅋㅋㅋㅋㅋㅋㅋ충무김밥도 다 메뉴가 알차요"
+      },
+      "section": "review",
+      "status": "SUCCESS",
+      "evidenceType": "review"
+    },
+    {
+      "evidenceId": "E053",
+      "sourceField": "sections.businessHours.items[0]",
+      "content": {
+        "day_of_week": "월",
+        "open_time": "16:30",
+        "close_time": "03:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 16:30 - 다음 날 03:00 02:00 라스트오더 화 16:30 - 다음 날 03:00 02:00 라스트오더 수 16:30 - 다음 날 03:00 02:00 라스트오더 목 16:30 - 다음 날 03:00 02:00 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.014928"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E054",
+      "sourceField": "sections.businessHours.items[1]",
+      "content": {
+        "day_of_week": "화",
+        "open_time": "16:30",
+        "close_time": "03:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 16:30 - 다음 날 03:00 02:00 라스트오더 화 16:30 - 다음 날 03:00 02:00 라스트오더 수 16:30 - 다음 날 03:00 02:00 라스트오더 목 16:30 - 다음 날 03:00 02:00 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.015066"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E055",
+      "sourceField": "sections.businessHours.items[2]",
+      "content": {
+        "day_of_week": "수",
+        "open_time": "16:30",
+        "close_time": "03:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 16:30 - 다음 날 03:00 02:00 라스트오더 화 16:30 - 다음 날 03:00 02:00 라스트오더 수 16:30 - 다음 날 03:00 02:00 라스트오더 목 16:30 - 다음 날 03:00 02:00 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.015157"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    },
+    {
+      "evidenceId": "E056",
+      "sourceField": "sections.businessHours.items[3]",
+      "content": {
+        "day_of_week": "목",
+        "open_time": "16:30",
+        "close_time": "03:00",
+        "break_hours": null,
+        "last_order": null,
+        "description": "오늘 휴무추석 휴무 추석 휴무 금(9/25) 추석 휴무 토(9/26) 추석 연휴 휴무 일 정기휴무 (매주 일요일) 월 16:30 - 다음 날 03:00 02:00 라스트오더 화 16:30 - 다음 날 03:00 02:00 라스트오더 수 16:30 - 다음 날 03:00 02:00 라스트오더 목 16:30 - 다음 날 03:00 02:00 라스트오더 접기 영업시간 수정 제안하기",
+        "regular_closed_day": null,
+        "irregular_closed_day": null,
+        "business_status": null,
+        "crawled_at": "2026-09-25 09:27:10.015222"
+      },
+      "section": "business_hours",
+      "status": "SUCCESS",
+      "evidenceType": "business_hours"
+    }
+  ],
+  "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519"
+}

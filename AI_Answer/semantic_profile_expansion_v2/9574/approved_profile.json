@@ -1,0 +1,82 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "881e987e88060c3a435dc22b5f01877a62dac5d53e13d403ac97e46bab0b03ff",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "fb0a44ed2ceb09c2c89840b19ddb041f138215eb11683c005d75efb716ea64c1",
+  "restaurantId": 9574,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "TASTE",
+      "text": "Customers frequently praise the freshness of ingredients and the delicious taste of the food.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E017",
+        "E040"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E017",
+          "sourceField": "sections.review.keywords[2]",
+          "content": {
+            "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 13
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E040",
+          "sourceField": "sections.review.keywords[25]",
+          "content": {
+            "keyword": "맛",
+            "mentionCount": 32
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "The establishment is noted for its cleanliness and friendly service.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E020",
+        "E016"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E020",
+          "sourceField": "sections.review.keywords[5]",
+          "content": {
+            "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 6
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E016",
+          "sourceField": "sections.review.keywords[1]",
+          "content": {
+            "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 14
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "reusedFrom": "semantic_profile_benchmark_9574/semantic_profile_v1_shadow_results.json",
+  "sourceInputHash": "e9fb9db48fe7762bce23c6f57affa8d4fc1daa2a8b0d9d7b174e01fdb2995b24",
+  "sourceCatalogHash": null,
+  "revalidatedAgainstCurrentInput": true
+}

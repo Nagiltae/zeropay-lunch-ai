@@ -1,0 +1,68 @@
+{
+  "pilotDate": "2026-09-25",
+  "assessment": "PARTIAL_BLOCKED",
+  "targets": [9617, 9571, 9568, 10042, 9559],
+  "qwen": {
+    "model": "qwen3.5:9b",
+    "calls": 5,
+    "retries": 0,
+    "successRestaurants": [9617, 9559],
+    "failedRestaurants": [9571, 9568, 10042],
+    "failureReason": "Ollama request timeout at 60 seconds",
+    "schemaValidClassifications": 52,
+    "approvedClassifications": 0,
+    "semanticReview": "REJECTED_FOR_SERVING_PENDING_HUMAN_VALIDATION"
+  },
+  "observedServingSnapshot": {
+    "observedAt": "2026-09-25T22:23:27+09:00",
+    "restaurantStatuses": [
+      {"restaurantId": 9617, "hours": "07:00-20:30 daily", "status": "CLOSED", "reason": "AFTER_CLOSE"},
+      {"restaurantId": 9571, "hours": "11:00-21:30 daily", "status": "CLOSED", "reason": "AFTER_CLOSE"},
+      {"restaurantId": 9568, "hours": "00:00-24:00 with 2026-09-25 holiday and weekend night-closure text", "status": "NOT_READY", "reason": "DATED_CLOSURE_TODAY_AND_UNRESOLVED_NIGHT_CLOSURE"},
+      {"restaurantId": 10042, "hours": "10:00-20:30 daily", "status": "CLOSED", "reason": "AFTER_CLOSE"},
+      {"restaurantId": 9559, "hours": "14:00-23:00 Mon-Thu; source names 2026-09-25 holiday closure", "status": "CLOSED", "reason": "DATED_CLOSURE_TODAY_AND_NO_FRIDAY_INTERVAL"}
+    ],
+    "liveSpringCandidateExecution": "NOT_RUN",
+    "projectedCandidatesFromReadOnlyHoursSnapshot": 0,
+    "actualPilotRestaurantCandidates": null,
+    "explicitBudgetCandidates": 0,
+    "note": "A read-only source snapshot evaluated at the observed local time projects zero eligible candidates. The five real DB rows were not invoked through a live Spring runtime."
+  },
+  "candidateIntegrationTest": {
+    "status": "PASS",
+    "database": "H2 test profile; transaction rolled back",
+    "fixtureRestaurantId": 97001,
+    "recommendationReadyLegacyFlag": false,
+    "candidateWithNoBudget": true,
+    "candidateWithUnknownBudgetClassification": false
+  },
+  "contract": {
+    "servingReadinessOwner": "Spring",
+    "recommendationReadyV2": "Computed from current verified serving source and current hours; legacy boolean is ignored for the KOMSCO detail candidate path and is not persisted/reconciled in this pilot.",
+    "profileReadinessSeparated": true,
+    "categoryRequired": false,
+    "representativeMenuRequired": false,
+    "averagePriceBudgetSource": false,
+    "menuExamples": "Up to three source-ordered active NAVER menu rows; not labelled representative.",
+    "budgetUnknown": "Fail closed for an explicit budget until a validated Spring-imported menu classification exists.",
+    "hours": ["same-day", "overnight", "24-hour", "recurring closed weekday", "date-specific closure", "break interval or UNKNOWN"]
+  },
+  "writes": {
+    "mysql": 0,
+    "qdrant": 0,
+    "flywayMigration": 0,
+    "profileGeneration": 0,
+    "embedding": 0
+  },
+  "tests": {
+    "menuClassificationPilotUnit": "PASS: 5",
+    "backendTargeted": "PASS",
+    "frontendRecommendationCard": "PASS: 4",
+    "aiHarness": "PASS: 247 passed, 1 skipped",
+    "backendHarness": "PASS",
+    "frontendHarness": "PASS: 12 passed",
+    "integrationHarness": "NOT_RUN",
+    "gitDiffCheck": "PASS"
+  },
+  "runtimeCollectionOrFeatureFlagsChanged": false
+}

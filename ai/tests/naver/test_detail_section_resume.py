@@ -202,12 +202,56 @@ def test_failed_state_remains_pending_without_treating_it_as_absent():
     assert _missing_sections(row)["menu"]
 
 
+def test_success_row_with_unstructured_hours_is_still_missing_for_profile_readiness():
+    row = {
+        "has_review": "1",
+        "has_menu": "1",
+        "has_price": "1",
+        "has_hours": "0",
+        "hours_state": "SUCCESS",
+    }
+    assert _missing_sections(row)["business_hours"] is True
+
+
+def test_resume_checkpoint_skips_terminal_targets_and_rejects_scope_change(tmp_path):
+    import pytest
+
+    from app.naver.place_detail_enrichment_cli import _checkpoint_payload, _save_checkpoint
+
+    path = tmp_path / "group-a.json"
+    payload = _checkpoint_payload(path, [9559, 9560], ("business_hours",), "WRITE")
+    _save_checkpoint(path, payload, 9559, "SUCCESS")
+    resumed = _checkpoint_payload(path, [9559, 9560], ("business_hours",), "WRITE")
+    assert resumed["completed"] == {"9559": "SUCCESS"}
+    with pytest.raises(ValueError, match="does not match"):
+        _checkpoint_payload(path, [9559, 9560], ("menu",), "WRITE")
+
+
 def test_section_state_mapping_distinguishes_absent_and_success():
     from app.naver.place_dom_detail_crawler import DomCollectedDetail
 
     absent = DomCollectedDetail(
-        True, "식당", "한식", "주소", None, (), (), True, None, (), True, None, None,
-        (), (), (), (), (), True, True, True,
+        True,
+        "식당",
+        "한식",
+        "주소",
+        None,
+        (),
+        (),
+        True,
+        None,
+        (),
+        True,
+        None,
+        None,
+        (),
+        (),
+        (),
+        (),
+        (),
+        True,
+        True,
+        True,
     )
     states = _section_states(absent, {"menu": True, "business_hours": True, "review": True})
     assert states == {

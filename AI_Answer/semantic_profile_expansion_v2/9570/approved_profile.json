@@ -1,0 +1,82 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "7ee2e77fb28ea876b00ea1979cda1068940349530a06ec334f2f20ff5fad0f78",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "c671e513c2f48bdbeae64524b8d90687ae43b5dd1e6800d831c10dd29e2d76b2",
+  "restaurantId": 9570,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "DINING_CONTEXT",
+      "text": "The venue is suitable for special occasions and group gatherings.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E015",
+        "E016"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E015",
+          "sourceField": "sections.review.keywords[5]",
+          "content": {
+            "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 20
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E016",
+          "sourceField": "sections.review.keywords[6]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 18
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    },
+    {
+      "claimType": "VENUE_CHARACTERISTIC",
+      "text": "Customers frequently mention the stylish interior design.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E011",
+        "E037"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E011",
+          "sourceField": "sections.review.keywords[1]",
+          "content": {
+            "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+            "mentionCount": 85
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E037",
+          "sourceField": "sections.review.keywords[27]",
+          "content": {
+            "keyword": "분위기",
+            "mentionCount": 55
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "reusedFrom": "semantic_profile_benchmark_9570/semantic_profile_v1_shadow_results.json",
+  "sourceInputHash": "bc954823d4e5a84683b4d6b9af819bc5e2d04ddd6ae1277c1d198ffc7c64fcb9",
+  "sourceCatalogHash": null,
+  "revalidatedAgainstCurrentInput": true
+}

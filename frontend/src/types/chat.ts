@@ -13,9 +13,10 @@ export type ChatMessage = {
 export type RestaurantRecommendation = {
   restaurantId: number
   name: string
-  category: string
-  representativeMenu: string
-  averagePrice: number
+  category: string | null
+  representativeMenu: string | null
+  averagePrice: number | null
+  menuExamples?: { name: string; price: number | null }[]
   address: string
   zeroPayAvailable: boolean
   sampleData: boolean

@@ -354,6 +354,86 @@ class RestaurantRecommendationServiceTests {
                 .containsExactly(31L);
     }
 
+    @Test
+    void permitsUnclassifiedCategoryAndNullableLegacyPriceWhenNoBudgetWasRequested() {
+        UUID userId = UUID.randomUUID();
+        RestaurantJpaRepository repository = mock(RestaurantJpaRepository.class);
+        RestaurantVenueAssociationJpaRepository venueRepository = mock(RestaurantVenueAssociationJpaRepository.class);
+        RecommendationContextService contextService = mock(RecommendationContextService.class);
+        Restaurant candidate = restaurant(41L, null, 0);
+        when(candidate.getAveragePrice()).thenReturn(null);
+        when(repository.findOpenRestaurants(anyString(), any())).thenReturn(List.of(candidate));
+        when(venueRepository.findAllByRestaurant_IdInAndStatusAndVenue_Status(
+                any(), eq(RestaurantVenueAssociationStatus.CONFIRMED), eq(VenueStatus.ACTIVE)))
+                .thenReturn(List.of());
+        IntentAnalysisRequest request = new IntentAnalysisRequest(
+                "점심 추천", null, SpiceLevel.ANY, Set.of(), Set.of(), Set.of(), List.of());
+        when(contextService.build(userId, request.message())).thenReturn(new RecommendationContext(request,
+                new AnalyzedIntent(IntentType.RECOMMEND_RESTAURANT, null, Optional.empty(), List.of(), false, null)));
+
+        RestaurantRecommendationService service = new RestaurantRecommendationService(
+                repository, venueRepository, contextService,
+                Clock.fixed(Instant.parse("2026-09-16T03:00:00Z"), ZoneId.of("Asia/Seoul")));
+
+        assertThat(service.recommend(userId, request.message()))
+                .extracting(RecommendationItem::restaurantId).containsExactly(41L);
+        assertThat(service.recommend(userId, request.message()).getFirst().category()).isNull();
+        assertThat(service.recommend(userId, request.message()).getFirst().averagePrice()).isNull();
+    }
+
+    @Test
+    void doesNotTreatUnknownLegacyPriceAsPassingAnExplicitBudget() {
+        UUID userId = UUID.randomUUID();
+        RestaurantJpaRepository repository = mock(RestaurantJpaRepository.class);
+        RestaurantVenueAssociationJpaRepository venueRepository = mock(RestaurantVenueAssociationJpaRepository.class);
+        RecommendationContextService contextService = mock(RecommendationContextService.class);
+        Restaurant candidate = restaurant(42L, null, 0);
+        when(candidate.getAveragePrice()).thenReturn(null);
+        when(repository.findOpenRestaurants(anyString(), any())).thenReturn(List.of(candidate));
+        IntentAnalysisRequest request = new IntentAnalysisRequest(
+                "만원 이하 점심", 10_000, SpiceLevel.ANY, Set.of(), Set.of(), Set.of(), List.of());
+        when(contextService.build(userId, request.message())).thenReturn(new RecommendationContext(request,
+                new AnalyzedIntent(IntentType.RECOMMEND_RESTAURANT, null, Optional.empty(), List.of(), false, null)));
+
+        RestaurantRecommendationService service = new RestaurantRecommendationService(
+                repository, venueRepository, contextService,
+                Clock.fixed(Instant.parse("2026-09-16T03:00:00Z"), ZoneId.of("Asia/Seoul")));
+
+        assertThat(service.recommend(userId, request.message())).isEmpty();
+    }
+
+    @Test
+    void mergesVerifiedKomscoCandidateDespiteLegacyReadyFalseWhenNoBudgetIsRequested() {
+        UUID userId = UUID.randomUUID();
+        RestaurantJpaRepository repository = mock(RestaurantJpaRepository.class);
+        RestaurantVenueAssociationJpaRepository venueRepository = mock(RestaurantVenueAssociationJpaRepository.class);
+        RecommendationContextService contextService = mock(RecommendationContextService.class);
+        @SuppressWarnings("unchecked")
+        ObjectProvider<VerifiedNaverServingCandidateService> servingProvider = mock(ObjectProvider.class);
+        VerifiedNaverServingCandidateService servingService = mock(VerifiedNaverServingCandidateService.class);
+        when(servingProvider.getIfAvailable()).thenReturn(servingService);
+        Restaurant candidate = restaurant(43L, null, 0);
+        when(candidate.getAveragePrice()).thenReturn(null);
+        when(repository.findOpenRestaurants(anyString(), any())).thenReturn(List.of());
+        when(servingService.findOpenCandidateIds(any(), any(), eq(null))).thenReturn(List.of(43L));
+        when(repository.findAllById(List.of(43L))).thenReturn(List.of(candidate));
+        when(venueRepository.findAllByRestaurant_IdInAndStatusAndVenue_Status(
+                any(), eq(RestaurantVenueAssociationStatus.CONFIRMED), eq(VenueStatus.ACTIVE)))
+                .thenReturn(List.of());
+        IntentAnalysisRequest request = new IntentAnalysisRequest(
+                "점심 추천", null, SpiceLevel.ANY, Set.of(), Set.of(), Set.of(), List.of());
+        when(contextService.build(userId, request.message())).thenReturn(new RecommendationContext(request,
+                new AnalyzedIntent(IntentType.RECOMMEND_RESTAURANT, null, Optional.empty(), List.of(), false, null)));
+
+        RestaurantRecommendationService service = new RestaurantRecommendationService(
+                repository, venueRepository, contextService,
+                Clock.fixed(Instant.parse("2026-09-24T03:00:00Z"), ZoneId.of("Asia/Seoul")),
+                null, null, null, servingProvider);
+
+        assertThat(service.recommend(userId, request.message()))
+                .extracting(RecommendationItem::restaurantId).containsExactly(43L);
+    }
+
     private Restaurant restaurant(Long id, RestaurantCategory category, int price) {
         return restaurant(id, category, price,
                 new BigDecimal("37.4980"), new BigDecimal("127.0276"));

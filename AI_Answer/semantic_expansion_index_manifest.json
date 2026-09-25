@@ -1,0 +1,14 @@
+{
+  "manifestVersion": "semantic-expansion-index-v1",
+  "status": "NOT_CREATED_COVERAGE_BLOCKED",
+  "collection": "zeropay_semantic_claim_expanded_v1",
+  "created": false,
+  "pointCount": 0,
+  "restaurantCount": 0,
+  "claimTypeCounts": {},
+  "embeddingModel": "qwen3-embedding:0.6b",
+  "dimension": 1024,
+  "distance": "Cosine",
+  "embeddingCalls": 0,
+  "reason": "No new eligible Profile expansion; no collection/write attempted. Existing v12 preserved."
+}

@@ -1,0 +1,12 @@
+{
+  "status": "NOT_COMPUTED_COVERAGE_BLOCKED",
+  "expanded": null,
+  "baselineV12": {
+    "precisionAt1": 0.9545,
+    "hitAt3": 1,
+    "evidenceTraceRate": 1,
+    "candidateScopeLeakage": 0,
+    "unsupportedClaimLeakage": 0
+  },
+  "reason": "No expanded search results; baseline referenced from frozen v2 artifacts, not recomputed."
+}

@@ -1,0 +1,1598 @@
+{
+  "createdAt": "2026-09-25T22:17:26+09:00",
+  "scope": "READ_ONLY dry-run; no MySQL or Qdrant writes",
+  "selectionReason": "분식(9617), 피자(9571), 한식(9568), 중식(10042), 중량·다인분·주류 혼합(9559)으로 menu-role 리스크를 대표하는 최대 5개 표본",
+  "plannedDatabaseChanges": [],
+  "plannedSchemaChanges": [],
+  "budgetUnknownPolicy": "Explicit budget queries fail closed until a validated MEAL_CANDIDATE classification is Spring-imported; no menu mean/median fallback.",
+  "policyVersion": "menu-budget-role-v1",
+  "targetsFrozen": [
+    9617,
+    9571,
+    9568,
+    10042,
+    9559
+  ],
+  "plannedQwenCalls": 5,
+  "retryLimit": 0,
+  "databaseWrites": 0,
+  "qdrantWrites": 0,
+  "restaurants": [
+    {
+      "restaurantId": 9617,
+      "menuCount": 24,
+      "pricedMenuCount": 24,
+      "menuIds": [
+        8727,
+        8728,
+        8729,
+        8730,
+        8731,
+        8732,
+        8733,
+        8734,
+        8735,
+        8736,
+        8737,
+        8738,
+        8739,
+        8740,
+        8741,
+        8742,
+        8743,
+        8744,
+        8745,
+        8746,
+        8747,
+        8748,
+        8749,
+        8750
+      ],
+      "inputBytes": 2752,
+      "inputHash": "ac8a694af9778c11f9b5181e1f13bc5371c5d60d69591f75adaa118c13180d6f"
+    },
+    {
+      "restaurantId": 9571,
+      "menuCount": 42,
+      "pricedMenuCount": 42,
+      "menuIds": [
+        2753,
+        2754,
+        2755,
+        2756,
+        2757,
+        2758,
+        2759,
+        2760,
+        2761,
+        2762,
+        2763,
+        2764,
+        2765,
+        2766,
+        2767,
+        2768,
+        2769,
+        2770,
+        2771,
+        2772,
+        2773,
+        2774,
+        2775,
+        2776,
+        2777,
+        2778,
+        2779,
+        2780,
+        2781,
+        2782,
+        2783,
+        2784,
+        2785,
+        2786,
+        2787,
+        2788,
+        2789,
+        2790,
+        2791,
+        2792,
+        2793,
+        2794
+      ],
+      "inputBytes": 7062,
+      "inputHash": "bc4c9b6b5734f41859cd67aec0ce15266bcb490bb24635320c210d3b3bd99d68"
+    },
+    {
+      "restaurantId": 9568,
+      "menuCount": 22,
+      "pricedMenuCount": 22,
+      "menuIds": [
+        2686,
+        2687,
+        2688,
+        2689,
+        2690,
+        2691,
+        2692,
+        2693,
+        2694,
+        2695,
+        2696,
+        2697,
+        2698,
+        2699,
+        2700,
+        2701,
+        2702,
+        2703,
+        2704,
+        2705,
+        2706,
+        2707
+      ],
+      "inputBytes": 2189,
+      "inputHash": "5d410aefa8729ab6f35f0ab54c5b23c5ced47cd4fcafa9fe8b6b9592c01ca8b6"
+    },
+    {
+      "restaurantId": 10042,
+      "menuCount": 72,
+      "pricedMenuCount": 72,
+      "menuIds": [
+        8328,
+        8329,
+        8330,
+        8331,
+        8332,
+        8333,
+        8334,
+        8335,
+        8336,
+        8337,
+        8338,
+        8339,
+        8340,
+        8341,
+        8342,
+        8343,
+        8344,
+        8345,
+        8346,
+        8347,
+        8348,
+        8349,
+        8350,
+        8351,
+        8352,
+        8353,
+        8354,
+        8355,
+        8356,
+        8357,
+        8358,
+        8359,
+        8360,
+        8361,
+        8362,
+        8363,
+        8364,
+        8365,
+        8366,
+        8367,
+        8368,
+        8369,
+        8370,
+        8371,
+        8372,
+        8373,
+        8374,
+        8375,
+        8376,
+        8377,
+        8378,
+        8379,
+        8380,
+        8381,
+        8382,
+        8383,
+        8384,
+        8385,
+        8386,
+        8387,
+        8388,
+        8389,
+        8390,
+        8391,
+        8392,
+        8393,
+        8394,
+        8395,
+        8396,
+        8397,
+        8398,
+        8399
+      ],
+      "inputBytes": 8022,
+      "inputHash": "11599249134e425492e2292b5bd6434edc0ebb83c4fb85bdcfb36e49d5c61e40"
+    },
+    {
+      "restaurantId": 9559,
+      "menuCount": 28,
+      "pricedMenuCount": 28,
+      "menuIds": [
+        2718,
+        2719,
+        2720,
+        2721,
+        2722,
+        2723,
+        2724,
+        2725,
+        2726,
+        2727,
+        2728,
+        2729,
+        2730,
+        2731,
+        2732,
+        2733,
+        2734,
+        2735,
+        2736,
+        2737,
+        2738,
+        2739,
+        2740,
+        2741,
+        2742,
+        2743,
+        2744,
+        2745
+      ],
+      "inputBytes": 5093,
+      "inputHash": "2901a2933b47e024032f21e8d60215069bce259d4251fe9724e559cba1db8b30"
+    }
+  ],
+  "inputs": [
+    {
+      "restaurantId": 9617,
+      "menus": [
+        {
+          "id": 8727,
+          "name": "마성김밥",
+          "description": null,
+          "priceValue": 4500,
+          "priceText": "4,500원"
+        },
+        {
+          "id": 8728,
+          "name": "치즈김밥",
+          "description": null,
+          "priceValue": 5500,
+          "priceText": "5,500원"
+        },
+        {
+          "id": 8729,
+          "name": "카야토스트",
+          "description": "담백하고 달달한 카야잼과 무염버터의 환상적인 만남",
+          "priceValue": 4500,
+          "priceText": "4,500원"
+        },
+        {
+          "id": 8730,
+          "name": "햄치즈토스트",
+          "description": "토스트의 근본~ 이것이 클래식이다.",
+          "priceValue": 5000,
+          "priceText": "5,000원"
+        },
+        {
+          "id": 8731,
+          "name": "마성세트((1.5인))",
+          "description": "떡볶이+순대+어묵2꼬치+튀김4개",
+          "priceValue": 19500,
+          "priceText": "19,500원"
+        },
+        {
+          "id": 8732,
+          "name": "떡순범벅",
+          "description": "떡볶이+순대",
+          "priceValue": 7000,
+          "priceText": "7,000원"
+        },
+        {
+          "id": 8733,
+          "name": "어떡범벅",
+          "description": "떡볶이+어묵1꼬치",
+          "priceValue": 7000,
+          "priceText": "7,000원"
+        },
+        {
+          "id": 8734,
+          "name": "튀떡범벅",
+          "description": "떡볶이+튀김2개",
+          "priceValue": 7000,
+          "priceText": "7,000원"
+        },
+        {
+          "id": 8735,
+          "name": "마성떡볶이",
+          "description": null,
+          "priceValue": 6000,
+          "priceText": "6,000원"
+        },
+        {
+          "id": 8736,
+          "name": "눈꽃치즈떡볶이",
+          "description": null,
+          "priceValue": 7000,
+          "priceText": "7,000원"
+        },
+        {
+          "id": 8737,
+          "name": "찰순대",
+          "description": "내장 없이 순대만 팝니다.",
+          "priceValue": 6000,
+          "priceText": "6,000원"
+        },
+        {
+          "id": 8738,
+          "name": "부산어묵(1인분 (2꼬치))",
+          "description": null,
+          "priceValue": 3400,
+          "priceText": "3,400원"
+        },
+        {
+          "id": 8739,
+          "name": "매운어묵",
+          "description": "매운 소스를 뿌려서 나갑니다.",
+          "priceValue": 3500,
+          "priceText": "3,500원"
+        },
+        {
+          "id": 8740,
+          "name": "마성김밥",
+          "description": null,
+          "priceValue": 4500,
+          "priceText": "4,500원"
+        },
+        {
+          "id": 8741,
+          "name": "참치김밥",
+          "description": null,
+          "priceValue": 5500,
+          "priceText": "5,500원"
+        },
+        {
+          "id": 8742,
+          "name": "치즈김밥",
+          "description": null,
+          "priceValue": 5500,
+          "priceText": "5,500원"
+        },
+        {
+          "id": 8743,
+          "name": "볼케이노 치킨덮밥",
+          "description": null,
+          "priceValue": 9500,
+          "priceText": "9,500원"
+        },
+        {
+          "id": 8744,
+          "name": "스팸김치참치 덮밥",
+          "description": null,
+          "priceValue": 9500,
+          "priceText": "9,500원"
+        },
+        {
+          "id": 8745,
+          "name": "카야토스트",
+          "description": "담백하고 달달한 카야잼과 무염버터의 환상적인 만남",
+          "priceValue": 4500,
+          "priceText": "4,500원"
+        },
+        {
+          "id": 8746,
+          "name": "햄치즈토스트",
+          "description": "토스트의 근본~ 이것이 클래식이다.",
+          "priceValue": 5000,
+          "priceText": "5,000원"
+        },
+        {
+          "id": 8747,
+          "name": "콜라(245ml)",
+          "description": null,
+          "priceValue": 2000,
+          "priceText": "2,000원"
+        },
+        {
+          "id": 8748,
+          "name": "사이다(245ml)",
+          "description": null,
+          "priceValue": 2000,
+          "priceText": "2,000원"
+        },
+        {
+          "id": 8749,
+          "name": "아메리카노(HOT)",
+          "description": null,
+          "priceValue": 2200,
+          "priceText": "2,200원"
+        },
+        {
+          "id": 8750,
+          "name": "아메리카노(ICE)",
+          "description": null,
+          "priceValue": 2500,
+          "priceText": "2,500원"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9571,
+      "menus": [
+        {
+          "id": 2753,
+          "name": "비프타코피자",
+          "description": "알싸하게 매콤한 할라피뇨와 바삭한 또띠아칩, 여기에 비프를 아낌없이 더한 환상적인 신메뉴!",
+          "priceValue": 15900,
+          "priceText": "15,900원"
+        },
+        {
+          "id": 2754,
+          "name": "치킨타코피자",
+          "description": "알싸하게 매콤한 할라피뇨와 바삭한 또띠아칩, 여기에 치킨을 아낌없이 더한 환상적인 신메뉴!",
+          "priceValue": 15900,
+          "priceText": "15,900원"
+        },
+        {
+          "id": 2755,
+          "name": "할라피뇨",
+          "description": null,
+          "priceValue": 500,
+          "priceText": "500원"
+        },
+        {
+          "id": 2756,
+          "name": "콘치즈피자",
+          "description": "달콤한 옥수수가 가득~ 팡팡 터지는 식감에 고소한 치즈까지 가득 더한 환상적인 신메뉴!",
+          "priceValue": 10900,
+          "priceText": "10,900원"
+        },
+        {
+          "id": 2757,
+          "name": "프리미엄스테이크피자",
+          "description": "부드러운 스테이크와 크림소스, 스모키 바베큐 소스의 환상적인 만남!",
+          "priceValue": 15900,
+          "priceText": "15,900원"
+        },
+        {
+          "id": 2758,
+          "name": "크림치즈꽈배기",
+          "description": "겉바속촉 트위스트 꽈배기에 부드럽고 달콤한 크림치즈가 듬뿍!",
+          "priceValue": 5900,
+          "priceText": "5,900원"
+        },
+        {
+          "id": 2759,
+          "name": "스리라차마요소스",
+          "description": null,
+          "priceValue": 500,
+          "priceText": "500원"
+        },
+        {
+          "id": 2760,
+          "name": "치즈피자",
+          "description": "매니아들을 위한 특제 피자! 치즈피자",
+          "priceValue": 8900,
+          "priceText": "8,900원"
+        },
+        {
+          "id": 2761,
+          "name": "페퍼로니피자",
+          "description": "오리지날 미국 피자! 페퍼로니피자",
+          "priceValue": 9900,
+          "priceText": "9,900원"
+        },
+        {
+          "id": 2762,
+          "name": "콤비네이션피자",
+          "description": "피자의 대명사! 콤비네이션 피자",
+          "priceValue": 10900,
+          "priceText": "10,900원"
+        },
+        {
+          "id": 2763,
+          "name": "고구마피자",
+          "description": "달콤한 맛의 유혹~ 고구마피자",
+          "priceValue": 10900,
+          "priceText": "10,900원"
+        },
+        {
+          "id": 2764,
+          "name": "핫치킨피자",
+          "description": "매콤 달콤 불닭이 어우러진 화끈한 맛!",
+          "priceValue": 10900,
+          "priceText": "10,900원"
+        },
+        {
+          "id": 2765,
+          "name": "불고기피자",
+          "description": "한국 전통 불고기가 피자를 만났을 때~",
+          "priceValue": 11900,
+          "priceText": "11,900원"
+        },
+        {
+          "id": 2766,
+          "name": "포테이토피자",
+          "description": "남녀노소 모두에게 인기있는 피자",
+          "priceValue": 11900,
+          "priceText": "11,900원"
+        },
+        {
+          "id": 2767,
+          "name": "나폴리피자",
+          "description": "입안에서 톡톡 터지는 소시지와 특제소스의 만남",
+          "priceValue": 12900,
+          "priceText": "12,900원"
+        },
+        {
+          "id": 2768,
+          "name": "고르곤졸라피자",
+          "description": "톡 쏘는 향의 고르곤졸라치즈가 가득 토핑된 피자. 달콤한 허니시럽과 함께 즐길 수 있는 제품.",
+          "priceValue": 12900,
+          "priceText": "12,900원"
+        },
+        {
+          "id": 2769,
+          "name": "까르보네피자",
+          "description": "느끼함과 부드러움으로 여심을 사로잡는 피자",
+          "priceValue": 12900,
+          "priceText": "12,900원"
+        },
+        {
+          "id": 2770,
+          "name": "아이리쉬포테이토피자",
+          "description": "담백한 아이리쉬포테이토 피자",
+          "priceValue": 12900,
+          "priceText": "12,900원"
+        },
+        {
+          "id": 2771,
+          "name": "불닭고구마피자",
+          "description": "매콤한 불닭과 달콤한 고구마의 만남! 맵단 맵단의 매력에 퐁~당!",
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2772,
+          "name": "트러플머쉬룸피자",
+          "description": "세계 3대 진미 트러플로 만든 크림소스와 향긋한 새송이버섯의 만남!",
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2773,
+          "name": "트러플포테이토피자",
+          "description": "세계 3대 진미 트러플을 가미한 풍미 가득 트러플크림소스와 포테이토의 만남!",
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2774,
+          "name": "야채퀘사디아피자",
+          "description": "건강한 야채의 아삭함~ 야채퀘사디아피자!",
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2775,
+          "name": "치킨퀘사디아",
+          "description": null,
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2776,
+          "name": "비프퀘사디아",
+          "description": null,
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2777,
+          "name": "더블갈릭바베큐피자",
+          "description": "탱글탱글한 큐브 스테이크가 가득~ 엣지까지 더해진 갈릭스프레드로 끝까지 풍성한 맛!",
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2778,
+          "name": "직화파인애플피자",
+          "description": "매콤한 직화불고기와 달콤한 파인애플이 어우러진 피자",
+          "priceValue": 13900,
+          "priceText": "13,900원"
+        },
+        {
+          "id": 2779,
+          "name": "깐쇼새우피자",
+          "description": "새콤달콤한 깐쇼새우피자",
+          "priceValue": 14900,
+          "priceText": "14,900원"
+        },
+        {
+          "id": 2780,
+          "name": "닭안심살피자",
+          "description": "담백한 닭안심살과 달콤한 칠리소스의 조화가 일품인 피자!",
+          "priceValue": 14900,
+          "priceText": "14,900원"
+        },
+        {
+          "id": 2781,
+          "name": "직화홀릭바이트피자",
+          "description": null,
+          "priceValue": 14900,
+          "priceText": "14,900원"
+        },
+        {
+          "id": 2782,
+          "name": "도이치바이트피자",
+          "description": "치즈롤을 하나씩 입 안에 쏙쏙",
+          "priceValue": 14900,
+          "priceText": "14,900원"
+        },
+        {
+          "id": 2783,
+          "name": "멕시칸바이트피자",
+          "description": null,
+          "priceValue": 14900,
+          "priceText": "14,900원"
+        },
+        {
+          "id": 2784,
+          "name": "오지치즈포테이토피자",
+          "description": "고소한 웨지감자와 짭조름한 체다치즈가 듬뿍",
+          "priceValue": 14900,
+          "priceText": "14,900원"
+        },
+        {
+          "id": 2785,
+          "name": "미트러버피자",
+          "description": "5가지 다양한 미트 토핑과 체다치즈 엣지까지 꽉 채운 풍성한 맛",
+          "priceValue": 15900,
+          "priceText": "15,900원"
+        },
+        {
+          "id": 2786,
+          "name": "크림스파게티",
+          "description": "부드러운 크림소스와 고소한 치즈의 어우러짐! 꾸덕하고 풍미가득한 크림스파게티를 즐겨보세요~",
+          "priceValue": 6900,
+          "priceText": "6,900원"
+        },
+        {
+          "id": 2787,
+          "name": "오지치즈그라탕",
+          "description": "담백한 웨지감자와 고소한 체다치즈가 만나 풍성한 맛 가득!",
+          "priceValue": 6900,
+          "priceText": "6,900원"
+        },
+        {
+          "id": 2788,
+          "name": "치즈오븐스파게티",
+          "description": "쫄깃한 스파게티와 오븐이 만나 치즈, 토마토양념, 스파게티를 구워내면 완벽한 콤비의 환상의 맛!",
+          "priceValue": 6900,
+          "priceText": "6,900원"
+        },
+        {
+          "id": 2789,
+          "name": "치킨스틱&윙",
+          "description": "오븐에 구운 닭 봉과 닭 날개를 피자와 함께 즐길 수 있는 제품.",
+          "priceValue": 6900,
+          "priceText": "6,900원"
+        },
+        {
+          "id": 2790,
+          "name": "치킨텐더",
+          "description": "국내산 닭안심살을 오븐에 구워 겉은 바삭, 속은 촉촉한 피자스쿨 사이드메뉴",
+          "priceValue": 5900,
+          "priceText": "5,900원"
+        },
+        {
+          "id": 2791,
+          "name": "새우링",
+          "description": "탱글탱글한 새우살이 가득한 새우링",
+          "priceValue": 5900,
+          "priceText": "5,900원"
+        },
+        {
+          "id": 2792,
+          "name": "트러플포테이토스틱",
+          "description": "세계 3대 진미 트러플을 가미한 풍미 가득 트러플크림소스와 포테이토의 만남!",
+          "priceValue": 4900,
+          "priceText": "4,900원"
+        },
+        {
+          "id": 2793,
+          "name": "갈릭포테이토",
+          "description": "부드러운 감자에 치즈 시즈닝과 갈릭소스를 한번에!",
+          "priceValue": 4900,
+          "priceText": "4,900원"
+        },
+        {
+          "id": 2794,
+          "name": "크림치즈볼",
+          "description": "고소한 크림치즈가 듬뿍! 쫄깃한 크림치즈볼",
+          "priceValue": 4900,
+          "priceText": "4,900원"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9568,
+      "menus": [
+        {
+          "id": 2686,
+          "name": "순대국",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2687,
+          "name": "한우차돌박이",
+          "description": null,
+          "priceValue": 30000,
+          "priceText": "30,000원"
+        },
+        {
+          "id": 2688,
+          "name": "서울밥상",
+          "description": null,
+          "priceValue": 15000,
+          "priceText": "15,000원"
+        },
+        {
+          "id": 2689,
+          "name": "시골밥상",
+          "description": null,
+          "priceValue": 11000,
+          "priceText": "11,000원"
+        },
+        {
+          "id": 2690,
+          "name": "꽁치/김치찌개",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2691,
+          "name": "제육볶음",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2692,
+          "name": "떡만두국",
+          "description": null,
+          "priceValue": 8000,
+          "priceText": "8,000원"
+        },
+        {
+          "id": 2693,
+          "name": "떡국",
+          "description": null,
+          "priceValue": 8000,
+          "priceText": "8,000원"
+        },
+        {
+          "id": 2694,
+          "name": "뚝배기불고기",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2695,
+          "name": "청국장+비빔밥",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2696,
+          "name": "된장찌개+비빔밥",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2697,
+          "name": "김치전골/꽁치전골",
+          "description": "안주류",
+          "priceValue": 30000,
+          "priceText": "30,000원"
+        },
+        {
+          "id": 2698,
+          "name": "어리굴젖+된장찌개",
+          "description": "안주류",
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2699,
+          "name": "계란찜",
+          "description": "안주류",
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2700,
+          "name": "계란말이",
+          "description": "안주류",
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 2701,
+          "name": "천겹살",
+          "description": null,
+          "priceValue": 20000,
+          "priceText": "20,000원"
+        },
+        {
+          "id": 2702,
+          "name": "삼겹살",
+          "description": null,
+          "priceValue": 18000,
+          "priceText": "18,000원"
+        },
+        {
+          "id": 2703,
+          "name": "목살",
+          "description": null,
+          "priceValue": 17000,
+          "priceText": "17,000원"
+        },
+        {
+          "id": 2704,
+          "name": "후식 된장찌개",
+          "description": null,
+          "priceValue": 3000,
+          "priceText": "3,000원"
+        },
+        {
+          "id": 2705,
+          "name": "후식 누룽지",
+          "description": null,
+          "priceValue": 4000,
+          "priceText": "4,000원"
+        },
+        {
+          "id": 2706,
+          "name": "후식 물냉면",
+          "description": null,
+          "priceValue": 8000,
+          "priceText": "8,000원"
+        },
+        {
+          "id": 2707,
+          "name": "후식 비빔냉면",
+          "description": null,
+          "priceValue": 8000,
+          "priceText": "8,000원"
+        }
+      ]
+    },
+    {
+      "restaurantId": 10042,
+      "menus": [
+        {
+          "id": 8328,
+          "name": "짜장면",
+          "description": "'진하게 볶아낸 춘장의 풍미와' 탱클한 면발이 잘 어울어진 중식의 정석",
+          "priceValue": 9000,
+          "priceText": "9,000원"
+        },
+        {
+          "id": 8329,
+          "name": "고추짬뽕",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8330,
+          "name": "전복차돌짬뽕",
+          "description": null,
+          "priceValue": 15000,
+          "priceText": "15,000원"
+        },
+        {
+          "id": 8331,
+          "name": "볶음짬뽕",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8332,
+          "name": "사천탕면",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8333,
+          "name": "1. 캔 콜라 [단골 찜, Rl뷰]",
+          "description": null,
+          "priceValue": 1,
+          "priceText": "1원"
+        },
+        {
+          "id": 8334,
+          "name": "S0. 탕수육+식사1개",
+          "description": "''요리+짜장1 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 24000,
+          "priceText": "24,000원"
+        },
+        {
+          "id": 8335,
+          "name": "S1. 사천탕수육+식사1개",
+          "description": "''요리+짜장1 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 27000,
+          "priceText": "27,000원"
+        },
+        {
+          "id": 8336,
+          "name": "S2.양장피+식사1개",
+          "description": "''요리+짜장1 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 33000,
+          "priceText": "33,000원"
+        },
+        {
+          "id": 8337,
+          "name": "A1. 탕수육+식사2",
+          "description": "''요리+짜장2 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8338,
+          "name": "A2. 사천탕수육+식사2",
+          "description": "''요리+짜장2 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 35000,
+          "priceText": "35,000원"
+        },
+        {
+          "id": 8339,
+          "name": "A3 양장피+식사2",
+          "description": "''요리+짜장2 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8340,
+          "name": "A4. 라조기+식사2",
+          "description": "''요리+짜장2 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8341,
+          "name": "A5. 깐풍기+식사2",
+          "description": "''요리+짜장2 기본구성'' 옵션에서 식사변경 가능합니다",
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8342,
+          "name": "전복차돌짬뽕",
+          "description": null,
+          "priceValue": 15000,
+          "priceText": "15,000원"
+        },
+        {
+          "id": 8343,
+          "name": "얼큰한 사천울면",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8344,
+          "name": "사천탕면",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8345,
+          "name": "고추짬뽕",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8346,
+          "name": "얼큰 수제비짬뽕",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8347,
+          "name": "짜장면",
+          "description": "'진하게 볶아낸 춘장의 풍미와' 탱클한 면발이 잘 어울어진 중식의 정석",
+          "priceValue": 9000,
+          "priceText": "9,000원"
+        },
+        {
+          "id": 8348,
+          "name": "옛날짜장",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 8349,
+          "name": "짬뽕",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 8350,
+          "name": "간짜장",
+          "description": null,
+          "priceValue": 10000,
+          "priceText": "10,000원"
+        },
+        {
+          "id": 8351,
+          "name": "우동",
+          "description": null,
+          "priceValue": 11000,
+          "priceText": "11,000원"
+        },
+        {
+          "id": 8352,
+          "name": "볶음밥",
+          "description": null,
+          "priceValue": 11000,
+          "priceText": "11,000원"
+        },
+        {
+          "id": 8353,
+          "name": "짜장밥",
+          "description": null,
+          "priceValue": 11000,
+          "priceText": "11,000원"
+        },
+        {
+          "id": 8354,
+          "name": "짬뽕밥",
+          "description": null,
+          "priceValue": 11000,
+          "priceText": "11,000원"
+        },
+        {
+          "id": 8355,
+          "name": "차돌육개장",
+          "description": null,
+          "priceValue": 12000,
+          "priceText": "12,000원"
+        },
+        {
+          "id": 8356,
+          "name": "김치볶음밥",
+          "description": null,
+          "priceValue": 12000,
+          "priceText": "12,000원"
+        },
+        {
+          "id": 8357,
+          "name": "탕수육(小)",
+          "description": null,
+          "priceValue": 22000,
+          "priceText": "22,000원"
+        },
+        {
+          "id": 8358,
+          "name": "탕수육(中)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8359,
+          "name": "탕수육(大)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8360,
+          "name": "소고기탕수육(小)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8361,
+          "name": "소고기탕수육(中)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8362,
+          "name": "깐풍기(小)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8363,
+          "name": "깐풍기(中)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8364,
+          "name": "깐풍기(大)",
+          "description": null,
+          "priceValue": 52000,
+          "priceText": "52,000원"
+        },
+        {
+          "id": 8365,
+          "name": "라조기(小)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8366,
+          "name": "라조기(中)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8367,
+          "name": "새우탕수육(小)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8368,
+          "name": "새우탕수육(中)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8369,
+          "name": "새우탕수육(大)",
+          "description": null,
+          "priceValue": 52000,
+          "priceText": "52,000원"
+        },
+        {
+          "id": 8370,
+          "name": "크림새우(小)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8371,
+          "name": "크림새우(中)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8372,
+          "name": "팔보채(大)",
+          "description": null,
+          "priceValue": 57000,
+          "priceText": "57,000원"
+        },
+        {
+          "id": 8373,
+          "name": "팔보채(中)",
+          "description": null,
+          "priceValue": 47000,
+          "priceText": "47,000원"
+        },
+        {
+          "id": 8374,
+          "name": "팔보채(小)",
+          "description": null,
+          "priceValue": 37000,
+          "priceText": "37,000원"
+        },
+        {
+          "id": 8375,
+          "name": "유산슬(大)",
+          "description": null,
+          "priceValue": 57000,
+          "priceText": "57,000원"
+        },
+        {
+          "id": 8376,
+          "name": "유산슬(中)",
+          "description": null,
+          "priceValue": 47000,
+          "priceText": "47,000원"
+        },
+        {
+          "id": 8377,
+          "name": "삼선탕(大)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8378,
+          "name": "삼선탕(中)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8379,
+          "name": "삼선탕(小)",
+          "description": null,
+          "priceValue": 22000,
+          "priceText": "22,000원"
+        },
+        {
+          "id": 8380,
+          "name": "계란탕(大)",
+          "description": null,
+          "priceValue": 42000,
+          "priceText": "42,000원"
+        },
+        {
+          "id": 8381,
+          "name": "계란탕(中)",
+          "description": null,
+          "priceValue": 32000,
+          "priceText": "32,000원"
+        },
+        {
+          "id": 8382,
+          "name": "짬짜면",
+          "description": null,
+          "priceValue": 12000,
+          "priceText": "12,000원"
+        },
+        {
+          "id": 8383,
+          "name": "볶짜면",
+          "description": null,
+          "priceValue": 12000,
+          "priceText": "12,000원"
+        },
+        {
+          "id": 8384,
+          "name": "볶짬면",
+          "description": null,
+          "priceValue": 12000,
+          "priceText": "12,000원"
+        },
+        {
+          "id": 8385,
+          "name": "탕짜면",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8386,
+          "name": "탕짬면",
+          "description": null,
+          "priceValue": 14000,
+          "priceText": "14,000원"
+        },
+        {
+          "id": 8387,
+          "name": "A. 팔보채+탕수육+해물잡채+짬뽕국물",
+          "description": null,
+          "priceValue": 100000,
+          "priceText": "100,000원"
+        },
+        {
+          "id": 8388,
+          "name": "B. 유산슬+난자완스+해물잡채+짬뽕국물",
+          "description": null,
+          "priceValue": 110000,
+          "priceText": "110,000원"
+        },
+        {
+          "id": 8389,
+          "name": "C. 양장피+유산슬+깐풍기+짬뽕국물",
+          "description": null,
+          "priceValue": 120000,
+          "priceText": "120,000원"
+        },
+        {
+          "id": 8390,
+          "name": "D. 팔보채+깐쇼새우+고추잡채+짬뽕국물",
+          "description": null,
+          "priceValue": 130000,
+          "priceText": "130,000원"
+        },
+        {
+          "id": 8391,
+          "name": "공기밥",
+          "description": null,
+          "priceValue": 1000,
+          "priceText": "1,000원"
+        },
+        {
+          "id": 8392,
+          "name": "군만두(4p)",
+          "description": null,
+          "priceValue": 3000,
+          "priceText": "3,000원"
+        },
+        {
+          "id": 8393,
+          "name": "군만두(8p)",
+          "description": null,
+          "priceValue": 6000,
+          "priceText": "6,000원"
+        },
+        {
+          "id": 8394,
+          "name": "물만두",
+          "description": null,
+          "priceValue": 8000,
+          "priceText": "8,000원"
+        },
+        {
+          "id": 8395,
+          "name": "짬뽕국물",
+          "description": null,
+          "priceValue": 2000,
+          "priceText": "2,000원"
+        },
+        {
+          "id": 8396,
+          "name": "코카콜라 500ml(500ml)",
+          "description": null,
+          "priceValue": 3000,
+          "priceText": "3,000원"
+        },
+        {
+          "id": 8397,
+          "name": "코카콜라 1.25L",
+          "description": null,
+          "priceValue": 5000,
+          "priceText": "5,000원"
+        },
+        {
+          "id": 8398,
+          "name": "칠성사이다(500ml)",
+          "description": null,
+          "priceValue": 3000,
+          "priceText": "3,000원"
+        },
+        {
+          "id": 8399,
+          "name": "칠성사이다 1.25L",
+          "description": null,
+          "priceValue": 5000,
+          "priceText": "5,000원"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9559,
+      "menus": [
+        {
+          "id": 2718,
+          "name": "한우 꽃등심토마호크100g<시그니처>",
+          "description": "한 개당 600~1,000g정도의 중량입니다 육즙 팡팡 스테이크 혜택 콜키지(위스키)할인",
+          "priceValue": 26000,
+          "priceText": "26,000원"
+        },
+        {
+          "id": 2719,
+          "name": "한우 통살치토마호크100g<시그니처>",
+          "description": "한 개당600g~1,000g정도의 중량입니다 기름많은 프리미엄스테이크 혜택 콜키지위스키할인",
+          "priceValue": 29000,
+          "priceText": "29,000원"
+        },
+        {
+          "id": 2720,
+          "name": "비즈니스모듬 600g <인기메뉴>",
+          "description": "3~4인분,100g당 가격 26,000 알등심 또는 안심+살치+업진+부채+갈비+앞치마 제공",
+          "priceValue": 156000,
+          "priceText": "156,000원"
+        },
+        {
+          "id": 2721,
+          "name": "스페셜모듬(특수부위) 450g<한정>",
+          "description": "2~3인분,100g당가격 35,000 안창/토시/제비추리/알치마/새우살 중 2~3 임의제공",
+          "priceValue": 157500,
+          "priceText": "157,500원"
+        },
+        {
+          "id": 2722,
+          "name": "한우 포터하우스&티본100g",
+          "description": "한 개당 500~800g정도의 중량입니다 기름이 적은 스테이크 포터하우스와 티본 가격동일",
+          "priceValue": 25000,
+          "priceText": "25,000원"
+        },
+        {
+          "id": 2723,
+          "name": "회식모듬800g<6명이상방문예약주문>",
+          "description": "4인분,100g당 가격22,500원,현장주문불가 등심+살치+업진+부채살+갈비+앞치마 제공",
+          "priceValue": 180000,
+          "priceText": "180,000원"
+        },
+        {
+          "id": 2724,
+          "name": "특제 양념로스 400g",
+          "description": "2인분,100g당 가격 26,000 모우리만의 특제소스로 만든 모듬 로스입니다.",
+          "priceValue": 104000,
+          "priceText": "104,000원"
+        },
+        {
+          "id": 2725,
+          "name": "암소사시미&우니",
+          "description": "암소 한우 알치마살을 사용한 고급사시미 한정 수량으로 방문 전 예약이 필요합니다.",
+          "priceValue": 40000,
+          "priceText": "40,000원"
+        },
+        {
+          "id": 2726,
+          "name": "횡성 장인 더덕무침",
+          "description": "강원도 더덕을 직접 손질해 판매합니다. (장마철에는 선도가 떨어져 판매하지 않습니다.)",
+          "priceValue": 20000,
+          "priceText": "20,000원"
+        },
+        {
+          "id": 2727,
+          "name": "명품 레몬 생 특주",
+          "description": "양조장 매일 직송, 하루 아홉 통 한정 판매",
+          "priceValue": 20000,
+          "priceText": "20,000원"
+        },
+        {
+          "id": 2728,
+          "name": "고창 명품 복분자주",
+          "description": "주인장 직접 담근 프리미엄 복분자주 하루 판매 아홉 주전자 한정",
+          "priceValue": 20000,
+          "priceText": "20,000원"
+        },
+        {
+          "id": 2729,
+          "name": "화요 엑스프리미엄",
+          "description": "얼음과 함께 제공되는 화요 엑스프리미엄",
+          "priceValue": 140000,
+          "priceText": "140,000원"
+        },
+        {
+          "id": 2730,
+          "name": "화요 53도",
+          "description": "엄선된 쌀로 만든 증류식 소주",
+          "priceValue": 100000,
+          "priceText": "100,000원"
+        },
+        {
+          "id": 2731,
+          "name": "명품 화요41",
+          "description": "엄선된 얼음과 함께 제공되는 프리미엄 소주",
+          "priceValue": 53000,
+          "priceText": "53,000원"
+        },
+        {
+          "id": 2732,
+          "name": "화요25 프리미엄",
+          "description": "엄선된 쌀로 만든 증류식 소주, 얼음과 함께 제공",
+          "priceValue": 33000,
+          "priceText": "33,000원"
+        },
+        {
+          "id": 2733,
+          "name": "프리미엄 돔페리뇽",
+          "description": "프랑스 정통 샴페인",
+          "priceValue": 430000,
+          "priceText": "430,000원"
+        },
+        {
+          "id": 2734,
+          "name": "뵈브클리코 옐로우 라벨 샴페인",
+          "description": "프랑스 정통 샴페인의 명품",
+          "priceValue": 135000,
+          "priceText": "135,000원"
+        },
+        {
+          "id": 2735,
+          "name": "모엣 샹동 임페리얼 샴페인",
+          "description": "프랑스 대표 샴페인, 풍부한 과일향과 섬세한 기포",
+          "priceValue": 105000,
+          "priceText": "105,000원"
+        },
+        {
+          "id": 2736,
+          "name": "라 피라미드 프리미엄 브륏",
+          "description": "프랑스 정통 샴페인, 특별한 날에 즐겨보세요.",
+          "priceValue": 50000,
+          "priceText": "50,000원"
+        },
+        {
+          "id": 2737,
+          "name": "명품 테누타 산 귀도 사씨카이야",
+          "description": "이탈리아 명품 레드 와인",
+          "priceValue": 450000,
+          "priceText": "450,000원"
+        },
+        {
+          "id": 2738,
+          "name": "프로두또리 델 바르바레스코",
+          "description": "이탈리아 정통 레드 와인",
+          "priceValue": 115000,
+          "priceText": "115,000원"
+        },
+        {
+          "id": 2739,
+          "name": "정통 이스까이",
+          "description": "아르헨티나 대표 레드와인",
+          "priceValue": 145000,
+          "priceText": "145,000원"
+        },
+        {
+          "id": 2740,
+          "name": "명품 토마시 아마로네 델라 발폴리첼라",
+          "description": "이탈리아 정통 레드 와인",
+          "priceValue": 140000,
+          "priceText": "140,000원"
+        },
+        {
+          "id": 2741,
+          "name": "펜폴즈 빈 138",
+          "description": "호주 정통 레드 와인",
+          "priceValue": 135000,
+          "priceText": "135,000원"
+        },
+        {
+          "id": 2742,
+          "name": "로베르토 보에르지오 돌체토 프리비아노",
+          "description": "이탈리아 피에몬테의 프리미엄 레드 와인",
+          "priceValue": 75000,
+          "priceText": "75,000원"
+        },
+        {
+          "id": 2743,
+          "name": "테누타 산 귀도 레 디페제",
+          "description": "이탈리아 프리미엄 레드 와인",
+          "priceValue": 75000,
+          "priceText": "75,000원"
+        },
+        {
+          "id": 2744,
+          "name": "프리시전 네비게이터 까베르네쇼비뇽",
+          "description": "엄선된 포도로 만든 미국 대표 레드 와인",
+          "priceValue": 55000,
+          "priceText": "55,000원"
+        },
+        {
+          "id": 2745,
+          "name": "샤토 크뤼 고다르",
+          "description": "프랑스 정통 레드 와인",
+          "priceValue": 55000,
+          "priceText": "55,000원"
+        }
+      ]
+    }
+  ]
+}

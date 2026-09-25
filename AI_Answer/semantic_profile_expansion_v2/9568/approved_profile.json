@@ -1,0 +1,175 @@
+{
+  "profileVersion": "semantic-profile-output-v2-evidence",
+  "inputVersion": "semantic-profile-input-v1-compact-1",
+  "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+  "catalogVersion": "semantic-profile-evidence-catalog-v1",
+  "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+  "restaurantId": 9568,
+  "venueId": null,
+  "profileStatus": "READY",
+  "claims": [
+    {
+      "claimType": "FOOD_TYPE",
+      "text": "The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E012",
+        "E013"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E003",
+          "sourceField": "sections.menu.items[0]",
+          "content": {
+            "name": "순대국",
+            "price": 10000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E004",
+          "sourceField": "sections.menu.items[1]",
+          "content": {
+            "name": "한우차돌박이",
+            "price": 30000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E012",
+          "sourceField": "sections.menu.items[9]",
+          "content": {
+            "name": "청국장+비빔밥",
+            "price": 10000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E013",
+          "sourceField": "sections.menu.items[10]",
+          "content": {
+            "name": "된장찌개+비빔밥",
+            "price": 10000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claimType": "MENU_CHARACTERISTIC",
+      "text": "The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts.",
+      "confidence": "HIGH",
+      "evidenceIds": [
+        "E005",
+        "E006",
+        "E009",
+        "E018"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E005",
+          "sourceField": "sections.menu.items[2]",
+          "content": {
+            "name": "서울밥상",
+            "price": 15000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E006",
+          "sourceField": "sections.menu.items[3]",
+          "content": {
+            "name": "시골밥상",
+            "price": 11000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E009",
+          "sourceField": "sections.menu.items[6]",
+          "content": {
+            "name": "떡만두국",
+            "price": 8000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        },
+        {
+          "evidenceId": "E018",
+          "sourceField": "sections.menu.items[15]",
+          "content": {
+            "name": "천겹살",
+            "price": 20000
+          },
+          "section": "menu",
+          "status": "SUCCESS",
+          "evidenceType": "menu"
+        }
+      ]
+    },
+    {
+      "claimType": "DINING_CONTEXT",
+      "text": "The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout.",
+      "confidence": "MEDIUM",
+      "evidenceIds": [
+        "E029",
+        "E032",
+        "E033"
+      ],
+      "evidence": [
+        {
+          "evidenceId": "E029",
+          "sourceField": "sections.review.keywords[4]",
+          "content": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 21
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E032",
+          "sourceField": "sections.review.keywords[7]",
+          "content": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 10
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        },
+        {
+          "evidenceId": "E033",
+          "sourceField": "sections.review.keywords[8]",
+          "content": {
+            "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 9
+          },
+          "section": "review",
+          "status": "SUCCESS",
+          "evidenceType": "keyword"
+        }
+      ]
+    }
+  ],
+  "reusedFrom": "semantic_profile_post_persistence_9568/semantic_profile_v1_shadow_results.json",
+  "sourceInputHash": "f156f82bff3ca2dd92aef936646958a43228c60877fe742fa7542f3b0633de9b",
+  "sourceCatalogHash": null,
+  "revalidatedAgainstCurrentInput": true
+}

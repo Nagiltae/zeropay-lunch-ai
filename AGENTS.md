@@ -64,10 +64,12 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 - 전체 Batch가 별도 승인되어 실행될 경우 403/429/CAPTCHA에서 즉시 중단하고 DB 기반으로 재개한다.
 - Semantic Runtime은 기본 OFF로 유지한다. 이를 켜는 배포 전 설정·관측성·장애 대응 검토를 별도 수행한다.
 - 실제 LLM Explanation은 3/3 GROUNDED가 확인될 때까지 기본 OFF로 유지한다. Safe Fact deterministic reason은 semantic runtime opt-in에서 기본 경로다.
+- 2026-09-25 Detail Quality Backfill에서 source-grounded `ProfileReadinessPolicy`를 적용했다. 360곳에서 검증 기준선 4곳, 최종 strict-ready 26곳, 신규 READY 22곳이다. 이전 audit의 5번째 9590은 원문과 요일이 불일치해 제외했다. Group A 7곳(hours-only)과 Group B 20곳만 처리했고, 발견한 요일-시간 parser 결함은 snapshot 원문으로 보정했다. Profile/Qwen/Embedding/Qdrant 작업은 하지 않았다. 상세 결과는 `AI_Answer/detail_quality_backfill_review.md`와 snapshot을 참조한다.
 - 반복 가능한 Browser full-stack E2E는 `./scripts/check-mvp-e2e.sh`로 실행한다. 고유 Compose project와 disposable `zeropay_lunch_mvp_e2e` DB를 사용하고, dev DB 및 기존 Qdrant collection은 변경하지 않는다.
 - Venue association 운영 데이터 생성, Restaurant/Detail의 Venue 소유권 전환, 전체 Batch는 별도 검증 후 진행한다.
 - 승인된 Venue association을 실제 데이터에 적용하기 전 사업자 관계·동일 장소 근거와 사용자 승인을 확인한다. Venue 단위 Detail/최근 식사 이전은 별도 계약으로 남긴다.
-- 전체 Detail 수집과 Semantic Profile/Embedding/Qdrant 적재는 품질 기준과 표본 검토 후 별도 진행한다.
+- 신규 READY 14곳의 Semantic Profile 생성은 다음 별도 단계에서 readiness/evidence를 다시 확인한 뒤 제한적으로 진행한다. 이번 Backfill 결과만으로 Profile을 자동 생성하거나 승인하지 않는다.
+- 전체 Detail 수집과 Embedding/Qdrant 적재는 품질 기준과 표본 검토 후 별도 진행한다.
 
 ## Deferred
 
