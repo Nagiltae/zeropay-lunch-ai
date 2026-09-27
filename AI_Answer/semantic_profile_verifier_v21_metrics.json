@@ -1,0 +1,199 @@
+{
+  "fixtureCount": 8,
+  "fixtureRuns": 3,
+  "negativeFixtureCount": 4,
+  "mixedFixtureCount": 1,
+  "positiveFixtureCount": 3,
+  "falseAcceptanceCount": 0,
+  "positiveFalseRejectionCount": 0,
+  "partialExpectedCount": 6,
+  "partialCorrectCount": 6,
+  "atomicizerErrorCount": 0,
+  "verifierErrorCount": 0,
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "retryPolicy": "initial + at most one retry per atomicizer/assertion call",
+  "atomicizerCalls": 24,
+  "assertionVerifierCalls": 57,
+  "actualModelCalls": 81,
+  "retries": 0,
+  "errorCategories": {},
+  "elapsedSeconds": 234.625,
+  "fixtureGate": "PASS",
+  "fullShadowRunStatus": "COMPLETE_READ_ONLY",
+  "sideEffects": {
+    "localQwenCalls": 81,
+    "qdrantReads": 0,
+    "qdrantWrites": 0,
+    "mysqlReads": 0,
+    "mysqlWrites": 0,
+    "embeddingCalls": 0,
+    "geminiCalls": 0
+  },
+  "perFixture": {
+    "taste-deliciousness-does-not-entail-tenderness-9559": {
+      "polarity": "negative",
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "group-gathering-does-not-entail-corporate-or-family-events-9559": {
+      "polarity": "negative",
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "menu-evidence-does-not-entail-chicken-topping-9571": {
+      "polarity": "negative",
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "group-and-spacious-do-not-entail-casual-meals-9568": {
+      "polarity": "negative",
+      "expected": "PARTIAL",
+      "observed": [
+        "PARTIAL",
+        "PARTIAL",
+        "PARTIAL"
+      ],
+      "allThreePass": true
+    },
+    "positive-menu-items-9617": {
+      "polarity": "positive",
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-solo-and-quick-meal-context-9617": {
+      "polarity": "positive",
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-friendly-review-keyword-9617": {
+      "polarity": "positive",
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "listed-menu-items-with-one-unsubstantiated-item-9571": {
+      "polarity": "mixed",
+      "expected": "PARTIAL",
+      "observed": [
+        "PARTIAL",
+        "PARTIAL",
+        "PARTIAL"
+      ],
+      "allThreePass": true
+    }
+  },
+  "fullShadow": {
+    "pointCount": 40,
+    "supportedCount": 6,
+    "partialCount": 18,
+    "unsupportedCount": 4,
+    "errorCount": 12,
+    "v1ToV21TransitionCounts": {
+      "ERROR -> UNSUPPORTED": 2,
+      "SUPPORTED -> ERROR": 12,
+      "SUPPORTED -> PARTIAL": 13,
+      "SUPPORTED -> SUPPORTED": 6,
+      "SUPPORTED -> UNSUPPORTED": 2,
+      "UNSUPPORTED -> PARTIAL": 5
+    },
+    "byClaimType": {
+      "DINING_CONTEXT": {
+        "ERROR": 1,
+        "PARTIAL": 2,
+        "SUPPORTED": 1
+      },
+      "FOOD_MENTION": {
+        "ERROR": 10,
+        "PARTIAL": 5,
+        "UNSUPPORTED": 1
+      },
+      "FOOD_TYPE": {
+        "PARTIAL": 2,
+        "SUPPORTED": 1,
+        "UNSUPPORTED": 1
+      },
+      "MENU_CHARACTERISTIC": {
+        "PARTIAL": 4,
+        "UNSUPPORTED": 1
+      },
+      "TASTE": {
+        "ERROR": 1,
+        "PARTIAL": 3,
+        "SUPPORTED": 3
+      },
+      "VENUE_CHARACTERISTIC": {
+        "UNSUPPORTED": 1,
+        "SUPPORTED": 1,
+        "PARTIAL": 2
+      }
+    },
+    "bySourceType": {
+      "keyword": {
+        "counts": {
+          "ERROR": 12,
+          "PARTIAL": 12,
+          "SUPPORTED": 5,
+          "UNSUPPORTED": 2
+        },
+        "denominatorOverlapping": true
+      },
+      "menu": {
+        "counts": {
+          "PARTIAL": 6,
+          "SUPPORTED": 1,
+          "UNSUPPORTED": 2
+        },
+        "denominatorOverlapping": true
+      },
+      "review": {
+        "counts": {
+          "ERROR": 1
+        },
+        "denominatorOverlapping": true
+      }
+    },
+    "atomicizerCalls": 52,
+    "assertionVerifierCalls": 81,
+    "retries": 12,
+    "verifierErrors": 12,
+    "sideEffects": {
+      "qdrantReads": 40,
+      "qdrantWrites": 0,
+      "mysqlReads": 0,
+      "mysqlWrites": 0,
+      "embeddingCalls": 0,
+      "geminiCalls": 0,
+      "localQwenCalls": 133
+    }
+  }
+}

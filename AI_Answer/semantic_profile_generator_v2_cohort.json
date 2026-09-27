@@ -1,0 +1,84 @@
+{
+  "cohortVersion": "semantic-profile-generator-v2-cohort-v1",
+  "createdAt": "2026-09-26T08:37:24.170124+00:00",
+  "source": "current read-only DB input via semantic_profile_shadow.build_input",
+  "frozenBeforeGeneratorCalls": true,
+  "restaurantIds": [
+    9559,
+    9603,
+    9639
+  ],
+  "mysqlSelectQueryCount": 24,
+  "restaurants": [
+    {
+      "ordinal": 1,
+      "restaurantId": 9559,
+      "name": "모우리",
+      "selectionReason": "Frozen priority cohort: historical tenderness/juiciness and group-context overclaims.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "dcf9ac4ec099c86b29a9923fcb906b127359e5e7ce20cad80abfef8c03b7f430",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "evidenceCountsBySourceType": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 37,
+        "menu": 28,
+        "review": 4
+      },
+      "evidenceCount": 75
+    },
+    {
+      "ordinal": 2,
+      "restaurantId": 9603,
+      "name": "본죽&비빔밥 논현점",
+      "selectionReason": "Frozen priority cohort: historical unsupported menu composition and merged solo/cleanliness claims.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "0fbdd8ff2d335c1224824879b1b0670c2c29b8f49858dc50724625e23c2322b5",
+      "catalogHash": "4edf8d3b78c5a3375e15b8a15b86611f23cdb3923a14c8142f1570c0b72e33ab",
+      "evidenceCountsBySourceType": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 58,
+        "review": 1
+      },
+      "evidenceCount": 101
+    },
+    {
+      "ordinal": 3,
+      "restaurantId": 9639,
+      "name": "이자카야나무(논현)",
+      "selectionReason": "Frozen priority cohort: historical group-to-layout and taste-to-preparation inferences.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "38d328ce3881ab93eab6f1c55d0d7fdbdb74e2d5eb88b15c7983bebd7e3641db",
+      "catalogHash": "70ac81bcceaac49eb84223b048870108fb9424a37db273bc48d5a54babf132f1",
+      "evidenceCountsBySourceType": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 39,
+        "menu": 64,
+        "review": 4
+      },
+      "evidenceCount": 110
+    }
+  ],
+  "databaseWrites": 0
+}

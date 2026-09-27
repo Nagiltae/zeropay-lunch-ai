@@ -1,0 +1,65 @@
+{
+  "totalClaims": 40,
+  "supportedCount": 15,
+  "partialCount": 0,
+  "unsupportedCount": 24,
+  "verifierErrorCount": 1,
+  "invalidEvidenceCount": 0,
+  "missingQuoteCount": 40,
+  "exactQuoteValidationPassCount": 0,
+  "approvalRate": 0.375,
+  "overclaimRate": 0.6,
+  "indexableCount": 0,
+  "indexableRate": 0.0,
+  "verifierCalls": 40,
+  "byClaimType": {
+    "DINING_CONTEXT": {
+      "SUPPORTED": 4
+    },
+    "FOOD_MENTION": {
+      "UNSUPPORTED": 16
+    },
+    "FOOD_TYPE": {
+      "SUPPORTED": 4
+    },
+    "MENU_CHARACTERISTIC": {
+      "UNSUPPORTED": 3,
+      "SUPPORTED": 2
+    },
+    "TASTE": {
+      "SUPPORTED": 3,
+      "UNSUPPORTED": 4
+    },
+    "VENUE_CHARACTERISTIC": {
+      "UNSUPPORTED": 1,
+      "SUPPORTED": 2,
+      "VERIFIER_ERROR": 1
+    }
+  },
+  "bySourceType": {
+    "keyword": {
+      "claimsByVerdict": {
+        "SUPPORTED": 9,
+        "UNSUPPORTED": 21,
+        "VERIFIER_ERROR": 1
+      },
+      "denominatorOverlapping": true
+    },
+    "menu": {
+      "claimsByVerdict": {
+        "SUPPORTED": 6,
+        "UNSUPPORTED": 3
+      },
+      "denominatorOverlapping": true
+    },
+    "review": {
+      "claimsByVerdict": {
+        "SUPPORTED": 1
+      },
+      "denominatorOverlapping": true
+    }
+  },
+  "regressionFixtureCount": 4,
+  "regressionFixtureVerifierCalls": 3,
+  "regressionBlockedCount": 3
+}

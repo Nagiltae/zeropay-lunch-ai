@@ -1,0 +1,243 @@
+{
+  "evaluationVersion": "semantic-profile-source-scope-guard-v1",
+  "createdAt": "2026-09-26T10:07:56.275991+00:00",
+  "sourceArtifact": "semantic_profile_generator_v22_fixture_results_v3.json",
+  "sourceArtifactHash": "f43f64ac81d3e3230afc649842859e86d0422d5960216484e715865ed65983b3",
+  "reusedGeneratorArtifact": true,
+  "results": [
+    {
+      "fixtureId": "menu-9568-1",
+      "restaurantId": 9568,
+      "evidenceId": "E003",
+      "observedEvidenceSources": [
+        "menu"
+      ],
+      "derivedSourceScope": "LISTING_FACT",
+      "rawClaimText": "메뉴에 순대국이 등록되어 있습니다.",
+      "safeSearchText": "메뉴에 순대국이 등록되어 있습니다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "메뉴에 순대국이 등록되어 있습니다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "FOOD_TYPE",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "menu-9569-1",
+      "restaurantId": 9569,
+      "evidenceId": "E003",
+      "observedEvidenceSources": [
+        "menu"
+      ],
+      "derivedSourceScope": "LISTING_FACT",
+      "rawClaimText": "산곰장어가 메뉴에 등록되어 있습니다.",
+      "safeSearchText": "산곰장어가 메뉴에 등록되어 있습니다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "산곰장어가 메뉴에 등록되어 있습니다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "FOOD_TYPE",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "menu-10042-1",
+      "restaurantId": 10042,
+      "evidenceId": "E004",
+      "observedEvidenceSources": [
+        "menu"
+      ],
+      "derivedSourceScope": "LISTING_FACT",
+      "rawClaimText": "메뉴에 고추짬뽕이 있습니다.",
+      "safeSearchText": "메뉴에 고추짬뽕이 있습니다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "메뉴에 고추짬뽕이 있습니다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "FOOD_TYPE",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "keyword-food-mention",
+      "restaurantId": 9569,
+      "evidenceId": "E023",
+      "observedEvidenceSources": [
+        "keyword"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "고객 리뷰에서 꼼장어가 언급된다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 고객 리뷰에서 꼼장어가 언급된다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 고객 리뷰에서 꼼장어가 언급된다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "FOOD_MENTION",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "keyword-solo-9568",
+      "restaurantId": 9568,
+      "evidenceId": "E029",
+      "observedEvidenceSources": [
+        "keyword"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "혼밥하기에 좋은 식당입니다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 혼밥하기에 좋은 식당입니다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 혼밥하기에 좋은 식당입니다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "DINING_CONTEXT",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "keyword-service-9568",
+      "restaurantId": 9568,
+      "evidenceId": "E026",
+      "observedEvidenceSources": [
+        "keyword"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "고객 리뷰에서 친절함이 언급된다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 고객 리뷰에서 친절함이 언급된다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 고객 리뷰에서 친절함이 언급된다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "keyword-solo-10042",
+      "restaurantId": 10042,
+      "evidenceId": "E075",
+      "observedEvidenceSources": [
+        "keyword"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "혼밥하기에 좋은 식당입니다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 혼밥하기에 좋은 식당입니다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 혼밥하기에 좋은 식당입니다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "DINING_CONTEXT",
+      "fixtureBoundaryPass": true
+    },
+    {
+      "fixtureId": "review-food-experience",
+      "restaurantId": 9569,
+      "evidenceId": "E049",
+      "observedEvidenceSources": [
+        "review"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "고객 리뷰에서 꼼장어가 언급된다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 고객 리뷰에서 꼼장어가 언급된다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 고객 리뷰에서 꼼장어가 언급된다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "FOOD_MENTION",
+      "fixtureBoundaryPass": false
+    },
+    {
+      "fixtureId": "review-venue-context",
+      "restaurantId": 9569,
+      "evidenceId": "E050",
+      "observedEvidenceSources": [
+        "review"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "매장이 넓어서 편하게 식사 가능했다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 매장이 넓어서 편하게 식사 가능했다.",
+      "semanticVerdict": null,
+      "atomicAssertionCount": 2,
+      "exactQuoteValid": true,
+      "semanticApproved": false,
+      "indexable": false,
+      "indexText": null,
+      "rejectReasons": [
+        "SEMANTIC_NOT_APPROVED",
+        "NON_ATOMIC"
+      ],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "DINING_CONTEXT",
+      "fixtureBoundaryPass": false
+    },
+    {
+      "fixtureId": "review-taste-9568",
+      "restaurantId": 9568,
+      "evidenceId": "E059",
+      "observedEvidenceSources": [
+        "review"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "고객 리뷰에서 청국장이 언급된다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 고객 리뷰에서 청국장이 언급된다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 고객 리뷰에서 청국장이 언급된다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "FOOD_MENTION",
+      "fixtureBoundaryPass": false
+    },
+    {
+      "fixtureId": "review-quick-meal",
+      "restaurantId": 10042,
+      "evidenceId": "E109",
+      "observedEvidenceSources": [
+        "review"
+      ],
+      "derivedSourceScope": "CUSTOMER_REPORTED",
+      "rawClaimText": "점심시간에는 줄이 길다.",
+      "safeSearchText": "고객 리뷰 기반 정보: 점심시간에는 줄이 길다.",
+      "semanticVerdict": "SUPPORTED",
+      "atomicAssertionCount": 1,
+      "exactQuoteValid": true,
+      "semanticApproved": true,
+      "indexable": true,
+      "indexText": "고객 리뷰 기반 정보: 점심시간에는 줄이 길다.",
+      "rejectReasons": [],
+      "humanSafetyReview": "PASS_SCOPED",
+      "claimType": "DINING_CONTEXT",
+      "fixtureBoundaryPass": true
+    }
+  ]
+}

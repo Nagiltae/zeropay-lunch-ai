@@ -1,0 +1,20 @@
+{
+  "version": "semantic-ranking-vertical-slice-v1",
+  "frozenBeforeCorrectedScopeBenchmark": true,
+  "groundTruthMethod": "Current v12 payload claim/evidence inspection; expected IDs are limited to verified-serving candidates open at the declared deterministic reference clock. Query labels are not inferred from retrieval output.",
+  "preFreezeDiagnosticDisclosure": "Before freezing this corrected benchmark, one contract smoke query and two exploratory 10-query batches were run against the 32-row pre-hours source scope. Those 21 requests are excluded from formal metrics. The corrected scope and query set were frozen from read-only source hours and the already-inspected claim/evidence payloads; no relevance labels were changed based on retrieval ranks.",
+  "deterministicReferenceClock": "2026-09-24T18:00:00+09:00 (Thursday; used only to evaluate verified recurring-hours policy reproducibly)",
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "candidateScopeRestaurantIds": [9559, 9568, 9569, 9570, 9571, 9574, 9580, 9603, 9617, 9639, 9659, 9715, 9759, 9791, 9801, 9826, 9839, 9853, 9865, 9904, 9954, 9973, 9996, 10021, 10042, 10053],
+  "queries": [
+    {"queryId":"FOOD-01","userQuery":"떡볶이 먹고 싶어","semanticIntent":"FOOD","expectedRelevantClaimTypes":["FOOD_TYPE","FOOD_MENTION"],"expectedRelevantRestaurantIds":[9617],"evidence":{"9617":["E003","E011"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"FOOD-02","userQuery":"김밥 먹고 싶어","semanticIntent":"FOOD","expectedRelevantClaimTypes":["FOOD_TYPE","FOOD_MENTION"],"expectedRelevantRestaurantIds":[9617],"evidence":{"9617":["E003","E034","E038"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"FOOD-03","userQuery":"피자 먹고 싶어","semanticIntent":"FOOD","expectedRelevantClaimTypes":["FOOD_MENTION","MENU_CHARACTERISTIC"],"expectedRelevantRestaurantIds":[9571,9580],"evidence":{"9571":["E003","E015","E024"],"9580":["E008","E010","E067","E068"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"DINING-01","userQuery":"혼밥하기 좋은 곳","semanticIntent":"DINING_CONTEXT","expectedRelevantClaimTypes":["DINING_CONTEXT"],"expectedRelevantRestaurantIds":[9568,9617],"evidence":{"9568":["E029"],"9617":["E023"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"TASTE-01","userQuery":"가성비 좋은 곳","semanticIntent":"TASTE","expectedRelevantClaimTypes":["TASTE"],"expectedRelevantRestaurantIds":[9571,9617],"evidence":{"9571":["E045","E046"],"9617":["E024","E027"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"VENUE-01","userQuery":"친절한 서비스가 있는 곳","semanticIntent":"VENUE_CHARACTERISTIC","expectedRelevantClaimTypes":["VENUE_CHARACTERISTIC"],"expectedRelevantRestaurantIds":[9574,9580],"evidence":{"9574":["E020"],"9580":["E060","E073"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"TASTE-02","userQuery":"재료가 신선한 곳","semanticIntent":"TASTE","expectedRelevantClaimTypes":["TASTE"],"expectedRelevantRestaurantIds":[9569,9574],"evidence":{"9569":["E013","E014"],"9574":["E017","E040"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"DINING-02","userQuery":"단체 모임하기 좋은 곳","semanticIntent":"DINING_CONTEXT","expectedRelevantClaimTypes":["DINING_CONTEXT"],"expectedRelevantRestaurantIds":[9568,9569,9570],"evidence":{"9568":["E032","E033"],"9569":["E017","E018"],"9570":["E015","E016"]},"mustNotReturn":[9567,9590,9731]},
+    {"queryId":"TASTE-03","userQuery":"음식이 맛있는 곳","semanticIntent":"TASTE","expectedRelevantClaimTypes":["TASTE"],"expectedRelevantRestaurantIds":[9569,9571,9574,9580,9617],"evidence":{"9569":["E013","E038"],"9571":["E045"],"9574":["E040"],"9580":["E057","E071"],"9617":["E024"]},"mustNotReturn":[9567,9590,9731]}
+  ]
+}

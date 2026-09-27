@@ -1,0 +1,121 @@
+{
+  "fixtureCount": 8,
+  "fixtureRuns": 3,
+  "negativeFixtureCount": 4,
+  "mixedFixtureCount": 1,
+  "positiveFixtureCount": 3,
+  "falseAcceptanceCount": 0,
+  "positiveFalseRejectionCount": 0,
+  "partialExpectedCount": 6,
+  "partialCorrectCount": 3,
+  "atomicizerErrorCount": 0,
+  "verifierErrorCount": 0,
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "retryPolicy": "initial + at most one retry per atomicizer/assertion call",
+  "atomicizerCalls": 27,
+  "assertionVerifierCalls": 27,
+  "actualModelCalls": 54,
+  "retries": 3,
+  "errorCategories": {
+    "DUPLICATE_OR_OVERLAPPING_SPAN": 3
+  },
+  "elapsedSeconds": 72.714,
+  "fixtureGate": "FAIL",
+  "fullShadowRunStatus": "NOT_RUN_REGRESSION_GATE_FAILED",
+  "sideEffects": {
+    "localQwenCalls": 54,
+    "qdrantReads": 0,
+    "qdrantWrites": 0,
+    "mysqlReads": 0,
+    "mysqlWrites": 0,
+    "embeddingCalls": 0,
+    "geminiCalls": 0
+  },
+  "perFixture": {
+    "taste-deliciousness-does-not-entail-tenderness-9559": {
+      "polarity": "negative",
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "group-gathering-does-not-entail-corporate-or-family-events-9559": {
+      "polarity": "negative",
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "menu-evidence-does-not-entail-chicken-topping-9571": {
+      "polarity": "negative",
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "group-and-spacious-do-not-entail-casual-meals-9568": {
+      "polarity": "negative",
+      "expected": "PARTIAL",
+      "observed": [
+        "PARTIAL",
+        "PARTIAL",
+        "PARTIAL"
+      ],
+      "allThreePass": true
+    },
+    "positive-menu-items-9617": {
+      "polarity": "positive",
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-solo-and-quick-meal-context-9617": {
+      "polarity": "positive",
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-friendly-review-keyword-9617": {
+      "polarity": "positive",
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "listed-menu-items-with-one-unsubstantiated-item-9571": {
+      "polarity": "mixed",
+      "expected": "PARTIAL",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": false
+    }
+  },
+  "failureCorpusGate": "PASS",
+  "failureCorpusCalls": 39,
+  "failureCorpusTerminalErrors": 0,
+  "finalStatus": "BLOCKED_REGRESSION"
+}

@@ -1,0 +1,665 @@
+{
+  "reviewVersion": "semantic-profile-verifier-v2-fixture-suite-v1",
+  "createdAt": "2026-09-25T18:27:29.936131+00:00",
+  "fixturesPath": "AI_Answer/semantic_profile_verifier_v2_fixtures.json",
+  "fixtureSnapshotHash": "30015917d0b5632ba7bf0c0fda2da3192c44cb1b8df230b5bba0300e44e7ffef",
+  "results": [
+    {
+      "runNumber": 1,
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 8.864,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 7.236,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 10.567,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E029"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "단체 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E032"
+          ]
+        },
+        {
+          "assertionId": "A3",
+          "text": "매장이 넓다.",
+          "sourceSpan": "매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E033"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 17.972,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A4",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "positive-menu-items-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "메뉴에 마성김밥이 기재되어 있다.",
+          "sourceSpan": "마성김밥",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E003"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "메뉴에 마성떡볶이가 기재되어 있다.",
+          "sourceSpan": "마성떡볶이",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E011"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.007,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사하기에 좋은 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 11.313,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고객 리뷰에 '친절하다'라는 키워드가 존재한다.",
+          "sourceSpan": "고객 keyword에서 친절하다는 평가가 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 5.808,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 8.099,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 7.361,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 10.763,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E029"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "단체 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E032"
+          ]
+        },
+        {
+          "assertionId": "A3",
+          "text": "매장이 넓다.",
+          "sourceSpan": "매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E033"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 18.294,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A4",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "positive-menu-items-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "메뉴에 마성김밥이 기재되어 있다.",
+          "sourceSpan": "마성김밥",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E003"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "메뉴에 마성떡볶이가 기재되어 있다.",
+          "sourceSpan": "마성떡볶이",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E011"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.647,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사하기에 좋은 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 10.272,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고객 리뷰에 '친절하다'라는 키워드가 존재한다.",
+          "sourceSpan": "고객 keyword에서 친절하다는 평가가 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 5.522,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 8.318,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 7.388,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "atomicAssertions": [],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 10.757,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A1",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E029"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "단체 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E032"
+          ]
+        },
+        {
+          "assertionId": "A3",
+          "text": "매장이 넓다.",
+          "sourceSpan": "매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E033"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "VERIFIER_ERROR",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 17.777,
+      "retryCount": 1,
+      "errors": [
+        {
+          "stage": "ASSERTION_VERIFIER",
+          "assertionId": "A4",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "positive-menu-items-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "메뉴에 마성김밥이 기재되어 있다.",
+          "sourceSpan": "마성김밥",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E003"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "메뉴에 마성떡볶이가 기재되어 있다.",
+          "sourceSpan": "마성떡볶이",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E011"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.097,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사하기에 좋은 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 8.946,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고객 리뷰에 '친절하다'라는 키워드가 존재한다.",
+          "sourceSpan": "고객 keyword에서 친절하다는 평가가 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 5.24,
+      "retryCount": 0,
+      "errors": []
+    }
+  ]
+}

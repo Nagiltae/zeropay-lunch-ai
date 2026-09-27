@@ -1,0 +1,97 @@
+{
+  "fixtureCount": 7,
+  "fixtureRuns": 3,
+  "negativeFixtureCount": 4,
+  "positiveFixtureCount": 3,
+  "falseAcceptanceCount": 0,
+  "positiveFalseRejectionCount": 0,
+  "partialExpectedCount": 6,
+  "partialCorrectCount": 0,
+  "atomicizerErrorCount": 0,
+  "verifierErrorCount": 12,
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "retryPolicy": "initial + at most one retry after an atomicizer/verifier call error",
+  "atomicizerCalls": 21,
+  "verifierCalls": 48,
+  "actualModelCalls": 69,
+  "retries": 12,
+  "errorCategories": {
+    "SCHEMA_ERROR": 24
+  },
+  "elapsedSeconds": 208.251,
+  "sideEffects": {
+    "mysqlReads": 0,
+    "mysqlWrites": 0,
+    "qdrantReads": 0,
+    "qdrantWrites": 0,
+    "embeddingCalls": 0,
+    "geminiCalls": 0,
+    "localQwenCalls": 69
+  },
+  "perFixture": {
+    "taste-deliciousness-does-not-entail-tenderness-9559": {
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR"
+      ],
+      "allThreePass": false
+    },
+    "group-gathering-does-not-entail-corporate-or-family-events-9559": {
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR"
+      ],
+      "allThreePass": false
+    },
+    "menu-evidence-does-not-entail-chicken-topping-9571": {
+      "expected": "PARTIAL",
+      "observed": [
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR"
+      ],
+      "allThreePass": false
+    },
+    "group-and-spacious-do-not-entail-casual-meals-9568": {
+      "expected": "PARTIAL",
+      "observed": [
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR",
+        "VERIFIER_ERROR"
+      ],
+      "allThreePass": false
+    },
+    "positive-menu-items-9617": {
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-solo-and-quick-meal-context-9617": {
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-friendly-review-keyword-9617": {
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    }
+  }
+}

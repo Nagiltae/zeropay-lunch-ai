@@ -1,0 +1,64 @@
+{
+  "version": "semantic-ranking-vertical-slice-v1",
+  "assessmentScope": "Bounded reference-clock replay over read-only MySQL serving candidates, with live FastAPI/Ollama/Qdrant retrieval and Spring ranking unit/live-contract verification. Not a public Chat/SSE run.",
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "qdrantWrites": 0,
+  "mysqlWrites": 0,
+  "geminiRequests": 0,
+  "llmExplanationCalls": 0,
+  "formalQueryEmbeddingCalls": 18,
+  "formalQdrantQueries": 18,
+  "metricEvaluationRunQdrantQueries": 9,
+  "finalCodeRepeatabilityVerificationQueries": 9,
+  "preFreezeDiagnosticQueriesExcludedFromMetrics": 21,
+  "postBatchLiveContractRetrievalsExcludedFromMetrics": 1,
+  "candidateScope": {
+    "referenceClock": "2026-09-24T18:00:00+09:00",
+    "candidateIds": [9559, 9568, 9569, 9570, 9571, 9574, 9580, 9603, 9617, 9639, 9659, 9715, 9759, 9791, 9801, 9826, 9839, 9853, 9865, 9904, 9954, 9973, 9996, 10021, 10042, 10053],
+    "count": 26,
+    "scopeDerivation": "Read-only MySQL source eligibility predicates plus source-hours rows evaluated at the fixed clock using VerifiedHoursPolicy semantics. Actual current-clock intersection with v12 was zero because indexed candidates were CLOSED/UNKNOWN at 2026-09-26 01:28 KST.",
+    "categoryAndAveragePrice": "NULL for all 26, no default budget, preferred/disliked category, or recent meal in paired ranking replay.",
+    "candidateLeakageCount": 0
+  },
+  "rankingPolicy": {
+    "semanticOff": "Existing deterministic score; all 26 KOMSCO rows score 50 and price is NULL, so stable restaurantId ascending is the tie order.",
+    "semanticOn": "FastAPI existing retrievalScore descending, then semanticSimilarity descending, then existing deterministic order; Spring retains Venue dedup and max 3.",
+    "semanticSimilarityObservedRange": [0.260257, 0.58688027],
+    "hybridRetrievalScoreObservedRange": [10.0002602579, 320.000562562],
+    "note": "Hybrid score tiers/source strength are pre-existing FastAPI policy, not newly invented Spring weights. RetrievalScore is primary; cosine is a secondary signal within the existing hybrid ordering."
+  },
+  "queries": [
+    {"queryId":"FOOD-01","query":"떡볶이 먹고 싶어","candidateCount":6,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":9},"semanticOn":{"top3":[9617,9568,9571],"expectedFirstRank":1,"retrievalCandidates":[9617,9568,9571,9569,9580,9570],"top3Evidence":[{"restaurantId":9617,"claimType":"FOOD_TYPE","matchType":"EXACT","retrievalScore":320.00047271246,"semanticSimilarity":0.47271246,"evidenceIds":["E003","E011"]},{"restaurantId":9568,"claimType":"MENU_CHARACTERISTIC","matchType":"SEMANTIC","retrievalScore":20.0005304679,"semanticSimilarity":0.5304679,"evidenceIds":["E005","E006","E009","E018"]},{"restaurantId":9571,"claimType":"MENU_CHARACTERISTIC","matchType":"SEMANTIC","retrievalScore":20.00050626487,"semanticSimilarity":0.50626487,"evidenceIds":["E003","E015","E024"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":1,"evidenceTrace":true},
+    {"queryId":"FOOD-02","query":"김밥 먹고 싶어","candidateCount":6,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":9},"semanticOn":{"top3":[9569,9617,9568],"expectedFirstRank":2,"retrievalCandidates":[9569,9617,9568,9580,9571,9570],"top3Evidence":[{"restaurantId":9569,"claimType":"MENU_CHARACTERISTIC","matchType":"EXACT","retrievalScore":320.0005507066,"semanticSimilarity":0.5507066,"evidenceIds":["E007","E008","E012"]},{"restaurantId":9617,"claimType":"FOOD_TYPE","matchType":"EXACT","retrievalScore":320.000539485,"semanticSimilarity":0.539485,"evidenceIds":["E003","E011"]},{"restaurantId":9568,"claimType":"MENU_CHARACTERISTIC","matchType":"SEMANTIC","retrievalScore":20.0005870203,"semanticSimilarity":0.5870203,"evidenceIds":["E005","E006","E009","E018"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":1,"evidenceTrace":true,"groundTruthCaveat":"Frozen label expects 9617 only. Returned 9569 evidence E012 is a menu item named 김밥추가; this could be an omitted valid multi-label target. Frozen labels were not altered after retrieval, so this query's reported precision is conservative/possibly under-labeled."},
+    {"queryId":"FOOD-03","query":"피자 먹고 싶어","candidateCount":6,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":5},"semanticOn":{"top3":[9571,9580,9569],"expectedFirstRank":1,"retrievalCandidates":[9571,9580,9569,9568,9617,9570],"top3Evidence":[{"restaurantId":9571,"claimType":"MENU_CHARACTERISTIC","matchType":"EXACT","retrievalScore":320.000562562,"semanticSimilarity":0.562562,"evidenceIds":["E003","E015","E024"]},{"restaurantId":9580,"claimType":"FOOD_MENTION","matchType":"EXACT","retrievalScore":310.00047538966,"semanticSimilarity":0.47538966,"evidenceIds":["E067"]},{"restaurantId":9569,"claimType":"MENU_CHARACTERISTIC","matchType":"SEMANTIC","retrievalScore":20.00049887896,"semanticSimilarity":0.49887896,"evidenceIds":["E007","E008","E012"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":2,"evidenceTrace":true},
+    {"queryId":"DINING-01","query":"혼밥하기 좋은 곳","candidateCount":4,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":2},"semanticOn":{"top3":[9568,9617,9569],"expectedFirstRank":1,"retrievalCandidates":[9568,9617,9569,9570],"top3Evidence":[{"restaurantId":9568,"claimType":"DINING_CONTEXT","matchType":"TRAIT","retrievalScore":10.00058688027,"semanticSimilarity":0.58688027,"evidenceIds":["E029","E032","E033"]},{"restaurantId":9617,"claimType":"DINING_CONTEXT","matchType":"TRAIT","retrievalScore":10.00057568246,"semanticSimilarity":0.57568246,"evidenceIds":["E023","E058"]},{"restaurantId":9569,"claimType":"DINING_CONTEXT","matchType":"SEMANTIC","retrievalScore":10.0005092244,"semanticSimilarity":0.5092244,"evidenceIds":["E017","E018"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":2,"evidenceTrace":true},
+    {"queryId":"TASTE-01","query":"가성비 좋은 곳","candidateCount":5,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":5},"semanticOn":{"top3":[9571,9617,9574],"expectedFirstRank":1,"retrievalCandidates":[9571,9617,9574,9569,9580],"top3Evidence":[{"restaurantId":9571,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.00051055974,"semanticSimilarity":0.51055974,"evidenceIds":["E045","E046"]},{"restaurantId":9617,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.0004702583,"semanticSimilarity":0.4702583,"evidenceIds":["E024","E027"]},{"restaurantId":9574,"claimType":"TASTE","matchType":"SEMANTIC","retrievalScore":10.00044721976,"semanticSimilarity":0.44721976,"evidenceIds":["E017","E040"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":2,"evidenceTrace":true},
+    {"queryId":"VENUE-01","query":"친절한 서비스가 있는 곳","candidateCount":6,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":6},"semanticOn":{"top3":[9574,9580,9569],"expectedFirstRank":1,"retrievalCandidates":[9574,9580,9569,9570,9571,9617],"top3Evidence":[{"restaurantId":9574,"claimType":"VENUE_CHARACTERISTIC","matchType":"TRAIT","retrievalScore":10.0005711869,"semanticSimilarity":0.5711869,"evidenceIds":["E016","E020"]},{"restaurantId":9580,"claimType":"VENUE_CHARACTERISTIC","matchType":"TRAIT","retrievalScore":10.0005548725,"semanticSimilarity":0.5548725,"evidenceIds":["E060","E073"]},{"restaurantId":9569,"claimType":"VENUE_CHARACTERISTIC","matchType":"SEMANTIC","retrievalScore":10.00048664707,"semanticSimilarity":0.48664707,"evidenceIds":["E020","E022"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":2,"evidenceTrace":true},
+    {"queryId":"TASTE-02","query":"재료가 신선한 곳","candidateCount":5,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":3},"semanticOn":{"top3":[9574,9569,9571],"expectedFirstRank":1,"retrievalCandidates":[9574,9569,9571,9580,9617],"top3Evidence":[{"restaurantId":9574,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.0005144424,"semanticSimilarity":0.5144424,"evidenceIds":["E017","E040"]},{"restaurantId":9569,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.00043238437,"semanticSimilarity":0.43238437,"evidenceIds":["E013","E014","E038"]},{"restaurantId":9571,"claimType":"TASTE","matchType":"SEMANTIC","retrievalScore":10.00033201808,"semanticSimilarity":0.33201808,"evidenceIds":["E045","E046"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":2,"evidenceTrace":true},
+    {"queryId":"DINING-02","query":"단체 모임하기 좋은 곳","candidateCount":4,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":2},"semanticOn":{"top3":[9569,9568,9570],"expectedFirstRank":1,"retrievalCandidates":[9569,9568,9570,9617],"top3Evidence":[{"restaurantId":9569,"claimType":"DINING_CONTEXT","matchType":"SEMANTIC","retrievalScore":10.000576515,"semanticSimilarity":0.576515,"evidenceIds":["E017","E018"]},{"restaurantId":9568,"claimType":"DINING_CONTEXT","matchType":"SEMANTIC","retrievalScore":10.00055580425,"semanticSimilarity":0.55580425,"evidenceIds":["E029","E032","E033"]},{"restaurantId":9570,"claimType":"DINING_CONTEXT","matchType":"SEMANTIC","retrievalScore":10.0005446386,"semanticSimilarity":0.5446386,"evidenceIds":["E015","E016"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":3,"evidenceTrace":true},
+    {"queryId":"TASTE-03","query":"음식이 맛있는 곳","candidateCount":5,"semanticOff":{"top3":[9559,9568,9569],"expectedFirstRank":3},"semanticOn":{"top3":[9571,9580,9569],"expectedFirstRank":1,"retrievalCandidates":[9571,9580,9569,9574,9617],"top3Evidence":[{"restaurantId":9571,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.0004834025,"semanticSimilarity":0.4834025,"evidenceIds":["E045","E046"]},{"restaurantId":9580,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.00048175558,"semanticSimilarity":0.48175558,"evidenceIds":["E057","E071"]},{"restaurantId":9569,"claimType":"TASTE","matchType":"TRAIT","retrievalScore":10.00047064567,"semanticSimilarity":0.47064567,"evidenceIds":["E013","E014","E038"]}]},"top1Changed":true,"top3Changed":true,"expectedRelevantInTop3":3,"evidenceTrace":true}
+  ],
+  "metrics": {
+    "queryCount": 9,
+    "semanticOff": {"precisionAt3": 0.185185, "hitAt3": 0.444444, "meanReciprocalRank": 0.27284, "meanExpectedRelevantRank": 4.888889},
+    "semanticOn": {"precisionAt3": 0.666667, "hitAt3": 1.0, "meanReciprocalRank": 0.944444, "meanExpectedRelevantRank": 1.111111},
+    "top1ChangedQueries": 9,
+    "top3ChangedQueries": 9,
+    "evidenceTraceRate": 1.0,
+    "evidenceTraceCounts": {"tracedCandidateRecords": 47, "candidateRecords": 47},
+    "candidateScopeLeakageCount": 0,
+    "hardFilterViolationCountInReferenceScope": 0,
+    "duplicateRestaurantCountPerQuery": 0,
+    "confirmedActiveVenueDuplicatesInCandidatePool": 0,
+    "maxRecommendations": 3,
+    "frozenGroundTruthPotentialFalseNegative": "FOOD-02: restaurant 9569 has menu evidence E012 (menu claim references 김밥추가) but is not in the frozen expected set; metrics retained unchanged and therefore conservative."
+  },
+  "verification": {
+    "fastApiQueryFilter": "restaurantId AND claimType filters are sent in the Qdrant query body; formal returned IDs were all within the 26-ID candidate scope.",
+    "springFinalOrdering": "Verified by RestaurantRecommendationServiceTests, including a case where a higher FastAPI hybrid relevance outranks a higher deterministic preference score.",
+    "springFastApiLiveContract": "PASS; current source FastAPI/Ollama/Qdrant queried through the live Spring client with mocked MySQL repository reads.",
+    "finalSourceRepeatability": "A second sequential nine-query retrieval pass against the final FastAPI source reproduced the same ranked IDs and metric values; these nine verification requests are not treated as an independent benchmark sample.",
+    "fallback": "Unit tests verify FastAPI failure returns Spring candidates using deterministic ordering.",
+    "actualCurrentClockCandidateNote": "Qdrant overlap has zero OPEN candidates at the actual audit time. Reference-clock ranking replay is not an assertion that a closed/unknown restaurant is currently recommendable."
+  }
+}

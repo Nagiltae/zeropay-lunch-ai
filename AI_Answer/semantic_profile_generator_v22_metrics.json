@@ -1,0 +1,33 @@
+{
+  "fixtureMetrics": {
+    "generatorCalls": 11,
+    "generatedClaimCount": 11,
+    "atomicizerCalls": 10,
+    "assertionVerifierCalls": 10,
+    "approvedSource:menu": 3,
+    "approvedClaimType:FOOD_TYPE": 3,
+    "fixturePassCount": 10,
+    "fixtureFailCount": 1,
+    "approvedSource:review_keyword": 4,
+    "approvedClaimType:FOOD_MENTION": 2,
+    "approvedClaimType:DINING_CONTEXT": 5,
+    "sourceTypeMismatchCount": 0,
+    "quoteMismatchCount": 1,
+    "unknownEvidenceCount": 0,
+    "provenanceLeakCount": 0,
+    "approvedSource:review": 3,
+    "fixtureCount": 11,
+    "officialFactPromotionCount": null,
+    "elapsedSeconds": 85.582,
+    "sideEffects": {
+      "mysqlWrites": 0,
+      "qdrantReads": 0,
+      "qdrantWrites": 0,
+      "embeddingCalls": 0,
+      "embeddingWrites": 0,
+      "geminiCalls": 0
+    }
+  },
+  "restaurantMetrics": null,
+  "humanReview": "PENDING"
+}

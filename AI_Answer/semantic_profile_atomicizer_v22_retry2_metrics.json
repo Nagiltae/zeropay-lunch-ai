@@ -1,0 +1,18 @@
+{
+  "finalStatus": "ATOMICIZER_V2.2_BLOCKED_CONTRACT",
+  "baselineRootCause": "The model returned a valid structured payload, but paraphrased the requested sourceSpan instead of copying a whitespace-normalized exact Claim substring.",
+  "failureCorpus": {
+    "calls": 12,
+    "size": 12
+  },
+  "stabilityGate": "FAIL",
+  "fixtureGate": "NOT_RUN",
+  "shadow": "NOT_RUN",
+  "sideEffects": {
+    "qdrantWrites": 0,
+    "mysqlReads": 0,
+    "mysqlWrites": 0,
+    "embeddings": 0,
+    "gemini": 0
+  }
+}

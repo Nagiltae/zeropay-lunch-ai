@@ -1,0 +1,8 @@
+{
+  "reviewVersion": "semantic-profile-atomicizer-v2.2-shadow",
+  "executionStatus": "NOT_RUN_FIXTURE_GATE_FAILED",
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "qdrantReads": 0,
+  "qdrantWrites": 0,
+  "items": []
+}

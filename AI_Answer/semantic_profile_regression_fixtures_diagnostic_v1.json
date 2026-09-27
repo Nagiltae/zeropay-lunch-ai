@@ -1,0 +1,74 @@
+{
+  "fixtureVersion": "semantic-profile-known-overclaim-v1",
+  "frozenBeforeVerifierRun": true,
+  "source": "Existing human sample review and the matching source Evidence Catalog snapshots; not derived from verifier output.",
+  "policy": "Every fixture must be PARTIAL or UNSUPPORTED and must not become indexable.",
+  "fixtures": [
+    {
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "restaurantId": 9559,
+      "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "claimId": "regression:9559:TASTE:tenderness",
+      "claimType": "TASTE",
+      "claimText": "고기의 육즙이 풍부하고 육질이 부드럽다는 평가가 있다.",
+      "evidenceIds": ["E032"],
+      "supportQuotes": [
+        {
+          "evidenceId": "E032",
+          "quote": "\"음식이 맛있어요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "expectedVerdicts": ["PARTIAL", "UNSUPPORTED"]
+    },
+    {
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "restaurantId": 9559,
+      "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "claimId": "regression:9559:DINING_CONTEXT:corporate-family",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "가족 행사와 기업 회식에 적합한 장소다.",
+      "evidenceIds": ["E036"],
+      "supportQuotes": [
+        {
+          "evidenceId": "E036",
+          "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "expectedVerdicts": ["PARTIAL", "UNSUPPORTED"]
+    },
+    {
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "restaurantId": 9571,
+      "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+      "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+      "claimId": "regression:9571:MENU_CHARACTERISTIC:chicken-topping",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+      "evidenceIds": ["E003", "E015", "E024"],
+      "supportQuotes": [
+        {"evidenceId": "E003", "quote": "비프타코피자"},
+        {"evidenceId": "E015", "quote": "불고기피자"},
+        {"evidenceId": "E024", "quote": "야채퀘사디아피자"}
+      ],
+      "expectedVerdicts": ["PARTIAL", "UNSUPPORTED"]
+    },
+    {
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "restaurantId": 9568,
+      "catalogPath": "AI_Answer/semantic_profile_benchmark_9568/semantic_profile_v1_evidence_catalog_9568.json",
+      "catalogHash": "b50066c01c43da9cb2bc463f51d7d45d6072ad2007bd61ef948c638d48f91f29",
+      "claimId": "regression:9568:DINING_CONTEXT:casual-meals",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+      "evidenceIds": ["E029", "E032", "E033"],
+      "supportQuotes": [
+        {"evidenceId": "E029", "quote": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"},
+        {"evidenceId": "E032", "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"},
+        {"evidenceId": "E033", "quote": "\"매장이 넓어요\" 이 키워드를 선택한 인원"}
+      ],
+      "expectedVerdicts": ["PARTIAL", "UNSUPPORTED"]
+    }
+  ]
+}

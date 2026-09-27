@@ -1,0 +1,720 @@
+{
+  "createdAt": "2026-09-25T19:50:58.045373+00:00",
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "independentRuns": 3,
+  "casesPerRun": 12,
+  "totalCases": 36,
+  "calls": 39,
+  "retries": 3,
+  "terminalErrors": 0,
+  "emptyAssertionCount": 0,
+  "invalidSourceTraceCount": 0,
+  "duplicateAssertionFailures": 0,
+  "maxAssertionViolations": 0,
+  "gate": "PASS",
+  "results": [
+    {
+      "runNumber": 1,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "status": "SUCCESS",
+      "assertionCount": 2,
+      "fragments": [
+        "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+        "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+          "sourceSpan": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다."
+        },
+        {
+          "assertionId": "A2",
+          "text": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "sourceSpan": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 1
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+        "\"음식이 맛있어요\" 이 키워드를 선택한 인원,",
+        "\"가성비가 좋아요\" 이 키워드를 선택한 인원"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "sourceSpan": "음식이 맛있고 가성비가 좋다는 평가가 반복된다."
+        },
+        {
+          "assertionId": "A2",
+          "text": "\"음식이 맛있어요\" 이 키워드를 선택한 인원,",
+          "sourceSpan": "\"음식이 맛있어요\" 이 키워드를 선택한 인원,"
+        },
+        {
+          "assertionId": "A3",
+          "text": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "sourceSpan": "\"가성비가 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "status": "SUCCESS",
+      "assertionCount": 2,
+      "fragments": [
+        "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+        "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+          "sourceSpan": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다."
+        },
+        {
+          "assertionId": "A2",
+          "text": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "sourceSpan": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 1
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+        "\"음식이 맛있어요\" 이 키워드를 선택한 인원,",
+        "\"가성비가 좋아요\" 이 키워드를 선택한 인원"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "sourceSpan": "음식이 맛있고 가성비가 좋다는 평가가 반복된다."
+        },
+        {
+          "assertionId": "A2",
+          "text": "\"음식이 맛있어요\" 이 키워드를 선택한 인원,",
+          "sourceSpan": "\"음식이 맛있어요\" 이 키워드를 선택한 인원,"
+        },
+        {
+          "assertionId": "A3",
+          "text": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "sourceSpan": "\"가성비가 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "status": "SUCCESS",
+      "assertionCount": 2,
+      "fragments": [
+        "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+        "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다.",
+          "sourceSpan": "혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다."
+        },
+        {
+          "assertionId": "A2",
+          "text": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "sourceSpan": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 1
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+        "\"음식이 맛있어요\" 이 키워드를 선택한 인원,",
+        "\"가성비가 좋아요\" 이 키워드를 선택한 인원"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+          "sourceSpan": "음식이 맛있고 가성비가 좋다는 평가가 반복된다."
+        },
+        {
+          "assertionId": "A2",
+          "text": "\"음식이 맛있어요\" 이 키워드를 선택한 인원,",
+          "sourceSpan": "\"음식이 맛있어요\" 이 키워드를 선택한 인원,"
+        },
+        {
+          "assertionId": "A3",
+          "text": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "sourceSpan": "\"가성비가 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "status": "SUCCESS",
+      "assertionCount": 1,
+      "fragments": [
+        "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "sourceSpan": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다."
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    }
+  ]
+}

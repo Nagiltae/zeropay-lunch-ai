@@ -1,0 +1,382 @@
+{
+  "fixtureVersion": "semantic-profile-verifier-v2-frozen-1",
+  "createdAt": "2026-09-25T18:21:19.934865+00:00",
+  "frozenBeforeVerifierRuns": true,
+  "model": "qwen3.5:9b",
+  "runsRequired": 3,
+  "maxAssertions": 8,
+  "retryPolicy": "initial + at most one retry after an atomicizer/verifier call error",
+  "source": "Four preserved v1 regressions plus three source-verified v12 positive cases; Evidence snapshots and catalog hashes included.",
+  "fixtures": [
+    {
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "restaurantId": 9559,
+      "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "claimId": "regression:9559:TASTE:tenderness",
+      "claimType": "TASTE",
+      "claimText": "고기의 육즙이 풍부하고 육질이 부드럽다는 평가가 있다.",
+      "evidenceIds": [
+        "E032"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E032",
+          "quote": "\"음식이 맛있어요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9559,
+          "evidenceId": "E032",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 337
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "123d661899d50464433dbd5e606490cc3af9062578f6d66a166d169fa8899e7a",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "polarity": "negative"
+    },
+    {
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "restaurantId": 9559,
+      "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "claimId": "regression:9559:DINING_CONTEXT:corporate-family",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "가족 행사와 기업 회식에 적합한 장소다.",
+      "evidenceIds": [
+        "E036"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E036",
+          "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9559,
+          "evidenceId": "E036",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[5]",
+          "status": "SUCCESS",
+          "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 137
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "6124d069de093f5eda659551817c6f1b006253cbd4383ef8fc984729bb090cde",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "polarity": "negative"
+    },
+    {
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "restaurantId": 9571,
+      "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+      "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+      "claimId": "regression:9571:MENU_CHARACTERISTIC:chicken-topping",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+      "evidenceIds": [
+        "E003",
+        "E015",
+        "E024"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E003",
+          "quote": "비프타코피자"
+        },
+        {
+          "evidenceId": "E015",
+          "quote": "불고기피자"
+        },
+        {
+          "evidenceId": "E024",
+          "quote": "야채퀘사디아피자"
+        }
+      ],
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "비프타코피자",
+          "rawEvidence": {
+            "name": "비프타코피자",
+            "price": 15900
+          }
+        },
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E015",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[12]",
+          "status": "SUCCESS",
+          "rawText": "불고기피자",
+          "rawEvidence": {
+            "name": "불고기피자",
+            "price": 11900
+          }
+        },
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E024",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[21]",
+          "status": "SUCCESS",
+          "rawText": "야채퀘사디아피자",
+          "rawEvidence": {
+            "name": "야채퀘사디아피자",
+            "price": 13900
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "9d1e4ec463448a9616dbb1ba9636f35916578e824af7303613cd3739299e6fb2",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "polarity": "negative"
+    },
+    {
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "restaurantId": 9568,
+      "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+      "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+      "claimId": "regression:9568:DINING_CONTEXT:casual-meals",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+      "evidenceIds": [
+        "E029",
+        "E032",
+        "E033"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E029",
+          "quote": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+        },
+        {
+          "evidenceId": "E032",
+          "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+        },
+        {
+          "evidenceId": "E033",
+          "quote": "\"매장이 넓어요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E029",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[4]",
+          "status": "SUCCESS",
+          "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 21
+          }
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E032",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[7]",
+          "status": "SUCCESS",
+          "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 10
+          }
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E033",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[8]",
+          "status": "SUCCESS",
+          "rawText": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 9
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "a45294e29d92a08895ba9a12b3de03fb383dd0560ff4d7f80bdf42b2321ce0ce",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "polarity": "negative"
+    },
+    {
+      "fixtureId": "positive-menu-items-9617",
+      "restaurantId": 9617,
+      "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "claimId": "positive:9617:food-type:menu-items",
+      "claimType": "FOOD_TYPE",
+      "claimText": "메뉴에 마성김밥과 마성떡볶이가 기재되어 있다.",
+      "evidenceIds": [
+        "E003",
+        "E011"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E003",
+          "quote": "마성김밥"
+        },
+        {
+          "evidenceId": "E011",
+          "quote": "마성떡볶이"
+        }
+      ],
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "polarity": "positive",
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "마성김밥",
+          "rawEvidence": {
+            "name": "마성김밥",
+            "price": 4500
+          }
+        },
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E011",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[8]",
+          "status": "SUCCESS",
+          "rawText": "마성떡볶이",
+          "rawEvidence": {
+            "name": "마성떡볶이",
+            "price": 6000
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "faaf0abe18d6f435301b341940c81270992590aca67a6d8a63fd79108cb1f555"
+    },
+    {
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "restaurantId": 9617,
+      "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "claimId": "positive:9617:dining-context:solo-quick",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E023",
+          "quote": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+        },
+        {
+          "evidenceId": "E058",
+          "quote": "빠르게 식사가 필요할 때 들리기에 좋은 것 같아요."
+        }
+      ],
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "polarity": "positive",
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E023",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 33
+          }
+        },
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E058",
+          "evidenceType": "review",
+          "sourceField": "sections.review.representativeReviews[0]",
+          "status": "SUCCESS",
+          "rawText": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요.",
+          "rawEvidence": {
+            "reviewId": "dom-1",
+            "text": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요."
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "5e4a16956386890c27338e9440424f449254d7ad21c4581239f2ee3212ae904f"
+    },
+    {
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "restaurantId": 9617,
+      "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+      "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+      "claimId": "positive:9617:taste:friendly-review",
+      "claimType": "TASTE",
+      "claimText": "고객 keyword에서 친절하다는 평가가 확인된다.",
+      "evidenceIds": [
+        "E026"
+      ],
+      "supportQuotes": [
+        {
+          "evidenceId": "E026",
+          "quote": "\"친절해요\" 이 키워드를 선택한 인원"
+        }
+      ],
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "polarity": "positive",
+      "evidenceSnapshot": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E026",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[3]",
+          "status": "SUCCESS",
+          "rawText": "\"친절해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 13
+          }
+        }
+      ],
+      "evidenceSnapshotHash": "dbfc8513813a8ba0c3f62052af297ad114956ab8162bc0d7fcc664250bf5c49f"
+    }
+  ]
+}

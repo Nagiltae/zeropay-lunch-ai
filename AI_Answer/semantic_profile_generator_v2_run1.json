@@ -1,0 +1,1526 @@
+{
+  "runVersion": "semantic-profile-generator-v2-dry-run-v1",
+  "runNumber": 1,
+  "createdAt": "2026-09-26T08:39:53.832832+00:00",
+  "cohortPath": "AI_Answer/semantic_profile_generator_v2_cohort.json",
+  "cohortHash": "f29f1d7b9cd62a6a726e599b459b952a6c525e7e0aa757ae0378e6c1f96c53b9",
+  "model": "qwen3.5:9b",
+  "generatorSchemaVersion": "atomic-claim-support-quote-v2",
+  "runMode": "DRY_RUN",
+  "restaurantRuns": [
+    {
+      "restaurantId": 9559,
+      "name": "모우리",
+      "inputHash": "dcf9ac4ec099c86b29a9923fcb906b127359e5e7ce20cad80abfef8c03b7f430",
+      "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+      "sourceEvidenceSummary": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 37,
+        "menu": 28,
+        "review": 4
+      },
+      "generatorError": null,
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 한우 꽃등심토마호크100g as a signature item.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "한우 꽃등심토마호크100g<시그니처>"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 한우 통살치토마호크100g as a signature item.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "한우 통살치토마호크100g<시그니처>"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 비즈니스모듬 600g as a popular menu item.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "비즈니스모듬 600g <인기메뉴>"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 스페셜모듬(특수부위) 450g as a limited item.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "스페셜모듬(특수부위) 450g<한정>"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 한우 포터하우스&티본100g.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "한우 포터하우스&티본100g"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9559,
+            "claimId": "9559:MENU_CHARACTERISTIC:cd2085178a750e5e",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 한우 꽃등심토마호크100g as a signature item.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "한우 꽃등심토마호크100g<시그니처>"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 한우 꽃등심토마호크100g as a signature item.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "한우 꽃등심토마호크100g<시그니처>"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9559,
+              "claimId": "9559:MENU_CHARACTERISTIC:cd2085178a750e5e",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 한우 꽃등심토마호크100g as a signature item.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "한우 꽃등심토마호크100g<시그니처>"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9559,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "한우 꽃등심토마호크100g<시그니처>",
+                "rawEvidence": {
+                  "name": "한우 꽃등심토마호크100g<시그니처>",
+                  "price": 26000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 한우 꽃등심토마호크100g as a signature item.",
+              "sourceSpan": "The restaurant offers 한우 꽃등심토마호크100g as a signature item.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9559,
+            "claimId": "9559:MENU_CHARACTERISTIC:5e27b9f2724880ae",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 한우 통살치토마호크100g as a signature item.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "한우 통살치토마호크100g<시그니처>"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 한우 통살치토마호크100g as a signature item.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "한우 통살치토마호크100g<시그니처>"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9559,
+              "claimId": "9559:MENU_CHARACTERISTIC:5e27b9f2724880ae",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 한우 통살치토마호크100g as a signature item.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "한우 통살치토마호크100g<시그니처>"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9559,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "한우 통살치토마호크100g<시그니처>",
+                "rawEvidence": {
+                  "name": "한우 통살치토마호크100g<시그니처>",
+                  "price": 29000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 한우 통살치토마호크100g as a signature item.",
+              "sourceSpan": "The restaurant offers 한우 통살치토마호크100g as a signature item.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9559,
+            "claimId": "9559:MENU_CHARACTERISTIC:4279437f6ff4efc1",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 비즈니스모듬 600g as a popular menu item.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "비즈니스모듬 600g <인기메뉴>"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 비즈니스모듬 600g as a popular menu item.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "비즈니스모듬 600g <인기메뉴>"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9559,
+              "claimId": "9559:MENU_CHARACTERISTIC:4279437f6ff4efc1",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 비즈니스모듬 600g as a popular menu item.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "비즈니스모듬 600g <인기메뉴>"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9559,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "비즈니스모듬 600g <인기메뉴>",
+                "rawEvidence": {
+                  "name": "비즈니스모듬 600g <인기메뉴>",
+                  "price": 156000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 비즈니스모듬.",
+              "sourceSpan": "The restaurant offers 비즈니스모듬"
+            },
+            {
+              "assertionId": "A2",
+              "text": "The restaurant offers 비즈니스모듬 as a popular menu item.",
+              "sourceSpan": "The restaurant offers 비즈니스모듬 600g as a popular menu item."
+            }
+          ],
+          "semanticVerdict": null,
+          "approved": false,
+          "verifierError": null,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9559,
+            "claimId": "9559:MENU_CHARACTERISTIC:8668ec17fb19face",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 스페셜모듬(특수부위) 450g as a limited item.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "스페셜모듬(특수부위) 450g<한정>"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 스페셜모듬(특수부위) 450g as a limited item.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "스페셜모듬(특수부위) 450g<한정>"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9559,
+              "claimId": "9559:MENU_CHARACTERISTIC:8668ec17fb19face",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 스페셜모듬(특수부위) 450g as a limited item.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "스페셜모듬(특수부위) 450g<한정>"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9559,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "스페셜모듬(특수부위) 450g<한정>",
+                "rawEvidence": {
+                  "name": "스페셜모듬(특수부위) 450g<한정>",
+                  "price": 157500
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 스페셜모듬(특수부위).",
+              "sourceSpan": "The restaurant offers 스페셜모듬(특수부위)"
+            },
+            {
+              "assertionId": "A2",
+              "text": "The restaurant offers 450g as a limited item.",
+              "sourceSpan": "offers 스페셜모듬(특수부위) 450g as a limited item."
+            }
+          ],
+          "semanticVerdict": null,
+          "approved": false,
+          "verifierError": null,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9559,
+            "claimId": "9559:MENU_CHARACTERISTIC:e10619ea176cd73a",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 한우 포터하우스&티본100g.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "한우 포터하우스&티본100g"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 한우 포터하우스&티본100g.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "한우 포터하우스&티본100g"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9559,
+              "claimId": "9559:MENU_CHARACTERISTIC:e10619ea176cd73a",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 한우 포터하우스&티본100g.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "한우 포터하우스&티본100g"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9559,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "한우 포터하우스&티본100g",
+                "rawEvidence": {
+                  "name": "한우 포터하우스&티본100g",
+                  "price": 25000
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 한우 포터하우스&티본100g.",
+              "sourceSpan": "The restaurant offers 한우 포터하우스&티본100g.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E007"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        }
+      ],
+      "metrics": {
+        "generatedClaimCount": 5,
+        "schemaValidCount": 5,
+        "deterministicPassCount": 5,
+        "exactQuotePassCount": 5,
+        "nonAtomicCount": 2,
+        "semanticSupportedCount": 3,
+        "semanticUnsupportedCount": 0,
+        "semanticPartialCount": 0,
+        "verifierErrorCount": 0,
+        "approvedClaimCount": 3,
+        "duplicateCount": 0,
+        "provenanceLeakCount": 0,
+        "unknownEvidenceIdCount": 0,
+        "quoteMismatchCount": 0
+      }
+    },
+    {
+      "restaurantId": 9603,
+      "name": "본죽&비빔밥 논현점",
+      "inputHash": "0fbdd8ff2d335c1224824879b1b0670c2c29b8f49858dc50724625e23c2322b5",
+      "catalogHash": "4edf8d3b78c5a3375e15b8a15b86611f23cdb3923a14c8142f1570c0b72e33ab",
+      "sourceEvidenceSummary": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 58,
+        "review": 1
+      },
+      "generatorError": null,
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 팥칼국수 as a new menu item.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "[NEW] 팥칼국수"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 열무돈불백비빔밥 as a seasonal limited menu item.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "[시즌한정] 열무돈불백비빔밥"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 쇠고기야채죽 as a breakfast recommendation.",
+          "evidenceIds": [
+            "E008"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E008",
+              "quote": "[아침추천] 쇠고기야채죽"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 전복죽 as a breakfast recommendation.",
+          "evidenceIds": [
+            "E009"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E009",
+              "quote": "[아침추천] 전복죽"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 단호박죽 as a breakfast recommendation.",
+          "evidenceIds": [
+            "E011"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E011",
+              "quote": "[아침추천] 단호박죽"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9603,
+            "claimId": "9603:MENU_CHARACTERISTIC:177e278116f4e498",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 팥칼국수 as a new menu item.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "[NEW] 팥칼국수"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 팥칼국수 as a new menu item.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "[NEW] 팥칼국수"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9603,
+              "claimId": "9603:MENU_CHARACTERISTIC:177e278116f4e498",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 팥칼국수 as a new menu item.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "[NEW] 팥칼국수"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9603,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "[NEW] 팥칼국수",
+                "rawEvidence": {
+                  "name": "[NEW] 팥칼국수",
+                  "price": 11500
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 팥칼국수 as a new menu item.",
+              "sourceSpan": "The restaurant offers 팥칼국수 as a new menu item.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9603,
+            "claimId": "9603:MENU_CHARACTERISTIC:e9bf651eefef4cb8",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 열무돈불백비빔밥 as a seasonal limited menu item.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "[시즌한정] 열무돈불백비빔밥"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 열무돈불백비빔밥 as a seasonal limited menu item.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "[시즌한정] 열무돈불백비빔밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9603,
+              "claimId": "9603:MENU_CHARACTERISTIC:e9bf651eefef4cb8",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 열무돈불백비빔밥 as a seasonal limited menu item.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "[시즌한정] 열무돈불백비빔밥"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9603,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "[시즌한정] 열무돈불백비빔밥",
+                "rawEvidence": {
+                  "name": "[시즌한정] 열무돈불백비빔밥",
+                  "price": 13500
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 열무돈불백비빔밥 as a seasonal limited menu item.",
+              "sourceSpan": "The restaurant offers 열무돈불백비빔밥 as a seasonal limited menu item.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9603,
+            "claimId": "9603:MENU_CHARACTERISTIC:867b320cbae12289",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 쇠고기야채죽 as a breakfast recommendation.",
+            "evidenceIds": [
+              "E008"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "[아침추천] 쇠고기야채죽"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 쇠고기야채죽 as a breakfast recommendation.",
+            "evidenceIds": [
+              "E008"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "[아침추천] 쇠고기야채죽"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9603,
+              "claimId": "9603:MENU_CHARACTERISTIC:867b320cbae12289",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 쇠고기야채죽 as a breakfast recommendation.",
+              "evidenceIds": [
+                "E008"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E008",
+                  "quote": "[아침추천] 쇠고기야채죽"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9603,
+                "evidenceId": "E008",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "[아침추천] 쇠고기야채죽",
+                "rawEvidence": {
+                  "name": "[아침추천] 쇠고기야채죽",
+                  "price": 14000
+                },
+                "sourceField": "sections.menu.items[5]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 쇠고기야채죽 as a breakfast recommendation.",
+              "sourceSpan": "The restaurant offers 쇠고기야채죽 as a breakfast recommendation.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E008"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9603,
+            "claimId": "9603:MENU_CHARACTERISTIC:031198dae645ae73",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 전복죽 as a breakfast recommendation.",
+            "evidenceIds": [
+              "E009"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E009",
+                "quote": "[아침추천] 전복죽"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 전복죽 as a breakfast recommendation.",
+            "evidenceIds": [
+              "E009"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E009",
+                "quote": "[아침추천] 전복죽"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9603,
+              "claimId": "9603:MENU_CHARACTERISTIC:031198dae645ae73",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 전복죽 as a breakfast recommendation.",
+              "evidenceIds": [
+                "E009"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E009",
+                  "quote": "[아침추천] 전복죽"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9603,
+                "evidenceId": "E009",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "[아침추천] 전복죽",
+                "rawEvidence": {
+                  "name": "[아침추천] 전복죽",
+                  "price": 14500
+                },
+                "sourceField": "sections.menu.items[6]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 전복죽 as a breakfast recommendation.",
+              "sourceSpan": "The restaurant offers 전복죽 as a breakfast recommendation.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E009"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9603,
+            "claimId": "9603:MENU_CHARACTERISTIC:43b5682140c98954",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 단호박죽 as a breakfast recommendation.",
+            "evidenceIds": [
+              "E011"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E011",
+                "quote": "[아침추천] 단호박죽"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 단호박죽 as a breakfast recommendation.",
+            "evidenceIds": [
+              "E011"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E011",
+                "quote": "[아침추천] 단호박죽"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9603,
+              "claimId": "9603:MENU_CHARACTERISTIC:43b5682140c98954",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 단호박죽 as a breakfast recommendation.",
+              "evidenceIds": [
+                "E011"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E011",
+                  "quote": "[아침추천] 단호박죽"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9603,
+                "evidenceId": "E011",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "[아침추천] 단호박죽",
+                "rawEvidence": {
+                  "name": "[아침추천] 단호박죽",
+                  "price": 12000
+                },
+                "sourceField": "sections.menu.items[8]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 단호박죽 as a breakfast recommendation.",
+              "sourceSpan": "The restaurant offers 단호박죽 as a breakfast recommendation.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E011"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        }
+      ],
+      "metrics": {
+        "generatedClaimCount": 5,
+        "schemaValidCount": 5,
+        "deterministicPassCount": 5,
+        "exactQuotePassCount": 5,
+        "nonAtomicCount": 0,
+        "semanticSupportedCount": 5,
+        "semanticUnsupportedCount": 0,
+        "semanticPartialCount": 0,
+        "verifierErrorCount": 0,
+        "approvedClaimCount": 5,
+        "duplicateCount": 0,
+        "provenanceLeakCount": 0,
+        "unknownEvidenceIdCount": 0,
+        "quoteMismatchCount": 0
+      }
+    },
+    {
+      "restaurantId": 9639,
+      "name": "이자카야나무(논현)",
+      "inputHash": "38d328ce3881ab93eab6f1c55d0d7fdbdb74e2d5eb88b15c7983bebd7e3641db",
+      "catalogHash": "70ac81bcceaac49eb84223b048870108fb9424a37db273bc48d5a54babf132f1",
+      "sourceEvidenceSummary": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 39,
+        "menu": 64,
+        "review": 4
+      },
+      "generatorError": null,
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 대하 버터갈릭구이.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "대하 버터갈릭구이"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 전어세꼬시.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "전어세꼬시"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 커플세트.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "커플세트"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 오마카세 초밥 15pcs.",
+          "evidenceIds": [
+            "E010"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E010",
+              "quote": "오마카세 초밥 15pcs"
+            }
+          ]
+        },
+        {
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "The restaurant offers 폭탄회덮밥.",
+          "evidenceIds": [
+            "E024"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E024",
+              "quote": "폭탄회덮밥"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9639,
+            "claimId": "9639:MENU_CHARACTERISTIC:a0c1b84b8e383658",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 대하 버터갈릭구이.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "대하 버터갈릭구이"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 대하 버터갈릭구이.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "대하 버터갈릭구이"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9639,
+              "claimId": "9639:MENU_CHARACTERISTIC:a0c1b84b8e383658",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 대하 버터갈릭구이.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "대하 버터갈릭구이"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9639,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "대하 버터갈릭구이",
+                "rawEvidence": {
+                  "name": "대하 버터갈릭구이",
+                  "price": 29000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 대하 버터갈릭구이.",
+              "sourceSpan": "The restaurant offers 대하 버터갈릭구이.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9639,
+            "claimId": "9639:MENU_CHARACTERISTIC:7b9bfa64536efd6d",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 전어세꼬시.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "전어세꼬시"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 전어세꼬시.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "전어세꼬시"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9639,
+              "claimId": "9639:MENU_CHARACTERISTIC:7b9bfa64536efd6d",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 전어세꼬시.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "전어세꼬시"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9639,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "전어세꼬시",
+                "rawEvidence": {
+                  "name": "전어세꼬시",
+                  "price": 25000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 전어세꼬시.",
+              "sourceSpan": "The restaurant offers 전어세꼬시.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9639,
+            "claimId": "9639:MENU_CHARACTERISTIC:cb4bc9ec48f7df69",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 커플세트.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "커플세트"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 커플세트.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "커플세트"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9639,
+              "claimId": "9639:MENU_CHARACTERISTIC:cb4bc9ec48f7df69",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 커플세트.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "커플세트"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9639,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "커플세트",
+                "rawEvidence": {
+                  "name": "커플세트",
+                  "price": 59900
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 커플세트.",
+              "sourceSpan": "The restaurant offers 커플세트.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E006"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9639,
+            "claimId": "9639:MENU_CHARACTERISTIC:42dcb39f2c94d063",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 오마카세 초밥 15pcs.",
+            "evidenceIds": [
+              "E010"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E010",
+                "quote": "오마카세 초밥 15pcs"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 오마카세 초밥 15pcs.",
+            "evidenceIds": [
+              "E010"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E010",
+                "quote": "오마카세 초밥 15pcs"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9639,
+              "claimId": "9639:MENU_CHARACTERISTIC:42dcb39f2c94d063",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 오마카세 초밥 15pcs.",
+              "evidenceIds": [
+                "E010"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E010",
+                  "quote": "오마카세 초밥 15pcs"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9639,
+                "evidenceId": "E010",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "오마카세 초밥 15pcs",
+                "rawEvidence": {
+                  "name": "오마카세 초밥 15pcs",
+                  "price": 29500
+                },
+                "sourceField": "sections.menu.items[7]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 오마카세 초밥.",
+              "sourceSpan": "The restaurant offers 오마카세 초밥 15pcs.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E010"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        },
+        {
+          "claim": {
+            "restaurantId": 9639,
+            "claimId": "9639:MENU_CHARACTERISTIC:9e7cf11491bb1c0e",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 폭탄회덮밥.",
+            "evidenceIds": [
+              "E024"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E024",
+                "quote": "폭탄회덮밥"
+              }
+            ]
+          },
+          "rawGeneratedClaim": {
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "The restaurant offers 폭탄회덮밥.",
+            "evidenceIds": [
+              "E024"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E024",
+                "quote": "폭탄회덮밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9639,
+              "claimId": "9639:MENU_CHARACTERISTIC:9e7cf11491bb1c0e",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "The restaurant offers 폭탄회덮밥.",
+              "evidenceIds": [
+                "E024"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E024",
+                  "quote": "폭탄회덮밥"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9639,
+                "evidenceId": "E024",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "폭탄회덮밥",
+                "rawEvidence": {
+                  "name": "폭탄회덮밥",
+                  "price": 20000
+                },
+                "sourceField": "sections.menu.items[21]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "The restaurant offers 폭탄회덮밥.",
+              "sourceSpan": "The restaurant offers 폭탄회덮밥.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E024"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "verifierError": null,
+          "rejectReasons": []
+        }
+      ],
+      "metrics": {
+        "generatedClaimCount": 5,
+        "schemaValidCount": 5,
+        "deterministicPassCount": 5,
+        "exactQuotePassCount": 5,
+        "nonAtomicCount": 0,
+        "semanticSupportedCount": 5,
+        "semanticUnsupportedCount": 0,
+        "semanticPartialCount": 0,
+        "verifierErrorCount": 0,
+        "approvedClaimCount": 5,
+        "duplicateCount": 0,
+        "provenanceLeakCount": 0,
+        "unknownEvidenceIdCount": 0,
+        "quoteMismatchCount": 0
+      }
+    }
+  ],
+  "metrics": {
+    "generatedClaimCount": 15,
+    "schemaValidCount": 15,
+    "deterministicPassCount": 15,
+    "exactQuotePassCount": 15,
+    "nonAtomicCount": 2,
+    "semanticSupportedCount": 13,
+    "semanticUnsupportedCount": 0,
+    "semanticPartialCount": 0,
+    "verifierErrorCount": 0,
+    "approvedClaimCount": 13,
+    "duplicateCount": 0,
+    "provenanceLeakCount": 0,
+    "unknownEvidenceIdCount": 0,
+    "quoteMismatchCount": 0,
+    "deterministicErrorCount": 0,
+    "schemaErrorCount": 0,
+    "knownOverclaimApprovalCount": null,
+    "restaurantCount": 3,
+    "generatorCalls": 3,
+    "atomicizerCalls": 15,
+    "assertionVerifierCalls": 13,
+    "retries": 0,
+    "elapsedSeconds": 141.783,
+    "mysqlSelectQueryCount": 24,
+    "model": "qwen3.5:9b",
+    "knownOverclaimManualReview": "PENDING",
+    "temperature": 0,
+    "sideEffects": {
+      "mysqlReads": 24,
+      "mysqlWrites": 0,
+      "qdrantReads": 0,
+      "qdrantWrites": 0,
+      "embeddingCalls": 0,
+      "embeddingWrites": 0,
+      "geminiCalls": 0
+    }
+  }
+}

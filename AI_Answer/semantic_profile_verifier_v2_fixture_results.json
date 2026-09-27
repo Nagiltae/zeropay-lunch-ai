@@ -1,0 +1,803 @@
+{
+  "reviewVersion": "semantic-profile-verifier-v2-fixture-suite-v1",
+  "createdAt": "2026-09-25T18:31:44.042903+00:00",
+  "fixturesPath": "AI_Answer/semantic_profile_verifier_v2_fixtures.json",
+  "fixtureSnapshotHash": "30015917d0b5632ba7bf0c0fda2da3192c44cb1b8df230b5bba0300e44e7ffef",
+  "results": [
+    {
+      "runNumber": 1,
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고기의 육즙이 풍부하다는 평가가 있다.",
+          "sourceSpan": "고기의 육즙이 풍부하고",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "고기의 육질이 부드럽다는 평가가 있다.",
+          "sourceSpan": "육질이 부드럽다는 평가가 있다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 8.37,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "장소는 가족 행사에 적합하다.",
+          "sourceSpan": "가족 행사와 기업 회식에 적합한 장소다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "장소는 기업 회식에 적합하다.",
+          "sourceSpan": "가족 행사와 기업 회식에 적합한 장소다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 7.269,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "피자 토핑으로 불고기를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "피자 토핑으로 닭고기를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자 토핑으로 채소를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 12.111,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E029"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "단체 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E032"
+          ]
+        },
+        {
+          "assertionId": "A3",
+          "text": "매장이 넓다.",
+          "sourceSpan": "매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "assertionId": "A4",
+          "text": "편안한 캐주얼 식사를 할 수 있다.",
+          "sourceSpan": "편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "PARTIAL",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 14.272,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "positive-menu-items-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "메뉴에 마성김밥이 기재되어 있다.",
+          "sourceSpan": "마성김밥",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E003"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "메뉴에 마성떡볶이가 기재되어 있다.",
+          "sourceSpan": "마성떡볶이",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E011"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.105,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사하기에 좋은 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 8.975,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 1,
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고객 리뷰에 '친절하다'라는 키워드가 존재한다.",
+          "sourceSpan": "고객 keyword에서 친절하다는 평가가 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 5.296,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고기의 육즙이 풍부하다는 평가가 있다.",
+          "sourceSpan": "고기의 육즙이 풍부하고",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "고기의 육질이 부드럽다는 평가가 있다.",
+          "sourceSpan": "육질이 부드럽다는 평가가 있다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 8.855,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "장소는 가족 행사에 적합하다.",
+          "sourceSpan": "가족 행사와 기업 회식에 적합한 장소다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "장소는 기업 회식에 적합하다.",
+          "sourceSpan": "가족 행사와 기업 회식에 적합한 장소다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 8.054,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "피자 토핑으로 불고기를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "피자 토핑으로 닭고기를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자 토핑으로 채소를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 11.152,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E029"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "단체 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E032"
+          ]
+        },
+        {
+          "assertionId": "A3",
+          "text": "매장이 넓다.",
+          "sourceSpan": "매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "assertionId": "A4",
+          "text": "편안한 캐주얼 식사를 할 수 있다.",
+          "sourceSpan": "편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "PARTIAL",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 14.366,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "positive-menu-items-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "메뉴에 마성김밥이 기재되어 있다.",
+          "sourceSpan": "마성김밥",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E003"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "메뉴에 마성떡볶이가 기재되어 있다.",
+          "sourceSpan": "마성떡볶이",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E011"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.236,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사하기에 좋은 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.168,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 2,
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고객 리뷰에 '친절하다'라는 키워드가 존재한다.",
+          "sourceSpan": "고객 keyword에서 친절하다는 평가가 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 5.315,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고기의 육즙이 풍부하다는 평가가 있다.",
+          "sourceSpan": "고기의 육즙이 풍부하고",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "고기의 육질이 부드럽다는 평가가 있다.",
+          "sourceSpan": "육질이 부드럽다는 평가가 있다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 8.563,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "장소는 가족 행사에 적합하다.",
+          "sourceSpan": "가족 행사와 기업 회식에 적합한 장소다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "장소는 기업 회식에 적합하다.",
+          "sourceSpan": "가족 행사와 기업 회식에 적합한 장소다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "UNSUPPORTED",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 7.807,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "피자 토핑으로 불고기를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A2",
+          "text": "피자 토핑으로 닭고기를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자 토핑으로 채소를 제공한다.",
+          "sourceSpan": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "UNSUPPORTED",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": false,
+      "latencySeconds": 10.994,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E029"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "단체 식사에 적합하다.",
+          "sourceSpan": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E032"
+          ]
+        },
+        {
+          "assertionId": "A3",
+          "text": "매장이 넓다.",
+          "sourceSpan": "매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "assertionId": "A4",
+          "text": "편안한 캐주얼 식사를 할 수 있다.",
+          "sourceSpan": "편안한 캐주얼 식사를 할 수 있다.",
+          "verdict": "UNSUPPORTED",
+          "evidenceIds": []
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "finalVerdict": "PARTIAL",
+      "expectedFinalVerdict": "PARTIAL",
+      "expectedIndexable": false,
+      "indexableUnderContract": false,
+      "pass": true,
+      "latencySeconds": 14.209,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "positive-menu-items-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "메뉴에 마성김밥이 기재되어 있다.",
+          "sourceSpan": "마성김밥",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E003"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "메뉴에 마성떡볶이가 기재되어 있다.",
+          "sourceSpan": "마성떡볶이",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E011"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.076,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "positive-solo-and-quick-meal-context-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼자 식사하기에 좋은 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "assertionId": "A2",
+          "text": "빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "sourceSpan": "혼자 식사하기 좋고 빠른 식사가 가능하다는 이용 맥락이 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 9.007,
+      "retryCount": 0,
+      "errors": []
+    },
+    {
+      "runNumber": 3,
+      "fixtureId": "positive-friendly-review-keyword-9617",
+      "atomicAssertions": [
+        {
+          "assertionId": "A1",
+          "text": "고객 리뷰에 '친절하다'라는 키워드가 존재한다.",
+          "sourceSpan": "고객 keyword에서 친절하다는 평가가 확인된다.",
+          "verdict": "SUPPORTED",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ],
+      "atomicizerStatus": "SUCCESS",
+      "assertionVerdicts": [
+        "SUPPORTED"
+      ],
+      "finalVerdict": "SUPPORTED",
+      "expectedFinalVerdict": "SUPPORTED",
+      "expectedIndexable": true,
+      "indexableUnderContract": true,
+      "pass": true,
+      "latencySeconds": 5.223,
+      "retryCount": 0,
+      "errors": []
+    }
+  ]
+}

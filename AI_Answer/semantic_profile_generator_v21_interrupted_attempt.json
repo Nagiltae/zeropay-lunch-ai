@@ -1,0 +1,25 @@
+{
+  "attemptId": "semantic-profile-generator-v2.1-run1-preflight-attempt",
+  "cohortPath": "AI_Answer/semantic_profile_generator_v21_cohort.json",
+  "cohortWasFrozenBeforeCalls": true,
+  "status": "INTERRUPTED_DURING_SECOND_RESTAURANT",
+  "restaurantProgress": {
+    "completed": 1,
+    "inProgress": 1,
+    "restaurantCount": 8,
+    "firstCompletedRestaurantId": 9568,
+    "firstRestaurantGeneratedClaimCountObserved": 0,
+    "secondRestaurantId": 9569
+  },
+  "generatorRequests": {
+    "started": 2,
+    "completedResponses": 1,
+    "interruptedInFlight": 1,
+    "rawModelOutputPersisted": false
+  },
+  "reason": "Stopped after identifying a V2.1 contract mismatch: request/schema allowed up to eight claims but Pydantic GeneratorOutput still capped at five. The first restaurant yielded zero validated claims; its raw response was intentionally not retained, so whether it was empty or rejected by validation cannot be recovered from this attempt. The second request was manually interrupted before a response.",
+  "databaseWrites": 0,
+  "qdrantWrites": 0,
+  "embeddingCalls": 0,
+  "geminiCalls": 0
+}

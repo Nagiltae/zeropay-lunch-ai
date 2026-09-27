@@ -1,0 +1,151 @@
+{
+  "createdAt": "2026-09-25T19:31:49.256889+00:00",
+  "baselineCode": "pre-V2.2 current implementation, one Atomicizer call per case",
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "callCount": 12,
+  "rootCause": "The model returned a valid structured payload, but paraphrased the requested sourceSpan instead of copying a whitespace-normalized exact Claim substring.",
+  "byCategory": {
+    "SOURCE_SPAN_NOT_IN_CLAIM": 12
+  },
+  "byClaimType": {
+    "DINING_CONTEXT": 1,
+    "FOOD_MENTION": 10,
+    "TASTE": 1
+  },
+  "cases": [
+    {
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9617:FOOD_MENTION:E033",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9731:FOOD_MENTION:E013",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9731:FOOD_MENTION:E016",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9580:FOOD_MENTION:E067",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9580:FOOD_MENTION:E068",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9571:FOOD_MENTION:E055",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9590:FOOD_MENTION:E114",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9590:FOOD_MENTION:E115",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9590:FOOD_MENTION:E118",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    },
+    {
+      "claimId": "9590:FOOD_MENTION:E120",
+      "stage": "ATOMICIZER",
+      "category": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "jsonParseSucceeded": true,
+      "schemaValidationSucceeded": true,
+      "assertionCount": null,
+      "validationLocation": "assertions[*].sourceSpan",
+      "attempt": 1,
+      "rawResponsePersisted": false
+    }
+  ],
+  "rawModelResponsesStored": false
+}

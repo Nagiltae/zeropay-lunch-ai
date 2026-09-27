@@ -1,0 +1,5778 @@
+{
+  "runVersion": "semantic-profile-generator-v2.1-dry-run-v1",
+  "runNumber": 1,
+  "createdAt": "2026-09-26T09:11:53.501955+00:00",
+  "cohortPath": "AI_Answer/semantic_profile_generator_v21_cohort.json",
+  "cohortHash": "bd48bc6d965a2826a7ca7022f7a8bd21660db46f4085f014030a1eb731a93dab",
+  "model": "qwen3.5:9b",
+  "runMode": "DRY_RUN",
+  "generatorSchemaVersion": "atomic-claim-support-quote-v2.1-korean",
+  "restaurantRuns": [
+    {
+      "restaurantId": 9568,
+      "name": "청기와",
+      "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+      "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+      "sourceEvidenceSummary": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 31,
+        "menu": 22,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:d65b611c56926266",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청기에는 순대국이 메뉴로 등록되어 있습니다.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "순대국"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:9ff9c93ea517861d",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청기에는 한우차돌박이가 메뉴로 등록되어 있습니다.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "한우차돌박이"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:5a3a480b1acab428",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청기에는 서울밥상이 메뉴로 등록되어 있습니다.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "서울밥상"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:de7883bca022e1ed",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청기에는 시골밥상이 메뉴로 등록되어 있습니다.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "시골밥상"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:38afda3ebd589b1f",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청기에는 꽁치/김치찌개가 메뉴로 등록되어 있습니다.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "꽁치/김치찌개"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:5e3f94203449e79e",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청기에는 제육볶음이 메뉴로 등록되어 있습니다.",
+          "evidenceIds": [
+            "E008"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E008",
+              "quote": "제육볶음"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:MENU_CHARACTERISTIC:d65b611c56926266",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청기에는 순대국이 메뉴로 등록되어 있습니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "순대국"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:MENU_CHARACTERISTIC:d65b611c56926266",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청기에는 순대국이 메뉴로 등록되어 있습니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "순대국"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "순대국",
+                "rawEvidence": {
+                  "name": "순대국",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청기에는 순대국이 메뉴로 등록되어 있습니다.",
+              "sourceSpan": "청기에는 순대국이 메뉴로 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:MENU_CHARACTERISTIC:9ff9c93ea517861d",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청기에는 한우차돌박이가 메뉴로 등록되어 있습니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "한우차돌박이"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:MENU_CHARACTERISTIC:9ff9c93ea517861d",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청기에는 한우차돌박이가 메뉴로 등록되어 있습니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "한우차돌박이"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "한우차돌박이",
+                "rawEvidence": {
+                  "name": "한우차돌박이",
+                  "price": 30000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청기에는 한우차돌박이가 메뉴로 등록되어 있습니다.",
+              "sourceSpan": "청기에는 한우차돌박이가 메뉴로 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:MENU_CHARACTERISTIC:5a3a480b1acab428",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청기에는 서울밥상이 메뉴로 등록되어 있습니다.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "서울밥상"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:MENU_CHARACTERISTIC:5a3a480b1acab428",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청기에는 서울밥상이 메뉴로 등록되어 있습니다.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "서울밥상"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "서울밥상",
+                "rawEvidence": {
+                  "name": "서울밥상",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청기에는 서울밥상이 메뉴로 등록되어 있습니다.",
+              "sourceSpan": "청기에는 서울밥상이 메뉴로 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:MENU_CHARACTERISTIC:de7883bca022e1ed",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청기에는 시골밥상이 메뉴로 등록되어 있습니다.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "시골밥상"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:MENU_CHARACTERISTIC:de7883bca022e1ed",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청기에는 시골밥상이 메뉴로 등록되어 있습니다.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "시골밥상"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "시골밥상",
+                "rawEvidence": {
+                  "name": "시골밥상",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청기에는 시골밥상이 메뉴로 등록되어 있습니다.",
+              "sourceSpan": "청기에는 시골밥상이 메뉴로 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E006"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:MENU_CHARACTERISTIC:38afda3ebd589b1f",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청기에는 꽁치/김치찌개가 메뉴로 등록되어 있습니다.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "꽁치/김치찌개"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:MENU_CHARACTERISTIC:38afda3ebd589b1f",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청기에는 꽁치/김치찌개가 메뉴로 등록되어 있습니다.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "꽁치/김치찌개"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "꽁치/김치찌개",
+                "rawEvidence": {
+                  "name": "꽁치/김치찌개",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청기에는 꽁치/김치찌개가 메뉴로 등록되어 있습니다.",
+              "sourceSpan": "청기에는 꽁치/김치찌개가 메뉴로 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E007"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:MENU_CHARACTERISTIC:5e3f94203449e79e",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청기에는 제육볶음이 메뉴로 등록되어 있습니다.",
+            "evidenceIds": [
+              "E008"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "제육볶음"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:MENU_CHARACTERISTIC:5e3f94203449e79e",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청기에는 제육볶음이 메뉴로 등록되어 있습니다.",
+              "evidenceIds": [
+                "E008"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E008",
+                  "quote": "제육볶음"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E008",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "제육볶음",
+                "rawEvidence": {
+                  "name": "제육볶음",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[5]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청기에는 제육볶음이 메뉴로 등록되어 있습니다.",
+              "sourceSpan": "청기에는 제육볶음이 메뉴로 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E008"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 6
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 6
+      }
+    },
+    {
+      "restaurantId": 9569,
+      "name": "산곰장어",
+      "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+      "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519",
+      "sourceEvidenceSummary": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 10,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:2383fa45efa324d7",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "산곰장어는 꼼장어를 판매합니다.",
+          "evidenceIds": [
+            "E023"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E023",
+              "quote": "꼼장어"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:e9c843a0c15663b9",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "산곰장어는 김치찌개를 판매합니다.",
+          "evidenceIds": [
+            "E024"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E024",
+              "quote": "김치찌개"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:1553f42567874c33",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "산곰장어는 찌개를 판매합니다.",
+          "evidenceIds": [
+            "E025"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E025",
+              "quote": "찌개"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:8b8744dab5d27066",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "산곰장어는 김밥을 판매합니다.",
+          "evidenceIds": [
+            "E026"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E026",
+              "quote": "김밥"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:fc9785e5261131fe",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "산곰장어는 꽁치김치찌개를 판매합니다.",
+          "evidenceIds": [
+            "E027"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E027",
+              "quote": "꽁치김치찌개"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:5f29f24fbe47e726",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "산곰장어는 충무김밥을 판매합니다.",
+          "evidenceIds": [
+            "E028"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E028",
+              "quote": "충무김밥"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:MENU_CHARACTERISTIC:2383fa45efa324d7",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "산곰장어는 꼼장어를 판매합니다.",
+            "evidenceIds": [
+              "E023"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E023",
+                "quote": "꼼장어"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:MENU_CHARACTERISTIC:2383fa45efa324d7",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "산곰장어는 꼼장어를 판매합니다.",
+              "evidenceIds": [
+                "E023"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E023",
+                  "quote": "꼼장어"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E023"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E023",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "꼼장어",
+                "rawEvidence": {
+                  "keyword": "꼼장어",
+                  "mentionCount": 46
+                },
+                "sourceField": "sections.review.keywords[10]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED"
+          ],
+          "sourceTypes": [
+            "keyword"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:MENU_CHARACTERISTIC:e9c843a0c15663b9",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "산곰장어는 김치찌개를 판매합니다.",
+            "evidenceIds": [
+              "E024"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E024",
+                "quote": "김치찌개"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:MENU_CHARACTERISTIC:e9c843a0c15663b9",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "산곰장어는 김치찌개를 판매합니다.",
+              "evidenceIds": [
+                "E024"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E024",
+                  "quote": "김치찌개"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E024"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E024",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "김치찌개",
+                "rawEvidence": {
+                  "keyword": "김치찌개",
+                  "mentionCount": 31
+                },
+                "sourceField": "sections.review.keywords[11]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED"
+          ],
+          "sourceTypes": [
+            "keyword"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:MENU_CHARACTERISTIC:1553f42567874c33",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "산곰장어는 찌개를 판매합니다.",
+            "evidenceIds": [
+              "E025"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E025",
+                "quote": "찌개"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:MENU_CHARACTERISTIC:1553f42567874c33",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "산곰장어는 찌개를 판매합니다.",
+              "evidenceIds": [
+                "E025"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E025",
+                  "quote": "찌개"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E025"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E025",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "찌개",
+                "rawEvidence": {
+                  "keyword": "찌개",
+                  "mentionCount": 28
+                },
+                "sourceField": "sections.review.keywords[12]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED"
+          ],
+          "sourceTypes": [
+            "keyword"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:MENU_CHARACTERISTIC:8b8744dab5d27066",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "산곰장어는 김밥을 판매합니다.",
+            "evidenceIds": [
+              "E026"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E026",
+                "quote": "김밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:MENU_CHARACTERISTIC:8b8744dab5d27066",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "산곰장어는 김밥을 판매합니다.",
+              "evidenceIds": [
+                "E026"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E026",
+                  "quote": "김밥"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E026"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E026",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "김밥",
+                "rawEvidence": {
+                  "keyword": "김밥",
+                  "mentionCount": 12
+                },
+                "sourceField": "sections.review.keywords[13]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED"
+          ],
+          "sourceTypes": [
+            "keyword"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:MENU_CHARACTERISTIC:fc9785e5261131fe",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "산곰장어는 꽁치김치찌개를 판매합니다.",
+            "evidenceIds": [
+              "E027"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E027",
+                "quote": "꽁치김치찌개"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:MENU_CHARACTERISTIC:fc9785e5261131fe",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "산곰장어는 꽁치김치찌개를 판매합니다.",
+              "evidenceIds": [
+                "E027"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E027",
+                  "quote": "꽁치김치찌개"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E027"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E027",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "꽁치김치찌개",
+                "rawEvidence": {
+                  "keyword": "꽁치김치찌개",
+                  "mentionCount": 8
+                },
+                "sourceField": "sections.review.keywords[14]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED"
+          ],
+          "sourceTypes": [
+            "keyword"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:MENU_CHARACTERISTIC:5f29f24fbe47e726",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "산곰장어는 충무김밥을 판매합니다.",
+            "evidenceIds": [
+              "E028"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E028",
+                "quote": "충무김밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:MENU_CHARACTERISTIC:5f29f24fbe47e726",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "산곰장어는 충무김밥을 판매합니다.",
+              "evidenceIds": [
+                "E028"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E028",
+                  "quote": "충무김밥"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E028"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E028",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "충무김밥",
+                "rawEvidence": {
+                  "keyword": "충무김밥",
+                  "mentionCount": 2
+                },
+                "sourceField": "sections.review.keywords[15]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED"
+          ],
+          "sourceTypes": [
+            "keyword"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {},
+      "approvedByClaimType": {}
+    },
+    {
+      "restaurantId": 9570,
+      "name": "블러프",
+      "inputHash": "7ee2e77fb28ea876b00ea1979cda1068940349530a06ec334f2f20ff5fad0f78",
+      "catalogHash": "c671e513c2f48bdbeae64524b8d90687ae43b5dd1e6800d831c10dd29e2d76b2",
+      "sourceEvidenceSummary": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 7,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:83250d85916aaf8a",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프는 컨템포러리 코스 메뉴를 제공합니다.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "컨템포러리 코스"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:a080bca31de84d50",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프는 코스 페어링 메뉴를 제공합니다.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "코스 페어링"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:7f532014578d1223",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프의 메뉴에는 라비올로(Laviolo)가 있습니다.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "라비올로(Laviolo)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:405d8b0c481124e4",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프는 농어 스테이크를 판매합니다.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "농어 스테이크"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:80db416b23fc4011",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프의 메뉴에 오리다리 꽁피가 포함되어 있습니다.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "오리다리 꽁피"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:fb232ba64d6ab729",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프는 어린양갈비 스테이크를 제공합니다.",
+          "evidenceIds": [
+            "E008"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E008",
+              "quote": "어린양갈비 스테이크"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "claimId": "9570:MENU_CHARACTERISTIC:3550e27d6ef9bf9e",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "블러프는 미니 갈비버거 3pcs 메뉴를 판매합니다.",
+          "evidenceIds": [
+            "E009"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E009",
+              "quote": "미니 갈비버거 3pcs"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:83250d85916aaf8a",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프는 컨템포러리 코스 메뉴를 제공합니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "컨템포러리 코스"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:83250d85916aaf8a",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프는 컨템포러리 코스 메뉴를 제공합니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "컨템포러리 코스"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "컨템포러리 코스",
+                "rawEvidence": {
+                  "name": "컨템포러리 코스",
+                  "price": 85000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프는 컨템포러리 코스 메뉴를 제공합니다.",
+              "sourceSpan": "블러프는 컨템포러리 코스 메뉴를 제공합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:a080bca31de84d50",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프는 코스 페어링 메뉴를 제공합니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "코스 페어링"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:a080bca31de84d50",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프는 코스 페어링 메뉴를 제공합니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "코스 페어링"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "코스 페어링",
+                "rawEvidence": {
+                  "name": "코스 페어링",
+                  "price": 90000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프는 코스 페어링 메뉴를 제공합니다.",
+              "sourceSpan": "블러프는 코스 페어링 메뉴를 제공합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:7f532014578d1223",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프의 메뉴에는 라비올로(Laviolo)가 있습니다.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "라비올로(Laviolo)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:7f532014578d1223",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프의 메뉴에는 라비올로(Laviolo)가 있습니다.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "라비올로(Laviolo)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "라비올로(Laviolo)",
+                "rawEvidence": {
+                  "name": "라비올로(Laviolo)",
+                  "price": 28000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프의 메뉴에는 라비올로(Laviolo)가 있습니다.",
+              "sourceSpan": "블러프의 메뉴에는 라비올로(Laviolo)가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:405d8b0c481124e4",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프는 농어 스테이크를 판매합니다.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "농어 스테이크"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:405d8b0c481124e4",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프는 농어 스테이크를 판매합니다.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "농어 스테이크"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "농어 스테이크",
+                "rawEvidence": {
+                  "name": "농어 스테이크",
+                  "price": 40000
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프는 농어를 판매합니다.",
+              "sourceSpan": "블러프는 농어"
+            },
+            {
+              "assertionId": "A2",
+              "text": "블러프는 스테이크를 판매합니다.",
+              "sourceSpan": "스테이크를 판매합니다."
+            }
+          ],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:80db416b23fc4011",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프의 메뉴에 오리다리 꽁피가 포함되어 있습니다.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "오리다리 꽁피"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:80db416b23fc4011",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프의 메뉴에 오리다리 꽁피가 포함되어 있습니다.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "오리다리 꽁피"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "오리다리 꽁피",
+                "rawEvidence": {
+                  "name": "오리다리 꽁피",
+                  "price": 40000
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프의 메뉴에 오리다리 꽁피가 포함되어 있습니다.",
+              "sourceSpan": "블러프의 메뉴에 오리다리 꽁피가 포함되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E007"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:fb232ba64d6ab729",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프는 어린양갈비 스테이크를 제공합니다.",
+            "evidenceIds": [
+              "E008"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "어린양갈비 스테이크"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:fb232ba64d6ab729",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프는 어린양갈비 스테이크를 제공합니다.",
+              "evidenceIds": [
+                "E008"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E008",
+                  "quote": "어린양갈비 스테이크"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E008",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "어린양갈비 스테이크",
+                "rawEvidence": {
+                  "name": "어린양갈비 스테이크",
+                  "price": 60000
+                },
+                "sourceField": "sections.menu.items[5]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프는 어린양갈비를 제공합니다.",
+              "sourceSpan": "블러프는 어린양갈비"
+            },
+            {
+              "assertionId": "A2",
+              "text": "블러프는 스테이크를 제공합니다.",
+              "sourceSpan": "스테이크를 제공합니다."
+            }
+          ],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9570,
+            "claimId": "9570:MENU_CHARACTERISTIC:3550e27d6ef9bf9e",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "블러프는 미니 갈비버거 3pcs 메뉴를 판매합니다.",
+            "evidenceIds": [
+              "E009"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E009",
+                "quote": "미니 갈비버거 3pcs"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9570,
+              "claimId": "9570:MENU_CHARACTERISTIC:3550e27d6ef9bf9e",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "블러프는 미니 갈비버거 3pcs 메뉴를 판매합니다.",
+              "evidenceIds": [
+                "E009"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E009",
+                  "quote": "미니 갈비버거 3pcs"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9570,
+                "evidenceId": "E009",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "미니 갈비버거 3pcs",
+                "rawEvidence": {
+                  "name": "미니 갈비버거 3pcs",
+                  "price": 25000
+                },
+                "sourceField": "sections.menu.items[6]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "블러프는 미니 갈비버거 3pcs 메뉴를 판매합니다.",
+              "sourceSpan": "블러프는 미니 갈비버거 3pcs 메뉴를 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E009"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 5
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 5
+      }
+    },
+    {
+      "restaurantId": 9574,
+      "name": "청담머구리",
+      "inputHash": "881e987e88060c3a435dc22b5f01877a62dac5d53e13d403ac97e46bab0b03ff",
+      "catalogHash": "fb0a44ed2ceb09c2c89840b19ddb041f138215eb11683c005d75efb716ea64c1",
+      "sourceEvidenceSummary": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 33,
+        "menu": 12,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword",
+        "keyword"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:d4aba339347b4d65",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 디너코스를 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "디너코스"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:6eae21480166c56a",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 스페셜코스를 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "스페셜코스"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:5d07781f7b28087a",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 스페셜오마카세를 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "스페셜오마카세"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:61cf88df6a9b4db2",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 누룽지보리굴비를 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "누룽지보리굴비"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:6a1c1a5acee866d2",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 생대구탕을 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "생대구탕"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:ba8d6fb044430706",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 꼬막비빔밥을 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E008"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E008",
+              "quote": "꼬막비빔밥"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:a3cde28239671657",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 홍게비빔밥을 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E009"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E009",
+              "quote": "홍게비빔밥"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9574,
+          "claimId": "9574:MENU_CHARACTERISTIC:d0ba4798ed1ffc63",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "청담머구리에서는 멍게비빔밥을 주문할 수 있습니다.",
+          "evidenceIds": [
+            "E010"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E010",
+              "quote": "멍게비빔밥"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:d4aba339347b4d65",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 디너코스를 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "디너코스"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:d4aba339347b4d65",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 디너코스를 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "디너코스"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "디너코스",
+                "rawEvidence": {
+                  "name": "디너코스",
+                  "price": 60000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 디너코스를 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 디너코스를 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:6eae21480166c56a",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 스페셜코스를 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "스페셜코스"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:6eae21480166c56a",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 스페셜코스를 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "스페셜코스"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "스페셜코스",
+                "rawEvidence": {
+                  "name": "스페셜코스",
+                  "price": 80000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 스페셜코스를 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 스페셜코스를 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:5d07781f7b28087a",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 스페셜오마카세를 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "스페셜오마카세"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:5d07781f7b28087a",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 스페셜오마카세를 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "스페셜오마카세"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "스페셜오마카세",
+                "rawEvidence": {
+                  "name": "스페셜오마카세",
+                  "price": 150000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 스페셜오마카세를 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 스페셜오마카세를 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:61cf88df6a9b4db2",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 누룽지보리굴비를 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "누룽지보리굴비"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:61cf88df6a9b4db2",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 누룽지보리굴비를 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "누룽지보리굴비"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "누룽지보리굴비",
+                "rawEvidence": {
+                  "name": "누룽지보리굴비",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 누룽지보리굴비를 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 누룽지보리굴비를 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E006"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:6a1c1a5acee866d2",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 생대구탕을 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "생대구탕"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:6a1c1a5acee866d2",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 생대구탕을 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "생대구탕"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "생대구탕",
+                "rawEvidence": {
+                  "name": "생대구탕",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 생대구탕을 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 생대구탕을 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E007"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:ba8d6fb044430706",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 꼬막비빔밥을 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E008"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "꼬막비빔밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:ba8d6fb044430706",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 꼬막비빔밥을 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E008"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E008",
+                  "quote": "꼬막비빔밥"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E008",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "꼬막비빔밥",
+                "rawEvidence": {
+                  "name": "꼬막비빔밥",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[5]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 꼬막비빔밥을 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 꼬막비빔밥을 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E008"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:a3cde28239671657",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 홍게비빔밥을 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E009"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E009",
+                "quote": "홍게비빔밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:a3cde28239671657",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 홍게비빔밥을 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E009"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E009",
+                  "quote": "홍게비빔밥"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E009",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "홍게비빔밥",
+                "rawEvidence": {
+                  "name": "홍게비빔밥",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[6]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 홍게비빔밥을 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 홍게비빔밥을 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E009"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9574,
+            "claimId": "9574:MENU_CHARACTERISTIC:d0ba4798ed1ffc63",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "청담머구리에서는 멍게비빔밥을 주문할 수 있습니다.",
+            "evidenceIds": [
+              "E010"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E010",
+                "quote": "멍게비빔밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9574,
+              "claimId": "9574:MENU_CHARACTERISTIC:d0ba4798ed1ffc63",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "청담머구리에서는 멍게비빔밥을 주문할 수 있습니다.",
+              "evidenceIds": [
+                "E010"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E010",
+                  "quote": "멍게비빔밥"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9574,
+                "evidenceId": "E010",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "멍게비빔밥",
+                "rawEvidence": {
+                  "name": "멍게비빔밥",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[7]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "청담머구리에서는 멍게비빔밥을 주문할 수 있습니다.",
+              "sourceSpan": "청담머구리에서는 멍게비빔밥을 주문할 수 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E010"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 8
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 8
+      }
+    },
+    {
+      "restaurantId": 9580,
+      "name": "빨간모자피자",
+      "inputHash": "ad16423d13e8d4bbb06e5f01e345e2bd63fe90c375e6ac820de0ef5bd99630a6",
+      "catalogHash": "9c6b9ab70612abdeb1fc6424f0ad6d8e1d827b1bf63314b65afa79b9aadb01b9",
+      "sourceEvidenceSummary": {
+        "business_hours": 6,
+        "identity": 2,
+        "keyword": 17,
+        "menu": 54,
+        "review": 2
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:ad287d487f277e12",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "빨간모자피자는 원조 고구마 피자를 판매합니다.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "원조 고구마 피자(R)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:a9d8279fa78ad94d",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "빨간모자피자는 슈퍼 콤비네이션 피자를 판매합니다.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "슈퍼 콤비네이션 피자(R)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:1d08e702537e28c1",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "빨간모자피자는 마르게리따 피자를 판매합니다.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "마르게리따 피자(R)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:154b86f7375b2490",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "빨간모자피자는 콰트로리치를 판매합니다.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "콰트로리치(R)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:7eff05f87624134a",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "빨간모자피자는 4LUV 피자를 판매합니다.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "4LUV 피자(R)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:5285d47df9eb23b0",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "빨간모자피자는 슬림세트를 판매합니다.",
+          "evidenceIds": [
+            "E008",
+            "E009"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E008",
+              "quote": "슬림세트 R"
+            },
+            {
+              "evidenceId": "E009",
+              "quote": "슬림세트 L"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9580,
+            "claimId": "9580:MENU_CHARACTERISTIC:ad287d487f277e12",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "빨간모자피자는 원조 고구마 피자를 판매합니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "원조 고구마 피자(R)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9580,
+              "claimId": "9580:MENU_CHARACTERISTIC:ad287d487f277e12",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "빨간모자피자는 원조 고구마 피자를 판매합니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "원조 고구마 피자(R)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "원조 고구마 피자(R)",
+                "rawEvidence": {
+                  "name": "원조 고구마 피자(R)",
+                  "price": 21900
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "빨간모자피자는 원조 고구마 피자를 판매합니다.",
+              "sourceSpan": "빨간모자피자는 원조 고구마 피자를 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9580,
+            "claimId": "9580:MENU_CHARACTERISTIC:a9d8279fa78ad94d",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "빨간모자피자는 슈퍼 콤비네이션 피자를 판매합니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "슈퍼 콤비네이션 피자(R)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9580,
+              "claimId": "9580:MENU_CHARACTERISTIC:a9d8279fa78ad94d",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "빨간모자피자는 슈퍼 콤비네이션 피자를 판매합니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "슈퍼 콤비네이션 피자(R)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "슈퍼 콤비네이션 피자(R)",
+                "rawEvidence": {
+                  "name": "슈퍼 콤비네이션 피자(R)",
+                  "price": 20900
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "빨간모자피자는 슈퍼콤비네이션피자를 판매합니다.",
+              "sourceSpan": "빨간모자피자는 슈퍼 콤비네이션 피자를 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9580,
+            "claimId": "9580:MENU_CHARACTERISTIC:1d08e702537e28c1",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "빨간모자피자는 마르게리따 피자를 판매합니다.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "마르게리따 피자(R)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9580,
+              "claimId": "9580:MENU_CHARACTERISTIC:1d08e702537e28c1",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "빨간모자피자는 마르게리따 피자를 판매합니다.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "마르게리따 피자(R)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "마르게리따 피자(R)",
+                "rawEvidence": {
+                  "name": "마르게리따 피자(R)",
+                  "price": 21900
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "빨간모자피자는 마르게리따 피자를 판매합니다.",
+              "sourceSpan": "빨간모자피자는 마르게리따 피자를 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9580,
+            "claimId": "9580:MENU_CHARACTERISTIC:154b86f7375b2490",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "빨간모자피자는 콰트로리치를 판매합니다.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "콰트로리치(R)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9580,
+              "claimId": "9580:MENU_CHARACTERISTIC:154b86f7375b2490",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "빨간모자피자는 콰트로리치를 판매합니다.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "콰트로리치(R)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "콰트로리치(R)",
+                "rawEvidence": {
+                  "name": "콰트로리치(R)",
+                  "price": 27900
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "빨간모자피자를 판매합니다.",
+              "sourceSpan": "빨간모자피자는 콰트로리치를 판매합니다."
+            },
+            {
+              "assertionId": "A2",
+              "text": "콰트로리치를 판매합니다.",
+              "sourceSpan": "콰트로리치를 판매합니다."
+            }
+          ],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9580,
+            "claimId": "9580:MENU_CHARACTERISTIC:7eff05f87624134a",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "빨간모자피자는 4LUV 피자를 판매합니다.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "4LUV 피자(R)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9580,
+              "claimId": "9580:MENU_CHARACTERISTIC:7eff05f87624134a",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "빨간모자피자는 4LUV 피자를 판매합니다.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "4LUV 피자(R)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "4LUV 피자(R)",
+                "rawEvidence": {
+                  "name": "4LUV 피자(R)",
+                  "price": 27900
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "빨간모자피자는 피자를 판매합니다.",
+              "sourceSpan": "빨간모자피자는 4LUV 피자를 판매합니다.",
+              "verdict": "UNSUPPORTED",
+              "supportingEvidenceIds": []
+            }
+          ],
+          "semanticVerdict": "UNSUPPORTED",
+          "approved": false,
+          "rejectReasons": [
+            "UNSUPPORTED"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9580,
+            "claimId": "9580:MENU_CHARACTERISTIC:5285d47df9eb23b0",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "빨간모자피자는 슬림세트를 판매합니다.",
+            "evidenceIds": [
+              "E008",
+              "E009"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "슬림세트 R"
+              },
+              {
+                "evidenceId": "E009",
+                "quote": "슬림세트 L"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9580,
+              "claimId": "9580:MENU_CHARACTERISTIC:5285d47df9eb23b0",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "빨간모자피자는 슬림세트를 판매합니다.",
+              "evidenceIds": [
+                "E008",
+                "E009"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E008",
+                  "quote": "슬림세트 R"
+                },
+                {
+                  "evidenceId": "E009",
+                  "quote": "슬림세트 L"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E008",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "슬림세트 R",
+                "rawEvidence": {
+                  "name": "슬림세트 R",
+                  "price": 19200
+                },
+                "sourceField": "sections.menu.items[5]"
+              },
+              {
+                "restaurantId": 9580,
+                "evidenceId": "E009",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "슬림세트 L",
+                "rawEvidence": {
+                  "name": "슬림세트 L",
+                  "price": 24300
+                },
+                "sourceField": "sections.menu.items[6]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "빨간모자피자는 슬림세를 판매합니다.",
+              "sourceSpan": "빨간모자피자는 슬림세트를 판매합니다.",
+              "verdict": "UNSUPPORTED",
+              "supportingEvidenceIds": []
+            }
+          ],
+          "semanticVerdict": "UNSUPPORTED",
+          "approved": false,
+          "rejectReasons": [
+            "UNSUPPORTED"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 3
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 3
+      }
+    },
+    {
+      "restaurantId": 9659,
+      "name": "만석",
+      "inputHash": "139a73d05f2c238d54dece333a9bd9e1068776f0725253fae29bafa5424381f6",
+      "catalogHash": "3a640d93725bf6e7668b5090a84b71adbdd6d2522eab35192a8e57c5880a7ca6",
+      "sourceEvidenceSummary": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 84,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:5d217bc59e038dcc",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 2인탕수육셋트와 만두를 함께 판매합니다.",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "2인탕수육셋트 + 만두4개(탕수육+짜장2)"
+            },
+            {
+              "evidenceId": "E004",
+              "quote": "2인탕수육셋트 + 만두4개(탕수육+짜장1+짬뽕1)"
+            },
+            {
+              "evidenceId": "E005",
+              "quote": "2인탕수육셋트 + 만두4개(탕수육+짬뽕2)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:ea6390d2ff54c7e9",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 쟁반짜장 메뉴를 제공합니다.",
+          "evidenceIds": [
+            "E006",
+            "E023",
+            "E024"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "쟁반짜장"
+            },
+            {
+              "evidenceId": "E023",
+              "quote": "쟁반짜장(기본)"
+            },
+            {
+              "evidenceId": "E024",
+              "quote": "쟁반짜장(곱빼기)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:46e8a35b8bd378c3",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 차돌박이짬뽕을 1인분과 곱빼기로 판매합니다.",
+          "evidenceIds": [
+            "E007",
+            "E032",
+            "E110",
+            "E111"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "차돌박이짬뽕(1인분)"
+            },
+            {
+              "evidenceId": "E032",
+              "quote": "차돌박이짬뽕(곱빼기)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:6432b8a97f1ee72b",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 왕만두, 군만두, 물만두 등 다양한 만두 메뉴를 제공합니다.",
+          "evidenceIds": [
+            "E010",
+            "E011",
+            "E012"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E010",
+              "quote": "왕만두"
+            },
+            {
+              "evidenceId": "E011",
+              "quote": "군만두"
+            },
+            {
+              "evidenceId": "E012",
+              "quote": "물만두"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:d654630404d38f8d",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 짬짜면, 볶짬면, 볶음밥 등 볶음류 메뉴를 판매합니다.",
+          "evidenceIds": [
+            "E017",
+            "E018",
+            "E019",
+            "E033",
+            "E101"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E017",
+              "quote": "짬짜면"
+            },
+            {
+              "evidenceId": "E018",
+              "quote": "볶짜면"
+            },
+            {
+              "evidenceId": "E019",
+              "quote": "볶짬면"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:8d6ad2fed9957389",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 삼선짬뽕을 1인분과 곱빼기로 제공합니다.",
+          "evidenceIds": [
+            "E020",
+            "E021",
+            "E030",
+            "E031"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E020",
+              "quote": "신알짬뽕(1인분)"
+            },
+            {
+              "evidenceId": "E021",
+              "quote": "신알짬뽕(곱빼기)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:58a1ae2cc2b37649",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 육즙등심탕수육을 소, 중, 대 사이즈로 판매합니다.",
+          "evidenceIds": [
+            "E042",
+            "E043",
+            "E044"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E042",
+              "quote": "육즙등심탕수육(小)"
+            },
+            {
+              "evidenceId": "E043",
+              "quote": "육즙등심탕수육(中)"
+            },
+            {
+              "evidenceId": "E044",
+              "quote": "육즙등심탕수육(大)"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9659,
+          "claimId": "9659:MENU_CHARACTERISTIC:3ec14b66f09452ef",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "만석은 코카콜라, 펩시 제로, 칠성 사이다 등 다양한 음료를 제공합니다.",
+          "evidenceIds": [
+            "E077",
+            "E078",
+            "E079",
+            "E080",
+            "E081"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E077",
+              "quote": "코카콜라 355ml"
+            },
+            {
+              "evidenceId": "E078",
+              "quote": "펩시 제로 355ml"
+            },
+            {
+              "evidenceId": "E079",
+              "quote": "칠성 사이다 355ml"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:5d217bc59e038dcc",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 2인탕수육셋트와 만두를 함께 판매합니다.",
+            "evidenceIds": [
+              "E003",
+              "E004",
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "2인탕수육셋트 + 만두4개(탕수육+짜장2)"
+              },
+              {
+                "evidenceId": "E004",
+                "quote": "2인탕수육셋트 + 만두4개(탕수육+짜장1+짬뽕1)"
+              },
+              {
+                "evidenceId": "E005",
+                "quote": "2인탕수육셋트 + 만두4개(탕수육+짬뽕2)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:5d217bc59e038dcc",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 2인탕수육셋트와 만두를 함께 판매합니다.",
+              "evidenceIds": [
+                "E003",
+                "E004",
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "2인탕수육셋트 + 만두4개(탕수육+짜장2)"
+                },
+                {
+                  "evidenceId": "E004",
+                  "quote": "2인탕수육셋트 + 만두4개(탕수육+짜장1+짬뽕1)"
+                },
+                {
+                  "evidenceId": "E005",
+                  "quote": "2인탕수육셋트 + 만두4개(탕수육+짬뽕2)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "2인탕수육셋트 + 만두4개(탕수육+짜장2)",
+                "rawEvidence": {
+                  "name": "2인탕수육셋트 + 만두4개(탕수육+짜장2)",
+                  "price": 29000
+                },
+                "sourceField": "sections.menu.items[0]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "2인탕수육셋트 + 만두4개(탕수육+짜장1+짬뽕1)",
+                "rawEvidence": {
+                  "name": "2인탕수육셋트 + 만두4개(탕수육+짜장1+짬뽕1)",
+                  "price": 30000
+                },
+                "sourceField": "sections.menu.items[1]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "2인탕수육셋트 + 만두4개(탕수육+짬뽕2)",
+                "rawEvidence": {
+                  "name": "2인탕수육셋트 + 만두4개(탕수육+짬뽕2)",
+                  "price": 31000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "만석은 2 인탕수육셋트와 만두를 함께 판매합니다.",
+              "sourceSpan": "만석은 2인탕수육셋트와 만두를 함께 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003",
+                "E004",
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:ea6390d2ff54c7e9",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 쟁반짜장 메뉴를 제공합니다.",
+            "evidenceIds": [
+              "E006",
+              "E023",
+              "E024"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "쟁반짜장"
+              },
+              {
+                "evidenceId": "E023",
+                "quote": "쟁반짜장(기본)"
+              },
+              {
+                "evidenceId": "E024",
+                "quote": "쟁반짜장(곱빼기)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:ea6390d2ff54c7e9",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 쟁반짜장 메뉴를 제공합니다.",
+              "evidenceIds": [
+                "E006",
+                "E023",
+                "E024"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "쟁반짜장"
+                },
+                {
+                  "evidenceId": "E023",
+                  "quote": "쟁반짜장(기본)"
+                },
+                {
+                  "evidenceId": "E024",
+                  "quote": "쟁반짜장(곱빼기)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "쟁반짜장",
+                "rawEvidence": {
+                  "name": "쟁반짜장",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[3]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E023",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "쟁반짜장(기본)",
+                "rawEvidence": {
+                  "name": "쟁반짜장(기본)",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[20]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E024",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "쟁반짜장(곱빼기)",
+                "rawEvidence": {
+                  "name": "쟁반짜장(곱빼기)",
+                  "price": 13000
+                },
+                "sourceField": "sections.menu.items[21]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "만석은 쥬란 짜장을 제공합니다.",
+              "sourceSpan": "만석은 쟁반짜장 메뉴를 제공합니다.",
+              "verdict": "UNSUPPORTED",
+              "supportingEvidenceIds": []
+            }
+          ],
+          "semanticVerdict": "UNSUPPORTED",
+          "approved": false,
+          "rejectReasons": [
+            "UNSUPPORTED"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:46e8a35b8bd378c3",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 차돌박이짬뽕을 1인분과 곱빼기로 판매합니다.",
+            "evidenceIds": [
+              "E007",
+              "E032",
+              "E110",
+              "E111"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "차돌박이짬뽕(1인분)"
+              },
+              {
+                "evidenceId": "E032",
+                "quote": "차돌박이짬뽕(곱빼기)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:46e8a35b8bd378c3",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 차돌박이짬뽕을 1인분과 곱빼기로 판매합니다.",
+              "evidenceIds": [
+                "E007",
+                "E032",
+                "E110",
+                "E111"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "차돌박이짬뽕(1인분)"
+                },
+                {
+                  "evidenceId": "E032",
+                  "quote": "차돌박이짬뽕(곱빼기)"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E110"
+              },
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E110"
+              },
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E111"
+              },
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E111"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "차돌박이짬뽕(1인분)",
+                "rawEvidence": {
+                  "name": "차돌박이짬뽕(1인분)",
+                  "price": 13000
+                },
+                "sourceField": "sections.menu.items[4]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E032",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "차돌박이짬뽕(곱빼기)",
+                "rawEvidence": {
+                  "name": "차돌박이짬뽕(곱빼기)",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[29]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E110",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "차돌박이",
+                "rawEvidence": {
+                  "keyword": "차돌박이",
+                  "mentionCount": 3
+                },
+                "sourceField": "sections.review.keywords[23]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E111",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "차돌짬뽕",
+                "rawEvidence": {
+                  "keyword": "차돌짬뽕",
+                  "mentionCount": 3
+                },
+                "sourceField": "sections.review.keywords[24]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+            "SUPPORT_QUOTE_MISSING"
+          ],
+          "sourceTypes": [
+            "keyword",
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:6432b8a97f1ee72b",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 왕만두, 군만두, 물만두 등 다양한 만두 메뉴를 제공합니다.",
+            "evidenceIds": [
+              "E010",
+              "E011",
+              "E012"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E010",
+                "quote": "왕만두"
+              },
+              {
+                "evidenceId": "E011",
+                "quote": "군만두"
+              },
+              {
+                "evidenceId": "E012",
+                "quote": "물만두"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:6432b8a97f1ee72b",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 왕만두, 군만두, 물만두 등 다양한 만두 메뉴를 제공합니다.",
+              "evidenceIds": [
+                "E010",
+                "E011",
+                "E012"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E010",
+                  "quote": "왕만두"
+                },
+                {
+                  "evidenceId": "E011",
+                  "quote": "군만두"
+                },
+                {
+                  "evidenceId": "E012",
+                  "quote": "물만두"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E010",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "왕만두",
+                "rawEvidence": {
+                  "name": "왕만두",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[7]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E011",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "군만두",
+                "rawEvidence": {
+                  "name": "군만두",
+                  "price": 9000
+                },
+                "sourceField": "sections.menu.items[8]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E012",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "물만두",
+                "rawEvidence": {
+                  "name": "물만두",
+                  "price": 9000
+                },
+                "sourceField": "sections.menu.items[9]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "만석은 다양한 만두 메뉴를 제공합니다.",
+              "sourceSpan": "만석은 왕만두, 군만두, 물만두 등 다양한 만두 메뉴를 제공합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E010",
+                "E011",
+                "E012"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:d654630404d38f8d",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 짬짜면, 볶짬면, 볶음밥 등 볶음류 메뉴를 판매합니다.",
+            "evidenceIds": [
+              "E017",
+              "E018",
+              "E019",
+              "E033",
+              "E101"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E017",
+                "quote": "짬짜면"
+              },
+              {
+                "evidenceId": "E018",
+                "quote": "볶짜면"
+              },
+              {
+                "evidenceId": "E019",
+                "quote": "볶짬면"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:d654630404d38f8d",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 짬짜면, 볶짬면, 볶음밥 등 볶음류 메뉴를 판매합니다.",
+              "evidenceIds": [
+                "E017",
+                "E018",
+                "E019",
+                "E033",
+                "E101"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E017",
+                  "quote": "짬짜면"
+                },
+                {
+                  "evidenceId": "E018",
+                  "quote": "볶짜면"
+                },
+                {
+                  "evidenceId": "E019",
+                  "quote": "볶짬면"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E033"
+              },
+              {
+                "code": "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+                "evidenceId": "E101"
+              },
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E101"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E017",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "짬짜면",
+                "rawEvidence": {
+                  "name": "짬짜면",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[14]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E018",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "볶짜면",
+                "rawEvidence": {
+                  "name": "볶짜면",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[15]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E019",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "볶짬면",
+                "rawEvidence": {
+                  "name": "볶짬면",
+                  "price": 11000
+                },
+                "sourceField": "sections.menu.items[16]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E033",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "볶음밥",
+                "rawEvidence": {
+                  "name": "볶음밥",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[30]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E101",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "볶음밥",
+                "rawEvidence": {
+                  "keyword": "볶음밥",
+                  "mentionCount": 7
+                },
+                "sourceField": "sections.review.keywords[14]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "EVIDENCE_SOURCE_TYPE_NOT_ALLOWED",
+            "SUPPORT_QUOTE_MISSING"
+          ],
+          "sourceTypes": [
+            "keyword",
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:8d6ad2fed9957389",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 삼선짬뽕을 1인분과 곱빼기로 제공합니다.",
+            "evidenceIds": [
+              "E020",
+              "E021",
+              "E030",
+              "E031"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E020",
+                "quote": "신알짬뽕(1인분)"
+              },
+              {
+                "evidenceId": "E021",
+                "quote": "신알짬뽕(곱빼기)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:8d6ad2fed9957389",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 삼선짬뽕을 1인분과 곱빼기로 제공합니다.",
+              "evidenceIds": [
+                "E020",
+                "E021",
+                "E030",
+                "E031"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E020",
+                  "quote": "신알짬뽕(1인분)"
+                },
+                {
+                  "evidenceId": "E021",
+                  "quote": "신알짬뽕(곱빼기)"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E030"
+              },
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E031"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E020",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "신알짬뽕(1인분)",
+                "rawEvidence": {
+                  "name": "신알짬뽕(1인분)",
+                  "price": 13000
+                },
+                "sourceField": "sections.menu.items[17]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E021",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "신알짬뽕(곱빼기)",
+                "rawEvidence": {
+                  "name": "신알짬뽕(곱빼기)",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[18]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E030",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "삼선짬뽕(1인분)",
+                "rawEvidence": {
+                  "name": "삼선짬뽕(1인분)",
+                  "price": 13000
+                },
+                "sourceField": "sections.menu.items[27]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E031",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "삼선짬뽕(곱빼기)",
+                "rawEvidence": {
+                  "name": "삼선짬뽕(곱빼기)",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[28]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "SUPPORT_QUOTE_MISSING"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:58a1ae2cc2b37649",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 육즙등심탕수육을 소, 중, 대 사이즈로 판매합니다.",
+            "evidenceIds": [
+              "E042",
+              "E043",
+              "E044"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E042",
+                "quote": "육즙등심탕수육(小)"
+              },
+              {
+                "evidenceId": "E043",
+                "quote": "육즙등심탕수육(中)"
+              },
+              {
+                "evidenceId": "E044",
+                "quote": "육즙등심탕수육(大)"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:58a1ae2cc2b37649",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 육즙등심탕수육을 소, 중, 대 사이즈로 판매합니다.",
+              "evidenceIds": [
+                "E042",
+                "E043",
+                "E044"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E042",
+                  "quote": "육즙등심탕수육(小)"
+                },
+                {
+                  "evidenceId": "E043",
+                  "quote": "육즙등심탕수육(中)"
+                },
+                {
+                  "evidenceId": "E044",
+                  "quote": "육즙등심탕수육(大)"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E042",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "육즙등심탕수육(小)",
+                "rawEvidence": {
+                  "name": "육즙등심탕수육(小)",
+                  "price": 23000
+                },
+                "sourceField": "sections.menu.items[39]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E043",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "육즙등심탕수육(中)",
+                "rawEvidence": {
+                  "name": "육즙등심탕수육(中)",
+                  "price": 28000
+                },
+                "sourceField": "sections.menu.items[40]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E044",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "육즙등심탕수육(大)",
+                "rawEvidence": {
+                  "name": "육즙등심탕수육(大)",
+                  "price": 38000
+                },
+                "sourceField": "sections.menu.items[41]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "만석은 육즙등심탕수육을 소 사이즈로 판매합니다.",
+              "sourceSpan": "만석은 육즙등심탕수육을 소,"
+            },
+            {
+              "assertionId": "A2",
+              "text": "만석은 육즙등심탕수육을 중 사이즈로 판매합니다.",
+              "sourceSpan": "만석은 육즙등심탕수육을 소, 중, 대"
+            },
+            {
+              "assertionId": "A3",
+              "text": "만석은 육즙등심탕수육을 대 사이즈로 판매합니다.",
+              "sourceSpan": "만석은 육즙등심탕수육을 소, 중, 대 사이즈로 판매합니다."
+            }
+          ],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9659,
+            "claimId": "9659:MENU_CHARACTERISTIC:3ec14b66f09452ef",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "만석은 코카콜라, 펩시 제로, 칠성 사이다 등 다양한 음료를 제공합니다.",
+            "evidenceIds": [
+              "E077",
+              "E078",
+              "E079",
+              "E080",
+              "E081"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E077",
+                "quote": "코카콜라 355ml"
+              },
+              {
+                "evidenceId": "E078",
+                "quote": "펩시 제로 355ml"
+              },
+              {
+                "evidenceId": "E079",
+                "quote": "칠성 사이다 355ml"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9659,
+              "claimId": "9659:MENU_CHARACTERISTIC:3ec14b66f09452ef",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "만석은 코카콜라, 펩시 제로, 칠성 사이다 등 다양한 음료를 제공합니다.",
+              "evidenceIds": [
+                "E077",
+                "E078",
+                "E079",
+                "E080",
+                "E081"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E077",
+                  "quote": "코카콜라 355ml"
+                },
+                {
+                  "evidenceId": "E078",
+                  "quote": "펩시 제로 355ml"
+                },
+                {
+                  "evidenceId": "E079",
+                  "quote": "칠성 사이다 355ml"
+                }
+              ]
+            },
+            "valid": false,
+            "errors": [
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E080"
+              },
+              {
+                "code": "SUPPORT_QUOTE_MISSING",
+                "evidenceId": "E081"
+              }
+            ],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E077",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "코카콜라 355ml",
+                "rawEvidence": {
+                  "name": "코카콜라 355ml",
+                  "price": 2500
+                },
+                "sourceField": "sections.menu.items[74]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E078",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "펩시 제로 355ml",
+                "rawEvidence": {
+                  "name": "펩시 제로 355ml",
+                  "price": 2500
+                },
+                "sourceField": "sections.menu.items[75]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E079",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "칠성 사이다 355ml",
+                "rawEvidence": {
+                  "name": "칠성 사이다 355ml",
+                  "price": 2500
+                },
+                "sourceField": "sections.menu.items[76]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E080",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "코카콜라 500ml",
+                "rawEvidence": {
+                  "name": "코카콜라 500ml",
+                  "price": 3000
+                },
+                "sourceField": "sections.menu.items[77]"
+              },
+              {
+                "restaurantId": 9659,
+                "evidenceId": "E081",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "스프라이트 500ml",
+                "rawEvidence": {
+                  "name": "스프라이트 500ml",
+                  "price": 3000
+                },
+                "sourceField": "sections.menu.items[78]"
+              }
+            ]
+          },
+          "atomicAssertions": [],
+          "semanticVerdict": null,
+          "approved": false,
+          "rejectReasons": [
+            "SUPPORT_QUOTE_MISSING"
+          ],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 2
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 2
+      }
+    },
+    {
+      "restaurantId": 9801,
+      "name": "공리",
+      "inputHash": "7610b5dbefb548b88e45dbdd24480f549db1a8dc6a4b3d24fd1e6604094b0c8b",
+      "catalogHash": "3a87cab788148eae434d3dbaf2cf2d7d482fd41cbf04ba75181d42e07e198a68",
+      "sourceEvidenceSummary": {
+        "business_hours": 5,
+        "identity": 2,
+        "keyword": 40,
+        "menu": 59,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 9801,
+          "claimId": "9801:MENU_CHARACTERISTIC:5d470e64a3fb46b2",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "공리에는 차돌짬뽕 메뉴가 있습니다.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "차돌짬뽕/밥"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9801,
+          "claimId": "9801:MENU_CHARACTERISTIC:5896c8d790972ac9",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "공리에는 전복볶음 메뉴가 있습니다.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "전복볶음"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9801,
+          "claimId": "9801:MENU_CHARACTERISTIC:346fcdb312e25ea1",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "공리에는 홍소관자 메뉴가 있습니다.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "홍소관자"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9801,
+          "claimId": "9801:MENU_CHARACTERISTIC:37591a7e8fd4afc0",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "공리에는 관자튀김 메뉴가 있습니다.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "관자튀김"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9801,
+          "claimId": "9801:MENU_CHARACTERISTIC:8d59564c15cdb75e",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "공리에는 아스파라거스관자 메뉴가 있습니다.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "아스파라거스관자"
+            }
+          ]
+        },
+        {
+          "restaurantId": 9801,
+          "claimId": "9801:MENU_CHARACTERISTIC:56938960448216fb",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "공리에는 마라관자 메뉴가 있습니다.",
+          "evidenceIds": [
+            "E008"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E008",
+              "quote": "마라관자"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 9801,
+            "claimId": "9801:MENU_CHARACTERISTIC:5d470e64a3fb46b2",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "공리에는 차돌짬뽕 메뉴가 있습니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "차돌짬뽕/밥"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9801,
+              "claimId": "9801:MENU_CHARACTERISTIC:5d470e64a3fb46b2",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "공리에는 차돌짬뽕 메뉴가 있습니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "차돌짬뽕/밥"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9801,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "차돌짬뽕/밥",
+                "rawEvidence": {
+                  "name": "차돌짬뽕/밥",
+                  "price": 13000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "공리에는 차돌짬뽕 메뉴가 있습니다.",
+              "sourceSpan": "공리에는 차돌짬뽕 메뉴가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9801,
+            "claimId": "9801:MENU_CHARACTERISTIC:5896c8d790972ac9",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "공리에는 전복볶음 메뉴가 있습니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "전복볶음"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9801,
+              "claimId": "9801:MENU_CHARACTERISTIC:5896c8d790972ac9",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "공리에는 전복볶음 메뉴가 있습니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "전복볶음"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9801,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "전복볶음",
+                "rawEvidence": {
+                  "name": "전복볶음",
+                  "price": 80000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "공리에는 전복볶음 메뉴가 있습니다.",
+              "sourceSpan": "공리에는 전복볶음 메뉴가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9801,
+            "claimId": "9801:MENU_CHARACTERISTIC:346fcdb312e25ea1",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "공리에는 홍소관자 메뉴가 있습니다.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "홍소관자"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9801,
+              "claimId": "9801:MENU_CHARACTERISTIC:346fcdb312e25ea1",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "공리에는 홍소관자 메뉴가 있습니다.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "홍소관자"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9801,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "홍소관자",
+                "rawEvidence": {
+                  "name": "홍소관자",
+                  "price": 50000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "공리에는 홍소관자 메뉴가 있습니다.",
+              "sourceSpan": "공리에는 홍소관자 메뉴가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9801,
+            "claimId": "9801:MENU_CHARACTERISTIC:37591a7e8fd4afc0",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "공리에는 관자튀김 메뉴가 있습니다.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "관자튀김"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9801,
+              "claimId": "9801:MENU_CHARACTERISTIC:37591a7e8fd4afc0",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "공리에는 관자튀김 메뉴가 있습니다.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "관자튀김"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9801,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "관자튀김",
+                "rawEvidence": {
+                  "name": "관자튀김",
+                  "price": 50000
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "공리에는 관자튀김 메뉴가 있습니다.",
+              "sourceSpan": "공리에는 관자튀김 메뉴가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E006"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9801,
+            "claimId": "9801:MENU_CHARACTERISTIC:8d59564c15cdb75e",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "공리에는 아스파라거스관자 메뉴가 있습니다.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "아스파라거스관자"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9801,
+              "claimId": "9801:MENU_CHARACTERISTIC:8d59564c15cdb75e",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "공리에는 아스파라거스관자 메뉴가 있습니다.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "아스파라거스관자"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9801,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "아스파라거스관자",
+                "rawEvidence": {
+                  "name": "아스파라거스관자",
+                  "price": 50000
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "공리에는 아스파라거스관자 메뉴가 있습니다.",
+              "sourceSpan": "공리에는 아스파라거스관자 메뉴가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E007"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 9801,
+            "claimId": "9801:MENU_CHARACTERISTIC:56938960448216fb",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "공리에는 마라관자 메뉴가 있습니다.",
+            "evidenceIds": [
+              "E008"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E008",
+                "quote": "마라관자"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 9801,
+              "claimId": "9801:MENU_CHARACTERISTIC:56938960448216fb",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "공리에는 마라관자 메뉴가 있습니다.",
+              "evidenceIds": [
+                "E008"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E008",
+                  "quote": "마라관자"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9801,
+                "evidenceId": "E008",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "마라관자",
+                "rawEvidence": {
+                  "name": "마라관자",
+                  "price": 50000
+                },
+                "sourceField": "sections.menu.items[5]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "공리에는 마라관자 메뉴가 있습니다.",
+              "sourceSpan": "공리에는 마라관자 메뉴가 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E008"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 6
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 6
+      }
+    },
+    {
+      "restaurantId": 10042,
+      "name": "주래등",
+      "inputHash": "538a27e01ee71278a1b7bc7327ebdf1e5abeed9fd10661c7519d90896841f115",
+      "catalogHash": "76aa5c48b7e328f98f0f5b644a8048e6abf65c66ae1f90e7281cb158af6c3101",
+      "sourceEvidenceSummary": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 35,
+        "menu": 68,
+        "review": 4
+      },
+      "promptEvidenceOrder": [
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "review",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "keyword",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu",
+        "menu"
+      ],
+      "generatorError": null,
+      "generatorValidationErrors": [],
+      "generatorRawTextPersisted": false,
+      "rawGeneratedClaims": [
+        {
+          "restaurantId": 10042,
+          "claimId": "10042:MENU_CHARACTERISTIC:fccdb0d223e5df02",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "주래등은 짜장면을 판매합니다.",
+          "evidenceIds": [
+            "E003"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "짜장면"
+            }
+          ]
+        },
+        {
+          "restaurantId": 10042,
+          "claimId": "10042:MENU_CHARACTERISTIC:1a68c32030931926",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "주래등은 고추짬뽕을 판매합니다.",
+          "evidenceIds": [
+            "E004"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E004",
+              "quote": "고추짬뽕"
+            }
+          ]
+        },
+        {
+          "restaurantId": 10042,
+          "claimId": "10042:MENU_CHARACTERISTIC:ba9995817a376d7f",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "주래등은 전복차돌짬뽕을 판매합니다.",
+          "evidenceIds": [
+            "E005"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E005",
+              "quote": "전복차돌짬뽕"
+            }
+          ]
+        },
+        {
+          "restaurantId": 10042,
+          "claimId": "10042:MENU_CHARACTERISTIC:7d5e75682ebc7fa9",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "주래등은 볶음짬뽕을 판매합니다.",
+          "evidenceIds": [
+            "E006"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E006",
+              "quote": "볶음짬뽕"
+            }
+          ]
+        },
+        {
+          "restaurantId": 10042,
+          "claimId": "10042:MENU_CHARACTERISTIC:eab7d2b36ea7de5e",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "주래등은 사천탕면을 판매합니다.",
+          "evidenceIds": [
+            "E007"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E007",
+              "quote": "사천탕면"
+            }
+          ]
+        },
+        {
+          "restaurantId": 10042,
+          "claimId": "10042:MENU_CHARACTERISTIC:af73d910cc140adb",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "주래등은 탕수육을 판매합니다.",
+          "evidenceIds": [
+            "E009"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E009",
+              "quote": "S0. 탕수육+식사1개"
+            }
+          ]
+        }
+      ],
+      "claimResults": [
+        {
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:MENU_CHARACTERISTIC:fccdb0d223e5df02",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "주래등은 짜장면을 판매합니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "짜장면"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:MENU_CHARACTERISTIC:fccdb0d223e5df02",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "주래등은 짜장면을 판매합니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "짜장면"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "짜장면",
+                "rawEvidence": {
+                  "name": "짜장면",
+                  "price": 9000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "주래등은 짜장면을 판매합니다.",
+              "sourceSpan": "주래등은 짜장면을 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:MENU_CHARACTERISTIC:1a68c32030931926",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "주래등은 고추짬뽕을 판매합니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "고추짬뽕"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:MENU_CHARACTERISTIC:1a68c32030931926",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "주래등은 고추짬뽕을 판매합니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "고추짬뽕"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "고추짬뽕",
+                "rawEvidence": {
+                  "name": "고추짬뽕",
+                  "price": 14000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "주래등은 고추짬뽕을 판매합니다.",
+              "sourceSpan": "주래등은 고추짬뽕을 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:MENU_CHARACTERISTIC:ba9995817a376d7f",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "주래등은 전복차돌짬뽕을 판매합니다.",
+            "evidenceIds": [
+              "E005"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E005",
+                "quote": "전복차돌짬뽕"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:MENU_CHARACTERISTIC:ba9995817a376d7f",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "주래등은 전복차돌짬뽕을 판매합니다.",
+              "evidenceIds": [
+                "E005"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E005",
+                  "quote": "전복차돌짬뽕"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E005",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "전복차돌짬뽕",
+                "rawEvidence": {
+                  "name": "전복차돌짬뽕",
+                  "price": 15000
+                },
+                "sourceField": "sections.menu.items[2]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "주래등은 전복차돌짬뽕을 판매합니다.",
+              "sourceSpan": "주래등은 전복차돌짬뽕을 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E005"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:MENU_CHARACTERISTIC:7d5e75682ebc7fa9",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "주래등은 볶음짬뽕을 판매합니다.",
+            "evidenceIds": [
+              "E006"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E006",
+                "quote": "볶음짬뽕"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:MENU_CHARACTERISTIC:7d5e75682ebc7fa9",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "주래등은 볶음짬뽕을 판매합니다.",
+              "evidenceIds": [
+                "E006"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E006",
+                  "quote": "볶음짬뽕"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E006",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "볶음짬뽕",
+                "rawEvidence": {
+                  "name": "볶음짬뽕",
+                  "price": 14000
+                },
+                "sourceField": "sections.menu.items[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "주래등은 볶음짬뽕을 판매합니다.",
+              "sourceSpan": "주래등은 볶음짬뽕을 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E006"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:MENU_CHARACTERISTIC:eab7d2b36ea7de5e",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "주래등은 사천탕면을 판매합니다.",
+            "evidenceIds": [
+              "E007"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E007",
+                "quote": "사천탕면"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:MENU_CHARACTERISTIC:eab7d2b36ea7de5e",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "주래등은 사천탕면을 판매합니다.",
+              "evidenceIds": [
+                "E007"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E007",
+                  "quote": "사천탕면"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E007",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "사천탕면",
+                "rawEvidence": {
+                  "name": "사천탕면",
+                  "price": 14000
+                },
+                "sourceField": "sections.menu.items[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "주래등은 사천탕면을 판매합니다.",
+              "sourceSpan": "주래등은 사천탕면을 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E007"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        },
+        {
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:MENU_CHARACTERISTIC:af73d910cc140adb",
+            "claimType": "MENU_CHARACTERISTIC",
+            "claimText": "주래등은 탕수육을 판매합니다.",
+            "evidenceIds": [
+              "E009"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E009",
+                "quote": "S0. 탕수육+식사1개"
+              }
+            ]
+          },
+          "deterministicValidation": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:MENU_CHARACTERISTIC:af73d910cc140adb",
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimText": "주래등은 탕수육을 판매합니다.",
+              "evidenceIds": [
+                "E009"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E009",
+                  "quote": "S0. 탕수육+식사1개"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E009",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "S0. 탕수육+식사1개",
+                "rawEvidence": {
+                  "name": "S0. 탕수육+식사1개",
+                  "price": 24000
+                },
+                "sourceField": "sections.menu.items[6]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "주래등은 탕수육을 판매합니다.",
+              "sourceSpan": "주래등은 탕수육을 판매합니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E009"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "sourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "approvedByEvidenceSource": {
+        "menu": 6
+      },
+      "approvedByClaimType": {
+        "MENU_CHARACTERISTIC": 6
+      }
+    }
+  ],
+  "metrics": {
+    "generatorCalls": 8,
+    "schemaErrorCount": 0,
+    "generatedClaimCount": 53,
+    "schemaValidCount": 53,
+    "koreanClaimCount": 53,
+    "deterministicPassCount": 43,
+    "exactQuotePassCount": 49,
+    "atomicizerCalls": 43,
+    "assertionVerifierCalls": 39,
+    "semanticSupportedCount": 36,
+    "approvedClaimCount": 36,
+    "approvedSource:menu": 36,
+    "rejected:EVIDENCE_SOURCE_TYPE_NOT_ALLOWED": 6,
+    "nonAtomicCount": 4,
+    "rejected:GENERATOR_NON_ATOMIC": 4,
+    "semanticUnsupportedCount": 3,
+    "rejected:UNSUPPORTED": 3,
+    "rejected:EVIDENCE_SOURCE_TYPE_NOT_ALLOWED,SUPPORT_QUOTE_MISSING": 2,
+    "rejected:SUPPORT_QUOTE_MISSING": 2,
+    "nonMenuApprovedRestaurantCount": 0,
+    "englishDominantClaimCount": 0,
+    "deterministicErrorCount": 10,
+    "koreanClaimRate": 1.0,
+    "restaurantCount": 8,
+    "model": "qwen3.5:9b",
+    "temperature": 0,
+    "maxClaimsPerRestaurant": 8,
+    "elapsedSeconds": 405.061,
+    "multiSourceCountsAreOverlapping": true,
+    "knownOverclaimApprovalCount": null,
+    "knownOverclaimManualReview": "PENDING",
+    "sideEffects": {
+      "mysqlReads": 64,
+      "mysqlWrites": 0,
+      "qdrantReads": 0,
+      "qdrantWrites": 0,
+      "embeddingCalls": 0,
+      "embeddingWrites": 0,
+      "geminiCalls": 0
+    }
+  }
+}

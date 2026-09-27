@@ -1,0 +1,61 @@
+{
+  "createdAt": "2026-09-26T09:11:53.501955+00:00",
+  "run1": {
+    "generatorCalls": 8,
+    "schemaErrorCount": 0,
+    "generatedClaimCount": 53,
+    "schemaValidCount": 53,
+    "koreanClaimCount": 53,
+    "englishDominantClaimCount": 0,
+    "koreanClaimRate": 1.0,
+    "deterministicPassCount": 43,
+    "exactQuotePassCount": 49,
+    "atomicizerCalls": 43,
+    "assertionVerifierCalls": 39,
+    "semanticSupportedCount": 36,
+    "approvedClaimCount": 36,
+    "approvedSource:menu": 36,
+    "approvedSource:keyword": 0,
+    "approvedSource:review": 0,
+    "generatedSourceClaimCountsOverlapping": {
+      "menu": 47,
+      "keyword": 8,
+      "review": 0
+    },
+    "generatedClaimTypeCounts": {
+      "MENU_CHARACTERISTIC": 53
+    },
+    "rejected:EVIDENCE_SOURCE_TYPE_NOT_ALLOWED": 6,
+    "nonAtomicCount": 4,
+    "rejected:GENERATOR_NON_ATOMIC": 4,
+    "semanticUnsupportedCount": 3,
+    "rejected:UNSUPPORTED": 3,
+    "rejected:EVIDENCE_SOURCE_TYPE_NOT_ALLOWED,SUPPORT_QUOTE_MISSING": 2,
+    "rejected:SUPPORT_QUOTE_MISSING": 2,
+    "nonMenuApprovedRestaurantCount": 0,
+    "deterministicErrorCount": 10,
+    "quoteMismatchCount": 0,
+    "unknownEvidenceIdCount": 0,
+    "provenanceLeakCount": 0,
+    "duplicateCount": 0,
+    "restaurantCount": 8,
+    "model": "qwen3.5:9b",
+    "temperature": 0,
+    "maxClaimsPerRestaurant": 8,
+    "elapsedSeconds": 405.061,
+    "multiSourceCountsAreOverlapping": true,
+    "knownOverclaimApprovalCount": 0,
+    "knownOverclaimManualReview": "PASS_MANUAL_REVIEW_ALL_GENERATED_CLAIMS",
+    "run2Eligible": false,
+    "run2BlockedReason": "Run 1 produced no non-menu approved claims; explicit run-2 gate not met.",
+    "sideEffects": {
+      "mysqlReads": 64,
+      "mysqlWrites": 0,
+      "qdrantReads": 0,
+      "qdrantWrites": 0,
+      "embeddingCalls": 0,
+      "embeddingWrites": 0,
+      "geminiCalls": 0
+    }
+  }
+}

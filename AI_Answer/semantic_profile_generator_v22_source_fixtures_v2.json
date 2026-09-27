@@ -1,0 +1,383 @@
+{
+  "fixtureVersion": "semantic-profile-generator-v2.2-source-contract-v2",
+  "createdAt": "2026-09-26T09:38:40.919391+00:00",
+  "frozenBeforeGeneratorCalls": true,
+  "caseCount": 11,
+  "sourceCounts": {
+    "MENU": 3,
+    "REVIEW_KEYWORD": 4,
+    "REVIEW": 4
+  },
+  "fixtures": [
+    {
+      "fixtureId": "menu-9568-1",
+      "restaurantId": 9568,
+      "sourceType": "MENU",
+      "evidenceId": "E003",
+      "rawEvidence": {
+        "evidenceId": "E003",
+        "sourceField": "sections.menu.items[0]",
+        "content": {
+          "name": "순대국",
+          "price": 10000
+        },
+        "section": "menu",
+        "status": "SUCCESS",
+        "evidenceType": "menu"
+      },
+      "resolvedRawText": "순대국",
+      "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+      "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+      "rawEvidenceHash": "6158e049cfef3d61f6227a1e86c725d0979a3df85ed8b4477fa9e3406d6158b5",
+      "semanticBoundary": {
+        "mayExpress": [
+          "listed menu item"
+        ],
+        "mustNotExpress": [
+          "customer opinion as official fact"
+        ]
+      },
+      "allowedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "menu-9569-1",
+      "restaurantId": 9569,
+      "sourceType": "MENU",
+      "evidenceId": "E003",
+      "rawEvidence": {
+        "evidenceId": "E003",
+        "sourceField": "sections.menu.items[0]",
+        "content": {
+          "name": "산곰장어",
+          "price": 24000
+        },
+        "section": "menu",
+        "status": "SUCCESS",
+        "evidenceType": "menu"
+      },
+      "resolvedRawText": "산곰장어",
+      "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+      "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519",
+      "rawEvidenceHash": "58e11dcd19fbb54c910857bfc59e1057b6a693e6aa7065c4a6026c0edd6232f5",
+      "semanticBoundary": {
+        "mayExpress": [
+          "listed menu item"
+        ],
+        "mustNotExpress": [
+          "customer opinion as official fact"
+        ]
+      },
+      "allowedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "menu-10042-1",
+      "restaurantId": 10042,
+      "sourceType": "MENU",
+      "evidenceId": "E004",
+      "rawEvidence": {
+        "evidenceId": "E004",
+        "sourceField": "sections.menu.items[1]",
+        "content": {
+          "name": "고추짬뽕",
+          "price": 14000
+        },
+        "section": "menu",
+        "status": "SUCCESS",
+        "evidenceType": "menu"
+      },
+      "resolvedRawText": "고추짬뽕",
+      "inputHash": "538a27e01ee71278a1b7bc7327ebdf1e5abeed9fd10661c7519d90896841f115",
+      "catalogHash": "76aa5c48b7e328f98f0f5b644a8048e6abf65c66ae1f90e7281cb158af6c3101",
+      "rawEvidenceHash": "c6c1c0742d39eb5a83b1962dd0f6791cfd61b13325b095510a4a65c475ca18aa",
+      "semanticBoundary": {
+        "mayExpress": [
+          "listed menu item"
+        ],
+        "mustNotExpress": [
+          "customer opinion as official fact"
+        ]
+      },
+      "allowedClaimTypes": [
+        "FOOD_TYPE",
+        "MENU_CHARACTERISTIC"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "keyword-food-mention",
+      "restaurantId": 9569,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E023",
+      "rawEvidence": {
+        "evidenceId": "E023",
+        "sourceField": "sections.review.keywords[10]",
+        "content": {
+          "keyword": "꼼장어",
+          "mentionCount": 46
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "keyword"
+      },
+      "resolvedRawText": "꼼장어",
+      "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+      "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519",
+      "rawEvidenceHash": "a7c4b4b08e52f22bc01086c417618d79494fc0e9d6308e16cf371f17a3f9fd45",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer review mentions a food term"
+        ],
+        "mustNotExpress": [
+          "official sale or representative menu"
+        ]
+      },
+      "allowedClaimTypes": [
+        "FOOD_MENTION"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "keyword-solo-9568",
+      "restaurantId": 9568,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E029",
+      "rawEvidence": {
+        "evidenceId": "E029",
+        "sourceField": "sections.review.keywords[4]",
+        "content": {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "mentionCount": 21
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "keyword"
+      },
+      "resolvedRawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+      "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+      "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+      "rawEvidenceHash": "90ffb8dea2b32695eda935ef0bd35d4d88a7df8f9328d770b8c67dedf75694fa",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer evaluation of dining context"
+        ],
+        "mustNotExpress": [
+          "official restaurant classification"
+        ]
+      },
+      "allowedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "keyword-service-9568",
+      "restaurantId": 9568,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E026",
+      "rawEvidence": {
+        "evidenceId": "E026",
+        "sourceField": "sections.review.keywords[1]",
+        "content": {
+          "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+          "mentionCount": 42
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "keyword"
+      },
+      "resolvedRawText": "\"친절해요\" 이 키워드를 선택한 인원",
+      "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+      "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+      "rawEvidenceHash": "53b8cbbf38eb1dcf15ed216050c68946c178e80688ada961e25c2716f24fada4",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer evaluation"
+        ],
+        "mustNotExpress": [
+          "official service policy or training level"
+        ]
+      },
+      "allowedClaimTypes": [
+        "VENUE_CHARACTERISTIC"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "keyword-solo-10042",
+      "restaurantId": 10042,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E075",
+      "rawEvidence": {
+        "evidenceId": "E075",
+        "sourceField": "sections.review.keywords[4]",
+        "content": {
+          "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "mentionCount": 92
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "keyword"
+      },
+      "resolvedRawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+      "inputHash": "538a27e01ee71278a1b7bc7327ebdf1e5abeed9fd10661c7519d90896841f115",
+      "catalogHash": "76aa5c48b7e328f98f0f5b644a8048e6abf65c66ae1f90e7281cb158af6c3101",
+      "rawEvidenceHash": "ad2eba7f0842e9c3fd2121b1843962cd6ae1972f5cac1fbdf95ed28998539c58",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer evaluation of dining context"
+        ],
+        "mustNotExpress": [
+          "official restaurant classification"
+        ]
+      },
+      "allowedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "review-food-experience",
+      "restaurantId": 9569,
+      "sourceType": "REVIEW",
+      "evidenceId": "E049",
+      "rawEvidence": {
+        "evidenceId": "E049",
+        "sourceField": "sections.review.representativeReviews[0]",
+        "content": {
+          "reviewId": "dom-10",
+          "text": "꼼장어 너무너무 사랑하는 사람으로 짱이네 정말 맛있어요 돌멍개도 넘 싱싱하고 쫄깃쫄깃 맛있어요 또 먹고 싶네요 양념 꼼장어도 먹었는데 사진 찍는거 잊어버리고.. ㅠㅠ 다 맛있지만 순정꼼장어가 더 맛있어요~ 마늘을 삶아서 나온걸 굽는거라 매운맛 하나 없고 너무 맛있어요 또 갈게요~~~"
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "review"
+      },
+      "resolvedRawText": "꼼장어 너무너무 사랑하는 사람으로 짱이네 정말 맛있어요 돌멍개도 넘 싱싱하고 쫄깃쫄깃 맛있어요 또 먹고 싶네요 양념 꼼장어도 먹었는데 사진 찍는거 잊어버리고.. ㅠㅠ 다 맛있지만 순정꼼장어가 더 맛있어요~ 마늘을 삶아서 나온걸 굽는거라 매운맛 하나 없고 너무 맛있어요 또 갈게요~~~",
+      "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+      "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519",
+      "rawEvidenceHash": "91069fdd2d786d4eae54055394b53041c618c7a3bc4bc1ea098f59d3f8111566",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer food experience or evaluation"
+        ],
+        "mustNotExpress": [
+          "official menu status beyond the review"
+        ]
+      },
+      "allowedClaimTypes": [
+        "TASTE"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "review-venue-context",
+      "restaurantId": 9569,
+      "sourceType": "REVIEW",
+      "evidenceId": "E050",
+      "rawEvidence": {
+        "evidenceId": "E050",
+        "sourceField": "sections.review.representativeReviews[1]",
+        "content": {
+          "reviewId": "dom-7",
+          "text": "집근처라 지나다닐때마다 꼭가봐야지 하다가 드디어 친구랑 방문했어요! 평일엔 늘붐비고 토요일에도 저녁되니까 사람많았지만 매장이 넓어서 편하게 식사가능! 초벌해나오고 자리에서도 먹기좋게 구워주셔서 맛나게 먹고왔어요ㅎㅎ 반찬도 야채도 다맛있어요~ 무엇보다 산꼼장어 최고!ㅎ"
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "review"
+      },
+      "resolvedRawText": "집근처라 지나다닐때마다 꼭가봐야지 하다가 드디어 친구랑 방문했어요! 평일엔 늘붐비고 토요일에도 저녁되니까 사람많았지만 매장이 넓어서 편하게 식사가능! 초벌해나오고 자리에서도 먹기좋게 구워주셔서 맛나게 먹고왔어요ㅎㅎ 반찬도 야채도 다맛있어요~ 무엇보다 산꼼장어 최고!ㅎ",
+      "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+      "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519",
+      "rawEvidenceHash": "57cbb3d3b9d62fe0f51bbe69acdeecf827528e677f8bdda78a4ed970a599477c",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer-described venue or dining experience"
+        ],
+        "mustNotExpress": [
+          "unmentioned facility or policy"
+        ]
+      },
+      "allowedClaimTypes": [
+        "VENUE_CHARACTERISTIC"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "review-taste-9568",
+      "restaurantId": 9568,
+      "sourceType": "REVIEW",
+      "evidenceId": "E059",
+      "rawEvidence": {
+        "evidenceId": "E059",
+        "sourceField": "sections.review.representativeReviews[3]",
+        "content": {
+          "reviewId": "dom-7",
+          "text": "강남에서 노포분위기에 맛난청국장 짜지도않고 맛있네요"
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "review"
+      },
+      "resolvedRawText": "강남에서 노포분위기에 맛난청국장 짜지도않고 맛있네요",
+      "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+      "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+      "rawEvidenceHash": "a51b722de9d8557c38b6ebe728be2495dae4e9966c4aece322f4d9df286daf75",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer taste evaluation"
+        ],
+        "mustNotExpress": [
+          "texture or preparation facts not stated"
+        ]
+      },
+      "allowedClaimTypes": [
+        "TASTE"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    },
+    {
+      "fixtureId": "review-quick-meal",
+      "restaurantId": 10042,
+      "sourceType": "REVIEW",
+      "evidenceId": "E109",
+      "rawEvidence": {
+        "evidenceId": "E109",
+        "sourceField": "sections.review.representativeReviews[3]",
+        "content": {
+          "reviewId": "dom-6",
+          "text": "줄이 길어요~! 점심에 가면요~ 출장 갈일 있어 왔는데 맛집으로 소문난곳 가격도 저렴하고 양도 많고 빨리 나와요 굳"
+        },
+        "section": "review",
+        "status": "SUCCESS",
+        "evidenceType": "review"
+      },
+      "resolvedRawText": "줄이 길어요~! 점심에 가면요~ 출장 갈일 있어 왔는데 맛집으로 소문난곳 가격도 저렴하고 양도 많고 빨리 나와요 굳",
+      "inputHash": "538a27e01ee71278a1b7bc7327ebdf1e5abeed9fd10661c7519d90896841f115",
+      "catalogHash": "76aa5c48b7e328f98f0f5b644a8048e6abf65c66ae1f90e7281cb158af6c3101",
+      "rawEvidenceHash": "c780a50f97b7fd95722f64080edada4b536e585a26f14f1a10661e272dda2f30",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer-reported quick service or meal experience"
+        ],
+        "mustNotExpress": [
+          "guaranteed service speed or official policy"
+        ]
+      },
+      "allowedClaimTypes": [
+        "DINING_CONTEXT"
+      ],
+      "expectationBasis": "Frozen from source type and the existing documented ClaimType meanings, before the v2 fixture generator run; this is an evaluation boundary, not runtime logic."
+    }
+  ],
+  "databaseWrites": 0,
+  "supersedesForEvaluation": "semantic-profile-generator-v2.2-source-contract-v1",
+  "claimTypeBoundaryPolicy": "source semantics + existing ClaimType definitions",
+  "fixtureHashV1": "a6e312f78d7830768f083f7226e6abd78dbb2289fc2fba698d255bb7e4d17570"
+}

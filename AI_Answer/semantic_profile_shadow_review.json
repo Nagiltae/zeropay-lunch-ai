@@ -1,0 +1,4817 @@
+{
+  "reviewVersion": "semantic-profile-shadow-review-v1",
+  "createdAt": "2026-09-25T18:02:54.613917+00:00",
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "readOnly": true,
+  "liveCollectionConsistency": {
+    "manifestPointCount": 40,
+    "livePointCount": 40,
+    "mismatches": [],
+    "consistent": true
+  },
+  "model": "qwen3.5:9b",
+  "verifierPromptVersion": "evidence-entailment-verifier-v1",
+  "verifierCalls": 40,
+  "regressionFixtureVerifierCalls": 4,
+  "regressionResults": [
+    {
+      "fixtureId": "taste-deliciousness-does-not-entail-tenderness-9559",
+      "claimId": "regression:9559:TASTE:tenderness",
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+        "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+        "catalogOwners": [
+          9559
+        ]
+      },
+      "deterministicValidation": {
+        "valid": true,
+        "evidenceIntegrityValid": true,
+        "quoteValid": true,
+        "errors": [],
+        "claim": {
+          "restaurantId": 9559,
+          "claimId": "regression:9559:TASTE:tenderness",
+          "claimType": "TASTE",
+          "claimText": "고기의 육즙이 풍부하고 육질이 부드럽다는 평가가 있다.",
+          "evidenceIds": [
+            "E032"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E032",
+              "quote": "\"음식이 맛있어요\" 이 키워드를 선택한 인원"
+            }
+          ]
+        },
+        "supportQuotes": [
+          {
+            "evidenceId": "E032",
+            "quote": "\"음식이 맛있어요\" 이 키워드를 선택한 인원"
+          }
+        ],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9559,
+            "evidenceId": "E032",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 337
+            },
+            "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+            "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "VERIFIER_ERROR",
+      "supportedPortion": "",
+      "unsupportedPortion": "",
+      "indexableUnderNewPolicy": false,
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "regressionBlocked": false,
+      "verifierErrorCode": "ValueError"
+    },
+    {
+      "fixtureId": "group-gathering-does-not-entail-corporate-or-family-events-9559",
+      "claimId": "regression:9559:DINING_CONTEXT:corporate-family",
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+        "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+        "catalogOwners": [
+          9559
+        ]
+      },
+      "deterministicValidation": {
+        "valid": true,
+        "evidenceIntegrityValid": true,
+        "quoteValid": true,
+        "errors": [],
+        "claim": {
+          "restaurantId": 9559,
+          "claimId": "regression:9559:DINING_CONTEXT:corporate-family",
+          "claimType": "DINING_CONTEXT",
+          "claimText": "가족 행사와 기업 회식에 적합한 장소다.",
+          "evidenceIds": [
+            "E036"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E036",
+              "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+            }
+          ]
+        },
+        "supportQuotes": [
+          {
+            "evidenceId": "E036",
+            "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+          }
+        ],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9559,
+            "evidenceId": "E036",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[5]",
+            "status": "SUCCESS",
+            "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 137
+            },
+            "catalogPath": "AI_Answer/semantic_profile_expansion_v2/9559/evidence_catalog.json",
+            "catalogHash": "db8cefe7ce40e4730610c99b289755b3bf30251d08c39463dc15cd2ea472443a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "가족 행사와 기업 회식에 적합한 장소라는 구체적 주장은 '단체모임' 키워드 언급만으로 직접 지지되지 않음. 가족행사·기업회식 등 특정 용도 적합성은 추론 불가.",
+      "indexableUnderNewPolicy": false,
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "regressionBlocked": true,
+      "verifierErrorCode": null
+    },
+    {
+      "fixtureId": "menu-evidence-does-not-entail-chicken-topping-9571",
+      "claimId": "regression:9571:MENU_CHARACTERISTIC:chicken-topping",
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+        "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+        "catalogOwners": [
+          9571
+        ]
+      },
+      "deterministicValidation": {
+        "valid": true,
+        "evidenceIntegrityValid": true,
+        "quoteValid": true,
+        "errors": [],
+        "claim": {
+          "restaurantId": 9571,
+          "claimId": "regression:9571:MENU_CHARACTERISTIC:chicken-topping",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "불고기와 닭고기, 채소를 포함한 다양한 피자 토핑을 제공한다.",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E003",
+              "quote": "비프타코피자"
+            },
+            {
+              "evidenceId": "E015",
+              "quote": "불고기피자"
+            },
+            {
+              "evidenceId": "E024",
+              "quote": "야채퀘사디아피자"
+            }
+          ]
+        },
+        "supportQuotes": [
+          {
+            "evidenceId": "E003",
+            "quote": "비프타코피자"
+          },
+          {
+            "evidenceId": "E015",
+            "quote": "불고기피자"
+          },
+          {
+            "evidenceId": "E024",
+            "quote": "야채퀘사디아피자"
+          }
+        ],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E003",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[0]",
+            "status": "SUCCESS",
+            "rawText": "비프타코피자",
+            "rawEvidence": {
+              "name": "비프타코피자",
+              "price": 15900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E015",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[12]",
+            "status": "SUCCESS",
+            "rawText": "불고기피자",
+            "rawEvidence": {
+              "name": "불고기피자",
+              "price": 11900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E024",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[21]",
+            "status": "SUCCESS",
+            "rawText": "야채퀘사디아피자",
+            "rawEvidence": {
+              "name": "야채퀘사디아피자",
+              "price": 13900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "불고기와 채소 토핑은 메뉴 명칭에서 직접 확인되나, '닭고기' 토핑이 제공된다는 주장은 원문 증거에 근거할 수 없음.",
+      "indexableUnderNewPolicy": false,
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "regressionBlocked": true,
+      "verifierErrorCode": null
+    },
+    {
+      "fixtureId": "group-and-spacious-do-not-entail-casual-meals-9568",
+      "claimId": "regression:9568:DINING_CONTEXT:casual-meals",
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+        "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+        "catalogOwners": [
+          9568
+        ]
+      },
+      "deterministicValidation": {
+        "valid": true,
+        "evidenceIntegrityValid": true,
+        "quoteValid": true,
+        "errors": [],
+        "claim": {
+          "restaurantId": 9568,
+          "claimId": "regression:9568:DINING_CONTEXT:casual-meals",
+          "claimType": "DINING_CONTEXT",
+          "claimText": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ],
+          "supportQuotes": [
+            {
+              "evidenceId": "E029",
+              "quote": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+            },
+            {
+              "evidenceId": "E032",
+              "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+            },
+            {
+              "evidenceId": "E033",
+              "quote": "\"매장이 넓어요\" 이 키워드를 선택한 인원"
+            }
+          ]
+        },
+        "supportQuotes": [
+          {
+            "evidenceId": "E029",
+            "quote": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원"
+          },
+          {
+            "evidenceId": "E032",
+            "quote": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원"
+          },
+          {
+            "evidenceId": "E033",
+            "quote": "\"매장이 넓어요\" 이 키워드를 선택한 인원"
+          }
+        ],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E029",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[4]",
+            "status": "SUCCESS",
+            "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 21
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E032",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[7]",
+            "status": "SUCCESS",
+            "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 10
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E033",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[8]",
+            "status": "SUCCESS",
+            "rawText": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 9
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "혼자 또는 단체 식사에 적합하고 매장이 넓어 편안한 캐주얼 식사를 할 수 있다.",
+      "unsupportedPortion": "",
+      "indexableUnderNewPolicy": true,
+      "expectedVerdicts": [
+        "PARTIAL",
+        "UNSUPPORTED"
+      ],
+      "regressionBlocked": false,
+      "verifierErrorCode": null
+    }
+  ],
+  "elapsedSeconds": 185.634,
+  "items": [
+    {
+      "ordinal": 1,
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_TYPE:dff03204365b",
+      "claimType": "FOOD_TYPE",
+      "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+      "evidenceIds": [
+        "E003",
+        "E011"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "마성김밥",
+          "rawEvidence": {
+            "name": "마성김밥",
+            "price": 4500
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E011",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[8]",
+          "status": "SUCCESS",
+          "rawText": "마성떡볶이",
+          "rawEvidence": {
+            "name": "마성떡볶이",
+            "price": 6000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+        "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+        "catalogOwners": [
+          9617
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E003",
+          "SUPPORT_QUOTE_MISSING:E011"
+        ],
+        "claim": {
+          "restaurantId": 9617,
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "claimType": "FOOD_TYPE",
+          "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E003",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[0]",
+            "status": "SUCCESS",
+            "rawText": "마성김밥",
+            "rawEvidence": {
+              "name": "마성김밥",
+              "price": 4500
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E011",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[8]",
+            "status": "SUCCESS",
+            "rawText": "마성떡볶이",
+            "rawEvidence": {
+              "name": "마성떡볶이",
+              "price": 6000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "김밥과 떡볶이가 메뉴에 존재함",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3936,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 2,
+      "restaurantId": 9617,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E023",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 33
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E058",
+          "evidenceType": "review",
+          "sourceField": "sections.review.representativeReviews[0]",
+          "status": "SUCCESS",
+          "rawText": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요.",
+          "rawEvidence": {
+            "reviewId": "dom-1",
+            "text": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요."
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+        "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+        "catalogOwners": [
+          9617
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E023",
+          "SUPPORT_QUOTE_MISSING:E058"
+        ],
+        "claim": {
+          "restaurantId": 9617,
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "claimType": "DINING_CONTEXT",
+          "claimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E023",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[0]",
+            "status": "SUCCESS",
+            "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 33
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E058",
+            "evidenceType": "review",
+            "sourceField": "sections.review.representativeReviews[0]",
+            "status": "SUCCESS",
+            "rawText": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요.",
+            "rawEvidence": {
+              "reviewId": "dom-1",
+              "text": "주문메뉴 - 참치김밥 점심시간에 볼일을보고 촉박하게 식사할 수 있는 곳이 없나 찾다가 발견하게 되었어요. 일단 논현역 내부에 위치하고 있어서 접근성이 좋습니다. 1인 테이블이 있기 때문에 혼밥하기에도 좋아요. 김밥의 경우에는 이미 쌓여 있기 때문에 바로 주문 후 먹을 수 있는게 특징이에요. 따뜻하게 어묵국물도 센스있게 나옵니다. 다만 바로 만든 김밥이 아니다보니 따끈함은 조금 아쉬울 수 있을 것 같아요. 그걸 상쇄해주는게 어묵국물이에요. 가성비도 좋고 빠르게 식사가 필요할 때 들리기에 좋은 것 같아요. 다음번에는 순대와 떡볶이를 곁들여 먹어보고 싶어요."
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "혼밥과 빠른 식사 맥락이 키워드 및 리뷰에서 직접 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4121,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 3,
+      "restaurantId": 9617,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "claimType": "TASTE",
+      "claimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E024",
+        "E027"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E024",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 30
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E027",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[4]",
+          "status": "SUCCESS",
+          "rawText": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 12
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+        "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+        "catalogOwners": [
+          9617
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E024",
+          "SUPPORT_QUOTE_MISSING:E027"
+        ],
+        "claim": {
+          "restaurantId": 9617,
+          "claimId": "9617:TASTE:f28b8581f50f",
+          "claimType": "TASTE",
+          "claimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E024",
+            "E027"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E024",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 30
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E027",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[4]",
+            "status": "SUCCESS",
+            "rawText": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 12
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3754,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 4,
+      "restaurantId": 9731,
+      "claimId": "9731:TASTE:f5bdbb7cd4cb",
+      "claimType": "TASTE",
+      "claimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E029"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9731,
+          "evidenceId": "E003",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 739
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+          "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9731,
+          "evidenceId": "E004",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 500
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+          "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9731,
+          "evidenceId": "E029",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[26]",
+          "status": "SUCCESS",
+          "rawText": "맛",
+          "rawEvidence": {
+            "keyword": "맛",
+            "mentionCount": 1182
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+          "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+        "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+        "catalogOwners": [
+          9731
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E003",
+          "SUPPORT_QUOTE_MISSING:E004",
+          "SUPPORT_QUOTE_MISSING:E029"
+        ],
+        "claim": {
+          "restaurantId": 9731,
+          "claimId": "9731:TASTE:f5bdbb7cd4cb",
+          "claimType": "TASTE",
+          "claimText": "TASTE: Delicious, Fresh Ingredients, Savory 근거: 맛, \"재료가 신선해요\" 이 키워드를 선택한 인원, \"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E029"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9731,
+            "evidenceId": "E003",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[0]",
+            "status": "SUCCESS",
+            "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 739
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+            "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9731,
+            "evidenceId": "E004",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 500
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+            "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9731,
+            "evidenceId": "E029",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[26]",
+            "status": "SUCCESS",
+            "rawText": "맛",
+            "rawEvidence": {
+              "keyword": "맛",
+              "mentionCount": 1182
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+            "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "TASTE: Delicious, Fresh Ingredients, Savory",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3502,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 5,
+      "restaurantId": 9567,
+      "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+      "claimType": "FOOD_TYPE",
+      "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E010"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9567,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "오징어볶음",
+          "rawEvidence": {
+            "name": "오징어볶음",
+            "price": 9000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+          "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9567,
+          "evidenceId": "E004",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[1]",
+          "status": "SUCCESS",
+          "rawText": "갈비찜 정식",
+          "rawEvidence": {
+            "name": "갈비찜 정식",
+            "price": 20000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+          "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9567,
+          "evidenceId": "E010",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[7]",
+          "status": "SUCCESS",
+          "rawText": "매생이",
+          "rawEvidence": {
+            "name": "매생이",
+            "price": 11000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+          "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+        "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+        "catalogOwners": [
+          9567
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E003",
+          "SUPPORT_QUOTE_MISSING:E004",
+          "SUPPORT_QUOTE_MISSING:E010"
+        ],
+        "claim": {
+          "restaurantId": 9567,
+          "claimId": "9567:FOOD_TYPE:8f9acd1b7bde",
+          "claimType": "FOOD_TYPE",
+          "claimText": "FOOD_TYPE: The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes. 근거: 갈비찜 정식, 오징어볶음, 매생이",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E010"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9567,
+            "evidenceId": "E003",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[0]",
+            "status": "SUCCESS",
+            "rawText": "오징어볶음",
+            "rawEvidence": {
+              "name": "오징어볶음",
+              "price": 9000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+            "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9567,
+            "evidenceId": "E004",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[1]",
+            "status": "SUCCESS",
+            "rawText": "갈비찜 정식",
+            "rawEvidence": {
+              "name": "갈비찜 정식",
+              "price": 20000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+            "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9567,
+            "evidenceId": "E010",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[7]",
+            "status": "SUCCESS",
+            "rawText": "매생이",
+            "rawEvidence": {
+              "name": "매생이",
+              "price": 11000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9567/semantic_profile_v1_evidence_catalog_9567.json",
+            "catalogHash": "0d506c2992208239529d786cc91ead5678b403c811c5d323f8e4a2cced2b5b56",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "The restaurant serves Korean set meals including galbi-jjim, octopus stir-fry, and various seafood dishes.",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 5328,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 6,
+      "restaurantId": 9580,
+      "claimId": "9580:TASTE:3aa7f8353082",
+      "claimType": "TASTE",
+      "claimText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛",
+      "evidenceIds": [
+        "E057",
+        "E071"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E057",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 32
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E071",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[14]",
+          "status": "SUCCESS",
+          "rawText": "맛",
+          "rawEvidence": {
+            "keyword": "맛",
+            "mentionCount": 16
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+        "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+        "catalogOwners": [
+          9580
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E057",
+          "SUPPORT_QUOTE_MISSING:E071"
+        ],
+        "claim": {
+          "restaurantId": 9580,
+          "claimId": "9580:TASTE:3aa7f8353082",
+          "claimType": "TASTE",
+          "claimText": "TASTE: Customers frequently mention that the food is delicious. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E057",
+            "E071"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E057",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[0]",
+            "status": "SUCCESS",
+            "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 32
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E071",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[14]",
+            "status": "SUCCESS",
+            "rawText": "맛",
+            "rawEvidence": {
+              "keyword": "맛",
+              "mentionCount": 16
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객들이 음식이 맛있다고 자주 언급한다는 주장은, '음식이 맛있어요' 키워드 선택 인원 (32명) 과 '맛' 키워드 선택 인원 (16명) 이 이를 뒷받침한다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 5825,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 7,
+      "restaurantId": 9580,
+      "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "claimText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스",
+      "evidenceIds": [
+        "E060",
+        "E073"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E060",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[3]",
+          "status": "SUCCESS",
+          "rawText": "\"친절해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 7
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E073",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[16]",
+          "status": "SUCCESS",
+          "rawText": "서비스",
+          "rawEvidence": {
+            "keyword": "서비스",
+            "mentionCount": 3
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+        "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+        "catalogOwners": [
+          9580
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E060",
+          "SUPPORT_QUOTE_MISSING:E073"
+        ],
+        "claim": {
+          "restaurantId": 9580,
+          "claimId": "9580:VENUE_CHARACTERISTIC:2ce8918ad5bc",
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimText": "VENUE_CHARACTERISTIC: Customers appreciate the friendly service provided by the staff. 근거: \"친절해요\" 이 키워드를 선택한 인원, 서비스",
+          "evidenceIds": [
+            "E060",
+            "E073"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E060",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[3]",
+            "status": "SUCCESS",
+            "rawText": "\"친절해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 7
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E073",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[16]",
+            "status": "SUCCESS",
+            "rawText": "서비스",
+            "rawEvidence": {
+              "keyword": "서비스",
+              "mentionCount": 3
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "친절해요 키워드 언급이 직원 서비스의 친절한 점을 지지함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3226,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 8,
+      "restaurantId": 9580,
+      "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+      "evidenceIds": [
+        "E008",
+        "E010"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E008",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[5]",
+          "status": "SUCCESS",
+          "rawText": "슬림세트 R",
+          "rawEvidence": {
+            "name": "슬림세트 R",
+            "price": 19200
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E010",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[7]",
+          "status": "SUCCESS",
+          "rawText": "세트메뉴 R",
+          "rawEvidence": {
+            "name": "세트메뉴 R",
+            "price": 32900
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+        "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+        "catalogOwners": [
+          9580
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E008",
+          "SUPPORT_QUOTE_MISSING:E010"
+        ],
+        "claim": {
+          "restaurantId": 9580,
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E008",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[5]",
+            "status": "SUCCESS",
+            "rawText": "슬림세트 R",
+            "rawEvidence": {
+              "name": "슬림세트 R",
+              "price": 19200
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E010",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[7]",
+            "status": "SUCCESS",
+            "rawText": "세트메뉴 R",
+            "rawEvidence": {
+              "name": "세트메뉴 R",
+              "price": 32900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "The menu includes a variety of pizza sizes",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3143,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 9,
+      "restaurantId": 9568,
+      "claimId": "9568:FOOD_TYPE:a95992a932ea",
+      "claimType": "FOOD_TYPE",
+      "claimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+      "evidenceIds": [
+        "E003",
+        "E004",
+        "E012",
+        "E013"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "순대국",
+          "rawEvidence": {
+            "name": "순대국",
+            "price": 10000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E004",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[1]",
+          "status": "SUCCESS",
+          "rawText": "한우차돌박이",
+          "rawEvidence": {
+            "name": "한우차돌박이",
+            "price": 30000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E012",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[9]",
+          "status": "SUCCESS",
+          "rawText": "청국장+비빔밥",
+          "rawEvidence": {
+            "name": "청국장+비빔밥",
+            "price": 10000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E013",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[10]",
+          "status": "SUCCESS",
+          "rawText": "된장찌개+비빔밥",
+          "rawEvidence": {
+            "name": "된장찌개+비빔밥",
+            "price": 10000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+        "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+        "catalogOwners": [
+          9568
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E003",
+          "SUPPORT_QUOTE_MISSING:E004",
+          "SUPPORT_QUOTE_MISSING:E012",
+          "SUPPORT_QUOTE_MISSING:E013"
+        ],
+        "claim": {
+          "restaurantId": 9568,
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "claimType": "FOOD_TYPE",
+          "claimText": "FOOD_TYPE: The restaurant serves traditional Korean dishes such as Sundaeguk, Hanwoo Chadorubagi, and various stews like Doenjangjjigae. 근거: 순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E003",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[0]",
+            "status": "SUCCESS",
+            "rawText": "순대국",
+            "rawEvidence": {
+              "name": "순대국",
+              "price": 10000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E004",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[1]",
+            "status": "SUCCESS",
+            "rawText": "한우차돌박이",
+            "rawEvidence": {
+              "name": "한우차돌박이",
+              "price": 30000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E012",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[9]",
+            "status": "SUCCESS",
+            "rawText": "청국장+비빔밥",
+            "rawEvidence": {
+              "name": "청국장+비빔밥",
+              "price": 10000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E013",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[10]",
+            "status": "SUCCESS",
+            "rawText": "된장찌개+비빔밥",
+            "rawEvidence": {
+              "name": "된장찌개+비빔밥",
+              "price": 10000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "순대국, 한우차돌박이, 청국장+비빔밥, 된장찌개+비빔밥이 메뉴에 실려 있음.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 5535,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 10,
+      "restaurantId": 9568,
+      "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+      "evidenceIds": [
+        "E005",
+        "E006",
+        "E009",
+        "E018"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E005",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[2]",
+          "status": "SUCCESS",
+          "rawText": "서울밥상",
+          "rawEvidence": {
+            "name": "서울밥상",
+            "price": 15000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E006",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[3]",
+          "status": "SUCCESS",
+          "rawText": "시골밥상",
+          "rawEvidence": {
+            "name": "시골밥상",
+            "price": 11000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E009",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[6]",
+          "status": "SUCCESS",
+          "rawText": "떡만두국",
+          "rawEvidence": {
+            "name": "떡만두국",
+            "price": 8000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E018",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[15]",
+          "status": "SUCCESS",
+          "rawText": "천겹살",
+          "rawEvidence": {
+            "name": "천겹살",
+            "price": 20000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+        "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+        "catalogOwners": [
+          9568
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E005",
+          "SUPPORT_QUOTE_MISSING:E006",
+          "SUPPORT_QUOTE_MISSING:E009",
+          "SUPPORT_QUOTE_MISSING:E018"
+        ],
+        "claim": {
+          "restaurantId": 9568,
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E005",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[2]",
+            "status": "SUCCESS",
+            "rawText": "서울밥상",
+            "rawEvidence": {
+              "name": "서울밥상",
+              "price": 15000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E006",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[3]",
+            "status": "SUCCESS",
+            "rawText": "시골밥상",
+            "rawEvidence": {
+              "name": "시골밥상",
+              "price": 11000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E009",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[6]",
+            "status": "SUCCESS",
+            "rawText": "떡만두국",
+            "rawEvidence": {
+              "name": "떡만두국",
+              "price": 8000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E018",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[15]",
+            "status": "SUCCESS",
+            "rawText": "천겹살",
+            "rawEvidence": {
+              "name": "천겹살",
+              "price": 20000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "wide variety, affordable set meals, side dishes",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4169,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 11,
+      "restaurantId": 9568,
+      "claimId": "9568:DINING_CONTEXT:82defca705c2",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E029",
+        "E032",
+        "E033"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E029",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[4]",
+          "status": "SUCCESS",
+          "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 21
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E032",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[7]",
+          "status": "SUCCESS",
+          "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 10
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9568,
+          "evidenceId": "E033",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[8]",
+          "status": "SUCCESS",
+          "rawText": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 9
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+          "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+        "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+        "catalogOwners": [
+          9568
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E029",
+          "SUPPORT_QUOTE_MISSING:E032",
+          "SUPPORT_QUOTE_MISSING:E033"
+        ],
+        "claim": {
+          "restaurantId": 9568,
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "claimType": "DINING_CONTEXT",
+          "claimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E029",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[4]",
+            "status": "SUCCESS",
+            "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 21
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E032",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[7]",
+            "status": "SUCCESS",
+            "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 10
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9568,
+            "evidenceId": "E033",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[8]",
+            "status": "SUCCESS",
+            "rawText": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 9
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9568/semantic_profile_v1_evidence_catalog_9568.json",
+            "catalogHash": "79a46e7ee1047321c9cfacbf8d916c912fe2416609b6aa02249b1d8c3e76ba93",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "The claim infers 'spacious layout' as the sole cause for suitability in all contexts, but evidence E032 ('group gatherings') and E033 ('wide space') do not prove that the venue is suitable for *casual meals* or that the *layout* specifically enables solo dining. The keyword mentions indicate customer preference but do not explicitly validate the causal link to 'spacious layout' being the reason for suitability across all stated contexts.",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 7883,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 12,
+      "restaurantId": 9569,
+      "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+      "claimType": "FOOD_TYPE",
+      "claimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+      "evidenceIds": [
+        "E003",
+        "E006"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "산곰장어",
+          "rawEvidence": {
+            "name": "산곰장어",
+            "price": 24000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E006",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[3]",
+          "status": "SUCCESS",
+          "rawText": "돌멍게",
+          "rawEvidence": {
+            "name": "돌멍게",
+            "price": 40000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+        "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+        "catalogOwners": [
+          9569
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E003",
+          "SUPPORT_QUOTE_MISSING:E006"
+        ],
+        "claim": {
+          "restaurantId": 9569,
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "claimType": "FOOD_TYPE",
+          "claimText": "FOOD_TYPE: The restaurant specializes in eel dishes such as mountain eel (san-gom-jang-eo) and sea snail (dol-meng-ge). 근거: 산곰장어, 돌멍게",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E003",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[0]",
+            "status": "SUCCESS",
+            "rawText": "산곰장어",
+            "rawEvidence": {
+              "name": "산곰장어",
+              "price": 24000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E006",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[3]",
+            "status": "SUCCESS",
+            "rawText": "돌멍게",
+            "rawEvidence": {
+              "name": "돌멍게",
+              "price": 40000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "VERIFIER_ERROR",
+      "supportedPortion": "",
+      "unsupportedPortion": "",
+      "verifierStatus": "ERROR",
+      "verifierErrorCode": "ValueError",
+      "verifierLatencyMs": 4160,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 13,
+      "restaurantId": 9569,
+      "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+      "evidenceIds": [
+        "E007",
+        "E008",
+        "E012"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E007",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[4]",
+          "status": "SUCCESS",
+          "rawText": "낙지",
+          "rawEvidence": {
+            "name": "낙지",
+            "price": 30000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E008",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[5]",
+          "status": "SUCCESS",
+          "rawText": "해삼",
+          "rawEvidence": {
+            "name": "해삼",
+            "price": 30000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E012",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[9]",
+          "status": "SUCCESS",
+          "rawText": "김밥추가",
+          "rawEvidence": {
+            "name": "김밥추가",
+            "price": 4000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+        "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+        "catalogOwners": [
+          9569
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E007",
+          "SUPPORT_QUOTE_MISSING:E008",
+          "SUPPORT_QUOTE_MISSING:E012"
+        ],
+        "claim": {
+          "restaurantId": 9569,
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E007",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[4]",
+            "status": "SUCCESS",
+            "rawText": "낙지",
+            "rawEvidence": {
+              "name": "낙지",
+              "price": 30000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E008",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[5]",
+            "status": "SUCCESS",
+            "rawText": "해삼",
+            "rawEvidence": {
+              "name": "해삼",
+              "price": 30000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E012",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[9]",
+            "status": "SUCCESS",
+            "rawText": "김밥추가",
+            "rawEvidence": {
+              "name": "김밥추가",
+              "price": 4000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "메뉴에 낙지, 해삼, 김밥이 포함되어 있어 다양한 해산물과 쌀밥 요리가 제공된다는 주장은 원문 메뉴 항목으로 직접 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4810,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 14,
+      "restaurantId": 9569,
+      "claimId": "9569:TASTE:8a9b62a3677a",
+      "claimType": "TASTE",
+      "claimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+      "evidenceIds": [
+        "E013",
+        "E014",
+        "E038"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E013",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 128
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E014",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 76
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E038",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[25]",
+          "status": "SUCCESS",
+          "rawText": "맛",
+          "rawEvidence": {
+            "keyword": "맛",
+            "mentionCount": 74
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+        "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+        "catalogOwners": [
+          9569
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E013",
+          "SUPPORT_QUOTE_MISSING:E014",
+          "SUPPORT_QUOTE_MISSING:E038"
+        ],
+        "claim": {
+          "restaurantId": 9569,
+          "claimId": "9569:TASTE:8a9b62a3677a",
+          "claimType": "TASTE",
+          "claimText": "TASTE: Customers frequently describe the food as delicious, fresh, and satisfying. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E013",
+            "E014",
+            "E038"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E013",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[0]",
+            "status": "SUCCESS",
+            "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 128
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E014",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 76
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E038",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[25]",
+            "status": "SUCCESS",
+            "rawText": "맛",
+            "rawEvidence": {
+              "keyword": "맛",
+              "mentionCount": 74
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객들이 음식을 맛있고, 신선하며, 만족스럽다고 자주 묘사한다는 주장은 제공된 키워드 언급 (음식이 맛있어요: 128 회, 재료가 신선해요: 76 회, 맛: 74 회) 에 의해 직접 지지됩니다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 5820,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 15,
+      "restaurantId": 9569,
+      "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E017",
+        "E018"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E017",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[4]",
+          "status": "SUCCESS",
+          "rawText": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 14
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E018",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[5]",
+          "status": "SUCCESS",
+          "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 13
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+        "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+        "catalogOwners": [
+          9569
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E017",
+          "SUPPORT_QUOTE_MISSING:E018"
+        ],
+        "claim": {
+          "restaurantId": 9569,
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "claimType": "DINING_CONTEXT",
+          "claimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E017",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[4]",
+            "status": "SUCCESS",
+            "rawText": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"매장이 넓어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 14
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E018",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[5]",
+            "status": "SUCCESS",
+            "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 13
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "The venue is suitable for group gatherings and offers a spacious interior.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4039,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 16,
+      "restaurantId": 9569,
+      "claimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "claimText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E020",
+        "E022"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E020",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[7]",
+          "status": "SUCCESS",
+          "rawText": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 8
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E022",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[9]",
+          "status": "SUCCESS",
+          "rawText": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 7
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+        "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+        "catalogOwners": [
+          9569
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E020",
+          "SUPPORT_QUOTE_MISSING:E022"
+        ],
+        "claim": {
+          "restaurantId": 9569,
+          "claimId": "9569:VENUE_CHARACTERISTIC:5888bb76f1aa",
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimText": "VENUE_CHARACTERISTIC: The restaurant maintains high standards of cleanliness and provides convenient parking. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"주차하기 편해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E020",
+            "E022"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E020",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[7]",
+            "status": "SUCCESS",
+            "rawText": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"주차하기 편해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 8
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E022",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[9]",
+            "status": "SUCCESS",
+            "rawText": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 7
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "청결함, 주차 편의성",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3209,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 17,
+      "restaurantId": 9570,
+      "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "DINING_CONTEXT: The venue is suitable for special occasions and group gatherings. 근거: \"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E015",
+        "E016"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9570,
+          "evidenceId": "E015",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[5]",
+          "status": "SUCCESS",
+          "rawText": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 20
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+          "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9570,
+          "evidenceId": "E016",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[6]",
+          "status": "SUCCESS",
+          "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 18
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+          "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+        "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+        "catalogOwners": [
+          9570
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E015",
+          "SUPPORT_QUOTE_MISSING:E016"
+        ],
+        "claim": {
+          "restaurantId": 9570,
+          "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+          "claimType": "DINING_CONTEXT",
+          "claimText": "DINING_CONTEXT: The venue is suitable for special occasions and group gatherings. 근거: \"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E015",
+            "E016"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9570,
+            "evidenceId": "E015",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[5]",
+            "status": "SUCCESS",
+            "rawText": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 20
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+            "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9570,
+            "evidenceId": "E016",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[6]",
+            "status": "SUCCESS",
+            "rawText": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 18
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+            "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "The venue is suitable for special occasions and group gatherings.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3413,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 18,
+      "restaurantId": 9570,
+      "claimId": "9570:VENUE_CHARACTERISTIC:daed4352bb52",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "claimText": "VENUE_CHARACTERISTIC: Customers frequently mention the stylish interior design. 근거: \"인테리어가 멋져요\" 이 키워드를 선택한 인원, 분위기",
+      "evidenceIds": [
+        "E011",
+        "E037"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9570,
+          "evidenceId": "E011",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+            "mentionCount": 85
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+          "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9570,
+          "evidenceId": "E037",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[27]",
+          "status": "SUCCESS",
+          "rawText": "분위기",
+          "rawEvidence": {
+            "keyword": "분위기",
+            "mentionCount": 55
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+          "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+        "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+        "catalogOwners": [
+          9570
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E011",
+          "SUPPORT_QUOTE_MISSING:E037"
+        ],
+        "claim": {
+          "restaurantId": 9570,
+          "claimId": "9570:VENUE_CHARACTERISTIC:daed4352bb52",
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimText": "VENUE_CHARACTERISTIC: Customers frequently mention the stylish interior design. 근거: \"인테리어가 멋져요\" 이 키워드를 선택한 인원, 분위기",
+          "evidenceIds": [
+            "E011",
+            "E037"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9570,
+            "evidenceId": "E011",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"인테리어가 멋져요\" 이 키워드를 선택한 인원",
+              "mentionCount": 85
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+            "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9570,
+            "evidenceId": "E037",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[27]",
+            "status": "SUCCESS",
+            "rawText": "분위기",
+            "rawEvidence": {
+              "keyword": "분위기",
+              "mentionCount": 55
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+            "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객들이 인테리어 디자인과 분위기를 자주 언급함",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3612,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 19,
+      "restaurantId": 9571,
+      "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+      "evidenceIds": [
+        "E003",
+        "E015",
+        "E024"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E003",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[0]",
+          "status": "SUCCESS",
+          "rawText": "비프타코피자",
+          "rawEvidence": {
+            "name": "비프타코피자",
+            "price": 15900
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+          "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E015",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[12]",
+          "status": "SUCCESS",
+          "rawText": "불고기피자",
+          "rawEvidence": {
+            "name": "불고기피자",
+            "price": 11900
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+          "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E024",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[21]",
+          "status": "SUCCESS",
+          "rawText": "야채퀘사디아피자",
+          "rawEvidence": {
+            "name": "야채퀘사디아피자",
+            "price": 13900
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+          "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+        "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+        "catalogOwners": [
+          9571
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E003",
+          "SUPPORT_QUOTE_MISSING:E015",
+          "SUPPORT_QUOTE_MISSING:E024"
+        ],
+        "claim": {
+          "restaurantId": 9571,
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E003",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[0]",
+            "status": "SUCCESS",
+            "rawText": "비프타코피자",
+            "rawEvidence": {
+              "name": "비프타코피자",
+              "price": 15900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E015",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[12]",
+            "status": "SUCCESS",
+            "rawText": "불고기피자",
+            "rawEvidence": {
+              "name": "불고기피자",
+              "price": 11900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E024",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[21]",
+            "status": "SUCCESS",
+            "rawText": "야채퀘사디아피자",
+            "rawEvidence": {
+              "name": "야채퀘사디아피자",
+              "price": 13900
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "VERIFIER_ERROR",
+      "supportedPortion": "",
+      "unsupportedPortion": "",
+      "verifierStatus": "ERROR",
+      "verifierErrorCode": "ValueError",
+      "verifierLatencyMs": 3149,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 20,
+      "restaurantId": 9571,
+      "claimId": "9571:TASTE:b322ec9b8dbc",
+      "claimType": "TASTE",
+      "claimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E045",
+        "E046"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E045",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 88
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+          "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E046",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+            "mentionCount": 46
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+          "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+        "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+        "catalogOwners": [
+          9571
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E045",
+          "SUPPORT_QUOTE_MISSING:E046"
+        ],
+        "claim": {
+          "restaurantId": 9571,
+          "claimId": "9571:TASTE:b322ec9b8dbc",
+          "claimType": "TASTE",
+          "claimText": "TASTE: Customers frequently mention that the food is delicious and has good value. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E045",
+            "E046"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E045",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[0]",
+            "status": "SUCCESS",
+            "rawText": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"음식이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 88
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E046",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"가성비가 좋아요\" 이 키워드를 선택한 인원",
+              "mentionCount": 46
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객들이 음식이 맛있고 가성비가 좋다고 자주 언급한다는 주장은, '음식이 맛있어요' (88 회) 와 '가성비가 좋아요' (46 회) 키워드 선택 인원이 이를 직접 지지한다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 6244,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 21,
+      "restaurantId": 9574,
+      "claimId": "9574:TASTE:41e54f412793",
+      "claimType": "TASTE",
+      "claimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+      "evidenceIds": [
+        "E017",
+        "E040"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9574,
+          "evidenceId": "E017",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[2]",
+          "status": "SUCCESS",
+          "rawText": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 13
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+          "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9574,
+          "evidenceId": "E040",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[25]",
+          "status": "SUCCESS",
+          "rawText": "맛",
+          "rawEvidence": {
+            "keyword": "맛",
+            "mentionCount": 32
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+          "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+        "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+        "catalogOwners": [
+          9574
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E017",
+          "SUPPORT_QUOTE_MISSING:E040"
+        ],
+        "claim": {
+          "restaurantId": 9574,
+          "claimId": "9574:TASTE:41e54f412793",
+          "claimType": "TASTE",
+          "claimText": "TASTE: Customers frequently praise the freshness of ingredients and the delicious taste of the food. 근거: \"재료가 신선해요\" 이 키워드를 선택한 인원, 맛",
+          "evidenceIds": [
+            "E017",
+            "E040"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9574,
+            "evidenceId": "E017",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[2]",
+            "status": "SUCCESS",
+            "rawText": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"재료가 신선해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 13
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+            "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9574,
+            "evidenceId": "E040",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[25]",
+            "status": "SUCCESS",
+            "rawText": "맛",
+            "rawEvidence": {
+              "keyword": "맛",
+              "mentionCount": 32
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+            "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객들이 재료의 신선함과 음식의 맛을 자주 칭찬한다는 주장은, '재료가 신선해요' 키워드 언급 (13 건) 과 '맛' 키워드 언급 (32 건) 이 존재함으로써 직접 지지됩니다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 5970,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 22,
+      "restaurantId": 9574,
+      "claimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+      "claimType": "VENUE_CHARACTERISTIC",
+      "claimText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E016",
+        "E020"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9574,
+          "evidenceId": "E016",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[1]",
+          "status": "SUCCESS",
+          "rawText": "\"친절해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 14
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+          "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9574,
+          "evidenceId": "E020",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[5]",
+          "status": "SUCCESS",
+          "rawText": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "mentionCount": 6
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+          "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+        "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+        "catalogOwners": [
+          9574
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E016",
+          "SUPPORT_QUOTE_MISSING:E020"
+        ],
+        "claim": {
+          "restaurantId": 9574,
+          "claimId": "9574:VENUE_CHARACTERISTIC:24c51a4d2b37",
+          "claimType": "VENUE_CHARACTERISTIC",
+          "claimText": "VENUE_CHARACTERISTIC: The establishment is noted for its cleanliness and friendly service. 근거: \"매장이 청결해요\" 이 키워드를 선택한 인원, \"친절해요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E016",
+            "E020"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9574,
+            "evidenceId": "E016",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[1]",
+            "status": "SUCCESS",
+            "rawText": "\"친절해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 14
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+            "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9574,
+            "evidenceId": "E020",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[5]",
+            "status": "SUCCESS",
+            "rawText": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"매장이 청결해요\" 이 키워드를 선택한 인원",
+              "mentionCount": 6
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9574/semantic_profile_v1_evidence_catalog_9574.json",
+            "catalogHash": "b02e66ca325e298da2165397729b9071c4543f09bb62774f76f92be9312d9c0b",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "청결함, 친절함",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3091,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 23,
+      "restaurantId": 9590,
+      "claimId": "9590:MENU_CHARACTERISTIC:82df8c199990",
+      "claimType": "MENU_CHARACTERISTIC",
+      "claimText": "MENU_CHARACTERISTIC: The menu features premium ingredients such as Valrhona chocolate and organic matcha. 근거: Valrhona메세지 판초콜릿, 제철과일생크림케이크, valrhona둘세초콜릿마들렌",
+      "evidenceIds": [
+        "E017",
+        "E022",
+        "E034"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E017",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[14]",
+          "status": "SUCCESS",
+          "rawText": "Valrhona메세지 판초콜릿",
+          "rawEvidence": {
+            "name": "Valrhona메세지 판초콜릿",
+            "price": 4800
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E022",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[19]",
+          "status": "SUCCESS",
+          "rawText": "제철과일생크림케이크",
+          "rawEvidence": {
+            "name": "제철과일생크림케이크",
+            "price": 8500
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E034",
+          "evidenceType": "menu",
+          "sourceField": "sections.menu.items[31]",
+          "status": "SUCCESS",
+          "rawText": "valrhona둘세초콜릿마들렌",
+          "rawEvidence": {
+            "name": "valrhona둘세초콜릿마들렌",
+            "price": 4000
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E017",
+          "SUPPORT_QUOTE_MISSING:E022",
+          "SUPPORT_QUOTE_MISSING:E034"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:MENU_CHARACTERISTIC:82df8c199990",
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimText": "MENU_CHARACTERISTIC: The menu features premium ingredients such as Valrhona chocolate and organic matcha. 근거: Valrhona메세지 판초콜릿, 제철과일생크림케이크, valrhona둘세초콜릿마들렌",
+          "evidenceIds": [
+            "E017",
+            "E022",
+            "E034"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E017",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[14]",
+            "status": "SUCCESS",
+            "rawText": "Valrhona메세지 판초콜릿",
+            "rawEvidence": {
+              "name": "Valrhona메세지 판초콜릿",
+              "price": 4800
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E022",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[19]",
+            "status": "SUCCESS",
+            "rawText": "제철과일생크림케이크",
+            "rawEvidence": {
+              "name": "제철과일생크림케이크",
+              "price": 8500
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E034",
+            "evidenceType": "menu",
+            "sourceField": "sections.menu.items[31]",
+            "status": "SUCCESS",
+            "rawText": "valrhona둘세초콜릿마들렌",
+            "rawEvidence": {
+              "name": "valrhona둘세초콜릿마들렌",
+              "price": 4000
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "UNSUPPORTED",
+      "supportedPortion": "",
+      "unsupportedPortion": "organic matcha",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3561,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 24,
+      "restaurantId": 9590,
+      "claimId": "9590:TASTE:76361fa3f7fe",
+      "claimType": "TASTE",
+      "claimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E104",
+        "E106",
+        "E110"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E104",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[0]",
+          "status": "SUCCESS",
+          "rawText": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 91
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E106",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[2]",
+          "status": "SUCCESS",
+          "rawText": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 75
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        },
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E110",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[6]",
+          "status": "SUCCESS",
+          "rawText": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 31
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E104",
+          "SUPPORT_QUOTE_MISSING:E106",
+          "SUPPORT_QUOTE_MISSING:E110"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:TASTE:76361fa3f7fe",
+          "claimType": "TASTE",
+          "claimText": "TASTE: Customers frequently praise the deliciousness of the bread, coffee, and desserts. 근거: \"빵이 맛있어요\" 이 키워드를 선택한 인원, \"커피가 맛있어요\" 이 키워드를 선택한 인원, \"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "evidenceIds": [
+            "E104",
+            "E106",
+            "E110"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E104",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[0]",
+            "status": "SUCCESS",
+            "rawText": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"빵이 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 91
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E106",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[2]",
+            "status": "SUCCESS",
+            "rawText": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"커피가 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 75
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          },
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E110",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[6]",
+            "status": "SUCCESS",
+            "rawText": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 31
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객들이 빵, 커피, 디저트의 맛을 자주 칭찬한다는 주장은 제공된 키워드 언급 데이터 (E104: 91 건, E106: 75 건, E110: 31 건) 에 의해 직접 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 6907,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 25,
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+      "evidenceIds": [
+        "E033"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E033",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[10]",
+          "status": "SUCCESS",
+          "rawText": "떡볶이",
+          "rawEvidence": {
+            "keyword": "떡볶이",
+            "mentionCount": 13
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+        "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+        "catalogOwners": [
+          9617
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E033"
+        ],
+        "claim": {
+          "restaurantId": 9617,
+          "claimId": "9617:FOOD_MENTION:E033",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+          "evidenceIds": [
+            "E033"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E033",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[10]",
+            "status": "SUCCESS",
+            "rawText": "떡볶이",
+            "rawEvidence": {
+              "keyword": "떡볶이",
+              "mentionCount": 13
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '떡볶이'가 13 회 언급되어 반복 언급된다는 주장은 원문 데이터와 일치한다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3709,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 26,
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E034",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "evidenceIds": [
+        "E034"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E034",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[11]",
+          "status": "SUCCESS",
+          "rawText": "김밥",
+          "rawEvidence": {
+            "keyword": "김밥",
+            "mentionCount": 9
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+        "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+        "catalogOwners": [
+          9617
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E034"
+        ],
+        "claim": {
+          "restaurantId": 9617,
+          "claimId": "9617:FOOD_MENTION:E034",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E034"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E034",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[11]",
+            "status": "SUCCESS",
+            "rawText": "김밥",
+            "rawEvidence": {
+              "keyword": "김밥",
+              "mentionCount": 9
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '김밥'이 반복 언급된다는 주장은 제공된 원문 (E034) 의 rawText 및 mentionCount 데이터에 의해 직접 지지된다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4021,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 27,
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E038",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "evidenceIds": [
+        "E038"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9617,
+          "evidenceId": "E038",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[15]",
+          "status": "SUCCESS",
+          "rawText": "참치김밥",
+          "rawEvidence": {
+            "keyword": "참치김밥",
+            "mentionCount": 4
+          },
+          "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+          "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+        "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+        "catalogOwners": [
+          9617
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "DUPLICATE_CLAIM",
+          "SUPPORT_QUOTE_MISSING:E038"
+        ],
+        "claim": {
+          "restaurantId": 9617,
+          "claimId": "9617:FOOD_MENTION:E038",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E038"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9617,
+            "evidenceId": "E038",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[15]",
+            "status": "SUCCESS",
+            "rawText": "참치김밥",
+            "rawEvidence": {
+              "keyword": "참치김밥",
+              "mentionCount": 4
+            },
+            "catalogPath": "AI_Answer/semantic_profile_v1_evidence_catalog_9617.json",
+            "catalogHash": "f02c59ad6d64b1b04da1b854875e65cab2ae1e85c128e68b36fd7b4cb77df64a",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '참치김밥'이 반복 언급된다는 주장은 제공된 증거 (E038) 에서 mentionCount: 4 로 직접 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4071,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 28,
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+      "evidenceIds": [
+        "E013"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9731,
+          "evidenceId": "E013",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[10]",
+          "status": "SUCCESS",
+          "rawText": "초밥",
+          "rawEvidence": {
+            "keyword": "초밥",
+            "mentionCount": 87
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+          "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+        "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+        "catalogOwners": [
+          9731
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E013"
+        ],
+        "claim": {
+          "restaurantId": 9731,
+          "claimId": "9731:FOOD_MENTION:E013",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E013"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9731,
+            "evidenceId": "E013",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[10]",
+            "status": "SUCCESS",
+            "rawText": "초밥",
+            "rawEvidence": {
+              "keyword": "초밥",
+              "mentionCount": 87
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+            "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '초밥'이 반복 언급된다는 주장은 제공된 원문 (E013) 의 rawText 와 mentionCount 가 이를 직접 지지함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4040,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 29,
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+      "evidenceIds": [
+        "E016"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9731,
+          "evidenceId": "E016",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[13]",
+          "status": "SUCCESS",
+          "rawText": "우동",
+          "rawEvidence": {
+            "keyword": "우동",
+            "mentionCount": 32
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+          "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+        "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+        "catalogOwners": [
+          9731
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E016"
+        ],
+        "claim": {
+          "restaurantId": 9731,
+          "claimId": "9731:FOOD_MENTION:E016",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+          "evidenceIds": [
+            "E016"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9731,
+            "evidenceId": "E016",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[13]",
+            "status": "SUCCESS",
+            "rawText": "우동",
+            "rawEvidence": {
+              "keyword": "우동",
+              "mentionCount": 32
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+            "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '우동'이 반복 언급된다는 주장은 제공된 증거 (E016) 의 rawText 와 mentionCount 가 이를 직접 지지함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3983,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 30,
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E017",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 후토마끼가 반복 언급된다.",
+      "evidenceIds": [
+        "E017"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9731,
+          "evidenceId": "E017",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[14]",
+          "status": "SUCCESS",
+          "rawText": "후토마끼",
+          "rawEvidence": {
+            "keyword": "후토마끼",
+            "mentionCount": 24
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+          "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+        "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+        "catalogOwners": [
+          9731
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E017"
+        ],
+        "claim": {
+          "restaurantId": 9731,
+          "claimId": "9731:FOOD_MENTION:E017",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 후토마끼가 반복 언급된다.",
+          "evidenceIds": [
+            "E017"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9731,
+            "evidenceId": "E017",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[14]",
+            "status": "SUCCESS",
+            "rawText": "후토마끼",
+            "rawEvidence": {
+              "keyword": "후토마끼",
+              "mentionCount": 24
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9731/semantic_profile_v1_evidence_catalog_9731.json",
+            "catalogHash": "46eaf80b06306090dcf66c1fd750137a378920085d769ef9f9d1ad98e50d158c",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '후토마끼'가 반복 언급된다는 주장은 제공된 증거 (E017) 의 mentionCount: 24 로 직접 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4096,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 31,
+      "restaurantId": 9580,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "evidenceIds": [
+        "E067"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E067",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[10]",
+          "status": "SUCCESS",
+          "rawText": "피자",
+          "rawEvidence": {
+            "keyword": "피자",
+            "mentionCount": 10
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+        "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+        "catalogOwners": [
+          9580
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E067"
+        ],
+        "claim": {
+          "restaurantId": 9580,
+          "claimId": "9580:FOOD_MENTION:E067",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E067"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E067",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[10]",
+            "status": "SUCCESS",
+            "rawText": "피자",
+            "rawEvidence": {
+              "keyword": "피자",
+              "mentionCount": 10
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '피자'가 10 회 언급되어 공식 메뉴가 아님을 지지함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3427,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 32,
+      "restaurantId": 9580,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "evidenceIds": [
+        "E068"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9580,
+          "evidenceId": "E068",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[11]",
+          "status": "SUCCESS",
+          "rawText": "고구마피자",
+          "rawEvidence": {
+            "keyword": "고구마피자",
+            "mentionCount": 3
+          },
+          "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+          "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+        "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+        "catalogOwners": [
+          9580
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "DUPLICATE_CLAIM",
+          "SUPPORT_QUOTE_MISSING:E068"
+        ],
+        "claim": {
+          "restaurantId": 9580,
+          "claimId": "9580:FOOD_MENTION:E068",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E068"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9580,
+            "evidenceId": "E068",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[11]",
+            "status": "SUCCESS",
+            "rawText": "고구마피자",
+            "rawEvidence": {
+              "keyword": "고구마피자",
+              "mentionCount": 3
+            },
+            "catalogPath": "AI_Answer/semantic_profile_pilot_9580/semantic_profile_v1_evidence_catalog_9580.json",
+            "catalogHash": "846c3c34c1c519ce356841a5c354cb75bc41c9106addeae12872a4289809c365",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '고구마피자'가 언급된다는 주장은 E068의 rawText와 mentionCount에 의해 직접 지지된다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3902,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 33,
+      "restaurantId": 9569,
+      "claimId": "9569:FOOD_MENTION:E026",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+      "evidenceIds": [
+        "E026"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9569,
+          "evidenceId": "E026",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[13]",
+          "status": "SUCCESS",
+          "rawText": "김밥",
+          "rawEvidence": {
+            "keyword": "김밥",
+            "mentionCount": 12
+          },
+          "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+          "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+        "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+        "catalogOwners": [
+          9569
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E026"
+        ],
+        "claim": {
+          "restaurantId": 9569,
+          "claimId": "9569:FOOD_MENTION:E026",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 김밥가 반복 언급된다.",
+          "evidenceIds": [
+            "E026"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9569,
+            "evidenceId": "E026",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[13]",
+            "status": "SUCCESS",
+            "rawText": "김밥",
+            "rawEvidence": {
+              "keyword": "김밥",
+              "mentionCount": 12
+            },
+            "catalogPath": "AI_Answer/semantic_profile_post_persistence_9569/semantic_profile_v1_evidence_catalog_9569.json",
+            "catalogHash": "d5c64611bb3248482f7def74a5c0bd7880b2362c63c378dbfe183b7989cc0ca6",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '김밥'이 반복 언급된다는 주장은 제공된 원문 (E026) 의 rawText 및 mentionCount 데이터에 의해 직접 지지된다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4074,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 34,
+      "restaurantId": 9570,
+      "claimId": "9570:FOOD_MENTION:E026",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 파스타가 반복 언급된다.",
+      "evidenceIds": [
+        "E026"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9570,
+          "evidenceId": "E026",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[16]",
+          "status": "SUCCESS",
+          "rawText": "파스타",
+          "rawEvidence": {
+            "keyword": "파스타",
+            "mentionCount": 6
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+          "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+        "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+        "catalogOwners": [
+          9570
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E026"
+        ],
+        "claim": {
+          "restaurantId": 9570,
+          "claimId": "9570:FOOD_MENTION:E026",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 파스타가 반복 언급된다.",
+          "evidenceIds": [
+            "E026"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9570,
+            "evidenceId": "E026",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[16]",
+            "status": "SUCCESS",
+            "rawText": "파스타",
+            "rawEvidence": {
+              "keyword": "파스타",
+              "mentionCount": 6
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9570/semantic_profile_v1_evidence_catalog_9570.json",
+            "catalogHash": "7ee80eda98426988926909398f01a994cb0ec0c96919407cc72f59c20706661e",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 파스타가 반복 언급된다는 주장은 evidence E026의 rawText '파스타'와 mentionCount 6으로 직접 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 4084,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 35,
+      "restaurantId": 9571,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "evidenceIds": [
+        "E055"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9571,
+          "evidenceId": "E055",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[10]",
+          "status": "SUCCESS",
+          "rawText": "피자",
+          "rawEvidence": {
+            "keyword": "피자",
+            "mentionCount": 18
+          },
+          "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+          "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+        "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+        "catalogOwners": [
+          9571
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E055"
+        ],
+        "claim": {
+          "restaurantId": 9571,
+          "claimId": "9571:FOOD_MENTION:E055",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+          "evidenceIds": [
+            "E055"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9571,
+            "evidenceId": "E055",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[10]",
+            "status": "SUCCESS",
+            "rawText": "피자",
+            "rawEvidence": {
+              "keyword": "피자",
+              "mentionCount": 18
+            },
+            "catalogPath": "AI_Answer/semantic_profile_benchmark_9571/semantic_profile_v1_evidence_catalog_9571.json",
+            "catalogHash": "3ed8ac668a03d04d1246510a9f89c73fdf1ec914ca8d9cfc01c7f4e29c327545",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '피자'가 18 회 언급되어 공식 메뉴가 아님을 지지함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3393,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 36,
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E110",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 디저트가 반복 언급된다.",
+      "evidenceIds": [
+        "E110"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E110",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[6]",
+          "status": "SUCCESS",
+          "rawText": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+          "rawEvidence": {
+            "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+            "mentionCount": 31
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E110"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:FOOD_MENTION:E110",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 디저트가 반복 언급된다.",
+          "evidenceIds": [
+            "E110"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E110",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[6]",
+            "status": "SUCCESS",
+            "rawText": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+            "rawEvidence": {
+              "keyword": "\"디저트가 맛있어요\" 이 키워드를 선택한 인원",
+              "mentionCount": 31
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 디저트가 반복 언급됨을 증명함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 2890,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 37,
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+      "evidenceIds": [
+        "E114"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E114",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[10]",
+          "status": "SUCCESS",
+          "rawText": "마카롱",
+          "rawEvidence": {
+            "keyword": "마카롱",
+            "mentionCount": 77
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E114"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:FOOD_MENTION:E114",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+          "evidenceIds": [
+            "E114"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E114",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[10]",
+            "status": "SUCCESS",
+            "rawText": "마카롱",
+            "rawEvidence": {
+              "keyword": "마카롱",
+              "mentionCount": 77
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 마카롱이 반복 언급된다는 주장은 제공된 원문 (E114) 의 keyword 및 mentionCount 데이터에 의해 직접 지지된다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3965,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 38,
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "evidenceIds": [
+        "E115"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E115",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[11]",
+          "status": "SUCCESS",
+          "rawText": "케이크",
+          "rawEvidence": {
+            "keyword": "케이크",
+            "mentionCount": 18
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "SUPPORT_QUOTE_MISSING:E115"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:FOOD_MENTION:E115",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "evidenceIds": [
+            "E115"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E115",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[11]",
+            "status": "SUCCESS",
+            "rawText": "케이크",
+            "rawEvidence": {
+              "keyword": "케이크",
+              "mentionCount": 18
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '케이크'가 18 회 언급되어 공식 메뉴가 아님을 지지함.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3443,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 39,
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "evidenceIds": [
+        "E118"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E118",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[14]",
+          "status": "SUCCESS",
+          "rawText": "치즈케이크",
+          "rawEvidence": {
+            "keyword": "치즈케이크",
+            "mentionCount": 12
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "DUPLICATE_CLAIM",
+          "SUPPORT_QUOTE_MISSING:E118"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:FOOD_MENTION:E118",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "evidenceIds": [
+            "E118"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E118",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[14]",
+            "status": "SUCCESS",
+            "rawText": "치즈케이크",
+            "rawEvidence": {
+              "keyword": "치즈케이크",
+              "mentionCount": 12
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '치즈케이크'가 12 회 언급되어 반복 언급된다는 주장은 원문 증거에 의해 직접 지지된다.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3851,
+      "indexableUnderNewPolicy": false
+    },
+    {
+      "ordinal": 40,
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "evidenceIds": [
+        "E120"
+      ],
+      "oldStatus": "IN_QDRANT_V12",
+      "resolvedEvidence": [
+        {
+          "restaurantId": 9590,
+          "evidenceId": "E120",
+          "evidenceType": "keyword",
+          "sourceField": "sections.review.keywords[16]",
+          "status": "SUCCESS",
+          "rawText": "바스크치즈케이크",
+          "rawEvidence": {
+            "keyword": "바스크치즈케이크",
+            "mentionCount": 9
+          },
+          "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+          "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+          "catalogOwnerVerified": true
+        }
+      ],
+      "evidenceResolution": {
+        "resolved": true,
+        "missingEvidenceIds": [],
+        "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+        "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+        "catalogOwners": [
+          9590
+        ]
+      },
+      "supportQuotes": [],
+      "deterministicValidation": {
+        "valid": false,
+        "evidenceIntegrityValid": true,
+        "quoteValid": false,
+        "errors": [
+          "DUPLICATE_CLAIM",
+          "SUPPORT_QUOTE_MISSING:E120"
+        ],
+        "claim": {
+          "restaurantId": 9590,
+          "claimId": "9590:FOOD_MENTION:E120",
+          "claimType": "FOOD_MENTION",
+          "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+          "evidenceIds": [
+            "E120"
+          ],
+          "supportQuotes": []
+        },
+        "supportQuotes": [],
+        "resolvedEvidence": [
+          {
+            "restaurantId": 9590,
+            "evidenceId": "E120",
+            "evidenceType": "keyword",
+            "sourceField": "sections.review.keywords[16]",
+            "status": "SUCCESS",
+            "rawText": "바스크치즈케이크",
+            "rawEvidence": {
+              "keyword": "바스크치즈케이크",
+              "mentionCount": 9
+            },
+            "catalogPath": "AI_Answer/semantic_profile_tenth_9590/semantic_profile_v1_evidence_catalog_9590.json",
+            "catalogHash": "1f9cedd3c450eef296d707d80103fc3bc3dbed3f9ae743c519ab8db8771038eb",
+            "catalogOwnerVerified": true
+          }
+        ]
+      },
+      "semanticVerdict": "SUPPORTED",
+      "supportedPortion": "고객 리뷰 키워드에서 '바스크치즈케이크'가 9 회 언급되어 반복된다는 주장이 원문으로 지지됨.",
+      "unsupportedPortion": "",
+      "verifierStatus": "SUCCESS",
+      "verifierErrorCode": null,
+      "verifierLatencyMs": 3674,
+      "indexableUnderNewPolicy": false
+    }
+  ]
+}

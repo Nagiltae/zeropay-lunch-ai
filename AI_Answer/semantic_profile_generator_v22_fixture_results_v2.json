@@ -1,0 +1,990 @@
+{
+  "runVersion": "semantic-profile-generator-v2.2-source-fixture-v1",
+  "createdAt": "2026-09-26T09:40:11.806498+00:00",
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "fixtureHash": "f9ad64c7b835bb8ba7f0fc72e775c915bfbd65f7ed7d221535a9aca9163ce0ac",
+  "results": [
+    {
+      "fixtureId": "menu-9568-1",
+      "restaurantId": 9568,
+      "sourceType": "MENU",
+      "evidenceId": "E003",
+      "semanticBoundary": {
+        "mayExpress": [
+          "listed menu item"
+        ],
+        "mustNotExpress": [
+          "customer opinion as official fact"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:FOOD_TYPE:4e107f40f417af3b",
+              "claimType": "FOOD_TYPE",
+              "claimText": "메뉴에 순대국이 등록되어 있습니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "순대국"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "순대국",
+                "rawEvidence": {
+                  "name": "순대국",
+                  "price": 10000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "메뉴에 순대국이 등록되어 있습니다.",
+              "sourceSpan": "메뉴에 순대국이 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:FOOD_TYPE:4e107f40f417af3b",
+            "claimType": "FOOD_TYPE",
+            "claimText": "메뉴에 순대국이 등록되어 있습니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "순대국"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "menu-9569-1",
+      "restaurantId": 9569,
+      "sourceType": "MENU",
+      "evidenceId": "E003",
+      "semanticBoundary": {
+        "mayExpress": [
+          "listed menu item"
+        ],
+        "mustNotExpress": [
+          "customer opinion as official fact"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:FOOD_TYPE:cd4c89ad1163ce47",
+              "claimType": "FOOD_TYPE",
+              "claimText": "산곰장어가 메뉴에 등록되어 있습니다.",
+              "evidenceIds": [
+                "E003"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E003",
+                  "quote": "산곰장어"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E003",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "산곰장어",
+                "rawEvidence": {
+                  "name": "산곰장어",
+                  "price": 24000
+                },
+                "sourceField": "sections.menu.items[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "산곰장어가 메뉴에 등록되어 있습니다.",
+              "sourceSpan": "산곰장어가 메뉴에 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E003"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:FOOD_TYPE:cd4c89ad1163ce47",
+            "claimType": "FOOD_TYPE",
+            "claimText": "산곰장어가 메뉴에 등록되어 있습니다.",
+            "evidenceIds": [
+              "E003"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E003",
+                "quote": "산곰장어"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "menu-10042-1",
+      "restaurantId": 10042,
+      "sourceType": "MENU",
+      "evidenceId": "E004",
+      "semanticBoundary": {
+        "mayExpress": [
+          "listed menu item"
+        ],
+        "mustNotExpress": [
+          "customer opinion as official fact"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:FOOD_TYPE:8adf488188f81c4b",
+              "claimType": "FOOD_TYPE",
+              "claimText": "메뉴에 고추짬뽕이 등록되어 있습니다.",
+              "evidenceIds": [
+                "E004"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E004",
+                  "quote": "고추짬뽕"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E004",
+                "evidenceType": "menu",
+                "status": "SUCCESS",
+                "rawText": "고추짬뽕",
+                "rawEvidence": {
+                  "name": "고추짬뽕",
+                  "price": 14000
+                },
+                "sourceField": "sections.menu.items[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "메뉴에 고추짬뽕이 등록되어 있습니다.",
+              "sourceSpan": "메뉴에 고추짬뽕이 등록되어 있습니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E004"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:FOOD_TYPE:8adf488188f81c4b",
+            "claimType": "FOOD_TYPE",
+            "claimText": "메뉴에 고추짬뽕이 등록되어 있습니다.",
+            "evidenceIds": [
+              "E004"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E004",
+                "quote": "고추짬뽕"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "menu"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "keyword-food-mention",
+      "restaurantId": 9569,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E023",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer review mentions a food term"
+        ],
+        "mustNotExpress": [
+          "official sale or representative menu"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:FOOD_MENTION:64206d602e788942",
+              "claimType": "FOOD_MENTION",
+              "claimText": "고객 리뷰에서 꼼장어가 언급된다.",
+              "evidenceIds": [
+                "E023"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E023",
+                  "quote": "꼼장어"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E023",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "꼼장어",
+                "rawEvidence": {
+                  "keyword": "꼼장어",
+                  "mentionCount": 46
+                },
+                "sourceField": "sections.review.keywords[10]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "고객 리뷰에서 꼼장어가 언급된다.",
+              "sourceSpan": "고객 리뷰에서 꼼장어가 언급된다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E023"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:FOOD_MENTION:64206d602e788942",
+            "claimType": "FOOD_MENTION",
+            "claimText": "고객 리뷰에서 꼼장어가 언급된다.",
+            "evidenceIds": [
+              "E023"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E023",
+                "quote": "꼼장어"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "keyword"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "keyword-solo-9568",
+      "restaurantId": 9568,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E029",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer evaluation of dining context"
+        ],
+        "mustNotExpress": [
+          "official restaurant classification"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:DINING_CONTEXT:792b50e0cb2b4e57",
+              "claimType": "DINING_CONTEXT",
+              "claimText": "혼밥하기에 좋은 식당입니다.",
+              "evidenceIds": [
+                "E029"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E029",
+                  "quote": "\"혼밥하기 좋아요\""
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E029",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                "rawEvidence": {
+                  "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 21
+                },
+                "sourceField": "sections.review.keywords[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "혼밥하기에 좋은 식당입니다.",
+              "sourceSpan": "혼밥하기에 좋은 식당입니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E029"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:DINING_CONTEXT:792b50e0cb2b4e57",
+            "claimType": "DINING_CONTEXT",
+            "claimText": "혼밥하기에 좋은 식당입니다.",
+            "evidenceIds": [
+              "E029"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E029",
+                "quote": "\"혼밥하기 좋아요\""
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "keyword"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "keyword-service-9568",
+      "restaurantId": 9568,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E026",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer evaluation"
+        ],
+        "mustNotExpress": [
+          "official service policy or training level"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:VENUE_CHARACTERISTIC:6bc31c178d9fe50a",
+              "claimType": "VENUE_CHARACTERISTIC",
+              "claimText": "고객 리뷰에서 친절해요라는 표현이 언급된다.",
+              "evidenceIds": [
+                "E026"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E026",
+                  "quote": "\"친절해요\" 이 키워드를 선택한 인원"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E026",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "\"친절해요\" 이 키워드를 선택한 인원",
+                "rawEvidence": {
+                  "keyword": "\"친절해요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 42
+                },
+                "sourceField": "sections.review.keywords[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "고객 리뷰에서 친절해요라는 표현이 언급된다.",
+              "sourceSpan": "고객 리뷰에서 친절해요라는 표현이 언급된다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E026"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:VENUE_CHARACTERISTIC:6bc31c178d9fe50a",
+            "claimType": "VENUE_CHARACTERISTIC",
+            "claimText": "고객 리뷰에서 친절해요라는 표현이 언급된다.",
+            "evidenceIds": [
+              "E026"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E026",
+                "quote": "\"친절해요\" 이 키워드를 선택한 인원"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "keyword"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "keyword-solo-10042",
+      "restaurantId": 10042,
+      "sourceType": "REVIEW_KEYWORD",
+      "evidenceId": "E075",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer evaluation of dining context"
+        ],
+        "mustNotExpress": [
+          "official restaurant classification"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:DINING_CONTEXT:df49a5dfaa119ca2",
+              "claimType": "DINING_CONTEXT",
+              "claimText": "혼밥하기에 좋은 식당입니다.",
+              "evidenceIds": [
+                "E075"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E075",
+                  "quote": "\"혼밥하기 좋아요\""
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E075",
+                "evidenceType": "keyword",
+                "status": "SUCCESS",
+                "rawText": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                "rawEvidence": {
+                  "keyword": "\"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+                  "mentionCount": 92
+                },
+                "sourceField": "sections.review.keywords[4]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "혼밥하기에 좋은 식당입니다.",
+              "sourceSpan": "혼밥하기에 좋은 식당입니다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E075"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:DINING_CONTEXT:df49a5dfaa119ca2",
+            "claimType": "DINING_CONTEXT",
+            "claimText": "혼밥하기에 좋은 식당입니다.",
+            "evidenceIds": [
+              "E075"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E075",
+                "quote": "\"혼밥하기 좋아요\""
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "keyword"
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "fixtureId": "review-food-experience",
+      "restaurantId": 9569,
+      "sourceType": "REVIEW",
+      "evidenceId": "E049",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer food experience or evaluation"
+        ],
+        "mustNotExpress": [
+          "official menu status beyond the review"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:FOOD_MENTION:64206d602e788942",
+              "claimType": "FOOD_MENTION",
+              "claimText": "고객 리뷰에서 꼼장어가 언급된다.",
+              "evidenceIds": [
+                "E049"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E049",
+                  "quote": "꼼장어 너무너무 사랑하는 사람으로 짱이네"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E049",
+                "evidenceType": "review",
+                "status": "SUCCESS",
+                "rawText": "꼼장어 너무너무 사랑하는 사람으로 짱이네 정말 맛있어요 돌멍개도 넘 싱싱하고 쫄깃쫄깃 맛있어요 또 먹고 싶네요 양념 꼼장어도 먹었는데 사진 찍는거 잊어버리고.. ㅠㅠ 다 맛있지만 순정꼼장어가 더 맛있어요~ 마늘을 삶아서 나온걸 굽는거라 매운맛 하나 없고 너무 맛있어요 또 갈게요~~~",
+                "rawEvidence": {
+                  "reviewId": "dom-10",
+                  "text": "꼼장어 너무너무 사랑하는 사람으로 짱이네 정말 맛있어요 돌멍개도 넘 싱싱하고 쫄깃쫄깃 맛있어요 또 먹고 싶네요 양념 꼼장어도 먹었는데 사진 찍는거 잊어버리고.. ㅠㅠ 다 맛있지만 순정꼼장어가 더 맛있어요~ 마늘을 삶아서 나온걸 굽는거라 매운맛 하나 없고 너무 맛있어요 또 갈게요~~~"
+                },
+                "sourceField": "sections.review.representativeReviews[0]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "고객 리뷰에서 꼼장어가 언급된다.",
+              "sourceSpan": "고객 리뷰에서 꼼장어가 언급된다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E049"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [
+            "FIXTURE_CLAIM_TYPE_MISMATCH"
+          ],
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:FOOD_MENTION:64206d602e788942",
+            "claimType": "FOOD_MENTION",
+            "claimText": "고객 리뷰에서 꼼장어가 언급된다.",
+            "evidenceIds": [
+              "E049"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E049",
+                "quote": "꼼장어 너무너무 사랑하는 사람으로 짱이네"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "review"
+          ]
+        }
+      ],
+      "pass": false
+    },
+    {
+      "fixtureId": "review-venue-context",
+      "restaurantId": 9569,
+      "sourceType": "REVIEW",
+      "evidenceId": "E050",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer-described venue or dining experience"
+        ],
+        "mustNotExpress": [
+          "unmentioned facility or policy"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9569,
+              "claimId": "9569:DINING_CONTEXT:915ea73a97bc6ba4",
+              "claimType": "DINING_CONTEXT",
+              "claimText": "매장이 넓어서 편하게 식사 가능했다.",
+              "evidenceIds": [
+                "E050"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E050",
+                  "quote": "매장이 넓어서 편하게 식사가능!"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9569,
+                "evidenceId": "E050",
+                "evidenceType": "review",
+                "status": "SUCCESS",
+                "rawText": "집근처라 지나다닐때마다 꼭가봐야지 하다가 드디어 친구랑 방문했어요! 평일엔 늘붐비고 토요일에도 저녁되니까 사람많았지만 매장이 넓어서 편하게 식사가능! 초벌해나오고 자리에서도 먹기좋게 구워주셔서 맛나게 먹고왔어요ㅎㅎ 반찬도 야채도 다맛있어요~ 무엇보다 산꼼장어 최고!ㅎ",
+                "rawEvidence": {
+                  "reviewId": "dom-7",
+                  "text": "집근처라 지나다닐때마다 꼭가봐야지 하다가 드디어 친구랑 방문했어요! 평일엔 늘붐비고 토요일에도 저녁되니까 사람많았지만 매장이 넓어서 편하게 식사가능! 초벌해나오고 자리에서도 먹기좋게 구워주셔서 맛나게 먹고왔어요ㅎㅎ 반찬도 야채도 다맛있어요~ 무엇보다 산꼼장어 최고!ㅎ"
+                },
+                "sourceField": "sections.review.representativeReviews[1]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "매장이 넓었다.",
+              "sourceSpan": "매장이 넓어서"
+            },
+            {
+              "assertionId": "A2",
+              "text": "매장이 편하게 식사를 가능하게 했다.",
+              "sourceSpan": "편하게 식사"
+            }
+          ],
+          "approved": false,
+          "rejectReasons": [
+            "GENERATOR_NON_ATOMIC",
+            "FIXTURE_CLAIM_TYPE_MISMATCH"
+          ],
+          "claim": {
+            "restaurantId": 9569,
+            "claimId": "9569:DINING_CONTEXT:915ea73a97bc6ba4",
+            "claimType": "DINING_CONTEXT",
+            "claimText": "매장이 넓어서 편하게 식사 가능했다.",
+            "evidenceIds": [
+              "E050"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E050",
+                "quote": "매장이 넓어서 편하게 식사가능!"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "review"
+          ]
+        }
+      ],
+      "pass": false
+    },
+    {
+      "fixtureId": "review-taste-9568",
+      "restaurantId": 9568,
+      "sourceType": "REVIEW",
+      "evidenceId": "E059",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer taste evaluation"
+        ],
+        "mustNotExpress": [
+          "texture or preparation facts not stated"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 9568,
+              "claimId": "9568:FOOD_MENTION:f5386e4239b1ffd2",
+              "claimType": "FOOD_MENTION",
+              "claimText": "고객 리뷰에서 청국장이 언급된다.",
+              "evidenceIds": [
+                "E059"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E059",
+                  "quote": "맛난청국장"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 9568,
+                "evidenceId": "E059",
+                "evidenceType": "review",
+                "status": "SUCCESS",
+                "rawText": "강남에서 노포분위기에 맛난청국장 짜지도않고 맛있네요",
+                "rawEvidence": {
+                  "reviewId": "dom-7",
+                  "text": "강남에서 노포분위기에 맛난청국장 짜지도않고 맛있네요"
+                },
+                "sourceField": "sections.review.representativeReviews[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "고객 리뷰에서 청국장이 언급된다.",
+              "sourceSpan": "고객 리뷰에서 청국장이 언급된다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E059"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [
+            "FIXTURE_CLAIM_TYPE_MISMATCH"
+          ],
+          "claim": {
+            "restaurantId": 9568,
+            "claimId": "9568:FOOD_MENTION:f5386e4239b1ffd2",
+            "claimType": "FOOD_MENTION",
+            "claimText": "고객 리뷰에서 청국장이 언급된다.",
+            "evidenceIds": [
+              "E059"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E059",
+                "quote": "맛난청국장"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "review"
+          ]
+        }
+      ],
+      "pass": false
+    },
+    {
+      "fixtureId": "review-quick-meal",
+      "restaurantId": 10042,
+      "sourceType": "REVIEW",
+      "evidenceId": "E109",
+      "semanticBoundary": {
+        "mayExpress": [
+          "customer-reported quick service or meal experience"
+        ],
+        "mustNotExpress": [
+          "guaranteed service speed or official policy"
+        ]
+      },
+      "generatorError": null,
+      "schemaErrors": [],
+      "claims": [
+        {
+          "checked": {
+            "claim": {
+              "restaurantId": 10042,
+              "claimId": "10042:DINING_CONTEXT:2ff18f88af111963",
+              "claimType": "DINING_CONTEXT",
+              "claimText": "점심시간에 방문하면 줄이 길다.",
+              "evidenceIds": [
+                "E109"
+              ],
+              "supportQuotes": [
+                {
+                  "evidenceId": "E109",
+                  "quote": "줄이 길어요~! 점심에 가면요~"
+                }
+              ]
+            },
+            "valid": true,
+            "errors": [],
+            "resolvedEvidence": [
+              {
+                "restaurantId": 10042,
+                "evidenceId": "E109",
+                "evidenceType": "review",
+                "status": "SUCCESS",
+                "rawText": "줄이 길어요~! 점심에 가면요~ 출장 갈일 있어 왔는데 맛집으로 소문난곳 가격도 저렴하고 양도 많고 빨리 나와요 굳",
+                "rawEvidence": {
+                  "reviewId": "dom-6",
+                  "text": "줄이 길어요~! 점심에 가면요~ 출장 갈일 있어 왔는데 맛집으로 소문난곳 가격도 저렴하고 양도 많고 빨리 나와요 굳"
+                },
+                "sourceField": "sections.review.representativeReviews[3]"
+              }
+            ]
+          },
+          "atomicAssertions": [
+            {
+              "assertionId": "A1",
+              "text": "점심시간에 방문하면 줄이 길다.",
+              "sourceSpan": "점심시간에 방문하면 줄이 길다.",
+              "verdict": "SUPPORTED",
+              "supportingEvidenceIds": [
+                "E109"
+              ]
+            }
+          ],
+          "semanticVerdict": "SUPPORTED",
+          "approved": true,
+          "rejectReasons": [],
+          "claim": {
+            "restaurantId": 10042,
+            "claimId": "10042:DINING_CONTEXT:2ff18f88af111963",
+            "claimType": "DINING_CONTEXT",
+            "claimText": "점심시간에 방문하면 줄이 길다.",
+            "evidenceIds": [
+              "E109"
+            ],
+            "supportQuotes": [
+              {
+                "evidenceId": "E109",
+                "quote": "줄이 길어요~! 점심에 가면요~"
+              }
+            ]
+          },
+          "observedSourceTypes": [
+            "review"
+          ]
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "metrics": {
+    "generatorCalls": 11,
+    "generatedClaimCount": 11,
+    "atomicizerCalls": 11,
+    "assertionVerifierCalls": 10,
+    "approvedSource:menu": 3,
+    "approvedClaimType:FOOD_TYPE": 3,
+    "fixturePassCount": 8,
+    "fixtureFailCount": 3,
+    "approvedSource:review_keyword": 4,
+    "approvedClaimType:FOOD_MENTION": 3,
+    "approvedClaimType:DINING_CONTEXT": 3,
+    "approvedClaimType:VENUE_CHARACTERISTIC": 1,
+    "approvedSource:review": 3,
+    "nonAtomicCount": 1,
+    "fixtureCount": 11,
+    "officialFactPromotionCount": null,
+    "elapsedSeconds": 87.599,
+    "sideEffects": {
+      "mysqlWrites": 0,
+      "qdrantReads": 0,
+      "qdrantWrites": 0,
+      "embeddingCalls": 0,
+      "embeddingWrites": 0,
+      "geminiCalls": 0
+    }
+  },
+  "status": "FAIL"
+}

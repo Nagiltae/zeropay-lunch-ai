@@ -1,0 +1,11 @@
+{
+  "reviewVersion": "semantic-profile-verifier-v2-shadow-gate-v1",
+  "executionStatus": "NOT_RUN_REGRESSION_GATE_FAILED",
+  "collection": "zeropay_semantic_claim_pilot_v12",
+  "plannedPointCount": 40,
+  "qdrantReads": 0,
+  "qdrantWrites": 0,
+  "reason": "9571 chicken-topping fixture returned UNSUPPORTED rather than required PARTIAL in all three frozen runs; the 40-claim rerun is prohibited unless all regression and positive stability gates pass.",
+  "v1ToV2TransitionCounts": "NOT_COMPUTED",
+  "items": []
+}

@@ -1,0 +1,660 @@
+{
+  "createdAt": "2026-09-25T19:32:49.250812+00:00",
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "independentRuns": 3,
+  "casesPerRun": 12,
+  "totalCases": 36,
+  "calls": 36,
+  "retries": 0,
+  "terminalErrors": 24,
+  "emptyAssertionCount": 0,
+  "invalidSourceTraceCount": 24,
+  "duplicateAssertionFailures": 0,
+  "maxAssertionViolations": 0,
+  "gate": "FAIL",
+  "results": [
+    {
+      "runNumber": 1,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "status": "SUCCESS",
+      "assertionCount": 4,
+      "fragments": [
+        "혼밥과 빠른 식사를 원하는 이용 맥락",
+        "고객 keyword",
+        "대표 리뷰",
+        "\"혼밥하기 좋아요\" 이 키워드"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼밥과 빠른 식사를 원하는 이용 맥락",
+          "sourceSpan": "혼밥과 빠른 식사를 원하는 이용 맥락"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 keyword",
+          "sourceSpan": "고객 keyword"
+        },
+        {
+          "assertionId": "A3",
+          "text": "대표 리뷰",
+          "sourceSpan": "대표 리뷰"
+        },
+        {
+          "assertionId": "A4",
+          "text": "\"혼밥하기 좋아요\" 이 키워드",
+          "sourceSpan": "\"혼밥하기 좋아요\" 이 키워드"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.0",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 1,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "status": "SUCCESS",
+      "assertionCount": 4,
+      "fragments": [
+        "혼밥과 빠른 식사를 원하는 이용 맥락",
+        "고객 keyword",
+        "대표 리뷰",
+        "\"혼밥하기 좋아요\" 이 키워드"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼밥과 빠른 식사를 원하는 이용 맥락",
+          "sourceSpan": "혼밥과 빠른 식사를 원하는 이용 맥락"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 keyword",
+          "sourceSpan": "고객 keyword"
+        },
+        {
+          "assertionId": "A3",
+          "text": "대표 리뷰",
+          "sourceSpan": "대표 리뷰"
+        },
+        {
+          "assertionId": "A4",
+          "text": "\"혼밥하기 좋아요\" 이 키워드",
+          "sourceSpan": "\"혼밥하기 좋아요\" 이 키워드"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.0",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 2,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "status": "SUCCESS",
+      "assertionCount": 4,
+      "fragments": [
+        "혼밥과 빠른 식사를 원하는 이용 맥락",
+        "고객 keyword",
+        "대표 리뷰",
+        "\"혼밥하기 좋아요\" 이 키워드"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "혼밥과 빠른 식사를 원하는 이용 맥락",
+          "sourceSpan": "혼밥과 빠른 식사를 원하는 이용 맥락"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 keyword",
+          "sourceSpan": "고객 keyword"
+        },
+        {
+          "assertionId": "A3",
+          "text": "대표 리뷰",
+          "sourceSpan": "대표 리뷰"
+        },
+        {
+          "assertionId": "A4",
+          "text": "\"혼밥하기 좋아요\" 이 키워드",
+          "sourceSpan": "\"혼밥하기 좋아요\" 이 키워드"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.0",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "status": "SUCCESS",
+      "assertionCount": 3,
+      "fragments": [
+        "공식 메뉴가 아니라",
+        "고객 리뷰 keyword에서",
+        "피자가 반복 언급된다"
+      ],
+      "assertions": [
+        {
+          "assertionId": "A1",
+          "text": "공식 메뉴가 아니라",
+          "sourceSpan": "공식 메뉴가 아니라"
+        },
+        {
+          "assertionId": "A2",
+          "text": "고객 리뷰 keyword에서",
+          "sourceSpan": "고객 리뷰 keyword에서"
+        },
+        {
+          "assertionId": "A3",
+          "text": "피자가 반복 언급된다",
+          "sourceSpan": "피자가 반복 언급된다"
+        }
+      ],
+      "errorCategory": null,
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    },
+    {
+      "runNumber": 3,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "status": "ERROR",
+      "assertionCount": null,
+      "fragments": [],
+      "assertions": [],
+      "errorCategory": "SOURCE_SPAN_NOT_IN_CLAIM",
+      "validationLocation": "fragments.1",
+      "retryCount": 0
+    }
+  ]
+}

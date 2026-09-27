@@ -1,0 +1,103 @@
+{
+  "fixtureCount": 7,
+  "fixtureRuns": 3,
+  "negativeFixtureCount": 4,
+  "positiveFixtureCount": 3,
+  "falseAcceptanceCount": 0,
+  "positiveFalseRejectionCount": 0,
+  "partialExpectedCount": 6,
+  "partialCorrectCount": 3,
+  "atomicizerErrorCount": 0,
+  "verifierErrorCount": 0,
+  "model": "qwen3.5:9b",
+  "temperature": 0,
+  "retryPolicy": "initial + at most one retry after an atomicizer/verifier call error",
+  "atomicizerCalls": 21,
+  "verifierCalls": 48,
+  "actualModelCalls": 69,
+  "retries": 0,
+  "errorCategories": {},
+  "elapsedSeconds": 196.427,
+  "sideEffects": {
+    "mysqlReads": 0,
+    "mysqlWrites": 0,
+    "qdrantReads": 0,
+    "qdrantWrites": 0,
+    "embeddingCalls": 0,
+    "geminiCalls": 0,
+    "localQwenCalls": 139,
+    "finalThreeRunSuiteCalls": 69,
+    "schemaDiagnosticSuiteCalls": 69,
+    "abortedInitialAtomicizerCall": 1,
+    "totalAtomicizerCallsAcrossAttempts": 43,
+    "totalAssertionVerifierCallsAcrossAttempts": 96,
+    "totalRetriesAcrossAttempts": 12,
+    "schemaErrorsAcrossAttempts": 25
+  },
+  "fullShadowRunStatus": "NOT_RUN_REGRESSION_GATE_FAILED",
+  "perFixture": {
+    "taste-deliciousness-does-not-entail-tenderness-9559": {
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "group-gathering-does-not-entail-corporate-or-family-events-9559": {
+      "expected": "UNSUPPORTED",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "menu-evidence-does-not-entail-chicken-topping-9571": {
+      "expected": "PARTIAL",
+      "observed": [
+        "UNSUPPORTED",
+        "UNSUPPORTED",
+        "UNSUPPORTED"
+      ],
+      "allThreePass": false
+    },
+    "group-and-spacious-do-not-entail-casual-meals-9568": {
+      "expected": "PARTIAL",
+      "observed": [
+        "PARTIAL",
+        "PARTIAL",
+        "PARTIAL"
+      ],
+      "allThreePass": true
+    },
+    "positive-menu-items-9617": {
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-solo-and-quick-meal-context-9617": {
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    },
+    "positive-friendly-review-keyword-9617": {
+      "expected": "SUPPORTED",
+      "observed": [
+        "SUPPORTED",
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "allThreePass": true
+    }
+  }
+}

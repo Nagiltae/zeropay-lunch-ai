@@ -1,0 +1,233 @@
+{
+  "cohortVersion": "semantic-profile-generator-v2.1-cohort-v1",
+  "createdAt": "2026-09-26T09:00:27.845444+00:00",
+  "source": "current read-only DB via semantic_profile_shadow.build_input",
+  "frozenBeforeGeneratorCalls": true,
+  "restaurantIds": [
+    9568,
+    9569,
+    9570,
+    9574,
+    9580,
+    9659,
+    9801,
+    10042
+  ],
+  "excludedPriorPilotIds": [
+    9559,
+    9603,
+    9639
+  ],
+  "mysqlSelectQueryCount": 64,
+  "restaurants": [
+    {
+      "ordinal": 1,
+      "restaurantId": 9568,
+      "name": "청기와",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "111b0f81915982e02ca1351914ac0d4b9336120f2fbccdf92ed5a97fe4c6c1b3",
+      "catalogHash": "d2e2a8db12a099e3dc23e36a745d9e4be5e5262a987925510513b2ea65c51ba2",
+      "sourceEvidenceCounts": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 31,
+        "menu": 22,
+        "review": 4
+      },
+      "menuCount": 22,
+      "keywordCount": 31,
+      "reviewCount": 4,
+      "evidenceCount": 60
+    },
+    {
+      "ordinal": 2,
+      "restaurantId": 9569,
+      "name": "산곰장어",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "2ce184cb97ee5a94f0268762f59c0d9d76a43c62e8ddd476e4db6caae2b469e7",
+      "catalogHash": "0112adca4ff4ec8e2247b7054a88b75f2cca67e6f647c358c540fd36dda7e519",
+      "sourceEvidenceCounts": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 10,
+        "review": 4
+      },
+      "menuCount": 10,
+      "keywordCount": 36,
+      "reviewCount": 4,
+      "evidenceCount": 56
+    },
+    {
+      "ordinal": 3,
+      "restaurantId": 9570,
+      "name": "블러프",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "7ee2e77fb28ea876b00ea1979cda1068940349530a06ec334f2f20ff5fad0f78",
+      "catalogHash": "c671e513c2f48bdbeae64524b8d90687ae43b5dd1e6800d831c10dd29e2d76b2",
+      "sourceEvidenceCounts": {
+        "business_hours": 4,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 7,
+        "review": 4
+      },
+      "menuCount": 7,
+      "keywordCount": 36,
+      "reviewCount": 4,
+      "evidenceCount": 53
+    },
+    {
+      "ordinal": 4,
+      "restaurantId": 9574,
+      "name": "청담머구리",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "881e987e88060c3a435dc22b5f01877a62dac5d53e13d403ac97e46bab0b03ff",
+      "catalogHash": "fb0a44ed2ceb09c2c89840b19ddb041f138215eb11683c005d75efb716ea64c1",
+      "sourceEvidenceCounts": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 33,
+        "menu": 12,
+        "review": 4
+      },
+      "menuCount": 12,
+      "keywordCount": 33,
+      "reviewCount": 4,
+      "evidenceCount": 52
+    },
+    {
+      "ordinal": 5,
+      "restaurantId": 9580,
+      "name": "빨간모자피자",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "ad16423d13e8d4bbb06e5f01e345e2bd63fe90c375e6ac820de0ef5bd99630a6",
+      "catalogHash": "9c6b9ab70612abdeb1fc6424f0ad6d8e1d827b1bf63314b65afa79b9aadb01b9",
+      "sourceEvidenceCounts": {
+        "business_hours": 6,
+        "identity": 2,
+        "keyword": 17,
+        "menu": 54,
+        "review": 2
+      },
+      "menuCount": 54,
+      "keywordCount": 17,
+      "reviewCount": 2,
+      "evidenceCount": 81
+    },
+    {
+      "ordinal": 6,
+      "restaurantId": 9659,
+      "name": "만석",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "139a73d05f2c238d54dece333a9bd9e1068776f0725253fae29bafa5424381f6",
+      "catalogHash": "3a640d93725bf6e7668b5090a84b71adbdd6d2522eab35192a8e57c5880a7ca6",
+      "sourceEvidenceCounts": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 36,
+        "menu": 84,
+        "review": 4
+      },
+      "menuCount": 84,
+      "keywordCount": 36,
+      "reviewCount": 4,
+      "evidenceCount": 127
+    },
+    {
+      "ordinal": 7,
+      "restaurantId": 9801,
+      "name": "공리",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "7610b5dbefb548b88e45dbdd24480f549db1a8dc6a4b3d24fd1e6604094b0c8b",
+      "catalogHash": "3a87cab788148eae434d3dbaf2cf2d7d482fd41cbf04ba75181d42e07e198a68",
+      "sourceEvidenceCounts": {
+        "business_hours": 5,
+        "identity": 2,
+        "keyword": 40,
+        "menu": 59,
+        "review": 4
+      },
+      "menuCount": 59,
+      "keywordCount": 40,
+      "reviewCount": 4,
+      "evidenceCount": 110
+    },
+    {
+      "ordinal": 8,
+      "restaurantId": 10042,
+      "name": "주래등",
+      "selectionReason": "Current strict ProfileReady cohort; selected before generation to combine verified menu data with available review keywords and representative reviews.",
+      "profileReady": {
+        "strictProfileReady": true,
+        "lifecyclePresent": true,
+        "readinessStatus": "READY",
+        "readinessReasons": [],
+        "missingSections": []
+      },
+      "inputHash": "538a27e01ee71278a1b7bc7327ebdf1e5abeed9fd10661c7519d90896841f115",
+      "catalogHash": "76aa5c48b7e328f98f0f5b644a8048e6abf65c66ae1f90e7281cb158af6c3101",
+      "sourceEvidenceCounts": {
+        "business_hours": 1,
+        "identity": 2,
+        "keyword": 35,
+        "menu": 68,
+        "review": 4
+      },
+      "menuCount": 68,
+      "keywordCount": 35,
+      "reviewCount": 4,
+      "evidenceCount": 110
+    }
+  ],
+  "databaseWrites": 0
+}

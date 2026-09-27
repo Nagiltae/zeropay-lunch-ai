@@ -1,0 +1,196 @@
+{
+  "artifactType": "reproduction_corpus_not_expected-verdict-fixtures",
+  "createdAt": "2026-09-25T19:31:49.255708+00:00",
+  "sourceArtifact": "AI_Answer/semantic_profile_verifier_v21_shadow_review.json",
+  "sourceHash": "405faa7fc690e1defb269545e887443b76498bc687fc986b47cf530fc0ff675b",
+  "count": 12,
+  "distributionByClaimType": {
+    "DINING_CONTEXT": 1,
+    "FOOD_MENTION": 10,
+    "TASTE": 1
+  },
+  "cases": [
+    {
+      "restaurantId": 9617,
+      "claimId": "9617:DINING_CONTEXT:61f22f079494",
+      "claimType": "DINING_CONTEXT",
+      "claimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E023",
+        "E058"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9617,
+      "claimId": "9617:TASTE:f28b8581f50f",
+      "claimType": "TASTE",
+      "claimText": "TASTE: 고객 언급에서 음식이 맛있고 가성비가 좋다는 평가가 반복된다. 근거: \"음식이 맛있어요\" 이 키워드를 선택한 인원, \"가성비가 좋아요\" 이 키워드를 선택한 인원",
+      "evidenceIds": [
+        "E024",
+        "E027"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9617,
+      "claimId": "9617:FOOD_MENTION:E033",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 떡볶이가 반복 언급된다.",
+      "evidenceIds": [
+        "E033"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E013",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 초밥가 반복 언급된다.",
+      "evidenceIds": [
+        "E013"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9731,
+      "claimId": "9731:FOOD_MENTION:E016",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 우동가 반복 언급된다.",
+      "evidenceIds": [
+        "E016"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9580,
+      "claimId": "9580:FOOD_MENTION:E067",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "evidenceIds": [
+        "E067"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9580,
+      "claimId": "9580:FOOD_MENTION:E068",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "evidenceIds": [
+        "E068"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9571,
+      "claimId": "9571:FOOD_MENTION:E055",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+      "evidenceIds": [
+        "E055"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E114",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 마카롱가 반복 언급된다.",
+      "evidenceIds": [
+        "E114"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E115",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "evidenceIds": [
+        "E115"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E118",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "evidenceIds": [
+        "E118"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    },
+    {
+      "restaurantId": 9590,
+      "claimId": "9590:FOOD_MENTION:E120",
+      "claimType": "FOOD_MENTION",
+      "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 케이크가 반복 언급된다.",
+      "evidenceIds": [
+        "E120"
+      ],
+      "existingErrorCategory": [
+        {
+          "stage": "ATOMICIZER",
+          "category": "SCHEMA_ERROR"
+        }
+      ]
+    }
+  ]
+}
