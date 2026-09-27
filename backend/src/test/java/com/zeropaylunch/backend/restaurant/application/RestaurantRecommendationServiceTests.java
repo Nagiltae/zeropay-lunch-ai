@@ -41,6 +41,48 @@ import org.junit.jupiter.api.Test;
 class RestaurantRecommendationServiceTests {
 
     @Test
+    void hybridSemanticRelevanceCanOutrankDeterministicPreferenceScore() {
+        UUID userId = UUID.randomUUID();
+        RestaurantJpaRepository repository = mock(RestaurantJpaRepository.class);
+        RestaurantVenueAssociationJpaRepository venueRepository = mock(RestaurantVenueAssociationJpaRepository.class);
+        RecommendationContextService contextService = mock(RecommendationContextService.class);
+        var enricher = mock(com.zeropaylunch.backend.recommendation.ai.SemanticCandidateEnricher.class);
+        @SuppressWarnings("unchecked")
+        ObjectProvider<com.zeropaylunch.backend.recommendation.ai.SemanticCandidateEnricher> provider =
+                mock(ObjectProvider.class);
+        when(provider.getIfAvailable()).thenReturn(enricher);
+        Restaurant deterministicWinner = restaurant(81L, RestaurantCategory.SALAD, 9_000);
+        Restaurant semanticWinner = restaurant(82L, RestaurantCategory.KOREAN, 9_000);
+        when(repository.findOpenRestaurants(anyString(), any()))
+                .thenReturn(List.of(deterministicWinner, semanticWinner));
+        when(venueRepository.findAllByRestaurant_IdInAndStatusAndVenue_Status(
+                any(), eq(RestaurantVenueAssociationStatus.CONFIRMED), eq(VenueStatus.ACTIVE)))
+                .thenReturn(List.of());
+        IntentAnalysisRequest request = new IntentAnalysisRequest(
+                "떡볶이 먹고 싶어", null, SpiceLevel.ANY, Set.of(RestaurantCategory.SALAD),
+                Set.of(), Set.of(), List.of());
+        AnalyzedIntent intent = new AnalyzedIntent(
+                IntentType.RECOMMEND_RESTAURANT, null, Optional.empty(), List.of("떡볶이"), false, null);
+        when(contextService.build(userId, request.message())).thenReturn(new RecommendationContext(request, intent));
+        var highRelevance = new com.zeropaylunch.backend.recommendation.ai.SemanticAiClient.Candidate(
+                82L, 320.0004, 0.47, List.of());
+        var lowerRelevance = new com.zeropaylunch.backend.recommendation.ai.SemanticAiClient.Candidate(
+                81L, 20.0005, 0.53, List.of());
+        when(enricher.enrich(request.message(), List.of(81L, 82L))).thenReturn(
+                new com.zeropaylunch.backend.recommendation.ai.SemanticCandidateEnricher.Result(List.of(
+                        new com.zeropaylunch.backend.recommendation.ai.SemanticCandidateEnricher.Item(81L, lowerRelevance),
+                        new com.zeropaylunch.backend.recommendation.ai.SemanticCandidateEnricher.Item(82L, highRelevance)),
+                        false));
+
+        RestaurantRecommendationService service = new RestaurantRecommendationService(
+                repository, venueRepository, contextService,
+                Clock.fixed(Instant.parse("2026-09-16T03:00:00Z"), ZoneId.of("Asia/Seoul")), provider);
+
+        assertThat(service.recommend(userId, request.message()))
+                .extracting(RecommendationItem::restaurantId).containsExactly(82L, 81L);
+    }
+
+    @Test
     void runtimeRetrievalReceivesEveryHardFilteredCandidateBeforeVenueDedupAndMaxThree() {
         UUID userId = UUID.randomUUID();
         RestaurantJpaRepository repository = mock(RestaurantJpaRepository.class);

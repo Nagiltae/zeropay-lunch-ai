@@ -3,8 +3,9 @@
 import math
 import os
 import re
+import socket
 from typing import Annotated, Literal
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
@@ -42,7 +43,9 @@ class RetrievalRequest(IntentRequest):
 class MatchedClaim(Contract):
     claimId: str
     claimType: str
-    claimText: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=500)]
+    claimText: Annotated[
+        str, StringConstraints(strip_whitespace=True, min_length=1, max_length=500)
+    ]
     semanticSimilarity: float = Field(allow_inf_nan=False)
     matchType: Literal["EXACT", "SYNONYM", "CATEGORY", "TRAIT", "SEMANTIC"]
     exactMatch: bool
@@ -69,6 +72,30 @@ class DependencyUnavailable(RuntimeError):
     pass
 
 
+class RetryableDependencyUnavailable(DependencyUnavailable):
+    """A transient transport/provider failure safe for one bounded graph retry."""
+
+
+def _raise_retrieval_failure(error: Exception) -> None:
+    if isinstance(error, HTTPError):
+        if error.code in {500, 502, 503, 504}:
+            raise RetryableDependencyUnavailable(
+                "semantic provider temporarily unavailable"
+            ) from error
+        raise DependencyUnavailable("semantic dependency rejected request") from error
+    if isinstance(error, URLError):
+        if isinstance(error.reason, (TimeoutError, socket.timeout, ConnectionError, OSError)):
+            raise RetryableDependencyUnavailable(
+                "semantic transport temporarily unavailable"
+            ) from error
+        raise DependencyUnavailable("semantic transport failed") from error
+    if isinstance(error, (TimeoutError, socket.timeout, ConnectionError, OSError)):
+        raise RetryableDependencyUnavailable(
+            "semantic transport temporarily unavailable"
+        ) from error
+    raise DependencyUnavailable("semantic dependency response invalid") from error
+
+
 def analyze(query: str) -> IntentResponse:
     primary, types = _route_v2(query)
     contexts = []
@@ -88,6 +115,15 @@ def analyze(query: str) -> IntentResponse:
         )
         if term in query
     ]
+    # Keep secondary needs from the already-supported deterministic intent signals.
+    # A FOOD primary intent must not hide a simultaneous dining/taste/venue constraint
+    # from the candidate-scoped evidence lookup.
+    if contexts:
+        types.append("DINING_CONTEXT")
+    if traits:
+        types.append("TASTE")
+    if re.search(r"친절|서비스|분위기|넓", query):
+        types.append("VENUE_CHARACTERISTIC")
     amount = re.search(r"(?<![\d.])([\d,]+(?:\.\d+)?)\s*(만)?\s*원", query)
     budget = None
     if amount:
@@ -101,19 +137,23 @@ def analyze(query: str) -> IntentResponse:
         maxBudget=budget,
         quantitativeTaste=primary == "TASTE_QUANTITATIVE",
         primaryIntent=primary,
-        claimTypes=types,
+        claimTypes=list(dict.fromkeys(types)),
     )
 
 
 class SemanticRetrievalService:
-    def retrieve(self, request: RetrievalRequest) -> RetrievalResponse:
+    def retrieve(
+        self, request: RetrievalRequest, *, intent: IntentResponse | None = None
+    ) -> RetrievalResponse:
         if not request.candidateRestaurantIds:
             return RetrievalResponse(candidates=[])
         collection = os.getenv("QDRANT_SEMANTIC_COLLECTION", "")
         if not re.fullmatch(r"[a-zA-Z0-9_-]+", collection):
             raise DependencyUnavailable("collection configuration missing")
         scope = sorted(set(request.candidateRestaurantIds))
-        intent = analyze(request.query)
+        intent = intent or analyze(request.query)
+        if intent.primaryIntent == "UNKNOWN":
+            return RetrievalResponse(candidates=[])
         try:
             vector = embed(
                 os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"), request.query, timeout=3.0
@@ -187,8 +227,16 @@ class SemanticRetrievalService:
                     )
                 )
             return RetrievalResponse(candidates=candidates)
-        except (URLError, OSError, ValueError, KeyError, TypeError, RuntimeError) as error:
-            raise DependencyUnavailable("semantic dependency failed") from error
+        except (
+            HTTPError,
+            URLError,
+            OSError,
+            ValueError,
+            KeyError,
+            TypeError,
+            RuntimeError,
+        ) as error:
+            _raise_retrieval_failure(error)
 
 
 def retrieve_explanation_claims(

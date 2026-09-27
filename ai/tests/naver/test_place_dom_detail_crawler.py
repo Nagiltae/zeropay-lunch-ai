@@ -5,7 +5,7 @@ from dataclasses import replace
 import pytest
 
 from app.naver import place_detail_persistence
-from app.naver.place_detail_models import PlaceDetail
+from app.naver.place_detail_models import BusinessHour, PlaceDetail
 from app.naver.place_detail_persistence import PlaceDetailPersistence
 from app.naver.place_dom_detail_crawler import DomCollectedDetail, PlaceDomDetailCrawler
 
@@ -152,6 +152,43 @@ def test_hours_parser_reads_daily_and_overnight_schedule():
     assert [(hour.day, hour.open_time, hour.close_time) for hour in hours] == [
         ("매일", "16:30", "03:00")
     ]
+
+
+def test_hours_parser_preserves_multiple_intervals_for_the_same_weekday():
+    hours = DomCollectedDetail._parse_business_hours("월 11:00 - 15:00 월 17:00 - 22:00")
+    assert [(hour.day, hour.open_time, hour.close_time) for hour in hours] == [
+        ("월", "11:00", "15:00"),
+        ("월", "17:00", "22:00"),
+    ]
+
+
+def test_hours_persistence_assigns_stable_per_day_interval_indexes(monkeypatch, tmp_path):
+    statements = []
+    persistence = PlaceDetailPersistence(tmp_path)
+    monkeypatch.setattr(persistence, "_run", statements.append)
+    detail = PlaceDetail(
+        place_id="123",
+        business_hours=(
+            BusinessHour("월", "11:00", "15:00"),
+            BusinessHour("월", "17:00", "22:00"),
+            BusinessHour("화", "11:00", "22:00"),
+        ),
+    )
+
+    persistence.persist(
+        42,
+        "123",
+        detail,
+        sections={"review": False, "menu": False, "business_hours": True},
+        section_states={"business_hours": "SUCCESS"},
+    )
+
+    sql = statements[0]
+    assert "day_of_week,interval_index,open_time" in sql
+    assert "VALUES (42,'NAVER','123','월',0,'11:00'" in sql
+    assert "VALUES (42,'NAVER','123','월',1,'17:00'" in sql
+    assert "VALUES (42,'NAVER','123','화',0,'11:00'" in sql
+    assert "day_of_week='월' AND interval_index=1" in sql
 
 
 def test_business_hour_dom_text_is_structured_without_inventing_schedule():

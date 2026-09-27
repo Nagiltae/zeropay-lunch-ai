@@ -9,6 +9,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from app.semantic_profile_source_scope import embedding_text_from_indexable_claims
+
 EMBEDDING_MODEL = "qwen3-embedding:0.6b"
 EMBEDDING_VERSION = "semantic-profile-embedding-v1"
 COLLECTION = "zeropay_semantic_profile_pilot_v1"
@@ -55,7 +57,7 @@ def load_documents(root: Path) -> list[dict[str, Any]]:
     for restaurant_id in RESTAURANT_IDS:
         profile = sources[restaurant_id]
         claims = profile.get("claims", [])
-        text = " ".join(f"{claim['claimType']}: {claim['text']}" for claim in claims)
+        text = embedding_text_from_indexable_claims(claims)
         documents.append(
             {
                 "restaurantId": restaurant_id,
@@ -77,7 +79,13 @@ def load_documents(root: Path) -> list[dict[str, Any]]:
 
 
 def embed(ollama: str, text: str, *, timeout: float = 60.0) -> list[float]:
-    result = _request(ollama, "/api/embed", "POST", {"model": EMBEDDING_MODEL, "input": [text]}, timeout=timeout)
+    result = _request(
+        ollama,
+        "/api/embed",
+        "POST",
+        {"model": EMBEDDING_MODEL, "input": [text]},
+        timeout=timeout,
+    )
     vectors = result.get("embeddings")
     if not vectors or not vectors[0]:
         raise RuntimeError("Ollama returned no embedding")

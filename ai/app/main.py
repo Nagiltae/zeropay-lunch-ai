@@ -2,11 +2,17 @@
 
 from functools import lru_cache
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-from fastapi import Depends, Request
+from fastapi import Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel
+
+from app.recommendation_explanation import (
+    ExplanationRequest,
+    ExplanationResponse,
+    RecommendationExplanationService,
+    configured_explanation_service,
+)
 from app.semantic_runtime import (
     DependencyUnavailable,
     IntentRequest,
@@ -16,12 +22,7 @@ from app.semantic_runtime import (
     SemanticRetrievalService,
     analyze,
 )
-from app.recommendation_explanation import (
-    ExplanationRequest,
-    ExplanationResponse,
-    RecommendationExplanationService,
-    configured_explanation_service,
-)
+from app.workflows.recommendation_graph import RecommendationWorkflow
 
 
 class HealthResponse(BaseModel):
@@ -71,13 +72,22 @@ def intent_analysis(request: IntentRequest):
     return analyze(request.query)
 
 
-def retrieval_service():
-    return SemanticRetrievalService()
+@lru_cache(maxsize=1)
+def recommendation_workflow():
+    # Compiled once per FastAPI process; graph nodes reuse the retrieval service.
+    return RecommendationWorkflow(SemanticRetrievalService())
 
 
 @app.post("/internal/v1/semantic-retrieval", response_model=RetrievalResponse)
-def semantic_retrieval(request: RetrievalRequest, service=Depends(retrieval_service)):
-    return service.retrieve(request)
+async def semantic_retrieval(
+    request: RetrievalRequest,
+    workflow: RecommendationWorkflow = Depends(recommendation_workflow),  # noqa: B008
+):
+    result, route = await workflow.run(request)
+    if route == "SEMANTIC_FAILURE_FALLBACK":
+        # Keep the 503 boundary so Spring's configured fallback remains authoritative.
+        raise DependencyUnavailable("semantic retrieval unavailable")
+    return result
 
 
 @lru_cache(maxsize=1)
@@ -92,6 +102,6 @@ def recommendation_explanation_service():
 )
 def recommendation_explanations(
     request: ExplanationRequest,
-    service: RecommendationExplanationService = Depends(recommendation_explanation_service),
+    service: RecommendationExplanationService = Depends(recommendation_explanation_service),  # noqa: B008
 ):
     return service.explain(request)

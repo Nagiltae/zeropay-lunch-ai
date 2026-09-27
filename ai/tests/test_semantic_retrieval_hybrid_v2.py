@@ -1,4 +1,11 @@
-from app.semantic_retrieval_hybrid_v2 import GROUND_TRUTH, _food_terms, _route_v2
+import pytest
+
+from app.semantic_retrieval_hybrid_v2 import (
+    GROUND_TRUTH,
+    _food_terms,
+    _route_v2,
+    _scoped_embedding_text,
+)
 
 
 def test_food_router_does_not_fallback_to_all_claim_types():
@@ -16,3 +23,8 @@ def test_ground_truth_v2_is_multilabel_and_has_evidence_reasons():
     pizza = next(row for row in GROUND_TRUTH if row["query"] == "피자 먹고 싶다")
     assert pizza["expectedRestaurantIds"] == [9580, 9571]
     assert pizza["groundTruthReason"]
+
+
+def test_hybrid_indexer_rejects_legacy_unscoped_points():
+    with pytest.raises(ValueError, match="CLAIM_NOT_INDEXABLE"):
+        _scoped_embedding_text({"normalizedClaimText": "legacy customer claim"})

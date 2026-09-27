@@ -1,0 +1,252 @@
+{
+  "probeStatus": "RATE_LIMITED",
+  "stopReason": "RATE_LIMITED",
+  "minimalTextGate": {
+    "independentRequests": 3,
+    "validExactOkResponses": 2,
+    "requiredSuccesses": 2,
+    "passed": true
+  },
+  "structuredGate": {
+    "independentRequests": 2,
+    "validStructuredResponses": 0,
+    "requiredSuccesses": 2,
+    "passed": false,
+    "interpretation": "No successful provider response; schema correctness is undetermined"
+  },
+  "httpStatusSummary": {
+    "503": 5,
+    "429": 1,
+    "400": 0,
+    "403": 0
+  },
+  "minimumObservedInterRequestSeconds": 5.0,
+  "meanObservedInterRequestSeconds": 5.592,
+  "wallClockElapsedSeconds": 39.514,
+  "stages": {
+    "1": {
+      "requestType": "plain_text",
+      "menuCount": 0,
+      "inputBytes": 22,
+      "independentRequests": 3,
+      "attempts": 4,
+      "apiResponses": 2,
+      "validResponses": 2,
+      "invalidResponses": 0,
+      "retryCount": 1,
+      "status": "PASS",
+      "outputs": [
+        {
+          "exactOk": true
+        },
+        {
+          "exactOk": true
+        }
+      ],
+      "successes": 2,
+      "averageLatencySeconds": 3.995
+    },
+    "2": {
+      "requestType": "structured_minimal",
+      "menuCount": 0,
+      "inputBytes": 48,
+      "independentRequests": 2,
+      "attempts": 4,
+      "apiResponses": 0,
+      "validResponses": 0,
+      "invalidResponses": 0,
+      "retryCount": 2,
+      "status": "FAIL",
+      "outputs": [],
+      "averageLatencySeconds": 1.757
+    },
+    "3": {
+      "requestType": "menu_classifier",
+      "menuCount": 1,
+      "inputBytes": 831,
+      "independentRequests": 0,
+      "attempts": 0,
+      "apiResponses": 0,
+      "validResponses": 0,
+      "invalidResponses": 0,
+      "retryCount": 0,
+      "status": "NOT_RUN",
+      "outputs": [],
+      "averageLatencySeconds": null
+    },
+    "4": {
+      "requestType": "menu_classifier",
+      "menuCount": 3,
+      "inputBytes": 1018,
+      "independentRequests": 0,
+      "attempts": 0,
+      "apiResponses": 0,
+      "validResponses": 0,
+      "invalidResponses": 0,
+      "retryCount": 0,
+      "status": "NOT_RUN",
+      "outputs": [],
+      "averageLatencySeconds": null
+    },
+    "5": {
+      "requestType": "menu_classifier",
+      "menuCount": 12,
+      "inputBytes": 1852,
+      "independentRequests": 0,
+      "attempts": 0,
+      "apiResponses": 0,
+      "validResponses": 0,
+      "invalidResponses": 0,
+      "retryCount": 0,
+      "status": "NOT_RUN",
+      "outputs": [],
+      "averageLatencySeconds": null
+    }
+  },
+  "requestEvents": [
+    {
+      "stage": "1",
+      "requestOrdinal": 1,
+      "timestamp": "2026-09-26T00:17:40.678409+09:00",
+      "attempt": 1,
+      "menuCount": 0,
+      "inputBytes": 22,
+      "latencySeconds": 3.781,
+      "outcome": "RESPONSE_VALID"
+    },
+    {
+      "stage": "1",
+      "requestOrdinal": 2,
+      "timestamp": "2026-09-26T00:17:45.683404+09:00",
+      "attempt": 1,
+      "menuCount": 0,
+      "inputBytes": 22,
+      "statusCode": 503,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "latencySeconds": 1.433,
+      "outcome": "HTTP_ERROR"
+    },
+    {
+      "stage": "1",
+      "requestOrdinal": 3,
+      "timestamp": "2026-09-26T00:17:50.692660+09:00",
+      "attempt": 2,
+      "menuCount": 0,
+      "inputBytes": 22,
+      "statusCode": 503,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "latencySeconds": 1.65,
+      "outcome": "HTTP_ERROR"
+    },
+    {
+      "stage": "1",
+      "requestOrdinal": 4,
+      "timestamp": "2026-09-26T00:17:55.698170+09:00",
+      "attempt": 1,
+      "menuCount": 0,
+      "inputBytes": 22,
+      "latencySeconds": 9.116,
+      "outcome": "RESPONSE_VALID"
+    },
+    {
+      "stage": "2",
+      "requestOrdinal": 5,
+      "timestamp": "2026-09-26T00:18:04.814300+09:00",
+      "attempt": 1,
+      "menuCount": 0,
+      "inputBytes": 48,
+      "statusCode": 503,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "latencySeconds": 1.658,
+      "outcome": "HTTP_ERROR"
+    },
+    {
+      "stage": "2",
+      "requestOrdinal": 6,
+      "timestamp": "2026-09-26T00:18:09.814673+09:00",
+      "attempt": 2,
+      "menuCount": 0,
+      "inputBytes": 48,
+      "statusCode": 503,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "latencySeconds": 3.312,
+      "outcome": "HTTP_ERROR"
+    },
+    {
+      "stage": "2",
+      "requestOrdinal": 7,
+      "timestamp": "2026-09-26T00:18:14.816350+09:00",
+      "attempt": 1,
+      "menuCount": 0,
+      "inputBytes": 48,
+      "statusCode": 503,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "latencySeconds": 1.688,
+      "outcome": "HTTP_ERROR"
+    },
+    {
+      "stage": "2",
+      "requestOrdinal": 8,
+      "timestamp": "2026-09-26T00:18:19.822955+09:00",
+      "attempt": 2,
+      "menuCount": 0,
+      "inputBytes": 48,
+      "statusCode": 429,
+      "apiStatus": "RESOURCE_EXHAUSTED",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "rate_limit",
+      "latencySeconds": 0.369,
+      "outcome": "HTTP_ERROR"
+    }
+  ],
+  "apiRequestCount": 8,
+  "retryCount": 3,
+  "statusCounts": {
+    "400": 0,
+    "403": 0,
+    "429": 1,
+    "5xx": 5,
+    "network": 0
+  },
+  "databaseWrites": 0,
+  "qdrantWrites": 0,
+  "springImporter": false,
+  "runtimeUsage": false,
+  "runId": "gemini-capability-probe-1",
+  "model": "gemini-3.8-flash",
+  "stage0": {
+    "sdkImport": true,
+    "sdkVersion": "2.25.0",
+    "model": "gemini-3.8-flash",
+    "modelValid": true,
+    "geminiApiKeyPresent": true,
+    "googleApiKeyPresent": false,
+    "timeoutMs": 45000,
+    "structuredSchemaSerializable": true,
+    "classifierSchemaSerializable": true,
+    "pass": true
+  },
+  "requestIntervalSeconds": 5.0,
+  "stage1InputBytes": 22,
+  "stage2InputBytes": 48,
+  "payloadBytesDefinition": "UTF-8 byte count of exact contents text; SDK envelope excluded",
+  "sourceArtifactSha256": "f02986eb39560164929b7314051324c3a45ec3c7d0742a966314958ae8119eed",
+  "fixtureArtifactSha256": "702ed02da4aa6836553d3d6e271f1cc72eaf6966a7f0ff43769c2dd5f8232145",
+  "restaurantIds": [
+    9617,
+    9571,
+    9568,
+    10042,
+    9559
+  ]
+}

@@ -36,6 +36,8 @@ LLM 출력이 프로그램 로직에 사용될 때는 반드시 검증된 구조
 
 FastAPI는 health, intent-analysis, candidate-scoped semantic retrieval 및 recommendation-explanations endpoint를 제공합니다. Spring의 `RecommendationContextService`는 메시지, 사용자 설정과 최근 식사 기록으로 `IntentAnalysisRequest`를 구성합니다. 기본 OFF인 `AI_SEMANTIC_RUNTIME_ENABLED`가 켜지면 기존 `AnalyzedIntent` adapter가 FastAPI 의도를 사용하며, 설정된 장애 fallback에서는 `TemporaryIntentAnalyzer`가 처리합니다. 최종 후보의 reason은 Safe Fact 기반 결정론 설명을 기본으로 하며, Qwen 설명만 별도 기본 OFF인 `AI_LLM_EXPLANATION_ENABLED`로 제어합니다.
 
+`/internal/v1/semantic-retrieval`은 compiled-once LangGraph workflow를 사용합니다. State는 원본 query와 불변 candidate ID tuple, 기존 deterministic intent, retrieval 상태, retry count, fallback 사유와 trace를 보유합니다. UNKNOWN/generic intent는 retrieval node로 가지 않으며 embedding/Qdrant 호출이 없습니다. Retrieval 성공은 finalize, 빈 결과는 재호출 없이 empty fallback, 분류된 transient transport 또는 HTTP 500/502/503/504만 최대 한 번 재시도합니다. Retry exhausted/non-retryable 오류는 sanitized 503으로 기존 Spring fallback boundary를 보존합니다. Spring HTTP DTO, hard-filter ownership, final ordering은 변경하지 않습니다. Trace는 민감 request 값 없이 FastAPI log에 route, visited nodes, retry/status/fallback, elapsed time만 기록합니다.
+
 현재 결정론적 추천은 다음을 강제합니다.
 
 1. 영업 중이고 제로페이가 가능한 음식점만 DB에서 조회
@@ -44,6 +46,18 @@ FastAPI는 health, intent-analysis, candidate-scoped semantic retrieval 및 reco
 4. 최근 72시간 내 먹은 음식점 제외
 5. 위치, 예산, 카테고리와 선호 카테고리로 점수 계산
 6. Spring Boot가 최종 순위를 확정
+
+Serving Model v2의 메뉴 예산 분류는 사용자 요청 시 실행하는 runtime LLM이 아니라 별도 제한 배치입니다. `GEMINI_API_KEY`와 `GEMINI_MODEL`을 이용해 기존 NAVER 메뉴 ID/name/description/DB price를 구조화 분류하는 pilot 코드는 있으나, 2026-09 pilot은 429와 미완료로 NO_GO였습니다. 결과는 artifact일 뿐이며 Spring import/persistence 및 runtime 사용은 구현하지 않았고, Qwen classifier로 자동 fallback하지 않습니다.
+
+Semantic Profile 생성은 별도 offline artifact pipeline입니다. 기존 validator는 claim schema, evidence ID/source type, lifecycle 등을 확인하지만 claim 의미가 source에 의해 직접 함의되는지는 보증하지 않습니다. Verifier V2.2는 Evidence를 보지 않는 Atomicizer, assertion별 binary verifier, Python verdict aggregator를 분리합니다. Atomicizer는 Claim token 범위만 반환하고 Python이 ID/sourceSpan을 구성해 traceability를 검증합니다. 12개 legacy failure corpus는 3회 총 36/36 성공했고, 8개 frozen fixture는 3회 모두 통과했습니다. 기존 v12 40-point read-only shadow는 `SUPPORTED 5 / PARTIAL 29 / UNSUPPORTED 6 / ERROR 0`입니다. 일부 legacy Claim의 `근거:` 꼬리가 assertion으로 분해되는 한계가 관찰되어 verdict 분포 해석 시 주의해야 합니다. 기존 40개는 exact supportQuote가 없어 새 정책상 모두 indexable하지 않습니다. 현재 상태는 `READY_FOR_GENERATOR_FIX`이며, 기존 Qdrant 데이터 수정이나 Profile 확대를 뜻하지 않습니다. 다음 단계는 별도 bounded Generator dry-run이고, runtime recommendation/ordering에는 연결되지 않습니다. 상세 결과는 `AI_Answer/semantic_profile_atomicizer_v22_review.md` 및 V2.2 artifacts를 참조합니다.
+
+Generator V2의 9559/9603/9639 bounded dry-run에서는 claimText, Evidence IDs, exact supportQuotes를 별도 구조화했고, deterministic validation과 Verifier V2.2를 통과한 26개 claim만 artifact에 승인 표시했습니다. 두 독립 run에서 각 Restaurant당 최소 3개가 승인됐으며, 4개 비원자 claim은 제외됐습니다. 이는 artifact-only pilot으로 MySQL/Qdrant/Embedding write가 없고 Runtime에도 연결되지 않습니다. 결과는 `AI_Answer/semantic_profile_generator_v2_review.md`를 참조합니다.
+
+Generator V2.1은 기존 3개와 다른 strict ProfileReady Restaurant 8곳에서 한국어 Claim과 review/keyword source diversity를 DRY-RUN했습니다. MENU / REVIEW_KEYWORD / REVIEW evidence를 prompt에 interleave하고 최대 Claim 수를 8로 늘렸지만, 53개 생성 Claim 중 36개만 승인됐고 승인 36개가 모두 MENU 기반이었습니다. REVIEW_KEYWORD에서 생성된 8개는 source/claim-type mismatch 등으로 모두 거절됐고 REVIEW 기반 Claim은 생성되지 않았습니다. 따라서 확대 상태는 `BLOCKED_SOURCE_BIAS`이며 Profile/Embedding/Qdrant 확장은 진행하지 않았습니다. 세부 결과는 `AI_Answer/semantic_profile_generator_v21_review.md`를 참조합니다.
+
+Generator V2.2는 기존 `FOOD_MENTION` ClaimType을 customer REVIEW/REVIEW_KEYWORD에 한정해 Generator contract에 추가하고 source별 의미 및 ClaimType 선택을 명시했습니다. 11개 frozen source fixture를 거친 최종 bounded 평가(v3)는 8/11 통과했습니다. MENU 3/3, REVIEW_KEYWORD 4/4는 ClaimType/근거 검사를 통과했지만, solo-dining keyword 2개가 고객 평가 표기를 생략한 단정적 식당 속성으로 생성되어 verifier까지 통과했습니다. REVIEW는 점심 대기 경험 1건만 기대 경계와 원자성을 통과했고, 음식 평가 축소와 복합 venue claim 문제가 남았습니다. 최종 상태는 `SEMANTIC PROFILE SOURCE CONTRACT = BLOCKED_SAFETY`; 3-restaurant run, Profile expansion, embedding 및 Qdrant indexing은 수행하지 않습니다. 이는 데이터 파이프라인 freeze 승인이나 LangGraph가 이 claim을 사용할 수 있다는 뜻이 아닙니다. 상세: `AI_Answer/semantic_profile_generator_v22_review.md`.
+
+후속 Source Scope Guard V1은 frozen V3 결과를 재호출 없이 재사용해 `MENU → LISTING_FACT`, `REVIEW/REVIEW_KEYWORD → CUSTOMER_REPORTED`를 Python에서 결정적으로 부여합니다. 혼합/미확인 source는 non-indexable이며, customer claim은 `고객 리뷰 기반 정보:`가 붙은 `searchText`만 indexable/embedding 가능하고 raw claimText는 직접 사용하지 않습니다. 11건 중 10건 indexable, non-atomic 1건 reject, source-scope false acceptance 0입니다. 기존 legacy profile 및 claim/tenth/hybrid pilot builders는 scope metadata가 없어 fail-closed합니다. 따라서 pipeline 상태는 `EXPERIMENTAL / FROZEN`; Profile expansion/indexing은 계속 금지하고, 다음 별도 작업에서 LangGraph로 이동할 수 있습니다. 상세: `AI_Answer/semantic_profile_source_scope_guard_v1_review.md`.
 
 알레르기와 매운맛은 계약에 포함되지만 음식점 재료·매운맛 데이터가 아직 없으므로 현재 결정론적 필터에는 사용하지 않습니다. 데이터 없이 안전하다고 추론하거나 LLM에 필터를 위임하지 않습니다.
 
@@ -58,7 +72,7 @@ FastAPI는 health, intent-analysis, candidate-scoped semantic retrieval 및 reco
 
 현재 timeout과 최대 시도 설정은 계약과 환경설정으로 준비되어 있으며 실제 HTTP 클라이언트가 구현될 때 적용합니다. fallback 선택 로직과 테스트는 이미 구현되어 있습니다.
 
-Qdrant 클라이언트 연동, 컬렉션 구성, 의미 검색, LangGraph, LLM 제공자와 대체 처리 방식은 구현 예정입니다.
+Qdrant는 기존 pilot collection에 대한 candidate-scoped read-only 검색으로 연결되어 있습니다. LangGraph는 이 검색 호출의 orchestration과 bounded recovery만 담당합니다. Qdrant write, Profile generation/indexing, 새 embedding 저장은 별도 승인 전까지 동결 상태입니다. LLM 제공자/설명 경로는 semantic retrieval graph와 분리됩니다.
 
 ## NAVER Place Resolver PoC
 

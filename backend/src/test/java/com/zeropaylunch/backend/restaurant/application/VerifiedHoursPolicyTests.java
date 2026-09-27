@@ -22,6 +22,30 @@ class VerifiedHoursPolicyTests {
     }
 
     @Test
+    void acceptsMultipleIntervalsOnTheSameWeekday() {
+        var lunch = hours("월", "11:00", "15:00", null);
+        var dinner = hours("월", "17:00", "22:00", null);
+
+        assertThat(policy.evaluate(List.of(lunch, dinner), LocalDate.of(2026, 9, 28), LocalTime.of(12, 0)).status())
+                .isEqualTo(VerifiedHoursPolicy.Status.OPEN);
+        assertThat(policy.evaluate(List.of(lunch, dinner), LocalDate.of(2026, 9, 28), LocalTime.of(16, 0)).status())
+                .isEqualTo(VerifiedHoursPolicy.Status.CLOSED);
+        assertThat(policy.evaluate(List.of(lunch, dinner), LocalDate.of(2026, 9, 28), LocalTime.of(18, 0)).status())
+                .isEqualTo(VerifiedHoursPolicy.Status.OPEN);
+    }
+
+    @Test
+    void appliesVerifiedBreakIntervalWithoutClosingTheWholeDay() {
+        var split = new VerifiedHoursPolicy.SourceHours("매일", "11:00", "22:00", "15:00 - 17:00",
+                null, null, "매일 11:00 - 22:00 브레이크타임 15:00 - 17:00");
+
+        assertThat(policy.evaluate(List.of(split), LocalDate.of(2026, 9, 25), LocalTime.of(16, 0)).status())
+                .isEqualTo(VerifiedHoursPolicy.Status.CLOSED);
+        assertThat(policy.evaluate(List.of(split), LocalDate.of(2026, 9, 25), LocalTime.of(18, 0)).status())
+                .isEqualTo(VerifiedHoursPolicy.Status.OPEN);
+    }
+
+    @Test
     void acceptsOvernightBeforeAndAfterMidnight() {
         var beforeMidnight = policy.evaluate(List.of(hours("금", "18:00", "02:00", null)),
                 LocalDate.of(2026, 9, 25), LocalTime.of(23, 0));

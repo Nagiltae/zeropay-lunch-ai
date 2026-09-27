@@ -152,14 +152,25 @@ public class RestaurantRecommendationService {
         }
 
         Map<Long, SemanticAiClient.Candidate> rankingSignals = semanticSignals;
+        Comparator<Restaurant> deterministicOrder = Comparator
+                .comparingInt((Restaurant r) -> score(r, intent, request, budget)).reversed()
+                .thenComparingInt(this::priceTieBreak)
+                .thenComparing(Restaurant::getId);
+        Comparator<Restaurant> rankingOrder = deterministicOrder;
+        if (!rankingSignals.isEmpty()) {
+            // FastAPI's existing hybrid relevance is the primary AI signal. It already
+            // combines evidence-match strength and vector similarity; Spring adds no
+            // keyword-specific weights and remains the final ordering owner.
+            rankingOrder = Comparator
+                    .comparingDouble((Restaurant r) -> retrievalRelevance(rankingSignals.get(r.getId())))
+                    .reversed()
+                    .thenComparing(Comparator.comparingDouble((Restaurant r) ->
+                            semanticRelevance(rankingSignals.get(r.getId()))).reversed())
+                    .thenComparing(deterministicOrder);
+        }
         Set<Long> selectedVenueKeys = new HashSet<>();
         List<Restaurant> finalRestaurants = hardFiltered.stream()
-                .sorted(Comparator.comparingInt((Restaurant r) -> score(r, intent, request, budget)).reversed()
-                        // Semantic cosine is bounded to [0,1] and only breaks existing deterministic score ties.
-                        .thenComparing(Comparator.comparingDouble((Restaurant r) ->
-                                semanticRelevance(rankingSignals.get(r.getId()))).reversed())
-                        .thenComparingInt(this::priceTieBreak)
-                        .thenComparing(Restaurant::getId))
+                .sorted(rankingOrder)
                 .filter(r -> selectedVenueKeys.add(confirmedVenueIds.getOrDefault(r.getId(), r.getId())))
                 .limit(MAX_RECOMMENDATIONS)
                 .toList();
@@ -180,6 +191,11 @@ public class RestaurantRecommendationService {
     private double semanticRelevance(SemanticAiClient.Candidate candidate) {
         if (candidate == null || !Double.isFinite(candidate.semanticSimilarity())) return 0.0;
         return Math.max(0.0, Math.min(1.0, candidate.semanticSimilarity()));
+    }
+
+    private double retrievalRelevance(SemanticAiClient.Candidate candidate) {
+        if (candidate == null || !Double.isFinite(candidate.retrievalScore())) return 0.0;
+        return candidate.retrievalScore();
     }
 
     private Map<Long, Long> confirmedVenueIds(Set<Long> restaurantIds) {

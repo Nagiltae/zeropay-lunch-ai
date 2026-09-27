@@ -44,7 +44,7 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 | `restaurants` | 강남구 논현동 음식점, 추천용 보강 정보, KOMSCO 원본 출처와 동기화 상태 |
 | `restaurant_external_places` | 음식점별 외부 검색 제공자의 보강 필드와 매칭 판정·동기화 시각 |
 | `restaurant_menus` | NAVER Place에서 수집한 메뉴·가격의 정규화 행 |
-| `restaurant_business_hours` | 외부 장소별 요일 영업시간·휴무·브레이크타임 |
+| `restaurant_business_hours` | 외부 장소별 요일 영업시간 interval·휴무·브레이크타임. V22의 `interval_index`로 같은 요일 복수 구간 보존 |
 | `restaurant_review_summaries` | 방문자/블로그 리뷰 집계 |
 | `restaurant_review_keywords` | 리뷰 테마·메뉴 언급·투표 키워드 |
 | `restaurant_representative_reviews` | 공개 화면에 포함된 대표 리뷰 원문 |
@@ -80,7 +80,7 @@ MySQL을 애플리케이션의 기준 저장소로 사용합니다. Docker Compo
 
 제로페이는 사용자 취향 옵션이 아니라 모든 후보 조회에서 강제되는 서비스 정책입니다. 현재 비선호 카테고리와 최근 72시간 내 먹은 음식점도 애플리케이션 계층에서 제외합니다.
 
-현재 스키마는 시작 시각보다 종료 시각이 늦은 당일 영업 구간을 지원합니다. 자정을 넘기는 영업시간과 특정 공휴일 예외는 실제 데이터 계약을 정할 때 별도 일정으로 확장합니다.
+V22부터 `restaurant_business_hours`는 `(provider, external_place_id, day_of_week, interval_index)`를 구간 식별자로 사용합니다. 기존 행은 `interval_index=0`으로 보존하고, 같은 요일의 점심·저녁 구간을 별도 행으로 저장할 수 있습니다. NAVER 상세 기반 `VerifiedHoursPolicy`는 당일·자정 초과·24시간 구간, 반복 휴무, 저장된 날짜 예외, break interval을 평가하며 파싱이 불확실하면 `UNKNOWN`으로 fail-closed 처리합니다. 과거 persistence에서 덮어써진 구간은 원문 evidence가 남아 있지 않으면 추정 복구하지 않습니다.
 
 ## 지하철역과 반경 (historical)
 

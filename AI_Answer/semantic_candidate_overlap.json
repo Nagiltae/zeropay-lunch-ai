@@ -1,0 +1,58 @@
+{
+  "auditSource": {
+    "mysqlDatabase": "zeropay_lunch",
+    "mysqlAccess": "read-only SELECT",
+    "qdrantCollection": "zeropay_semantic_claim_pilot_v12",
+    "qdrantAccess": "read-only collection metadata and points scroll",
+    "evaluatedAt": "2026-09-26T01:28:51+09:00"
+  },
+  "qdrant": {
+    "pointCount": 40,
+    "vectorDimension": 1024,
+    "distance": "Cosine",
+    "embeddingModel": "qwen3-embedding:0.6b",
+    "restaurantCount": 10,
+    "restaurantIds": [9567, 9568, 9569, 9570, 9571, 9574, 9580, 9590, 9617, 9731],
+    "claimTypeCounts": {
+      "DINING_CONTEXT": 4,
+      "FOOD_MENTION": 16,
+      "FOOD_TYPE": 4,
+      "MENU_CHARACTERISTIC": 5,
+      "TASTE": 7,
+      "VENUE_CHARACTERISTIC": 4
+    }
+  },
+  "mysql": {
+    "database": "zeropay_lunch",
+    "restaurantTotal": 517,
+    "legacyRecommendationReadyHardFilterCount": 0,
+    "verifiedServingDataEligibleBeforeCurrentHoursEvaluation": 32,
+    "verifiedServingCandidateRestaurantIds": [9559, 9560, 9562, 9567, 9568, 9569, 9570, 9571, 9574, 9580, 9590, 9603, 9617, 9639, 9659, 9662, 9715, 9759, 9791, 9801, 9826, 9839, 9853, 9865, 9904, 9954, 9973, 9976, 9996, 10021, 10042, 10053],
+    "candidateQueryNotes": "Current VerifiedNaverServingCandidateService SOURCE_QUERY predicates reproduced using SELECT only; current clock-hours evaluation and user-specific default-budget filtering are not represented in this pre-hours candidate set."
+  },
+  "overlap": {
+    "preHoursSourceEligibility": {
+      "candidateCount": 32,
+      "intersectionCount": 9,
+      "restaurantIds": [9567, 9568, 9569, 9570, 9571, 9574, 9580, 9590, 9617]
+    },
+    "deterministicReferenceClock": {
+      "clock": "2026-09-24T18:00:00+09:00",
+      "verifiedServingCandidateCount": 26,
+      "intersectionCount": 7,
+      "restaurantIds": [9568, 9569, 9570, 9571, 9574, 9580, 9617],
+      "note": "Computed from verified current source-hours rows; six of the 32 source-eligible rows are UNKNOWN because their hours are absent/unparseable at this clock."
+    },
+    "observedCurrentClock": {
+      "clock": "2026-09-26T01:28:51+09:00",
+      "qdrantIntersectionOpenCount": 0,
+      "note": "Every Qdrant-overlap Restaurant is CLOSED or UNKNOWN under VerifiedHoursPolicy at the audit clock; this is a time-dependent observation, not a permanent coverage count."
+    },
+    "qdrantOutsideReferenceScope": [9567, 9590, 9731],
+    "scopeLeakageObservedInFormalQdrantQueries": 0
+  },
+  "writes": {
+    "mysql": 0,
+    "qdrant": 0
+  }
+}

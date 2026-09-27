@@ -10,6 +10,7 @@ spring:
     locations: classpath:db/migration,classpath:db/migration-mysql
 
 app:
+  fixed-clock-instant: "2026-09-24T09:00:00Z"
   ai:
     base-url: http://ai:8001
   komsco:

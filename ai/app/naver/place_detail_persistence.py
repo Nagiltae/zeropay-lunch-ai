@@ -127,12 +127,15 @@ class PlaceDetailPersistence:
                 price_text=COALESCE(VALUES(price_text),price_text),active=TRUE,
                 crawled_at=CURRENT_TIMESTAMP(6)"""
             )
+        hour_interval_indices: dict[str, int] = {}
         for hour in detail.business_hours if selected["business_hours"] else ():
+            interval_index = hour_interval_indices.get(hour.day, 0)
+            hour_interval_indices[hour.day] = interval_index + 1
             statements.append(
                 f"""INSERT INTO restaurant_business_hours
-                (restaurant_id,provider,external_place_id,day_of_week,open_time,close_time,break_hours,last_order,
+                (restaurant_id,provider,external_place_id,day_of_week,interval_index,open_time,close_time,break_hours,last_order,
                  description,regular_closed_day,irregular_closed_day,business_status,active)
-                VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(hour.day)},{_sql(hour.open_time)},
+                VALUES ({restaurant_id},'NAVER',{_sql(place_id)},{_sql(hour.day)},{interval_index},{_sql(hour.open_time)},
                 {_sql(hour.close_time)},{_sql(hour.break_hours)},{_sql(hour.last_order)},
                 {_sql(hour.description)},{_sql(hour.regular_closed_day)},{_sql(hour.irregular_closed_day)},
                 {_sql(hour.business_status)},TRUE)
@@ -185,8 +188,13 @@ class PlaceDetailPersistence:
             ids = tuple(menu.external_menu_id for menu in detail.menus)
             statements.append(self._deactivate_missing("restaurant_menus", "external_menu_id", ids, place_id))
         if section_states.get("business_hours") in {"SUCCESS", "ABSENT_CONFIRMED"} and selected.get("business_hours"):
-            days = tuple(hour.day for hour in detail.business_hours)
-            statements.append(self._deactivate_missing("restaurant_business_hours", "day_of_week", days, place_id))
+            present_intervals: dict[str, int] = {}
+            interval_keys = []
+            for hour in detail.business_hours:
+                interval_index = present_intervals.get(hour.day, 0)
+                present_intervals[hour.day] = interval_index + 1
+                interval_keys.append((hour.day, interval_index))
+            statements.append(self._deactivate_missing_hours(tuple(interval_keys), place_id))
         if section_states.get("review") in {"SUCCESS", "ABSENT_CONFIRMED"} and selected.get("review"):
             keywords = tuple(
                 (keyword.kind, keyword.keyword)
@@ -235,6 +243,16 @@ class PlaceDetailPersistence:
         condition = "FALSE" if not values else f"{key} NOT IN ({','.join(_sql(value) for value in values)})"
         return (
             f"UPDATE {table} SET active=FALSE WHERE provider='NAVER' "
+            f"AND external_place_id={_sql(place_id)} AND active=TRUE AND {condition}"
+        )
+
+    @staticmethod
+    def _deactivate_missing_hours(intervals: tuple[tuple[str, int], ...], place_id: str) -> str:
+        condition = "FALSE" if not intervals else "NOT (" + " OR ".join(
+            f"(day_of_week={_sql(day)} AND interval_index={index})" for day, index in intervals
+        ) + ")"
+        return (
+            "UPDATE restaurant_business_hours SET active=FALSE WHERE provider='NAVER' "
             f"AND external_place_id={_sql(place_id)} AND active=TRUE AND {condition}"
         )
 

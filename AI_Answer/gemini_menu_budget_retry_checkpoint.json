@@ -1,0 +1,76 @@
+{
+  "runId": "gemini-menu-budget-v2-retry-1",
+  "model": "gemini-3.8-flash",
+  "sourceSha256": "f02986eb39560164929b7314051324c3a45ec3c7d0742a966314958ae8119eed",
+  "fixtureSha256": "702ed02da4aa6836553d3d6e271f1cc72eaf6966a7f0ff43769c2dd5f8232145",
+  "restaurantResults": {
+    "9617": {
+      "restaurantId": 9617,
+      "status": "INCOMPLETE",
+      "chunks": {
+        "0": {
+          "status": "FAILED",
+          "menuIds": [
+            8727,
+            8728,
+            8729,
+            8730,
+            8731,
+            8732,
+            8733,
+            8734,
+            8735,
+            8736,
+            8737,
+            8738
+          ],
+          "safeError": "provider 5xx failure",
+          "statusCode": 503,
+          "attempts": 2
+        }
+      }
+    }
+  },
+  "requestEvents": [
+    {
+      "requestOrdinal": 1,
+      "startedAt": "2026-09-25T23:55:14.346692+09:00",
+      "restaurantId": 9617,
+      "chunkIndex": 0,
+      "attempt": 1,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "statusCode": 503,
+      "outcome": "FAILED"
+    },
+    {
+      "requestOrdinal": 2,
+      "startedAt": "2026-09-25T23:55:18.464958+09:00",
+      "restaurantId": 9617,
+      "chunkIndex": 0,
+      "attempt": 2,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "statusCode": 503,
+      "outcome": "FAILED"
+    }
+  ],
+  "apiRequestCount": 2,
+  "successfulApiRequests": 0,
+  "failedApiRequests": 2,
+  "retryCount": 1,
+  "statusCounts": {
+    "400": 0,
+    "403": 0,
+    "429": 0,
+    "5xx": 2,
+    "network": 0,
+    "timeout": 0
+  },
+  "tokenUsage": {},
+  "terminalStop": "PROVIDER_AVAILABILITY",
+  "lastRequestStartedAt": "2026-09-25T23:55:18.464958+09:00",
+  "elapsedSeconds": 0.0
+}

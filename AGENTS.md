@@ -32,6 +32,8 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## Completed
 
+- FastAPI의 candidate-scoped semantic retrieval endpoint 내부를 compiled-once LangGraph workflow로 전환했다. Intent eligibility conditional skip, retrieval result evaluation, transient-only bounded retry 1회, fallback과 safe execution trace를 추가했다. Spring의 hard filter/final ranking 및 기존 HTTP response contract를 유지하고, frozen Profile/Embedding/Qdrant data pipeline은 변경하지 않았다. 상세 결과: `AI_Answer/langgraph_recommendation_v1_review.md`.
+
 - Spring Recommendation에 FastAPI intent 및 semantic retrieval을 opt-in 연결했다. Intent 오류는 기존 deterministic analyzer로, retrieval 오류는 설정된 fallback 정책으로 처리한다. hard-filter 후보 전체를 Venue dedup/max3 전에 검색하고 bounded cosine은 deterministic score 동률에서만 tie-breaker로 사용한다.
 
 - 논현동·I0000002 KOMSCO importer와 주간 일요일 03:00(Asia/Seoul) 동기화/명시적 cleanup 경로.
@@ -49,6 +51,7 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 - 최종 Spring 후보의 `reason`에만 붙는 Grounded Recommendation Explanation API/Client를 연결했다. 설명 단계에서 최종 Restaurant ID scope 안의 intent 보조 Evidence를 읽고 Safe Fact로 제한한다. 실제 3-query Qwen 재검증에서 grounded 3/3은 미달했으므로 Runtime 기본 OFF를 유지한다. `AI_Answer/recommendation_explanation_revalidation_review.md` 참조.
 - `AI_SEMANTIC_RUNTIME_ENABLED`와 `AI_LLM_EXPLANATION_ENABLED`를 분리했다. 둘 다 기본 OFF이며, Semantic ON/LLM OFF에서는 최종 추천 후보의 Safe Fact 기반 deterministic reason을 반환하고 Ollama client도 생성하지 않는다. React 채팅 카드와 기존 SSE `recommendations.items[].reason` 연결을 테스트로 확인했다. 관련 결과는 `AI_Answer/mvp_recommendation_ui_e2e_review.md` 참조.
 - disposable MySQL을 사용하는 별도 Spring `e2e` profile 및 Playwright full-stack harness를 추가했다. React Browser → Spring Chat/SSE → FastAPI → query-only Qdrant v12/embedding-only Ollama → deterministic reason 흐름을 세 Query로 검증했다. LLM generation 0회, Qdrant point count 불변, E2E 전용 DB/volume cleanup을 확인했다. 상세 결과는 `AI_Answer/mvp_full_stack_e2e_review.md` 참조.
+- V22에서 NAVER `restaurant_business_hours`에 요일별 `interval_index`를 추가해 같은 요일의 복수 영업 interval을 보존한다. 기존 행은 index 0으로 유지한다. Gemini 3.8 Flash budget classifier v2의 고정 5곳 pilot은 API 429에서 중단되어 NO_GO이며, menu DB persistence/importer는 없다. `AI_Answer/serving_model_v2_hours_fix_review.md`와 `AI_Answer/gemini_menu_budget_pilot_review.md` 참조.
 
 ## In Progress
 
@@ -60,6 +63,8 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 
 ## Next
 
+- ZeroPay Lunch AI 기능 구현을 동결하고, 별도 요청 전에는 새 Profile/Embedding/Qdrant indexing 또는 AI runtime 기능을 추가하지 않는다. 다음 작업은 전체 서비스 E2E/문서 최종 review와 사용자의 직접 코드 분석·포트폴리오 회고다.
+
 - 513건 전체 배치는 별도 작업으로 남아 있으며 이번 Runtime wiring에서 실행하지 않았다.
 - 전체 Batch가 별도 승인되어 실행될 경우 403/429/CAPTCHA에서 즉시 중단하고 DB 기반으로 재개한다.
 - Semantic Runtime은 기본 OFF로 유지한다. 이를 켜는 배포 전 설정·관측성·장애 대응 검토를 별도 수행한다.
@@ -70,10 +75,12 @@ ZeroPay Lunch AI는 사용자의 자연어·취향·예산·최근 식사 기록
 - 승인된 Venue association을 실제 데이터에 적용하기 전 사업자 관계·동일 장소 근거와 사용자 승인을 확인한다. Venue 단위 Detail/최근 식사 이전은 별도 계약으로 남긴다.
 - 신규 READY 14곳의 Semantic Profile 생성은 다음 별도 단계에서 readiness/evidence를 다시 확인한 뒤 제한적으로 진행한다. 이번 Backfill 결과만으로 Profile을 자동 생성하거나 승인하지 않는다.
 - 전체 Detail 수집과 Embedding/Qdrant 적재는 품질 기준과 표본 검토 후 별도 진행한다.
+- Gemini budget classifier는 5곳 전체 완료 및 품질 gate를 통과하지 못했고 429에서 중단했다. Spring serving budget 데이터로 사용하지 않는다. provider quota/rate 정책 확인 후 별도 bounded pilot이 승인되기 전까지 재호출하지 않는다.
+- 최신 Semantic Profile Source Scope Guard V1은 frozen V3 11개 claim에 source-derived `LISTING_FACT` / `CUSTOMER_REPORTED` scope를 적용했다. Customer-derived 검색 text는 generic attribution prefix가 필수이며, embedding 및 historical claim/tenth/hybrid pilot builders는 scope/indexability/searchText가 없는 legacy artifact를 fail-closed한다. 10/11 indexable, non-atomic 1건 제외, unscoped source false acceptance 0. Profile expansion/indexing은 계속 중지하고 파이프라인은 EXPERIMENTAL/FROZEN으로 둔다. 상세: `AI_Answer/semantic_profile_source_scope_guard_v1_review.md`.
 
 ## Deferred
 
-- 514건 전체 crawl, LangGraph, 사용자 GPS/거리 추천은 미실행이다. Semantic Runtime 및 Deterministic Explanation UI는 opt-in 경로이며, LLM Explanation은 품질 gate 미통과로 기본 OFF다. Semantic Runtime은 기존 Qdrant pilot collection을 읽기 전용으로 사용한다.
+- 514건 전체 crawl과 사용자 GPS/거리 추천은 미실행이다. LangGraph 도입은 다음 별도 작업이며, source-scope Guard가 허용한 `searchText`만 의미 데이터 입력으로 사용할 수 있다. Profile expansion/indexing은 하지 않는다. Semantic Runtime 및 Deterministic Explanation UI는 opt-in 경로이며, LLM Explanation은 품질 gate 미통과로 기본 OFF다. Semantic Runtime은 기존 Qdrant pilot collection을 읽기 전용으로 사용한다.
 
 # Important Design Decisions
 

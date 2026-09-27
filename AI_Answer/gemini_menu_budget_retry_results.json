@@ -1,0 +1,107 @@
+{
+  "runId": "gemini-menu-budget-v2-retry-1",
+  "provider": "GEMINI",
+  "model": "gemini-3.8-flash",
+  "sourceArtifactSha256": "f02986eb39560164929b7314051324c3a45ec3c7d0742a966314958ae8119eed",
+  "fixtureArtifactSha256": "702ed02da4aa6836553d3d6e271f1cc72eaf6966a7f0ff43769c2dd5f8232145",
+  "restaurantIds": [
+    9617,
+    9571,
+    9568,
+    10042,
+    9559
+  ],
+  "restaurantCount": 5,
+  "menuCount": 188,
+  "chunkCount": 17,
+  "pilotStatus": "INCOMPLETE_PROVIDER_AVAILABILITY",
+  "completion": "INCOMPLETE",
+  "completedRestaurants": 0,
+  "classifiedMenuCount": 0,
+  "unknownAssignedMenuCount": 0,
+  "omittedMenuCount": 0,
+  "apiRequestCount": 2,
+  "diagnosticApiRequestCount": 0,
+  "successfulApiRequests": 0,
+  "failedApiRequests": 2,
+  "retryCount": 1,
+  "statusCounts": {
+    "400": 0,
+    "403": 0,
+    "429": 0,
+    "5xx": 2,
+    "network": 0,
+    "timeout": 0
+  },
+  "requestIntervalSeconds": 3.0,
+  "observedRequestIntervalSeconds": [
+    4.118266
+  ],
+  "meanRequestIntervalSeconds": 4.118,
+  "wallClockElapsedSeconds": 5.171,
+  "requestEvents": [
+    {
+      "requestOrdinal": 1,
+      "startedAt": "2026-09-25T23:55:14.346692+09:00",
+      "restaurantId": 9617,
+      "chunkIndex": 0,
+      "attempt": 1,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "statusCode": 503,
+      "outcome": "FAILED"
+    },
+    {
+      "requestOrdinal": 2,
+      "startedAt": "2026-09-25T23:55:18.464958+09:00",
+      "restaurantId": 9617,
+      "chunkIndex": 0,
+      "attempt": 2,
+      "apiStatus": "UNAVAILABLE",
+      "retryAfterPresent": false,
+      "safeErrorCategory": "provider_5xx",
+      "statusCode": 503,
+      "outcome": "FAILED"
+    }
+  ],
+  "fixtureEvaluation": null,
+  "structuralValidation": {
+    "successfulChunksValidated": 0,
+    "structuralErrors": 0,
+    "evaluationStatus": "NOT_RUN_INCOMPLETE_PILOT"
+  },
+  "databaseWrites": 0,
+  "qdrantWrites": 0,
+  "geminiRawOutputPersistedToRuntime": false,
+  "springImporterImplemented": false,
+  "tokenUsage": {},
+  "restaurants": {
+    "9617": {
+      "restaurantId": 9617,
+      "status": "INCOMPLETE",
+      "chunks": {
+        "0": {
+          "status": "FAILED",
+          "menuIds": [
+            8727,
+            8728,
+            8729,
+            8730,
+            8731,
+            8732,
+            8733,
+            8734,
+            8735,
+            8736,
+            8737,
+            8738
+          ],
+          "safeError": "provider 5xx failure",
+          "statusCode": 503,
+          "attempts": 2
+        }
+      }
+    }
+  }
+}

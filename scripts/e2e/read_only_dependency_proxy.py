@@ -85,9 +85,19 @@ class Handler(BaseHTTPRequestHandler):
                 conditions = query.get("filter", {}).get("must", [])
                 scope = next((item.get("match", {}).get("any", []) for item in conditions
                               if item.get("key") == "restaurantId"), [])
-                returned = [point.get("payload", {}).get("restaurantId")
-                            for point in payload.get("result", {}).get("points", [])]
-                event.update({"candidateRestaurantIds": scope, "returnedRestaurantIds": returned})
+                hits = [
+                    {
+                        "restaurantId": point.get("payload", {}).get("restaurantId"),
+                        "score": point.get("score"),
+                        "claimType": point.get("payload", {}).get("claimType"),
+                        "claimId": point.get("payload", {}).get("claimId"),
+                        "evidenceIds": point.get("payload", {}).get("evidenceIds", []),
+                    }
+                    for point in payload.get("result", {}).get("points", [])
+                ]
+                returned = [point["restaurantId"] for point in hits]
+                event.update({"candidateRestaurantIds": scope, "returnedRestaurantIds": returned,
+                              "hits": hits})
             print(json.dumps(event), flush=True)
         except HTTPError as error:
             self.send_response(error.code)

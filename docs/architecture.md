@@ -1,6 +1,6 @@
 # 아키텍처
 
-2026-09-25: FastAPI intent/scoped retrieval을 Spring Recommendation Service에 feature-flagged로 연결했다. 기본 OFF이며 hard filter·최종 deterministic ranking·Venue dedup·max3는 Spring이 소유한다.
+2026-09-26: FastAPI candidate-scoped retrieval orchestration에 LangGraph를 적용했다. Spring→FastAPI 계약과 feature flag는 유지하며 기본 OFF, hard filter·최종 ranking·Venue dedup·max3는 Spring 소유다.
 
 ## When to read
 - 새로운 서비스 추가
@@ -73,7 +73,7 @@ React는 FastAPI를 직접 호출하지 않습니다. Spring Boot는 공개 애�
 
 프런트엔드 채팅 화면, 논현동 고정 범위, 취향 설정, 명시적인 식사 기록과 SSE 추천 흐름이 구현되어 있습니다. Spring Boot는 MySQL에 사용자 취향과 식사 기록을 저장하고 논현동·영업·제로페이 조건을 적용합니다. 비선호 카테고리와 최근 72시간 내 먹은 음식점은 제외하고, 메시지 예산이 없으면 사용자 기본 예산을 사용합니다.
 
-기본값은 결정론적 임시 intent analyzer입니다. `AI_SEMANTIC_RUNTIME_ENABLED=true`이면 FastAPI Intent API가 기존 Spring `AnalyzedIntent`에 매핑됩니다. Spring은 논현동/운영/ZeroPay/예산/비선호/최근 식사 조건을 적용한 전체 후보를 candidate scope로 전달하며, retrieval 실패나 미색인 상태에서 후보를 제거하지 않습니다. semantic cosine은 기존 deterministic 점수 동률에서만 bounded tie-breaker로 사용합니다. Spring은 Venue dedup 및 최대 3건 확정 후 Safe Fact 이유를 붙입니다. Qwen 설명은 별도 `AI_LLM_EXPLANATION_ENABLED` opt-in이며 기본 OFF입니다. 거리 및 500m 제한은 없습니다. KOMSCO importer의 모집단·저장 책임은 그대로 유지됩니다.
+기본값은 결정론적 임시 intent analyzer입니다. `AI_SEMANTIC_RUNTIME_ENABLED=true`이면 FastAPI Intent API가 기존 Spring `AnalyzedIntent`에 매핑됩니다. Spring은 논현동/운영/ZeroPay/예산/비선호/최근 식사 조건을 적용한 전체 후보를 candidate scope로 전달하며, retrieval 실패나 미색인 상태에서 후보를 제거하지 않습니다. FastAPI의 `/internal/v1/semantic-retrieval` 내부에서는 compiled-once LangGraph가 request state, deterministic intent eligibility, UNKNOWN/empty skip, candidate-scoped retrieval, status evaluation, bounded one-retry, fallback과 execution trace를 관리합니다. Semantic failure은 기존 sanitized HTTP 503으로 유지되어 Spring 설정 fallback이 계속 owner입니다. Semantic empty result는 기존 empty response입니다. Spring의 retrieval relevance ordering, Venue dedup 및 최대 3건 확정은 변경하지 않습니다. Qwen 설명은 별도 `AI_LLM_EXPLANATION_ENABLED` opt-in이며 기본 OFF입니다. 거리 및 500m 제한은 없습니다. KOMSCO importer의 모집단·저장 책임은 그대로 유지됩니다.
 
 KOMSCO 음식점의 외부 후보 검증과 상세 보강은 `ai/`의 별도 Python Batch가 소유합니다. Provider 단계에서 Kakao/NAVER Local 후보를 병합·중복 제거한 뒤 Qwen Entity Resolution과 quality gate를 거쳐 ACCEPT 결과만 Canonical로 저장합니다. 이후 NAVER Maps UI가 발생시킨 allSearch 응답을 Playwright로 캡처해 numeric Place ID를 연결하고, 검증된 장소의 HOME/MENU/REVIEW DOM을 수집합니다. `restaurant_naver_verifications`가 검증 provenance를, `restaurant_external_places`가 NAVER Local evidence와 성공한 numeric mapping을 보존합니다. 이 데이터 구축 Batch는 추천 요청의 FastAPI 경로와 별개입니다.
 
@@ -81,7 +81,7 @@ KOMSCO 음식점의 외부 후보 검증과 상세 보강은 `ai/`의 별도 Pyt
 
 주간 Scheduler는 `Asia/Seoul` 기준 일요일 새벽 3시에 실행됩니다. 기존 가맹점의 최신 사업자 상태와 서비스 범위를 확인해 `active`를 비활성화하거나 복구하고 동기화 시각을 갱신합니다. 현재 단일 Spring Boot 인스턴스를 전제로 하며 다중 인스턴스 배포 시에는 중복 실행을 막는 분산 lock을 별도 설계해야 합니다.
 
-KOMSCO 원본에는 메뉴, 가격과 영업시간이 없으므로 import 행은 `recommendation_ready=false`로 저장됩니다. 현재 추천 흐름은 추천 정보와 영업 일정이 갖춰진 행만 조회합니다. LLM 설명 생성과 LangGraph는 구현되지 않았습니다.
+KOMSCO 원본에는 메뉴, 가격과 영업시간이 없으므로 import 행은 `recommendation_ready=false`로 저장됩니다. 현재 추천 흐름은 추천 정보와 영업 일정이 갖춰진 행만 조회합니다. LangGraph는 retrieval orchestration 전용이며 profile 생성, hard filter, 최종 ordering 또는 새 LLM generation을 소유하지 않습니다. 설명 생성은 별도 opt-in 경로입니다.
 
 ## 데이터 소유권
 

@@ -12,16 +12,16 @@ React -> Spring Boot -> MySQL
 
 ## 현재 상태
 
-현재 인증·대화·취향·식사 기록·논현동 고정 추천과 KOMSCO 데이터 pipeline이 구현되어 있습니다. Semantic Runtime을 명시적으로 켜면 Spring이 FastAPI intent/retrieval을 호출하며, 결정론적 후보 필터·최종 ranking은 Spring에 유지됩니다. LangGraph와 LLM 설명은 미구현입니다.
+현재 인증·대화·취향·식사 기록·논현동 고정 추천과 KOMSCO data pipeline이 구현되어 있습니다. Semantic Runtime을 명시적으로 켜면 Spring이 FastAPI intent/retrieval을 호출하며, FastAPI retrieval orchestration은 LangGraph state/conditional edge/bounded retry/fallback으로 관리합니다. 결정론적 후보 필터·최종 ranking은 Spring에 유지됩니다. LLM 설명은 별도 opt-in 기능입니다.
 
 | 영역 | 상태 |
 | --- | --- |
 | 프런트엔드 | 세션 인증, React Query 대화·취향·최근 식사 상태, POST SSE, 추천 카드와 `먹었어요` 흐름 구현 완료 |
 | 메인 백엔드 | 인증·Spring Session JDBC, 대화·취향·식사 기록 영속화, 제로페이·영업시간·개인화 필터와 샘플 추천 SSE 구현 완료 |
-| AI 서버 | FastAPI health, 내부 intent/scoped semantic retrieval API |
+| AI 서버 | FastAPI health, 내부 intent/scoped retrieval API, LangGraph retrieval workflow |
 | MySQL | Flyway V1~V15 스키마, local/dev 샘플 음식점 3개, KOMSCO 원본·PCMap detail·검증 provenance 저장 |
 | Qdrant | 파생 semantic retrieval 저장소; pilot collection을 runtime에서 read-only 사용 |
-| Spring→FastAPI | opt-in Recommendation Runtime, candidate scope 및 장애 fallback 구현 |
+| Spring→FastAPI | opt-in Recommendation Runtime, candidate scope 및 장애 fallback 구현; FastAPI retrieval 내부 LangGraph workflow |
 | API 계약 및 아키텍처 | 현재 구현과 계획 범위를 `docs/`에 구분해 기록 |
 
 ## 저장소 구조

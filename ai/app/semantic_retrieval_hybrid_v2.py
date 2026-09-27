@@ -12,6 +12,7 @@ from typing import Any
 from app.hybrid_policy import FOOD_TERM_MAP, TRAITS, _route_v2, _food_terms, _lexical, _aggregate
 
 from app.semantic_claim_retrieval_pilot import EMBEDDING_MODEL, _request, embed, route_query
+from app.semantic_profile_source_scope import embedding_text_from_indexable_claims
 from app.semantic_retrieval_tenth_benchmark import RESTAURANTS, _load_claims
 
 ROOT = Path(__file__).resolve().parents[2] / "AI_Answer"
@@ -72,6 +73,11 @@ def _mention_points() -> list[dict[str, Any]]:
     return points
 
 
+def _scoped_embedding_text(point: dict[str, Any]) -> str:
+    """Require the source-scope approval contract for every indexed point."""
+    return embedding_text_from_indexable_claims([point])
+
+
 
 
 def _qdrant_points(qdrant: str, query: str, allowed: list[str], collection: str) -> list[dict[str, Any]]:
@@ -112,7 +118,7 @@ def main() -> None:
         if counts:
             p["mentionCount"] = max(counts)
     for p in points:
-        p.setdefault("embeddingText", p.get("normalizedClaimText", ""))
+        p["embeddingText"] = _scoped_embedding_text(p)
         p.setdefault("embeddingModel", EMBEDDING_MODEL)
     ollama = os.getenv("OLLAMA_BASE_URL","http://localhost:11434")
     qdrant = os.getenv("QDRANT_URL","http://localhost:6333")

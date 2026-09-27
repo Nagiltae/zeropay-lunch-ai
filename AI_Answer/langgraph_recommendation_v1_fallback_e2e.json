@@ -1,0 +1,99 @@
+{
+  "environment": {
+    "database": "isolated-e2e",
+    "databaseName": "zeropay_lunch_mvp_e2e",
+    "semanticRuntime": true,
+    "llmExplanation": false
+  },
+  "queries": [
+    {
+      "query": "떡볶이 먹고 싶어",
+      "expectedSemanticTopId": 9617,
+      "expectedTopId": 9617,
+      "semanticOrderingAsserted": false,
+      "restaurantIds": [
+        9617,
+        9568,
+        9569
+      ],
+      "reason": "강남구 논현동 서비스 범위 음식점이에요. 제로페이를 사용할 수 있어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "피자 먹고 싶어",
+      "expectedSemanticTopId": 9571,
+      "expectedTopId": 9617,
+      "semanticOrderingAsserted": false,
+      "restaurantIds": [
+        9617,
+        9568,
+        9569
+      ],
+      "reason": "강남구 논현동 서비스 범위 음식점이에요. 제로페이를 사용할 수 있어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "expectedSemanticTopId": 9568,
+      "expectedTopId": 9617,
+      "semanticOrderingAsserted": false,
+      "restaurantIds": [
+        9617,
+        9568,
+        9569
+      ],
+      "reason": "강남구 논현동 서비스 범위 음식점이에요. 제로페이를 사용할 수 있어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "단체 모임하기 좋은 곳",
+      "expectedSemanticTopId": 9569,
+      "expectedTopId": 9617,
+      "semanticOrderingAsserted": false,
+      "restaurantIds": [
+        9617,
+        9568,
+        9569
+      ],
+      "reason": "강남구 논현동 서비스 범위 음식점이에요. 제로페이를 사용할 수 있어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    }
+  ],
+  "browserE2E": "PASS",
+  "semanticRequests": 0,
+  "semanticFailureSimulation": true,
+  "intentRequests": 0,
+  "qdrantQueries": 0,
+  "embeddingCalls": 0,
+  "llmExplanationCalls": 0,
+  "devMysqlWrites": 0,
+  "e2eMysqlWrites": {
+    "fixtureRestaurants": 7,
+    "users": 1,
+    "conversations": 1,
+    "chatMessages": 8,
+    "recommendations": 12
+  },
+  "qdrantWrites": 0,
+  "qdrantPointCountBefore": 40,
+  "qdrantPointCountAfter": 40,
+  "qdrantScopeViolations": 0,
+  "qdrantRetrievals": [],
+  "fastApiRankedResponses": [],
+  "springBrowserQueryCount": 4,
+  "hardFilterViolationCount": 0,
+  "hardFilterExcludedFixtureRestaurantIds": [
+    9620
+  ],
+  "candidateScopeCheck": {
+    "candidateRestaurantIds": [],
+    "returnedRestaurantIds": [],
+    "violations": 0
+  },
+  "cleanup": "E2E Compose project and dedicated volume removed by EXIT trap",
+  "assessment": "PASS"
+}

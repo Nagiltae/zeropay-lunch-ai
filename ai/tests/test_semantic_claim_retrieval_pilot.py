@@ -1,26 +1,26 @@
 from pathlib import Path
 
+import pytest
+
 from app.semantic_claim_retrieval_pilot import (
     COLLECTION,
     build_claim_points,
     food_mentions,
     route_query,
 )
-
+from app.semantic_retrieval_tenth_benchmark import _normalized_text
 
 ROOT = Path(__file__).parents[2] / "AI_Answer"
 
 
-def test_claim_points_use_approved_claims_and_traceable_normalized_text():
-    points = build_claim_points(ROOT)
-    assert {point["restaurantId"] for point in points} == {9617, 9731, 9567, 9580}
-    assert all(point["embeddingModel"] == "qwen3-embedding:0.6b" for point in points)
-    assert all(point["evidenceIds"] and point["pointId"] for point in points)
-    assert not any("REVIEW_REQUIRED" in point["embeddingText"] or "REJECTED" in point["embeddingText"] for point in points)
-    assert not any("price" in point["embeddingText"].lower() for point in points)
-    assert any(point["claimType"] == "FOOD_MENTION" and point["restaurantId"] == 9731 for point in points)
-    assert any(point["claimType"] == "FOOD_MENTION" and point["restaurantId"] == 9580 for point in points)
-    assert all("공식 메뉴" in point["normalizedClaimText"] for point in points if point["claimType"] == "FOOD_MENTION")
+def test_legacy_claim_points_fail_closed_without_source_scope_contract():
+    with pytest.raises(ValueError, match="CLAIM_NOT_INDEXABLE"):
+        build_claim_points(ROOT)
+
+
+def test_tenth_benchmark_text_builder_rejects_legacy_claims():
+    with pytest.raises(ValueError, match="CLAIM_NOT_INDEXABLE"):
+        _normalized_text({"claimType": "DINING_CONTEXT", "text": "혼밥하기 좋다"}, {})
 
 
 def test_food_mentions_require_successful_repeated_review_keywords():

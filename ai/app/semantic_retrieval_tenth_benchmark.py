@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from app.semantic_claim_retrieval_pilot import EMBEDDING_MODEL, _request, embed, route_query
+from app.semantic_profile_source_scope import embedding_text_from_indexable_claims
 from app.semantic_profile_shadow import benchmark_eligible_claims
 
 COLLECTION = "zeropay_semantic_claim_pilot_v8"
@@ -103,15 +104,8 @@ def _load_claims(rid: int) -> tuple[dict[str, Any], list[dict[str, Any]], dict[s
 
 
 def _normalized_text(claim: dict[str, Any], catalog: dict[str, dict[str, Any]]) -> str:
-    values = []
-    for eid in claim["evidenceIds"]:
-        item = catalog[eid]
-        content = item.get("content", {})
-        if item.get("evidenceType") == "menu" and content.get("name"):
-            values.append(content["name"])
-        if item.get("evidenceType") == "keyword" and content.get("keyword"):
-            values.append(content["keyword"])
-    return f"{claim['claimType']}: {claim['text']}" + (f" 근거: {', '.join(dict.fromkeys(values))}" if values else "")
+    del catalog  # Source provenance must arrive on the already-validated claim contract.
+    return embedding_text_from_indexable_claims([claim])
 
 
 def main() -> None:
@@ -120,7 +114,7 @@ def main() -> None:
     for rid in RESTAURANTS:
         profile, claims, catalog = _load_claims(rid)
         profiles.append({**profile, "benchmarkEligibleClaims": len(claims)})
-        for index, claim in enumerate(claims):
+        for claim in claims:
             claim_id = f"{rid}:{claim['claimType']}:{hashlib.sha256('|'.join(claim['evidenceIds']).encode()).hexdigest()[:12]}"
             text = _normalized_text(claim, catalog)
             points.append({
@@ -130,6 +124,7 @@ def main() -> None:
                 "claimType": claim["claimType"],
                 "originalClaimText": claim["text"],
                 "normalizedClaimText": text,
+                "searchText": text,
                 "confidence": claim.get("confidence"),
                 "evidenceIds": sorted(claim["evidenceIds"]),
                 "inputHash": profile["inputHash"],

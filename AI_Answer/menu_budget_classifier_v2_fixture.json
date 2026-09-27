@@ -1,0 +1,30 @@
+{
+  "fixtureVersion": "menu-budget-classifier-v2-fixture-1",
+  "frozenBeforeGeminiCall": true,
+  "sourceArtifact": "serving_model_v2_pilot_plan.json",
+  "policy": "Only explicit menu-row evidence is considered. Expected flags are required; extra flags are tolerated unless stated otherwise. UNKNOWN is acceptable only for ambiguous cases.",
+  "cases": [
+    {"restaurantId": 9559, "menuId": 2718, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["WEIGHT_BASED"], "kind": "critical_negative", "evidence": "Menu name says 100g; description says one piece weighs 600–1000g."},
+    {"restaurantId": 9559, "menuId": 2719, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["WEIGHT_BASED"], "kind": "critical_negative", "evidence": "Menu name says 100g; description says 600–1000g per piece."},
+    {"restaurantId": 9559, "menuId": 2720, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["MULTI_PERSON", "WEIGHT_BASED"], "kind": "critical_negative", "evidence": "Description states 3–4 servings and price per 100g."},
+    {"restaurantId": 9559, "menuId": 2723, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["MULTI_PERSON", "WEIGHT_BASED"], "kind": "critical_negative", "evidence": "Description states 4 servings and price per 100g."},
+    {"restaurantId": 9559, "menuId": 2727, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["ALCOHOL"], "kind": "critical_negative", "evidence": "Traditional alcoholic liquor (주)."},
+    {"restaurantId": 9559, "menuId": 2733, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["ALCOHOL"], "kind": "critical_negative", "evidence": "Champagne."},
+    {"restaurantId": 9559, "menuId": 2737, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["ALCOHOL"], "kind": "critical_negative", "evidence": "Red wine."},
+    {"restaurantId": 9617, "menuId": 8731, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["MULTI_PERSON"], "kind": "critical_negative", "evidence": "Name says 1.5-person set and description lists several dishes."},
+    {"restaurantId": 9617, "menuId": 8747, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["DRINK"], "kind": "critical_negative", "evidence": "Cola, 245ml."},
+    {"restaurantId": 9617, "menuId": 8749, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["DRINK"], "kind": "critical_negative", "evidence": "Americano."},
+    {"restaurantId": 10042, "menuId": 8333, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["DRINK"], "kind": "critical_negative", "evidence": "Can cola promo listed at 1 KRW; low price does not make it a meal."},
+    {"restaurantId": 10042, "menuId": 8334, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["MULTI_PERSON"], "kind": "critical_negative", "evidence": "Set includes a dish plus one meal; not an individual meal price basis."},
+    {"restaurantId": 10042, "menuId": 8337, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["MULTI_PERSON"], "kind": "critical_negative", "evidence": "Description explicitly says two meals."},
+    {"restaurantId": 10042, "menuId": 8387, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["COURSE"], "kind": "critical_negative", "evidence": "Large multi-dish course set."},
+    {"restaurantId": 10042, "menuId": 8396, "expectedEligibility": "INELIGIBLE", "requiredFlags": ["DRINK"], "kind": "critical_negative", "evidence": "Coca-Cola 500ml."},
+    {"restaurantId": 10042, "menuId": 8328, "expectedEligibility": "ELIGIBLE", "requiredFlags": [], "kind": "clear_positive", "evidence": "Named single bowl of jajangmyeon with item price."},
+    {"restaurantId": 10042, "menuId": 8348, "expectedEligibility": "ELIGIBLE", "requiredFlags": [], "kind": "clear_positive", "evidence": "Named individual jajangmyeon menu with item price."},
+    {"restaurantId": 10042, "menuId": 8352, "expectedEligibility": "ELIGIBLE", "requiredFlags": [], "kind": "clear_positive", "evidence": "Named fried rice meal with item price."},
+    {"restaurantId": 9568, "menuId": 2686, "expectedEligibility": "ELIGIBLE", "requiredFlags": [], "kind": "clear_positive", "evidence": "Named sundae-guk meal with item price."},
+    {"restaurantId": 9568, "menuId": 2691, "expectedEligibility": "ELIGIBLE", "requiredFlags": [], "kind": "clear_positive", "evidence": "Named stir-fried pork meal with item price."},
+    {"restaurantId": 9568, "menuId": 2693, "expectedEligibility": "ELIGIBLE", "requiredFlags": [], "kind": "clear_positive", "evidence": "Named rice cake soup with item price."},
+    {"restaurantId": 9617, "menuId": 8738, "expectedEligibility": "UNKNOWN", "requiredFlags": [], "kind": "ambiguous", "evidence": "Menu says one serving (two skewers), but evidence does not establish that it is a full lunch meal."}
+  ]
+}

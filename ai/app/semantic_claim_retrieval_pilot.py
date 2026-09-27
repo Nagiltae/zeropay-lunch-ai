@@ -20,8 +20,8 @@ from app.semantic_embedding_qdrant_pilot import (
     QUERIES,
     _request,
     embed,
-    load_documents,
 )
+from app.semantic_profile_source_scope import embedding_text_from_indexable_claims
 
 COLLECTION = "zeropay_semantic_claim_pilot_v6"
 EMBEDDING_VERSION = "semantic-claim-embedding-v1"
@@ -141,13 +141,14 @@ def build_claim_points(root: Path) -> list[dict[str, Any]]:
         catalog = _catalog(root, restaurant_id)
         profile = profiles[restaurant_id]
         for claim in profile.get("claims", []):
+            search_text = embedding_text_from_indexable_claims([claim])
             point = {
                 "restaurantId": restaurant_id,
                 "venueId": profile.get("venueId"),
                 "claimId": f"{restaurant_id}:{claim['claimType']}:{hashlib.sha256('|'.join(claim['evidenceIds']).encode()).hexdigest()[:12]}",
                 "claimType": claim["claimType"],
-                "originalClaimText": claim["text"],
-                "normalizedClaimText": normalize_claim(claim, catalog),
+                "originalClaimText": claim.get("rawClaimText", claim.get("claimText")),
+                "normalizedClaimText": search_text,
                 "confidence": claim.get("confidence"),
                 "evidenceIds": sorted(claim["evidenceIds"]),
                 "mentionCounts": {
@@ -162,20 +163,11 @@ def build_claim_points(root: Path) -> list[dict[str, Any]]:
                 "embeddingVersion": EMBEDDING_VERSION,
                 "normalizationVersion": NORMALIZATION_VERSION,
             }
-            point["embeddingText"] = f"{point['claimType']}: {point['normalizedClaimText']}"
+            point["sourceScope"] = claim["sourceScope"]
+            point["indexable"] = claim["indexable"]
+            point["searchText"] = search_text
+            point["embeddingText"] = search_text
             points.append(point)
-        for mention in food_mentions(root, restaurant_id):
-            mention.update(
-                {
-                    "inputHash": profile["inputHash"],
-                    "catalogHash": profile["catalogHash"],
-                    "embeddingModel": EMBEDDING_MODEL,
-                    "embeddingVersion": EMBEDDING_VERSION,
-                    "normalizationVersion": NORMALIZATION_VERSION,
-                    "embeddingText": f"FOOD_MENTION: {mention['normalizedClaimText']}",
-                }
-            )
-            points.append(mention)
     for point in points:
         point["pointId"] = str(uuid.uuid5(uuid.NAMESPACE_URL, point["claimId"]))
     return points

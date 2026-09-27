@@ -1,0 +1,1642 @@
+{
+  "environment": {
+    "database": "isolated-e2e",
+    "databaseName": "zeropay_lunch_mvp_e2e",
+    "semanticRuntime": true,
+    "llmExplanation": false
+  },
+  "queries": [
+    {
+      "query": "떡볶이 먹고 싶어",
+      "expectedSemanticTopId": 9617,
+      "expectedTopId": 9617,
+      "semanticOrderingAsserted": true,
+      "restaurantIds": [
+        9617,
+        9568,
+        9571
+      ],
+      "reason": "떡볶이 메뉴가 확인되어 추천했어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "피자 먹고 싶어",
+      "expectedSemanticTopId": 9571,
+      "expectedTopId": 9571,
+      "semanticOrderingAsserted": true,
+      "restaurantIds": [
+        9571,
+        9580,
+        9569
+      ],
+      "reason": "피자 메뉴가 확인되어 추천했어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "expectedSemanticTopId": 9568,
+      "expectedTopId": 9568,
+      "semanticOrderingAsserted": true,
+      "restaurantIds": [
+        9568,
+        9617,
+        9569
+      ],
+      "reason": "혼밥하기 좋다는 고객 평가가 확인돼 추천했어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    },
+    {
+      "query": "단체 모임하기 좋은 곳",
+      "expectedSemanticTopId": 9569,
+      "expectedTopId": 9569,
+      "semanticOrderingAsserted": true,
+      "restaurantIds": [
+        9569,
+        9568,
+        9570
+      ],
+      "reason": "단체 이용에 대한 고객 평가가 확인돼 추천했어요.",
+      "recommendationCount": 3,
+      "sseEvent": "recommendations"
+    }
+  ],
+  "browserE2E": "PASS",
+  "semanticRequests": 8,
+  "semanticFailureSimulation": false,
+  "intentRequests": 4,
+  "qdrantQueries": 12,
+  "embeddingCalls": 12,
+  "llmExplanationCalls": 0,
+  "devMysqlWrites": 0,
+  "e2eMysqlWrites": {
+    "fixtureRestaurants": 7,
+    "users": 1,
+    "conversations": 1,
+    "chatMessages": 8,
+    "recommendations": 12
+  },
+  "qdrantWrites": 0,
+  "qdrantPointCountBefore": 40,
+  "qdrantPointCountAfter": 40,
+  "qdrantScopeViolations": 0,
+  "qdrantRetrievals": [
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5304679,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.516436,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.50626487,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.47936934,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.47271246,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46129692,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.45214936,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.44933334,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.4066777,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.4066777,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9571:FOOD_MENTION:E055",
+          "evidenceIds": [
+            "E055"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.40657917,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E068",
+          "evidenceIds": [
+            "E068"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.4051357,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9570:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.39627573,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9569:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.39627573,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "evidenceIds": [
+            "E034"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.3962619,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E038",
+          "evidenceIds": [
+            "E038"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9571,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5303227,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.5163307,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.5061918,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.47267383,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.45204264,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.40661293,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9571:FOOD_MENTION:E055",
+          "evidenceIds": [
+            "E055"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.39620477,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "evidenceIds": [
+            "E034"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.3961913,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E038",
+          "evidenceIds": [
+            "E038"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9571,
+          "score": 0.562562,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5521567,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.49887896,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.49747193,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.4773467,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9570:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.47538966,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9571:FOOD_MENTION:E055",
+          "evidenceIds": [
+            "E055"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.47538966,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.47527447,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E068",
+          "evidenceIds": [
+            "E068"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4258924,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.41854218,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4092853,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.38406712,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.38272047,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9569:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.38272047,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "evidenceIds": [
+            "E034"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.38267085,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E038",
+          "evidenceIds": [
+            "E038"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9569,
+        9571,
+        9580
+      ],
+      "hits": [
+        {
+          "restaurantId": 9571,
+          "score": 0.56257683,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5521563,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.4988916,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.47544238,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.47544238,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9571:FOOD_MENTION:E055",
+          "evidenceIds": [
+            "E055"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.4753274,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E068",
+          "evidenceIds": [
+            "E068"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.41858044,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.38281524,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9569:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9568,
+          "score": 0.58688027,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.57568246,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5092244,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.4999376,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+          "evidenceIds": [
+            "E015",
+            "E016"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5868597,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.57567674,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5092063,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9569,
+          "score": 0.576515,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.55580425,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.5446386,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+          "evidenceIds": [
+            "E015",
+            "E016"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4055295,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570
+      ],
+      "hits": [
+        {
+          "restaurantId": 9569,
+          "score": 0.5764594,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.5557473,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.54459226,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+          "evidenceIds": [
+            "E015",
+            "E016"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9568,
+          "score": 0.5304679,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.516436,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.50626487,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.47936934,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.47271246,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.46129692,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.45214936,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.44933334,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.4066777,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.4066777,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9571:FOOD_MENTION:E055",
+          "evidenceIds": [
+            "E055"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.40657917,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E068",
+          "evidenceIds": [
+            "E068"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.4051357,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9570:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.39627573,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9569:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.39627573,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "evidenceIds": [
+            "E034"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.3962619,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E038",
+          "evidenceIds": [
+            "E038"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9571,
+          "score": 0.562562,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+          "evidenceIds": [
+            "E003",
+            "E015",
+            "E024"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.5521567,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+          "evidenceIds": [
+            "E008",
+            "E010"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.49887896,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+          "evidenceIds": [
+            "E007",
+            "E008",
+            "E012"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.49747193,
+          "claimType": "MENU_CHARACTERISTIC",
+          "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+          "evidenceIds": [
+            "E005",
+            "E006",
+            "E009",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.4773467,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9570:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "score": 0.47538966,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9571:FOOD_MENTION:E055",
+          "evidenceIds": [
+            "E055"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.47538966,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E067",
+          "evidenceIds": [
+            "E067"
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "score": 0.47527447,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9580:FOOD_MENTION:E068",
+          "evidenceIds": [
+            "E068"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4258924,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E033",
+          "evidenceIds": [
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.41854218,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9569:FOOD_TYPE:29fc3df7a9cd",
+          "evidenceIds": [
+            "E003",
+            "E006"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4092853,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9617:FOOD_TYPE:dff03204365b",
+          "evidenceIds": [
+            "E003",
+            "E011"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.38406712,
+          "claimType": "FOOD_TYPE",
+          "claimId": "9568:FOOD_TYPE:a95992a932ea",
+          "evidenceIds": [
+            "E003",
+            "E004",
+            "E012",
+            "E013"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.38272047,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9569:FOOD_MENTION:E026",
+          "evidenceIds": [
+            "E026"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.38272047,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E034",
+          "evidenceIds": [
+            "E034"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.38267085,
+          "claimType": "FOOD_MENTION",
+          "claimId": "9617:FOOD_MENTION:E038",
+          "evidenceIds": [
+            "E038"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9568,
+          "score": 0.58688027,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.57568246,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "score": 0.5092244,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.4999376,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+          "evidenceIds": [
+            "E015",
+            "E016"
+          ]
+        }
+      ]
+    },
+    {
+      "candidateRestaurantIds": [
+        9568,
+        9569,
+        9570,
+        9571,
+        9580,
+        9617
+      ],
+      "hits": [
+        {
+          "restaurantId": 9569,
+          "score": 0.576515,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+          "evidenceIds": [
+            "E017",
+            "E018"
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "score": 0.55580425,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9568:DINING_CONTEXT:82defca705c2",
+          "evidenceIds": [
+            "E029",
+            "E032",
+            "E033"
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "score": 0.5446386,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+          "evidenceIds": [
+            "E015",
+            "E016"
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "score": 0.4055295,
+          "claimType": "DINING_CONTEXT",
+          "claimId": "9617:DINING_CONTEXT:61f22f079494",
+          "evidenceIds": [
+            "E023",
+            "E058"
+          ]
+        }
+      ]
+    }
+  ],
+  "fastApiRankedResponses": [
+    {
+      "query": "떡볶이 먹고 싶어",
+      "candidates": [
+        {
+          "restaurantId": 9617,
+          "retrievalScore": 320.00047271246,
+          "semanticSimilarity": 0.47271246,
+          "matchedClaims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "claimId": "9617:FOOD_TYPE:dff03204365b",
+              "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+              "matchType": "EXACT",
+              "evidenceIds": [
+                "E003",
+                "E011"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "retrievalScore": 20.0005304679,
+          "semanticSimilarity": 0.5304679,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+              "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E005",
+                "E006",
+                "E009",
+                "E018"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9571,
+          "retrievalScore": 20.00050626487,
+          "semanticSimilarity": 0.50626487,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+              "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E003",
+                "E015",
+                "E024"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "retrievalScore": 20.00047936934,
+          "semanticSimilarity": 0.47936934,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+              "claimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E007",
+                "E008",
+                "E012"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "retrievalScore": 20.00044933334,
+          "semanticSimilarity": 0.44933334,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9580:MENU_CHARACTERISTIC:3301e7427ddb",
+              "claimText": "MENU_CHARACTERISTIC: The menu includes a variety of pizza sizes and set meals. 근거: 슬림세트 R, 세트메뉴 R",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E008",
+                "E010"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "retrievalScore": 10.0004051357,
+          "semanticSimilarity": 0.4051357,
+          "matchedClaims": [
+            {
+              "claimType": "FOOD_MENTION",
+              "claimId": "9570:FOOD_MENTION:E026",
+              "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 파스타가 반복 언급된다.",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E026"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "피자 먹고 싶어",
+      "candidates": [
+        {
+          "restaurantId": 9571,
+          "retrievalScore": 320.000562562,
+          "semanticSimilarity": 0.562562,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9571:MENU_CHARACTERISTIC:4d36851499c1",
+              "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of toppings including beef, chicken, and vegetables. 근거: 비프타코피자, 불고기피자, 야채퀘사디아피자",
+              "matchType": "EXACT",
+              "evidenceIds": [
+                "E003",
+                "E015",
+                "E024"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9580,
+          "retrievalScore": 310.00047538966,
+          "semanticSimilarity": 0.47538966,
+          "matchedClaims": [
+            {
+              "claimType": "FOOD_MENTION",
+              "claimId": "9580:FOOD_MENTION:E067",
+              "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 피자가 반복 언급된다.",
+              "matchType": "EXACT",
+              "evidenceIds": [
+                "E067"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "retrievalScore": 20.00049887896,
+          "semanticSimilarity": 0.49887896,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9569:MENU_CHARACTERISTIC:71b0d950b32e",
+              "claimText": "MENU_CHARACTERISTIC: The menu features a variety of seafood items including octopus, sea cucumber, and various types of rice balls. 근거: 낙지, 해삼, 김밥추가",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E007",
+                "E008",
+                "E012"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "retrievalScore": 20.00049747193,
+          "semanticSimilarity": 0.49747193,
+          "matchedClaims": [
+            {
+              "claimType": "MENU_CHARACTERISTIC",
+              "claimId": "9568:MENU_CHARACTERISTIC:410ed22626f7",
+              "claimText": "MENU_CHARACTERISTIC: The menu features a wide variety of affordable set meals and side dishes like Bibimbap, Tteokmanduguk, and various pork cuts. 근거: 서울밥상, 시골밥상, 떡만두국, 천겹살",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E005",
+                "E006",
+                "E009",
+                "E018"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "retrievalScore": 20.0004092853,
+          "semanticSimilarity": 0.4092853,
+          "matchedClaims": [
+            {
+              "claimType": "FOOD_TYPE",
+              "claimId": "9617:FOOD_TYPE:dff03204365b",
+              "claimText": "FOOD_TYPE: 음식 종류로 김밥과 떡볶이가 메뉴에서 확인된다. 근거: 마성김밥, 마성떡볶이",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E003",
+                "E011"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "retrievalScore": 10.0004773467,
+          "semanticSimilarity": 0.4773467,
+          "matchedClaims": [
+            {
+              "claimType": "FOOD_MENTION",
+              "claimId": "9570:FOOD_MENTION:E026",
+              "claimText": "공식 메뉴가 아니라 고객 리뷰 keyword에서 파스타가 반복 언급된다.",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E026"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "혼밥하기 좋은 곳",
+      "candidates": [
+        {
+          "restaurantId": 9568,
+          "retrievalScore": 10.00058688027,
+          "semanticSimilarity": 0.58688027,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9568:DINING_CONTEXT:82defca705c2",
+              "claimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+              "matchType": "TRAIT",
+              "evidenceIds": [
+                "E029",
+                "E032",
+                "E033"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "retrievalScore": 10.00057568246,
+          "semanticSimilarity": 0.57568246,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9617:DINING_CONTEXT:61f22f079494",
+              "claimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+              "matchType": "TRAIT",
+              "evidenceIds": [
+                "E023",
+                "E058"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9569,
+          "retrievalScore": 10.0005092244,
+          "semanticSimilarity": 0.5092244,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+              "claimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E017",
+                "E018"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "retrievalScore": 10.0004999376,
+          "semanticSimilarity": 0.4999376,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+              "claimText": "DINING_CONTEXT: The venue is suitable for special occasions and group gatherings. 근거: \"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E015",
+                "E016"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "단체 모임하기 좋은 곳",
+      "candidates": [
+        {
+          "restaurantId": 9569,
+          "retrievalScore": 10.000576515,
+          "semanticSimilarity": 0.576515,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9569:DINING_CONTEXT:400ce3d555a0",
+              "claimText": "DINING_CONTEXT: The venue is suitable for group gatherings and offers a spacious interior. 근거: \"매장이 넓어요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E017",
+                "E018"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9568,
+          "retrievalScore": 10.00055580425,
+          "semanticSimilarity": 0.55580425,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9568:DINING_CONTEXT:82defca705c2",
+              "claimText": "DINING_CONTEXT: The venue is suitable for solo dining, group gatherings, and casual meals due to its spacious layout. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원, \"매장이 넓어요\" 이 키워드를 선택한 인원",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E029",
+                "E032",
+                "E033"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9570,
+          "retrievalScore": 10.0005446386,
+          "semanticSimilarity": 0.5446386,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9570:DINING_CONTEXT:35f52bdb3fd6",
+              "claimText": "DINING_CONTEXT: The venue is suitable for special occasions and group gatherings. 근거: \"특별한 날 가기 좋아요\" 이 키워드를 선택한 인원, \"단체모임 하기 좋아요\" 이 키워드를 선택한 인원",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E015",
+                "E016"
+              ]
+            }
+          ]
+        },
+        {
+          "restaurantId": 9617,
+          "retrievalScore": 10.0004055295,
+          "semanticSimilarity": 0.4055295,
+          "matchedClaims": [
+            {
+              "claimType": "DINING_CONTEXT",
+              "claimId": "9617:DINING_CONTEXT:61f22f079494",
+              "claimText": "DINING_CONTEXT: 혼밥과 빠른 식사를 원하는 이용 맥락이 고객 keyword와 대표 리뷰에서 확인된다. 근거: \"혼밥하기 좋아요\" 이 키워드를 선택한 인원",
+              "matchType": "SEMANTIC",
+              "evidenceIds": [
+                "E023",
+                "E058"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "springBrowserQueryCount": 4,
+  "hardFilterViolationCount": 0,
+  "hardFilterExcludedFixtureRestaurantIds": [
+    9620
+  ],
+  "candidateScopeCheck": {
+    "candidateRestaurantIds": [
+      9568,
+      9569,
+      9570,
+      9571,
+      9580,
+      9617
+    ],
+    "returnedRestaurantIds": [
+      9568,
+      9617,
+      9571,
+      9569,
+      9580,
+      9570
+    ],
+    "violations": 0
+  },
+  "semanticOffVerification": {
+    "browserE2E": "PASS",
+    "queryCount": 4,
+    "recommendationIdsPerQuery": [
+      [9617, 9568, 9569],
+      [9617, 9568, 9569],
+      [9617, 9568, 9569],
+      [9617, 9568, 9569]
+    ],
+    "semanticRequests": 0,
+    "intentRequests": 0,
+    "embeddingCalls": 0,
+    "qdrantQueries": 0,
+    "llmExplanationCalls": 0,
+    "recommendationCountMax": 3
+  },
+  "aiUnavailableFallbackVerification": {
+    "browserE2E": "PASS",
+    "method": "Stopped only the isolated E2E AI container before requests",
+    "queryCount": 4,
+    "recommendationIdsPerQuery": [
+      [9617, 9568, 9569],
+      [9617, 9568, 9569],
+      [9617, 9568, 9569],
+      [9617, 9568, 9569]
+    ],
+    "semanticRequests": 0,
+    "embeddingCalls": 0,
+    "qdrantQueries": 0,
+    "llmExplanationCalls": 0,
+    "recommendationCountMax": 3
+  },
+  "requestAccounting": {
+    "springBrowserSemanticRequests": 4,
+    "supplementalDirectFastApiSemanticRequests": 4,
+    "loggedSemanticEndpointRequestsTotal": 8,
+    "qdrantQueriesTotal": 12,
+    "embeddingCallsTotal": 12
+  },
+  "composeImageAndRoutes": {
+    "rebuiltService": "ai",
+    "healthHttpStatus": 200,
+    "intentAnalysisHttpStatus": 200,
+    "semanticRetrievalHttpStatus": 200,
+    "semanticRetrievalSmokeRestaurantId": 9617,
+    "semanticRetrievalSmokeScore": 320.00047271246,
+    "semanticRetrievalSmokeSimilarity": 0.47271246,
+    "semanticRetrievalSmokeClaimType": "FOOD_TYPE",
+    "semanticRetrievalSmokeEvidenceIds": ["E003", "E011"],
+    "defaultSemanticFeatureFlag": false
+  },
+  "cleanup": "E2E Compose project and dedicated volume removed by EXIT trap",
+  "assessment": "PASS"
+}

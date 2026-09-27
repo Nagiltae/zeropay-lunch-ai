@@ -19,7 +19,7 @@ services:
       context: ./backend
     environment:
       SPRING_PROFILES_ACTIVE: e2e
-      AI_SEMANTIC_RUNTIME_ENABLED: "true"
+      AI_SEMANTIC_RUNTIME_ENABLED: ${MVP_E2E_SEMANTIC_RUNTIME_ENABLED:-true}
       AI_LLM_EXPLANATION_ENABLED: "false"
       AI_CONNECT_TIMEOUT: 2s
       AI_RESPONSE_TIMEOUT: 8s

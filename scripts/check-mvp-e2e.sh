@@ -8,8 +8,10 @@ ARTIFACT_DIR="$ROOT_DIR/AI_Answer"
 RUN_DIR="$(mktemp -d "${TMPDIR:-/tmp}/zplunch-mvp-e2e.XXXXXX")"
 QDRANT_GUARD_PID=""
 OLLAMA_GUARD_PID=""
-RESULT="$ARTIFACT_DIR/mvp_full_stack_e2e_results.json"
+RESULT="${MVP_E2E_RESULT:-$ARTIFACT_DIR/mvp_full_stack_e2e_results.json}"
 ASSESSMENT="BLOCKED"
+SEMANTIC_RUNTIME="${MVP_E2E_SEMANTIC_RUNTIME_ENABLED:-true}"
+EXPECT_AI_FAILURE="${MVP_E2E_EXPECT_AI_FAILURE:-false}"
 
 cleanup() {
   local code=$?
@@ -62,9 +64,38 @@ DB_NAME="$("${COMPOSE[@]}" exec -T mysql mysql -N -u mvp_e2e_user -pmvp_e2e_only
 "${COMPOSE[@]}" exec -T backend sh -c 'test "$SPRING_PROFILES_ACTIVE" = e2e'
 "${COMPOSE[@]}" exec -T mysql mysql --default-character-set=utf8mb4 -u mvp_e2e_user -pmvp_e2e_only_password zeropay_lunch_mvp_e2e < "$ROOT_DIR/scripts/fixtures/mvp_e2e_restaurants.sql"
 
+if [[ "$EXPECT_AI_FAILURE" == "true" ]]; then
+  "${COMPOSE[@]}" stop ai >/dev/null
+fi
+
 cd "$ROOT_DIR/frontend"
-npx playwright test --config playwright.config.ts --reporter=list | tee "$RUN_DIR/playwright.log"
+npx playwright test --config playwright.config.ts --reporter=list --timeout 120000 | tee "$RUN_DIR/playwright.log"
 cd "$ROOT_DIR"
+
+FASTAPI_RANKED_RESPONSES="[]"
+if [[ "$SEMANTIC_RUNTIME" == "true" && "$EXPECT_AI_FAILURE" != "true" ]]; then
+  FASTAPI_RANKED_RESPONSES="$("${COMPOSE[@]}" exec -T ai python -c '
+import json
+from urllib.request import Request, urlopen
+queries = ["떡볶이 먹고 싶어", "피자 먹고 싶어", "혼밥하기 좋은 곳", "단체 모임하기 좋은 곳"]
+scope = [9568, 9569, 9570, 9571, 9580, 9617]
+results = []
+for query in queries:
+    body = json.dumps({"query": query, "candidateRestaurantIds": scope, "topK": 10}, ensure_ascii=False).encode()
+    request = Request("http://127.0.0.1:8001/internal/v1/semantic-retrieval", data=body,
+                      headers={"Content-Type": "application/json"}, method="POST")
+    with urlopen(request, timeout=30) as response:
+        payload = json.loads(response.read())
+    results.append({"query": query, "candidates": [
+        {"restaurantId": item["restaurantId"], "retrievalScore": item["retrievalScore"],
+         "semanticSimilarity": item["semanticSimilarity"], "matchedClaims": [
+             {"claimType": claim["claimType"], "claimId": claim["claimId"],
+              "claimText": claim["claimText"], "matchType": claim["matchType"],
+              "evidenceIds": claim["evidenceIds"]} for claim in item["matchedClaims"]]}
+        for item in payload["candidates"]]})
+print(json.dumps(results, ensure_ascii=False))
+')"
+fi
 
 # Assert actual DB target and writes, then preserve counts before disposable volume cleanup.
 DB_COUNTS="$("${COMPOSE[@]}" exec -T mysql mysql -N -u mvp_e2e_user -pmvp_e2e_only_password zeropay_lunch_mvp_e2e -e \
@@ -90,15 +121,26 @@ for line in open(sys.argv[1], encoding="utf-8"):
 print(violations)
 PY
 )"
-[[ "$QDRANT_QUERIES" -gt 0 && "$EMBEDDING_CALLS" -gt 0 && "$SEMANTIC_REQUESTS" -ge 3 ]]
 [[ "$GENERATION_CALLS" == 0 && "$SCOPE_VIOLATIONS" == 0 ]]
+if [[ "$SEMANTIC_RUNTIME" == "true" ]]; then
+  if [[ "$EXPECT_AI_FAILURE" == "true" ]]; then
+    [[ "$QDRANT_QUERIES" == 0 && "$EMBEDDING_CALLS" == 0 && "$SEMANTIC_REQUESTS" == 0 ]]
+  else
+    [[ "$QDRANT_QUERIES" -gt 0 && "$EMBEDDING_CALLS" -gt 0 && "$SEMANTIC_REQUESTS" -ge 3 ]]
+  fi
+else
+  [[ "$QDRANT_QUERIES" == 0 && "$EMBEDDING_CALLS" == 0 && "$SEMANTIC_REQUESTS" == 0 ]]
+fi
 
 INTENT_REQUESTS="$("${COMPOSE[@]}" logs --no-color ai | rg -c 'POST /internal/v1/intent-analysis' || echo 0)"
 RESULT="$RESULT" QDRANT_BEFORE="$QDRANT_BEFORE" QDRANT_AFTER="$QDRANT_AFTER" \
 DB_COUNTS="$DB_COUNTS" QDRANT_QUERIES="$QDRANT_QUERIES" EMBEDDING_CALLS="$EMBEDDING_CALLS" \
 SCOPE_VIOLATIONS="$SCOPE_VIOLATIONS" INTENT_REQUESTS="$INTENT_REQUESTS" \
 GENERATION_CALLS="$GENERATION_CALLS" SEMANTIC_REQUESTS="$SEMANTIC_REQUESTS" \
-PLAYWRIGHT_LOG="$RUN_DIR/playwright.log" \
+SEMANTIC_RUNTIME="$SEMANTIC_RUNTIME" \
+EXPECT_AI_FAILURE="$EXPECT_AI_FAILURE" \
+FASTAPI_RANKED_RESPONSES="$FASTAPI_RANKED_RESPONSES" \
+PLAYWRIGHT_LOG="$RUN_DIR/playwright.log" QDRANT_GUARD_LOG="$RUN_DIR/qdrant-guard.log" \
   node "$ROOT_DIR/scripts/e2e/write_results.mjs"
 
 echo "[PASS] isolated browser E2E; results: $RESULT"

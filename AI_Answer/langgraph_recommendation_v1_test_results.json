@@ -1,0 +1,116 @@
+{
+  "assessment": "LANGGRAPH RECOMMENDATION WORKFLOW = READY_FOR_PROJECT_REVIEW",
+  "graph": {
+    "compiledOnce": true,
+    "maxRetries": 1,
+    "routes": [
+      "SEMANTIC_SKIPPED",
+      "SEMANTIC_SUCCESS",
+      "SEMANTIC_RETRY_SUCCESS",
+      "SEMANTIC_EMPTY_FALLBACK",
+      "SEMANTIC_FAILURE_FALLBACK"
+    ],
+    "requestAndResponseContractChanged": false,
+    "candidateScopeMutation": 0,
+    "queryRewrite": false
+  },
+  "targetedTests": {
+    "command": "poetry run pytest -q tests/test_recommendation_graph.py tests/test_semantic_runtime.py",
+    "passed": 36,
+    "failed": 0,
+    "coverage": [
+      "unknown intent skip",
+      "semantic success",
+      "empty result fallback without retry",
+      "retryable failure then success",
+      "retry exhaustion",
+      "non-retryable failure without retry",
+      "same candidate IDs and query on retry",
+      "HTTP 500/502/503/504 retry classification",
+      "HTTP 429 non-retry classification",
+      "unchanged response fields"
+    ]
+  },
+  "aiHarness": {
+    "command": "./scripts/check-ai.sh",
+    "result": "PASS",
+    "passed": 361,
+    "skipped": 1,
+    "failed": 0
+  },
+  "changedPythonRuff": {
+    "command": "poetry run ruff check app/main.py app/semantic_runtime.py app/workflows tests/test_recommendation_graph.py tests/test_semantic_runtime.py",
+    "result": "PASS"
+  },
+  "repositoryRuff": {
+    "command": "poetry run ruff check .",
+    "result": "BASELINE_FAILURE_UNCHANGED_FILES",
+    "diagnostics": 201,
+    "filesWithDiagnostics": [
+      "app/detail_snapshot.py",
+      "app/hybrid_policy.py",
+      "app/naver/place_id_linker_cli.py",
+      "app/recommendation_explanation.py",
+      "app/semantic_claim_retrieval_pilot.py",
+      "app/semantic_retrieval_hybrid_v2.py",
+      "app/semantic_retrieval_offline_benchmark.py",
+      "app/semantic_retrieval_tenth_benchmark.py",
+      "tests/test_recommendation_explanation.py",
+      "tests/test_semantic_profile_shadow.py",
+      "tests/test_semantic_retrieval_offline_benchmark.py"
+    ],
+    "changedPythonFilesWithDiagnostics": 0
+  },
+  "composeSemanticE2E": {
+    "artifact": "AI_Answer/langgraph_recommendation_v1_compose_e2e.json",
+    "browserE2E": "PASS",
+    "queryCount": 4,
+    "semanticOrderingAssertions": 4,
+    "candidateScopeViolations": 0,
+    "semanticEndpointRequests": 8,
+    "intentEndpointRequests": 4,
+    "qdrantReadQueries": 12,
+    "embeddingCalls": 12,
+    "qdrantWrites": 0,
+    "qdrantPointCountBefore": 40,
+    "qdrantPointCountAfter": 40,
+    "sharedDevelopmentMysqlWrites": 0,
+    "isolatedE2eMysqlWrites": {
+      "fixtureRestaurants": 7,
+      "users": 1,
+      "conversations": 1,
+      "chatMessages": 8,
+      "recommendations": 12
+    },
+    "generationCalls": 0,
+    "geminiCalls": 0
+  },
+  "composeAiUnavailableFallback": {
+    "artifact": "AI_Answer/langgraph_recommendation_v1_fallback_e2e.json",
+    "browserE2E": "PASS",
+    "semanticOrderingAssertions": 0,
+    "recommendationsReturned": true,
+    "semanticEndpointRequests": 0,
+    "intentEndpointRequests": 0,
+    "qdrantReadQueries": 0,
+    "embeddingCalls": 0,
+    "qdrantWrites": 0,
+    "sharedDevelopmentMysqlWrites": 0
+  },
+  "sideEffects": {
+    "profileGeneratorCalls": 0,
+    "atomicizerCalls": 0,
+    "assertionVerifierCalls": 0,
+    "embeddingWrites": 0,
+    "qdrantWrites": 0,
+    "geminiCalls": 0,
+    "mysqlSharedDevelopmentWrites": 0,
+    "mysqlIsolatedE2eFixtureAndBrowserWrites": "recorded per E2E above"
+  },
+  "integration": {
+    "backendSourceChanged": false,
+    "backendContainerBuildAndBrowserContract": "PASS",
+    "frontendSourceChanged": false,
+    "gitDiffCheck": "PASS"
+  }
+}

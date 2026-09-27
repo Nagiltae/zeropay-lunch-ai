@@ -1,3 +1,5 @@
+from urllib.error import HTTPError
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -66,6 +68,17 @@ def test_empty_scope_makes_no_dependency_call(monkeypatch):
     assert r.status_code == 200 and r.json()["candidates"] == []
 
 
+def test_non_semantic_query_skips_embedding_and_qdrant(dependencies, monkeypatch):
+    monkeypatch.setattr(runtime, "embed", lambda *a, **kw: pytest.fail("generic query embedded"))
+    monkeypatch.setattr(runtime, "_request", lambda *a, **kw: pytest.fail("generic query searched"))
+    response = TestClient(app).post(
+        "/internal/v1/semantic-retrieval",
+        json={"query": "점심 추천해줘", "candidateRestaurantIds": [9617]},
+    )
+    assert response.status_code == 200
+    assert response.json()["candidates"] == []
+
+
 def test_scope_is_in_qdrant_request_and_response_preserves_evidence(dependencies, monkeypatch):
     def query(base, path, method, body, **kwargs):
         assert body["filter"]["must"][0] == {"key": "restaurantId", "match": {"any": [9617]}}
@@ -85,7 +98,31 @@ def test_scope_is_in_qdrant_request_and_response_preserves_evidence(dependencies
     assert c["matchedClaims"][0]["evidenceIds"] == ["E011"]
 
 
-def test_explanation_evidence_lookup_scopes_final_ids_and_requested_types(dependencies, monkeypatch):
+def test_composite_query_retrieval_includes_food_and_secondary_dining_claims(
+    dependencies, monkeypatch
+):
+    def query(base, path, method, body, **kwargs):
+        allowed = body["filter"]["must"][1]["match"]["any"]
+        assert {
+            "FOOD_TYPE",
+            "FOOD_MENTION",
+            "MENU_CHARACTERISTIC",
+            "DINING_CONTEXT",
+        } <= set(allowed)
+        return {"result": {"points": [point()]}}
+
+    monkeypatch.setattr(runtime, "_request", query)
+    response = TestClient(app).post(
+        "/internal/v1/semantic-retrieval",
+        json={"query": "혼밥하면서 떡볶이 먹고 싶어", "candidateRestaurantIds": [9617]},
+    )
+    assert response.status_code == 200
+    assert response.json()["candidates"][0]["restaurantId"] == 9617
+
+
+def test_explanation_evidence_lookup_scopes_final_ids_and_requested_types(
+    dependencies, monkeypatch
+):
     def query(base, path, method, body, **kwargs):
         assert body["filter"]["must"][0] == {"key": "restaurantId", "match": {"any": [9617]}}
         assert body["filter"]["must"][1] == {
@@ -158,6 +195,36 @@ def test_bad_dimension(dependencies, monkeypatch):
         json={"query": "떡볶이", "candidateRestaurantIds": [9617]},
     )
     assert r.status_code == 503
+
+
+@pytest.mark.parametrize("status", [500, 502, 503, 504])
+def test_transient_http_status_is_retryable(dependencies, monkeypatch, status):
+    monkeypatch.setattr(
+        runtime,
+        "_request",
+        lambda *a, **kw: (_ for _ in ()).throw(
+            HTTPError("https://internal.invalid", status, "provider failure", {}, None)
+        ),
+    )
+    with pytest.raises(runtime.RetryableDependencyUnavailable):
+        runtime.SemanticRetrievalService().retrieve(
+            runtime.RetrievalRequest(query="떡볶이", candidateRestaurantIds=[9617])
+        )
+
+
+def test_rate_limit_http_status_is_not_retryable(dependencies, monkeypatch):
+    monkeypatch.setattr(
+        runtime,
+        "_request",
+        lambda *a, **kw: (_ for _ in ()).throw(
+            HTTPError("https://internal.invalid", 429, "rate limited", {}, None)
+        ),
+    )
+    with pytest.raises(runtime.DependencyUnavailable) as error:
+        runtime.SemanticRetrievalService().retrieve(
+            runtime.RetrievalRequest(query="떡볶이", candidateRestaurantIds=[9617])
+        )
+    assert not isinstance(error.value, runtime.RetryableDependencyUnavailable)
 
 
 def test_unexpected_error_sanitized(monkeypatch):
